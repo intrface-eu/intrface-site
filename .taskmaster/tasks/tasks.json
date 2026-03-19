@@ -1,5 +1,234 @@
 {
   "master": {
-    "tasks": []
+    "tasks": [
+      {
+        "id": "1",
+        "title": "Define site information architecture and configuration foundation",
+        "description": "Establish route inventory, navigation model, brand constants, and baseline metadata configuration for the Intrface site.",
+        "details": "Scope:\n- define launch sitemap\n- create navigation/config helpers\n- establish default metadata and company profile constants\n- align implementation foundation with PRD launch scope",
+        "testStrategy": "Type-check config imports and verify route/navigation usage from page components.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define launch sitemap and primary navigation",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Create reusable site config and metadata defaults",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.850Z",
+        "activeAgent": false
+      },
+      {
+        "id": "2",
+        "title": "Create typed project content model and seed flagship entries",
+        "description": "Build the structured content layer for AOC, Voyager, and Funda so presentation can scale beyond one-off hardcoded sections.",
+        "details": "Scope:\n- define ProjectEntry types\n- create content records for AOC, Voyager, and Funda\n- add lookup helpers for project detail routes\n- keep content local and static-first for v1",
+        "testStrategy": "Type-check content records and validate slug lookup behavior including unknown slug handling.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define ProjectEntry types and project lookup helpers",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Seed flagship content entries for AOC, Voyager, and Funda",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.877Z",
+        "activeAgent": false
+      },
+      {
+        "id": "3",
+        "title": "Build design primitives and shared section patterns",
+        "description": "Create the reusable visual foundation for spacing, typography, section wrappers, and page containers.",
+        "details": "Scope:\n- establish visual baseline for marketing pages\n- create shared container and section-heading primitives\n- ensure responsive layout patterns are consistent\n- support a restrained editorial launch aesthetic",
+        "testStrategy": "Render primitives in routes/components and verify responsive layout behavior manually plus lint/build checks.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create page container and section heading primitives",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Establish spacing, typography, and visual baseline",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.909Z",
+        "activeAgent": false
+      },
+      {
+        "id": "4",
+        "title": "Build shared layout shell and marketing components",
+        "description": "Compose reusable header/footer and core marketing blocks that all launch routes can share.",
+        "details": "Scope:\n- implement header and footer\n- create hero, feature grid, CTA, and supporting section blocks\n- wire shell components to site config\n- avoid page-specific duplication where reusable components are appropriate",
+        "testStrategy": "Render shell and marketing blocks across homepage/about/contact routes and verify clean lint/build output.",
+        "status": "pending",
+        "dependencies": [
+          "1",
+          "3"
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement responsive header and footer shell",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Build hero, feature grid, and CTA marketing sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.936Z",
+        "activeAgent": false
+      },
+      {
+        "id": "5",
+        "title": "Build reusable project presentation components",
+        "description": "Create reusable project list and detail components for flagship product storytelling.",
+        "details": "Scope:\n- create project card, grid, hero, and detail section components\n- support both overview and deep-dive page contexts\n- map components cleanly to structured product content",
+        "testStrategy": "Render all flagship entries in both list and detail contexts and verify stable behavior via lint/build checks.",
+        "status": "pending",
+        "dependencies": [
+          "2",
+          "3"
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Build project card and grid components",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Build project hero and reusable detail sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.961Z",
+        "activeAgent": false
+      },
+      {
+        "id": "6",
+        "title": "Implement launch routes for homepage, projects, about, and contact",
+        "description": "Ship the initial public route set for the Intrface brand and portfolio site.",
+        "details": "Scope:\n- implement homepage\n- implement /projects index\n- implement reusable /projects/[slug] pages for AOC, Voyager, and Funda\n- implement /about and /contact\n- ensure navigation and route composition are coherent end to end",
+        "testStrategy": "Manual route smoke test on desktop/mobile plus slug validation and metadata sanity checks.",
+        "status": "pending",
+        "dependencies": [
+          "1",
+          "2",
+          "4",
+          "5"
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement homepage narrative and featured-project composition",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement /projects index and dynamic /projects/[slug] route",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement /about and /contact pages",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:03.994Z",
+        "activeAgent": false
+      },
+      {
+        "id": "7",
+        "title": "Polish launch metadata, responsive QA, and release baseline",
+        "description": "Finalize launch readiness with metadata polish, responsiveness checks, and repository documentation alignment.",
+        "details": "Scope:\n- replace placeholder metadata\n- run responsive QA sweep\n- review accessibility basics\n- update README/planning docs to match actual launch architecture\n- prepare repo for iterative expansion after v1 baseline",
+        "testStrategy": "Run lint/build, validate route metadata, and complete a manual launch-readiness checklist.",
+        "status": "pending",
+        "dependencies": [
+          "6"
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Replace placeholder metadata and route titles/descriptions",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Run responsive QA and update launch documentation",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-19T19:46:04.016Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/intrface_site_prd_rpg.md",
+      "updatedAt": "2026-03-19T19:45:14.455Z",
+      "version": 1
+    }
   }
 }
