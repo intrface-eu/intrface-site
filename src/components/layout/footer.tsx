@@ -1,7 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-export function Footer() {
+export async function Footer() {
+  const nav = await getTranslations("Nav");
+  const footer = await getTranslations("Footer");
+
   return (
     <footer className="border-t border-rule bg-background">
       <div className="section-shell flex flex-col gap-5 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
@@ -12,15 +16,21 @@ export function Footer() {
             width={18}
             height={18}
           />
-          <p>Intrface builds AI-native platforms, products, and systems.</p>
+          <p>{footer("tagline")}</p>
         </div>
 
         <div className="flex items-center gap-5">
           <Link href="/#projects" className="hover:text-foreground">
-            Projects
+            {nav("projects")}
+          </Link>
+          <Link href="/aoc" className="hover:text-foreground">
+            {nav("aoc")}
+          </Link>
+          <Link href="/voyager" className="hover:text-foreground">
+            {nav("voyager")}
           </Link>
           <Link href="/#contact" className="hover:text-foreground">
-            Contact
+            {nav("contact")}
           </Link>
         </div>
       </div>

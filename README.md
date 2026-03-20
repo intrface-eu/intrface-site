@@ -16,6 +16,7 @@ This repository will house the public-facing Intrface web presence, including:
 - Next.js
 - TypeScript
 - Tailwind CSS
+- next-intl (locale-prefixed routing)
 - Bun
 - AOC project scaffolding
 

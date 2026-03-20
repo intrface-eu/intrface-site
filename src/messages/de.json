@@ -1,0 +1,15 @@
+{
+  "Nav": {
+    "projects": "Projekte",
+    "aoc": "AOC",
+    "voyager": "Voyager",
+    "contact": "Kontakt",
+    "home": "Intrface Startseite"
+  },
+  "Footer": {
+    "tagline": "Intrface entwickelt KI-native Plattformen, Produkte und Systeme."
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache"
+  }
+}

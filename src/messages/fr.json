@@ -1,0 +1,15 @@
+{
+  "Nav": {
+    "projects": "Projets",
+    "aoc": "AOC",
+    "voyager": "Voyager",
+    "contact": "Contact",
+    "home": "Accueil Intrface"
+  },
+  "Footer": {
+    "tagline": "Intrface conçoit des plateformes, produits et systèmes natifs à l'IA."
+  },
+  "LocaleSwitcher": {
+    "label": "Langue"
+  }
+}
