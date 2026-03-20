@@ -32,7 +32,7 @@ Open `http://localhost:3000`.
 - [x] repository scaffolded
 - [x] AOC initialized
 - [x] initial landing page placeholder
-- [ ] PRD authoring
+- [x] PRD authoring
 - [ ] Taskmaster planning
 - [ ] information architecture
 - [ ] design system
