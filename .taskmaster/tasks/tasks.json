@@ -1,39 +1,46 @@
 {
-  "site-projects": {
+  "site-aoc": {
     "tasks": [
       {
-        "id": "13",
-        "title": "Implement projects index page",
-        "description": "Build the projects page as a scalable portfolio overview for flagship Intrface products.",
-        "details": "Scope:\n- implement intro framing\n- render product grid from content model\n- add ecosystem/shared capability strip\n- add CTA to contact or homepage",
-        "testStrategy": "Verify all featured products render consistently and routes navigate correctly.",
-        "status": "pending",
+        "id": "10",
+        "title": "Implement AOC product page from README-grounded content",
+        "description": "Create the public AOC page using accurate source-truth from agent-ops-cockpit and eliminate fictionalized product framing.",
+        "details": "Scope:\n- build AOC hero with correct naming\n- implement why AOC section from README pain points\n- implement Distributed Cognitive Architecture section\n- implement unified workspace and capabilities sections\n- add real install flow, proof, roadmap, and CTAs",
+        "testStrategy": "Compare implemented page against agent-ops-cockpit README and verify all major sections are accurate and actionable.",
+        "status": "done",
         "dependencies": [],
-        "priority": "medium",
+        "priority": "high",
         "subtasks": [
           {
             "id": 1,
-            "title": "Implement projects intro and flagship grid",
+            "title": "Implement AOC hero and Why AOC sections",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 2,
-            "title": "Implement ecosystem strip and final CTA",
+            "title": "Implement Distributed Cognitive Architecture and workspace sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement capabilities, quick start, roadmap, and final CTA",
             "description": "",
             "status": "pending",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.419Z",
+        "updatedAt": "2026-03-20T12:15:40.078Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/projects_index_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.462Z",
+      "path": ".taskmaster/docs/prds/pages/aoc_page_prd.md",
+      "updatedAt": "2026-03-20T11:31:14.919Z",
       "version": 1
     }
   },
@@ -72,6 +79,165 @@
     "aocPrd": {
       "path": ".taskmaster/docs/prds/pages/contact_page_prd.md",
       "updatedAt": "2026-03-20T11:36:24.487Z",
+      "version": 1
+    }
+  },
+  "site-funda": {
+    "tasks": [
+      {
+        "id": "12",
+        "title": "Implement Funda product page from source documentation",
+        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
+        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
+        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Funda hero, problem framing, and role model",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement Funda capabilities, workflow, and CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:36:56.393Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.450Z",
+      "version": 1
+    }
+  },
+  "site-projects": {
+    "tasks": [
+      {
+        "id": "13",
+        "title": "Implement projects index page",
+        "description": "Build the projects page as a scalable portfolio overview for flagship Intrface products.",
+        "details": "Scope:\n- implement intro framing\n- render product grid from content model\n- add ecosystem/shared capability strip\n- add CTA to contact or homepage",
+        "testStrategy": "Verify all featured products render consistently and routes navigate correctly.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement projects intro and flagship grid",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement ecosystem strip and final CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:36:56.419Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/projects_index_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.462Z",
+      "version": 1
+    }
+  },
+  "site-homepage": {
+    "tasks": [
+      {
+        "id": "9",
+        "title": "Implement homepage narrative architecture and featured products",
+        "description": "Build the Intrface homepage around brand positioning, featured products, shared capabilities, and clear CTA flow.",
+        "details": "Scope:\n- implement hero and company positioning\n- add what Intrface does section\n- feature AOC, Voyager, and Funda\n- add shared platform capabilities\n- add trust/proof and final CTA sections",
+        "testStrategy": "Manual narrative review plus route smoke testing to ensure product descriptions and CTAs are correct and scannable.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement homepage hero and Intrface positioning",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement featured products and shared platform capabilities",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement trust/proof layer and final CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T12:13:15.662Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/homepage_prd.md",
+      "updatedAt": "2026-03-20T11:31:14.905Z",
+      "version": 1
+    }
+  },
+  "site-about": {
+    "tasks": [
+      {
+        "id": "14",
+        "title": "Implement about page",
+        "description": "Create the About page to explain who Intrface is, what it builds, and the principles connecting its products.",
+        "details": "Scope:\n- intro/company framing\n- what we build\n- principles/how we work\n- ecosystem relationship and CTA",
+        "testStrategy": "Manual review for clarity, trust, and consistency with homepage/product messaging.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement company intro and what we build sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement principles, ecosystem narrative, and CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:36:56.443Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/about_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.473Z",
       "version": 1
     }
   },
@@ -307,51 +473,6 @@
       "version": 1
     }
   },
-  "site-homepage": {
-    "tasks": [
-      {
-        "id": "9",
-        "title": "Implement homepage narrative architecture and featured products",
-        "description": "Build the Intrface homepage around brand positioning, featured products, shared capabilities, and clear CTA flow.",
-        "details": "Scope:\n- implement hero and company positioning\n- add what Intrface does section\n- feature AOC, Voyager, and Funda\n- add shared platform capabilities\n- add trust/proof and final CTA sections",
-        "testStrategy": "Manual narrative review plus route smoke testing to ensure product descriptions and CTAs are correct and scannable.",
-        "status": "done",
-        "dependencies": [],
-        "priority": "high",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement homepage hero and Intrface positioning",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement featured products and shared platform capabilities",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 3,
-            "title": "Implement trust/proof layer and final CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T12:13:15.662Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/homepage_prd.md",
-      "updatedAt": "2026-03-20T11:31:14.905Z",
-      "version": 1
-    }
-  },
   "site-core": {
     "tasks": [
       {
@@ -385,51 +506,6 @@
       }
     ]
   },
-  "site-aoc": {
-    "tasks": [
-      {
-        "id": "10",
-        "title": "Implement AOC product page from README-grounded content",
-        "description": "Create the public AOC page using accurate source-truth from agent-ops-cockpit and eliminate fictionalized product framing.",
-        "details": "Scope:\n- build AOC hero with correct naming\n- implement why AOC section from README pain points\n- implement Distributed Cognitive Architecture section\n- implement unified workspace and capabilities sections\n- add real install flow, proof, roadmap, and CTAs",
-        "testStrategy": "Compare implemented page against agent-ops-cockpit README and verify all major sections are accurate and actionable.",
-        "status": "done",
-        "dependencies": [],
-        "priority": "high",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement AOC hero and Why AOC sections",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement Distributed Cognitive Architecture and workspace sections",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 3,
-            "title": "Implement capabilities, quick start, roadmap, and final CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T12:15:40.078Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/aoc_page_prd.md",
-      "updatedAt": "2026-03-20T11:31:14.919Z",
-      "version": 1
-    }
-  },
   "site-voyager": {
     "tasks": [
       {
@@ -438,7 +514,7 @@
         "description": "Build the Voyager page around the platform's real tourism, agent, map, and Scout exploration model.",
         "details": "Scope:\n- build hero and product framing\n- explain stakeholder model (agencies, businesses, attractions, scouts)\n- implement multi-agent and Scout experience sections\n- add map/platform/content architecture summary\n- end with partnership/contact CTA",
         "testStrategy": "Review implemented page against voyager README and docs to ensure product meaning, audience framing, and platform claims stay accurate.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": [
@@ -465,89 +541,13 @@
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.370Z",
+        "updatedAt": "2026-03-20T12:18:45.733Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
       "path": ".taskmaster/docs/prds/pages/voyager_page_prd.md",
       "updatedAt": "2026-03-20T11:36:24.437Z",
-      "version": 1
-    }
-  },
-  "site-funda": {
-    "tasks": [
-      {
-        "id": "12",
-        "title": "Implement Funda product page from source documentation",
-        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
-        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
-        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
-        "status": "pending",
-        "dependencies": [],
-        "priority": "medium",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement Funda hero, problem framing, and role model",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement Funda capabilities, workflow, and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.393Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.450Z",
-      "version": 1
-    }
-  },
-  "site-about": {
-    "tasks": [
-      {
-        "id": "14",
-        "title": "Implement about page",
-        "description": "Create the About page to explain who Intrface is, what it builds, and the principles connecting its products.",
-        "details": "Scope:\n- intro/company framing\n- what we build\n- principles/how we work\n- ecosystem relationship and CTA",
-        "testStrategy": "Manual review for clarity, trust, and consistency with homepage/product messaging.",
-        "status": "pending",
-        "dependencies": [],
-        "priority": "medium",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement company intro and what we build sections",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement principles, ecosystem narrative, and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.443Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/about_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.473Z",
       "version": 1
     }
   }
