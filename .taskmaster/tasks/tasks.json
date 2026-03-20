@@ -1,49 +1,4 @@
 {
-  "site-homepage": {
-    "tasks": [
-      {
-        "id": "9",
-        "title": "Implement homepage narrative architecture and featured products",
-        "description": "Build the Intrface homepage around brand positioning, featured products, shared capabilities, and clear CTA flow.",
-        "details": "Scope:\n- implement hero and company positioning\n- add what Intrface does section\n- feature AOC, Voyager, and Funda\n- add shared platform capabilities\n- add trust/proof and final CTA sections",
-        "testStrategy": "Manual narrative review plus route smoke testing to ensure product descriptions and CTAs are correct and scannable.",
-        "status": "pending",
-        "dependencies": [],
-        "priority": "high",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement homepage hero and Intrface positioning",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement featured products and shared platform capabilities",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 3,
-            "title": "Implement trust/proof layer and final CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T11:31:38.864Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/homepage_prd.md",
-      "updatedAt": "2026-03-20T11:31:14.905Z",
-      "version": 1
-    }
-  },
   "site-projects": {
     "tasks": [
       {
@@ -82,44 +37,6 @@
       "version": 1
     }
   },
-  "site-funda": {
-    "tasks": [
-      {
-        "id": "12",
-        "title": "Implement Funda product page from source documentation",
-        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
-        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
-        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
-        "status": "pending",
-        "dependencies": [],
-        "priority": "medium",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement Funda hero, problem framing, and role model",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement Funda capabilities, workflow, and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.393Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.450Z",
-      "version": 1
-    }
-  },
   "site-core": {
     "tasks": [
       {
@@ -128,7 +45,7 @@
         "description": "Set Google Sans Flex as the primary typeface and align the base typographic system with Intrface's outcome-led product minimalism.",
         "details": "Scope:\n- add Google Sans Flex to the app shell\n- define primary text roles and hierarchy\n- ensure typography works for marketing and product pages\n- avoid placeholder font decisions drifting into implementation",
         "testStrategy": "Verify font loads in app shell, inspect hierarchy across pages, and confirm no regressions in build/lint.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": [
@@ -148,10 +65,48 @@
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:31:38.819Z",
+        "updatedAt": "2026-03-20T11:49:05.060Z",
         "activeAgent": false
       }
     ]
+  },
+  "site-contact": {
+    "tasks": [
+      {
+        "id": "15",
+        "title": "Implement contact page",
+        "description": "Create a clean contact page with relevant inquiry framing and simple pathways to reach Intrface.",
+        "details": "Scope:\n- intro and inquiry framing\n- contact methods or form\n- what to reach out about\n- optional links back to products/projects",
+        "testStrategy": "Verify contact pathways are obvious and page remains clear and low-friction on mobile/desktop.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement contact intro and inquiry pathways",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement supporting product links and final CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:36:56.469Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/contact_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.487Z",
+      "version": 1
+    }
   },
   "site-about": {
     "tasks": [
@@ -191,86 +146,41 @@
       "version": 1
     }
   },
-  "site-voyager": {
+  "site-funda": {
     "tasks": [
       {
-        "id": "11",
-        "title": "Implement Voyager product page from source documentation",
-        "description": "Build the Voyager page around the platform's real tourism, agent, map, and Scout exploration model.",
-        "details": "Scope:\n- build hero and product framing\n- explain stakeholder model (agencies, businesses, attractions, scouts)\n- implement multi-agent and Scout experience sections\n- add map/platform/content architecture summary\n- end with partnership/contact CTA",
-        "testStrategy": "Review implemented page against voyager README and docs to ensure product meaning, audience framing, and platform claims stay accurate.",
-        "status": "pending",
-        "dependencies": [],
-        "priority": "high",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement Voyager hero and platform framing",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement multi-agent system and Scout experience sections",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 3,
-            "title": "Implement map/content/platform architecture summary and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
-        "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.370Z",
-        "activeAgent": false
-      }
-    ],
-    "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/voyager_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.437Z",
-      "version": 1
-    }
-  },
-  "site-contact": {
-    "tasks": [
-      {
-        "id": "15",
-        "title": "Implement contact page",
-        "description": "Create a clean contact page with relevant inquiry framing and simple pathways to reach Intrface.",
-        "details": "Scope:\n- intro and inquiry framing\n- contact methods or form\n- what to reach out about\n- optional links back to products/projects",
-        "testStrategy": "Verify contact pathways are obvious and page remains clear and low-friction on mobile/desktop.",
+        "id": "12",
+        "title": "Implement Funda product page from source documentation",
+        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
+        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
+        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
         "status": "pending",
         "dependencies": [],
         "priority": "medium",
         "subtasks": [
           {
             "id": 1,
-            "title": "Implement contact intro and inquiry pathways",
+            "title": "Implement Funda hero, problem framing, and role model",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 2,
-            "title": "Implement supporting product links and final CTA",
+            "title": "Implement Funda capabilities, workflow, and CTA",
             "description": "",
             "status": "pending",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.469Z",
+        "updatedAt": "2026-03-20T11:36:56.393Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/contact_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.487Z",
+      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.450Z",
       "version": 1
     }
   },
@@ -548,6 +458,96 @@
     "aocPrd": {
       "path": ".taskmaster/docs/prds/pages/aoc_page_prd.md",
       "updatedAt": "2026-03-20T11:31:14.919Z",
+      "version": 1
+    }
+  },
+  "site-homepage": {
+    "tasks": [
+      {
+        "id": "9",
+        "title": "Implement homepage narrative architecture and featured products",
+        "description": "Build the Intrface homepage around brand positioning, featured products, shared capabilities, and clear CTA flow.",
+        "details": "Scope:\n- implement hero and company positioning\n- add what Intrface does section\n- feature AOC, Voyager, and Funda\n- add shared platform capabilities\n- add trust/proof and final CTA sections",
+        "testStrategy": "Manual narrative review plus route smoke testing to ensure product descriptions and CTAs are correct and scannable.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement homepage hero and Intrface positioning",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement featured products and shared platform capabilities",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement trust/proof layer and final CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:31:38.864Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/homepage_prd.md",
+      "updatedAt": "2026-03-20T11:31:14.905Z",
+      "version": 1
+    }
+  },
+  "site-voyager": {
+    "tasks": [
+      {
+        "id": "11",
+        "title": "Implement Voyager product page from source documentation",
+        "description": "Build the Voyager page around the platform's real tourism, agent, map, and Scout exploration model.",
+        "details": "Scope:\n- build hero and product framing\n- explain stakeholder model (agencies, businesses, attractions, scouts)\n- implement multi-agent and Scout experience sections\n- add map/platform/content architecture summary\n- end with partnership/contact CTA",
+        "testStrategy": "Review implemented page against voyager README and docs to ensure product meaning, audience framing, and platform claims stay accurate.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Voyager hero and platform framing",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement multi-agent system and Scout experience sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement map/content/platform architecture summary and CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T11:36:56.370Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/voyager_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.437Z",
       "version": 1
     }
   }
