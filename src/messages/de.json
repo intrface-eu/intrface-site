@@ -11,5 +11,92 @@
   },
   "LocaleSwitcher": {
     "label": "Sprache"
+  },
+  "HomePage": {
+    "hero": {
+      "title": "Wir entwickeln KI-native Plattformen, Produkte und Systeme.",
+      "body": "Intrface ist ein produktorientiertes Studio, das ernsthafte Software mit einem Plattform-Mindset entwickelt. Unsere Leitprodukte reichen von terminal-first KI-Tools über touristische Explorationssysteme bis zu Plattformen für Fördermittel-Workflows.",
+      "primaryCta": "Projekte ansehen",
+      "secondaryCta": "Kontakt aufnehmen"
+    },
+    "whatWeDo": {
+      "label": "Was Intrface macht",
+      "title": "Produktklarheit, Systemhebel und KI, die wie echte Infrastruktur funktioniert.",
+      "body": "Wir präsentieren keine losen Experimente. Das Portfolio basiert auf langlebigem Workflow-Design, wiederverwendbarer Architektur und Produktoberflächen, die ihren Wert schnell vermitteln."
+    },
+    "operatingBlocks": {
+      "buildProducts": {
+        "title": "Produkte bauen",
+        "text": "Wir entwerfen und liefern Produktoberflächen, die sich selbst klar erklären und über einen einmaligen Prototyp hinaus skalieren."
+      },
+      "designSystems": {
+        "title": "Designsysteme",
+        "text": "Wir schaffen wiederverwendbare Grundlagen für Navigation, Typografie, Interaktion und Inhaltsarchitektur über ein wachsendes Portfolio hinweg."
+      },
+      "operationalizeAi": {
+        "title": "KI operationalisieren",
+        "text": "Wir machen aus KI nicht nur ein Feature, sondern funktionierende Infrastruktur durch Agenten, Memory, Orchestrierung und wissensbasierte Workflows."
+      },
+      "platformLeverage": {
+        "title": "Plattformhebel schaffen",
+        "text": "Wir suchen unter jedem Produkt nach wiederholbaren Systemen, damit das Portfolio mit der Zeit kohärenter wird."
+      }
+    },
+    "featuredProducts": {
+      "label": "Leitprodukte",
+      "title": "Drei Leitprodukte. Ein Portfolio, geprägt von gemeinsamem Systemdenken.",
+      "body": "AOC, Voyager und Funda bedienen unterschiedliche Bereiche, folgen aber demselben Ansatz: Produktwahrheit zuerst, starke Workflow-Struktur und Software, die operative Komplexität tragen kann.",
+      "status": "Flagship",
+      "aoc": {
+        "summary": "Ein terminal-first KI-Workspace für kontextbewusste Entwicklung, Memory, Task-Orchestrierung und einen einheitlichen Operator-Flow.",
+        "cta": "AOC entdecken"
+      },
+      "voyager": {
+        "summary": "Eine KI-gestützte Tourismusplattform, die Exploration, Mapping, mehrsprachige Inhalte und Multi-Agent-Guidance verbindet.",
+        "cta": "Voyager entdecken"
+      },
+      "funda": {
+        "summary": "Eine Fördermittelplattform für Discovery, Matching, Kollaboration und KI-unterstützte Antrags-Workflows.",
+        "cta": "Funda entdecken"
+      }
+    },
+    "capabilities": {
+      "label": "Geteilte Plattformfähigkeiten",
+      "title": "Wir übersetzen technische Tiefe in Produktfähigkeiten.",
+      "body": "Das Portfolio umfasst unterschiedliche Branchen, aber dieselben Plattformmuskeln tauchen immer wieder auf: Memory, Orchestrierung, Berechtigungen, Echtzeit-Interaktion und wissensbasierte Nutzererfahrung.",
+      "items": [
+        "KI-Agenten und Orchestrierung",
+        "Persistente Task- und Memory-Systeme",
+        "Rollenbasierte Plattformarchitektur",
+        "Mehrsprachige Erlebnisse",
+        "Echtzeit-Produktworkflows",
+        "Wissensbasierte Interfaces"
+      ]
+    },
+    "whyIntrface": {
+      "label": "Warum Intrface",
+      "title": "Keine Sammlung isolierter Apps – sondern eine kohärente Produkt- und Plattformpraxis.",
+      "body": "Was die Arbeit verbindet, ist der Fokus auf langlebige Systeme. Uns interessiert, wie Produkte betrieben werden, wie Informationen bestehen bleiben, wie Interfaces unter Komplexität lesbar bleiben und wie Infrastruktur zu einem strategischen Vorteil wird statt zu verborgenem Overhead."
+    },
+    "proof": {
+      "publicProductTruth": {
+        "label": "Öffentliche Produktwahrheit",
+        "text": "AOC, Voyager und Funda basieren auf aktiven Repositories, Dokumentation und Implementierungsdetails statt auf abstrakter Portfolioprosa."
+      },
+      "systemThinking": {
+        "label": "Systemdenken",
+        "text": "Über alle Produkte hinweg kehren dieselben Themen wieder: Kontext, Orchestrierung, rollenbasierte Flows, Navigation und eine robuste Operator-Erfahrung."
+      },
+      "staticFirstClarity": {
+        "label": "Static-first Klarheit",
+        "text": "Die Site entsteht, um reale Produkte mit hoher Signalstärke, klarer Struktur und Raum für ein wachsendes Portfolio zu erklären."
+      }
+    },
+    "finalCta": {
+      "label": "Abschluss-CTA",
+      "title": "Portfolio erkunden, Leitprodukte prüfen oder ein relevantes Gespräch beginnen.",
+      "body": "Intrface baut ein öffentliches Produktökosystem rund um reale Arbeit auf. Wenn Sie über ein Produkt, eine Zusammenarbeit oder die zugrunde liegenden Systeme sprechen möchten, sind Sie hier richtig.",
+      "primaryCta": "Projekte ansehen"
+    }
   }
 }

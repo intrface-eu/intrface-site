@@ -11,5 +11,92 @@
   },
   "LocaleSwitcher": {
     "label": "Language"
+  },
+  "HomePage": {
+    "hero": {
+      "title": "We build AI-native platforms, products, and systems.",
+      "body": "Intrface is a product-led studio building serious software with a platform mindset. Our flagship work spans terminal-first AI tooling, tourism exploration systems, and funding workflow platforms.",
+      "primaryCta": "View Projects",
+      "secondaryCta": "Get in Touch"
+    },
+    "whatWeDo": {
+      "label": "What Intrface Does",
+      "title": "Product clarity, system leverage, and AI that behaves like real infrastructure.",
+      "body": "We are not presenting disconnected experiments. The portfolio is built around durable workflow design, reusable architecture, and product surfaces that communicate value quickly."
+    },
+    "operatingBlocks": {
+      "buildProducts": {
+        "title": "Build products",
+        "text": "We design and ship product surfaces that explain themselves clearly and scale beyond a one-off prototype."
+      },
+      "designSystems": {
+        "title": "Design systems",
+        "text": "We create reusable foundations for navigation, typography, interaction, and content architecture across a growing portfolio."
+      },
+      "operationalizeAi": {
+        "title": "Operationalize AI",
+        "text": "We turn AI from a feature into working infrastructure through agents, memory, orchestration, and knowledge-aware workflows."
+      },
+      "platformLeverage": {
+        "title": "Create platform leverage",
+        "text": "We look for repeatable systems beneath each product so the portfolio becomes more coherent over time."
+      }
+    },
+    "featuredProducts": {
+      "label": "Featured Products",
+      "title": "Three flagship products. One portfolio shaped by shared system thinking.",
+      "body": "AOC, Voyager, and Funda address different domains, but they all reflect the same approach: product truth first, strong workflow structure, and software built to carry operational complexity.",
+      "status": "Flagship",
+      "aoc": {
+        "summary": "A terminal-first AI workspace for context-aware development, memory, task orchestration, and unified operator flow.",
+        "cta": "Explore AOC"
+      },
+      "voyager": {
+        "summary": "An AI-powered tourism platform that combines exploration, mapping, multilingual content, and multi-agent guidance.",
+        "cta": "Explore Voyager"
+      },
+      "funda": {
+        "summary": "A funding opportunity platform built around discovery, matching, collaboration, and AI-assisted application workflows.",
+        "cta": "Explore Funda"
+      }
+    },
+    "capabilities": {
+      "label": "Shared Platform Capabilities",
+      "title": "We translate technical depth into product capability.",
+      "body": "The portfolio spans different industries, but common platform muscles appear throughout the work: memory, orchestration, permissions, realtime interaction, and knowledge-aware user experience.",
+      "items": [
+        "AI agents and orchestration",
+        "Persistent task and memory systems",
+        "Role-based platform architecture",
+        "Multilingual experiences",
+        "Realtime product workflows",
+        "Knowledge-aware interfaces"
+      ]
+    },
+    "whyIntrface": {
+      "label": "Why Intrface",
+      "title": "Not a collection of isolated apps — a coherent product and platform practice.",
+      "body": "What connects the work is a bias toward durable systems. We care about how products are operated, how information persists, how interfaces stay legible under complexity, and how infrastructure becomes a strategic advantage rather than hidden overhead."
+    },
+    "proof": {
+      "publicProductTruth": {
+        "label": "Public product truth",
+        "text": "AOC, Voyager, and Funda are grounded in active repositories, docs, and implementation detail rather than abstract portfolio copy."
+      },
+      "systemThinking": {
+        "label": "System thinking",
+        "text": "Across products, the same concerns recur: context, orchestration, role-aware flows, navigation, and durable operator experience."
+      },
+      "staticFirstClarity": {
+        "label": "Static-first clarity",
+        "text": "The site is being built to explain real products with high signal, clean structure, and room for the portfolio to grow."
+      }
+    },
+    "finalCta": {
+      "label": "Final CTA",
+      "title": "Explore the portfolio, review the flagship products, or start a meaningful conversation.",
+      "body": "Intrface is building a public-facing product ecosystem around real work. If you want to talk about a product, a collaboration, or the systems underneath them, this is the right place to start.",
+      "primaryCta": "View Projects"
+    }
   }
 }

@@ -1,39 +1,96 @@
-import {
-  capabilities,
-  featuredProducts,
-  operatingBlocks,
-  proofItems,
-} from "@/lib/site/homepage-content";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-export function HomePage() {
+export async function HomePage() {
+  const t = await getTranslations("HomePage");
+
+  const operatingBlocks = [
+    {
+      title: t("operatingBlocks.buildProducts.title"),
+      text: t("operatingBlocks.buildProducts.text"),
+    },
+    {
+      title: t("operatingBlocks.designSystems.title"),
+      text: t("operatingBlocks.designSystems.text"),
+    },
+    {
+      title: t("operatingBlocks.operationalizeAi.title"),
+      text: t("operatingBlocks.operationalizeAi.text"),
+    },
+    {
+      title: t("operatingBlocks.platformLeverage.title"),
+      text: t("operatingBlocks.platformLeverage.text"),
+    },
+  ] as const;
+
+  const featuredProducts = [
+    {
+      name: "AOC",
+      href: "/aoc",
+      status: t("featuredProducts.status"),
+      summary: t("featuredProducts.aoc.summary"),
+      cta: t("featuredProducts.aoc.cta"),
+    },
+    {
+      name: "Voyager",
+      href: "/voyager",
+      status: t("featuredProducts.status"),
+      summary: t("featuredProducts.voyager.summary"),
+      cta: t("featuredProducts.voyager.cta"),
+    },
+    {
+      name: "Funda",
+      href: "/funda",
+      status: t("featuredProducts.status"),
+      summary: t("featuredProducts.funda.summary"),
+      cta: t("featuredProducts.funda.cta"),
+    },
+  ] as const;
+
+  const capabilities = [
+    t("capabilities.items.0"),
+    t("capabilities.items.1"),
+    t("capabilities.items.2"),
+    t("capabilities.items.3"),
+    t("capabilities.items.4"),
+    t("capabilities.items.5"),
+  ] as const;
+
+  const proofItems = [
+    {
+      label: t("proof.publicProductTruth.label"),
+      text: t("proof.publicProductTruth.text"),
+    },
+    {
+      label: t("proof.systemThinking.label"),
+      text: t("proof.systemThinking.text"),
+    },
+    {
+      label: t("proof.staticFirstClarity.label"),
+      text: t("proof.staticFirstClarity.text"),
+    },
+  ] as const;
+
   return (
     <main>
       <section className="border-b border-rule bg-background">
         <div className="section-shell py-20 sm:py-24 lg:py-32">
           <div className="max-w-5xl space-y-8">
             <p className="type-section-label">Intrface</p>
-            <h1 className="type-display max-w-5xl">
-              We build AI-native platforms, products, and systems.
-            </h1>
-            <p className="type-body-lg max-w-3xl">
-              Intrface is a product-led studio building serious software with a
-              platform mindset. Our flagship work spans terminal-first AI
-              tooling, tourism exploration systems, and funding workflow
-              platforms.
-            </p>
+            <h1 className="type-display max-w-5xl">{t("hero.title")}</h1>
+            <p className="type-body-lg max-w-3xl">{t("hero.body")}</p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-md bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
               >
-                View Projects
+                {t("hero.primaryCta")}
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-md border border-rule bg-card px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-panel"
               >
-                Get in Touch
+                {t("hero.secondaryCta")}
               </a>
             </div>
           </div>
@@ -44,16 +101,9 @@ export function HomePage() {
         <div className="section-shell py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">What Intrface Does</p>
-              <h2 className="type-heading max-w-md">
-                Product clarity, system leverage, and AI that behaves like real
-                infrastructure.
-              </h2>
-              <p className="type-body max-w-lg">
-                We are not presenting disconnected experiments. The portfolio is
-                built around durable workflow design, reusable architecture, and
-                product surfaces that communicate value quickly.
-              </p>
+              <p className="type-section-label">{t("whatWeDo.label")}</p>
+              <h2 className="type-heading max-w-md">{t("whatWeDo.title")}</h2>
+              <p className="type-body max-w-lg">{t("whatWeDo.body")}</p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -77,17 +127,10 @@ export function HomePage() {
         <div className="section-shell py-16 sm:py-20">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-3">
-              <p className="type-section-label">Featured Products</p>
-              <h2 className="type-heading max-w-2xl">
-                Three flagship products. One portfolio shaped by shared system
-                thinking.
-              </h2>
+              <p className="type-section-label">{t("featuredProducts.label")}</p>
+              <h2 className="type-heading max-w-2xl">{t("featuredProducts.title")}</h2>
             </div>
-            <p className="type-body max-w-xl">
-              AOC, Voyager, and Funda address different domains, but they all
-              reflect the same approach: product truth first, strong workflow
-              structure, and software built to carry operational complexity.
-            </p>
+            <p className="type-body max-w-xl">{t("featuredProducts.body")}</p>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -108,7 +151,7 @@ export function HomePage() {
                   href={product.href}
                   className="mt-8 inline-flex text-sm font-medium text-accent hover:opacity-80"
                 >
-                  Explore {product.name}
+                  {product.cta}
                 </Link>
               </article>
             ))}
@@ -120,16 +163,9 @@ export function HomePage() {
         <div className="section-shell py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">Shared Platform Capabilities</p>
-              <h2 className="type-heading max-w-md">
-                We translate technical depth into product capability.
-              </h2>
-              <p className="type-body max-w-lg">
-                The portfolio spans different industries, but common platform
-                muscles appear throughout the work: memory, orchestration,
-                permissions, realtime interaction, and knowledge-aware user
-                experience.
-              </p>
+              <p className="type-section-label">{t("capabilities.label")}</p>
+              <h2 className="type-heading max-w-md">{t("capabilities.title")}</h2>
+              <p className="type-body max-w-lg">{t("capabilities.body")}</p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -150,17 +186,9 @@ export function HomePage() {
         <div className="section-shell py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">Why Intrface</p>
-              <h2 className="type-heading max-w-md">
-                Not a collection of isolated apps — a coherent product and
-                platform practice.
-              </h2>
-              <p className="type-body max-w-lg">
-                What connects the work is a bias toward durable systems. We care
-                about how products are operated, how information persists, how
-                interfaces stay legible under complexity, and how infrastructure
-                becomes a strategic advantage rather than hidden overhead.
-              </p>
+              <p className="type-section-label">{t("whyIntrface.label")}</p>
+              <h2 className="type-heading max-w-md">{t("whyIntrface.title")}</h2>
+              <p className="type-body max-w-lg">{t("whyIntrface.body")}</p>
             </div>
 
             <div className="grid gap-4">
@@ -183,17 +211,11 @@ export function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
             <div className="space-y-4">
               <p className="text-sm uppercase tracking-[0.18em] text-background/70">
-                Final CTA
+                {t("finalCta.label")}
               </p>
-              <h2 className="type-heading max-w-2xl text-background">
-                Explore the portfolio, review the flagship products, or start a
-                meaningful conversation.
-              </h2>
+              <h2 className="type-heading max-w-2xl text-background">{t("finalCta.title")}</h2>
               <p className="max-w-2xl text-base leading-7 text-background/80">
-                Intrface is building a public-facing product ecosystem around
-                real work. If you want to talk about a product, a collaboration,
-                or the systems underneath them, this is the right place to
-                start.
+                {t("finalCta.body")}
               </p>
             </div>
 
@@ -202,7 +224,7 @@ export function HomePage() {
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-md bg-background px-5 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90"
               >
-                View Projects
+                {t("finalCta.primaryCta")}
               </a>
               <a
                 href="mailto:hello@intrface.eu"

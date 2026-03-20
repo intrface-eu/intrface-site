@@ -11,5 +11,92 @@
   },
   "LocaleSwitcher": {
     "label": "Langue"
+  },
+  "HomePage": {
+    "hero": {
+      "title": "Nous concevons des plateformes, produits et systèmes natifs à l'IA.",
+      "body": "Intrface est un studio orienté produit qui construit des logiciels sérieux avec une logique de plateforme. Notre travail phare couvre les outils IA terminal-first, les systèmes d'exploration touristique et les plateformes de workflow pour le financement.",
+      "primaryCta": "Voir les projets",
+      "secondaryCta": "Nous contacter"
+    },
+    "whatWeDo": {
+      "label": "Ce qu'Intrface fait",
+      "title": "Clarté produit, levier système et IA qui se comporte comme une véritable infrastructure.",
+      "body": "Nous ne présentons pas des expériences isolées. Le portefeuille repose sur des workflows durables, une architecture réutilisable et des interfaces produit qui communiquent rapidement leur valeur."
+    },
+    "operatingBlocks": {
+      "buildProducts": {
+        "title": "Construire des produits",
+        "text": "Nous concevons et livrons des surfaces produit qui s'expliquent clairement et dépassent le stade du prototype ponctuel."
+      },
+      "designSystems": {
+        "title": "Systèmes de design",
+        "text": "Nous créons des fondations réutilisables pour la navigation, la typographie, l'interaction et l'architecture de contenu à l'échelle d'un portefeuille en croissance."
+      },
+      "operationalizeAi": {
+        "title": "Opérationnaliser l'IA",
+        "text": "Nous transformons l'IA d'une simple fonctionnalité en infrastructure réelle grâce aux agents, à la mémoire, à l'orchestration et aux workflows fondés sur la connaissance."
+      },
+      "platformLeverage": {
+        "title": "Créer un effet de plateforme",
+        "text": "Nous cherchons les systèmes répétables sous chaque produit afin que le portefeuille gagne en cohérence au fil du temps."
+      }
+    },
+    "featuredProducts": {
+      "label": "Produits phares",
+      "title": "Trois produits phares. Un portefeuille structuré par une même logique système.",
+      "body": "AOC, Voyager et Funda répondent à des domaines différents, mais suivent la même approche : vérité produit d'abord, structure de workflow solide et logiciel capable d'assumer la complexité opérationnelle.",
+      "status": "Phare",
+      "aoc": {
+        "summary": "Un espace de travail IA terminal-first pour le développement contextualisé, la mémoire projet, l'orchestration des tâches et un flux opérateur unifié.",
+        "cta": "Explorer AOC"
+      },
+      "voyager": {
+        "summary": "Une plateforme touristique alimentée par l'IA qui combine exploration, cartographie, contenus multilingues et guidage multi-agents.",
+        "cta": "Explorer Voyager"
+      },
+      "funda": {
+        "summary": "Une plateforme d'opportunités de financement construite autour de la découverte, du matching, de la collaboration et de workflows de candidature assistés par l'IA.",
+        "cta": "Explorer Funda"
+      }
+    },
+    "capabilities": {
+      "label": "Capacités de plateforme partagées",
+      "title": "Nous traduisons la profondeur technique en capacité produit.",
+      "body": "Le portefeuille couvre des secteurs différents, mais les mêmes forces de plateforme reviennent partout : mémoire, orchestration, permissions, interaction temps réel et expérience utilisateur fondée sur la connaissance.",
+      "items": [
+        "Agents IA et orchestration",
+        "Systèmes persistants de tâches et de mémoire",
+        "Architecture de plateforme fondée sur les rôles",
+        "Expériences multilingues",
+        "Workflows produit en temps réel",
+        "Interfaces fondées sur la connaissance"
+      ]
+    },
+    "whyIntrface": {
+      "label": "Pourquoi Intrface",
+      "title": "Pas une collection d'apps isolées, mais une pratique cohérente du produit et de la plateforme.",
+      "body": "Ce qui relie le travail, c'est un biais en faveur de systèmes durables. Nous nous intéressons à la manière dont les produits sont opérés, dont l'information persiste, dont les interfaces restent lisibles sous la complexité, et dont l'infrastructure devient un avantage stratégique plutôt qu'une charge cachée."
+    },
+    "proof": {
+      "publicProductTruth": {
+        "label": "Vérité produit publique",
+        "text": "AOC, Voyager et Funda s'appuient sur des dépôts actifs, de la documentation et des détails d'implémentation plutôt que sur un discours de portefeuille abstrait."
+      },
+      "systemThinking": {
+        "label": "Pensée système",
+        "text": "À travers les produits, les mêmes enjeux reviennent : contexte, orchestration, flux fondés sur les rôles, navigation et expérience opérateur durable."
+      },
+      "staticFirstClarity": {
+        "label": "Clarté static-first",
+        "text": "Le site est conçu pour expliquer des produits réels avec un signal fort, une structure nette et de la place pour faire grandir le portefeuille."
+      }
+    },
+    "finalCta": {
+      "label": "CTA final",
+      "title": "Explorez le portefeuille, examinez les produits phares ou engagez une conversation utile.",
+      "body": "Intrface construit un écosystème public de produits à partir d'un travail réel. Si vous souhaitez parler d'un produit, d'une collaboration ou des systèmes qui les soutiennent, c'est le bon point de départ.",
+      "primaryCta": "Voir les projets"
+    }
   }
 }
