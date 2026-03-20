@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
-  { href: "/projects", label: "Projects" },
+  { href: "/#projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
