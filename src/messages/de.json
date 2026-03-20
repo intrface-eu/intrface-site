@@ -98,5 +98,229 @@
       "body": "Intrface baut ein öffentliches Produktökosystem rund um reale Arbeit auf. Wenn Sie über ein Produkt, eine Zusammenarbeit oder die zugrunde liegenden Systeme sprechen möchten, sind Sie hier richtig.",
       "primaryCta": "Projekte ansehen"
     }
+  },
+  "AocPage": {
+    "hero": {
+      "label": "Leitprodukt",
+      "title": "Ein terminal-first KI-Workspace für agentische Entwicklung.",
+      "body": "AOC vereint kontextbewusste Arbeit, Projekt-Memory, integriertes Task-Management und einen Zellij-basierten Workspace in einer Terminal-Umgebung für KI-gestützte Entwicklung.",
+      "primaryCta": "Auf GitHub ansehen",
+      "secondaryCta": "AOC installieren",
+      "tertiaryCta": "Architektur erkunden"
+    },
+    "painPoints": {
+      "label": "Warum AOC",
+      "title": "Gebaut für die realen Schwachstellen KI-gestützter Entwicklung.",
+      "body": "AOC ist aus einem praktischen Problem entstanden: Die meisten KI-Workflows verlieren sehr schnell Kontinuität. Kontext verschwindet, Entscheidungen bleiben unprotokolliert und Arbeit verteilt sich auf zu viele Oberflächen.",
+      "items": [
+        "Verlorener Kontext zwischen Sitzungen und Tools",
+        "Manuelles Copy-Paste zwischen Chats, Notizen und Code",
+        "Keine dauerhafte Projekt-Memory für Architekturentscheidungen",
+        "Fragmentierter Workflow über Terminal, Dateimanager und Task-Tracking"
+      ]
+    },
+    "architecture": {
+      "label": "Distributed Cognitive Architecture",
+      "title": "Drei persistente Projektebenen, die dem Workspace Memory und Kontinuität geben.",
+      "body": "Das sind keine abstrakten Marketingbegriffe. AOC speichert Projektzustand in konkreten Repo-Artefakten, sodass Agenten und Operatoren Arbeit über Sitzungen hinweg mit mehr Kontext fortsetzen können.",
+      "items": {
+        "context": {
+          "title": "Context",
+          "description": "Reaktive Projektfakten und Strukturkarten, die den Workspace über das aktuelle Repo informiert halten."
+        },
+        "memory": {
+          "title": "Memory",
+          "description": "Persistente Architektur-Memory, die Entscheidungen, Einschränkungen und dauerhaftes Projektwissen im Zeitverlauf festhält."
+        },
+        "tasks": {
+          "title": "Tasks",
+          "description": "Dynamisches Work-Tracking mit Tags, Subtasks, Status und terminal-nativen Operationen für aktive Ausführung."
+        }
+      }
+    },
+    "workspace": {
+      "label": "Einheitlicher Workspace",
+      "title": "Ein Cockpit, organisiert um reale terminal-native Werkzeuge.",
+      "body": "AOC bringt Dateinavigation, Agentenbetrieb, Task-Management und Utility-Panes in ein persistentes Zellij-Layout, statt Arbeit über getrennte Fenster zu verteilen.",
+      "compositionLabel": "Workspace-Komposition",
+      "items": [
+        "Yazi Dateimanager",
+        "PI Agent Runtime Pane",
+        "Taskmaster TUI",
+        "Widget- / Utility-Panes",
+        "Zellij-basierte Layout-Grundlage"
+      ]
+    },
+    "capabilities": {
+      "label": "Kernfähigkeiten",
+      "title": "Eine präzise Operator-Oberfläche, kein generischer KI-Wrapper.",
+      "items": [
+        "PI-only Runtime mit persistenter Projektwahrnehmung",
+        "Native Taskmaster TUI für Task- und Subtask-Management",
+        "RLM-Tooling für Analyse großer Codebasen",
+        "Agent Skills für wiederholbare Workflows",
+        "Yazi-Integration für Dateinavigation im Cockpit",
+        "Custom Layouts und AOC Modes für unterschiedliche Operator-Bedürfnisse",
+        "Alt+C Control Pane für Konfiguration und optionale Integrationen"
+      ]
+    },
+    "quickStart": {
+      "label": "Wie es funktioniert",
+      "title": "Einmal installieren, im Projekt starten und mit persistentem Zustand weiterarbeiten.",
+      "body": "Der praktische Ablauf ist einfach: AOC installieren, die Umgebung prüfen, innerhalb eines Projekts starten und aus einem Cockpit arbeiten, das Context, Memory und Tasks nah an der eigentlichen Arbeit hält.",
+      "panelLabel": "Quick Start",
+      "stepLabel": "Schritt {index}",
+      "docsCta": "Dokumentation lesen",
+      "repoCta": "Repository ansehen"
+    },
+    "evolution": {
+      "label": "Roadmap / Weiterentwicklung",
+      "title": "AOC entwickelt sich zu einem dauerhaften Workspace-System.",
+      "body": "Die Richtung ist im Produkt selbst sichtbar: stärkere Workspace-Grundlagen, tiefere Kontinuitätssysteme, bessere Runtime-Kontrolle und robustere Workflows für ernsthafte Coding-Projekte.",
+      "items": [
+        "Die Workspace-Basis rund um Zellij, PI und Taskmaster stärken",
+        "Context- und Memory-Systeme für länger laufende Projekte vertiefen",
+        "Die PI-Runtime und Operator-Steuerung verfeinern",
+        "Skills, Layouts und Large-Codebase-Workflows ausbauen"
+      ]
+    },
+    "finalCta": {
+      "label": "Abschluss-CTA",
+      "title": "Repository erkunden, Docs lesen oder AOC installieren und direkt aus dem Cockpit arbeiten.",
+      "body": "AOC ist bereits als reales Produkt lesbar: ein terminal-first KI-Workspace, getragen von Context, Memory, Tasks und Operator-Flow.",
+      "primaryCta": "Auf GitHub ansehen",
+      "secondaryCta": "Dokumentation lesen"
+    }
+  },
+  "VoyagerPage": {
+    "hero": {
+      "label": "Leitprodukt",
+      "title": "Eine KI-gestützte Tourismusplattform für Destinationen, Unternehmen und Reisende.",
+      "body": "Voyager verbindet Multi-Agent-Guidance, gamifizierte Exploration, mehrsprachige Content-Operationen und Plattform-Infrastruktur auf Destinationsebene in einem Tourismussystem.",
+      "primaryCta": "Voyager erkunden",
+      "secondaryCta": "Plattformarchitektur erkunden",
+      "tertiaryCta": "Partnerschaft besprechen"
+    },
+    "platform": {
+      "label": "Was Voyager ist",
+      "title": "Mehr als eine Reise-App: eine Multi-Tenant-Tourismusplattform mit eigener Explorationsthese.",
+      "body": "Voyager ist für ein gesamtes Destinationsökosystem gebaut, nicht nur für Endnutzer-Browsing. Es verbindet Agenturen, Unternehmen, Attraktionen und Reisende in einer Plattform, in der Discovery, Content und KI-Unterstützung einander verstärken."
+    },
+    "audience": {
+      "items": [
+        {
+          "title": "Für Destinationen und Agenturen",
+          "text": "Voyager gibt Destinationsbetreibern eine Plattform zur Verwaltung touristischer Inhalte, Discovery-Flows und regionaler Besucherführung."
+        },
+        {
+          "title": "Für Unternehmen",
+          "text": "Unternehmen erhalten entity-spezifischen Service-Kontext, operative Sichtbarkeit und KI-Unterstützung, die an ihre eigene Präsenz im Destinationssystem gebunden ist."
+        },
+        {
+          "title": "Für Reisende und Scouts",
+          "text": "Reisen wird explorativer statt passiv – durch kartenbasierte Discovery, standortbewusste Guidance und immersive Interaktionen mit Attraktionen."
+        }
+      ]
+    },
+    "agents": {
+      "label": "Multi-Agent-System",
+      "title": "Drei domänenspezifische Agenten, jeweils an eine andere Tourismusoberfläche gebunden.",
+      "body": "Voyagers Agenten sind keine generischen Chat-Wrapper. Sie sind konfigurierte Entities mit eigener Rolle, eigenem Wissen und route-aware Kontext. Strukturierte Wissensbestände und RAG tragen das System im Hintergrund.",
+      "items": [
+        {
+          "persona": "The Guide",
+          "domain": "Agencies",
+          "summary": "Regionale Guidance, Itinerary-Support und Agentur-Tourismusintelligenz für breit angelegte Exploration."
+        },
+        {
+          "persona": "The Concierge",
+          "domain": "Businesses",
+          "summary": "Unternehmensspezifischer Service-Kontext für Menüs, Reservierungen und lokale Besucherinteraktion."
+        },
+        {
+          "persona": "The Historian",
+          "domain": "Attractions",
+          "summary": "Attraktionsfokussierter Kontext, kulturelles Storytelling und gamifizierte Scout-Interaktionen für bedeutungsvolle Vor-Ort-Erlebnisse."
+        }
+      ]
+    },
+    "scout": {
+      "label": "Scout Experience",
+      "title": "Reisen als Exploration, nicht nur als Empfehlungssuche.",
+      "body": "Die Scout-Schicht ist einer der klarsten Differenzierungsfaktoren von Voyager. Sie basiert auf Discovery-Mechaniken, standortbewusster Interaktion und einem geräteartigen Flow über Karten-, Kompass- und Kamera-Modi.",
+      "pillarsLabel": "Explorationspfeiler",
+      "items": [
+        "Gamifizierte Exploration rund um Scout Discovery",
+        "Karten-, Kompass- und Kamera-Flows statt statischem Page-Browsing",
+        "Standortbewusste Interaktionen, die Ort zum Teil der Produktlogik machen",
+        "Ein bedeutungsvolleres Reiseerlebnis als bloße Listen und Empfehlungen"
+      ]
+    },
+    "map": {
+      "label": "Karten- und Geodatenebene",
+      "title": "Discovery und Navigation sind Teil des nativen Produktmodells.",
+      "body": "Voyager behandelt Geografie als Plattformstruktur. Gemappte Entities, route-aware Interaktionen und einheitliche Karten-Presets erzeugen ein kontextreicheres Tourismuserlebnis.",
+      "items": [
+        "Einheitliche Karten-Presets und Geodatenkonfiguration",
+        "Attraktionen, Unternehmen und Agenturen als gemappte Entities",
+        "Discovery- und Navigations-Workflows, verbunden mit Nutzerkontext",
+        "Standortbewusste Routen und Aktivierung für map- und agentengetriebene Journeys"
+      ]
+    },
+    "operations": {
+      "label": "Content und Betrieb",
+      "title": "Mehrsprachiger Content, Ingestion-Pipelines und rollenbewusste Plattformsteuerung.",
+      "body": "Hinter der nutzerseitigen Explorationsschicht steht ein stärkeres operatives System für Tourismus-Content, Updates und Entity-Management über das gesamte Destinationsökosystem hinweg.",
+      "items": [
+        "Mehrsprachiges Content-Management mit breiter Sprachabdeckung",
+        "Scraping- und Ingestion-Workflows für touristische Content-Discovery",
+        "Rollenbewusste Operationen für Agenturen, Unternehmen und Admins",
+        "B2B2C-Struktur, die Betreiber mit Endnutzer-Exploration verbindet"
+      ]
+    },
+    "stakeholders": {
+      "label": "Plattformstruktur",
+      "title": "Ein Stakeholder-Modell für den gesamten Tourismus-Stack.",
+      "body": "Voyager wirkt wie eine Plattform, weil es um Beziehungen zwischen mehreren Akteuren organisiert ist statt um nur eine Nutzerrolle.",
+      "items": ["Agencies", "Businesses", "Attractions", "Users / Scouts"]
+    },
+    "proof": {
+      "label": "Produktnachweise",
+      "title": "Öffentlich lesbare Signale direkt aus der Implementierung.",
+      "items": [
+        {
+          "label": "Multi-Agent-Architektur",
+          "text": "Voyager, Nexus und Guardian sind als domänenspezifische Agenten mit eigener Konfiguration, eigenem Wissen und Entity-Kontext umgesetzt."
+        },
+        {
+          "label": "Route-aware Context Switching",
+          "text": "Agency-, Business- und Attraction-Routen aktivieren den passenden Agenten und halten das Chat-Verhalten an den Entity-Kontext gebunden."
+        },
+        {
+          "label": "Knowledge-aware System",
+          "text": "Gescrapter Content wird gechunked, eingebettet und per Vector Search abgerufen, sodass Antworten auf strukturierten Tourismusinformationen aufbauen können."
+        }
+      ]
+    },
+    "tech": {
+      "label": "Technische Architektur",
+      "title": "Eine kompakte Systemübersicht für technische Evaluatoren.",
+      "body": "Der Stack unterstützt eine Mischung aus Echtzeitbetrieb, mehrsprachiger UX, KI-Orchestrierung und wissensbasierter Retrieval-Logik, ohne das Produkt auf Implementierungsdetails zu reduzieren.",
+      "items": [
+        "Next.js 15 + TypeScript",
+        "Convex Realtime Backend und Vector Search",
+        "WorkOS Authentication",
+        "Mastra + Gemini für Agent-Orchestrierung",
+        "next-intl für mehrsprachige Unterstützung",
+        "Scraper Service für Content-Ingestion"
+      ]
+    },
+    "finalCta": {
+      "label": "Abschluss-CTA",
+      "title": "Über Destination-Deployment, Partnerschaft oder Voyagers Rolle im weiteren Intrface-Portfolio sprechen.",
+      "body": "Voyager versteht man am besten als ernsthafte Tourismusplattform mit einer eigenständigen Explorationsschicht – nicht als generisches Travel-Interface. Der nächste Schritt ist ein echtes Produktgespräch.",
+      "primaryCta": "Kontakt aufnehmen",
+      "secondaryCta": "Intrface-Projekte erkunden"
+    }
   }
 }

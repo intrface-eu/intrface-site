@@ -98,5 +98,229 @@
       "body": "Intrface construit un écosystème public de produits à partir d'un travail réel. Si vous souhaitez parler d'un produit, d'une collaboration ou des systèmes qui les soutiennent, c'est le bon point de départ.",
       "primaryCta": "Voir les projets"
     }
+  },
+  "AocPage": {
+    "hero": {
+      "label": "Produit phare",
+      "title": "Un espace de travail IA terminal-first pour le développement agentique.",
+      "body": "AOC réunit l'opération contextualisée, la mémoire projet, la gestion intégrée des tâches et un workspace fondé sur Zellij dans un environnement terminal pour le développement assisté par l'IA.",
+      "primaryCta": "Voir sur GitHub",
+      "secondaryCta": "Installer AOC",
+      "tertiaryCta": "Explorer l'architecture"
+    },
+    "painPoints": {
+      "label": "Pourquoi AOC",
+      "title": "Conçu pour les véritables points de rupture du développement assisté par l'IA.",
+      "body": "AOC part d'un problème concret : la plupart des workflows IA perdent très vite leur continuité. Le contexte disparaît, les décisions ne sont pas consignées et le travail se disperse sur trop de surfaces.",
+      "items": [
+        "Perte de contexte entre sessions et outils",
+        "Copier-coller manuel entre chats, notes et code",
+        "Absence de mémoire projet durable pour les décisions d'architecture",
+        "Workflow fragmenté entre terminal, gestionnaire de fichiers et suivi des tâches"
+      ]
+    },
+    "architecture": {
+      "label": "Distributed Cognitive Architecture",
+      "title": "Trois couches persistantes qui donnent au workspace mémoire et continuité.",
+      "body": "Il ne s'agit pas de labels marketing abstraits. AOC persiste l'état du projet dans des artefacts concrets du dépôt afin que les agents et opérateurs puissent reprendre le travail d'une session à l'autre avec davantage de contexte.",
+      "items": {
+        "context": {
+          "title": "Context",
+          "description": "Des faits projet réactifs et des cartes de structure qui permettent au workspace de rester conscient du dépôt dans lequel il opère."
+        },
+        "memory": {
+          "title": "Memory",
+          "description": "Une mémoire d'architecture persistante qui enregistre décisions, contraintes et connaissance durable du projet au fil du temps."
+        },
+        "tasks": {
+          "title": "Tasks",
+          "description": "Un suivi dynamique du travail avec tags, sous-tâches, statuts et opérations terminal-native pour l'exécution active."
+        }
+      }
+    },
+    "workspace": {
+      "label": "Workspace unifié",
+      "title": "Un cockpit organisé autour de vrais outils natifs du terminal.",
+      "body": "AOC rassemble navigation dans les fichiers, opération agentique, gestion des tâches et panneaux utilitaires dans un layout Zellij persistant au lieu d'éparpiller le travail entre plusieurs fenêtres.",
+      "compositionLabel": "Composition du workspace",
+      "items": [
+        "Gestionnaire de fichiers Yazi",
+        "Panneau runtime de l'agent PI",
+        "Taskmaster TUI",
+        "Panneaux widgets / utilitaires",
+        "Fondation de layout basée sur Zellij"
+      ]
+    },
+    "capabilities": {
+      "label": "Capacités clés",
+      "title": "Une surface opérateur rigoureuse, pas un wrapper IA générique.",
+      "items": [
+        "Runtime PI-only avec conscience persistante du projet",
+        "Taskmaster TUI natif pour la gestion des tâches et sous-tâches",
+        "Outillage RLM pour l'analyse de grandes codebases",
+        "Skills d'agent pour des workflows réutilisables",
+        "Intégration de Yazi pour la navigation dans les fichiers depuis le cockpit",
+        "Layouts personnalisés et modes AOC pour différents besoins opérateur",
+        "Panneau de contrôle Alt+C pour la configuration et les intégrations optionnelles"
+      ]
+    },
+    "quickStart": {
+      "label": "Comment ça marche",
+      "title": "Installer une fois, lancer dans un projet et continuer avec un état persistant.",
+      "body": "Le flux pratique est simple : installer AOC, vérifier l'environnement, le lancer dans un projet, puis travailler depuis un cockpit qui garde contexte, mémoire et tâches au plus près du travail.",
+      "panelLabel": "Démarrage rapide",
+      "stepLabel": "Étape {index}",
+      "docsCta": "Lire la documentation",
+      "repoCta": "Voir le dépôt"
+    },
+    "evolution": {
+      "label": "Roadmap / évolution",
+      "title": "AOC évolue comme un système de workspace durable.",
+      "body": "La trajectoire est visible dans le produit lui-même : des fondations de workspace plus solides, des systèmes de continuité plus profonds, un meilleur contrôle du runtime et des workflows plus robustes pour des projets de développement sérieux.",
+      "items": [
+        "Renforcer la fondation du workspace autour de Zellij, PI et Taskmaster",
+        "Approfondir les systèmes de contexte et de mémoire pour des projets plus longs",
+        "Affiner le runtime PI et les contrôles opérateur",
+        "Étendre les skills, les layouts et les workflows pour grandes codebases"
+      ]
+    },
+    "finalCta": {
+      "label": "CTA final",
+      "title": "Explorez le dépôt, lisez la documentation ou installez AOC et travaillez depuis le cockpit.",
+      "body": "AOC est déjà lisible comme un vrai produit : un espace de travail IA terminal-first fondé sur le contexte, la mémoire, les tâches et le flux opérateur.",
+      "primaryCta": "Voir sur GitHub",
+      "secondaryCta": "Lire la documentation"
+    }
+  },
+  "VoyagerPage": {
+    "hero": {
+      "label": "Produit phare",
+      "title": "Une plateforme touristique alimentée par l'IA, conçue pour les destinations, les entreprises et les voyageurs.",
+      "body": "Voyager combine guidage multi-agents, exploration gamifiée, opérations de contenu multilingues et infrastructure de plateforme à l'échelle d'une destination dans un seul système touristique.",
+      "primaryCta": "Explorer Voyager",
+      "secondaryCta": "Explorer l'architecture de la plateforme",
+      "tertiaryCta": "Discuter d'un partenariat"
+    },
+    "platform": {
+      "label": "Ce qu'est Voyager",
+      "title": "Plus qu'une app de voyage : une plateforme touristique multi-tenant avec une véritable thèse d'exploration.",
+      "body": "Voyager est construit pour un écosystème de destination complet, pas seulement pour la navigation côté utilisateur final. Il relie agences, entreprises, attractions et voyageurs dans une même plateforme où découverte, contenu et assistance IA se renforcent mutuellement."
+    },
+    "audience": {
+      "items": [
+        {
+          "title": "Pour les destinations et les agences",
+          "text": "Voyager donne aux opérateurs de destination une plateforme pour gérer les contenus touristiques, les flux de découverte et le guidage régional des visiteurs."
+        },
+        {
+          "title": "Pour les entreprises",
+          "text": "Les entreprises bénéficient d'un contexte de service propre à leur entité, d'une meilleure visibilité opérationnelle et d'une assistance IA liée à leur présence dans le système de destination."
+        },
+        {
+          "title": "Pour les voyageurs et les scouts",
+          "text": "Le voyage devient exploratoire plutôt que passif grâce à une découverte guidée par la carte, à un guidage sensible au lieu et à des interactions immersives avec les attractions."
+        }
+      ]
+    },
+    "agents": {
+      "label": "Système multi-agents",
+      "title": "Trois agents spécialisés, chacun lié à une surface touristique différente.",
+      "body": "Les agents de Voyager ne sont pas de simples wrappers de chat. Ce sont des entités configurées avec leur propre rôle, leur propre connaissance et un contexte dépendant des routes. Des connaissances structurées et la RAG soutiennent le système en arrière-plan.",
+      "items": [
+        {
+          "persona": "The Guide",
+          "domain": "Agencies",
+          "summary": "Guidage régional, aide à l'itinéraire et intelligence touristique au niveau agence pour une exploration large de la destination."
+        },
+        {
+          "persona": "The Concierge",
+          "domain": "Businesses",
+          "summary": "Contexte de service spécifique à l'entreprise pour les menus, réservations et interactions locales avec les visiteurs."
+        },
+        {
+          "persona": "The Historian",
+          "domain": "Attractions",
+          "summary": "Contexte centré sur l'attraction, narration culturelle et interactions Scout gamifiées pour un engagement plus riche sur site."
+        }
+      ]
+    },
+    "scout": {
+      "label": "Expérience Scout",
+      "title": "Le voyage comme exploration, pas seulement comme navigation dans des recommandations.",
+      "body": "La couche Scout est l'un des différenciateurs les plus nets de Voyager. Elle repose sur des mécaniques de découverte, une interaction sensible au lieu et un flux de type appareil entre carte, boussole et caméra.",
+      "pillarsLabel": "Piliers d'exploration",
+      "items": [
+        "Exploration gamifiée fondée sur la découverte Scout",
+        "Flux carte, boussole et caméra au lieu d'une simple navigation statique",
+        "Interactions sensibles au lieu qui font du territoire une part de la logique produit",
+        "Une expérience de voyage plus signifiante que de simples listings et recommandations"
+      ]
+    },
+    "map": {
+      "label": "Couche cartographique et géospatiale",
+      "title": "La découverte et la navigation sont natives dans le modèle produit.",
+      "body": "Voyager traite la géographie comme une structure de plateforme. Les entités cartographiées, les interactions dépendantes des routes et les presets de carte unifiés contribuent à une expérience touristique plus contextuelle.",
+      "items": [
+        "Presets de carte unifiés et configuration géospatiale",
+        "Attractions, entreprises et agences représentées comme entités cartographiées",
+        "Flux de découverte et de navigation reliés au contexte utilisateur",
+        "Routage et activation sensibles au lieu pour des parcours pilotés par la carte et les agents"
+      ]
+    },
+    "operations": {
+      "label": "Contenu et opérations",
+      "title": "Contenu multilingue, pipelines d'ingestion et contrôle de plateforme fondé sur les rôles.",
+      "body": "Derrière la couche d'exploration côté utilisateur se trouve un système opérationnel plus robuste pour le contenu touristique, les mises à jour et la gestion des entités à l'échelle de tout l'écosystème de destination.",
+      "items": [
+        "Gestion de contenu multilingue avec large couverture linguistique",
+        "Flux de scraping et d'ingestion pour la découverte de contenus touristiques",
+        "Opérations fondées sur les rôles pour les agences, entreprises et admins",
+        "Structure B2B2C reliant les opérateurs à l'exploration côté utilisateur final"
+      ]
+    },
+    "stakeholders": {
+      "label": "Structure de plateforme",
+      "title": "Un modèle de parties prenantes conçu pour toute la stack touristique.",
+      "body": "Voyager ressemble à une plateforme parce qu'il est organisé autour des relations entre plusieurs acteurs, plutôt qu'autour d'un seul rôle utilisateur.",
+      "items": ["Agencies", "Businesses", "Attractions", "Users / Scouts"]
+    },
+    "proof": {
+      "label": "Preuves produit",
+      "title": "Des signaux publiquement lisibles venant directement de l'implémentation.",
+      "items": [
+        {
+          "label": "Architecture multi-agents",
+          "text": "Voyager, Nexus et Guardian sont implémentés comme des agents spécialisés avec leur propre configuration, leur propre connaissance et leur propre contexte d'entité."
+        },
+        {
+          "label": "Bascule de contexte dépendante des routes",
+          "text": "Les routes agence, entreprise et attraction activent l'agent approprié et maintiennent le comportement du chat lié au contexte de l'entité."
+        },
+        {
+          "label": "Système fondé sur la connaissance",
+          "text": "Les contenus scrapés sont découpés, vectorisés puis retrouvés via la recherche vectorielle afin que les réponses s'appuient sur des informations touristiques structurées."
+        }
+      ]
+    },
+    "tech": {
+      "label": "Architecture technique",
+      "title": "Un résumé système concis pour les évaluateurs techniques.",
+      "body": "La stack prend en charge un mélange d'opérations temps réel, d'UX multilingue, d'orchestration IA et de récupération fondée sur la connaissance sans réduire le produit à ses seuls détails d'implémentation.",
+      "items": [
+        "Next.js 15 + TypeScript",
+        "Backend temps réel Convex et recherche vectorielle",
+        "Authentification WorkOS",
+        "Mastra + Gemini pour l'orchestration des agents",
+        "Support multilingue via next-intl",
+        "Service de scraping pour l'ingestion de contenu"
+      ]
+    },
+    "finalCta": {
+      "label": "CTA final",
+      "title": "Discuter d'un déploiement destination, d'un partenariat ou de la place de Voyager dans le portefeuille Intrface.",
+      "body": "Voyager se comprend le mieux comme une plateforme touristique sérieuse avec une couche d'exploration distincte, et non comme une interface de voyage générique. La prochaine étape est une vraie conversation produit.",
+      "primaryCta": "Nous contacter",
+      "secondaryCta": "Explorer les projets Intrface"
+    }
   }
 }
