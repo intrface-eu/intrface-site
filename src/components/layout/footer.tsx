@@ -19,7 +19,7 @@ export async function Footer() {
           <p>{footer("tagline")}</p>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-5">
           <Link href="/#projects" className="hover:text-foreground">
             {nav("projects")}
           </Link>
@@ -28,6 +28,9 @@ export async function Footer() {
           </Link>
           <Link href="/voyager" className="hover:text-foreground">
             {nav("voyager")}
+          </Link>
+          <Link href="/funda" className="hover:text-foreground">
+            {nav("funda")}
           </Link>
           <Link href="/#contact" className="hover:text-foreground">
             {nav("contact")}

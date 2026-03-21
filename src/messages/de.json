@@ -3,6 +3,7 @@
     "projects": "Projekte",
     "aoc": "AOC",
     "voyager": "Voyager",
+    "funda": "Funda",
     "contact": "Kontakt",
     "home": "Intrface Startseite"
   },
@@ -319,6 +320,74 @@
       "label": "Abschluss-CTA",
       "title": "Über Destination-Deployment, Partnerschaft oder Voyagers Rolle im weiteren Intrface-Portfolio sprechen.",
       "body": "Voyager versteht man am besten als ernsthafte Tourismusplattform mit einer eigenständigen Explorationsschicht – nicht als generisches Travel-Interface. Der nächste Schritt ist ein echtes Produktgespräch.",
+      "primaryCta": "Kontakt aufnehmen",
+      "secondaryCta": "Intrface-Projekte erkunden"
+    }
+  },
+  "FundaPage": {
+    "hero": {
+      "label": "Leitprodukt",
+      "title": "Eine Fördermittelplattform für Discovery, Matching und Antrags-Workflows.",
+      "body": "Funda verbindet Organisationen mit Fördermöglichkeiten durch KI-gestütztes Matching, rollenbewusste Workflows und einen strukturierten Application Workspace.",
+      "primaryCta": "Fähigkeiten erkunden",
+      "secondaryCta": "Repository ansehen"
+    },
+    "platform": {
+      "label": "Was Funda ist",
+      "title": "Eine rollenbasierte Fördermittelplattform – nicht nur eine durchsuchbare Grant-Liste.",
+      "body": "Funda ist auf die operative Realität von Funding Work ausgelegt: Antragsteller, Consultants, Kuratoren und Administratoren brauchen unterschiedliche Werkzeuge, Sichten und Workflows innerhalb desselben Systems."
+    },
+    "roles": {
+      "items": [
+        "Corporate Applicants",
+        "Consultants",
+        "Admins / Kuratoren",
+        "Directors",
+        "Superusers"
+      ]
+    },
+    "capabilities": {
+      "label": "Zentrale Fähigkeiten",
+      "title": "Fördermittel-Workflows mit stärkerer Struktur und besserer operativer Unterstützung.",
+      "body": "Das Produkt verbindet Opportunity Discovery mit Antragsausführung, Consultant-Kollaboration und deadline-orientiertem Workspace-Verhalten.",
+      "items": [
+        "KI-gestütztes Opportunity Matching",
+        "Application Workspace für Notizen, Dokumente und Checklisten",
+        "Deadline-Tracking und Erinnerungen",
+        "Consultant Discovery und Verbindungs-Workflows",
+        "RAG-gestützte Suche nach Fördermöglichkeiten",
+        "Rollenbewusster Zugriff und operative Werkzeuge"
+      ]
+    },
+    "system": {
+      "label": "Plattformsystem",
+      "title": "Ein Funding-Produkt, geformt um reale Koordinationsarbeit.",
+      "body": "Bei Funda geht es nicht nur darum, Opportunities sichtbar zu machen. Es geht auch darum, die schwierige Mitte zu unterstützen: Dokumente organisieren, Menschen koordinieren, Fortschritt verfolgen und Einreichungsarbeit in Bewegung halten.",
+      "panelLabel": "Systemebenen",
+      "items": [
+        "Opportunity Discovery und Matching",
+        "Application Workspace und Kollaboration",
+        "Rollenbasierte operative Steuerung",
+        "Persistente mehrsprachige Plattformstruktur"
+      ]
+    },
+    "tech": {
+      "label": "Technische Architektur",
+      "title": "Ein kompakter Implementierungssnapshot.",
+      "body": "Der aktuelle Stack zeigt eine ernsthafte Produktgrundlage mit Realtime-Daten, KI-Unterstützung, rollenbewusster Authentifizierung und bereits integrierter mehrsprachiger Routing-Struktur.",
+      "items": [
+        "Next.js 15 + React 19",
+        "Convex Backend und Realtime Sync",
+        "Mastra + Gemini KI-Agenten",
+        "Clerk Authentication mit RBAC",
+        "next-intl locale-prefixed routing",
+        "MapLibre GL Geodatenebene"
+      ]
+    },
+    "finalCta": {
+      "label": "Abschluss-CTA",
+      "title": "Über Funda als Produkt, Funding-Workflow-System oder Teil des weiteren Intrface-Portfolios sprechen.",
+      "body": "Funda erweitert das Intrface-Portfolio in Richtung strukturierter Fördermittel-Operationen: Discovery, Kollaboration und Antragsausführung in einer Plattform.",
       "primaryCta": "Kontakt aufnehmen",
       "secondaryCta": "Intrface-Projekte erkunden"
     }

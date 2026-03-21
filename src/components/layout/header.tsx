@@ -10,11 +10,12 @@ export async function Header() {
     { href: "/#projects", label: t("projects") },
     { href: "/aoc", label: t("aoc") },
     { href: "/voyager", label: t("voyager") },
+    { href: "/funda", label: t("funda") },
     { href: "/#contact", label: t("contact") },
   ] as const;
 
   return (
-    <header className="border-b border-rule bg-background/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-rule bg-background/95 backdrop-blur-sm">
       <div className="section-shell flex min-h-18 flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
@@ -41,7 +42,7 @@ export async function Header() {
         </div>
 
         <div className="flex items-center justify-between gap-5 sm:gap-7">
-          <nav className="flex items-center gap-5 sm:gap-7">
+          <nav className="flex flex-wrap items-center gap-5 sm:gap-7">
             {navigation.map((item) => (
               <Link
                 key={item.href}

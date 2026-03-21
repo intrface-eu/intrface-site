@@ -3,6 +3,7 @@
     "projects": "Projets",
     "aoc": "AOC",
     "voyager": "Voyager",
+    "funda": "Funda",
     "contact": "Contact",
     "home": "Accueil Intrface"
   },
@@ -319,6 +320,74 @@
       "label": "CTA final",
       "title": "Discuter d'un déploiement destination, d'un partenariat ou de la place de Voyager dans le portefeuille Intrface.",
       "body": "Voyager se comprend le mieux comme une plateforme touristique sérieuse avec une couche d'exploration distincte, et non comme une interface de voyage générique. La prochaine étape est une vraie conversation produit.",
+      "primaryCta": "Nous contacter",
+      "secondaryCta": "Explorer les projets Intrface"
+    }
+  },
+  "FundaPage": {
+    "hero": {
+      "label": "Produit phare",
+      "title": "Une plateforme d'opportunités de financement pour la découverte, le matching et les workflows de candidature.",
+      "body": "Funda relie les organisations aux opportunités de financement grâce à un matching assisté par l'IA, des workflows fondés sur les rôles et un espace de travail structuré pour les candidatures.",
+      "primaryCta": "Explorer les capacités",
+      "secondaryCta": "Voir le dépôt"
+    },
+    "platform": {
+      "label": "Ce qu'est Funda",
+      "title": "Une plateforme de financement fondée sur les rôles, pas seulement une liste de subventions consultable.",
+      "body": "Funda est construite autour de la réalité opérationnelle du financement : candidats, consultants, curateurs et administrateurs ont tous besoin d'outils, de vues et de workflows différents au sein d'un même système."
+    },
+    "roles": {
+      "items": [
+        "Candidats corporate",
+        "Consultants",
+        "Admins / curateurs",
+        "Directors",
+        "Superusers"
+      ]
+    },
+    "capabilities": {
+      "label": "Capacités clés",
+      "title": "Des workflows de financement avec plus de structure et un meilleur soutien opérationnel.",
+      "body": "Le produit combine découverte d'opportunités, exécution des candidatures, collaboration avec les consultants et comportement d'espace de travail orienté échéances.",
+      "items": [
+        "Matching d'opportunités assisté par l'IA",
+        "Espace de travail de candidature pour notes, documents et checklists",
+        "Suivi des échéances et rappels",
+        "Découverte des consultants et workflows de connexion",
+        "Recherche d'opportunités de financement fondée sur la RAG",
+        "Accès fondé sur les rôles et outillage opérationnel"
+      ]
+    },
+    "system": {
+      "label": "Système de plateforme",
+      "title": "Un produit de financement façonné autour d'un vrai travail de coordination.",
+      "body": "Funda ne sert pas seulement à faire émerger des opportunités. Il s'agit aussi d'accompagner la partie la plus difficile : organiser les documents, coordonner les personnes, suivre l'avancement et faire progresser le travail de soumission.",
+      "panelLabel": "Couches système",
+      "items": [
+        "Découverte et matching des opportunités",
+        "Espace de travail de candidature et collaboration",
+        "Contrôle opérationnel fondé sur les rôles",
+        "Structure de plateforme multilingue persistante"
+      ]
+    },
+    "tech": {
+      "label": "Architecture technique",
+      "title": "Un aperçu concis de l'implémentation.",
+      "body": "La stack actuelle montre une base produit sérieuse avec données temps réel, assistance IA, authentification fondée sur les rôles et routage multilingue déjà en place.",
+      "items": [
+        "Next.js 15 + React 19",
+        "Backend Convex et synchronisation temps réel",
+        "Agents IA Mastra + Gemini",
+        "Authentification Clerk avec RBAC",
+        "Routage locale-prefixed via next-intl",
+        "Couche géospatiale MapLibre GL"
+      ]
+    },
+    "finalCta": {
+      "label": "CTA final",
+      "title": "Discuter de Funda comme produit, système de workflow de financement ou élément du portefeuille Intrface.",
+      "body": "Funda étend le portefeuille Intrface vers les opérations de financement structurées : découverte, collaboration et exécution des candidatures dans une seule plateforme.",
       "primaryCta": "Nous contacter",
       "secondaryCta": "Explorer les projets Intrface"
     }

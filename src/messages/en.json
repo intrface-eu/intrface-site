@@ -3,6 +3,7 @@
     "projects": "Projects",
     "aoc": "AOC",
     "voyager": "Voyager",
+    "funda": "Funda",
     "contact": "Contact",
     "home": "Intrface home"
   },
@@ -319,6 +320,74 @@
       "label": "Final CTA",
       "title": "Discuss destination deployment, partnership, or where Voyager fits in the wider Intrface portfolio.",
       "body": "Voyager is best understood as a serious tourism platform with a distinct exploration layer, not as a generic travel interface. The next step is a real product conversation.",
+      "primaryCta": "Get in Touch",
+      "secondaryCta": "Explore Intrface Projects"
+    }
+  },
+  "FundaPage": {
+    "hero": {
+      "label": "Flagship Product",
+      "title": "A funding opportunity platform for discovery, matching, and application workflows.",
+      "body": "Funda connects organizations with funding opportunities through AI-assisted matching, role-aware workflows, and a structured application workspace.",
+      "primaryCta": "Explore Capabilities",
+      "secondaryCta": "View Repository"
+    },
+    "platform": {
+      "label": "What Funda Is",
+      "title": "A role-based funding platform, not just a searchable list of grants.",
+      "body": "Funda is built around the operational reality of funding work: applicants, consultants, curators, and administrators all need different tools, views, and workflows inside the same system."
+    },
+    "roles": {
+      "items": [
+        "Corporate applicants",
+        "Consultants",
+        "Admins / curators",
+        "Directors",
+        "Superusers"
+      ]
+    },
+    "capabilities": {
+      "label": "Key Capabilities",
+      "title": "Funding workflows with stronger structure and better operational support.",
+      "body": "The product combines opportunity discovery with application execution, consultant collaboration, and deadline-oriented workspace behavior.",
+      "items": [
+        "AI-powered opportunity matching",
+        "Application workspace for notes, documents, and checklists",
+        "Deadline tracking and reminders",
+        "Consultant discovery and connection workflows",
+        "RAG-backed funding opportunity search",
+        "Role-aware access and operational tooling"
+      ]
+    },
+    "system": {
+      "label": "Platform System",
+      "title": "A funding product shaped around real coordination work.",
+      "body": "Funda is not only about surfacing opportunities. It is also about supporting the messy middle: organizing documents, coordinating people, tracking progress, and keeping submission work moving.",
+      "panelLabel": "System Layers",
+      "items": [
+        "Opportunity discovery and matching",
+        "Application workspace and collaboration",
+        "Role-based operational control",
+        "Persistent multilingual platform structure"
+      ]
+    },
+    "tech": {
+      "label": "Technical Architecture",
+      "title": "A concise implementation snapshot.",
+      "body": "The current stack shows a serious product foundation with realtime data, AI assistance, role-aware auth, and multilingual routing already in place.",
+      "items": [
+        "Next.js 15 + React 19",
+        "Convex backend and realtime sync",
+        "Mastra + Gemini AI agents",
+        "Clerk authentication with RBAC",
+        "next-intl locale-prefixed routing",
+        "MapLibre GL geospatial layer"
+      ]
+    },
+    "finalCta": {
+      "label": "Final CTA",
+      "title": "Discuss Funda as a product, a funding workflow system, or part of the wider Intrface portfolio.",
+      "body": "Funda extends the Intrface portfolio into structured funding operations: discovery, collaboration, and application execution in one platform.",
       "primaryCta": "Get in Touch",
       "secondaryCta": "Explore Intrface Projects"
     }
