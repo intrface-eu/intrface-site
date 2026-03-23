@@ -8,20 +8,22 @@
 ## Key Files
 - README.md
 - package.json
-- pnpm-lock.yaml
 
 ## Project Structure (tree -L 2)
 ```
 /home/ceii/dev/intrface-site
 ├── AGENTS.md
+├── bun.lock
 ├── CLAUDE.md
+├── design.md
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
-├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── postcss.config.mjs
+├── proxy.ts
 ├── public
+│   ├── brand
 │   ├── file.svg
 │   ├── globe.svg
 │   ├── next.svg
@@ -29,19 +31,22 @@
 │   └── window.svg
 ├── README.md
 ├── src
-│   └── app
+│   ├── app
+│   ├── components
+│   ├── i18n
+│   ├── lib
+│   └── messages
 └── tsconfig.json
 
-4 directories, 15 files
+9 directories, 17 files
 ```
 
 ## README Headings
+# Intrface Site
+## Purpose
+## Stack
 ## Getting Started
-# or
-# or
-# or
-## Learn More
-## Deploy on Vercel
+## Project Setup Status
 
 ## Current Task Tag
 ```
@@ -50,6 +55,15 @@ master
 
 ## Active Workstreams (Tags)
 ```
+master (7)
+site-about (1)
+site-aoc (1)
+site-contact (1)
+site-core (1)
+site-funda (1)
+site-homepage (1)
+site-projects (1)
+site-voyager (1)
 ```
 
 ## Task PRD Location

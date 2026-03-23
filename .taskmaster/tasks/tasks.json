@@ -1,46 +1,60 @@
 {
-  "site-aoc": {
+  "site-voyager": {
     "tasks": [
       {
-        "id": "10",
-        "title": "Implement AOC product page from README-grounded content",
-        "description": "Create the public AOC page using accurate source-truth from agent-ops-cockpit and eliminate fictionalized product framing.",
-        "details": "Scope:\n- build AOC hero with correct naming\n- implement why AOC section from README pain points\n- implement Distributed Cognitive Architecture section\n- implement unified workspace and capabilities sections\n- add real install flow, proof, roadmap, and CTAs",
-        "testStrategy": "Compare implemented page against agent-ops-cockpit README and verify all major sections are accurate and actionable.",
+        "id": "11",
+        "title": "Implement Voyager product page from source documentation",
+        "description": "Build the Voyager page around the platform's real tourism, agent, map, and Scout exploration model.",
+        "details": "Scope:\n- build hero and product framing\n- explain stakeholder model (agencies, businesses, attractions, scouts)\n- implement multi-agent and Scout experience sections\n- add map/platform/content architecture summary\n- end with partnership/contact CTA",
+        "testStrategy": "Review implemented page against voyager README and docs to ensure product meaning, audience framing, and platform claims stay accurate.",
         "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": [
           {
             "id": 1,
-            "title": "Implement AOC hero and Why AOC sections",
+            "title": "Implement Voyager hero and platform framing",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 2,
-            "title": "Implement Distributed Cognitive Architecture and workspace sections",
+            "title": "Implement multi-agent system and Scout experience sections",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 3,
-            "title": "Implement capabilities, quick start, roadmap, and final CTA",
+            "title": "Implement map/content/platform architecture summary and CTA",
             "description": "",
             "status": "pending",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T12:15:40.078Z",
+        "updatedAt": "2026-03-20T12:18:45.733Z",
+        "activeAgent": false
+      },
+      {
+        "id": "18",
+        "title": "Restyle Voyager page with exploration, map, and destination branding cues",
+        "description": "Translate Voyager tourism, geospatial, and exploratory identity into a more product-native public page treatment.",
+        "details": "Scope:\n- extract color, map, and atmosphere cues from Voyager\n- restyle hero, section surfaces, and supporting cards around exploration and place\n- maintain structural consistency while making Voyager visually distinct",
+        "testStrategy": "Manual visual review against Voyager source materials to confirm the page feels exploratory, geospatial, and destination-oriented without losing clarity.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.686Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/aoc_page_prd.md",
-      "updatedAt": "2026-03-20T11:31:14.919Z",
+      "path": ".taskmaster/docs/prds/pages/voyager_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.437Z",
       "version": 1
     }
   },
@@ -74,6 +88,20 @@
         "aocPrd": null,
         "updatedAt": "2026-03-20T11:36:56.469Z",
         "activeAgent": false
+      },
+      {
+        "id": "22",
+        "title": "Style the contact page as a clear conversion surface aligned with Intrface branding",
+        "description": "Make the contact page feel intentional and trustworthy by aligning it with Intrface brand language and product-oriented inquiry paths.",
+        "details": "Scope:\n- design contact sections and inquiry pathways with a stronger brand treatment\n- connect outreach options to products, partnerships, and platform work\n- ensure the page feels polished and conversion-ready rather than utility-only",
+        "testStrategy": "Manual QA for clarity, trust, and conversion readiness on desktop and mobile.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.736Z",
+        "activeAgent": false
       }
     ],
     "aocPrd": {
@@ -82,79 +110,78 @@
       "version": 1
     }
   },
-  "site-funda": {
+  "site-monorepo": {
     "tasks": [
       {
-        "id": "12",
-        "title": "Implement Funda product page from source documentation",
-        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
-        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
-        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
-        "status": "pending",
+        "id": "23",
+        "title": "Restructure intrface-site into a monorepo with dedicated web and AOC apps",
+        "description": "Convert the current single-app repo into a monorepo that preserves the Intrface brand site while creating a dedicated app boundary for aoc.intrface.eu.",
+        "details": "Scope:\n- move the current public site into a dedicated brand-site app\n- create a dedicated AOC app shell for aoc.intrface.eu\n- add minimal shared packages for durable branding, UI, and config concerns\n- wire root workspace scripts so the repo can be developed and validated from the root\n- keep the migration focused on restructure and immediate AOC implementation readiness",
+        "testStrategy": "Validate root and app-scoped install, lint, build, and dev flows; verify the current web app still runs after relocation; verify the AOC app shell can boot cleanly.",
+        "status": "in-progress",
         "dependencies": [],
-        "priority": "medium",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement Funda hero, problem framing, and role model",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement Funda capabilities, workflow, and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
+        "priority": "high",
+        "subtasks": [],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.393Z",
+        "updatedAt": "2026-03-23T13:46:21.629Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.450Z",
+      "path": ".taskmaster/docs/prds/intrface_monorepo_switch_prd_rpg.md",
+      "updatedAt": "2026-03-23T13:45:27.656Z",
       "version": 1
     }
   },
-  "site-projects": {
+  "site-about": {
     "tasks": [
       {
-        "id": "13",
-        "title": "Implement projects index page",
-        "description": "Build the projects page as a scalable portfolio overview for flagship Intrface products.",
-        "details": "Scope:\n- implement intro framing\n- render product grid from content model\n- add ecosystem/shared capability strip\n- add CTA to contact or homepage",
-        "testStrategy": "Verify all featured products render consistently and routes navigate correctly.",
+        "id": "14",
+        "title": "Implement about page",
+        "description": "Create the About page to explain who Intrface is, what it builds, and the principles connecting its products.",
+        "details": "Scope:\n- intro/company framing\n- what we build\n- principles/how we work\n- ecosystem relationship and CTA",
+        "testStrategy": "Manual review for clarity, trust, and consistency with homepage/product messaging.",
         "status": "pending",
         "dependencies": [],
         "priority": "medium",
         "subtasks": [
           {
             "id": 1,
-            "title": "Implement projects intro and flagship grid",
+            "title": "Implement company intro and what we build sections",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 2,
-            "title": "Implement ecosystem strip and final CTA",
+            "title": "Implement principles, ecosystem narrative, and CTA",
             "description": "",
             "status": "pending",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.419Z",
+        "updatedAt": "2026-03-20T11:36:56.443Z",
+        "activeAgent": false
+      },
+      {
+        "id": "21",
+        "title": "Style the about page to express Intrface as a coherent product studio and system practice",
+        "description": "Ensure the About page carries a clear brand language and explains how Intrface connects its products through shared system thinking.",
+        "details": "Scope:\n- define a stronger visual and narrative treatment for studio identity\n- align section hierarchy with the product-led brand direction\n- reinforce the relationship between Intrface and the flagship products",
+        "testStrategy": "Manual review for brand coherence, readability, and consistency with the homepage and product pages.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.722Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/projects_index_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.462Z",
+      "path": ".taskmaster/docs/prds/pages/about_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.473Z",
       "version": 1
     }
   },
@@ -195,6 +222,20 @@
         "aocPrd": null,
         "updatedAt": "2026-03-20T12:13:15.662Z",
         "activeAgent": false
+      },
+      {
+        "id": "16",
+        "title": "Refine homepage with Intrface brand system and flagship-specific visual cues",
+        "description": "Evolve the homepage from a generic shared template into a stronger Intrface brand surface while previewing AOC, Voyager, and Funda through distinct visual signals.",
+        "details": "Scope:\n- strengthen Intrface brand lockup, rhythm, and section styling\n- give featured product cards stronger product-specific identity cues\n- tighten hero and CTA styling so homepage feels like a finished public brand surface",
+        "testStrategy": "Manual visual QA across locales and breakpoints to confirm hierarchy, brand consistency, and product-card differentiation.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.660Z",
+        "activeAgent": false
       }
     ],
     "aocPrd": {
@@ -203,41 +244,55 @@
       "version": 1
     }
   },
-  "site-about": {
+  "site-projects": {
     "tasks": [
       {
-        "id": "14",
-        "title": "Implement about page",
-        "description": "Create the About page to explain who Intrface is, what it builds, and the principles connecting its products.",
-        "details": "Scope:\n- intro/company framing\n- what we build\n- principles/how we work\n- ecosystem relationship and CTA",
-        "testStrategy": "Manual review for clarity, trust, and consistency with homepage/product messaging.",
+        "id": "13",
+        "title": "Implement projects index page",
+        "description": "Build the projects page as a scalable portfolio overview for flagship Intrface products.",
+        "details": "Scope:\n- implement intro framing\n- render product grid from content model\n- add ecosystem/shared capability strip\n- add CTA to contact or homepage",
+        "testStrategy": "Verify all featured products render consistently and routes navigate correctly.",
         "status": "pending",
         "dependencies": [],
         "priority": "medium",
         "subtasks": [
           {
             "id": 1,
-            "title": "Implement company intro and what we build sections",
+            "title": "Implement projects intro and flagship grid",
             "description": "",
             "status": "pending",
             "dependencies": []
           },
           {
             "id": 2,
-            "title": "Implement principles, ecosystem narrative, and CTA",
+            "title": "Implement ecosystem strip and final CTA",
             "description": "",
             "status": "pending",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T11:36:56.443Z",
+        "updatedAt": "2026-03-20T11:36:56.419Z",
+        "activeAgent": false
+      },
+      {
+        "id": "20",
+        "title": "Design the projects index as a branded portfolio surface with product-specific differentiation",
+        "description": "Use the projects index to express the Intrface portfolio while clearly differentiating AOC, Voyager, and Funda through styling and positioning.",
+        "details": "Scope:\n- give the projects grid stronger product-specific themes\n- create shared portfolio framing that explains why these products belong together\n- ensure project cards and transitions preview each product visual identity",
+        "testStrategy": "Review the page for portfolio clarity, visual differentiation, and clean navigation into each flagship page.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.709Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/about_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.473Z",
+      "path": ".taskmaster/docs/prds/pages/projects_index_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.462Z",
       "version": 1
     }
   },
@@ -249,7 +304,7 @@
         "description": "Establish route inventory, navigation model, brand constants, and baseline metadata configuration for the Intrface site.",
         "details": "Scope:\n- define launch sitemap\n- create navigation/config helpers\n- establish default metadata and company profile constants\n- align implementation foundation with PRD launch scope",
         "testStrategy": "Type-check config imports and verify route/navigation usage from page components.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": [
@@ -257,19 +312,19 @@
             "id": 1,
             "title": "Define launch sitemap and primary navigation",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           },
           {
             "id": 2,
             "title": "Create reusable site config and metadata defaults",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-19T19:46:03.850Z",
+        "updatedAt": "2026-03-21T09:19:25.193Z",
         "activeAgent": false
       },
       {
@@ -307,7 +362,7 @@
         "description": "Create the reusable visual foundation for spacing, typography, section wrappers, and page containers.",
         "details": "Scope:\n- establish visual baseline for marketing pages\n- create shared container and section-heading primitives\n- ensure responsive layout patterns are consistent\n- support a restrained editorial launch aesthetic",
         "testStrategy": "Render primitives in routes/components and verify responsive layout behavior manually plus lint/build checks.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": [
@@ -315,19 +370,19 @@
             "id": 1,
             "title": "Create page container and section heading primitives",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           },
           {
             "id": 2,
             "title": "Establish spacing, typography, and visual baseline",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-19T19:46:03.909Z",
+        "updatedAt": "2026-03-21T09:19:25.230Z",
         "activeAgent": false
       },
       {
@@ -336,7 +391,7 @@
         "description": "Compose reusable header/footer and core marketing blocks that all launch routes can share.",
         "details": "Scope:\n- implement header and footer\n- create hero, feature grid, CTA, and supporting section blocks\n- wire shell components to site config\n- avoid page-specific duplication where reusable components are appropriate",
         "testStrategy": "Render shell and marketing blocks across homepage/about/contact routes and verify clean lint/build output.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           "1",
           "3"
@@ -347,19 +402,19 @@
             "id": 1,
             "title": "Implement responsive header and footer shell",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           },
           {
             "id": 2,
             "title": "Build hero, feature grid, and CTA marketing sections",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-19T19:46:03.936Z",
+        "updatedAt": "2026-03-21T09:19:25.270Z",
         "activeAgent": false
       },
       {
@@ -400,7 +455,7 @@
         "description": "Ship the initial public route set for the Intrface brand and portfolio site.",
         "details": "Scope:\n- implement homepage\n- implement /projects index\n- implement reusable /projects/[slug] pages for AOC, Voyager, and Funda\n- implement /about and /contact\n- ensure navigation and route composition are coherent end to end",
         "testStrategy": "Manual route smoke test on desktop/mobile plus slug validation and metadata sanity checks.",
-        "status": "pending",
+        "status": "in-progress",
         "dependencies": [
           "1",
           "2",
@@ -413,7 +468,7 @@
             "id": 1,
             "title": "Implement homepage narrative and featured-project composition",
             "description": "",
-            "status": "pending",
+            "status": "done",
             "dependencies": []
           },
           {
@@ -432,7 +487,7 @@
           }
         ],
         "aocPrd": null,
-        "updatedAt": "2026-03-19T19:46:03.994Z",
+        "updatedAt": "2026-03-21T09:19:25.296Z",
         "activeAgent": false
       },
       {
@@ -473,6 +528,117 @@
       "version": 1
     }
   },
+  "site-funda": {
+    "tasks": [
+      {
+        "id": "12",
+        "title": "Implement Funda product page from source documentation",
+        "description": "Create the Funda page around funding discovery, matching, and collaborative application workflows.",
+        "details": "Scope:\n- build hero and problem framing\n- explain role-based workflow model\n- implement core capabilities and workspace flow\n- add architecture credibility section and CTA",
+        "testStrategy": "Compare page against Funda README and ensure audience/role framing remains accurate.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement Funda hero, problem framing, and role model",
+            "description": "",
+            "status": "done",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement Funda capabilities, workflow, and CTA",
+            "description": "",
+            "status": "done",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:19:25.334Z",
+        "activeAgent": false
+      },
+      {
+        "id": "19",
+        "title": "Restyle Funda page with trust-heavy workflow and funding-platform branding",
+        "description": "Strengthen the Funda page by aligning it with the product structured funding, application, and role-based workflow identity.",
+        "details": "Scope:\n- extract visual cues from Funda product surfaces and docs\n- apply calmer trust-oriented styling for workflow, role, and architecture sections\n- ensure CTAs and section hierarchy feel more institutional and product-specific",
+        "testStrategy": "Manual visual QA to confirm Funda reads as a serious funding workflow platform rather than a generic third product page.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.699Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/funda_page_prd.md",
+      "updatedAt": "2026-03-20T11:36:24.450Z",
+      "version": 1
+    }
+  },
+  "site-aoc": {
+    "tasks": [
+      {
+        "id": "10",
+        "title": "Implement AOC product page from README-grounded content",
+        "description": "Create the public AOC page using accurate source-truth from agent-ops-cockpit and eliminate fictionalized product framing.",
+        "details": "Scope:\n- build AOC hero with correct naming\n- implement why AOC section from README pain points\n- implement Distributed Cognitive Architecture section\n- implement unified workspace and capabilities sections\n- add real install flow, proof, roadmap, and CTAs",
+        "testStrategy": "Compare implemented page against agent-ops-cockpit README and verify all major sections are accurate and actionable.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement AOC hero and Why AOC sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 2,
+            "title": "Implement Distributed Cognitive Architecture and workspace sections",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          },
+          {
+            "id": 3,
+            "title": "Implement capabilities, quick start, roadmap, and final CTA",
+            "description": "",
+            "status": "pending",
+            "dependencies": []
+          }
+        ],
+        "aocPrd": null,
+        "updatedAt": "2026-03-20T12:15:40.078Z",
+        "activeAgent": false
+      },
+      {
+        "id": "17",
+        "title": "Restyle AOC page using product-native cockpit and terminal branding cues",
+        "description": "Bring the AOC page closer to the actual product by translating its terminal-first workspace identity into the public marketing surface.",
+        "details": "Scope:\n- extract relevant branding cues from AOC visuals and docs\n- apply more operator and cockpit styling to hero, panels, and CTA surfaces\n- preserve Intrface shell while making AOC feel distinct from Voyager and Funda",
+        "testStrategy": "Compare the page against AOC source materials and review whether the visual system reads as terminal-first, operational, and product-accurate.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-21T09:17:21.672Z",
+        "activeAgent": false
+      }
+    ],
+    "aocPrd": {
+      "path": ".taskmaster/docs/prds/pages/aoc_page_prd.md",
+      "updatedAt": "2026-03-20T11:31:14.919Z",
+      "version": 1
+    }
+  },
   "site-core": {
     "tasks": [
       {
@@ -506,48 +672,122 @@
       }
     ]
   },
-  "site-voyager": {
+  "site-aoc-subdomain": {
     "tasks": [
       {
-        "id": "11",
-        "title": "Implement Voyager product page from source documentation",
-        "description": "Build the Voyager page around the platform's real tourism, agent, map, and Scout exploration model.",
-        "details": "Scope:\n- build hero and product framing\n- explain stakeholder model (agencies, businesses, attractions, scouts)\n- implement multi-agent and Scout experience sections\n- add map/platform/content architecture summary\n- end with partnership/contact CTA",
-        "testStrategy": "Review implemented page against voyager README and docs to ensure product meaning, audience framing, and platform claims stay accurate.",
+        "id": "24",
+        "title": "Define AOC public-site information architecture and core messaging",
+        "description": "Establish the dedicated AOC public subdomain as a product, education, and consulting surface with a clear route map and thesis.",
+        "details": "Scope:\n- define homepage and supporting route architecture for apps/aoc\n- lock primary positioning around terminal-first, local-first, structured agentic coding\n- define CTA pathways for repo/docs, learn, and consulting\n- keep the surface grounded in real AOC usage and source truth",
+        "testStrategy": "Manual architecture and copy review to confirm the route map, thesis, and CTA paths are coherent and product-accurate.",
         "status": "done",
         "dependencies": [],
         "priority": "high",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Implement Voyager hero and platform framing",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 2,
-            "title": "Implement multi-agent system and Scout experience sections",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          },
-          {
-            "id": 3,
-            "title": "Implement map/content/platform architecture summary and CTA",
-            "description": "",
-            "status": "pending",
-            "dependencies": []
-          }
-        ],
+        "subtasks": [],
         "aocPrd": null,
-        "updatedAt": "2026-03-20T12:18:45.733Z",
+        "updatedAt": "2026-03-23T13:57:35.089Z",
+        "activeAgent": false
+      },
+      {
+        "id": "25",
+        "title": "Extract AOC product branding and cockpit-style visual direction",
+        "description": "Translate the real AOC workspace, terminal environment, and public product cues into a concrete visual direction for the subdomain.",
+        "details": "Scope:\n- audit AOC README, screenshots, and live session visuals\n- identify palette, panel language, density, border, and status-strip motifs\n- define how AOC public pages should feel distinct from intrface.eu while remaining in the same ecosystem",
+        "testStrategy": "Manual visual review against actual AOC workspace materials to confirm the direction feels operator-native and product-accurate.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T13:57:35.111Z",
+        "activeAgent": false
+      },
+      {
+        "id": "26",
+        "title": "Build the AOC public-site shell, navigation, and reusable section primitives",
+        "description": "Create the shared structural foundation for apps/aoc so deeper content can be added cleanly.",
+        "details": "Scope:\n- implement app-level header/footer or equivalent shell\n- create reusable page sections, proof blocks, and CTA patterns\n- align primitives with the extracted cockpit-like visual direction",
+        "testStrategy": "Run lint/build and verify the AOC app renders a coherent shell with reusable sections.",
+        "status": "done",
+        "dependencies": [
+          "24",
+          "25"
+        ],
+        "priority": "high",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T13:57:35.131Z",
+        "activeAgent": false
+      },
+      {
+        "id": "27",
+        "title": "Implement the AOC homepage as the thesis, proof, and conversion hub",
+        "description": "Turn the AOC homepage into the main public entry point that explains what AOC is, why it matters, and where users should go next.",
+        "details": "Scope:\n- implement hero and product thesis\n- explain why AOC differs from GUI-heavy and subscription-first tooling\n- add real-use proof and audience paths\n- provide strong CTAs into repo, install, learn, and consulting flows",
+        "testStrategy": "Manual narrative review plus route smoke testing to confirm users can understand AOC and choose a next step from the homepage.",
+        "status": "done",
+        "dependencies": [
+          "26"
+        ],
+        "priority": "high",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T14:02:43.911Z",
+        "activeAgent": false
+      },
+      {
+        "id": "28",
+        "title": "Implement AOC philosophy and product overview routes",
+        "description": "Add the deeper explanatory surfaces that unpack the AOC worldview and system model.",
+        "details": "Scope:\n- build philosophy route or equivalent sectioned surface\n- build product overview route for context, memory, tasks, runtime, and workspace structure\n- keep explanations accurate but public-friendly",
+        "testStrategy": "Compare the pages against the AOC README and live product truth to ensure the worldview and architecture are communicated accurately.",
+        "status": "done",
+        "dependencies": [
+          "27"
+        ],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T14:02:43.922Z",
+        "activeAgent": false
+      },
+      {
+        "id": "29",
+        "title": "Implement AOC learn, consulting, and install routes",
+        "description": "Create explicit public pathways for education, service engagement, and practical product adoption.",
+        "details": "Scope:\n- implement learn/training surface\n- implement consulting surface\n- implement install/get-started surface\n- ensure CTA flows map clearly to user intent",
+        "testStrategy": "Manual conversion-path review plus source-truth comparison for installation guidance.",
+        "status": "done",
+        "dependencies": [
+          "27"
+        ],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T14:02:43.936Z",
+        "activeAgent": false
+      },
+      {
+        "id": "30",
+        "title": "Polish AOC CTA routing, metadata, and launch readiness",
+        "description": "Finalize the AOC subdomain for public iteration with clearer conversion paths and baseline launch polish.",
+        "details": "Scope:\n- refine CTA hierarchy across all AOC routes\n- add route metadata and baseline SEO\n- run responsive QA and fix launch-level issues",
+        "testStrategy": "Run lint/build and complete a manual QA pass across all AOC routes and primary CTA paths.",
+        "status": "done",
+        "dependencies": [
+          "28",
+          "29"
+        ],
+        "priority": "medium",
+        "subtasks": [],
+        "aocPrd": null,
+        "updatedAt": "2026-03-23T14:05:31.715Z",
         "activeAgent": false
       }
     ],
     "aocPrd": {
-      "path": ".taskmaster/docs/prds/pages/voyager_page_prd.md",
-      "updatedAt": "2026-03-20T11:36:24.437Z",
+      "path": ".taskmaster/docs/prds/aoc_subdomain_prd_rpg.md",
+      "updatedAt": "2026-03-23T13:54:58.321Z",
       "version": 1
     }
   }

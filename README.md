@@ -1,41 +1,18 @@
-# Intrface Site
+# Intrface Workspace
 
-Brand and portfolio website for Intrface.
+Monorepo for Intrface public web surfaces.
 
-## Purpose
+## Apps
+- `apps/web` — `intrface.eu` brand and portfolio site
+- `apps/aoc` — `aoc.intrface.eu` dedicated AOC product/education site
 
-This repository will house the public-facing Intrface web presence, including:
+## Packages
+- `packages/branding` — shared brand constants and product theme seeds
+- `packages/ui` — shared UI primitives (scaffolded)
+- `packages/config` — shared config package (scaffolded)
 
-- Intrface brand positioning
-- flagship project presentation
-- product pages for AOC, Voyager, Funda, and future projects
-- platform narrative, proof, and contact pathways
-
-## Stack
-
-- Next.js
-- TypeScript
-- Tailwind CSS
-- next-intl (locale-prefixed routing)
-- Bun
-- AOC project scaffolding
-
-## Getting Started
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Open `http://localhost:3000`.
-
-## Project Setup Status
-
-- [x] repository scaffolded
-- [x] AOC initialized
-- [x] initial landing page placeholder
-- [x] PRD authoring
-- [ ] Taskmaster planning
-- [ ] information architecture
-- [ ] design system
-- [ ] content model
+## Commands
+- `bun run dev:web`
+- `bun run dev:aoc`
+- `bun run build`
+- `bun run lint`
