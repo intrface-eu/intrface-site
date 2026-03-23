@@ -22,14 +22,15 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  setRequestLocale(locale);
-  const messages = await getMessages({ locale });
+  const activeLocale = locale as (typeof routing.locales)[number];
+  setRequestLocale(activeLocale);
+  const messages = await getMessages({ locale: activeLocale });
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      <Header />
+    <NextIntlClientProvider locale={activeLocale} messages={messages}>
+      <Header locale={activeLocale} />
       <div className="flex-1">{children}</div>
-      <Footer />
+      <Footer locale={activeLocale} />
     </NextIntlClientProvider>
   );
 }

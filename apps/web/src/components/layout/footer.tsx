@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
-export async function Footer() {
-  const nav = await getTranslations("Nav");
-  const footer = await getTranslations("Footer");
+export async function Footer({ locale }: { locale: AppLocale }) {
+  const nav = await getTranslations({ locale, namespace: "Nav" });
+  const footer = await getTranslations({ locale, namespace: "Footer" });
 
   return (
     <footer className="border-t border-rule bg-background">

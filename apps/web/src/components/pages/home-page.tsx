@@ -1,8 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
-export async function HomePage() {
-  const t = await getTranslations("HomePage");
+export async function HomePage({ locale }: { locale: AppLocale }) {
+  const t = await getTranslations({ locale, namespace: "HomePage" });
 
   const operatingBlocks = [
     {

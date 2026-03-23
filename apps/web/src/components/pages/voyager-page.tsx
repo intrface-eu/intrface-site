@@ -1,9 +1,10 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { voyagerLinks } from "@/lib/site/voyager-content";
+import type { AppLocale } from "@/i18n/routing";
 
-export async function VoyagerPage() {
-  const t = await getTranslations("VoyagerPage");
+export async function VoyagerPage({ locale }: { locale: AppLocale }) {
+  const t = await getTranslations({ locale, namespace: "VoyagerPage" });
 
   const audience = [
     { title: t("audience.items.0.title"), text: t("audience.items.0.text") },

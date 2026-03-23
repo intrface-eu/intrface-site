@@ -1,8 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { aocLinks } from "@/lib/site/aoc-content";
+import type { AppLocale } from "@/i18n/routing";
 
-export async function AocPage() {
-  const t = await getTranslations("AocPage");
+export async function AocPage({ locale }: { locale: AppLocale }) {
+  const t = await getTranslations({ locale, namespace: "AocPage" });
 
   const painPoints = [
     t("painPoints.items.0"),

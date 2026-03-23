@@ -2,9 +2,10 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
+import type { AppLocale } from "@/i18n/routing";
 
-export async function Header() {
-  const t = await getTranslations("Nav");
+export async function Header({ locale }: { locale: AppLocale }) {
+  const t = await getTranslations({ locale, namespace: "Nav" });
 
   const navigation = [
     { href: "/#projects", label: t("projects") },

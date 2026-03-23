@@ -1,5 +1,6 @@
 "use client";
 
+import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -9,6 +10,7 @@ export function LocaleSwitcher() {
   const locale = useLocale() as AppLocale;
   const pathname = usePathname();
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   return (
     <label className="flex items-center gap-2 text-sm text-muted">
@@ -16,10 +18,16 @@ export function LocaleSwitcher() {
       <select
         aria-label={t("label")}
         value={locale}
+        disabled={isPending}
         onChange={(event) => {
-          router.replace(pathname, { locale: event.target.value as AppLocale });
+          const nextLocale = event.target.value as AppLocale;
+
+          startTransition(() => {
+            router.replace(pathname, { locale: nextLocale });
+            router.refresh();
+          });
         }}
-        className="rounded-md border border-rule bg-card px-3 py-2 text-sm text-foreground outline-none transition-colors hover:border-foreground/30"
+        className="rounded-md border border-rule bg-card px-3 py-2 text-sm text-foreground outline-none transition-colors hover:border-foreground/30 disabled:cursor-wait disabled:opacity-70"
       >
         {routing.locales.map((value) => (
           <option key={value} value={value}>

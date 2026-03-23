@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import type { AppLocale } from "@/i18n/routing";
 
 const fundaLinks = {
   github: "https://github.com/intrface-eu/Funda",
@@ -7,8 +8,8 @@ const fundaLinks = {
   projects: "/#projects",
 } as const;
 
-export async function FundaPage() {
-  const t = await getTranslations("FundaPage");
+export async function FundaPage({ locale }: { locale: AppLocale }) {
+  const t = await getTranslations({ locale, namespace: "FundaPage" });
 
   const roles = [
     t("roles.items.0"),
