@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { navItems } from "@/lib/site-content";
 
@@ -20,41 +21,53 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
 
-        <header className="panel-surface rounded-[24px] px-5 py-5 sm:px-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <Link href="/" className="text-sm uppercase tracking-[0.24em] text-[var(--accent)]">
-                Intrface / AOC
+        <header className="panel-surface sticky top-4 z-40 rounded-[24px] px-5 py-4 sm:px-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-center justify-between gap-6">
+              <Link href="/" className="flex items-center gap-3" aria-label="AOC home">
+                <Image
+                  src="/brand/intrface-icon.svg"
+                  alt="Intrface icon"
+                  width={26}
+                  height={26}
+                  priority
+                />
+                <span className="text-2xl font-medium tracking-[-0.04em] text-white">intrface</span>
+                <span className="hidden text-sm text-[var(--muted)] sm:inline">/</span>
+                <span className="rounded-full border border-[var(--panel-border-strong)] bg-[rgba(157,255,157,0.08)] px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+                  AOC
+                </span>
               </Link>
-              <h1 className="mt-3 max-w-3xl text-2xl font-semibold tracking-tight sm:text-3xl">
-                Public product, learning, and consulting surface for serious agentic coding.
-              </h1>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base">
-                AOC presents the way we actually build: terminal-native, continuity-aware, and grounded in the
-                machine rather than browser-tab sprawl.
-              </p>
             </div>
-            <div className="flex flex-col items-start gap-3 lg:items-end">
-              <nav className="flex flex-wrap gap-2 text-sm text-white/90">
+
+            <div className="flex flex-col gap-4 lg:items-end">
+              <nav className="flex flex-wrap items-center gap-5 lg:gap-7">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-full border border-[var(--panel-border)] px-3 py-2 transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                    className="text-sm tracking-[-0.01em] text-[var(--muted)] transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
                 ))}
               </nav>
+
               <div className="flex flex-wrap gap-2 text-sm">
                 <a
-                  className="rounded-full bg-[var(--accent)] px-4 py-2 font-medium text-black"
+                  className="inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-4 py-2 font-medium text-black transition-opacity hover:opacity-90"
                   href="https://github.com/intrface-eu/agent-ops-cockpit"
                 >
                   Repository
                 </a>
                 <a
-                  className="rounded-full border border-[var(--panel-border)] px-4 py-2 text-white"
+                  className="inline-flex items-center justify-center rounded-md border border-[var(--panel-border)] bg-transparent px-4 py-2 text-white transition-colors hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
+                  href="https://intrface.eu/en/aoc"
+                >
+                  Intrface preview
+                </a>
+                <a
+                  className="inline-flex items-center justify-center rounded-md border border-[var(--panel-border)] bg-transparent px-4 py-2 text-white transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   href="mailto:hello@intrface.eu?subject=AOC"
                 >
                   Talk to Intrface
