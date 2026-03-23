@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SectionCard } from "@/components/site-shell";
 import { homepage } from "@/lib/site-content";
@@ -32,16 +33,18 @@ const workspacePanels = [
   },
 ] as const;
 
-const screenshotPlaceholders = [
+const proofImages = [
   {
-    title: "Live cockpit session",
-    label: "screenshot placeholder",
-    body: "Drop in a real Zellij session showing Yazi, PI, Pulse, and Taskmaster in one active layout.",
+    src: "/proof/aoc-taskmaster.png",
+    alt: "AOC Taskmaster pane showing active tasks inside the cockpit",
+    title: "Taskmaster in the cockpit",
+    body: "Structured work tracking stays inside the same environment as coding, navigation, and runtime operation.",
   },
   {
-    title: "Context / memory / tasks proof",
-    label: "artifact placeholder",
-    body: "Use a crop of .aoc/context.md, .aoc/memory.md, and active Taskmaster state to prove continuity.",
+    src: "/proof/aoc-yazi-navigation.png",
+    alt: "AOC Yazi navigation showing repo structure and continuity artifacts",
+    title: "Repo-aware navigation",
+    body: "Yazi exposes the real project structure, including .aoc and task artifacts, instead of hiding the machine behind a browser layer.",
   },
 ] as const;
 
@@ -136,70 +139,33 @@ export default function AocHomePage() {
               <div className="mb-4 flex items-center justify-between border-b border-white/8 pb-3">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent)]">Live cockpit preview</p>
-                  <p className="mt-1 text-sm text-[var(--muted)]">Structured operator flow inside one workspace</p>
+                  <p className="mt-1 text-sm text-[var(--muted)]">Actual AOC session with explorer, runtime, pulse, and work surface</p>
                 </div>
                 <span className="rounded-full border border-[var(--panel-border)] px-3 py-1 text-xs text-[var(--muted)]">
-                  real-session ready
+                  real-session proof
                 </span>
               </div>
 
-              <div className="rounded-[24px] border border-[var(--panel-border)] bg-[linear-gradient(180deg,rgba(5,8,13,0.98),rgba(8,12,19,0.92))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-                <div className="mb-4 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff6b6b]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ffd93d]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#80ed99]" />
-                  <span className="ml-3 text-xs uppercase tracking-[0.24em] text-[var(--muted)]">zellij / intrface-site / aoc</span>
-                </div>
-
-                <div className="grid gap-3 md:grid-cols-[0.8fr_1.2fr]">
-                  <div className="rounded-2xl border border-white/8 bg-black/28 p-4">
-                    <p className="data-label mb-3">active tree</p>
-                    <div className="space-y-2 text-sm text-white/88">
-                      <p>apps/</p>
-                      <p className="pl-4 text-[var(--accent)]">aoc/</p>
-                      <p className="pl-8">src/app/page.tsx</p>
-                      <p className="pl-8">src/components/site-shell.tsx</p>
-                      <p className="pl-4">web/</p>
-                      <p>.aoc/context.md</p>
-                      <p>.aoc/memory.md</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="rounded-2xl border border-[var(--panel-border-strong)] bg-[rgba(157,255,157,0.05)] p-4">
-                      <div className="mb-2 flex items-center justify-between">
-                        <p className="data-label">pi runtime</p>
-                        <span className="text-xs text-[var(--accent)]">context aware</span>
-                      </div>
-                      <div className="space-y-2 font-mono text-sm leading-6 text-white/90">
-                        <p>&gt; active task: refine aoc public surface</p>
-                        <p>&gt; memory loaded: architectural decisions / messaging</p>
-                        <p>&gt; next action: integrate session screenshot placeholders</p>
-                      </div>
-                    </div>
-
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {workspacePanels.map((panel) => (
-                        <div key={panel.title} className="rounded-2xl border border-white/8 bg-black/28 p-4 transition hover:border-[var(--accent-secondary)]">
-                          <div className="mb-2 flex items-center justify-between">
-                            <p className="data-label">{panel.title}</p>
-                            <span className="text-xs text-[var(--muted)]">{panel.status}</span>
-                          </div>
-                          <p className="text-sm leading-6 text-white/90">{panel.detail}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div className="overflow-hidden rounded-[24px] border border-[var(--panel-border)] bg-[linear-gradient(180deg,rgba(5,8,13,0.98),rgba(8,12,19,0.92))] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                <Image
+                  src="/proof/aoc-cockpit-hero.png"
+                  alt="Full AOC cockpit session showing explorer, agent runtime, pulse, and task surface"
+                  width={4384}
+                  height={2402}
+                  className="h-auto w-full"
+                  priority
+                />
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {screenshotPlaceholders.map((item) => (
-                <div key={item.title} className="screenshot-placeholder rounded-[24px] p-5">
-                  <p className="mb-3 text-xs uppercase tracking-[0.24em] text-[var(--accent-secondary)]">{item.label}</p>
-                  <h3 className="text-xl font-medium text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.body}</p>
+              {workspacePanels.map((panel) => (
+                <div key={panel.title} className="panel-inset interactive-panel rounded-2xl p-4">
+                  <div className="mb-2 flex items-center justify-between">
+                    <p className="data-label">{panel.title}</p>
+                    <span className="text-xs text-[var(--muted)]">{panel.status}</span>
+                  </div>
+                  <p className="text-sm leading-6 text-white/90">{panel.detail}</p>
                 </div>
               ))}
             </div>
@@ -271,31 +237,30 @@ export default function AocHomePage() {
           <div className="mb-4 flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent)]">Proof gallery</p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight">Make the system visible</h2>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight">Actual operator surfaces</h2>
             </div>
             <span className="rounded-full border border-[var(--panel-border)] px-3 py-1 text-xs text-[var(--muted)]">
-              add captures
+              full-aspect captures
             </span>
           </div>
 
-          <div className="grid gap-4">
-            <div className="screenshot-placeholder min-h-[240px] rounded-[24px] p-5">
-              <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent-secondary)]">hero capture slot</p>
-              <h3 className="mt-3 text-xl font-medium text-white">Full workspace screenshot</h3>
-              <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--muted)]">
-                Replace this placeholder with a real cockpit view: Zellij layout, file tree, runtime, tasks, and command output visible at once.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="screenshot-placeholder min-h-[180px] rounded-[24px] p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent-secondary)]">artifact slot</p>
-                <h3 className="mt-3 text-lg font-medium text-white">Context + memory crop</h3>
-              </div>
-              <div className="screenshot-placeholder min-h-[180px] rounded-[24px] p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent-secondary)]">artifact slot</p>
-                <h3 className="mt-3 text-lg font-medium text-white">Taskmaster / pulse crop</h3>
-              </div>
-            </div>
+          <div className="grid gap-5">
+            {proofImages.map((image) => (
+              <article key={image.src} className="overflow-hidden rounded-[24px] border border-[var(--panel-border)] bg-black/18">
+                <div className="border-b border-white/8 px-5 py-4">
+                  <p className="text-xs uppercase tracking-[0.24em] text-[var(--accent-secondary)]">proof surface</p>
+                  <h3 className="mt-2 text-xl font-medium text-white">{image.title}</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--muted)]">{image.body}</p>
+                </div>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={4384}
+                  height={2402}
+                  className="h-auto w-full"
+                />
+              </article>
+            ))}
           </div>
         </section>
       </section>
