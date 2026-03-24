@@ -224,22 +224,11 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                 </a>
               </div>
 
-              <div className="grid gap-3 pt-2 sm:grid-cols-3">
-                {proofItems.map((item) => (
-                  <article key={item.label} className="rounded-2xl border border-rule bg-card p-5 shadow-[0_10px_30px_rgba(10,10,11,0.04)]">
-                    <p className="type-meta">{item.label}</p>
-                    <p className="mt-3 text-sm leading-7 text-foreground/82">{item.text}</p>
-                  </article>
-                ))}
-              </div>
             </div>
 
             <div className="rounded-[2rem] border border-rule bg-panel/70 p-4 sm:p-6 shadow-[0_24px_80px_rgba(10,10,11,0.06)]">
-              <div className="flex items-center justify-between gap-4 border-b border-rule pb-4">
-                <div>
-                  <p className="type-section-label">{t("featuredProducts.label")}</p>
-                  <p className="mt-2 max-w-xl text-sm leading-7 text-foreground/76">{t("featuredProducts.body")}</p>
-                </div>
+              <div className="border-b border-rule pb-4">
+                <p className="type-section-label">{t("featuredProducts.label")}</p>
               </div>
 
               <div className="mt-5 space-y-4">
@@ -256,7 +245,6 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                   <div className="mt-5">
                     <ProductVisual name={heroLead.name} variant={heroLead.variant} />
                   </div>
-                  <p className="mt-5 text-sm leading-7 text-foreground/82">{heroLead.summary}</p>
                 </article>
 
                 <div className="grid gap-4 md:grid-cols-2">
@@ -274,7 +262,6 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                       <div className="mt-5">
                         <ProductVisual name={product.name} variant={product.variant} compact />
                       </div>
-                      <p className="mt-5 text-sm leading-7 text-foreground/82">{product.summary}</p>
                     </article>
                   ))}
                 </div>
@@ -348,18 +335,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
             </div>
 
             <div className="rounded-[2rem] border border-rule bg-card p-6 shadow-[0_16px_48px_rgba(10,10,11,0.05)] sm:p-8">
-              <div className="grid gap-3 sm:grid-cols-3">
-                {featuredProducts.map((product) => (
-                  <div key={product.name} className="rounded-2xl border border-rule bg-background px-4 py-4">
-                    <p className="type-meta">{product.status}</p>
-                    <p className="mt-2 text-xl font-medium tracking-[-0.03em] text-foreground">{product.name}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-5 h-px bg-rule" />
-
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {capabilities.map((capability) => (
                   <div key={capability} className="rounded-2xl border border-rule bg-background px-5 py-4 text-base tracking-[-0.02em] text-foreground">
                     {capability}
