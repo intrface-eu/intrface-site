@@ -1,0 +1,20 @@
+{
+  "name": "@intrface/convex",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.2.21",
+  "scripts": {
+    "dev": "bun ./bin/dev-wrapper.ts",
+    "dev:prod": "convex dev --prod",
+    "lint": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf .turbo node_modules convex/_generated"
+  },
+  "dependencies": {
+    "convex": "^1.23.0",
+    "resend": "^4.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

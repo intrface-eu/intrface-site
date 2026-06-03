@@ -8,11 +8,11 @@ export async function Header({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "Nav" });
 
   const navigation = [
-    { href: "/#projects", label: t("projects") },
+    { href: "/#products", label: t("projects") },
     { href: "/aoc", label: t("aoc") },
     { href: "/voyager", label: t("voyager") },
     { href: "/funda", label: t("funda") },
-    { href: "/#contact", label: t("contact") },
+    { href: "/#inquiry", label: t("contact") },
   ] as const;
 
   return (

@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "providers": {
+    "openai-codex": {
+      "openai-codex": {
+        "credentialId": "openai-codex",
+        "requests": [
+          {
+            "timestamp": 1777126856739,
+            "success": true,
+            "latencyMs": 21631
+          },
+          {
+            "timestamp": 1777128556208,
+            "success": true,
+            "latencyMs": 6745
+          },
+          {
+            "timestamp": 1777128560218,
+            "success": true,
+            "latencyMs": 3690
+          },
+          {
+            "timestamp": 1777128565724,
+            "success": true,
+            "latencyMs": 5001
+          },
+          {
+            "timestamp": 1777128570400,
+            "success": true,
+            "latencyMs": 4221
+          },
+          {
+            "timestamp": 1777128573904,
+            "success": true,
+            "latencyMs": 3161
+          },
+          {
+            "timestamp": 1777128594009,
+            "success": true,
+            "latencyMs": 12463
+          },
+          {
+            "timestamp": 1777128707324,
+            "success": true,
+            "latencyMs": 6025
+          },
+          {
+            "timestamp": 1777128712258,
+            "success": true,
+            "latencyMs": 4520
+          },
+          {
+            "timestamp": 1777128751594,
+            "success": true,
+            "latencyMs": 38953
+          },
+          {
+            "timestamp": 1777128841146,
+            "success": true,
+            "latencyMs": 3201
+          },
+          {
+            "timestamp": 1777128885955,
+            "success": true,
+            "latencyMs": 19885
+          },
+          {
+            "timestamp": 1777128893251,
+            "success": true,
+            "latencyMs": 7086
+          },
+          {
+            "timestamp": 1777128903622,
+            "success": true,
+            "latencyMs": 2854
+          },
+          {
+            "timestamp": 1777128915408,
+            "success": true,
+            "latencyMs": 4381
+          },
+          {
+            "timestamp": 1777128925848,
+            "success": true,
+            "latencyMs": 10043
+          },
+          {
+            "timestamp": 1777128929432,
+            "success": true,
+            "latencyMs": 3290
+          },
+          {
+            "timestamp": 1777128932860,
+            "success": true,
+            "latencyMs": 3139
+          },
+          {
+            "timestamp": 1777128951877,
+            "success": true,
+            "latencyMs": 7481
+          },
+          {
+            "timestamp": 1777129080728,
+            "success": true,
+            "latencyMs": 39382
+          }
+        ],
+        "cooldowns": [],
+        "lastScore": 0.8,
+        "lastCalculatedAt": 1777129080728
+      }
+    },
+    "kimi-coding": {
+      "kimi-coding": {
+        "credentialId": "kimi-coding",
+        "requests": [
+          {
+            "timestamp": 1776950772625,
+            "success": true,
+            "latencyMs": 15194
+          },
+          {
+            "timestamp": 1776950781932,
+            "success": true,
+            "latencyMs": 9070
+          },
+          {
+            "timestamp": 1776950789874,
+            "success": true,
+            "latencyMs": 7779
+          },
+          {
+            "timestamp": 1776950798276,
+            "success": true,
+            "latencyMs": 8207
+          },
+          {
+            "timestamp": 1776950804449,
+            "success": true,
+            "latencyMs": 5961
+          },
+          {
+            "timestamp": 1776950817890,
+            "success": true,
+            "latencyMs": 13060
+          },
+          {
+            "timestamp": 1776950831513,
+            "success": true,
+            "latencyMs": 13470
+          },
+          {
+            "timestamp": 1776950839874,
+            "success": true,
+            "latencyMs": 7868
+          },
+          {
+            "timestamp": 1776950856084,
+            "success": true,
+            "latencyMs": 15979
+          },
+          {
+            "timestamp": 1776950920227,
+            "success": true,
+            "latencyMs": 54034
+          },
+          {
+            "timestamp": 1776953097423,
+            "success": true,
+            "latencyMs": 52378
+          },
+          {
+            "timestamp": 1776954518571,
+            "success": true,
+            "latencyMs": 14613
+          },
+          {
+            "timestamp": 1776954523599,
+            "success": true,
+            "latencyMs": 4689
+          },
+          {
+            "timestamp": 1776954531867,
+            "success": true,
+            "latencyMs": 7793
+          },
+          {
+            "timestamp": 1776954538406,
+            "success": true,
+            "latencyMs": 6189
+          },
+          {
+            "timestamp": 1776954568503,
+            "success": true,
+            "latencyMs": 6224
+          },
+          {
+            "timestamp": 1776954629877,
+            "success": true,
+            "latencyMs": 51880
+          }
+        ],
+        "cooldowns": [],
+        "lastScore": 0.8,
+        "lastCalculatedAt": 1776954629877
+      }
+    }
+  }
+}

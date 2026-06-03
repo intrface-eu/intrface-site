@@ -15,89 +15,62 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Gradimo AI-native platforme, proizvode i sustave.",
-      "body": "Intrface je product-led studio koji gradi ozbiljan softver s platformskim pristupom. Naš ključni rad obuhvaća terminal-first AI alate, sustave za turističko istraživanje i platforme za workflowe financiranja.",
-      "primaryCta": "Pogledaj projekte",
-      "secondaryCta": "Javi nam se"
+      "title": "Fokusirani produktni sustavi za kompleksne domene.",
+      "body": "Intrface gradi i vodi obitelj proizvoda kroz kulturu, financiranje i engineering — svaki oblikovan oko stvarnih workflowa, jasnih sučelja i trajnih tehničkih temelja.",
+      "primaryCta": "Pogledaj proizvode",
+      "secondaryCta": "Započni razgovor"
     },
-    "whatWeDo": {
-      "label": "Što Intrface radi",
-      "title": "Jasnoća proizvoda, sistemska poluga i AI koji se ponaša kao stvarna infrastruktura.",
-      "body": "Ne predstavljamo nepovezane eksperimente. Portfolio je izgrađen oko trajnog dizajna workflowa, ponovne upotrebljive arhitekture i produktnih sučelja koja brzo komuniciraju vrijednost."
-    },
-    "operatingBlocks": {
-      "buildProducts": {
-        "title": "Gradimo proizvode",
-        "text": "Dizajniramo i isporučujemo produktna sučelja koja se jasno objašnjavaju sama od sebe i skaliraju dalje od jednokratnog prototipa."
-      },
-      "designSystems": {
-        "title": "Dizajn sustavi",
-        "text": "Stvaramo ponovno upotrebljive temelje za navigaciju, tipografiju, interakciju i arhitekturu sadržaja kroz rastući portfolio."
-      },
-      "operationalizeAi": {
-        "title": "Operativiziramo AI",
-        "text": "AI pretvaramo iz funkcionalnosti u radnu infrastrukturu kroz agente, memoriju, orkestraciju i workflowe svjesne znanja."
-      },
-      "platformLeverage": {
-        "title": "Stvaramo platformsku polugu",
-        "text": "Tražimo ponovljive sustave ispod svakog proizvoda kako bi portfolio s vremenom postajao sve koherentniji."
-      }
-    },
-    "featuredProducts": {
-      "label": "Istaknuti proizvodi",
-      "title": "Tri ključna proizvoda. Jedan portfolio oblikovan zajedničkim sistemskim razmišljanjem.",
-      "body": "AOC, Voyager i Funda djeluju u različitim domenama, ali svi slijede isti pristup: istina proizvoda na prvom mjestu, snažna struktura workflowa i softver izgrađen da nosi operativnu složenost.",
-      "status": "Flagship",
-      "aoc": {
-        "summary": "Terminal-first AI workspace za razvoj svjestan konteksta, memoriju, orkestraciju zadataka i ujednačen operatorski tok.",
-        "cta": "Istraži AOC"
-      },
+    "products": {
+      "label": "Products",
+      "title": "Three product worlds under one Intrface brand.",
+      "body": "Voyager, Funda, and AOC are distinct products with their own audiences, visual language, and operating logic. The parent site presents them clearly without forcing them into one generic AI story.",
+      "proofLabel": "Product signal",
       "voyager": {
-        "summary": "AI-pokretana turistička platforma koja spaja istraživanje, mape, višejezični sadržaj i multi-agent vođenje.",
-        "cta": "Istraži Voyager"
+        "domain": "Tourism and culture",
+        "summary": "A platform for destinations, venues, cultural sites, and travelers — built around maps, verified local context, multilingual discovery, and real places.",
+        "proof": "Voyager is strongest when shown through place: atlas views, venue context, events, Guardian/Nexus agents, and cultural discovery flows.",
+        "cta": "Explore Voyager"
       },
       "funda": {
-        "summary": "Platforma za prilike financiranja izgrađena oko otkrivanja, uparivanja, suradnje i AI-pomognutih workflowa prijave.",
-        "cta": "Istraži Fundu"
+        "domain": "Funding opportunities",
+        "summary": "A platform for discovering funding opportunities, assessing fit, and moving applications through a structured workspace for teams and consultants.",
+        "proof": "Funda is strongest when shown through workflow: opportunity matching, eligibility guidance, documents, checklists, notes, and application progress.",
+        "cta": "Explore Funda"
+      },
+      "aoc": {
+        "domain": "Agentic engineering",
+        "summary": "An open-source terminal workspace for context-aware engineering, project memory, tasks, and education around serious agentic coding practice.",
+        "proof": "AOC is strongest when shown as craft: terminal-native operation, context files, task systems, repo navigation, and a teachable engineering method.",
+        "cta": "Explore AOC"
       }
     },
-    "capabilities": {
-      "label": "Zajedničke platformske mogućnosti",
-      "title": "Tehničku dubinu prevodimo u produktnu sposobnost.",
-      "body": "Portfolio pokriva različite industrije, ali iste platformske snage pojavljuju se kroz sav rad: memorija, orkestracija, dozvole, interakcija u stvarnom vremenu i korisničko iskustvo svjesno znanja.",
-      "items": [
-        "AI agenti i orkestracija",
-        "Trajni sustavi zadataka i memorije",
-        "Platformska arhitektura temeljena na ulogama",
-        "Višejezična iskustva",
-        "Produktni workflowi u stvarnom vremenu",
-        "Sučelja svjesna znanja"
-      ]
-    },
-    "whyIntrface": {
-      "label": "Zašto Intrface",
-      "title": "Ne zbirka izoliranih aplikacija — nego koherentna praksa proizvoda i platforme.",
-      "body": "Ono što povezuje naš rad jest sklonost trajnim sustavima. Važno nam je kako se proizvodima upravlja, kako informacije ostaju prisutne, kako sučelja ostaju čitljiva pod složenošću i kako infrastruktura postaje strateška prednost umjesto skrivenog troška."
-    },
-    "proof": {
-      "publicProductTruth": {
-        "label": "Javna istina proizvoda",
-        "text": "AOC, Voyager i Funda utemeljeni su u aktivnim repozitorijima, dokumentaciji i implementacijskim detaljima, a ne u apstraktnom portfolio copyju."
+    "principles": {
+      "label": "How we build",
+      "title": "Product discipline beneath every surface.",
+      "body": "The products are different on purpose. What carries across them is the way we handle complexity: start from the domain, make the interface legible, and let infrastructure support the experience without becoming the headline.",
+      "domain": {
+        "title": "Domain-first systems",
+        "text": "We begin with the real operating environment: tourism boards and venues, funding teams and consultants, engineers and repositories."
       },
-      "systemThinking": {
-        "label": "Sistemsko razmišljanje",
-        "text": "Kroz proizvode se stalno vraćaju iste teme: kontekst, orkestracija, tokovi svjesni uloga, navigacija i trajno operatorsko iskustvo."
+      "interface": {
+        "title": "Interfaces that clarify",
+        "text": "The surface has to make complexity easier to work with — through navigation, hierarchy, language, and deliberate visual structure."
       },
-      "staticFirstClarity": {
-        "label": "Static-first jasnoća",
-        "text": "Site se gradi da objasni stvarne proizvode s visokim signalom, čistom strukturom i prostorom za rast portfolija."
+      "infrastructure": {
+        "title": "Infrastructure that disappears",
+        "text": "AI, realtime data, roles, email, storage, and automation matter most when they feel natural inside the product flow."
       }
     },
-    "finalCta": {
-      "label": "Završni CTA",
-      "title": "Istraži portfolio, pregledaj ključne proizvode ili započni smislen razgovor.",
-      "body": "Intrface gradi javni produktni ekosustav oko stvarnog rada. Ako želiš razgovarati o proizvodu, suradnji ili sustavima koji stoje ispod njih, ovdje trebaš početi.",
-      "primaryCta": "Pogledaj projekte"
+    "inquiry": {
+      "label": "Open inquiry",
+      "title": "Talk to Intrface about a product, partnership, or system.",
+      "body": "The public site is the front door. Bring a domain problem, a collaboration idea, or a product conversation — we will route it to the right surface.",
+      "items": {
+        "general": "General Intrface inquiry",
+        "voyager": "Voyager tourism and culture",
+        "funda": "Funda funding workflows",
+        "aoc": "AOC education and engineering"
+      }
     }
   },
   "AocPage": {
@@ -196,8 +169,8 @@
   "VoyagerPage": {
     "hero": {
       "label": "Ključni proizvod",
-      "title": "AI-pokretana turistička platforma izgrađena za destinacije, poslovne subjekte i putnike.",
-      "body": "Voyager spaja multi-agent vođenje, gamificirano istraživanje, višejezične operacije sadržaja i platformsku infrastrukturu na razini destinacije u jedan turistički sustav.",
+      "title": "AI turistička platforma za destinacije, tvrtke, organizacije i putnike.",
+      "body": "Voyager spaja četiri kontekstualna agenta, gamificirano istraživanje, višejezične content operacije i platformsku infrastrukturu za destinacije u jedan turistički sustav.",
       "primaryCta": "Istraži Voyager",
       "secondaryCta": "Istraži arhitekturu platforme",
       "tertiaryCta": "Razgovaraj o partnerstvu"
@@ -205,7 +178,7 @@
     "platform": {
       "label": "Što je Voyager",
       "title": "Više od travel aplikacije: multi-tenant turistička platforma s jasnom tezom istraživanja.",
-      "body": "Voyager je izgrađen za cijeli destinacijski ekosustav, ne samo za pregledavanje od strane krajnjih korisnika. Povezuje agencije, poslovne subjekte, atrakcije i putnike u jednu platformu u kojoj se otkrivanje, sadržaj i AI pomoć međusobno pojačavaju."
+      "body": "Voyager je građen za ekosustav destinacije, ne samo za korisničko pregledavanje. Povezuje agencije, tvrtke, atrakcije, organizacije i putnike u jednoj platformi gdje se otkrivanje, sadržaj i AI asistencija međusobno pojačavaju."
     },
     "audience": {
       "items": [
@@ -220,13 +193,17 @@
         {
           "title": "Za putnike i scoutove",
           "text": "Putovanje postaje istraživačko umjesto pasivno, kroz otkrivanje vođeno mapom, guidance svjesnu lokacije i uranjajuće interakcije s atrakcijama."
+        },
+        {
+          "title": "Za organizacije i zajednice",
+          "text": "Organizacije dobivaju community agenta za događaje, koordinaciju članova, zajedničku lokalnu aktivnost i teritorijalno znanje."
         }
       ]
     },
     "agents": {
       "label": "Multi-agent sustav",
-      "title": "Tri domenski specifična agenta, svaki vezan uz različitu turističku površinu.",
-      "body": "Voyagerovi agenti nisu generički chat wrapperi. To su konfigurirani entiteti s vlastitom ulogom, znanjem i route-aware kontekstom. Strukturirano znanje i RAG podupiru sustav u pozadini.",
+      "title": "Četiri kontekstualna agenta, svaki vezan uz drugačiju turističku površinu.",
+      "body": "Voyager agenti nisu generički chat omotači. To su konfigurirani entiteti s vlastitom ulogom, znanjem, route-aware kontekstom i stakeholderskom površinom. Strukturirano znanje i RAG podržavaju sustav u pozadini.",
       "items": [
         {
           "persona": "The Guide",
@@ -242,6 +219,11 @@
           "persona": "The Historian",
           "domain": "Attractions",
           "summary": "Kontekst fokusiran na atrakcije, kulturno pripovijedanje i gamificirane Scout interakcije za smislen angažman na lokaciji."
+        },
+        {
+          "persona": "The Community Specialist",
+          "domain": "Organizations",
+          "summary": "Asistencija za organizacije i zajednice: događaji, članovi, ride-share koordinacija, onboarding i zajednička lokalna aktivnost."
         }
       ]
     },
@@ -283,7 +265,13 @@
       "label": "Struktura platforme",
       "title": "Model dionika dizajniran za cijeli turistički stack.",
       "body": "Voyager djeluje kao platforma jer je organiziran oko odnosa između više aktera, a ne oko jedne korisničke uloge.",
-      "items": ["Agencies", "Businesses", "Attractions", "Users / Scouts"]
+      "items": [
+        "Agencije",
+        "Tvrtke",
+        "Atrakcije",
+        "Organizacije",
+        "Korisnici / Scoutovi"
+      ]
     },
     "proof": {
       "label": "Dokaz proizvoda",
@@ -291,11 +279,11 @@
       "items": [
         {
           "label": "Multi-agent arhitektura",
-          "text": "Voyager, Nexus i Guardian implementirani su kao domenski specifični agenti sa svojom konfiguracijom, znanjem i kontekstom entiteta."
+          "text": "Voyager, Nexus, Guardian i Vita implementirani su kao domenski specifični agenti sa svojom konfiguracijom, znanjem i kontekstom entiteta."
         },
         {
           "label": "Route-aware prebacivanje konteksta",
-          "text": "Rute za agencije, poslovne subjekte i atrakcije aktiviraju odgovarajućeg agenta i drže ponašanje chata vezanim uz kontekst entiteta."
+          "text": "Rute za agencije, tvrtke, atrakcije i organizacije aktiviraju relevantnog agenta i vežu chat ponašanje uz kontekst entiteta."
         },
         {
           "label": "Sustav svjestan znanja",

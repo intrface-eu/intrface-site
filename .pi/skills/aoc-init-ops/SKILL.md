@@ -17,10 +17,16 @@ description: Initialize or repair AOC context, memory, and tasks safely.
 - Generates `.aoc/context.md`
 - Seeds `.aoc/memory.md`
 - Seeds `.aoc/stm/current.md` and `.aoc/stm/archive/` without overwriting existing STM files
-- Ensures PRD directory `.taskmaster/docs/prds/` is available for tag/task links
+- Ensures spec directory `.taskmaster/docs/specs/` is available for tag/task links
 - Seeds `.pi/settings.json` when missing
-- Seeds PI prompt templates in `.pi/prompts/` (`/aoc-ops`, `/teach`, `/teach-full`, `/teach-dive`, `/teach-ask`, `/tm-cc`) when missing
-- Seeds PI default extensions in `.pi/extensions/` (`minimal.ts`, `themeMap.ts`) when missing
-- Migrates missing legacy PI prompts/skills from `.aoc/prompts/pi/` and `.aoc/skills/` into `.pi/**` (non-destructive), and cleans safe `tmcc` prompt alias duplicates
-- Optional MoreMotion prompt `/momo` is seeded by `aoc-momo init`
+- Seeds and refreshes managed core PI prompt templates in `.pi/prompts/` (`/aoc-ops`, `/tm-cc`, `/implement`, `/lexicon`, `/handoff`, `/rresume`, `/commit`)
+- Keeps optional video prompts in `.pi/prompts-optional/production-hidden/`; legacy teach prompts are not seeded (use `aoc-understand`)
+- Seeds PI default extensions in `.pi/extensions/` (`minimal.ts`, `themeMap.ts`, `mind-ingest.ts`, `mind-ops.ts`, `mind-context.ts`, `mind-focus.ts`, `aoc-models.ts`, `aoc-agent-presence.ts`, `aoc-codegraph.ts`, `aoc-compaction.ts`, `subagent.ts`, plus `lib/mind.ts` and `lib/caveman.ts`) when missing
+- Seeds the preset runtime family in `.pi/extensions/aoc-presets/` when missing
+- Seeds reusable preset assets in `.aoc/presets/{design,hyperframes,ops,research,test}/` and `.aoc/layouts/design.kdl` when missing
+- Seeds `.aoc/init-state.json` with the current AOC project version and applies version-specific migrations on older repos
+- Seeds the vendored local PI multi-auth package at `.pi/packages/pi-multi-auth-aoc` and wires `.pi/settings.json` to load it only when the package is available
+- Removes legacy global npm `pi-multi-auth` package entries from `~/.pi/agent/settings.json` to avoid duplicate extension loading
+- Installs the managed AOC Zellij top-bar plugin to `~/.config/zellij/plugins/zjstatus-aoc.wasm`
+- Migrates missing legacy project-local PI prompts/skills from `.aoc/prompts/pi/` and `.aoc/skills/` into `.pi/**` (non-destructive), and cleans safe `tmcc` prompt alias duplicates
 - Ensures `.pi/skills` baseline (PI-first canonical)

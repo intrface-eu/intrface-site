@@ -1,415 +1,280 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
+import { FadeIn } from "@/components/site/fade-in";
+import {
+  CapabilityConstellation,
+  ProductArtifact,
+  ProductWorldsMosaic,
+} from "@/components/visual/product-artifacts";
+import { HalftoneDots } from "@/components/visual/halftone-dots";
+import {
+  IconArrowRight,
+  IconBrain,
+  IconBuildingBank,
+  IconMap2,
+  IconRoute,
+  IconSearch,
+  IconTerminal2,
+} from "@tabler/icons-react";
 
-type ProductVariant = "aoc" | "voyager" | "funda";
+type ProductVariant = "voyager" | "funda" | "aoc";
 
-type FeaturedProduct = {
+type Product = {
   variant: ProductVariant;
   name: string;
-  href: "/aoc" | "/voyager" | "/funda";
-  status: string;
+  href: "/voyager" | "/funda" | "/aoc";
+  domain: string;
   summary: string;
+  proof: string;
   cta: string;
+  thesis: string;
+  bullets: readonly string[];
 };
 
-function ProductVisual({
-  name,
-  variant,
-  compact = false,
-}: {
-  name: string;
-  variant: ProductVariant;
-  compact?: boolean;
-}) {
-  const palette =
-    variant === "aoc"
-      ? {
-          frame: "#11161f",
-          glow: "rgba(16, 185, 129, 0.18)",
-          accent: "#1f8f73",
-          line: "rgba(226, 232, 240, 0.8)",
-          tint: "linear-gradient(135deg, rgba(18, 25, 36, 0.96), rgba(8, 12, 20, 0.92))",
-        }
-      : variant === "voyager"
-        ? {
-            frame: "#102033",
-            glow: "rgba(14, 165, 233, 0.16)",
-            accent: "#1d82b8",
-            line: "rgba(226, 232, 240, 0.78)",
-            tint: "linear-gradient(135deg, rgba(15, 30, 46, 0.96), rgba(11, 19, 31, 0.92))",
-          }
-        : {
-            frame: "#201718",
-            glow: "rgba(244, 114, 182, 0.16)",
-            accent: "#c3557f",
-            line: "rgba(255, 241, 242, 0.8)",
-            tint: "linear-gradient(135deg, rgba(34, 17, 23, 0.96), rgba(24, 14, 18, 0.92))",
-          };
-
-  return (
-    <div className="overflow-hidden rounded-[1.6rem] border border-rule bg-card p-3 shadow-[0_12px_40px_rgba(10,10,11,0.05)]">
-      <div
-        className={`relative overflow-hidden rounded-[1.15rem] border border-white/50 ${compact ? "aspect-[16/10]" : "aspect-[16/11]"}`}
-        style={{
-          background: palette.tint,
-          boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 50px ${palette.glow}`,
-        }}
-      >
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-            backgroundSize: compact ? "22px 22px" : "26px 26px",
-          }}
-        />
-
-        <div
-          className="absolute inset-x-0 top-0 h-16"
-          style={{
-            background: `linear-gradient(180deg, ${palette.glow}, transparent)`,
-          }}
-        />
-
-        <div className="absolute left-4 right-4 top-4 flex items-center justify-between gap-3">
-          <div className="rounded-full border border-white/12 bg-black/18 px-3 py-1 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-white/78">
-            {name}
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/45" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/12" />
-          </div>
-        </div>
-
-        {variant === "aoc" ? (
-          <>
-            <div className="absolute inset-y-16 left-4 w-[20%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute inset-y-16 right-4 w-[18%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute bottom-4 left-[24%] right-[22%] top-16 rounded-[1rem] border" style={{ borderColor: palette.accent }} />
-            <div className="absolute left-[27%] right-[25%] top-[31%] h-2 rounded-full" style={{ background: palette.line }} />
-            <div className="absolute left-[27%] right-[33%] top-[40%] h-2 rounded-full bg-white/40" />
-            <div className="absolute left-[27%] right-[29%] top-[49%] h-2 rounded-full bg-white/28" />
-            <div className="absolute bottom-7 left-[27%] right-[29%] h-10 rounded-[0.9rem] border border-white/10 bg-black/18" />
-          </>
-        ) : variant === "voyager" ? (
-          <>
-            <div className="absolute inset-4 rounded-[1rem] border border-white/12 bg-black/12" />
-            <div className="absolute left-[10%] top-[18%] h-[52%] w-[48%] rounded-[999px] border border-white/18" />
-            <div className="absolute left-[18%] top-[26%] h-[36%] w-[34%] rounded-[999px] border border-white/12" />
-            <div className="absolute left-[42%] top-[30%] h-3 w-3 rounded-full" style={{ background: palette.accent }} />
-            <div className="absolute left-[56%] top-[22%] h-[18%] w-[28%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute left-[56%] top-[44%] h-[30%] w-[28%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute bottom-[18%] left-[56%] right-[18%] h-2 rounded-full bg-white/42" />
-          </>
-        ) : (
-          <>
-            <div className="absolute left-4 right-4 top-16 h-12 rounded-[1rem] border border-white/12 bg-black/16" />
-            <div className="absolute left-4 top-[43%] h-[34%] w-[44%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute right-4 top-[43%] h-[16%] w-[42%] rounded-[1rem] border border-white/12 bg-black/18" />
-            <div className="absolute right-4 top-[64%] h-[13%] w-[42%] rounded-[1rem] border border-white/12 bg-black/12" />
-            <div className="absolute left-[12%] top-[57%] h-2 w-[24%] rounded-full" style={{ background: palette.line }} />
-            <div className="absolute right-[16%] top-[50%] h-2 w-[18%] rounded-full bg-white/40" />
-          </>
-        )}
-
-        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-[0.72rem] uppercase tracking-[0.16em] text-white/62">
-          <span>visual</span>
-          <span>placeholder</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+const productTheme: Record<
+  ProductVariant,
+  {
+    eyebrow: string;
+    accent: string;
+    soft: string;
+    text: string;
+    icon: React.ElementType;
+  }
+> = {
+  voyager: {
+    eyebrow: "text-emerald-700",
+    accent: "#10b981",
+    soft: "bg-emerald-600/10",
+    text: "text-emerald-700",
+    icon: IconMap2,
+  },
+  funda: {
+    eyebrow: "text-rose-700",
+    accent: "#e11d48",
+    soft: "bg-rose-600/10",
+    text: "text-rose-700",
+    icon: IconBuildingBank,
+  },
+  aoc: {
+    eyebrow: "text-sky-700",
+    accent: "#0ea5e9",
+    soft: "bg-sky-600/10",
+    text: "text-sky-700",
+    icon: IconTerminal2,
+  },
+};
 
 export async function HomePage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomePage" });
 
-  const operatingBlocks = [
-    {
-      title: t("operatingBlocks.buildProducts.title"),
-      text: t("operatingBlocks.buildProducts.text"),
-    },
-    {
-      title: t("operatingBlocks.designSystems.title"),
-      text: t("operatingBlocks.designSystems.text"),
-    },
-    {
-      title: t("operatingBlocks.operationalizeAi.title"),
-      text: t("operatingBlocks.operationalizeAi.text"),
-    },
-    {
-      title: t("operatingBlocks.platformLeverage.title"),
-      text: t("operatingBlocks.platformLeverage.text"),
-    },
-  ] as const;
-
-  const featuredProducts: readonly FeaturedProduct[] = [
-    {
-      variant: "aoc",
-      name: "AOC",
-      href: "/aoc",
-      status: t("featuredProducts.status"),
-      summary: t("featuredProducts.aoc.summary"),
-      cta: t("featuredProducts.aoc.cta"),
-    },
+  const products: readonly Product[] = [
     {
       variant: "voyager",
       name: "Voyager",
       href: "/voyager",
-      status: t("featuredProducts.status"),
-      summary: t("featuredProducts.voyager.summary"),
-      cta: t("featuredProducts.voyager.cta"),
+      domain: t("products.voyager.domain"),
+      summary: t("products.voyager.summary"),
+      proof: t("products.voyager.proof"),
+      cta: t("products.voyager.cta"),
+      thesis: "Tourism intelligence presented as a live operational atlas.",
+      bullets: ["Geospatial discovery", "Scout and guardian agents", "Multilingual place context"],
     },
     {
       variant: "funda",
       name: "Funda",
       href: "/funda",
-      status: t("featuredProducts.status"),
-      summary: t("featuredProducts.funda.summary"),
-      cta: t("featuredProducts.funda.cta"),
+      domain: t("products.funda.domain"),
+      summary: t("products.funda.summary"),
+      proof: t("products.funda.proof"),
+      cta: t("products.funda.cta"),
+      thesis: "Funding workflows that turn eligibility into visible progress.",
+      bullets: ["Opportunity matching", "Application workspace", "Role-aware review"],
+    },
+    {
+      variant: "aoc",
+      name: "AOC",
+      href: "/aoc",
+      domain: t("products.aoc.domain"),
+      summary: t("products.aoc.summary"),
+      proof: t("products.aoc.proof"),
+      cta: t("products.aoc.cta"),
+      thesis: "An operator cockpit for serious agentic engineering practice.",
+      bullets: ["Persistent context", "Memory and tasks", "Terminal-native workflow"],
     },
   ] as const;
 
   const capabilities = [
-    t("capabilities.items.0"),
-    t("capabilities.items.1"),
-    t("capabilities.items.2"),
-    t("capabilities.items.3"),
-    t("capabilities.items.4"),
-    t("capabilities.items.5"),
+    { icon: IconBrain, title: "AI agents and orchestration", text: "Agent behavior is shown as a product capability, not as a generic AI badge." },
+    { icon: IconRoute, title: "Realtime workflow state", text: "Maps, applications, and tasks expose the transitions that matter to operators." },
+    { icon: IconSearch, title: "Search, RAG, and memory", text: "The interface makes retrieval and persistence visible where decisions happen." },
+    { icon: IconMap2, title: "Geospatial systems", text: "Voyager anchors the portfolio in live place, route, and entity views." },
+    { icon: IconBuildingBank, title: "Institutional roles", text: "Funda supports applicants, consultants, admins, directors, and superusers." },
+    { icon: IconTerminal2, title: "Operator tools", text: "AOC turns repo context and task state into a terminal-native cockpit." },
   ] as const;
 
-  const proofItems = [
-    {
-      label: t("proof.publicProductTruth.label"),
-      text: t("proof.publicProductTruth.text"),
-    },
-    {
-      label: t("proof.systemThinking.label"),
-      text: t("proof.systemThinking.text"),
-    },
-    {
-      label: t("proof.staticFirstClarity.label"),
-      text: t("proof.staticFirstClarity.text"),
-    },
+  const inquiryItems = [
+    t("inquiry.items.general"),
+    t("inquiry.items.voyager"),
+    t("inquiry.items.funda"),
+    t("inquiry.items.aoc"),
   ] as const;
-
-  const heroLead = featuredProducts[0];
-  const heroSupport = featuredProducts.slice(1);
 
   return (
-    <main>
-      <section className="border-b border-rule bg-background">
-        <div className="section-shell py-18 sm:py-24 lg:py-28">
-          <div className="grid gap-12 xl:grid-cols-[1.02fr_0.98fr] xl:items-start">
-            <div className="max-w-5xl space-y-8">
-              <p className="type-section-label">Intrface</p>
-              <h1 className="type-display max-w-5xl">{t("hero.title")}</h1>
-              <p className="type-body-lg max-w-3xl">{t("hero.body")}</p>
-
-              <div className="flex flex-wrap gap-3 pt-1">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center justify-center rounded-md bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90"
-                >
+    <main className="bg-[#f5f1eb] text-[var(--intrface-ink)]">
+      <section className="relative overflow-hidden border-b border-black/10">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute right-[-12rem] top-[-16rem] h-[42rem] w-[42rem] rounded-full bg-emerald-700/8 blur-[100px]" />
+          <div className="absolute bottom-[-20rem] left-[-16rem] h-[42rem] w-[42rem] rounded-full bg-rose-700/8 blur-[100px]" />
+          <div className="absolute inset-x-0 top-20 h-80 halftone-field opacity-25 [--halftone-color:var(--intrface-ink)] [--halftone-size:34px]" data-drift="true" />
+        </div>
+        <div className="section-shell relative grid gap-14 py-24 sm:py-32 lg:grid-cols-[.95fr_1.05fr] lg:items-center lg:py-36">
+          <div className="max-w-5xl">
+            <FadeIn>
+              <p className="type-section-label">Intrface product systems</p>
+            </FadeIn>
+            <FadeIn delay={100}>
+              <h1 className="mt-6 max-w-5xl text-[3.5rem] font-semibold leading-[0.9] tracking-[-0.07em] sm:text-[5.4rem] lg:text-[6.4rem]">
+                {t("hero.title")}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={200}>
+              <p className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
+                {t("hero.body")}
+              </p>
+            </FadeIn>
+            <FadeIn delay={300}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a href="#products" className="artifact-button rounded-full bg-[var(--intrface-ink)] px-8 py-4 text-sm font-semibold text-white shadow-xl">
                   {t("hero.primaryCta")}
                 </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-md border border-rule bg-card px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-panel"
-                >
+                <a href="#inquiry" className="artifact-button inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-8 py-4 text-sm font-semibold text-[var(--intrface-ink)] hover:bg-white">
                   {t("hero.secondaryCta")}
+                  <IconArrowRight className="h-4 w-4" />
                 </a>
               </div>
-
+            </FadeIn>
+          </div>
+          <FadeIn delay={180}>
+            <div className="relative">
+              <HalftoneDots variant="ink" density="coarse" className="pointer-events-none absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] opacity-45" />
+              <ProductWorldsMosaic />
             </div>
+          </FadeIn>
+        </div>
+      </section>
 
-            <div className="rounded-[2rem] border border-rule bg-panel/70 p-4 sm:p-6 shadow-[0_24px_80px_rgba(10,10,11,0.06)]">
-              <div className="border-b border-rule pb-4">
-                <p className="type-section-label">{t("featuredProducts.label")}</p>
-              </div>
+      <section id="products" className="scroll-mt-24 border-b border-black/10">
+        <div className="section-shell py-20 sm:py-24">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <FadeIn><p className="type-section-label">{t("products.label")}</p></FadeIn>
+              <FadeIn delay={100}><h2 className="type-heading mt-4 max-w-2xl">{t("products.title")}</h2></FadeIn>
+            </div>
+            <FadeIn delay={200}><p className="max-w-xl text-base leading-7 text-slate-600">{t("products.body")}</p></FadeIn>
+          </div>
 
-              <div className="mt-5 space-y-4">
-                <article className="rounded-[1.8rem] border border-rule bg-card p-5 shadow-[0_16px_40px_rgba(10,10,11,0.04)]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="type-meta">{heroLead.status}</p>
-                      <h2 className="mt-3 text-[2rem] font-medium tracking-[-0.05em] text-foreground">{heroLead.name}</h2>
-                    </div>
-                    <Link href={heroLead.href} className="text-sm font-medium text-accent hover:opacity-80">
-                      {heroLead.cta}
-                    </Link>
-                  </div>
-                  <div className="mt-5">
-                    <ProductVisual name={heroLead.name} variant={heroLead.variant} />
-                  </div>
-                </article>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  {heroSupport.map((product) => (
-                    <article key={product.name} className="rounded-[1.8rem] border border-rule bg-card p-5 shadow-[0_16px_40px_rgba(10,10,11,0.04)]">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <p className="type-meta">{product.status}</p>
-                          <h2 className="mt-3 text-[1.65rem] font-medium tracking-[-0.05em] text-foreground">{product.name}</h2>
+          <div className="mt-12 grid gap-8">
+            {products.map((product, index) => {
+              const theme = productTheme[product.variant];
+              const Icon = theme.icon;
+              const reverse = index % 2 === 1;
+              return (
+                <FadeIn key={product.name} delay={100}>
+                  <article
+                    className="grid gap-8 overflow-hidden rounded-[2.75rem] border border-black/10 bg-white/62 p-5 shadow-[0_34px_100px_-70px_rgba(15,23,41,.55)] lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:p-8"
+                    style={{ "--artifact-accent": theme.accent } as React.CSSProperties}
+                  >
+                    <div className={reverse ? "lg:order-2" : undefined}>
+                      <div className="flex items-center gap-3">
+                        <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${theme.soft}`}>
+                          <Icon className={`h-6 w-6 ${theme.text}`} />
                         </div>
-                        <Link href={product.href} className="text-sm font-medium text-accent hover:opacity-80">
-                          {product.cta}
-                        </Link>
+                        <div>
+                          <p className={`text-xs font-semibold uppercase tracking-[.2em] ${theme.eyebrow}`}>{product.domain}</p>
+                          <h3 className="mt-1 text-4xl font-semibold tracking-[-.055em] text-[var(--intrface-ink)] sm:text-5xl">{product.name}</h3>
+                        </div>
                       </div>
-                      <div className="mt-5">
-                        <ProductVisual name={product.name} variant={product.variant} compact />
+                      <p className="mt-6 max-w-2xl text-xl font-semibold leading-8 tracking-[-.035em] text-slate-950">{product.thesis}</p>
+                      <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">{product.summary}</p>
+                      <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                        {product.bullets.map((bullet) => (
+                          <div key={bullet} className="rounded-2xl border border-black/8 bg-white/72 px-4 py-3 text-sm font-medium text-slate-700">
+                            {bullet}
+                          </div>
+                        ))}
                       </div>
+                      <div className="mt-7 rounded-[1.4rem] border border-black/8 bg-white/62 p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[.18em] text-slate-500">{t("products.proofLabel")}</p>
+                        <p className="mt-3 text-base leading-7 text-slate-700">{product.proof}</p>
+                      </div>
+                      <Link href={product.href} className={`artifact-button mt-7 inline-flex items-center gap-2 rounded-full bg-white/80 px-5 py-3 text-sm font-semibold ${theme.text}`}>
+                        {product.cta}
+                        <IconArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                    <div className={reverse ? "lg:order-1" : undefined}>
+                      <ProductArtifact variant={product.variant} />
+                    </div>
+                  </article>
+                </FadeIn>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-black/10 bg-[#fbf8f2]">
+        <div className="section-shell py-20 sm:py-24">
+          <div className="grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:items-start">
+            <div>
+              <FadeIn><p className="type-section-label">{t("principles.label")}</p></FadeIn>
+              <FadeIn delay={100}><h2 className="type-heading mt-4 max-w-lg">{t("principles.title")}</h2></FadeIn>
+              <FadeIn delay={200}><p className="mt-5 max-w-lg text-base leading-7 text-slate-600">{t("principles.body")}</p></FadeIn>
+              <FadeIn delay={250}><div className="mt-8"><CapabilityConstellation /></div></FadeIn>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {capabilities.map((capability, i) => {
+                const Icon = capability.icon;
+                return (
+                  <FadeIn key={capability.title} delay={100 + i * 60}>
+                    <article className="artifact-card h-full rounded-[2rem] p-6">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950/5">
+                        <Icon className="h-5 w-5 text-slate-800" />
+                      </div>
+                      <h3 className="mt-5 text-xl font-semibold tracking-[-.035em]">{capability.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-slate-600">{capability.text}</p>
                     </article>
+                  </FadeIn>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="inquiry" className="scroll-mt-24 bg-[var(--intrface-ink)] text-white">
+        <div className="section-shell py-20 sm:py-24">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-end">
+            <div>
+              <FadeIn><p className="text-xs font-semibold uppercase tracking-[.24em] text-white/45">{t("inquiry.label")}</p></FadeIn>
+              <FadeIn delay={100}><h2 className="mt-5 max-w-3xl text-[3rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-[4.2rem]">{t("inquiry.title")}</h2></FadeIn>
+              <FadeIn delay={200}><p className="mt-7 max-w-2xl text-lg leading-8 text-white/65">{t("inquiry.body")}</p></FadeIn>
+            </div>
+            <FadeIn delay={250}>
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.04] p-6">
+                <div className="pointer-events-none absolute inset-0 halftone-field opacity-20 [--halftone-color:white] [--halftone-size:24px]" aria-hidden="true" />
+                <div className="relative grid gap-3 sm:grid-cols-2">
+                  {inquiryItems.map((item) => (
+                    <div key={item} className="rounded-2xl border border-white/10 bg-white/[.03] px-4 py-4 text-sm text-white/78">{item}</div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-rule bg-panel">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
-            <div className="space-y-4">
-              <p className="type-section-label">{t("whatWeDo.label")}</p>
-              <h2 className="type-heading max-w-md">{t("whatWeDo.title")}</h2>
-              <p className="type-body max-w-lg">{t("whatWeDo.body")}</p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {operatingBlocks.map((block) => (
-                <article key={block.title} className="rounded-2xl border border-rule bg-card p-6 shadow-[0_12px_36px_rgba(10,10,11,0.04)]">
-                  <h3 className="text-xl font-medium tracking-[-0.03em] text-foreground">{block.title}</h3>
-                  <p className="type-body mt-3">{block.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="border-b border-rule bg-background scroll-mt-24">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div className="space-y-3">
-              <p className="type-section-label">{t("featuredProducts.label")}</p>
-              <h2 className="type-heading max-w-2xl">{t("featuredProducts.title")}</h2>
-            </div>
-            <p className="type-body max-w-xl">{t("featuredProducts.body")}</p>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {featuredProducts.map((product) => (
-              <article key={product.name} className="flex h-full flex-col rounded-[2rem] border border-rule bg-card p-6 shadow-[0_16px_48px_rgba(10,10,11,0.05)]">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="type-meta">{product.status}</p>
-                  <div className="h-2.5 w-2.5 rounded-full bg-accent" />
-                </div>
-
-                <div className="mt-6">
-                  <ProductVisual name={product.name} variant={product.variant} compact />
-                </div>
-
-                <h3 className="mt-6 text-3xl font-medium tracking-[-0.04em] text-foreground">{product.name}</h3>
-                <p className="type-body mt-4 flex-1">{product.summary}</p>
-                <Link href={product.href} className="mt-8 inline-flex text-sm font-medium text-accent hover:opacity-80">
-                  {product.cta}
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-rule bg-panel">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
-            <div className="space-y-4">
-              <p className="type-section-label">{t("capabilities.label")}</p>
-              <h2 className="type-heading max-w-md">{t("capabilities.title")}</h2>
-              <p className="type-body max-w-lg">{t("capabilities.body")}</p>
-            </div>
-
-            <div className="rounded-[2rem] border border-rule bg-card p-6 shadow-[0_16px_48px_rgba(10,10,11,0.05)] sm:p-8">
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                {capabilities.map((capability) => (
-                  <div key={capability} className="rounded-2xl border border-rule bg-background px-5 py-4 text-base tracking-[-0.02em] text-foreground">
-                    {capability}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-rule bg-background">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.96fr_1.04fr] lg:gap-14">
-            <div className="space-y-4">
-              <p className="type-section-label">{t("whyIntrface.label")}</p>
-              <h2 className="type-heading max-w-md">{t("whyIntrface.title")}</h2>
-              <p className="type-body max-w-lg">{t("whyIntrface.body")}</p>
-            </div>
-
-            <div className="grid gap-4">
-              {proofItems.map((item) => (
-                <article key={item.label} className="rounded-2xl border border-rule bg-card p-6 shadow-[0_12px_36px_rgba(10,10,11,0.04)]">
-                  <p className="type-meta">{item.label}</p>
-                  <p className="type-body mt-3">{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="bg-foreground text-background scroll-mt-24">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-end">
-            <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.18em] text-background/70">{t("finalCta.label")}</p>
-              <h2 className="type-heading max-w-2xl text-background">{t("finalCta.title")}</h2>
-              <p className="max-w-2xl text-base leading-7 text-background/80">{t("finalCta.body")}</p>
-            </div>
-
-            <div className="rounded-[2rem] border border-background/12 bg-background/4 p-6 sm:p-7">
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center justify-center rounded-md bg-background px-5 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90"
-                >
-                  {t("finalCta.primaryCta")}
-                </a>
-                <Link
-                  href="/aoc"
-                  className="inline-flex items-center justify-center rounded-md border border-background/20 px-5 py-3 text-sm font-medium text-background transition-colors hover:border-background/40 hover:bg-background/6"
-                >
-                  {featuredProducts[0].cta}
-                </Link>
-              </div>
-
-              <div className="mt-5 h-px bg-background/10" />
-
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <Link href="/voyager" className="rounded-xl border border-background/12 px-4 py-4 text-sm text-background/86 transition-colors hover:bg-background/6">
-                  {featuredProducts[1].cta}
-                </Link>
-                <Link href="/funda" className="rounded-xl border border-background/12 px-4 py-4 text-sm text-background/86 transition-colors hover:bg-background/6">
-                  {featuredProducts[2].cta}
-                </Link>
-                <a
-                  href="mailto:hello@intrface.eu"
-                  className="sm:col-span-2 rounded-xl border border-background/12 px-4 py-4 text-sm font-medium text-background transition-colors hover:bg-background/6"
-                >
+                <a href="mailto:hello@intrface.eu" className="artifact-button relative mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-[var(--intrface-ink)]">
                   hello@intrface.eu
+                  <IconArrowRight className="h-4 w-4" />
                 </a>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>

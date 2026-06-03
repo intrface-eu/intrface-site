@@ -1,7 +1,11 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { voyagerLinks } from "@/lib/site/voyager-content";
+import { voyagerAgents } from "@/lib/site/voyager/product-model";
+import { AgentSystemGrid, AtlasLayerStack, type PublicAgent } from "@/components/voyager";
+import { ScoutJourneyArtifact, VoyagerArtifact } from "@/components/visual/product-artifacts";
 import type { AppLocale } from "@/i18n/routing";
+import { IconBuildingCommunity, IconLanguage, IconMap2, IconRoute, IconUsersGroup } from "@tabler/icons-react";
 
 export async function VoyagerPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "VoyagerPage" });
@@ -10,18 +14,18 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
     { title: t("audience.items.0.title"), text: t("audience.items.0.text") },
     { title: t("audience.items.1.title"), text: t("audience.items.1.text") },
     { title: t("audience.items.2.title"), text: t("audience.items.2.text") },
+    { title: t("audience.items.3.title"), text: t("audience.items.3.text") },
   ] as const;
 
-  const agents = [
-    { name: "Voyager", persona: t("agents.items.0.persona"), domain: t("agents.items.0.domain"), summary: t("agents.items.0.summary") },
-    { name: "Nexus", persona: t("agents.items.1.persona"), domain: t("agents.items.1.domain"), summary: t("agents.items.1.summary") },
-    { name: "Guardian", persona: t("agents.items.2.persona"), domain: t("agents.items.2.domain"), summary: t("agents.items.2.summary") },
-  ] as const;
+  const agents = voyagerAgents.map((agent, index) => ({
+    ...agent,
+    summary: t(`agents.items.${index}.summary`),
+  })) satisfies PublicAgent[];
 
   const scoutPillars = [t("scout.items.0"), t("scout.items.1"), t("scout.items.2"), t("scout.items.3")] as const;
   const mapLayer = [t("map.items.0"), t("map.items.1"), t("map.items.2"), t("map.items.3")] as const;
   const operations = [t("operations.items.0"), t("operations.items.1"), t("operations.items.2"), t("operations.items.3")] as const;
-  const stakeholders = [t("stakeholders.items.0"), t("stakeholders.items.1"), t("stakeholders.items.2"), t("stakeholders.items.3")] as const;
+  const stakeholders = [t("stakeholders.items.0"), t("stakeholders.items.1"), t("stakeholders.items.2"), t("stakeholders.items.3"), t("stakeholders.items.4")] as const;
   const proof = [
     { label: t("proof.items.0.label"), text: t("proof.items.0.text") },
     { label: t("proof.items.1.label"), text: t("proof.items.1.text") },
@@ -30,38 +34,44 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
   const tech = [t("tech.items.0"), t("tech.items.1"), t("tech.items.2"), t("tech.items.3"), t("tech.items.4"), t("tech.items.5")] as const;
 
   return (
-    <main>
-      <section className="border-b border-rule bg-background">
-        <div className="section-shell py-20 sm:py-24 lg:py-28">
+    <main className="bg-background">
+      <section className="relative overflow-hidden border-b border-rule bg-[#eaf3e4]">
+        <div className="pointer-events-none absolute inset-0 halftone-field opacity-35 [--halftone-color:#065f46] [--halftone-size:34px]" data-drift="true" aria-hidden="true" />
+        <div className="section-shell relative grid gap-12 py-20 sm:py-24 lg:grid-cols-[.95fr_1.05fr] lg:items-center lg:py-28">
           <div className="max-w-5xl space-y-8">
-            <p className="type-section-label">{t("hero.label")}</p>
+            <p className="type-section-label text-emerald-700">{t("hero.label")}</p>
             <div className="space-y-4">
-              <p className="type-meta">Voyager</p>
+              <p className="type-meta">Voyager — tourism intelligence</p>
               <h1 className="type-display max-w-5xl">{t("hero.title")}</h1>
             </div>
             <p className="type-body-lg max-w-3xl">{t("hero.body")}</p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <a href="#platform" className="inline-flex items-center justify-center rounded-md bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-90">{t("hero.primaryCta")}</a>
-              <a href="#architecture" className="inline-flex items-center justify-center rounded-md border border-rule bg-card px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-panel">{t("hero.secondaryCta")}</a>
-              <a href={voyagerLinks.contact} className="inline-flex items-center justify-center rounded-md border border-rule bg-card px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-panel">{t("hero.tertiaryCta")}</a>
+              <a href="#platform" className="artifact-button inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background">
+                {t("hero.primaryCta")}
+              </a>
+              <a href="#architecture" className="artifact-button inline-flex items-center justify-center rounded-full border border-emerald-950/10 bg-white/70 px-5 py-3 text-sm font-medium text-foreground hover:bg-white">
+                {t("hero.secondaryCta")}
+              </a>
             </div>
           </div>
+          <VoyagerArtifact />
         </div>
       </section>
 
-      <section id="platform" className="border-b border-rule bg-panel scroll-mt-24">
+      <section id="platform" className="scroll-mt-24 border-b border-rule bg-panel">
         <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.25fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">{t("platform.label")}</p>
+              <p className="type-section-label text-emerald-700">{t("platform.label")}</p>
               <h2 className="type-heading max-w-md">{t("platform.title")}</h2>
               <p className="type-body max-w-lg">{t("platform.body")}</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               {audience.map((item) => (
-                <article key={item.title} className="rounded-2xl border border-rule bg-card p-6">
-                  <h3 className="text-xl font-medium tracking-[-0.03em] text-foreground">{item.title}</h3>
-                  <p className="type-body mt-3">{item.text}</p>
+                <article key={item.title} className="artifact-card rounded-2xl p-6 [--artifact-accent:#10b981]">
+                  <IconUsersGroup className="h-6 w-6 text-emerald-700" />
+                  <h3 className="mt-5 text-2xl font-medium tracking-[-0.04em] text-foreground">{item.title}</h3>
+                  <p className="type-body mt-4">{item.text}</p>
                 </article>
               ))}
             </div>
@@ -69,38 +79,82 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
         </div>
       </section>
 
-      <section id="architecture" className="border-b border-rule bg-background scroll-mt-24">
+      <section id="architecture" className="scroll-mt-24 border-b border-rule bg-background">
         <div className="section-shell py-16 sm:py-20">
-          <div className="max-w-3xl space-y-4">
-            <p className="type-section-label">{t("agents.label")}</p>
-            <h2 className="type-heading">{t("agents.title")}</h2>
-            <p className="type-body">{t("agents.body")}</p>
-          </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {agents.map((agent) => (
-              <article key={agent.name} className="rounded-2xl border border-rule bg-card p-6">
-                <p className="type-meta">{agent.persona} · {agent.domain}</p>
-                <h3 className="mt-4 text-3xl font-medium tracking-[-0.04em] text-foreground">{agent.name}</h3>
-                <p className="type-body mt-4">{agent.summary}</p>
-              </article>
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[.9fr_1.2fr] lg:items-start">
+            <div className="space-y-4">
+              <p className="type-section-label text-emerald-700">{t("agents.label")}</p>
+              <h2 className="type-heading max-w-2xl">{t("agents.title")}</h2>
+              <p className="type-body max-w-2xl">{t("agents.body")}</p>
+            </div>
+            <AgentSystemGrid agents={agents} />
           </div>
         </div>
       </section>
 
       <section className="border-b border-rule bg-panel">
         <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">{t("scout.label")}</p>
+              <p className="type-section-label text-emerald-700">{t("scout.label")}</p>
               <h2 className="type-heading max-w-md">{t("scout.title")}</h2>
               <p className="type-body max-w-lg">{t("scout.body")}</p>
             </div>
-            <div className="rounded-2xl border border-rule bg-foreground p-6 text-background">
-              <p className="text-sm uppercase tracking-[0.18em] text-background/65">{t("scout.pillarsLabel")}</p>
-              <div className="mt-5 grid gap-3">
-                {scoutPillars.map((pillar) => (
-                  <div key={pillar} className="rounded-xl border border-background/12 bg-background/4 px-4 py-4 text-sm tracking-[-0.01em]">{pillar}</div>
+            <div className="grid gap-5">
+              <ScoutJourneyArtifact />
+              <div className="grid gap-3 sm:grid-cols-2">
+                {scoutPillars.map((item) => (
+                  <div key={item} className="artifact-card rounded-2xl px-5 py-4 text-base tracking-[-0.02em] text-foreground [--artifact-accent:#10b981]">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-rule bg-background">
+        <div className="section-shell py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:gap-14">
+            <div className="space-y-4">
+              <p className="type-section-label text-emerald-700">{t("map.label")}</p>
+              <h2 className="type-heading max-w-md">{t("map.title")}</h2>
+              <p className="type-body max-w-lg">{t("map.body")}</p>
+            </div>
+            <div className="grid gap-5">
+              <AtlasLayerStack />
+              <div className="grid gap-3 sm:grid-cols-2">
+                {mapLayer.map((item) => (
+                  <div key={item} className="artifact-card rounded-2xl px-5 py-4 text-base tracking-[-0.02em] text-foreground [--artifact-accent:#10b981]">
+                    <IconMap2 className="mb-3 h-5 w-5 text-emerald-700" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-rule bg-panel">
+        <div className="section-shell py-16 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
+            <div className="space-y-4">
+              <p className="type-section-label text-emerald-700">{t("operations.label")}</p>
+              <h2 className="type-heading max-w-md">{t("operations.title")}</h2>
+              <p className="type-body max-w-lg">{t("operations.body")}</p>
+            </div>
+            <div className="surface-artifact relative overflow-hidden rounded-[2rem] p-6 [--artifact-accent:#10b981] [--ripple-color:#10b981]">
+              <span className="ripple-ring left-8 top-8 h-28 w-28" data-pulse="true" />
+              <div className="grid gap-3 sm:grid-cols-2">
+                {operations.map((item, index) => (
+                  <div key={item} className="relative rounded-[1.25rem] border border-emerald-950/10 bg-white/74 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-emerald-950">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600/10 text-xs text-emerald-700">{index + 1}</span>
+                      {item}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -112,50 +166,19 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
         <div className="section-shell py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">{t("map.label")}</p>
-              <h2 className="type-heading max-w-md">{t("map.title")}</h2>
-              <p className="type-body max-w-lg">{t("map.body")}</p>
-            </div>
-            <div className="grid gap-3">
-              {mapLayer.map((item) => (
-                <div key={item} className="rounded-2xl border border-rule bg-card px-5 py-4 text-base tracking-[-0.02em] text-foreground">{item}</div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-rule bg-panel">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
-            <div className="space-y-4">
-              <p className="type-section-label">{t("operations.label")}</p>
-              <h2 className="type-heading max-w-md">{t("operations.title")}</h2>
-              <p className="type-body max-w-lg">{t("operations.body")}</p>
-            </div>
-            <div className="grid gap-3">
-              {operations.map((item) => (
-                <div key={item} className="rounded-2xl border border-rule bg-background px-5 py-4 text-base tracking-[-0.02em] text-foreground">{item}</div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-rule bg-background">
-        <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
-            <div className="space-y-4">
-              <p className="type-section-label">{t("stakeholders.label")}</p>
+              <p className="type-section-label text-emerald-700">{t("stakeholders.label")}</p>
               <h2 className="type-heading max-w-md">{t("stakeholders.title")}</h2>
               <p className="type-body max-w-lg">{t("stakeholders.body")}</p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {stakeholders.map((item) => (
-                <article key={item} className="rounded-2xl border border-rule bg-card p-6">
-                  <p className="text-2xl font-medium tracking-[-0.03em] text-foreground">{item}</p>
-                </article>
-              ))}
+            <div className="surface-artifact rounded-[2rem] p-5 [--artifact-accent:#10b981]">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {stakeholders.map((item) => (
+                  <div key={item} className="rounded-[1.2rem] border border-emerald-950/10 bg-white/74 p-4 text-sm font-semibold text-emerald-950">
+                    <IconBuildingCommunity className="mb-4 h-5 w-5 text-emerald-700" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -163,16 +186,16 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
 
       <section className="border-b border-rule bg-panel">
         <div className="section-shell py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">{t("proof.label")}</p>
+              <p className="type-section-label text-emerald-700">{t("proof.label")}</p>
               <h2 className="type-heading max-w-md">{t("proof.title")}</h2>
             </div>
-            <div className="grid gap-4">
+            <div className="grid gap-4 lg:grid-cols-3">
               {proof.map((item) => (
-                <article key={item.label} className="rounded-2xl border border-rule bg-card p-6">
-                  <p className="type-meta">{item.label}</p>
-                  <p className="type-body mt-3">{item.text}</p>
+                <article key={item.label} className="artifact-card rounded-2xl p-6 [--artifact-accent:#10b981]">
+                  <p className="type-meta text-emerald-700">{item.label}</p>
+                  <p className="type-body mt-4">{item.text}</p>
                 </article>
               ))}
             </div>
@@ -184,13 +207,16 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
         <div className="section-shell py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.2fr] lg:gap-14">
             <div className="space-y-4">
-              <p className="type-section-label">{t("tech.label")}</p>
+              <p className="type-section-label text-emerald-700">{t("tech.label")}</p>
               <h2 className="type-heading max-w-md">{t("tech.title")}</h2>
               <p className="type-body max-w-lg">{t("tech.body")}</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {tech.map((item) => (
-                <div key={item} className="rounded-2xl border border-rule bg-card px-5 py-4 text-base tracking-[-0.02em] text-foreground">{item}</div>
+                <div key={item} className="artifact-card rounded-2xl px-5 py-4 text-base tracking-[-0.02em] text-foreground [--artifact-accent:#10b981]">
+                  <IconLanguage className="mb-3 h-5 w-5 text-emerald-700" />
+                  {item}
+                </div>
               ))}
             </div>
           </div>
@@ -206,8 +232,13 @@ export async function VoyagerPage({ locale }: { locale: AppLocale }) {
               <p className="max-w-2xl text-base leading-7 text-background/80">{t("finalCta.body")}</p>
             </div>
             <div className="flex flex-col gap-3 lg:items-start">
-              <a href={voyagerLinks.contact} className="inline-flex items-center justify-center rounded-md bg-background px-5 py-3 text-sm font-medium text-foreground transition-opacity hover:opacity-90">{t("finalCta.primaryCta")}</a>
-              <Link href={voyagerLinks.projects} className="inline-flex items-center justify-center rounded-md border border-background/20 bg-background/8 px-5 py-3 text-sm font-medium text-background transition-colors hover:border-background/40 hover:bg-background/12">{t("finalCta.secondaryCta")}</Link>
+              <a href={voyagerLinks.contact} className="artifact-button inline-flex items-center justify-center gap-2 rounded-full bg-background px-5 py-3 text-sm font-medium text-foreground">
+                {t("finalCta.primaryCta")}
+                <IconRoute className="h-4 w-4" />
+              </a>
+              <Link href={voyagerLinks.projects} className="artifact-button inline-flex items-center justify-center rounded-full border border-background/20 bg-background/8 px-5 py-3 text-sm font-medium text-background hover:border-background/40 hover:bg-background/12">
+                {t("finalCta.secondaryCta")}
+              </Link>
             </div>
           </div>
         </div>

@@ -1,0 +1,12 @@
+# convex
+convex/_generated
+
+# dependencies
+node_modules
+
+# env
+.env
+.env.local
+
+# turbo
+.turbo

@@ -1,6 +1,6 @@
 export const voyagerLinks = {
   contact: "mailto:hello@intrface.eu?subject=Voyager%20partnership",
-  projects: "/#projects",
+  projects: "/#products",
 } as const;
 
 export const voyagerAudience = [
@@ -15,6 +15,10 @@ export const voyagerAudience = [
   {
     title: "For travelers and scouts",
     text: "Travel becomes exploratory rather than passive through map-led discovery, location-aware guidance, and immersive attraction interactions.",
+  },
+  {
+    title: "For organizations and communities",
+    text: "Organizations gain a community-specialist agent for events, member coordination, shared local activity, and area-based knowledge.",
   },
 ] as const;
 
@@ -39,6 +43,13 @@ export const voyagerAgents = [
     domain: "Attractions",
     summary:
       "Attraction-focused context, cultural storytelling, and gamified Scout interactions for meaningful on-site engagement.",
+  },
+  {
+    name: "Vita",
+    persona: "The Community Specialist",
+    domain: "Organizations",
+    summary:
+      "Organization and community-specific assistance for events, members, ride-share coordination, onboarding, and shared local activity.",
   },
 ] as const;
 
@@ -67,17 +78,18 @@ export const voyagerStakeholders = [
   "Agencies",
   "Businesses",
   "Attractions",
+  "Organizations",
   "Users / Scouts",
 ] as const;
 
 export const voyagerProof = [
   {
     label: "Multi-agent architecture",
-    text: "Voyager, Nexus, and Guardian are implemented as domain-specific agents with their own configuration, knowledge, and entity context.",
+    text: "Voyager, Nexus, Guardian, and Vita are implemented as domain-specific agents with their own configuration, knowledge, and entity context.",
   },
   {
     label: "Route-aware context switching",
-    text: "Agency, business, and attraction routes activate the relevant agent and keep chat behavior tied to entity context.",
+    text: "Agency, business, attraction, and organization routes activate the relevant agent and keep chat behavior tied to entity context.",
   },
   {
     label: "Knowledge-aware system",

@@ -7,13 +7,20 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:web": "cd apps/web && bun run dev",
-    "dev:aoc": "cd apps/aoc && bun run dev",
-    "build": "cd apps/web && bun run build && cd ../../apps/aoc && bun run build",
-    "build:web": "cd apps/web && bun run build",
-    "build:aoc": "cd apps/aoc && bun run build",
-    "lint": "cd apps/web && bun run lint && cd ../../apps/aoc && bun run lint",
-    "lint:web": "cd apps/web && bun run lint",
-    "lint:aoc": "cd apps/aoc && bun run lint"
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@intrface/web",
+    "dev:aoc": "turbo run dev --filter=@intrface/aoc-web",
+    "dev:convex": "turbo run dev --filter=@intrface/convex",
+    "build": "turbo run build",
+    "build:web": "turbo run build --filter=@intrface/web",
+    "build:aoc": "turbo run build --filter=@intrface/aoc-web",
+    "lint": "turbo run lint",
+    "lint:web": "turbo run lint --filter=@intrface/web",
+    "lint:aoc": "turbo run lint --filter=@intrface/aoc-web",
+    "check-types": "turbo run check-types",
+    "clean": "turbo run clean && rm -rf .turbo node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.6"
   }
 }

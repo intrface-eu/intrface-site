@@ -15,89 +15,62 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Nous concevons des plateformes, produits et systèmes natifs à l'IA.",
-      "body": "Intrface est un studio orienté produit qui construit des logiciels sérieux avec une logique de plateforme. Notre travail phare couvre les outils IA terminal-first, les systèmes d'exploration touristique et les plateformes de workflow pour le financement.",
-      "primaryCta": "Voir les projets",
-      "secondaryCta": "Nous contacter"
+      "title": "Des systèmes produit ciblés pour des domaines complexes.",
+      "body": "Intrface conçoit et opère une famille de produits pour la culture, le financement et l’ingénierie — chacun fondé sur de vrais workflows, des interfaces solides et des bases techniques durables.",
+      "primaryCta": "Voir les produits",
+      "secondaryCta": "Engager la conversation"
     },
-    "whatWeDo": {
-      "label": "Ce qu'Intrface fait",
-      "title": "Clarté produit, levier système et IA qui se comporte comme une véritable infrastructure.",
-      "body": "Nous ne présentons pas des expériences isolées. Le portefeuille repose sur des workflows durables, une architecture réutilisable et des interfaces produit qui communiquent rapidement leur valeur."
-    },
-    "operatingBlocks": {
-      "buildProducts": {
-        "title": "Construire des produits",
-        "text": "Nous concevons et livrons des surfaces produit qui s'expliquent clairement et dépassent le stade du prototype ponctuel."
-      },
-      "designSystems": {
-        "title": "Systèmes de design",
-        "text": "Nous créons des fondations réutilisables pour la navigation, la typographie, l'interaction et l'architecture de contenu à l'échelle d'un portefeuille en croissance."
-      },
-      "operationalizeAi": {
-        "title": "Opérationnaliser l'IA",
-        "text": "Nous transformons l'IA d'une simple fonctionnalité en infrastructure réelle grâce aux agents, à la mémoire, à l'orchestration et aux workflows fondés sur la connaissance."
-      },
-      "platformLeverage": {
-        "title": "Créer un effet de plateforme",
-        "text": "Nous cherchons les systèmes répétables sous chaque produit afin que le portefeuille gagne en cohérence au fil du temps."
-      }
-    },
-    "featuredProducts": {
-      "label": "Produits phares",
-      "title": "Trois produits phares. Un portefeuille structuré par une même logique système.",
-      "body": "AOC, Voyager et Funda répondent à des domaines différents, mais suivent la même approche : vérité produit d'abord, structure de workflow solide et logiciel capable d'assumer la complexité opérationnelle.",
-      "status": "Phare",
-      "aoc": {
-        "summary": "Un espace de travail IA terminal-first pour le développement contextualisé, la mémoire projet, l'orchestration des tâches et un flux opérateur unifié.",
-        "cta": "Explorer AOC"
-      },
+    "products": {
+      "label": "Products",
+      "title": "Three product worlds under one Intrface brand.",
+      "body": "Voyager, Funda, and AOC are distinct products with their own audiences, visual language, and operating logic. The parent site presents them clearly without forcing them into one generic AI story.",
+      "proofLabel": "Product signal",
       "voyager": {
-        "summary": "Une plateforme touristique alimentée par l'IA qui combine exploration, cartographie, contenus multilingues et guidage multi-agents.",
-        "cta": "Explorer Voyager"
+        "domain": "Tourism and culture",
+        "summary": "A platform for destinations, venues, cultural sites, and travelers — built around maps, verified local context, multilingual discovery, and real places.",
+        "proof": "Voyager is strongest when shown through place: atlas views, venue context, events, Guardian/Nexus agents, and cultural discovery flows.",
+        "cta": "Explore Voyager"
       },
       "funda": {
-        "summary": "Une plateforme d'opportunités de financement construite autour de la découverte, du matching, de la collaboration et de workflows de candidature assistés par l'IA.",
-        "cta": "Explorer Funda"
+        "domain": "Funding opportunities",
+        "summary": "A platform for discovering funding opportunities, assessing fit, and moving applications through a structured workspace for teams and consultants.",
+        "proof": "Funda is strongest when shown through workflow: opportunity matching, eligibility guidance, documents, checklists, notes, and application progress.",
+        "cta": "Explore Funda"
+      },
+      "aoc": {
+        "domain": "Agentic engineering",
+        "summary": "An open-source terminal workspace for context-aware engineering, project memory, tasks, and education around serious agentic coding practice.",
+        "proof": "AOC is strongest when shown as craft: terminal-native operation, context files, task systems, repo navigation, and a teachable engineering method.",
+        "cta": "Explore AOC"
       }
     },
-    "capabilities": {
-      "label": "Capacités de plateforme partagées",
-      "title": "Nous traduisons la profondeur technique en capacité produit.",
-      "body": "Le portefeuille couvre des secteurs différents, mais les mêmes forces de plateforme reviennent partout : mémoire, orchestration, permissions, interaction temps réel et expérience utilisateur fondée sur la connaissance.",
-      "items": [
-        "Agents IA et orchestration",
-        "Systèmes persistants de tâches et de mémoire",
-        "Architecture de plateforme fondée sur les rôles",
-        "Expériences multilingues",
-        "Workflows produit en temps réel",
-        "Interfaces fondées sur la connaissance"
-      ]
-    },
-    "whyIntrface": {
-      "label": "Pourquoi Intrface",
-      "title": "Pas une collection d'apps isolées, mais une pratique cohérente du produit et de la plateforme.",
-      "body": "Ce qui relie le travail, c'est un biais en faveur de systèmes durables. Nous nous intéressons à la manière dont les produits sont opérés, dont l'information persiste, dont les interfaces restent lisibles sous la complexité, et dont l'infrastructure devient un avantage stratégique plutôt qu'une charge cachée."
-    },
-    "proof": {
-      "publicProductTruth": {
-        "label": "Vérité produit publique",
-        "text": "AOC, Voyager et Funda s'appuient sur des dépôts actifs, de la documentation et des détails d'implémentation plutôt que sur un discours de portefeuille abstrait."
+    "principles": {
+      "label": "How we build",
+      "title": "Product discipline beneath every surface.",
+      "body": "The products are different on purpose. What carries across them is the way we handle complexity: start from the domain, make the interface legible, and let infrastructure support the experience without becoming the headline.",
+      "domain": {
+        "title": "Domain-first systems",
+        "text": "We begin with the real operating environment: tourism boards and venues, funding teams and consultants, engineers and repositories."
       },
-      "systemThinking": {
-        "label": "Pensée système",
-        "text": "À travers les produits, les mêmes enjeux reviennent : contexte, orchestration, flux fondés sur les rôles, navigation et expérience opérateur durable."
+      "interface": {
+        "title": "Interfaces that clarify",
+        "text": "The surface has to make complexity easier to work with — through navigation, hierarchy, language, and deliberate visual structure."
       },
-      "staticFirstClarity": {
-        "label": "Clarté static-first",
-        "text": "Le site est conçu pour expliquer des produits réels avec un signal fort, une structure nette et de la place pour faire grandir le portefeuille."
+      "infrastructure": {
+        "title": "Infrastructure that disappears",
+        "text": "AI, realtime data, roles, email, storage, and automation matter most when they feel natural inside the product flow."
       }
     },
-    "finalCta": {
-      "label": "CTA final",
-      "title": "Explorez le portefeuille, examinez les produits phares ou engagez une conversation utile.",
-      "body": "Intrface construit un écosystème public de produits à partir d'un travail réel. Si vous souhaitez parler d'un produit, d'une collaboration ou des systèmes qui les soutiennent, c'est le bon point de départ.",
-      "primaryCta": "Voir les projets"
+    "inquiry": {
+      "label": "Open inquiry",
+      "title": "Talk to Intrface about a product, partnership, or system.",
+      "body": "The public site is the front door. Bring a domain problem, a collaboration idea, or a product conversation — we will route it to the right surface.",
+      "items": {
+        "general": "General Intrface inquiry",
+        "voyager": "Voyager tourism and culture",
+        "funda": "Funda funding workflows",
+        "aoc": "AOC education and engineering"
+      }
     }
   },
   "AocPage": {
@@ -196,8 +169,8 @@
   "VoyagerPage": {
     "hero": {
       "label": "Produit phare",
-      "title": "Une plateforme touristique alimentée par l'IA, conçue pour les destinations, les entreprises et les voyageurs.",
-      "body": "Voyager combine guidage multi-agents, exploration gamifiée, opérations de contenu multilingues et infrastructure de plateforme à l'échelle d'une destination dans un seul système touristique.",
+      "title": "Une plateforme touristique propulsée par l’IA pour destinations, entreprises, organisations et voyageurs.",
+      "body": "Voyager réunit quatre agents contextuels, exploration gamifiée, opérations de contenu multilingue et infrastructure de plateforme à l’échelle d’une destination.",
       "primaryCta": "Explorer Voyager",
       "secondaryCta": "Explorer l'architecture de la plateforme",
       "tertiaryCta": "Discuter d'un partenariat"
@@ -205,7 +178,7 @@
     "platform": {
       "label": "Ce qu'est Voyager",
       "title": "Plus qu'une app de voyage : une plateforme touristique multi-tenant avec une véritable thèse d'exploration.",
-      "body": "Voyager est construit pour un écosystème de destination complet, pas seulement pour la navigation côté utilisateur final. Il relie agences, entreprises, attractions et voyageurs dans une même plateforme où découverte, contenu et assistance IA se renforcent mutuellement."
+      "body": "Voyager est conçu pour un écosystème de destination, pas seulement pour la navigation côté voyageur. Il relie agences, entreprises, attractions, organisations et voyageurs dans une plateforme où découverte, contenu et assistance IA se renforcent."
     },
     "audience": {
       "items": [
@@ -220,13 +193,17 @@
         {
           "title": "Pour les voyageurs et les scouts",
           "text": "Le voyage devient exploratoire plutôt que passif grâce à une découverte guidée par la carte, à un guidage sensible au lieu et à des interactions immersives avec les attractions."
+        },
+        {
+          "title": "Pour les organisations et communautés",
+          "text": "Les organisations disposent d’un agent spécialiste de communauté pour les événements, la coordination des membres, l’activité locale partagée et la connaissance territoriale."
         }
       ]
     },
     "agents": {
       "label": "Système multi-agents",
-      "title": "Trois agents spécialisés, chacun lié à une surface touristique différente.",
-      "body": "Les agents de Voyager ne sont pas de simples wrappers de chat. Ce sont des entités configurées avec leur propre rôle, leur propre connaissance et un contexte dépendant des routes. Des connaissances structurées et la RAG soutiennent le système en arrière-plan.",
+      "title": "Quatre agents contextuels, chacun lié à une surface touristique différente.",
+      "body": "Les agents de Voyager ne sont pas de simples wrappers de chat. Ce sont des entités configurées avec leur rôle, leur connaissance, leur contexte de route et leur surface métier. La connaissance structurée et le RAG soutiennent le système en arrière-plan.",
       "items": [
         {
           "persona": "The Guide",
@@ -242,6 +219,11 @@
           "persona": "The Historian",
           "domain": "Attractions",
           "summary": "Contexte centré sur l'attraction, narration culturelle et interactions Scout gamifiées pour un engagement plus riche sur site."
+        },
+        {
+          "persona": "The Community Specialist",
+          "domain": "Organizations",
+          "summary": "Assistance propre aux organisations et communautés pour événements, membres, covoiturage, intégration et activité locale partagée."
         }
       ]
     },
@@ -283,7 +265,13 @@
       "label": "Structure de plateforme",
       "title": "Un modèle de parties prenantes conçu pour toute la stack touristique.",
       "body": "Voyager ressemble à une plateforme parce qu'il est organisé autour des relations entre plusieurs acteurs, plutôt qu'autour d'un seul rôle utilisateur.",
-      "items": ["Agencies", "Businesses", "Attractions", "Users / Scouts"]
+      "items": [
+        "Agences",
+        "Entreprises",
+        "Attractions",
+        "Organisations",
+        "Utilisateurs / Scouts"
+      ]
     },
     "proof": {
       "label": "Preuves produit",
@@ -291,11 +279,11 @@
       "items": [
         {
           "label": "Architecture multi-agents",
-          "text": "Voyager, Nexus et Guardian sont implémentés comme des agents spécialisés avec leur propre configuration, leur propre connaissance et leur propre contexte d'entité."
+          "text": "Voyager, Nexus, Guardian et Vita sont implémentés comme des agents spécialisés avec leur propre configuration, connaissance et contexte d’entité."
         },
         {
           "label": "Bascule de contexte dépendante des routes",
-          "text": "Les routes agence, entreprise et attraction activent l'agent approprié et maintiennent le comportement du chat lié au contexte de l'entité."
+          "text": "Les routes agence, entreprise, attraction et organisation activent l’agent pertinent et gardent le chat lié au contexte d’entité."
         },
         {
           "label": "Système fondé sur la connaissance",

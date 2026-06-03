@@ -21,7 +21,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-5">
-          <Link href="/#projects" className="hover:text-foreground">
+          <Link href="/#products" className="hover:text-foreground">
             {nav("projects")}
           </Link>
           <Link href="/aoc" className="hover:text-foreground">
@@ -33,7 +33,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           <Link href="/funda" className="hover:text-foreground">
             {nav("funda")}
           </Link>
-          <Link href="/#contact" className="hover:text-foreground">
+          <Link href="/#inquiry" className="hover:text-foreground">
             {nav("contact")}
           </Link>
         </div>

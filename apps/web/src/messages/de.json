@@ -15,89 +15,62 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Wir entwickeln KI-native Plattformen, Produkte und Systeme.",
-      "body": "Intrface ist ein produktorientiertes Studio, das ernsthafte Software mit einem Plattform-Mindset entwickelt. Unsere Leitprodukte reichen von terminal-first KI-Tools über touristische Explorationssysteme bis zu Plattformen für Fördermittel-Workflows.",
-      "primaryCta": "Projekte ansehen",
-      "secondaryCta": "Kontakt aufnehmen"
+      "title": "Fokussierte Produktsysteme für komplexe Domänen.",
+      "body": "Intrface entwickelt und betreibt eine Produktfamilie für Kultur, Förderung und Engineering — jedes Produkt orientiert an echten Workflows, starken Interfaces und langlebigen technischen Grundlagen.",
+      "primaryCta": "Produkte ansehen",
+      "secondaryCta": "Gespräch beginnen"
     },
-    "whatWeDo": {
-      "label": "Was Intrface macht",
-      "title": "Produktklarheit, Systemhebel und KI, die wie echte Infrastruktur funktioniert.",
-      "body": "Wir präsentieren keine losen Experimente. Das Portfolio basiert auf langlebigem Workflow-Design, wiederverwendbarer Architektur und Produktoberflächen, die ihren Wert schnell vermitteln."
-    },
-    "operatingBlocks": {
-      "buildProducts": {
-        "title": "Produkte bauen",
-        "text": "Wir entwerfen und liefern Produktoberflächen, die sich selbst klar erklären und über einen einmaligen Prototyp hinaus skalieren."
-      },
-      "designSystems": {
-        "title": "Designsysteme",
-        "text": "Wir schaffen wiederverwendbare Grundlagen für Navigation, Typografie, Interaktion und Inhaltsarchitektur über ein wachsendes Portfolio hinweg."
-      },
-      "operationalizeAi": {
-        "title": "KI operationalisieren",
-        "text": "Wir machen aus KI nicht nur ein Feature, sondern funktionierende Infrastruktur durch Agenten, Memory, Orchestrierung und wissensbasierte Workflows."
-      },
-      "platformLeverage": {
-        "title": "Plattformhebel schaffen",
-        "text": "Wir suchen unter jedem Produkt nach wiederholbaren Systemen, damit das Portfolio mit der Zeit kohärenter wird."
-      }
-    },
-    "featuredProducts": {
-      "label": "Leitprodukte",
-      "title": "Drei Leitprodukte. Ein Portfolio, geprägt von gemeinsamem Systemdenken.",
-      "body": "AOC, Voyager und Funda bedienen unterschiedliche Bereiche, folgen aber demselben Ansatz: Produktwahrheit zuerst, starke Workflow-Struktur und Software, die operative Komplexität tragen kann.",
-      "status": "Flagship",
-      "aoc": {
-        "summary": "Ein terminal-first KI-Workspace für kontextbewusste Entwicklung, Memory, Task-Orchestrierung und einen einheitlichen Operator-Flow.",
-        "cta": "AOC entdecken"
-      },
+    "products": {
+      "label": "Produkte",
+      "title": "Drei Produktwelten unter einer Intrface-Marke.",
+      "body": "Voyager, Funda und AOC sind eigenständige Produkte mit eigenen Zielgruppen, eigener visueller Sprache und eigener operativer Logik.",
+      "proofLabel": "Produktsignal",
       "voyager": {
-        "summary": "Eine KI-gestützte Tourismusplattform, die Exploration, Mapping, mehrsprachige Inhalte und Multi-Agent-Guidance verbindet.",
+        "domain": "Tourismus und Kultur",
+        "summary": "Eine Plattform für Destinationen, Orte, Kulturstätten und Reisende — rund um Karten, geprüften lokalen Kontext, mehrsprachige Discovery und echte Orte.",
+        "proof": "Voyager wirkt am stärksten über Orte: Atlas-Ansichten, Venue-Kontext, Events, Guardian/Nexus-Agenten und kulturelle Discovery-Flows.",
         "cta": "Voyager entdecken"
       },
       "funda": {
-        "summary": "Eine Fördermittelplattform für Discovery, Matching, Kollaboration und KI-unterstützte Antrags-Workflows.",
+        "domain": "Fördermöglichkeiten",
+        "summary": "Eine Plattform zum Finden von Fördermöglichkeiten, Bewerten der Passung und Bearbeiten von Anträgen in strukturierten Workspaces.",
+        "proof": "Funda wirkt am stärksten über Workflow: Matching, Eignungsprüfung, Dokumente, Checklisten, Notizen und Antragsfortschritt.",
         "cta": "Funda entdecken"
+      },
+      "aoc": {
+        "domain": "Agentic Engineering",
+        "summary": "Ein Open-Source-Terminal-Workspace für kontextbewusstes Engineering, Projektmemory, Tasks und Ausbildung rund um agentisches Coding.",
+        "proof": "AOC wirkt am stärksten als Handwerk: terminal-native Bedienung, Kontextdateien, Tasksysteme, Repo-Navigation und eine vermittelbare Engineering-Methode.",
+        "cta": "AOC entdecken"
       }
     },
-    "capabilities": {
-      "label": "Geteilte Plattformfähigkeiten",
-      "title": "Wir übersetzen technische Tiefe in Produktfähigkeiten.",
-      "body": "Das Portfolio umfasst unterschiedliche Branchen, aber dieselben Plattformmuskeln tauchen immer wieder auf: Memory, Orchestrierung, Berechtigungen, Echtzeit-Interaktion und wissensbasierte Nutzererfahrung.",
-      "items": [
-        "KI-Agenten und Orchestrierung",
-        "Persistente Task- und Memory-Systeme",
-        "Rollenbasierte Plattformarchitektur",
-        "Mehrsprachige Erlebnisse",
-        "Echtzeit-Produktworkflows",
-        "Wissensbasierte Interfaces"
-      ]
-    },
-    "whyIntrface": {
-      "label": "Warum Intrface",
-      "title": "Keine Sammlung isolierter Apps – sondern eine kohärente Produkt- und Plattformpraxis.",
-      "body": "Was die Arbeit verbindet, ist der Fokus auf langlebige Systeme. Uns interessiert, wie Produkte betrieben werden, wie Informationen bestehen bleiben, wie Interfaces unter Komplexität lesbar bleiben und wie Infrastruktur zu einem strategischen Vorteil wird statt zu verborgenem Overhead."
-    },
-    "proof": {
-      "publicProductTruth": {
-        "label": "Öffentliche Produktwahrheit",
-        "text": "AOC, Voyager und Funda basieren auf aktiven Repositories, Dokumentation und Implementierungsdetails statt auf abstrakter Portfolioprosa."
+    "principles": {
+      "label": "Wie wir bauen",
+      "title": "Produktdisziplin unter jeder Oberfläche.",
+      "body": "Die Produkte sind bewusst unterschiedlich. Was sie verbindet, ist unser Umgang mit Komplexität: Domäne zuerst, Interface klar, Infrastruktur im Hintergrund.",
+      "domain": {
+        "title": "Domain-first Systeme",
+        "text": "Wir beginnen mit der realen Umgebung: Tourismus, Funding-Teams, Consultants, Engineering und Repositories."
       },
-      "systemThinking": {
-        "label": "Systemdenken",
-        "text": "Über alle Produkte hinweg kehren dieselben Themen wieder: Kontext, Orchestrierung, rollenbasierte Flows, Navigation und eine robuste Operator-Erfahrung."
+      "interface": {
+        "title": "Interfaces, die klären",
+        "text": "Die Oberfläche muss Komplexität leichter bedienbar machen — durch Navigation, Hierarchie, Sprache und visuelle Struktur."
       },
-      "staticFirstClarity": {
-        "label": "Static-first Klarheit",
-        "text": "Die Site entsteht, um reale Produkte mit hoher Signalstärke, klarer Struktur und Raum für ein wachsendes Portfolio zu erklären."
+      "infrastructure": {
+        "title": "Infrastruktur, die verschwindet",
+        "text": "KI, Echtzeitdaten, Rollen, E-Mail, Storage und Automatisierung sind am besten, wenn sie natürlich im Produktfluss wirken."
       }
     },
-    "finalCta": {
-      "label": "Abschluss-CTA",
-      "title": "Portfolio erkunden, Leitprodukte prüfen oder ein relevantes Gespräch beginnen.",
-      "body": "Intrface baut ein öffentliches Produktökosystem rund um reale Arbeit auf. Wenn Sie über ein Produkt, eine Zusammenarbeit oder die zugrunde liegenden Systeme sprechen möchten, sind Sie hier richtig.",
-      "primaryCta": "Projekte ansehen"
+    "inquiry": {
+      "label": "Anfrage",
+      "title": "Sprechen Sie mit Intrface über ein Produkt, eine Partnerschaft oder ein System.",
+      "body": "Die öffentliche Site ist die Eingangstür. Bringen Sie ein Domänenproblem, eine Kooperationsidee oder ein Produktgespräch mit.",
+      "items": {
+        "general": "Allgemeine Intrface-Anfrage",
+        "voyager": "Voyager Tourismus und Kultur",
+        "funda": "Funda Förder-Workflows",
+        "aoc": "AOC Ausbildung und Engineering"
+      }
     }
   },
   "AocPage": {
@@ -196,8 +169,8 @@
   "VoyagerPage": {
     "hero": {
       "label": "Leitprodukt",
-      "title": "Eine KI-gestützte Tourismusplattform für Destinationen, Unternehmen und Reisende.",
-      "body": "Voyager verbindet Multi-Agent-Guidance, gamifizierte Exploration, mehrsprachige Content-Operationen und Plattform-Infrastruktur auf Destinationsebene in einem Tourismussystem.",
+      "title": "Eine KI-gestützte Tourismusplattform für Destinationen, Unternehmen, Organisationen und Reisende.",
+      "body": "Voyager kombiniert vier kontextuelle Agenten, gamifizierte Erkundung, mehrsprachige Content-Operations und destinationsweite Plattforminfrastruktur in einem Tourismussystem.",
       "primaryCta": "Voyager erkunden",
       "secondaryCta": "Plattformarchitektur erkunden",
       "tertiaryCta": "Partnerschaft besprechen"
@@ -205,7 +178,7 @@
     "platform": {
       "label": "Was Voyager ist",
       "title": "Mehr als eine Reise-App: eine Multi-Tenant-Tourismusplattform mit eigener Explorationsthese.",
-      "body": "Voyager ist für ein gesamtes Destinationsökosystem gebaut, nicht nur für Endnutzer-Browsing. Es verbindet Agenturen, Unternehmen, Attraktionen und Reisende in einer Plattform, in der Discovery, Content und KI-Unterstützung einander verstärken."
+      "body": "Voyager ist für ein Destinationsökosystem gebaut, nicht nur für Endnutzer-Browsing. Es verbindet Agenturen, Unternehmen, Attraktionen, Organisationen und Reisende in einer Plattform, in der Discovery, Content und KI-Assistenz einander verstärken."
     },
     "audience": {
       "items": [
@@ -220,13 +193,17 @@
         {
           "title": "Für Reisende und Scouts",
           "text": "Reisen wird explorativer statt passiv – durch kartenbasierte Discovery, standortbewusste Guidance und immersive Interaktionen mit Attraktionen."
+        },
+        {
+          "title": "Für Organisationen und Communities",
+          "text": "Organisationen erhalten einen Community-Spezialisten für Events, Mitgliederkoordination, gemeinsame lokale Aktivität und gebietsbezogenes Wissen."
         }
       ]
     },
     "agents": {
       "label": "Multi-Agent-System",
-      "title": "Drei domänenspezifische Agenten, jeweils an eine andere Tourismusoberfläche gebunden.",
-      "body": "Voyagers Agenten sind keine generischen Chat-Wrapper. Sie sind konfigurierte Entities mit eigener Rolle, eigenem Wissen und route-aware Kontext. Strukturierte Wissensbestände und RAG tragen das System im Hintergrund.",
+      "title": "Vier kontextuelle Agenten, jeweils an eine andere Tourismusoberfläche gebunden.",
+      "body": "Voyagers Agenten sind keine generischen Chat-Wrapper. Sie sind konfigurierte Entitäten mit eigener Rolle, eigenem Wissen, routenbewusstem Kontext und Stakeholder-Oberfläche. Strukturiertes Wissen und RAG stützen das System im Hintergrund.",
       "items": [
         {
           "persona": "The Guide",
@@ -242,6 +219,11 @@
           "persona": "The Historian",
           "domain": "Attractions",
           "summary": "Attraktionsfokussierter Kontext, kulturelles Storytelling und gamifizierte Scout-Interaktionen für bedeutungsvolle Vor-Ort-Erlebnisse."
+        },
+        {
+          "persona": "The Community Specialist",
+          "domain": "Organizations",
+          "summary": "Organisations- und Community-spezifische Assistenz für Events, Mitglieder, Mitfahrkoordination, Onboarding und gemeinsame lokale Aktivität."
         }
       ]
     },
@@ -283,7 +265,13 @@
       "label": "Plattformstruktur",
       "title": "Ein Stakeholder-Modell für den gesamten Tourismus-Stack.",
       "body": "Voyager wirkt wie eine Plattform, weil es um Beziehungen zwischen mehreren Akteuren organisiert ist statt um nur eine Nutzerrolle.",
-      "items": ["Agencies", "Businesses", "Attractions", "Users / Scouts"]
+      "items": [
+        "Agenturen",
+        "Unternehmen",
+        "Attraktionen",
+        "Organisationen",
+        "Nutzer / Scouts"
+      ]
     },
     "proof": {
       "label": "Produktnachweise",
@@ -291,11 +279,11 @@
       "items": [
         {
           "label": "Multi-Agent-Architektur",
-          "text": "Voyager, Nexus und Guardian sind als domänenspezifische Agenten mit eigener Konfiguration, eigenem Wissen und Entity-Kontext umgesetzt."
+          "text": "Voyager, Nexus, Guardian und Vita sind als domänenspezifische Agenten mit eigener Konfiguration, eigenem Wissen und Entity-Kontext umgesetzt."
         },
         {
           "label": "Route-aware Context Switching",
-          "text": "Agency-, Business- und Attraction-Routen aktivieren den passenden Agenten und halten das Chat-Verhalten an den Entity-Kontext gebunden."
+          "text": "Agentur-, Unternehmens-, Attraktions- und Organisationsrouten aktivieren den relevanten Agenten und binden das Chat-Verhalten an den Entity-Kontext."
         },
         {
           "label": "Knowledge-aware System",

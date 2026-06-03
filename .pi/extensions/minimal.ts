@@ -7,108 +7,23 @@
  * - T1 pre-filter load bar (authoritative feed when available, deterministic local fallback)
  * - session context usage bar
  *
- * Shortcut:
- * - Alt+M: request manual observer run (Pulse command: run_observer)
+ * Mind transport / commands now live in the native Mind extension stack:
+ * - `mind-ingest.ts`
+ * - `mind-ops.ts`
+ * - `mind-context.ts`
+ * - `mind-focus.ts`
  */
 
 import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
 import { applyExtensionDefaults } from "./themeMap.ts";
+import type { AutocompleteItem } from "@mariozechner/pi-tui";
 import { truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
-import { createConnection, type Socket } from "node:net";
-import { join } from "node:path";
+import { currentMindSnapshot } from "./lib/mind.ts";
+import { CAVEMAN_EVENT_SET_LEVEL, CAVEMAN_LEVELS, type CavemanLevel } from "./lib/caveman.ts";
 
 type MindStatus = "idle" | "queued" | "running" | "success" | "fallback" | "error";
 
 type Sample = { at: number; tokens: number };
-
-type MindFeedProgress = {
-	t0_estimated_tokens: number;
-	t1_target_tokens: number;
-	t1_hard_cap_tokens: number;
-	tokens_until_next_run: number;
-};
-
-type PendingCompactionPreparation = {
-	capturedAtMs: number;
-	firstKeptEntryId?: string;
-	tokensBefore?: number;
-};
-
-type ExtensionState = {
-	ctx?: ExtensionContext;
-	initialized: boolean;
-	filteredTokens: number;
-	samples: Sample[];
-	lastEstimateAtMs?: number;
-	lastTokenRecomputeAtMs?: number;
-	sessionStartAnimationStartedAtMs?: number;
-	mindStatus: MindStatus;
-	mindReason?: string;
-	mindUpdatedAtMs?: number;
-	mindProgress?: MindFeedProgress;
-	pulseConnected: boolean;
-	pulseSocket?: Socket;
-	pulseBuffer: string;
-	reconnectTimer?: NodeJS.Timeout;
-	refreshTimer?: NodeJS.Timeout;
-	lastPulseRequestId?: string;
-	pendingCompactionPreparation?: PendingCompactionPreparation;
-};
-
-const T1_TARGET_TOKENS = 28_000;
-const SAMPLE_WINDOW_MS = 10 * 60 * 1000;
-const REFRESH_INTERVAL_MS = 117;
-const TOKEN_RECOMPUTE_INTERVAL_MS = 2_000;
-const RUNNING_ANIMATION_STEP_MS = 117;
-const MIND_BAR_WIDTH = 10;
-const SESSION_START_ANIMATION_STEPS = Math.max(1, (MIND_BAR_WIDTH - 1) * 2);
-const SESSION_START_ANIMATION_MS = (SESSION_START_ANIMATION_STEPS + 1) * RUNNING_ANIMATION_STEP_MS;
-
-const state: ExtensionState = {
-	initialized: false,
-	filteredTokens: 0,
-	samples: [],
-	mindStatus: "idle",
-	pulseConnected: false,
-	pulseBuffer: "",
-	pendingCompactionPreparation: undefined,
-};
-
-function stableHashHex(input: string): string {
-	let hash = 2166136261;
-	for (let i = 0; i < input.length; i++) {
-		hash ^= input.charCodeAt(i);
-		hash = Math.imul(hash, 16777619) >>> 0;
-	}
-	return hash.toString(16).padStart(8, "0");
-}
-
-function sessionSlug(sessionId: string): string {
-	let slug = "";
-	for (const ch of sessionId) {
-		slug += /[A-Za-z0-9._-]/.test(ch) ? ch : "-";
-	}
-	while (slug.includes("--")) slug = slug.replaceAll("--", "-");
-	slug = slug.replace(/^-+|-+$/g, "");
-	const base = slug.length > 0 ? slug : "session";
-	const short = base.length > 48 ? base.slice(0, 48) : base;
-	return `${short}-${stableHashHex(sessionId)}`;
-}
-
-function pulseSocketPath(sessionId: string): string {
-	const envPath = process.env.AOC_PULSE_SOCK?.trim();
-	if (envPath) return envPath;
-
-	const runtimeDir = process.env.XDG_RUNTIME_DIR?.trim()
-		|| (typeof process.getuid === "function" ? `/run/user/${process.getuid()}` : "")
-		|| "/tmp";
-
-	return join(runtimeDir, "aoc", sessionSlug(sessionId), "pulse.sock");
-}
-
-function nowIso(): string {
-	return new Date().toISOString();
-}
 
 function estimateTokens(text: string): number {
 	if (!text) return 0;
@@ -145,6 +60,39 @@ function toolMetaLine(message: any): string {
 	if (typeof outBytes === "number") line += ` bytes=${outBytes}`;
 	return line;
 }
+
+type ExtensionState = {
+	ctx?: ExtensionContext;
+	initialized: boolean;
+	filteredTokens: number;
+	samples: Sample[];
+	lastEstimateAtMs?: number;
+	lastTokenRecomputeAtMs?: number;
+	sessionStartAnimationStartedAtMs?: number;
+	refreshTimer?: NodeJS.Timeout;
+	cavemanLevel: CavemanLevel;
+	lastModelId?: string;
+	lastContextUsagePct: number;
+};
+
+const T1_TARGET_TOKENS = 28_000;
+const SAMPLE_WINDOW_MS = 10 * 60 * 1000;
+const REFRESH_INTERVAL_MS = 117;
+const TOKEN_RECOMPUTE_INTERVAL_MS = 2_000;
+const RUNNING_ANIMATION_STEP_MS = 117;
+const MIND_BAR_WIDTH = 10;
+const SESSION_START_ANIMATION_STEPS = Math.max(1, (MIND_BAR_WIDTH - 1) * 2);
+const SESSION_START_ANIMATION_MS = (SESSION_START_ANIMATION_STEPS + 1) * RUNNING_ANIMATION_STEP_MS;
+const CAVEMAN_LABELS: Record<CavemanLevel, string> = { off: "off", lite: "lite", full: "full", ultra: "ultra" };
+
+const state: ExtensionState = {
+	initialized: false,
+	filteredTokens: 0,
+	samples: [],
+	cavemanLevel: "off",
+	lastModelId: undefined,
+	lastContextUsagePct: 0,
+};
 
 function recomputeFilteredTokens(ctx: ExtensionContext): void {
 	const branch = ctx.sessionManager.getBranch?.() ?? [];
@@ -242,24 +190,6 @@ function mindBar(pct: number, status: MindStatus, width = MIND_BAR_WIDTH): strin
 	return bar(pct, width);
 }
 
-function parseMindProgress(input: any): MindFeedProgress | undefined {
-	if (!input || typeof input !== "object") return undefined;
-	const t0 = Number(input.t0_estimated_tokens);
-	const target = Number(input.t1_target_tokens);
-	const hardCap = Number(input.t1_hard_cap_tokens);
-	const until = Number(input.tokens_until_next_run);
-	if (!Number.isFinite(t0) || !Number.isFinite(target) || !Number.isFinite(hardCap) || !Number.isFinite(until)) {
-		return undefined;
-	}
-	if (target <= 0 || hardCap < target) return undefined;
-	return {
-		t0_estimated_tokens: Math.max(0, Math.round(t0)),
-		t1_target_tokens: Math.max(1, Math.round(target)),
-		t1_hard_cap_tokens: Math.max(Math.round(target), Math.round(hardCap)),
-		tokens_until_next_run: Math.max(0, Math.round(until)),
-	};
-}
-
 function composeCenteredFooterLine(left: string, center: string, right: string, width: number): string {
 	const leftWidth = visibleWidth(left);
 	const centerWidth = visibleWidth(center);
@@ -283,319 +213,98 @@ function composeCenteredFooterLine(left: string, center: string, right: string, 
 	return truncateToWidth(`${left}${gapLeft}${center}${gapRight}${right}`, width);
 }
 
-function renderFooter(width: number, _theme: any): string {
-	const ctx = state.ctx as any;
-	const model = ctx?.model?.id || "no-model";
-	const usage = ctx?.getContextUsage?.();
-	const ctxPct = usage && usage.percent !== null ? Number(usage.percent) / 100 : 0;
+function composeFooterWithBridges(
+	left: string,
+	bridgeLeft: string,
+	center: string,
+	bridgeRight: string,
+	right: string,
+	width: number,
+): string {
+	const leftWidth = visibleWidth(left);
+	const bridgeLeftWidth = visibleWidth(bridgeLeft);
+	const centerWidth = visibleWidth(center);
+	const bridgeRightWidth = visibleWidth(bridgeRight);
+	const rightWidth = visibleWidth(right);
+	const minimum = leftWidth + centerWidth + rightWidth + 4;
+	if (minimum > width) {
+		return truncateToWidth(`${left} ${bridgeLeft} ${center} ${bridgeRight} ${right}`, width);
+	}
 
-	const t0Tokens = state.mindProgress?.t0_estimated_tokens ?? state.filteredTokens;
-	const t1Target = state.mindProgress?.t1_target_tokens ?? T1_TARGET_TOKENS;
+	const rightStart = Math.max(0, width - rightWidth);
+	let centerStart = Math.floor((width - centerWidth) / 2);
+	centerStart = Math.max(centerStart, leftWidth + 2);
+	centerStart = Math.min(centerStart, rightStart - centerWidth - 2);
+	if (centerStart < leftWidth + 2 || centerStart + centerWidth >= rightStart - 1) {
+		return truncateToWidth(`${left} ${bridgeLeft} ${center} ${bridgeRight} ${right}`, width);
+	}
+
+	const leftGapStart = leftWidth;
+	const leftGapEnd = centerStart;
+	const leftGapWidth = leftGapEnd - leftGapStart;
+	const rightGapStart = centerStart + centerWidth;
+	const rightGapEnd = rightStart;
+	const rightGapWidth = rightGapEnd - rightGapStart;
+	if (leftGapWidth < bridgeLeftWidth + 2 || rightGapWidth < bridgeRightWidth + 2) {
+		return truncateToWidth(`${left} ${bridgeLeft} ${center} ${bridgeRight} ${right}`, width);
+	}
+
+	const leftBridgeStart = leftGapStart + Math.floor((leftGapWidth - bridgeLeftWidth) / 2);
+	const rightBridgeStart = rightGapStart + Math.floor((rightGapWidth - bridgeRightWidth) / 2);
+	const leftPad = " ".repeat(Math.max(0, leftBridgeStart - leftWidth));
+	const betweenLeftAndCenter = " ".repeat(Math.max(1, centerStart - (leftBridgeStart + bridgeLeftWidth)));
+	const betweenCenterAndRightBridge = " ".repeat(Math.max(1, rightBridgeStart - (rightGapStart)));
+	const tailPad = " ".repeat(Math.max(1, rightStart - (rightBridgeStart + bridgeRightWidth)));
+
+	return truncateToWidth(
+		`${left}${leftPad}${bridgeLeft}${betweenLeftAndCenter}${center}${betweenCenterAndRightBridge}${bridgeRight}${tailPad}${right}`,
+		width,
+	);
+}
+
+function captureFooterSnapshot(ctx?: ExtensionContext): void {
+	if (!ctx) return;
+	try {
+		state.lastModelId = ctx.model?.id || state.lastModelId || "no-model";
+		const usage = ctx.getContextUsage?.();
+		state.lastContextUsagePct = usage && usage.percent !== null ? Number(usage.percent) / 100 : 0;
+	} catch {
+		// Session replacement invalidates old ctx objects. Keep last good snapshot.
+	}
+}
+
+function renderFooter(width: number, _theme: any): string[] {
+	captureFooterSnapshot(state.ctx);
+	const model = state.lastModelId || "no-model";
+	const ctxPct = state.lastContextUsagePct;
+	const mind = currentMindSnapshot();
+
+	const t0Tokens = mind.mindProgress?.t0_estimated_tokens ?? state.filteredTokens;
+	const t1Target = mind.mindProgress?.t1_target_tokens ?? T1_TARGET_TOKENS;
 	const mindLoadPct = Math.min(1, t0Tokens / Math.max(1, t1Target));
-	const mindPart = `✦ [${mindBar(mindLoadPct, state.mindStatus, MIND_BAR_WIDTH)}]✦`;
-	const ctxPart = `[${bar(ctxPct)}] ${Math.round(ctxPct * 100)}%`;
+	const mindPart = `✦ [${mindBar(mindLoadPct, mind.mindStatus, MIND_BAR_WIDTH)}]✦`;
+	const leftPart = ` ${model}`;
+	const ctxPart = `[${bar(ctxPct)}] ${Math.round(ctxPct * 100)}% `;
+	return [composeCenteredFooterLine(leftPart, mindPart, ctxPart, width)];
+}
 
-	return composeCenteredFooterLine(` ${model}`, mindPart, `${ctxPart} `, width);
+function applyCavemanLevel(pi: ExtensionAPI, next: CavemanLevel, options?: { silent?: boolean }): void {
+	state.cavemanLevel = next;
+	pi.appendEntry("caveman-level-v1", { cavemanLevel: next, level: next, at: Date.now() });
+	if (state.ctx) applyFooter(state.ctx);
+	if (!options?.silent) state.ctx?.ui.notify(`caveman: ${CAVEMAN_LABELS[next]}`, next === "off" ? "info" : "success");
 }
 
 function applyFooter(ctx: ExtensionContext): void {
 	state.ctx = ctx;
+	captureFooterSnapshot(ctx);
 	ctx.ui.setFooter((_tui: unknown, theme: any, _footerData: unknown) => ({
 		dispose: () => {},
 		invalidate() {},
 		render(width: number): string[] {
-			return [renderFooter(width, theme)];
+			return renderFooter(width, theme);
 		},
 	}));
-}
-
-function applyMindPayload(payload: any): void {
-	const events = Array.isArray(payload?.events) ? payload.events : [];
-	const latest = events.length > 0 ? events[0] : undefined;
-	const statusRaw = typeof latest?.status === "string" ? latest.status : "";
-
-	switch (statusRaw) {
-		case "queued":
-		case "running":
-		case "success":
-		case "fallback":
-		case "error":
-			state.mindStatus = statusRaw;
-			break;
-		default:
-			break;
-	}
-
-	state.mindReason = typeof latest?.reason === "string" ? latest.reason : undefined;
-	const progress = parseMindProgress(latest?.progress) ?? parseMindProgress(payload?.progress);
-	if (progress) {
-		state.mindProgress = progress;
-	}
-	if (typeof payload?.updated_at_ms === "number") {
-		state.mindUpdatedAtMs = payload.updated_at_ms;
-	}
-}
-
-function parseEnvelope(line: string): any | undefined {
-	if (!line.trim()) return undefined;
-	try {
-		return JSON.parse(line);
-	} catch {
-		return undefined;
-	}
-}
-
-function writeEnvelope(socket: Socket | undefined, envelope: any): void {
-	if (!socket || socket.destroyed) return;
-	socket.write(JSON.stringify(envelope) + "\n");
-}
-
-function pulseIdentity(ctx: ExtensionContext): { sessionId: string; paneId: string; senderId: string; agentId: string } | undefined {
-	const sessionId = process.env.AOC_SESSION_ID?.trim();
-	const paneId = process.env.AOC_PANE_ID?.trim();
-	if (!sessionId || !paneId) return undefined;
-	const senderId = `pi-minimal-${process.pid}`;
-	const agentId = `${sessionId}::${paneId}`;
-	return { sessionId, paneId, senderId, agentId };
-}
-
-function sendPulseCommand(ctx: ExtensionContext, command: string, args: Record<string, unknown>): boolean {
-	const identity = pulseIdentity(ctx);
-	if (!identity) return false;
-	const socket = state.pulseSocket;
-	if (!socket || socket.destroyed || !state.pulseConnected) return false;
-	writeEnvelope(socket, {
-		version: "1",
-		type: "command",
-		session_id: identity.sessionId,
-		sender_id: identity.senderId,
-		request_id: `${command}-${Date.now()}`,
-		timestamp: nowIso(),
-		payload: {
-			command,
-			target_agent_id: identity.agentId,
-			args,
-		},
-	});
-	return true;
-}
-
-function startPulse(ctx: ExtensionContext): void {
-	const identity = pulseIdentity(ctx);
-	if (!identity) return;
-	const { sessionId, paneId, senderId, agentId } = identity;
-
-	const socketPath = pulseSocketPath(sessionId);
-
-	const connect = () => {
-		if (state.pulseSocket && !state.pulseSocket.destroyed) return;
-
-		const socket = createConnection(socketPath);
-		state.pulseSocket = socket;
-		state.pulseBuffer = "";
-
-		socket.on("connect", () => {
-			state.pulseConnected = true;
-
-			writeEnvelope(socket, {
-				version: "1",
-				type: "hello",
-				session_id: sessionId,
-				sender_id: senderId,
-				timestamp: nowIso(),
-				payload: {
-					client_id: senderId,
-					role: "subscriber",
-					capabilities: ["mind_observer"],
-					agent_id: agentId,
-					pane_id: paneId,
-				},
-			});
-
-			writeEnvelope(socket, {
-				version: "1",
-				type: "subscribe",
-				session_id: sessionId,
-				sender_id: senderId,
-				timestamp: nowIso(),
-				payload: {
-					topics: ["agent_state", "health"],
-				},
-			});
-		});
-
-		socket.on("data", (chunk: Buffer) => {
-			state.pulseBuffer += chunk.toString("utf8");
-			for (;;) {
-				const idx = state.pulseBuffer.indexOf("\n");
-				if (idx < 0) break;
-				const line = state.pulseBuffer.slice(0, idx);
-				state.pulseBuffer = state.pulseBuffer.slice(idx + 1);
-				const env = parseEnvelope(line);
-				if (!env || env.session_id !== sessionId) continue;
-
-				if (env.type === "snapshot") {
-					const states = Array.isArray(env.payload?.states) ? env.payload.states : [];
-					const mine = states.find((s: any) => s?.agent_id === agentId);
-					if (mine?.source?.mind_observer) applyMindPayload(mine.source.mind_observer);
-				}
-
-				if (env.type === "delta") {
-					const changes = Array.isArray(env.payload?.changes) ? env.payload.changes : [];
-					for (const change of changes) {
-						if (change?.agent_id !== agentId) continue;
-						if (change?.op === "remove") {
-							state.mindStatus = "idle";
-							state.mindProgress = undefined;
-							continue;
-						}
-						if (change?.state?.source?.mind_observer) {
-							applyMindPayload(change.state.source.mind_observer);
-						}
-					}
-				}
-
-				if (env.type === "command_result" && env.request_id && env.request_id === state.lastPulseRequestId) {
-					if (env.payload?.command === "run_observer" && env.payload?.status === "accepted") {
-						state.mindStatus = "queued";
-					}
-				}
-			}
-		});
-
-		const scheduleReconnect = () => {
-			state.pulseConnected = false;
-			if (state.pulseSocket && !state.pulseSocket.destroyed) state.pulseSocket.destroy();
-			state.pulseSocket = undefined;
-			if (state.reconnectTimer) clearTimeout(state.reconnectTimer);
-			state.reconnectTimer = setTimeout(connect, 2000);
-		};
-
-		socket.on("error", () => scheduleReconnect());
-		socket.on("close", () => scheduleReconnect());
-	};
-
-	connect();
-}
-
-function extractCommandHintFromToolResult(message: any): string | undefined {
-	const details = message?.details;
-	if (details && typeof details === "object") {
-		const command = (details as any).command;
-		if (typeof command === "string" && command.trim().length > 0) {
-			return command.trim();
-		}
-	}
-	const text = blocksToText(message?.content);
-	const cmdPrefix = "Command:";
-	const idx = text.indexOf(cmdPrefix);
-	if (idx >= 0) {
-		const line = text.slice(idx + cmdPrefix.length).split("\n")[0]?.trim();
-		if (line) return line;
-	}
-	return undefined;
-}
-
-function buildMindIngestPayload(message: any, ctx: ExtensionContext): Record<string, unknown> | undefined {
-	const conversationId = ctx.sessionManager.getSessionId?.();
-	if (!conversationId || typeof conversationId !== "string") return undefined;
-	const timestampMs = typeof message?.timestamp === "number" ? Math.round(message.timestamp) : Date.now();
-	const role = typeof message?.role === "string" ? message.role : "";
-	const eventIdSeed = JSON.stringify({
-		role,
-		timestampMs,
-		text: blocksToText(message?.content),
-		tool: message?.toolName,
-		details: message?.details,
-	});
-	const eventId = `pi:${conversationId}:${stableHashHex(eventIdSeed)}`;
-
-	if (role === "user" || role === "assistant" || role === "system") {
-		return {
-			conversation_id: conversationId,
-			event_id: eventId,
-			timestamp_ms: timestampMs,
-			body: {
-				kind: "message",
-				role,
-				text: blocksToText(message?.content),
-			},
-		};
-	}
-
-	if (role === "toolResult") {
-		const toolName = typeof message?.toolName === "string" ? message.toolName : "tool";
-		const details = message?.details ?? {};
-		const outputText = blocksToText(message?.content);
-		return {
-			conversation_id: conversationId,
-			event_id: eventId,
-			timestamp_ms: timestampMs,
-			body: {
-				kind: "tool_result",
-				tool_name: toolName,
-				is_error: Boolean(message?.isError),
-				latency_ms: typeof details?.latencyMs === "number"
-					? details.latencyMs
-					: (typeof details?.latency_ms === "number" ? details.latency_ms : undefined),
-				exit_code: typeof details?.exitCode === "number"
-					? details.exitCode
-					: (typeof details?.exit_code === "number" ? details.exit_code : undefined),
-				output: outputText || undefined,
-				redacted: Boolean(details?.redacted),
-			},
-		};
-	}
-
-	return undefined;
-}
-
-function maybeIngestMindEvent(message: any, ctx: ExtensionContext): void {
-	const payload = buildMindIngestPayload(message, ctx);
-	if (!payload) return;
-	sendPulseCommand(ctx, "mind_ingest_event", payload);
-
-	if (message?.role === "toolResult") {
-		const toolName = typeof message?.toolName === "string" ? message.toolName.toLowerCase() : "";
-		if (toolName === "bash") {
-			const commandHint = extractCommandHintFromToolResult(message) ?? "";
-			if (/\baoc-stm\s+handoff\b/i.test(commandHint)) {
-				sendPulseCommand(ctx, "mind_handoff", {
-					conversation_id: ctx.sessionManager.getSessionId?.(),
-					reason: "stm handoff",
-				});
-			}
-		}
-	}
-}
-
-function requestManualObserverRun(ctx: ExtensionContext): boolean {
-	const identity = pulseIdentity(ctx);
-	if (!identity) return false;
-	const socket = state.pulseSocket;
-	if (!socket || socket.destroyed || !state.pulseConnected) return false;
-
-	const requestId = `mind-run-${Date.now()}`;
-	state.lastPulseRequestId = requestId;
-
-	writeEnvelope(socket, {
-		version: "1",
-		type: "command",
-		session_id: identity.sessionId,
-		sender_id: identity.senderId,
-		request_id: requestId,
-		timestamp: nowIso(),
-		payload: {
-			command: "run_observer",
-			target_agent_id: identity.agentId,
-			args: {
-				reason: "pi shortcut",
-				conversation_id: ctx.sessionManager.getSessionId?.(),
-			},
-		},
-	});
-	state.mindStatus = "queued";
-	return true;
 }
 
 function startRefreshLoop(ctx: ExtensionContext): void {
@@ -619,61 +328,31 @@ function bootstrap(ctx: ExtensionContext, options?: { animateOnStart?: boolean }
 	recomputeFilteredTokens(ctx);
 	applyFooter(ctx);
 	startRefreshLoop(ctx);
-	startPulse(ctx);
 	state.initialized = true;
+}
+
+function restoreCavemanLevel(ctx: ExtensionContext): void {
+	for (const entry of [...ctx.sessionManager.getBranch()].reverse()) {
+		if ((entry as any).type !== "custom" || (entry as any).customType !== "caveman-level-v1") continue;
+		const data = (entry as any).data;
+		const restored = data?.cavemanLevel ?? data?.level;
+		if (restored && CAVEMAN_LEVELS.includes(restored)) {
+			state.cavemanLevel = restored;
+			return;
+		}
+	}
 }
 
 export default function (pi: ExtensionAPI) {
 	pi.on("session_start", async (_event, ctx) => {
 		if (!ctx?.ui) return;
+		restoreCavemanLevel(ctx);
 		bootstrap(ctx, { animateOnStart: true });
 	});
 
-	pi.on("session_switch", async (_event, ctx) => {
-		if (!ctx?.ui) return;
-		bootstrap(ctx);
-	});
-
-	pi.on("message_end", async (event, ctx) => {
-		maybeIngestMindEvent((event as any)?.message, ctx);
+	pi.on("message_end", async (_event, ctx) => {
 		recomputeFilteredTokens(ctx);
 		applyFooter(ctx);
-	});
-
-	pi.on("session_before_compact", async (event, _ctx) => {
-		const preparation = (event as any)?.preparation;
-		state.pendingCompactionPreparation = {
-			capturedAtMs: Date.now(),
-			firstKeptEntryId: typeof preparation?.firstKeptEntryId === "string"
-				? preparation.firstKeptEntryId
-				: undefined,
-			tokensBefore: typeof preparation?.tokensBefore === "number"
-				? preparation.tokensBefore
-				: undefined,
-		};
-	});
-
-	pi.on("session_compact", async (event, ctx) => {
-		const entry = (event as any)?.compactionEntry;
-		const preparation = state.pendingCompactionPreparation;
-		const ok = sendPulseCommand(ctx, "mind_compaction_checkpoint", {
-			schema_version: 1,
-			conversation_id: ctx.sessionManager.getSessionId?.(),
-			reason: "pi compaction",
-			summary: typeof entry?.summary === "string" ? entry.summary : undefined,
-			tokens_before: typeof entry?.tokensBefore === "number"
-				? entry.tokensBefore
-				: preparation?.tokensBefore,
-			first_kept_entry_id: typeof entry?.firstKeptEntryId === "string"
-				? entry.firstKeptEntryId
-				: preparation?.firstKeptEntryId,
-			compaction_entry_id: typeof entry?.id === "string" ? entry.id : undefined,
-			from_extension: Boolean((entry as any)?.fromHook ?? (event as any)?.fromExtension),
-		});
-		state.pendingCompactionPreparation = undefined;
-		if (!ok) {
-			ctx.ui.setStatus("mind", "compact checkpoint pending (pulse offline)");
-		}
 	});
 
 	pi.on("turn_end", async (_event, ctx) => {
@@ -681,19 +360,53 @@ export default function (pi: ExtensionAPI) {
 		applyFooter(ctx);
 	});
 
-	pi.registerShortcut("alt+m", {
-		description: "Trigger AOC Mind observer run",
-		handler: async (ctx) => {
-			const ok = requestManualObserverRun(ctx);
-			ctx.ui.notify(ok ? "Observer run queued" : "Observer run unavailable (Pulse disconnected)", ok ? "info" : "warning");
+	pi.on("session_shutdown", async () => {
+		if (state.refreshTimer) clearInterval(state.refreshTimer);
+		state.refreshTimer = undefined;
+		state.ctx = undefined;
+	});
+
+	pi.events.on(CAVEMAN_EVENT_SET_LEVEL, (data: unknown) => {
+		const next = typeof data === "object" && data && "level" in (data as Record<string, unknown>)
+			? (data as Record<string, unknown>).level
+			: undefined;
+		if (typeof next !== "string" || !CAVEMAN_LEVELS.includes(next as CavemanLevel)) return;
+		applyCavemanLevel(pi, next as CavemanLevel);
+	});
+
+	// --- Caveman command -------------------------------------------
+	pi.registerCommand("caveman", {
+		description: "Toggle caveman: off → lite → full → ultra",
+		getArgumentCompletions: (prefix: string): AutocompleteItem[] | null => {
+			const items = (["off", "lite", "full", "ultra"] as const)
+				.filter(l => l.startsWith(prefix))
+				.map(l => ({ value: l, label: `caveman ${l}` }));
+			return items.length > 0 ? items : null;
+		},
+		handler: async (args, _ctx) => {
+			const arg = args?.trim().toLowerCase();
+			let next: CavemanLevel;
+			if (arg && CAVEMAN_LEVELS.includes(arg as CavemanLevel)) {
+				next = arg as CavemanLevel;
+			} else {
+				const idx = CAVEMAN_LEVELS.indexOf(state.cavemanLevel);
+				next = CAVEMAN_LEVELS[(idx + 1) % CAVEMAN_LEVELS.length];
+			}
+			applyCavemanLevel(pi, next);
 		},
 	});
 
-	pi.on("session_shutdown", async () => {
-		if (state.refreshTimer) clearInterval(state.refreshTimer);
-		if (state.reconnectTimer) clearTimeout(state.reconnectTimer);
-		if (state.pulseSocket && !state.pulseSocket.destroyed) state.pulseSocket.destroy();
-		state.pulseSocket = undefined;
-		state.pulseConnected = false;
+	// --- Caveman prompt injection ----------------------------------
+	pi.on("before_agent_start", async (event: any) => {
+		const level = state.cavemanLevel;
+		if (level === "off" || !event.systemPrompt) return;
+		const rules: Record<string, string> = {
+			lite: "Drop filler/hedging/pleasantries. Keep articles + full sentences. Professional but tight. Technical terms exact. Code unchanged.",
+			full: "Drop articles/filler/hedging/pleasantries. Fragments OK. Short synonyms. Technical terms exact. Code unchanged. Pattern: [thing] [action] [reason]. [next step].",
+			ultra: "Drop articles/filler/hedging/pleasantries/conjunctions. Abbreviate (DB/auth/req/res/fn). Arrows for causality (X→Y). One word when one word enough. Technical terms exact. Code unchanged.",
+		};
+		return {
+			systemPrompt: `${event.systemPrompt}\n\n[CAVEMAN MODE: ${level.toUpperCase()}] ${rules[level]} Auto-clarity: use full English for security warnings, irreversible actions, and when user repeats a question. Resume caveman after.`,
+		};
 	});
 }

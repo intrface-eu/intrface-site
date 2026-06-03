@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "projectAocVersion": 3,
+  "previousProjectAocVersion": 2,
+  "lastInitializedAt": "2026-06-03T15:40:09.125863Z",
+  "lastInitScriptDir": "/home/ceii/.local/bin",
+  "pi": {
+    "localMultiAuthPackage": {
+      "configuredPath": "./packages/pi-multi-auth-aoc",
+      "projectPath": "/home/ceii/dev/intrface-site/.pi/packages/pi-multi-auth-aoc",
+      "available": true,
+      "seedSource": "/home/ceii/.config/aoc/pi/packages/pi-multi-auth-aoc"
+    }
+  },
+  "migrationsApplied": [
+    "v3-managed-asset-version-markers"
+  ]
+}
