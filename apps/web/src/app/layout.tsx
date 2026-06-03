@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Intrface",
-  description: "Intrface builds AI-native platforms, products, and systems.",
+  description: "Intrface is a business and software development consultancy.",
   icons: {
     icon: [
       { url: "/brand/intrface-icon.svg", media: "(prefers-color-scheme: light)" },

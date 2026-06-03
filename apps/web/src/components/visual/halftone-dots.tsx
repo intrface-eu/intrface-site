@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties } from "react";
 
-type HalftoneVariant = "voyager" | "funda" | "aoc" | "ink";
+type HalftoneVariant = "teal" | "rose" | "blue" | "ink";
 
 type HalftoneDotsProps = {
   variant?: HalftoneVariant;
@@ -13,9 +13,9 @@ type HalftoneDotsProps = {
 };
 
 const variantColor: Record<HalftoneVariant, [number, number, number]> = {
-  voyager: [16, 185, 129],
-  funda: [225, 29, 72],
-  aoc: [14, 165, 233],
+  teal: [16, 185, 129],
+  rose: [225, 29, 72],
+  blue: [14, 165, 233],
   ink: [15, 23, 41],
 };
 

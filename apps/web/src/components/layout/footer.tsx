@@ -21,19 +21,10 @@ export async function Footer({ locale }: { locale: AppLocale }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-5">
-          <Link href="/#products" className="hover:text-foreground">
-            {nav("projects")}
+          <Link href="/#services" className="hover:text-foreground">
+            {nav("services")}
           </Link>
-          <Link href="/aoc" className="hover:text-foreground">
-            {nav("aoc")}
-          </Link>
-          <Link href="/voyager" className="hover:text-foreground">
-            {nav("voyager")}
-          </Link>
-          <Link href="/funda" className="hover:text-foreground">
-            {nav("funda")}
-          </Link>
-          <Link href="/#inquiry" className="hover:text-foreground">
+          <Link href="/#contact" className="hover:text-foreground">
             {nav("contact")}
           </Link>
         </div>

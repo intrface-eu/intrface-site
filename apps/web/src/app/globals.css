@@ -19,13 +19,13 @@
   --intrface-sun: #d97706;
   --intrface-tide: #0f766e;
 
-  /* ===== PRODUCT ACCENTS ===== */
-  --aoc-blue: #0ea5e9;
-  --aoc-blue-soft: color-mix(in srgb, #0ea5e9 10%, transparent);
-  --voyager-green: #10b981;
-  --voyager-green-soft: color-mix(in srgb, #10b981 10%, transparent);
-  --funda-rose: #e11d48;
-  --funda-rose-soft: color-mix(in srgb, #e11d48 10%, transparent);
+  /* ===== SERVICE ACCENTS ===== */
+  --service-blue: #0ea5e9;
+  --service-blue-soft: color-mix(in srgb, #0ea5e9 10%, transparent);
+  --service-green: #10b981;
+  --service-green-soft: color-mix(in srgb, #10b981 10%, transparent);
+  --service-rose: #e11d48;
+  --service-rose-soft: color-mix(in srgb, #e11d48 10%, transparent);
 
   /* ===== SHADOW SCALE — multi-layer elevation ===== */
   --shadow-surface:
@@ -133,7 +133,7 @@ a {
   inset: -20% -30% -20% -30%;
   background:
     radial-gradient(ellipse at 50% 20%, color-mix(in oklab, var(--accent) 16%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, color-mix(in oklab, var(--aoc-blue) 10%, transparent) 0%, transparent 55%);
+    radial-gradient(ellipse at 20% 80%, color-mix(in oklab, var(--service-blue) 10%, transparent) 0%, transparent 55%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
@@ -299,9 +299,9 @@ a {
   .surface-artifact-dark {
     border: 1px solid rgba(255, 255, 255, 0.12);
     background:
-      radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--artifact-accent, var(--aoc-blue)) 24%, transparent), transparent 34%),
+      radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--artifact-accent, var(--service-blue)) 24%, transparent), transparent 34%),
       linear-gradient(135deg, #08111f, #0d1729 58%, #05070d);
-    box-shadow: 0 44px 110px -58px color-mix(in srgb, var(--artifact-accent, var(--aoc-blue)) 58%, transparent);
+    box-shadow: 0 44px 110px -58px color-mix(in srgb, var(--artifact-accent, var(--service-blue)) 58%, transparent);
   }
 
   .halftone-field {

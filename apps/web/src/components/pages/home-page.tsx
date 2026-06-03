@@ -1,221 +1,122 @@
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import { FadeIn } from "@/components/site/fade-in";
-import {
-  CapabilityConstellation,
-  ProductArtifact,
-  ProductWorldsMosaic,
-} from "@/components/visual/product-artifacts";
 import { HalftoneDots } from "@/components/visual/halftone-dots";
 import {
   IconArrowRight,
-  IconBrain,
-  IconBuildingBank,
-  IconMap2,
-  IconRoute,
-  IconSearch,
-  IconTerminal2,
+  IconBriefcase,
+  IconCode,
+  IconDeviceDesktopAnalytics,
+  IconMessages,
 } from "@tabler/icons-react";
 
-type ProductVariant = "voyager" | "funda" | "aoc";
-
-type Product = {
-  variant: ProductVariant;
-  name: string;
-  href: "/voyager" | "/funda" | "/aoc";
-  domain: string;
-  summary: string;
-  proof: string;
-  cta: string;
-  thesis: string;
-  bullets: readonly string[];
-};
-
-const productTheme: Record<
-  ProductVariant,
+const services = [
   {
-    eyebrow: string;
-    accent: string;
-    soft: string;
-    text: string;
-    icon: React.ElementType;
-  }
-> = {
-  voyager: {
-    eyebrow: "text-emerald-700",
-    accent: "#10b981",
-    soft: "bg-emerald-600/10",
-    text: "text-emerald-700",
-    icon: IconMap2,
+    icon: IconBriefcase,
+    title: "Business consultancy",
+    text: "We help teams clarify service direction, operational requirements, delivery priorities, and the software decisions behind them.",
   },
-  funda: {
-    eyebrow: "text-rose-700",
-    accent: "#e11d48",
-    soft: "bg-rose-600/10",
-    text: "text-rose-700",
-    icon: IconBuildingBank,
+  {
+    icon: IconCode,
+    title: "Software development",
+    text: "We design, build, and maintain web applications, internal tools, automation, data workflows, and production-ready digital systems.",
   },
-  aoc: {
-    eyebrow: "text-sky-700",
-    accent: "#0ea5e9",
-    soft: "bg-sky-600/10",
-    text: "text-sky-700",
-    icon: IconTerminal2,
+  {
+    icon: IconDeviceDesktopAnalytics,
+    title: "Technical strategy",
+    text: "We audit existing systems, map risks, plan modernization, and turn ambiguous business needs into practical engineering execution.",
   },
-};
+] as const;
+
+const process = [
+  "Discovery and business analysis",
+  "Technical planning",
+  "Interface and workflow design",
+  "Full-stack implementation",
+  "Launch support and iteration",
+  "Long-term advisory partnership",
+] as const;
 
 export async function HomePage({ locale }: { locale: AppLocale }) {
-  const t = await getTranslations({ locale, namespace: "HomePage" });
-
-  const products: readonly Product[] = [
-    {
-      variant: "voyager",
-      name: "Voyager",
-      href: "/voyager",
-      domain: t("products.voyager.domain"),
-      summary: t("products.voyager.summary"),
-      proof: t("products.voyager.proof"),
-      cta: t("products.voyager.cta"),
-      thesis: "Tourism intelligence presented as a live operational atlas.",
-      bullets: ["Geospatial discovery", "Scout and guardian agents", "Multilingual place context"],
-    },
-    {
-      variant: "funda",
-      name: "Funda",
-      href: "/funda",
-      domain: t("products.funda.domain"),
-      summary: t("products.funda.summary"),
-      proof: t("products.funda.proof"),
-      cta: t("products.funda.cta"),
-      thesis: "Funding workflows that turn eligibility into visible progress.",
-      bullets: ["Opportunity matching", "Application workspace", "Role-aware review"],
-    },
-    {
-      variant: "aoc",
-      name: "AOC",
-      href: "/aoc",
-      domain: t("products.aoc.domain"),
-      summary: t("products.aoc.summary"),
-      proof: t("products.aoc.proof"),
-      cta: t("products.aoc.cta"),
-      thesis: "An operator cockpit for serious agentic engineering practice.",
-      bullets: ["Persistent context", "Memory and tasks", "Terminal-native workflow"],
-    },
-  ] as const;
-
-  const capabilities = [
-    { icon: IconBrain, title: "AI agents and orchestration", text: "Agent behavior is shown as a product capability, not as a generic AI badge." },
-    { icon: IconRoute, title: "Realtime workflow state", text: "Maps, applications, and tasks expose the transitions that matter to operators." },
-    { icon: IconSearch, title: "Search, RAG, and memory", text: "The interface makes retrieval and persistence visible where decisions happen." },
-    { icon: IconMap2, title: "Geospatial systems", text: "Voyager anchors the portfolio in live place, route, and entity views." },
-    { icon: IconBuildingBank, title: "Institutional roles", text: "Funda supports applicants, consultants, admins, directors, and superusers." },
-    { icon: IconTerminal2, title: "Operator tools", text: "AOC turns repo context and task state into a terminal-native cockpit." },
-  ] as const;
-
-  const inquiryItems = [
-    t("inquiry.items.general"),
-    t("inquiry.items.voyager"),
-    t("inquiry.items.funda"),
-    t("inquiry.items.aoc"),
-  ] as const;
+  void locale;
 
   return (
     <main className="bg-[#f5f1eb] text-[var(--intrface-ink)]">
       <section className="relative overflow-hidden border-b border-black/10">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute right-[-12rem] top-[-16rem] h-[42rem] w-[42rem] rounded-full bg-emerald-700/8 blur-[100px]" />
-          <div className="absolute bottom-[-20rem] left-[-16rem] h-[42rem] w-[42rem] rounded-full bg-rose-700/8 blur-[100px]" />
-          <div className="absolute inset-x-0 top-20 h-80 halftone-field opacity-25 [--halftone-color:var(--intrface-ink)] [--halftone-size:34px]" data-drift="true" />
+          <div className="absolute right-[-12rem] top-[-16rem] h-[42rem] w-[42rem] rounded-full bg-slate-700/8 blur-[100px]" />
+          <div className="absolute bottom-[-20rem] left-[-16rem] h-[42rem] w-[42rem] rounded-full bg-teal-700/8 blur-[100px]" />
+          <div className="absolute inset-x-0 top-20 h-80 halftone-field opacity-20 [--halftone-color:var(--intrface-ink)] [--halftone-size:34px]" data-drift="true" />
         </div>
         <div className="section-shell relative grid gap-14 py-24 sm:py-32 lg:grid-cols-[.95fr_1.05fr] lg:items-center lg:py-36">
           <div className="max-w-5xl">
             <FadeIn>
-              <p className="type-section-label">Intrface product systems</p>
+              <p className="type-section-label">Intrface consultancy</p>
             </FadeIn>
             <FadeIn delay={100}>
               <h1 className="mt-6 max-w-5xl text-[3.5rem] font-semibold leading-[0.9] tracking-[-0.07em] sm:text-[5.4rem] lg:text-[6.4rem]">
-                {t("hero.title")}
+                Business and software development consultancy.
               </h1>
             </FadeIn>
             <FadeIn delay={200}>
               <p className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
-                {t("hero.body")}
+                Intrface helps organizations plan, design, and build reliable software systems that support real business operations.
               </p>
             </FadeIn>
             <FadeIn delay={300}>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href="#products" className="artifact-button rounded-full bg-[var(--intrface-ink)] px-8 py-4 text-sm font-semibold text-white shadow-xl">
-                  {t("hero.primaryCta")}
+                <a href="#services" className="artifact-button rounded-full bg-[var(--intrface-ink)] px-8 py-4 text-sm font-semibold text-white shadow-xl">
+                  View services
                 </a>
-                <a href="#inquiry" className="artifact-button inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-8 py-4 text-sm font-semibold text-[var(--intrface-ink)] hover:bg-white">
-                  {t("hero.secondaryCta")}
+                <a href="#contact" className="artifact-button inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-8 py-4 text-sm font-semibold text-[var(--intrface-ink)] hover:bg-white">
+                  Contact us
                   <IconArrowRight className="h-4 w-4" />
                 </a>
               </div>
             </FadeIn>
           </div>
           <FadeIn delay={180}>
-            <div className="relative">
-              <HalftoneDots variant="ink" density="coarse" className="pointer-events-none absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] opacity-45" />
-              <ProductWorldsMosaic />
+            <div className="relative overflow-hidden rounded-[2.75rem] border border-black/10 bg-white/64 p-5 shadow-[0_45px_120px_-70px_rgba(15,23,41,.55)]">
+              <HalftoneDots variant="ink" density="coarse" className="pointer-events-none absolute inset-0 h-full w-full opacity-35" />
+              <div className="relative rounded-[2rem] border border-black/10 bg-white/72 p-5">
+                <div className="flex items-center justify-between border-b border-black/10 pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[.2em] text-slate-500">consultancy operating system</p>
+                  <span className="h-2.5 w-2.5 rounded-full bg-teal-600" />
+                </div>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {process.slice(0, 4).map((item, index) => (
+                    <div key={item} className="rounded-2xl border border-black/8 bg-[#fbfaf7] p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[.18em] text-slate-500">0{index + 1}</p>
+                      <p className="mt-3 text-base font-semibold tracking-[-.03em] text-slate-950">{item}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 rounded-2xl border border-teal-900/10 bg-teal-700/8 p-4 text-sm font-medium leading-6 text-teal-950">
+                  Strategy, business thinking, and engineering delivery in one accountable partner.
+                </div>
+              </div>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <section id="products" className="scroll-mt-24 border-b border-black/10">
+      <section id="services" className="scroll-mt-24 border-b border-black/10 bg-[#fbf8f2]">
         <div className="section-shell py-20 sm:py-24">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <FadeIn><p className="type-section-label">{t("products.label")}</p></FadeIn>
-              <FadeIn delay={100}><h2 className="type-heading mt-4 max-w-2xl">{t("products.title")}</h2></FadeIn>
-            </div>
-            <FadeIn delay={200}><p className="max-w-xl text-base leading-7 text-slate-600">{t("products.body")}</p></FadeIn>
+          <div className="max-w-3xl">
+            <FadeIn><p className="type-section-label">Services</p></FadeIn>
+            <FadeIn delay={100}><h2 className="type-heading mt-4">Consulting and implementation for serious software work.</h2></FadeIn>
+            <FadeIn delay={200}><p className="mt-5 text-base leading-7 text-slate-600">We work where business requirements, user workflows, and technical execution need to be aligned carefully.</p></FadeIn>
           </div>
-
-          <div className="mt-12 grid gap-8">
-            {products.map((product, index) => {
-              const theme = productTheme[product.variant];
-              const Icon = theme.icon;
-              const reverse = index % 2 === 1;
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = service.icon;
               return (
-                <FadeIn key={product.name} delay={100}>
-                  <article
-                    className="grid gap-8 overflow-hidden rounded-[2.75rem] border border-black/10 bg-white/62 p-5 shadow-[0_34px_100px_-70px_rgba(15,23,41,.55)] lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:p-8"
-                    style={{ "--artifact-accent": theme.accent } as React.CSSProperties}
-                  >
-                    <div className={reverse ? "lg:order-2" : undefined}>
-                      <div className="flex items-center gap-3">
-                        <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${theme.soft}`}>
-                          <Icon className={`h-6 w-6 ${theme.text}`} />
-                        </div>
-                        <div>
-                          <p className={`text-xs font-semibold uppercase tracking-[.2em] ${theme.eyebrow}`}>{product.domain}</p>
-                          <h3 className="mt-1 text-4xl font-semibold tracking-[-.055em] text-[var(--intrface-ink)] sm:text-5xl">{product.name}</h3>
-                        </div>
-                      </div>
-                      <p className="mt-6 max-w-2xl text-xl font-semibold leading-8 tracking-[-.035em] text-slate-950">{product.thesis}</p>
-                      <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">{product.summary}</p>
-                      <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                        {product.bullets.map((bullet) => (
-                          <div key={bullet} className="rounded-2xl border border-black/8 bg-white/72 px-4 py-3 text-sm font-medium text-slate-700">
-                            {bullet}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-7 rounded-[1.4rem] border border-black/8 bg-white/62 p-5">
-                        <p className="text-xs font-semibold uppercase tracking-[.18em] text-slate-500">{t("products.proofLabel")}</p>
-                        <p className="mt-3 text-base leading-7 text-slate-700">{product.proof}</p>
-                      </div>
-                      <Link href={product.href} className={`artifact-button mt-7 inline-flex items-center gap-2 rounded-full bg-white/80 px-5 py-3 text-sm font-semibold ${theme.text}`}>
-                        {product.cta}
-                        <IconArrowRight className="h-4 w-4" />
-                      </Link>
+                <FadeIn key={service.title} delay={100 + index * 80}>
+                  <article className="artifact-card h-full rounded-[2rem] p-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950/5">
+                      <Icon className="h-6 w-6 text-slate-900" />
                     </div>
-                    <div className={reverse ? "lg:order-1" : undefined}>
-                      <ProductArtifact variant={product.variant} />
-                    </div>
+                    <h3 className="mt-6 text-2xl font-semibold tracking-[-.045em] text-slate-950">{service.title}</h3>
+                    <p className="mt-4 text-sm leading-6 text-slate-600">{service.text}</p>
                   </article>
                 </FadeIn>
               );
@@ -224,54 +125,50 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
         </div>
       </section>
 
-      <section className="border-b border-black/10 bg-[#fbf8f2]">
+      <section className="border-b border-black/10 bg-[#f5f1eb]">
         <div className="section-shell py-20 sm:py-24">
-          <div className="grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:items-start">
+          <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
             <div>
-              <FadeIn><p className="type-section-label">{t("principles.label")}</p></FadeIn>
-              <FadeIn delay={100}><h2 className="type-heading mt-4 max-w-lg">{t("principles.title")}</h2></FadeIn>
-              <FadeIn delay={200}><p className="mt-5 max-w-lg text-base leading-7 text-slate-600">{t("principles.body")}</p></FadeIn>
-              <FadeIn delay={250}><div className="mt-8"><CapabilityConstellation /></div></FadeIn>
+              <FadeIn><p className="type-section-label">How we work</p></FadeIn>
+              <FadeIn delay={100}><h2 className="type-heading mt-4 max-w-lg">Clear decisions, pragmatic delivery, maintainable systems.</h2></FadeIn>
+              <FadeIn delay={200}><p className="mt-5 max-w-lg text-base leading-7 text-slate-600">Intrface can support early planning, active delivery, or technical cleanup. The engagement is shaped around the business problem and the reliability of the software behind it.</p></FadeIn>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {capabilities.map((capability, i) => {
-                const Icon = capability.icon;
-                return (
-                  <FadeIn key={capability.title} delay={100 + i * 60}>
-                    <article className="artifact-card h-full rounded-[2rem] p-6">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950/5">
-                        <Icon className="h-5 w-5 text-slate-800" />
-                      </div>
-                      <h3 className="mt-5 text-xl font-semibold tracking-[-.035em]">{capability.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-slate-600">{capability.text}</p>
-                    </article>
-                  </FadeIn>
-                );
-              })}
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-white/70 p-5 shadow-[0_30px_90px_-62px_rgba(15,23,41,.5)]">
+              <div className="pointer-events-none absolute inset-0 halftone-field opacity-25 [--halftone-color:var(--intrface-ink)] [--halftone-size:28px]" aria-hidden="true" />
+              <div className="relative grid gap-3 sm:grid-cols-2">
+                {process.map((item, index) => (
+                  <div key={item} className="artifact-card rounded-[1.5rem] p-5">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-xs font-semibold text-white">{index + 1}</span>
+                      <p className="text-sm font-semibold tracking-[-.02em] text-slate-950">{item}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="inquiry" className="scroll-mt-24 bg-[var(--intrface-ink)] text-white">
+      <section id="contact" className="scroll-mt-24 bg-[var(--intrface-ink)] text-white">
         <div className="section-shell py-20 sm:py-24">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-end">
             <div>
-              <FadeIn><p className="text-xs font-semibold uppercase tracking-[.24em] text-white/45">{t("inquiry.label")}</p></FadeIn>
-              <FadeIn delay={100}><h2 className="mt-5 max-w-3xl text-[3rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-[4.2rem]">{t("inquiry.title")}</h2></FadeIn>
-              <FadeIn delay={200}><p className="mt-7 max-w-2xl text-lg leading-8 text-white/65">{t("inquiry.body")}</p></FadeIn>
+              <FadeIn><p className="text-xs font-semibold uppercase tracking-[.24em] text-white/45">Contact</p></FadeIn>
+              <FadeIn delay={100}><h2 className="mt-5 max-w-3xl text-[3rem] font-semibold leading-[.98] tracking-[-.055em] sm:text-[4.2rem]">Talk to Intrface about business or software development.</h2></FadeIn>
+              <FadeIn delay={200}><p className="mt-7 max-w-2xl text-lg leading-8 text-white/65">Send a short note about the organization, the problem, and what kind of support you need. We will route the conversation from there.</p></FadeIn>
             </div>
             <FadeIn delay={250}>
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.04] p-6">
                 <div className="pointer-events-none absolute inset-0 halftone-field opacity-20 [--halftone-color:white] [--halftone-size:24px]" aria-hidden="true" />
                 <div className="relative grid gap-3 sm:grid-cols-2">
-                  {inquiryItems.map((item) => (
+                  {["Business consulting", "Software development", "Technical strategy", "Delivery partnership"].map((item) => (
                     <div key={item} className="rounded-2xl border border-white/10 bg-white/[.03] px-4 py-4 text-sm text-white/78">{item}</div>
                   ))}
                 </div>
                 <a href="mailto:hello@intrface.eu" className="artifact-button relative mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-[var(--intrface-ink)]">
                   hello@intrface.eu
-                  <IconArrowRight className="h-4 w-4" />
+                  <IconMessages className="h-4 w-4" />
                 </a>
               </div>
             </FadeIn>
