@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "bun ./bin/dev-wrapper.ts",
     "dev:prod": "convex dev --prod",
-    "lint": "tsc --noEmit",
-    "check-types": "tsc --noEmit",
+    "lint": "node ../../node_modules/ts7/bin/tsc --noEmit",
+    "check-types": "node ../../node_modules/ts7/bin/tsc --noEmit",
     "clean": "rm -rf .turbo node_modules convex/_generated"
   },
   "dependencies": {

@@ -21,6 +21,8 @@
     "clean": "turbo run clean && rm -rf .turbo node_modules"
   },
   "devDependencies": {
+    "ts7": "^7.0.1-rc",
     "turbo": "^2.9.6"
   }
+  
 }
