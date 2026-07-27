@@ -1,14 +1,988 @@
 {
   "Nav": {
+    "work": "Radovi",
     "services": "Usluge",
+    "method": "Metoda",
+    "about": "O nama",
+    "imprint": "Impresum",
+    "principles": "Načela",
     "contact": "Kontakt",
-    "home": "Intrface početna"
+    "home": "Intrface početna",
+    "menu": "Izbornik",
+    "logoAlt": "Intrface ikona"
   },
   "Footer": {
-    "tagline": "Intrface je savjetovanje za poslovanje i razvoj softvera."
+    "tagline": "Intrface gradi pouzdana sučelja za složene stvarne sustave.",
+    "aocLink": "Agent Ops Cockpit na GitHubu",
+    "location": "Istra, Hrvatska · EU"
   },
   "LocaleSwitcher": {
     "label": "Jezik"
   },
-  "HomePage": {}
+  "Common": {
+    "honestStatus": "Iskren status",
+    "whyItMatters": "Zašto je to važno",
+    "open": "Otvori",
+    "screenshotPending": "Snimka zaslona slijedi"
+  },
+  "Metadata": {
+    "tagline": "Softver za složene stvarne sustave.",
+    "description": "INTRFACE gradi softver industrijaliziranim, otvorenim sustavom isporuke s AI agentima: žive klijentske stranice, ozbiljne platforme i sam sustav isporuke.",
+    "work": {
+      "title": "Radovi",
+      "description": "Četiri klijentske stranice rade u Istri. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu."
+    },
+    "voyager": {
+      "title": "Voyager",
+      "description": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika. Platforma podataka o mjestu za turističke destinacije, prije pokretanja: 365.000 redaka vlastitog TypeScripta, 1.580 automatiziranih testova."
+    },
+    "polis": {
+      "title": "Polis Interface",
+      "description": "Otvorena (AGPL) infrastruktura za provjerljive javne podatke: revizijski zapisnik ulančan hashevima, vremenski žig dokumenata po RFC 3161 i policy-vrata koja se u dvojbi zatvaraju. Prije uvođenja."
+    },
+    "funda": {
+      "title": "Funda",
+      "description": "Funda čita natječaje EU fondova sa SEDIA-e i TED-a čim izađu i povezuje ih s organizacijama koje im odgovaraju. SaaS s više uloga, u aktivnoj izradi."
+    },
+    "clientSites": {
+      "title": "Klijentske stranice u Istri",
+      "description": "Četiri žive dvojezične stranice za obrte i tvrtke na istarskoj obali, svaka izgrađena iz klijentova Instagram profila i objavljena u nekoliko dana. Snimke zaslona i linkovi."
+    },
+    "method": {
+      "title": "Metoda",
+      "description": "Softver gradimo orkestriranim AI agentima, a sustav isporuke objavili smo pod licencom Apache-2.0. Agenti predlažu; commit prolazi kroz vrata koja provjerava čovjek. Workeri nikada ne pushaju."
+    },
+    "about": {
+      "title": "O nama",
+      "description": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Istri, Hrvatska. Kako teče suradnja, što gradimo sami i kako nas kontaktirati."
+    },
+    "imprint": {
+      "title": "Impresum",
+      "description": "Tko vodi intrface.eu: podaci o tvrtki, odgovornost za sadržaj, autorska prava i što kontakt obrazac radi s vašom porukom."
+    }
+  },
+  "HomePage": {
+    "hero": {
+      "eyebrow": "Intrface · Istra, Hrvatska",
+      "title": "Pouzdana sučelja za složene stvarne sustave.",
+      "lead": "Četiri žive stranice za obrte i tvrtke na istarskoj obali. Turistička platforma pred pokretanjem, 365.000 redaka koda. Javna infrastruktura u kojoj svaka tvrdnja vodi do izvornog dokumenta.",
+      "seeWork": "Pogledajte radove",
+      "howWeBuild": "Kako gradimo",
+      "openSource": "Naš sustav isporuke je open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
+    },
+    "systemMap": {
+      "ariaLabel": "Kako Intrface pretvara signale iz stvarnosti u pouzdano djelovanje",
+      "stageInputs": "Signali iz stvarnosti",
+      "stageCore": "Sloj orijentacije",
+      "stageOutput": "Pouzdano djelovanje",
+      "inputs": [
+        { "label": "Mjesto", "detail": "Staze, radno vrijeme, prijevoz" },
+        { "label": "Poslovanje", "detail": "Jelovnici, usluge, rezervacije" },
+        { "label": "Dokument", "detail": "Izvori i dokazi" },
+        { "label": "Proces", "detail": "Uloge, provjere, primopredaje" }
+      ],
+      "core": {
+        "label": "Sučelje",
+        "detail": "Stanje, izvori i sljedeći korak — na jeziku čitatelja."
+      },
+      "output": {
+        "label": "Potpomognuto djelovanje",
+        "detail": "AI odgovara. Odgovoran ostaje čovjek s imenom i prezimenom."
+      }
+    },
+    "thesis": {
+      "label": "Teza",
+      "title": "Softver postaje sučelje prema svemu.",
+      "p1": "Kupci ne doživljavaju vašu strategiju. Doživljavaju sučelje. Građani ne doživljavaju politiku. Doživljavaju obrasce, šaltere i čekanje.",
+      "p2": "Gosti ne doživljavaju strategiju destinacije. Doživljavaju jelovnike, rute i pitanja na jeziku koji možda ne čitaju. Mi gradimo sloj na kojem ta složenost postaje upotrebljiva.",
+      "columns": [
+        { "label": "Orijentacija", "text": "Učiniti sustav razumljivim." },
+        { "label": "Povjerenje", "text": "Pokazati izvore, stanja i tko je odgovoran." },
+        { "label": "Izvedba", "text": "Izgraditi softver iza obećanja." }
+      ]
+    },
+    "proof": {
+      "label": "Dokaz",
+      "title": "Isporučeno i online.",
+      "intro": "Četiri dvojezične stranice za obalne obrte i tvrtke u Istri. Svaka izgrađena iz klijentova Instagram profila i objavljena u nekoliko dana — nekoliko njih u jednom danu.",
+      "pipeline": [
+        "Instagram profil",
+        "Analiza sadržaja",
+        "Tokeni vizualnog identiteta",
+        "Astro build",
+        "Playwright provjera",
+        "Cloudflare Pages"
+      ],
+      "liveIn": "Live · {place}",
+      "howWeShip": "Kako ih isporučujemo",
+      "sites": {
+        "cannaclean": {
+          "name": "CannaClean",
+          "place": "Poreč",
+          "kind": "Detailing studio",
+          "description": "Hrvatski i engleski, s LocalBusiness strukturiranim podacima da se studio točno prikaže u lokalnoj pretrazi.",
+          "alt": "Početna stranica CannaCleana — detailing studio u Poreču"
+        },
+        "velum": {
+          "name": "Velum",
+          "place": "Vrsarska riva",
+          "kind": "Kafić i vinski bar",
+          "description": "Hrvatski i engleski. Isti studio napravio je i motion grafiku za bar.",
+          "alt": "Početna stranica Veluma — kafić i vinski bar na vrsarskoj rivi"
+        },
+        "astyleMarine": {
+          "name": "Astyle Marine",
+          "place": "Poreč",
+          "kind": "Charter jahti",
+          "description": "Hrvatski i engleski, na dizajnerskim tokenima uzetim iz vlastitog vizualnog identiteta.",
+          "alt": "Početna stranica Astyle Marinea — charter jahti u Poreču"
+        },
+        "vrsarBoatTours": {
+          "name": "Vrsar Private Boat Tours",
+          "place": "Vrsar",
+          "kind": "Privatni izleti brodom",
+          "description": "Četiri jezika, svaki sa svojim hreflangom: engleski, hrvatski, talijanski, njemački.",
+          "alt": "Početna stranica Vrsar Private Boat Toursa — privatni izleti brodom u Vrsaru"
+        }
+      }
+    },
+    "systems": {
+      "label": "Sustavi",
+      "title": "Tri sustava i gdje svaki od njih stvarno stoji.",
+      "intro": "Prije pokretanja znači prije pokretanja. Ovdje nitko ne izmišlja korisnike koje nema.",
+      "voyager": {
+        "name": "Voyager",
+        "status": "Platforma prije pokretanja",
+        "claim": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena; turistička zajednica dobiva sadržajni sloj kojim sama upravlja.",
+        "stats": [
+          { "value": "365.000", "label": "Redaka vlastitog TypeScripta" },
+          { "value": "1.336", "label": "Backend funkcija" },
+          { "value": "1.580", "label": "Automatiziranih testova" }
+        ],
+        "linkLabel": "Pročitajte slučaj Voyager"
+      },
+      "polis": {
+        "name": "Polis Interface",
+        "status": "Open source · Prije uvođenja",
+        "claim": "Graf upravljanja u kojem svaka javna tvrdnja vodi natrag do izvornog dokumenta.",
+        "stats": [
+          { "value": "55", "label": "Postgres tablica" },
+          { "value": "10", "label": "Policy modula u izvođenju" },
+          { "value": "17", "label": "Skripti za prihvaćanje" }
+        ],
+        "linkLabel": "Pročitajte slučaj Polis"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "U izradi",
+        "claim": "Povezuje organizacije s natječajima EU fondova koje agenti čitaju sa SEDIA-e i TED-a.",
+        "stats": [
+          { "value": "4", "label": "Uloge u jednom SaaS-u" },
+          { "value": "2", "label": "Učitana EU izvora" },
+          { "value": "3", "label": "Jezika" }
+        ],
+        "linkLabel": "Pročitajte slučaj Funda"
+      }
+    },
+    "method": {
+      "label": "Metoda",
+      "title": "Naš sustav isporuke je open source.",
+      "body": "Trinaest naših repozitorija radi po istom verzioniranom ugovoru s agentima. Agenti predlažu promjenu; commit prolazi kroz vrata koja provjerava čovjek. Taj tempo vidi se u logu — samo u srpnju 2026. na Voyager je sletjelo 383 commita.",
+      "readMethod": "Pročitajte metodu",
+      "readSource": "Pročitajte izvorni kod",
+      "steps": [
+        {
+          "label": "Ugovor prije koda",
+          "description": "Svaki repozitorij nosi ugovor o ponašanju, ugovor o dizajnu, generiranu snimku konteksta i registar zadataka."
+        },
+        {
+          "label": "Agenti predlažu",
+          "description": "Workeri rade usporedno po tom ugovoru. Nikada ne pushaju."
+        },
+        {
+          "label": "Commit prolazi kroz ljudsku provjeru",
+          "description": "Orkestrator ponovno pročita diff, pokrene provjere i onda spusti jedan atomarni commit."
+        },
+        {
+          "label": "Ugovor je verzioniran",
+          "description": "Trinaest repozitorija dijeli jednu shemu. Kad se ona promijeni, migriraju zajedno."
+        }
+      ],
+      "stats": [
+        { "value": "13", "label": "Repozitorija na jednom ugovoru" },
+        { "value": "51", "label": "CLI naredbi" },
+        {
+          "value": "403",
+          "label": "Commita, Apache-2.0",
+          "note": "Javno na github.com/basicalex/agent-ops-cockpit"
+        }
+      ]
+    },
+    "contact": {
+      "label": "Kontakt",
+      "title": "Donesite nam svoj najzamršeniji sustav.",
+      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje. Mi to iscrtamo, osmislimo sučelje i izgradimo softver iza njega.",
+      "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
+      "topics": [
+        "Poslovni sustav",
+        "Place intelligence",
+        "Tijek dokumenata",
+        "Klijentska stranica",
+        "Tehnička strategija",
+        "Javna infrastruktura"
+      ]
+    }
+  },
+  "WorkIndex": {
+    "label": "Radovi",
+    "title": "Dokazi, na tri načina.",
+    "lead": "Četiri klijentske stranice rade u Istri. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu.",
+    "entries": {
+      "voyager": {
+        "name": "Voyager",
+        "status": "Prije pokretanja",
+        "claim": "Jedan QR kod pretvara jelovnik i radno vrijeme restorana u višejezičnog AI domaćina.",
+        "figures": [
+          { "value": "~365.000", "label": "Redaka vlastitog TypeScripta" },
+          { "value": "1.580", "label": "Automatiziranih testova" }
+        ]
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Open source · AGPL",
+        "claim": "Graf upravljanja u kojem svaka javna tvrdnja vodi natrag do izvornog dokumenta.",
+        "figures": [
+          { "value": "10", "label": "Rego pravila u izvođenju" },
+          { "value": "55", "label": "Postgres tablica" }
+        ]
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "U aktivnoj izradi",
+        "claim": "Čita natječaje EU fondova čim izađu i povezuje ih s organizacijama koje im odgovaraju.",
+        "figures": [
+          { "value": "4", "label": "Sučelja po ulogama" },
+          { "value": "3", "label": "Jezika" }
+        ]
+      },
+      "clientSites": {
+        "name": "Klijentske stranice u Istri",
+        "status": "Live ×4",
+        "claim": "Četiri obalna posla u nekoliko su dana od Instagram profila došla do žive dvojezične stranice.",
+        "figures": [
+          { "value": "4", "label": "Stranice danas online" },
+          { "value": "2–4", "label": "Jezika po stranici" }
+        ]
+      }
+    },
+    "method": {
+      "label": "05 · Metoda",
+      "title": "Naš sustav isporuke je open source.",
+      "body": "Agent Ops Cockpit vodi trinaest naših repozitorija po jednom verzioniranom ugovoru: ugovor o ponašanju, ugovor o dizajnu, generirana snimka konteksta i registar zadataka. Agenti predlažu. Čovjek pročita diff i commita.",
+      "link": "Pročitajte kako isporučujemo",
+      "figures": [
+        { "value": "403", "label": "Commita, Apache-2.0" },
+        { "value": "51", "label": "CLI naredbi" },
+        { "value": "13", "label": "Repozitorija na ugovoru" }
+      ]
+    }
+  },
+  "WorkVoyager": {
+    "hero": {
+      "eyebrow": "Place intelligence",
+      "name": "Voyager",
+      "claim": "Jedan QR kod na stolu u restoranu postaje višejezični AI domaćin koji odgovara iz jelovnika i radnog vremena baš tog restorana.",
+      "status": "Prije pokretanja",
+      "tags": ["Vlasnički", "Turizam", "Više najmoprimaca", "Šest jezika"]
+    },
+    "scale": {
+      "label": "Veličina",
+      "intro": "Prebrojeno iz repozitorija, ne procijenjeno.",
+      "scaleStats": [
+        {
+          "value": "~365.000",
+          "label": "Redaka TypeScripta",
+          "note": "Vlastiti kod. Bez vanjskih biblioteka."
+        },
+        { "value": "220", "label": "Tablica u bazi" },
+        { "value": "1.336", "label": "Backend funkcija" },
+        { "value": "312", "label": "Ruta" }
+      ],
+      "buildStats": [
+        { "value": "7", "label": "Sučelja proizvoda", "note": "Iza svih jedan podatkovni model." },
+        { "value": "6", "label": "Jezika", "note": "Sučelje i generirani odgovori." },
+        { "value": "1.580", "label": "Automatiziranih testova", "note": "Kroz 286 testnih datoteka." },
+        { "value": "1.080", "label": "Commita", "note": "Kroz 20 mjeseci." }
+      ]
+    },
+    "whatItIs": {
+      "label": "Što je to",
+      "title": "Tri publike, jedna platforma.",
+      "intro": "U destinaciji postoje tri strane koje nikada nisu dijelile sustav: gost s mobitelom u ruci, poslovanje kojem se jelovnik promijenio jutros i turistička zajednica koja odgovara za ono što je službeno točno. Voyager sve tri stavlja na jedan podatkovni model.",
+      "audiences": [
+        {
+          "role": "Gosti",
+          "headline": "Karta onoga što je oko vas i pješačke upute do toga.",
+          "body": "Aplikacija se otvara na karti, ne na feedu. Vodi vas pješice i odgovara na pitanja o mjestu na jednom od šest jezika. Ulaz je QR kod ili link — bez zaobilaska preko trgovine aplikacija."
+        },
+        {
+          "role": "Poslovni subjekti",
+          "headline": "Jedan QR kod na stolu i AI domaćin odgovara iz vašeg jelovnika.",
+          "body": "Restoran učita jelovnik, radno vrijeme i kućna pravila. Domaćin odgovara iz njih, na jeziku gosta, a vlasnik prije uključivanja vidi ocjenu spremnosti."
+        },
+        {
+          "role": "Turističke zajednice",
+          "headline": "Službeni sloj kojim zajednica upravlja i koji može ispraviti.",
+          "body": "Provjereni profili poslovnih subjekata, događanja, staze i obavijesti koje zajednica objavljuje sama. Kad se staza zatvori ili se događanje pomakne, zajednica uredi zapis umjesto da moli platformu za ispravak."
+        }
+      ]
+    },
+    "engineering": {
+      "label": "Inženjering",
+      "title": "Dijelovi koje vrijedi imenovati.",
+      "intro": "Četiri odluke koje na početku koštaju vremena, a poslije ih je bolno naknadno ugraditi.",
+      "entries": [
+        {
+          "title": "Autorizacija za više najmoprimaca, provjerena testom koji čita izvorni kod",
+          "what": "Ovlasti idu kroz WorkOS FGA sa sinkronim cacheom odobrenja, pa provjera košta jedno traženje umjesto odlaska na mrežu. Regresijski test pretražuje izvorni kod za rutama koje dolaze do podataka bez te provjere.",
+          "why": "Turistička zajednica i svako poslovanje u destinaciji dijele jednu bazu. Jedno curenje preko te crte gasi pilot."
+        },
+        {
+          "title": "Dohvat koji zna kada preskočiti vektorski indeks",
+          "what": "Pitanje o radnom vremenu ide na strukturirani upit. Fotografija jelovnika ide na multimodalni indeks. Nijedno se ne tjera kroz jedan vektorski spremnik samo zato što je to bilo najlakše izgraditi.",
+          "why": "Radno vrijeme izvučeno pretragom po sličnosti je nagađanje. Pročitano iz stupca je činjenica — a krivo vrijeme zatvaranja gost pamti najduže."
+        },
+        {
+          "title": "Prikupljanje sadržaja i pješačke rute vrtimo kao vlastite servise",
+          "what": "Prikupljanje sadržaja i OSRM pješačke rute rade kao vlastiti servisi na Railwayu, a ne kao unajmljeni API-ji koji se plaćaju po upitu.",
+          "why": "Upute koje se plaćaju po upitu pretvaraju pun kolovoz u račun koji nitko nije predvidio, a ograničenje broja upita u mrtvu kartu."
+        },
+        {
+          "title": "Dizajnerski sustav s vlastitim testovima",
+          "what": "Šesnaest upravljanih podsustava pokriva zajedničko sučelje, a sustav se testira kao i ostatak koda.",
+          "why": "Sedam sučelja proizvoda ostaje jedan proizvod. Ispravak na komponenti stigne do svih u jednoj promjeni."
+        }
+      ]
+    },
+    "evidence": {
+      "label": "Dokazi",
+      "title": "Kako to izgleda.",
+      "intro": "Svaki zaslon ispod radi na unesenom pilot sadržaju za Vrsar. Ništa od toga nije stvarni promet.",
+      "explore": {
+        "label": "Aplikacija za goste — istraživanje",
+        "alt": "Voyagerov prikaz istraživanja: karta istarske obale uz popis obližnjih mjesta",
+        "caption": "Javni prikaz istraživanja. Karta vodi, popis je prati. Ucrtano je uneseno područje oko Vrsara."
+      },
+      "board": {
+        "label": "Turistička zajednica — službeni profil",
+        "alt": "Službeni profil Turističke zajednice Vrsar s oznakom provjere i popisom događanja",
+        "caption": "Službeni profil turističke zajednice: oznaka provjere, događanja i polja koja može uređivati samo zajednica. Uneseno iz materijala Turističke zajednice Vrsar."
+      },
+      "host": {
+        "label": "Konzola poslovanja — AI domaćin",
+        "alt": "Zaslon za postavljanje AI domaćina s izvorima i ocjenom spremnosti za poslovni subjekt",
+        "caption": "Poslovni subjekt postavlja svog AI domaćina i vidi ocjenu spremnosti prije nego ga uključi. Ocjena pokazuje koliko vlastitog sadržaja domaćin ima za odgovaranje."
+      },
+      "events": {
+        "label": "Agencija — događanja",
+        "alt": "Nadzorna ploča agencije s popisom unesenih događanja, datumima i statusom objave",
+        "caption": "Nadzorna ploča agencije na kojoj se događanja stvaraju, datiraju i objavljuju u službeni sloj. Navedena su događanja pilot podaci."
+      },
+      "phone": {
+        "label": "Aplikacija za goste — mobitel",
+        "alt": "Voyagerov profil mjesta na zaslonu mobitela širine 390 piksela",
+        "caption": "Isti profil na 390 px — širini koju većina gostiju zapravo drži u ruci."
+      }
+    },
+    "pilot": {
+      "label": "Pilot",
+      "title": "Uneseno za jednu destinaciju u Istri.",
+      "intro": "Vrsar–Orsera je učitan. Materijali Turističke zajednice Vrsar već su u bazi, pa pilot kreće sa sadržajem, a ne s praznom destinacijom.",
+      "items": [
+        {
+          "label": "Imenovane staze",
+          "detail": "Pješačke i biciklističke rute pod svojim pravim imenima, a ne generičke pribadače na karti."
+        },
+        {
+          "label": "Kakvoća mora",
+          "detail": "Podaci o kakvoći mora po plaži, na istom zapisu kao i sama plaža."
+        },
+        {
+          "label": "Vozni redovi shuttlea",
+          "detail": "Polasci lokalnih shuttle linija, da odgovor o dolasku ima i vremena u sebi."
+        },
+        {
+          "label": "Događanja",
+          "detail": "Kalendar zajednice, objavljen s njezina vlastitog provjerenog profila."
+        }
+      ]
+    },
+    "status": {
+      "label": "Status",
+      "title": "Izgrađeno i opremljeno za pokretanje. Nije pokrenuto.",
+      "p1": "Sedam sučelja je izgrađeno, testovi prolaze, mjerenja za pokretanje su postavljena. Nedostaje destinacija koja kaže krećemo — turistička zajednica ili skupina poslovnih subjekata na jednom mjestu, spremna odraditi prvu sezonu na tome.",
+      "p2": "Do tada vam radije pokazujemo repozitorij i uneseni pilot nego graf rasta.",
+      "noteP1": "Prije pokretanja. Produkcijsko uvođenje još nije napravljeno, pa nema stvarnih korisnika, nema javnog prometa ni radnih brojki za citiranje.",
+      "noteP2": "Svaka brojka na ovoj stranici prebrojena je iz repozitorija. Svaka snimka zaslona prikazuje uneseni pilot sadržaj."
+    },
+    "next": {
+      "label": "Dalje",
+      "title": "Razgovarajmo o pilotu u vašoj destinaciji.",
+      "body": "Recite nam destinaciju i tko ondje vodi službeni sadržaj. Pokazat ćemo vam vrsarski unos i što bi vaš tražio.",
+      "cta": "Razgovarajmo o pilotu"
+    }
+  },
+  "WorkPolis": {
+    "hero": {
+      "eyebrow": "Javna infrastruktura",
+      "name": "Polis Interface",
+      "claim": "Javna infrastruktura koja državne podatke tretira kao nešto što se provjerava, a ne kao nešto u što se vjeruje.",
+      "status": "Open source · AGPL · prije uvođenja",
+      "tags": ["Postgres", "OPA/Rego", "RFC 3161", "E-pečati po uzoru na eIDAS"]
+    },
+    "stats": [
+      { "value": "16", "label": "Servisa", "note": "Četiri aplikacije na njima." },
+      { "value": "55", "label": "Postgres tablica" },
+      { "value": "10", "label": "Policy modula", "note": "OPA/Rego, ocjenjuju se u izvođenju." },
+      { "value": "~100", "label": "Jediničnih testova", "note": "Plus 17 skripti za prihvaćanje." }
+    ],
+    "readSourceRepo": "Pročitajte izvorni kod — github.com/basicalex/polis",
+    "whatItIs": {
+      "label": "Što je to",
+      "title": "Graf upravljanja, a ne hrpa dokumenata",
+      "intro": "Polis modelira ono što javno tijelo doista proizvodi — odluke, obećanja, proračune, sjednice, dužnosnike — kao graf. Svaka javna tvrdnja u tom grafu pokazuje natrag na izvorni dokument iz kojeg je došla, a dokument nosi dokaz vlastite cjelovitosti.",
+      "surfacesTitle": "Dva sučelja, jedan skup podataka",
+      "surfacesBody": "Kampanjsko sučelje objavljuje program. Sloj odgovornosti prati isti taj program prema onome što je isporučeno. Oba čitaju iste provjerljive zapise, pa stranica obećanja i stranica učinjenog ne mogu razići dok nitko ne gleda.",
+      "addressTitle": "Svaka tvrdnja ima adresu",
+      "addressBody": "„Vijeće je u ožujku usvojilo proračun“ u Polisu nije rečenica. To je veza prema odluci, koja vodi do pohranjenog dokumenta, koji vodi do hasha, pečata i vremenskog žiga što ih stranac može ponovno provjeriti bez ičije dozvole."
+    },
+    "engineering": {
+      "label": "Inženjering",
+      "title": "Odakle povjerenje zapravo dolazi",
+      "intro": "Četiri dijela vrijedi imenovati jer su to dijelovi koje bi javni naručitelj ili revizor tražio.",
+      "whyLabel": "Zašto je to važno",
+      "entries": [
+        {
+          "title": "Revizijski zapisnik ulančava se hashevima unutar iste transakcije upisa",
+          "body": "Svaki događaj sprema hash prethodnog događaja, izračunat i upisan u istoj transakciji koja umeće redak. Dva pisca u utrci ne mogu oba pobijediti.",
+          "why": "Revizijski zapis koji se poslije može tiho presložiti ne dokazuje ništa."
+        },
+        {
+          "title": "Dokumenti se provjeravaju, ne samo prilažu",
+          "body": "Kanonski hash, e-pečat po uzoru na eIDAS i vremenski žig vanjskog tijela po RFC 3161 putuju uz datoteku. Pravila redigiranja imaju prednost pred objavom, pa se dokument može dokazati kao vjerodostojan bez otkrivanja onoga što mora ostati zatvoreno.",
+          "why": "Vjerodostojno i objavljivo dva su različita pitanja. Sustavi koji na njih odgovaraju zajedno propuštaju."
+        },
+        {
+          "title": "Policy-vrata se u dvojbi zatvaraju",
+          "body": "Deset OPA/Rego modula odlučuje tko što smije čitati i pisati. Kada sloj pravila ne može odgovoriti, zahtjev se odbija, a ne propušta.",
+          "why": "Većina propusta u kontroli pristupa je provjera koja je tiho vratila ništa, a pročitana je kao da."
+        },
+        {
+          "title": "Izabrani dužnosnik ne može sam označiti svoje obećanje ispunjenim",
+          "body": "Sloj odgovornosti drži onoga tko tvrdi odvojeno od onoga tko potvrđuje. Promjena statusa u ispunjeno bilježi tko je potvrdio, a ta osoba nije nositelj obećanja.",
+          "why": "Samoprijavljena ispunjenost način je na koji propada svaki pratitelj obećanja ikad objavljen."
+        }
+      ],
+      "closing": "eIDAS, RFC 3161, redigiranje po GDPR-u: propis stoji u podatkovnom modelu, a ne u dodatku o usklađenosti napisanom nakon izgradnje."
+    },
+    "honesty": {
+      "label": "Iskrenost kao značajka",
+      "title": "Oznaka statusa dio je proizvoda",
+      "intro": "Polis u vlastitoj dokumentaciji svako sučelje označava kao [verifiable], [demonstration/stub] ili [not yet live]. Simulirani pilot u prvom retku kaže da je simuliran.",
+      "labels": [
+        "Pokriveno podacima u sustavu. Slijedite tvrdnju do izvornog dokumenta i sami provjerite hash.",
+        "Zaslon radi; iza njega stoji zamjenski sadržaj. Nemojte oko toga planirati uvođenje.",
+        "Specificirano i dizajnirano. Nije izgrađeno."
+      ],
+      "closing": "To bi institucija pri kupnji softvera trebala tražiti, zaslon po zaslon. Dobavljač koji vam može reći koji je njegov zaslon stvaran, koji je demo, a koji slajd, dao vam je nešto po čemu možete planirati. Dobavljač koji to ne može dao vam je prodajnu priču."
+    },
+    "evidence": {
+      "label": "Dokazi",
+      "title": "Kako dokument postaje provjerljiv",
+      "intro": "Na ovoj stranici nema snimki zaslona — Polis nije uveden, a snimka neuvedenog sustava ne dokazuje ništa. Ovo je put kakav je izgrađen: od datoteke koju službenik učita do nalaza koji dobiva građanin."
+    },
+    "pipeline": {
+      "title": "Put povjerenja za dokumente",
+      "subtitle": "izvorna datoteka → javni nalaz",
+      "stages": [
+        {
+          "name": "Dokument",
+          "detail": "Odluka, ugovor ili zapisnik, točno onako kako je pohranjen."
+        },
+        {
+          "name": "Kanonizacija",
+          "detail": "Bajtovi se svode na jedan oblik, zatim hashiraju. Ista datoteka, isti hash, svaki put."
+        },
+        {
+          "name": "Pečaćenje",
+          "detail": "Tijelo izdavatelj potpisuje hash, ne datoteku. E-pečat po uzoru na eIDAS."
+        },
+        {
+          "name": "Vremenski žig",
+          "detail": "Tijelo po RFC 3161 potvrđuje da je hash postojao u određenom trenutku."
+        },
+        {
+          "name": "Registar",
+          "detail": "Hash, pečat i token bilježe se zajedno i povezuju s tvrdnjama koje ih navode."
+        },
+        {
+          "name": "Provjera",
+          "detail": "Bilo tko ponovno hashira datoteku i usporedi je sa zapisom. Račun nije potreban."
+        }
+      ],
+      "ledgerTitle": "Revizijski zapisnik",
+      "ledgerSubtitle": "svaki redak nosi redak prije sebe",
+      "ledgerRows": [
+        "Zapisnik prihvaćen; hash, pečat i vremenski žig upisani.",
+        "Stavka programa vezana je uz odluku o kojoj ovisi.",
+        "Status prelazi u ispunjeno — zabilježeno s akterom koji potvrđuje, a to nije dužnosnik."
+      ],
+      "caption": "Hashevi su ovdje ilustrativni. U kodu koji radi, hash prethodnog retka izračunava se i upisuje unutar iste transakcije koja umeće redak, pa dva pisca u utrci ne mogu završiti s dva valjana lanca."
+    },
+    "next": {
+      "title": "Razgovarajmo o infrastrukturi povjerenja",
+      "body": "Ako gradite nešto gdje građanin, revizor ili regulator mora moći provjeriti tvrdnju umjesto da je uzme na vjeru, to je razgovor koji tražimo.",
+      "cta": "Razgovarajmo o infrastrukturi povjerenja",
+      "readSource": "Pročitajte izvorni kod",
+      "noteLabel": "Iskren status",
+      "noteP1": "Polis je prije uvođenja. Nijedno javno tijelo ga ne koristi. Pilot u repozitoriju je simuliran i u prvom se retku naziva simuliranim. Vanjske integracije — registri, tijela za vremenske žigove, davatelji identiteta — postavljene su kao zamjene iza sučelja.",
+      "noteP2": "Kod, shema, policy moduli i testovi su stvarni i javni. Uvođenje nije."
+    }
+  },
+  "WorkFunda": {
+    "hero": {
+      "eyebrow": "EU fondovi",
+      "name": "Funda",
+      "claim": "Čita natječaje EU fondova čim izađu i povezuje ih s organizacijama koje im odgovaraju.",
+      "status": "U aktivnoj izradi",
+      "tags": ["Next.js", "Convex", "Clerk", "Geoprostorno povezivanje"]
+    },
+    "stats": [
+      {
+        "value": "4",
+        "label": "Sučelja po ulogama",
+        "note": "Administrator, konzultant, tvrtka, direktor"
+      },
+      { "value": "3", "label": "Jezika", "note": "Svako sučelje, ne samo marketinške stranice" },
+      { "value": "2", "label": "Izvorna toka", "note": "SEDIA i TED, čitaju ih agenti" }
+    ],
+    "whatItDoes": {
+      "label": "Što radi",
+      "title": "Sredstva za koja ispunjavate uvjete — prije roka",
+      "intro": "EU fondovi su javni novac koji je teško pronaći. Natječaji izlaze na SEDIA-i i TED-u kao dugi dokumenti s vlastitim rječnikom, uvjetima prihvatljivosti i rokovima. Većina organizacija za pravi natječaj čuje prekasno.",
+      "body": "Funda prati te izvore po rasporedu, svaki natječaj pretvara u strukturirani zapis i stavlja ga pred organizacije koje mu odgovaraju. Konzultanti isti tok obrađuju za cijeli portfelj klijenata. Jedan skup podataka, četiri načina čitanja.",
+      "note": "Funda je u aktivnoj izradi. Nema javnog uvođenja, nema podataka klijenata iza ovih zaslona ni rezultata za prikazati. Svaka brojka na ovoj stranici broji nešto što danas postoji u kodu.",
+      "surfaces": [
+        { "name": "Administrator", "note": "Ljudi koji vode platformu" },
+        { "name": "Konzultant", "note": "Savjetnici koji vode više klijentskih organizacija" },
+        { "name": "Tvrtka", "note": "Organizacija koja se prijavljuje na natječaj" },
+        { "name": "Direktor", "note": "Pregled nad cijelim računom" }
+      ]
+    },
+    "matching": {
+      "label": "Kako povezivanje radi",
+      "title": "Od objavljenog natječaja do pravog sandučića",
+      "intro": "Četiri koraka, jednostavnim riječima.",
+      "steps": [
+        {
+          "name": "Čitanje izvora",
+          "body": "Agenti povlače natječaje sa SEDIA-e i TED-a čim izađu, umjesto da se čeka da netko provjeri portal."
+        },
+        {
+          "name": "Pretvaranje dokumenata u polja",
+          "body": "Svaki natječaj postaje zapis: tko se smije prijaviti, za što, u kojim regijama, do kada."
+        },
+        {
+          "name": "Ocjenjivanje prema organizaciji",
+          "body": "Profil organizacije uspoređuje se polje po polje — djelatnost, veličina i gdje stvarno posluje, a upravo tu geoprostorni dio zarađuje svoje."
+        },
+        {
+          "name": "Usmjeravanje prema osobi",
+          "body": "Pogoci slijeću na sučelje koje ta uloga koristi, na jeziku tog korisnika."
+        }
+      ]
+    },
+    "shows": {
+      "label": "Što pokazuje",
+      "title": "Treća platforma istog oblika",
+      "p1": "Na Voyageru smo izgradili dohvat koji ostaje utemeljen u klijentovu vlastitom sadržaju. Na Polisu smo izgradili revizijski trag koji tvrdnju čini provjerljivom. Funda oboje stavlja na manju površinu: prikupljanje koje mora biti točno, povezivanje s kojim se korisnik može ne složiti i četiri uloge koje čitaju jedan tipizirani skup podataka.",
+      "p2": "Stack je namjerno malen — Next.js sprijeda, Convex za podatke i funkcije, Clerk za identitet i uloge. Zanimljiv dio posla nije izbor okvira. Zanimljivo je držati agentski tok poštenim kada je ulaz natječajni dokument pisan institucionalnim jezikom, a izlaz odluka po kojoj će netko postupiti."
+    },
+    "next": {
+      "title": "Imate sustav ovog oblika?",
+      "body": "Recite nam što mora čitati, tko mora vidjeti rezultat i što se događa ako pogriješi. Reći ćemo vam što je za to potrebno.",
+      "cta": "Donesite nam sustav"
+    }
+  },
+  "WorkClientSites": {
+    "hero": {
+      "eyebrow": "Rad za klijente",
+      "name": "Klijentske stranice u Istri",
+      "claim": "Četiri dvojezične stranice za obalne obrte i tvrtke u Istri, svaka izgrađena iz klijentova Instagram profila i online u nekoliko dana.",
+      "status": "Live ×4",
+      "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
+    },
+    "stats": [
+      { "value": "4", "label": "Stranica online", "note": "Sve četiri provjerene 27. srpnja 2026." },
+      {
+        "value": "2–4",
+        "label": "Jezika po stranici",
+        "note": "Hrvatski prvi, hreflang na svakoj stranici"
+      },
+      { "value": "6", "label": "Koraka od profila do URL-a", "note": "Svaki put istih šest" }
+    ],
+    "showcase": {
+      "label": "Stranice",
+      "title": "Online, i možete provjeriti",
+      "intro": "Četiri posla na istarskoj obali. Otvorite bilo koju — ovo su stranice onakve kakve rade danas.",
+      "languagesLabel": "Jezici",
+      "markupLabel": "U kodu stranice"
+    },
+    "sites": {
+      "cannaclean": {
+        "name": "CannaClean",
+        "place": "Poreč",
+        "line": "Detailing studio koji ručno pere automobile, brodove i kampere po cijeloj Istri.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "Početna stranica CannaCleana: tamnoplavi hero s natpisom „Detailing bez kompromisa“, gumbi za rezervaciju i prebacivanje hrvatski/engleski.",
+        "mobileAlt": "Isti CannaClean hero složen za zaslon mobitela."
+      },
+      "velum": {
+        "name": "Velum",
+        "place": "Vrsarska riva",
+        "line": "Kafić i vinski bar s doručkom, kolačima i istarskim vinom uz more.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "Početna stranica Veluma: fotografija kave i vlastitog jelovnika bara uz redak „Uz more, bez žurbe.“",
+        "mobileAlt": "Velumova početna stranica na mobitelu, fotografija iznad naslova."
+      },
+      "astyleMarine": {
+        "name": "Astyle Marine",
+        "place": "Poreč",
+        "line": "Charter jahti s cjelodnevnim izletima na otvorenom Jadranu iz Poreča.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "Početna stranica Astyle Marinea: serifni naslov „Luxury in full speed“ na crnom, uz fotografiju jahte s crvenim detaljima pred porečkom obalom.",
+        "mobileAlt": "Početna stranica Astyle Marinea na mobitelu, naslov iznad fotografije jahte."
+      },
+      "vrsarBoatTours": {
+        "name": "Vrsar Private Boat Tours",
+        "place": "Marina Vrsar",
+        "line": "Privatni izleti brodom za najviše deset gostiju, rezervacija po danu.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang", "Prebacivanje između četiri jezika"],
+        "desktopAlt": "Početna stranica Vrsar Private Boat Toursa: istarska obala u sumrak iza trake za rezervaciju, s jezičnim opcijama EN, HR, IT i DE.",
+        "mobileAlt": "Početna stranica Vrsar Private Boat Toursa na mobitelu, gumb za rezervaciju ispod naslova."
+      }
+    },
+    "pipeline": {
+      "label": "Kako ih isporučujemo",
+      "title": "Instagram profil unutra, živi URL van",
+      "intro": "Svaki put istih šest koraka. Zato stranica traje dane, a ne tromjesečje.",
+      "steps": [
+        {
+          "name": "Pročitati Instagram profil",
+          "body": "Krećemo od onoga što posao ionako objavljuje — objave, opisi, fotografije, radno vrijeme. Nitko ne mora pisati brief."
+        },
+        {
+          "name": "Rastaviti sadržaj",
+          "body": "Usluge, cijene, lokacija i ton glasa izlaze iz tog materijala i razvrstavaju se u stranice koje će stranica trebati."
+        },
+        {
+          "name": "Uzeti brend kao tokene",
+          "body": "Boja, tipografija i razmaci uzimaju se iz klijentova vlastitog materijala i zapisuju kao dizajnerski tokeni, pa stranica izgleda kao on, a ne kao predložak."
+        },
+        {
+          "name": "Izgraditi u Astru, hrvatski prvi",
+          "body": "Statične stranice, hrvatski kao glavni jezik, engleski i ostali uz njega, s hreflangom i LocalBusiness JSON-LD-om u kodu stranice."
+        },
+        {
+          "name": "Provjeriti Playwrightom",
+          "body": "Automatski prolaz prošeta svaku stranicu prije nego je itko vidi, uključujući provjeru da se svaka slika prikazuje u omjeru za koji je izrezana."
+        },
+        {
+          "name": "Objaviti na Cloudflare Pages",
+          "body": "Stranica ide online na Cloudflareov edge, a klijent isti dan dobije URL koji može staviti u svoj Instagram bio."
+        }
+      ],
+      "alsoLabel": "Također iz istog studija",
+      "alsoBody": "Velumovu motion grafiku napravio je u Remotionu isti tim koji je izradio stranicu — isti tokeni brenda, isti izvorni materijal, renderirano iz koda."
+    },
+    "next": {
+      "title": "Vaša stranica, online ovaj tjedan.",
+      "body": "Pošaljite nam Instagram profil koji ionako vodite. Vraćamo vam stranicu koja iz njega nastane — na hrvatskom i na jezicima na kojima vaši gosti stvarno rezerviraju.",
+      "cta": "Pošaljite nam svoj profil"
+    }
+  },
+  "Method": {
+    "hero": {
+      "label": "Metoda",
+      "title": "Naš sustav isporuke je open source. Pročitajte ga.",
+      "lead": "Softver gradimo orkestriranim AI agentima i to smo industrijalizirali. Ugovor po kojem ti agenti rade, alati koji ih pokreću i vrata koja ne daju da im rezultat sleti nepročitan — sve je objavljeno pod licencom Apache-2.0.",
+      "readRepo": "Pročitajte repozitorij",
+      "howItWorks": "Kako radi",
+      "repoLabel": "Agent Ops Cockpit",
+      "repoSummary": "Sam sustav isporuke: ugovor repozitorija i njegova shema, registar zadataka, format paketa i naredbe koje ih pokreću.",
+      "repoChips": ["Apache-2.0", "Rust", "Naredbeni redak"]
+    },
+    "howItWorks": {
+      "label": "Kako radi",
+      "title": "Četiri poteza, ponavljana dok ne postanu dosadni.",
+      "intro": "Ista četiri poteza u svakom repozitoriju kojeg dotaknemo, pa i u vašem. Ništa od toga ne ovisi o tome hoće li se netko sjetiti kako radimo.",
+      "contractTitle": "Ugovor, na disku",
+      "artifacts": [
+        "Ugovor o ponašanju: kako agenti rade u ovom repozitoriju i što ne smiju.",
+        "Ugovor o dizajnu: tokeni, tipografska skala, pravila komponenti i popis zabrana.",
+        "Generirano, nikad pisano rukom — trenutačni oblik repozitorija, osvježen na zahtjev.",
+        "Registar zadataka: zadaci, podzadaci, oznake i status, verzionirani uz kod."
+      ],
+      "steps": [
+        {
+          "label": "Svaki repozitorij nosi verzionirani ugovor",
+          "description": "Ugovor o ponašanju, ugovor o dizajnu, generirana snimka konteksta i registar zadataka stoje u repozitoriju, na shemi s migracijama. Agent koji kreće u posao čita iste datoteke koje bi čitao i novi inženjer."
+        },
+        {
+          "label": "Posao se dijeli na omeđene pakete",
+          "description": "Paket imenuje datoteke koje smije dirati, rezultat koji duguje i provjeru koja to dokazuje. Paketi koji se ne preklapaju rade istodobno na odvojenim workerima."
+        },
+        {
+          "label": "Svaki diff ponovno čita nešto što ga nije napisalo",
+          "description": "Worker završi i stane. Orkestrator prolazi promjenu redak po redak i pokreće provjere nad njom. Ono što padne vraća se s greškom u prilogu."
+        },
+        {
+          "label": "Za commit odgovara čovjek",
+          "description": "Commiti su atomarni i ljudski provjereni. Workeri nemaju pravo pusha, pa u granu ne stigne ništa za što se čovjek nije potpisao."
+        }
+      ]
+    },
+    "rule": {
+      "label": "Pravilo rada",
+      "rule": "Agenti predlažu; commit prolazi kroz vrata koja provjerava čovjek. Workeri nikada ne pushaju.",
+      "clauses": [
+        {
+          "text": "Agenti predlažu",
+          "detail": "Worker proizvede diff i izvještaj. To je cijela njegova ovlast."
+        },
+        {
+          "text": "Commit prolazi kroz ljudsku provjeru",
+          "detail": "Diff se ponovno čita i provjere se pokreću prije nego sleti atomarni commit."
+        },
+        {
+          "text": "Workeri nikada ne pushaju",
+          "detail": "Nijedan worker nema pravo pusha. Ne postoji put od rezultata agenta do vaše grane koji preskače čovjeka."
+        }
+      ]
+    },
+    "numbers": {
+      "label": "Brojke",
+      "title": "Što je javno i što je iz toga nastalo.",
+      "intro": "Sustav isporuke je repozitorij koji možete klonirati. Rezultat je povijest commita na sustavima koje njime gradimo.",
+      "systemStats": [
+        { "value": "403", "label": "Commita", "note": "Javna povijest, Apache-2.0" },
+        { "value": "8", "label": "Rust crateova" },
+        { "value": "51", "label": "CLI naredbi" }
+      ],
+      "outputStats": [
+        { "value": "13", "label": "Repozitorija", "note": "Rade po istom verzioniranom ugovoru" },
+        { "value": "383", "label": "Commita na Voyageru", "note": "Samo u srpnju 2026." }
+      ]
+    },
+    "evidence": {
+      "label": "Dokazi",
+      "title": "Kako to izgleda dok radi.",
+      "intro": "Tri pogleda na jednu radnu sesiju. Bez maketa — ovo je terminal u kojem radimo.",
+      "cockpit": {
+        "label": "Kokpit",
+        "alt": "Terminalski kokpit: stablo datoteka lijevo, agentska sesija u sredini i ploča sa stanjem repozitorija uživo desno",
+        "caption": "Jedan repozitorij, jedan zaslon: njegove datoteke lijevo, agentska sesija u sredini i stanje repozitorija uživo desno — broj pripremljenih, nepripremljenih i novih datoteka, s napretkom zadataka uz donji rub."
+      },
+      "ledger": {
+        "label": "Registar zadataka",
+        "alt": "Registar zadataka s numeriranim zadacima, oznakama, prioritetima, statusima i ugniježđenim podzadacima",
+        "caption": "Registar zadataka jednog repozitorija: zadaci grupirani po oznaci, podzadaci ugniježđeni pod svojim zadatkom, status u istoj datoteci koju čitaju agenti."
+      },
+      "repos": {
+        "label": "Repozitoriji na ugovoru",
+        "alt": "Preglednik datoteka u tri stupca s direktorijem repozitorija i otvorenim ugovornim direktorijem jednog repozitorija",
+        "caption": "Isti ugovorni direktorij u svakom repozitoriju — snimka konteksta, promptovi, stanje zadataka, konfiguracija rutiranja — uz kod, pokraj ostalih repozitorija na ugovoru."
+      }
+    },
+    "why": {
+      "label": "Zašto je to važno vama",
+      "title": "Što dobivate od metode koju možete pročitati.",
+      "intro": "Ne kupujete oduševljenje agentima. Kupujete tok isporuke čija su pravila zapisana.",
+      "noteLabel": "Što nismo izgradili",
+      "noteP1": "Radimo na tuđim agentskim okruženjima i terminalskim alatima. Nismo ih napisali i ne pripisujemo ih sebi.",
+      "noteP2": "Ono što jesmo izgradili i objavili je sloj koji ih čini ponovljivima: ugovor repozitorija i njegova shema, registar zadataka, format paketa i vrata koja ne daju da rezultat agenta sleti nepročitan.",
+      "reasons": [
+        {
+          "title": "Propusnost bez nepregledanog rezultata agenata",
+          "text": "Više omeđenih paketa radi istodobno. Nijedan ne smije commitati. Brzina dolazi iz usporednosti, a ne iz preskakanja čitanja."
+        },
+        {
+          "title": "Kontekst koji živi u repozitoriju, a ne u nečijoj povijesti chata",
+          "text": "Ugovor, dizajnerska pravila i registar zadataka datoteke su u vašem kodu. Predate li projekt drugom timu, radno znanje ide s njim."
+        },
+        {
+          "title": "Metoda koju možete revidirati",
+          "text": "Shema ugovora, skup naredbi i vrata su javni. Pročitajte ih prije nego išta potpišete."
+        }
+      ]
+    },
+    "next": {
+      "label": "Dalje",
+      "title": "Pročitajte sustav, pa nam donesite svoj.",
+      "body": "Provjerite metodu prije nego nekoga unajmite da je primijeni na vaš kod. Onda nam recite što u vašem sustavu usporava rad, što je teško razumjeti i čemu nitko ne vjeruje.",
+      "cta": "Pokrenite pregled sustava"
+    }
+  },
+  "About": {
+    "hero": {
+      "label": "O nama",
+      "title": "Konzultantska kuća koja isporučuje vlastiti softver.",
+      "lead": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Istri, Hrvatska. Gradimo softver za klijente diljem EU-a, a vlastite platforme gradimo i vodimo na istom sustavu isporuke. Taj je sustav open source."
+    },
+    "company": {
+      "label": "Tvrtka",
+      "title": "Dvije vrste posla, jedan tok.",
+      "intro": "Konzultantski rad i proizvodi koje nosimo sami.",
+      "p1": "Rad za klijente obično počinje jednako. Nešto već radi — posao, destinacija, institucija — a softver oko toga to više ne objašnjava. Nitko ne vidi trenutačno stanje, oni koji ga vode drže privatnu tablicu, a ljudi koji rezultatu moraju vjerovati ne mogu ga provjeriti.",
+      "p2": "Graditi vlastite platforme nije usputna aktivnost. Voyager, Polis i Funda mjesta su na kojima prvi udaramo u tvrda ograničenja: fina autorizacija, revizijski tragovi koje nitko ne može tiho prepisati, višejezični sadržaj koji mora ostati točan, uvođenja koja moraju nastaviti raditi. Te lekcije plaćamo vlastitim vremenom i rezultat donosimo u rad za klijente.",
+      "p3": "Sustav isporuke je javan. Možete pročitati kako radimo prije nego nas unajmite — ugovor po kojem naši agenti rade, naredbe i vrata koja pred svaki commit stavljaju čovjeka.",
+      "facts": {
+        "company": { "term": "Tvrtka", "value": "INTRFACE — IT savjetovanje i razvoj poslovanja" },
+        "based": { "term": "Sjedište", "value": "Istra, Hrvatska. Radimo diljem EU-a." },
+        "work": {
+          "term": "Posao",
+          "value": "Softver za klijente i platforme koje sami gradimo i vodimo"
+        },
+        "delivery": {
+          "term": "Isporuka",
+          "value": "Agent Ops Cockpit — Apache-2.0, javno na <repo>github.com/basicalex/agent-ops-cockpit</repo>"
+        },
+        "contact": { "term": "Kontakt" }
+      }
+    },
+    "engagement": {
+      "label": "Suradnja",
+      "title": "Kako teče rad s nama.",
+      "intro": "Četiri koraka. Prvi vrijedi i sam za sebe.",
+      "aside": "Svaki korak ostavlja nešto što zadržavate: kartu, zapisano sučelje, repozitorij s ugovorom i registrom zadataka, uvođenje i rezultate provjera. Stanemo li nakon prvog koraka, niste ondje gdje ste počeli.",
+      "link": "Sustav isporuke u detalje",
+      "steps": [
+        {
+          "label": "Iscrtati sustav",
+          "description": "Sjednemo s ljudima koji ga vode i zapišemo što se doista događa — korake, iznimke, tablicu o kojoj svi tiho ovise. Kartu zadržavate bez obzira gradimo li išta dalje."
+        },
+        {
+          "label": "Definirati sučelje",
+          "description": "Dogovorimo što softver mora učiniti čitljivim, tko što smije vidjeti i što se broji kao dokaz. Opseg se reže ovdje, u pisanom obliku, prije nego itko otvori editor."
+        },
+        {
+          "label": "Graditi agentskim tokom",
+          "description": "Agenti rade po verzioniranom ugovoru koji stoji u repozitoriju: kako se ponašati, kako treba izgledati, koje je trenutačno stanje, što je još otvoreno. Agenti predlažu; čovjek pročita diff i commita."
+        },
+        {
+          "label": "Dokazati",
+          "description": "Automatizirani testovi i provjere na svakoj promjeni, zatim uvođenje koje možete otvoriti u pregledniku. Svako sučelje je označeno onim što jest: uživo, demonstracija ili još nije izgrađeno."
+        }
+      ]
+    },
+    "platforms": {
+      "label": "Naš vlastiti softver",
+      "title": "Što nosimo sami.",
+      "intro": "Tri platforme koje gradimo i vodimo. Status od danas, ne status iz prezentacije.",
+      "voyager": {
+        "name": "Voyager",
+        "status": "Prije pokretanja",
+        "description": "Podaci o mjestu za turističke destinacije: jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena. Uneseno za Vrsar, bez javnog pokretanja."
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Open source, prije uvođenja",
+        "description": "Javna infrastruktura za provjerljive državne podatke, gdje svaka javna tvrdnja vodi do izvornog dokumenta. Vlastita dokumentacija svako sučelje označava kao provjerljivo, demonstraciju ili još nije uživo."
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "U aktivnoj izradi",
+        "description": "EU sredstva povezana s organizacijama koje ih mogu dobiti. Agenti čitaju izvore SEDIA i TED, geoprostorno povezivanje, tri jezika."
+      },
+      "clientNote": "Rad za klijente ide istim tokom. Četiri dvojezične stranice za istarske poslove su online, svaka isporučena u nekoliko dana — <link>pogledajte kako taj tok radi</link>."
+    },
+    "contact": {
+      "label": "Kontakt",
+      "title": "Donesite nam svoj najzamršeniji sustav.",
+      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje. Dobivate čovjeka, a ne prodajni niz poruka.",
+      "helpsLabel": "Što pomaže",
+      "helps": [
+        "Što sustav danas radi i tko ga vodi.",
+        "Gdje puca, ili gdje nitko ne vjeruje brojkama.",
+        "Svaki rok koji je već fiksan."
+      ],
+      "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
+      "topics": [
+        "Poslovni sustav",
+        "Place intelligence",
+        "Tijek dokumenata",
+        "AI sučelje",
+        "Tehnička strategija",
+        "Javna infrastruktura"
+      ]
+    }
+  },
+  "Imprint": {
+    "label": "Impresum",
+    "title": "Tko vodi ovu stranicu.",
+    "lead": "{siteName} objavljuje i vodi {host}. Sve na ovoj stranici je izjava o nama, a ne prepisani obrazac.",
+    "operatorLabel": "Nositelj",
+    "operator": {
+      "operator": { "term": "Nositelj", "value": "{siteName} — IT savjetovanje i razvoj poslovanja" },
+      "location": { "term": "Lokacija", "value": "Istra, Hrvatska (Europska unija)" },
+      "email": { "term": "E-pošta" },
+      "website": { "term": "Web" }
+    },
+    "sections": {
+      "content": {
+        "title": "Odgovornost za sadržaj",
+        "body": "{siteName} odgovara za sadržaj objavljen na {host}. Pišemo ga sami i držimo ga aktualnim koliko znamo. Opisi našeg softvera govore što je uživo, što je demonstracija i što još nije izgrađeno."
+      },
+      "links": {
+        "title": "Vanjske poveznice",
+        "body": "Ova stranica vodi na stranice kojima upravljaju drugi — repozitorije, klijentske stranice, usluge trećih strana. Za njihov sadržaj odgovaraju njihovi nositelji. Poveznicu provjerimo kad je dodamo; ne možemo je provjeravati neprekidno. Javite nam na <mail>{email}</mail> ako je neka pokvarena ili pogrešna i uklonit ćemo je ili ispraviti."
+      },
+      "copyright": {
+        "title": "Autorska prava",
+        "body": "Tekstovi, slike i kod objavljeni na ovoj stranici pripadaju {siteName} osim ako je naveden drugi vlasnik. Citirajte nas uz poveznicu na izvor. Pitajte prije nego stranicu prenesete u cijelosti. Naš sustav isporuke, Agent Ops Cockpit, objavljen je zasebno pod licencom Apache-2.0 i ta licenca uređuje njegovu upotrebu."
+      },
+      "form": {
+        "title": "Kontakt obrazac",
+        "body": "Obrazac u našem <link>kontakt dijelu</link> šalje ime, adresu e-pošte, tvrtku, temu i poruku koju upišete. Tu prijavu spremamo i šaljemo si je e-poštom kako bismo vam mogli odgovoriti. Ne koristimo je ni za što drugo i ne prodajemo je. Zatražite brisanje svoje poruke i obrisat ćemo je."
+      }
+    }
+  },
+  "ContactForm": {
+    "submitLabel": "Pošaljite poruku",
+    "sending": "Šaljem",
+    "nameLabel": "Ime",
+    "emailLabel": "E-pošta",
+    "companyLabel": "Tvrtka",
+    "companyOptional": "(neobavezno)",
+    "topicLabel": "Tema",
+    "messageLabel": "Što je teško razumjeti, što usporava rad ili čemu nitko ne vjeruje?",
+    "honeypotLabel": "Ostavite ovo polje prazno",
+    "sentLabel": "Poruka je stigla",
+    "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}.",
+    "writeAnother": "Napišite još jednu poruku",
+    "fallbackFailed": "Poruku trenutačno nismo mogli spremiti.",
+    "fallbackMailClient": "Ovaj obrazac poruku predaje vašoj aplikaciji za e-poštu.",
+    "fallbackTail": "Vaša aplikacija za e-poštu trebala se otvoriti sa svime ispunjenim. Ako nije, pošaljite je na <mail>{email}</mail>.",
+    "mailNote": "Ili pišite na <mail>{email}</mail>.",
+    "errorName": "Recite nam tko ste.",
+    "errorEmail": "Trebamo adresu na koju možemo odgovoriti.",
+    "errorMessage": "Dovoljna je rečenica-dvije o sustavu.",
+    "subjectWithTopic": "{topic} — upit od {name}",
+    "subjectFallback": "Upit s web stranice",
+    "mailtoName": "Ime",
+    "mailtoEmail": "E-pošta",
+    "mailtoCompany": "Tvrtka",
+    "mailtoTopic": "Tema",
+    "mailtoWebsite": "web stranice"
+  }
 }

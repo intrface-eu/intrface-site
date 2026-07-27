@@ -1,14 +1,984 @@
 {
   "Nav": {
+    "work": "Work",
     "services": "Services",
+    "method": "Method",
+    "about": "About",
+    "imprint": "Imprint",
+    "principles": "Principles",
     "contact": "Contact",
-    "home": "Intrface home"
+    "home": "Intrface home",
+    "menu": "Menu",
+    "logoAlt": "Intrface icon"
   },
   "Footer": {
-    "tagline": "Intrface is a business and software development consultancy."
+    "tagline": "Intrface builds trusted interfaces for complex real-world systems.",
+    "aocLink": "Agent Ops Cockpit on GitHub",
+    "location": "Istria, Croatia · EU"
   },
   "LocaleSwitcher": {
     "label": "Language"
   },
-  "HomePage": {}
+  "Common": {
+    "honestStatus": "Honest status",
+    "whyItMatters": "Why it matters",
+    "open": "Open",
+    "screenshotPending": "Screenshot pending"
+  },
+  "Metadata": {
+    "tagline": "Software for complex real-world systems.",
+    "description": "INTRFACE builds software with an industrialized, open-source AI-agent delivery system: live client sites, deep platforms, and the delivery system itself.",
+    "work": {
+      "title": "Work",
+      "description": "Four client sites live in Istria. Three platforms in build. One delivery system, public on GitHub."
+    },
+    "voyager": {
+      "title": "Voyager",
+      "description": "One QR code gives a restaurant a multilingual AI host grounded in its own menu. Pre-launch place-intelligence platform for tourism destinations: 365,000 lines of first-party TypeScript, 1,580 automated test cases."
+    },
+    "polis": {
+      "title": "Polis Interface",
+      "description": "Open-source (AGPL) civic infrastructure for verifiable government data: a hash-chained audit ledger, RFC 3161 document timestamping, and policy gates that fail closed. Pre-deployment."
+    },
+    "funda": {
+      "title": "Funda",
+      "description": "Funda reads EU funding calls from SEDIA and TED as they publish and matches them to the organizations that fit. Multi-role SaaS, in active build."
+    },
+    "clientSites": {
+      "title": "Istria client sites",
+      "description": "Four live bilingual sites for Istrian coastal businesses, each built from the client's Instagram profile and deployed within days. Screenshots and live links."
+    },
+    "method": {
+      "title": "Method",
+      "description": "We build software with orchestrated AI agents and published the delivery system under Apache-2.0. Agents propose; a human-verified gate commits. Workers never push."
+    },
+    "about": {
+      "title": "About",
+      "description": "INTRFACE is an IT consulting and business development company in Istria, Croatia. How an engagement runs, what we build ourselves, and how to reach us."
+    },
+    "imprint": {
+      "title": "Imprint",
+      "description": "Who operates intrface.eu: company details, responsibility for content, copyright, and what the contact form does with your message."
+    }
+  },
+  "HomePage": {
+    "hero": {
+      "eyebrow": "Intrface · Istria, Croatia",
+      "title": "Trusted interfaces for complex real-world systems.",
+      "lead": "Four live sites for businesses on the Istrian coast. A tourism platform in pre-launch at 365,000 lines. Civic infrastructure where every public claim traces to a source document.",
+      "seeWork": "See the work",
+      "howWeBuild": "How we build it",
+      "openSource": "The delivery system is open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
+    },
+    "systemMap": {
+      "ariaLabel": "How Intrface turns real-world signals into trusted action",
+      "stageInputs": "Signals from reality",
+      "stageCore": "Orientation layer",
+      "stageOutput": "Trusted action",
+      "inputs": [
+        { "label": "Place", "detail": "Trails, hours, transport" },
+        { "label": "Business", "detail": "Menus, services, bookings" },
+        { "label": "Document", "detail": "Sources and evidence" },
+        { "label": "Workflow", "detail": "Roles, reviews, handoffs" }
+      ],
+      "core": {
+        "label": "Interface",
+        "detail": "State, sources, and the next action — in the reader's language."
+      },
+      "output": {
+        "label": "Assisted action",
+        "detail": "AI answers. A named person stays accountable."
+      }
+    },
+    "thesis": {
+      "label": "The thesis",
+      "title": "Software is becoming the interface to everything.",
+      "p1": "Customers do not experience your strategy. They experience the interface. Citizens do not experience policy. They experience forms, offices, and delays.",
+      "p2": "Visitors do not experience a destination strategy. They experience menus, routes, and questions in a language they may not read. We build the layer where that complexity becomes usable.",
+      "columns": [
+        { "label": "Orientation", "text": "Make the system understandable." },
+        { "label": "Trust", "text": "Show sources, states, and who is responsible." },
+        { "label": "Implementation", "text": "Ship the software behind the promise." }
+      ]
+    },
+    "proof": {
+      "label": "Proof",
+      "title": "Shipped and live.",
+      "intro": "Four bilingual sites for coastal businesses in Istria. Each one built from the client's own Instagram profile and deployed in days — several in a single day.",
+      "pipeline": [
+        "Instagram profile",
+        "Content analysis",
+        "Brand design tokens",
+        "Astro build",
+        "Playwright audit",
+        "Cloudflare Pages"
+      ],
+      "liveIn": "Live · {place}",
+      "howWeShip": "How we ship these",
+      "sites": {
+        "cannaclean": {
+          "name": "CannaClean",
+          "place": "Poreč",
+          "kind": "Detailing studio",
+          "description": "Croatian and English, with LocalBusiness structured data so the studio reads correctly in local search.",
+          "alt": "CannaClean home page — detailing studio in Poreč"
+        },
+        "velum": {
+          "name": "Velum",
+          "place": "Vrsar waterfront",
+          "kind": "Café and wine bar",
+          "description": "Croatian and English. The same studio produced the bar's motion graphics.",
+          "alt": "Velum home page — café and wine bar in Vrsar waterfront"
+        },
+        "astyleMarine": {
+          "name": "Astyle Marine",
+          "place": "Poreč",
+          "kind": "Yacht charter",
+          "description": "Croatian and English, on design tokens taken from the operator's own brand.",
+          "alt": "Astyle Marine home page — yacht charter in Poreč"
+        },
+        "vrsarBoatTours": {
+          "name": "Vrsar Private Boat Tours",
+          "place": "Vrsar",
+          "kind": "Private boat tours",
+          "description": "Four languages with hreflang for each: English, Croatian, Italian, German.",
+          "alt": "Vrsar Private Boat Tours home page — private boat tours in Vrsar"
+        }
+      }
+    },
+    "systems": {
+      "label": "Systems",
+      "title": "Three systems, and where each one actually stands.",
+      "intro": "Pre-launch means pre-launch. Nothing here claims users it does not have.",
+      "voyager": {
+        "name": "Voyager",
+        "status": "Pre-launch platform",
+        "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours; the tourist board gets a content layer it controls.",
+        "stats": [
+          { "value": "365,000", "label": "Lines of first-party TypeScript" },
+          { "value": "1,336", "label": "Backend functions" },
+          { "value": "1,580", "label": "Automated test cases" }
+        ],
+        "linkLabel": "Read the Voyager case"
+      },
+      "polis": {
+        "name": "Polis Interface",
+        "status": "Open source · Pre-deployment",
+        "claim": "A governance graph where every public claim traces back to a source document.",
+        "stats": [
+          { "value": "55", "label": "Postgres tables" },
+          { "value": "10", "label": "Policy modules at runtime" },
+          { "value": "17", "label": "Acceptance scripts" }
+        ],
+        "linkLabel": "Read the Polis case"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "In build",
+        "claim": "Matches organizations to EU funding calls, ingested from SEDIA and TED by agents.",
+        "stats": [
+          { "value": "4", "label": "Roles in one SaaS" },
+          { "value": "2", "label": "EU sources ingested" },
+          { "value": "3", "label": "Languages" }
+        ],
+        "linkLabel": "Read the Funda case"
+      }
+    },
+    "method": {
+      "label": "Method",
+      "title": "The delivery system is open source.",
+      "body": "Thirteen of our repos run the same versioned agent contract. Agents propose the change; a human-verified gate commits it. That pace shows up in the log — 383 commits landed on Voyager in July 2026 alone.",
+      "readMethod": "Read the method",
+      "readSource": "Read the source",
+      "steps": [
+        {
+          "label": "Contract before code",
+          "description": "Every repo carries a behavioural contract, a design contract, a generated context snapshot, and a task ledger."
+        },
+        {
+          "label": "Agents propose",
+          "description": "Workers run in parallel against that contract. They never push."
+        },
+        {
+          "label": "A human-verified gate commits",
+          "description": "The orchestrator re-reads the diff, runs the checks, then lands one atomic commit."
+        },
+        {
+          "label": "The contract is versioned",
+          "description": "Thirteen repos share one schema. When it changes, they migrate together."
+        }
+      ],
+      "stats": [
+        { "value": "13", "label": "Repos on one contract" },
+        { "value": "51", "label": "CLI commands" },
+        {
+          "value": "403",
+          "label": "Commits, Apache-2.0",
+          "note": "Public at github.com/basicalex/agent-ops-cockpit"
+        }
+      ]
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Bring us the messy system.",
+      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. We map it, design the interface, and build the software behind it.",
+      "mailNote": "Or write straight to <mail>{email}</mail>.",
+      "topics": [
+        "Business system",
+        "Place intelligence",
+        "Document workflow",
+        "Client site",
+        "Technical strategy",
+        "Civic infrastructure"
+      ]
+    }
+  },
+  "WorkIndex": {
+    "label": "Work",
+    "title": "Proof, three ways.",
+    "lead": "Four client sites live in Istria. Three platforms in build. One delivery system, public on GitHub.",
+    "entries": {
+      "voyager": {
+        "name": "Voyager",
+        "status": "Pre-launch",
+        "claim": "One QR code turns a restaurant's own menu and hours into a multilingual AI host.",
+        "figures": [
+          { "value": "~365,000", "label": "First-party TypeScript lines" },
+          { "value": "1,580", "label": "Automated test cases" }
+        ]
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Open source · AGPL",
+        "claim": "A governance graph where every public claim traces back to a source document.",
+        "figures": [
+          { "value": "10", "label": "Rego policies at runtime" },
+          { "value": "55", "label": "Postgres tables" }
+        ]
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Active build",
+        "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
+        "figures": [
+          { "value": "4", "label": "Role surfaces" },
+          { "value": "3", "label": "Languages" }
+        ]
+      },
+      "clientSites": {
+        "name": "Istria client sites",
+        "status": "Live ×4",
+        "claim": "Four coastal businesses went from an Instagram profile to a live bilingual site in days.",
+        "figures": [
+          { "value": "4", "label": "Sites live today" },
+          { "value": "2–4", "label": "Languages per site" }
+        ]
+      }
+    },
+    "method": {
+      "label": "05 · Method",
+      "title": "Our delivery system is open source.",
+      "body": "Agent Ops Cockpit runs thirteen of our repos on one versioned contract: a behavioral contract, a design contract, a generated context snapshot, and a task ledger. Agents propose. A human reads the diff and commits.",
+      "link": "Read how we ship",
+      "figures": [
+        { "value": "403", "label": "Commits, Apache-2.0" },
+        { "value": "51", "label": "CLI commands" },
+        { "value": "13", "label": "Repos on the contract" }
+      ]
+    }
+  },
+  "WorkVoyager": {
+    "hero": {
+      "eyebrow": "Place intelligence",
+      "name": "Voyager",
+      "claim": "One QR code on a restaurant table becomes a multilingual AI host that answers from that restaurant's own menu and hours.",
+      "status": "Pre-launch",
+      "tags": ["Proprietary", "Tourism", "Multi-tenant", "Six languages"]
+    },
+    "scale": {
+      "label": "Scale",
+      "intro": "Counted from the repository, not estimated.",
+      "scaleStats": [
+        {
+          "value": "~365,000",
+          "label": "Lines of TypeScript",
+          "note": "First-party. Dependencies excluded."
+        },
+        { "value": "220", "label": "Database tables" },
+        { "value": "1,336", "label": "Backend functions" },
+        { "value": "312", "label": "Routes" }
+      ],
+      "buildStats": [
+        { "value": "7", "label": "Product surfaces", "note": "One data model behind all of them." },
+        { "value": "6", "label": "Languages", "note": "Interface and generated answers." },
+        { "value": "1,580", "label": "Automated test cases", "note": "Across 286 test files." },
+        { "value": "1,080", "label": "Commits", "note": "Over 20 months." }
+      ]
+    },
+    "whatItIs": {
+      "label": "What it is",
+      "title": "Three audiences, one platform.",
+      "intro": "A destination has three parties who have never shared a system: the visitor holding a phone, the business whose menu changed this morning, and the tourist board answerable for what is officially true. Voyager puts all three on one data model.",
+      "audiences": [
+        {
+          "role": "Visitors",
+          "headline": "A map of what is around you, and walking directions to it.",
+          "body": "The app opens on a map, not a feed. It routes you there on foot and answers questions about the place in one of six languages. A QR code or a link is the entry point — no app store detour."
+        },
+        {
+          "role": "Businesses",
+          "headline": "One QR code on the table, and the AI host answers from your menu.",
+          "body": "A restaurant loads its menu, hours, and house rules. The host answers from those, in the visitor's language, and the owner sees a readiness score before switching it on."
+        },
+        {
+          "role": "Tourist boards",
+          "headline": "An official layer the board controls and can correct.",
+          "body": "Verified business profiles, events, trails, and advisories the board publishes itself. When a trail closes or an event moves, the board edits the record instead of asking a platform to fix it."
+        }
+      ]
+    },
+    "engineering": {
+      "label": "Engineering",
+      "title": "The parts worth naming.",
+      "intro": "Four decisions that cost time up front and are painful to retrofit later.",
+      "entries": [
+        {
+          "title": "Multi-tenant authorization, checked by a test that reads the source",
+          "what": "Permissions run through WorkOS FGA with a synchronous grant cache, so a check costs a lookup rather than a round trip. A regression test scans the source for routes that reach data without passing the check.",
+          "why": "A tourist board and every business in the destination share one database. One leak across that line ends the pilot."
+        },
+        {
+          "title": "Retrieval that knows when to skip the vector index",
+          "what": "A question about opening hours is routed to a structured lookup. A photo of a menu goes to a multimodal index. Neither is forced through a single vector store because that was the easiest thing to build.",
+          "why": "Opening hours pulled from a similarity search are a guess. Read from a column, they are a fact — and a wrong closing time is the thing a guest remembers."
+        },
+        {
+          "title": "Scraping and pedestrian routing run as our own services",
+          "what": "Content ingestion and OSRM walking routes run as self-hosted services on Railway instead of rented per-request APIs.",
+          "why": "Directions priced per request turn a busy August into a bill nobody forecast, and a rate limit into a dead map."
+        },
+        {
+          "title": "A design system with its own test suite",
+          "what": "Sixteen governed subsystems cover the shared interface, and the system is tested like the rest of the code.",
+          "why": "Seven product surfaces stay one product. A correction to a component reaches all of them in one change."
+        }
+      ]
+    },
+    "evidence": {
+      "label": "Evidence",
+      "title": "What it looks like.",
+      "intro": "Every screen below runs on seeded Vrsar pilot content. None of it is live traffic.",
+      "explore": {
+        "label": "Visitor app — explore",
+        "alt": "Voyager explore view: a coastal Istria map beside a list of nearby places",
+        "caption": "The public explore view. The map leads and the list follows it. What is plotted here is the seeded Vrsar area."
+      },
+      "board": {
+        "label": "Tourist board — official profile",
+        "alt": "Official Turistička zajednica Vrsar profile with a verified badge and a list of events",
+        "caption": "The tourist board's official profile: verified badge, events, and fields only the board can edit. Seeded from Turistička zajednica Vrsar material."
+      },
+      "host": {
+        "label": "Business console — AI host",
+        "alt": "AI host configuration screen showing grounding sources and a readiness score for a business",
+        "caption": "A business configures its AI host and sees a readiness score before switching it on. The score reflects how much of its own content the host can answer from."
+      },
+      "events": {
+        "label": "Agency — events",
+        "alt": "Agency dashboard listing seeded events with their dates and publication status",
+        "caption": "The agency dashboard, where events are created, dated, and published to the official layer. The events listed are pilot seed data."
+      },
+      "phone": {
+        "label": "Visitor app — phone",
+        "alt": "Voyager place profile on a 390 pixel wide phone screen",
+        "caption": "The same profile at 390 px — the width most visitors will actually hold."
+      }
+    },
+    "pilot": {
+      "label": "Pilot",
+      "title": "Seeded for one destination in Istria.",
+      "intro": "Vrsar–Orsera is loaded. Turistička zajednica Vrsar's material sits in the database already, so a pilot starts with content instead of an empty destination.",
+      "items": [
+        {
+          "label": "Named trails",
+          "detail": "Walking and cycling routes carrying their real names, not generic pins on a map."
+        },
+        {
+          "label": "Sea-water quality",
+          "detail": "Bathing-water signals per beach, held on the same record as the beach itself."
+        },
+        {
+          "label": "Shuttle timetables",
+          "detail": "Local shuttle departures, so an answer about getting there has times in it."
+        },
+        {
+          "label": "Events",
+          "detail": "The board's calendar, published from its own verified profile."
+        }
+      ]
+    },
+    "status": {
+      "label": "Status",
+      "title": "Built and instrumented for launch. Not launched.",
+      "p1": "The seven surfaces are built, the tests run, and the launch instrumentation is in place. What is missing is a destination that says go — a tourist board or a group of businesses in one place, willing to run a first season on it.",
+      "p2": "Until then we would rather show you the repository and the seeded pilot than a growth chart.",
+      "noteP1": "Pre-launch. The production deployment has not been cut, so there are no real end users, no public traffic, and no operating numbers to quote.",
+      "noteP2": "Every figure on this page is counted from the repository. Every screenshot shows seeded pilot content."
+    },
+    "next": {
+      "label": "Next",
+      "title": "Discuss a destination pilot.",
+      "body": "Tell us the destination and who owns the official content there. We will show you the Vrsar seed and what yours would take.",
+      "cta": "Discuss a destination pilot"
+    }
+  },
+  "WorkPolis": {
+    "hero": {
+      "eyebrow": "Civic infrastructure",
+      "name": "Polis Interface",
+      "claim": "Civic infrastructure that treats government data as something you check, not something you believe.",
+      "status": "Open source · AGPL · pre-deployment",
+      "tags": ["Postgres", "OPA/Rego", "RFC 3161", "eIDAS-shaped e-seals"]
+    },
+    "stats": [
+      { "value": "16", "label": "Services", "note": "Four apps on top of them." },
+      { "value": "55", "label": "Postgres tables" },
+      { "value": "10", "label": "Policy modules", "note": "OPA/Rego, evaluated at runtime." },
+      { "value": "~100", "label": "Unit tests", "note": "Plus 17 acceptance scripts." }
+    ],
+    "readSourceRepo": "Read the source — github.com/basicalex/polis",
+    "whatItIs": {
+      "label": "What it is",
+      "title": "A governance graph, not a document dump",
+      "intro": "Polis models what a public body actually produces — decisions, promises, budgets, meetings, officials — as a graph. Every public claim in that graph points back to the source document it came from, and the document carries proof of its own integrity.",
+      "surfacesTitle": "Two surfaces, one dataset",
+      "surfacesBody": "A campaigning surface publishes a programme. An accountability layer tracks the same programme against what was delivered. Both read the same verifiable records, so the promise page and the record page cannot drift apart while nobody is looking.",
+      "addressTitle": "Every claim has an address",
+      "addressBody": "“The council approved the budget in March” is not a sentence in Polis. It is an edge to a decision, which resolves to a filed document, which resolves to a hash, a seal, and a timestamp a stranger can re-check without asking anyone's permission."
+    },
+    "engineering": {
+      "label": "Engineering",
+      "title": "Where the trust actually comes from",
+      "intro": "Four pieces are worth naming, because they are the parts a public buyer or an auditor would go looking for.",
+      "whyLabel": "Why it matters",
+      "entries": [
+        {
+          "title": "The audit ledger is hash-chained inside the insert transaction",
+          "body": "Each event stores the hash of the event before it, computed and written in the same transaction that inserts the row. Two writers racing each other cannot both win.",
+          "why": "An audit log you can quietly reorder afterwards is not evidence of anything."
+        },
+        {
+          "title": "Documents are verified, not just uploaded",
+          "body": "A canonical hash, an eIDAS-shaped e-seal, and an RFC 3161 timestamp from an outside authority travel with the file. Redaction rules take precedence over publication, so a document can be proved authentic without exposing what should stay closed.",
+          "why": "Authentic and publishable are two different questions. Systems that answer them together leak."
+        },
+        {
+          "title": "Policy gates fail closed",
+          "body": "Ten OPA/Rego modules decide who may read and write what. When the policy layer cannot answer, the request is denied rather than allowed through.",
+          "why": "Most access-control bugs are a check that silently returned nothing and was read as a yes."
+        },
+        {
+          "title": "An elected official cannot mark their own promise delivered",
+          "body": "The accountability layer keeps the actor who claims separate from the actor who confirms. A status change to delivered records who confirmed it, and that person is not the subject of the promise.",
+          "why": "Self-reported delivery is the failure mode of every promise tracker ever shipped."
+        }
+      ],
+      "closing": "eIDAS, RFC 3161, GDPR-shaped redaction: the regulation sits in the data model, not in a compliance appendix written after the build."
+    },
+    "honesty": {
+      "label": "Honesty as a feature",
+      "title": "The status label is part of the product",
+      "intro": "Polis labels every surface in its own documentation as [verifiable], [demonstration/stub], or [not yet live]. The simulated pilot says it is simulated in its first line.",
+      "labels": [
+        "Backed by data in the system. Follow it to a source document and check the hash yourself.",
+        "The screen works; what sits behind it is a placeholder. Do not plan a rollout around it.",
+        "Specified and designed. Not built."
+      ],
+      "closing": "This is what an institution buying software should demand, screen by screen. A vendor who can tell you which of their screens is real, which is a demo, and which is a slide has given you something to plan against. A vendor who cannot has given you a pitch."
+    },
+    "evidence": {
+      "label": "Evidence",
+      "title": "How a document becomes checkable",
+      "intro": "There are no screenshots on this page — Polis is not deployed, and a screenshot of an undeployed system proves nothing. This is the pipeline as built: from the file a clerk uploads to the verdict a citizen gets."
+    },
+    "pipeline": {
+      "title": "Document trust pipeline",
+      "subtitle": "source file → public verdict",
+      "stages": [
+        {
+          "name": "Document",
+          "detail": "A decision, contract, or set of minutes, exactly as filed."
+        },
+        {
+          "name": "Canonicalize",
+          "detail": "Bytes normalized to one form, then hashed. Same file, same hash, every time."
+        },
+        {
+          "name": "Seal",
+          "detail": "The issuing body signs the hash, not the file. eIDAS-shaped e-seal."
+        },
+        {
+          "name": "Timestamp",
+          "detail": "An RFC 3161 authority attests that the hash existed at a given moment."
+        },
+        {
+          "name": "Registry",
+          "detail": "Hash, seal, and token are recorded together and linked to the claims that cite them."
+        },
+        {
+          "name": "Verify",
+          "detail": "Anyone re-hashes the file and checks it against the record. No account needed."
+        }
+      ],
+      "ledgerTitle": "Audit ledger",
+      "ledgerSubtitle": "each row carries the row before it",
+      "ledgerRows": [
+        "Minutes accepted; hash, seal, and timestamp written.",
+        "A programme item is bound to the decision it depends on.",
+        "Status moves to delivered — recorded with the confirming actor, who is not the official."
+      ],
+      "caption": "Hashes here are illustrative. In the running code, a row's previous-hash is computed and written inside the same transaction that inserts the row, so two writers racing each other cannot end up with two valid chains."
+    },
+    "next": {
+      "title": "Discuss trust infrastructure",
+      "body": "If you are building something where a citizen, an auditor, or a regulator has to be able to check the claim rather than take it on trust, that is the conversation we want.",
+      "cta": "Discuss trust infrastructure",
+      "readSource": "Read the source",
+      "noteLabel": "Honest status",
+      "noteP1": "Polis is pre-deployment. No public body runs it. The pilot in the repository is simulated and labels itself simulated in its first line. External integrations — registries, timestamp authorities, identity providers — are stubbed behind interfaces.",
+      "noteP2": "The code, the schema, the policy modules, and the tests are real and public. The deployment is not."
+    }
+  },
+  "WorkFunda": {
+    "hero": {
+      "eyebrow": "EU funding",
+      "name": "Funda",
+      "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
+      "status": "Active build",
+      "tags": ["Next.js", "Convex", "Clerk", "Geospatial matching"]
+    },
+    "stats": [
+      { "value": "4", "label": "Role surfaces", "note": "Admin, consultant, corporate, director" },
+      { "value": "3", "label": "Languages", "note": "Every surface, not just the marketing pages" },
+      { "value": "2", "label": "Source pipelines", "note": "SEDIA and TED, read by agents" }
+    ],
+    "whatItDoes": {
+      "label": "What it does",
+      "title": "Funding you qualify for, before the deadline",
+      "intro": "EU funding is public money that is hard to find. Calls land on SEDIA and TED as long documents with their own vocabulary, eligibility rules and deadlines. Most organizations hear about the right one too late.",
+      "body": "Funda watches those sources on a schedule, turns each call into a structured record, and puts it in front of the organizations that match. Consultants work a portfolio of clients against the same feed. One dataset, read four ways.",
+      "note": "Funda is in active build. There is no public deployment, no customer data behind these screens, and no results to report yet. Every number on this page counts something that exists in the codebase today.",
+      "surfaces": [
+        { "name": "Admin", "note": "The people who run the platform" },
+        { "name": "Consultant", "note": "Advisors carrying several client organizations" },
+        { "name": "Corporate", "note": "The organization applying for the funding" },
+        { "name": "Director", "note": "Oversight across an account" }
+      ]
+    },
+    "matching": {
+      "label": "How matching works",
+      "title": "From a published call to the right inbox",
+      "intro": "Four stages, in plain words.",
+      "steps": [
+        {
+          "name": "Read the sources",
+          "body": "Agents pull calls from SEDIA and TED as they publish, instead of waiting for someone to check a portal."
+        },
+        {
+          "name": "Turn documents into fields",
+          "body": "Each call becomes a record: who may apply, for what, in which regions, by when."
+        },
+        {
+          "name": "Score against the organization",
+          "body": "An organization's profile is compared field by field — sector, size, and where it actually operates, which is where the geospatial part earns its keep."
+        },
+        {
+          "name": "Route it to a person",
+          "body": "Matches land on the surface that role uses, in that user's language."
+        }
+      ]
+    },
+    "shows": {
+      "label": "What it shows",
+      "title": "The third platform on the same shape",
+      "p1": "Voyager is where we built retrieval that stays grounded in a client’s own content. Polis is where we built the audit trail that makes a claim checkable. Funda puts both on a smaller footprint: ingestion that has to be accurate, matching a user can argue with, and four roles reading one typed dataset.",
+      "p2": "The stack is deliberately small — Next.js on the front, Convex for data and functions, Clerk for identity and roles. The interesting work is not the framework choice. It is keeping an agent pipeline honest when the input is a call document written in institutional language and the output is a decision someone will act on."
+    },
+    "next": {
+      "title": "Have a system with this shape?",
+      "body": "Tell us what it has to read, who has to see the result, and what happens if it is wrong. We will tell you what it takes.",
+      "cta": "Bring us the system"
+    }
+  },
+  "WorkClientSites": {
+    "hero": {
+      "eyebrow": "Client work",
+      "name": "Istria client sites",
+      "claim": "Four bilingual sites for Istrian coastal businesses, each built from the client's own Instagram profile and live within days.",
+      "status": "Live ×4",
+      "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
+    },
+    "stats": [
+      { "value": "4", "label": "Sites live", "note": "All four checked 27 July 2026" },
+      {
+        "value": "2–4",
+        "label": "Languages per site",
+        "note": "Croatian first, hreflang on every page"
+      },
+      { "value": "6", "label": "Steps from profile to URL", "note": "The same six every time" }
+    ],
+    "showcase": {
+      "label": "The sites",
+      "title": "Live, and you can check",
+      "intro": "Four businesses on the Istrian coast. Open any of them — these are the sites as they run today.",
+      "languagesLabel": "Languages",
+      "markupLabel": "In the markup"
+    },
+    "sites": {
+      "cannaclean": {
+        "name": "CannaClean",
+        "place": "Poreč",
+        "line": "A detailing studio that hand-washes cars, boats and campers across Istria.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "CannaClean home page: a deep blue hero reading 'Detailing without compromise', with booking buttons and a Croatian/English language switch.",
+        "mobileAlt": "The same CannaClean hero stacked for a phone screen."
+      },
+      "velum": {
+        "name": "Velum",
+        "place": "Vrsar waterfront",
+        "line": "A café and wine bar serving breakfast, cakes and Istrian wine by the sea.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "Velum home page: a photograph of coffee and the bar's own menu beside the line 'By the sea, in no hurry.'",
+        "mobileAlt": "The Velum home page on a phone, photo above headline."
+      },
+      "astyleMarine": {
+        "name": "Astyle Marine",
+        "place": "Poreč",
+        "line": "A yacht charter running day trips on the open Adriatic out of Poreč.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "desktopAlt": "Astyle Marine home page: serif headline 'Luxury in full speed' on black, next to a photo of the red-trimmed yacht off the Poreč waterfront.",
+        "mobileAlt": "The Astyle Marine home page on a phone, headline above the yacht photo."
+      },
+      "vrsarBoatTours": {
+        "name": "Vrsar Private Boat Tours",
+        "place": "Marina Vrsar",
+        "line": "Private boat tours for up to ten guests, booked by the day.",
+        "notes": ["LocalBusiness JSON-LD", "hreflang", "Four-language switch"],
+        "desktopAlt": "Vrsar Private Boat Tours home page: the Istrian waterfront at dusk behind the booking bar, with EN, HR, IT and DE language options.",
+        "mobileAlt": "The Vrsar Private Boat Tours home page on a phone, booking button under the headline."
+      }
+    },
+    "pipeline": {
+      "label": "How we ship these",
+      "title": "Instagram profile in, live URL out",
+      "intro": "The same six steps every time. That is why a site takes days instead of a quarter.",
+      "steps": [
+        {
+          "name": "Read the Instagram profile",
+          "body": "We start from what the business already publishes — posts, captions, photos, opening hours. Nobody has to write a brief."
+        },
+        {
+          "name": "Pull the content apart",
+          "body": "Services, prices, location and tone of voice come out of that material and get sorted into the pages the site will need."
+        },
+        {
+          "name": "Take the brand as tokens",
+          "body": "Colour, type and spacing are lifted from the client's own material and written as design tokens, so the site looks like them and not like a template."
+        },
+        {
+          "name": "Build it in Astro, Croatian first",
+          "body": "Static pages, Croatian as the primary language, English and any others alongside it, with hreflang and LocalBusiness JSON-LD in the markup."
+        },
+        {
+          "name": "Audit it with Playwright",
+          "body": "An automated pass walks every page before anyone sees it, including a check that each image renders at the aspect ratio it was cropped for."
+        },
+        {
+          "name": "Deploy to Cloudflare Pages",
+          "body": "The site goes live on Cloudflare's edge and the client gets a URL they can put in their Instagram bio the same day."
+        }
+      ],
+      "alsoLabel": "Also from the same studio",
+      "alsoBody": "Velum’s motion graphics were made in Remotion by the team that built the site — same brand tokens, same source material, rendered from code."
+    },
+    "next": {
+      "title": "Your site, live this week.",
+      "body": "Send us the Instagram profile you already run. You get back the site it turns into — in Croatian and the languages your guests actually book in.",
+      "cta": "Send us your profile"
+    }
+  },
+  "Method": {
+    "hero": {
+      "label": "Method",
+      "title": "Our delivery system is open source. Read it.",
+      "lead": "We build software with orchestrated AI agents, and we industrialized it. The contract those agents work under, the tooling that runs them, and the gate that stops their output from landing unread are all published under Apache-2.0.",
+      "readRepo": "Read the repository",
+      "howItWorks": "How it works",
+      "repoLabel": "Agent Ops Cockpit",
+      "repoSummary": "The delivery system itself: the repository contract and its schema, the task ledger, the packet format, and the commands that run them.",
+      "repoChips": ["Apache-2.0", "Rust", "Command-line"]
+    },
+    "howItWorks": {
+      "label": "How it works",
+      "title": "Four moves, repeated until they are boring.",
+      "intro": "The same four moves in every repository we touch, including yours. Nothing here depends on a person remembering how we do things.",
+      "contractTitle": "The contract, on disk",
+      "artifacts": [
+        "The behavioral contract: how agents work in this repo, and what they may not do.",
+        "The design contract: tokens, type scale, component rules, and the do-not list.",
+        "Generated, never hand-written — the current shape of the repo, refreshed on demand.",
+        "The task ledger: tasks, sub-tasks, tags, and status, versioned next to the code."
+      ],
+      "steps": [
+        {
+          "label": "Every repository carries a versioned contract",
+          "description": "A behavioral contract, a design contract, a generated context snapshot, and a task ledger sit in the repo on a schema with migrations. An agent starting work reads the same files a new engineer would."
+        },
+        {
+          "label": "Work is split into scoped packets",
+          "description": "A packet names the files it may touch, the outcome it owes, and the check that proves it. Packets that do not overlap run at the same time on isolated workers."
+        },
+        {
+          "label": "Every diff is read again by something that did not write it",
+          "description": "A worker finishes and stops. The orchestrator walks the change line by line and runs the checks against it. Work that fails goes back with the failure attached."
+        },
+        {
+          "label": "A human owns the commit",
+          "description": "Commits are atomic and human-verified. Workers have no push access, so nothing reaches a branch that a person has not signed for."
+        }
+      ]
+    },
+    "rule": {
+      "label": "The operating rule",
+      "rule": "Agents propose; a human-verified gate commits. Workers never push.",
+      "clauses": [
+        {
+          "text": "Agents propose",
+          "detail": "A worker produces a diff and a report. That is the whole of its authority."
+        },
+        {
+          "text": "A human-verified gate commits",
+          "detail": "The diff is re-read and the checks run before an atomic commit lands."
+        },
+        {
+          "text": "Workers never push",
+          "detail": "No worker holds push access. There is no path from agent output to your branch that skips a person."
+        }
+      ]
+    },
+    "numbers": {
+      "label": "Numbers",
+      "title": "What is public, and what it has produced.",
+      "intro": "The delivery system is a repository you can clone. The output is commit history on the systems we build with it.",
+      "systemStats": [
+        { "value": "403", "label": "Commits", "note": "Public history, Apache-2.0" },
+        { "value": "8", "label": "Rust crates" },
+        { "value": "51", "label": "CLI commands" }
+      ],
+      "outputStats": [
+        { "value": "13", "label": "Repositories", "note": "Running the same versioned contract" },
+        { "value": "383", "label": "Commits on Voyager", "note": "July 2026 alone" }
+      ]
+    },
+    "evidence": {
+      "label": "Evidence",
+      "title": "What it looks like while it runs.",
+      "intro": "Three views of one working session. No mock-ups — this is the terminal we work in.",
+      "cockpit": {
+        "label": "The cockpit",
+        "alt": "A terminal cockpit: file tree on the left, an agent session in the centre, and a live repo status panel on the right",
+        "caption": "One repository, one screen: its files on the left, the agent session in the middle, and live repo state on the right — staged, unstaged, and new-file counts, with task progress along the bottom."
+      },
+      "ledger": {
+        "label": "The task ledger",
+        "alt": "A task ledger listing numbered tasks with tags, priorities, statuses, and nested sub-tasks",
+        "caption": "The task ledger for a single repository: tasks grouped by tag, sub-tasks nested under their parent, status in the same file the agents read."
+      },
+      "repos": {
+        "label": "Repositories on the contract",
+        "alt": "A three-column file browser showing a directory of repositories and one repository's expanded contract directory",
+        "caption": "The same contract directory in every repository — context snapshot, prompts, task state, routing config — sitting beside the code, next to the other repos on the contract."
+      }
+    },
+    "why": {
+      "label": "Why this matters to you",
+      "title": "What you get from a method you can read.",
+      "intro": "You are not buying enthusiasm about agents. You are buying a delivery pipeline whose rules are written down.",
+      "noteLabel": "What we did not build",
+      "noteP1": "We operate on third-party agent runtimes and terminal tooling. We did not write them and do not claim them.",
+      "noteP2": "What we built and open-sourced is the layer that makes them repeatable: the repository contract and its schema, the task ledger, the packet format, and the gate that keeps agent output from landing unread.",
+      "reasons": [
+        {
+          "title": "Throughput without unreviewed agent output",
+          "text": "Several scoped packets run at once. None of them can commit. Speed comes from parallelism, not from skipping the read."
+        },
+        {
+          "title": "Context that lives in the repo, not in someone's chat history",
+          "text": "The contract, the design rules, and the task ledger are files in your codebase. Hand the project to another team and the operating knowledge goes with it."
+        },
+        {
+          "title": "A method you can audit",
+          "text": "The contract schema, the command surface, and the gate are public. Read them before you sign anything."
+        }
+      ]
+    },
+    "next": {
+      "label": "Next",
+      "title": "Read the system, then bring us yours.",
+      "body": "Check the method before you hire anyone to use it on your codebase. Then tell us what in your system is slow to operate, hard to understand, or difficult to trust.",
+      "cta": "Start a system review"
+    }
+  },
+  "About": {
+    "hero": {
+      "label": "About",
+      "title": "A consultancy that ships its own software.",
+      "lead": "INTRFACE is an IT consulting and business development company in Istria, Croatia. We build software for clients across the EU, and we build and run our own platforms on the same delivery system. That system is open source."
+    },
+    "company": {
+      "label": "The company",
+      "title": "Two kinds of work, one pipeline.",
+      "intro": "Consulting work, and products we carry ourselves.",
+      "p1": "Client work usually starts the same way. Something already runs — a business, a destination, an institution — and the software around it has stopped explaining it. Nobody can see the current state, the operators keep a private spreadsheet, and the people who need to trust the output cannot check it.",
+      "p2": "Building our own platforms is not a side activity. Voyager, Polis and Funda are where we hit the hard constraints first: fine-grained authorization, audit trails nobody can quietly rewrite, multilingual content that has to stay correct, deploys that have to keep working. We pay for those lessons on our own time and bring the result to client work.",
+      "p3": "The delivery system is public. You can read how we work before you hire us — the contract our agents run under, the commands, and the gate that puts a human in front of every commit.",
+      "facts": {
+        "company": { "term": "Company", "value": "INTRFACE — IT consulting and business development" },
+        "based": { "term": "Based", "value": "Istria, Croatia. Working across the EU." },
+        "work": {
+          "term": "Work",
+          "value": "Software for clients, and platforms we build and operate ourselves"
+        },
+        "delivery": {
+          "term": "Delivery",
+          "value": "Agent Ops Cockpit — Apache-2.0, public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
+        },
+        "contact": { "term": "Contact" }
+      }
+    },
+    "engagement": {
+      "label": "Engagement",
+      "title": "How working with us runs.",
+      "intro": "Four steps. The first one is worth having on its own.",
+      "aside": "Every step leaves something you keep: the map, the written interface, the repo with its contract and task ledger, the deploy and its check output. If we stop after step one, you are not back where you started.",
+      "link": "The delivery system in detail",
+      "steps": [
+        {
+          "label": "Map the system",
+          "description": "We sit with the people who operate it and write down what actually happens — the steps, the exceptions, the spreadsheet everyone quietly depends on. You keep the map whether or not we build anything."
+        },
+        {
+          "label": "Define the interface",
+          "description": "We agree what the software has to make legible, who is allowed to see what, and what counts as proof. Scope gets cut here, in writing, before anyone opens an editor."
+        },
+        {
+          "label": "Build with the agent pipeline",
+          "description": "Agents do the work against a versioned contract kept in the repo: how to behave, how it should look, what the current state is, what is still open. Agents propose; a human reads the diff and commits."
+        },
+        {
+          "label": "Prove it",
+          "description": "Automated tests and audits on every change, then a deploy you can open in a browser. Every surface is labelled for what it is: live, demonstration, or not built yet."
+        }
+      ]
+    },
+    "platforms": {
+      "label": "Our own software",
+      "title": "What we carry ourselves.",
+      "intro": "Three platforms we build and operate. Status as of today, not as of the pitch.",
+      "voyager": {
+        "name": "Voyager",
+        "status": "Pre-launch",
+        "description": "Place intelligence for tourism destinations: one QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. Seeded for Vrsar, with no public launch yet."
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Open source, pre-deployment",
+        "description": "Civic infrastructure for verifiable government data, where every public claim traces to a source document. Its own docs label each surface verifiable, demonstration, or not yet live."
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Active build",
+        "description": "EU funding matched to the organizations that can win it. Agent ingestion of SEDIA and TED sources, geospatial matching, three languages."
+      },
+      "clientNote": "Client work runs on the same pipeline. Four bilingual sites for Istrian businesses are live, each shipped in days — <link>see how that pipeline works</link>."
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Bring us the messy system.",
+      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. You get a person, not a sales sequence.",
+      "helpsLabel": "What helps",
+      "helps": [
+        "What the system does today, and who operates it.",
+        "Where it breaks, or where nobody trusts the numbers.",
+        "Any date that is already fixed."
+      ],
+      "mailNote": "Or write straight to <mail>{email}</mail>.",
+      "topics": [
+        "Business system",
+        "Place intelligence",
+        "Document workflow",
+        "AI interface",
+        "Technical strategy",
+        "Civic infrastructure"
+      ]
+    }
+  },
+  "Imprint": {
+    "label": "Imprint",
+    "title": "Who runs this site.",
+    "lead": "{siteName} publishes and operates {host}. Everything on this page is a statement about us, not boilerplate we copied.",
+    "operatorLabel": "Operator",
+    "operator": {
+      "operator": { "term": "Operator", "value": "{siteName} — IT consulting and business development" },
+      "location": { "term": "Location", "value": "Istria, Croatia (European Union)" },
+      "email": { "term": "Email" },
+      "website": { "term": "Website" }
+    },
+    "sections": {
+      "content": {
+        "title": "Responsibility for content",
+        "body": "{siteName} is responsible for the content published on {host}. We write it ourselves and keep it current to the best of our knowledge. Descriptions of our own software state what is live, what is a demonstration, and what is not built yet."
+      },
+      "links": {
+        "title": "External links",
+        "body": "This site links to pages operated by other people — repositories, client sites, third-party services. Their operators are responsible for what those pages contain. We check a link when we add it; we cannot check it continuously. Tell us at <mail>{email}</mail> if one is broken or wrong and we will remove or correct it."
+      },
+      "copyright": {
+        "title": "Copyright",
+        "body": "Text, images, and code published on this site belong to {siteName} unless another owner is named. Quote us with a source link. Ask before reproducing a page in full. Our delivery system, Agent Ops Cockpit, is published separately under the Apache-2.0 licence, and that licence governs its use."
+      },
+      "form": {
+        "title": "The contact form",
+        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you. We do not use it for anything else and we do not sell it. Ask us to delete your message and we will."
+      }
+    }
+  },
+  "ContactForm": {
+    "submitLabel": "Send the message",
+    "sending": "Sending",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "companyLabel": "Company",
+    "companyOptional": "(optional)",
+    "topicLabel": "Topic",
+    "messageLabel": "What is hard to understand, slow to operate, or difficult to trust?",
+    "honeypotLabel": "Leave this field empty",
+    "sentLabel": "Message received",
+    "sentBody": "It landed with us. The reply comes from {email}.",
+    "writeAnother": "Write another message",
+    "fallbackFailed": "We could not store the message just now.",
+    "fallbackMailClient": "This form hands the message to your mail app.",
+    "fallbackTail": "Your mail app should have opened with everything filled in. If it did not, send it to <mail>{email}</mail>.",
+    "mailNote": "Or write to <mail>{email}</mail>.",
+    "errorName": "Tell us who you are.",
+    "errorEmail": "We need an address we can reply to.",
+    "errorMessage": "A sentence or two about the system is enough.",
+    "subjectWithTopic": "{topic} — enquiry from {name}",
+    "subjectFallback": "Website enquiry",
+    "mailtoName": "Name",
+    "mailtoEmail": "Email",
+    "mailtoCompany": "Company",
+    "mailtoTopic": "Topic",
+    "mailtoWebsite": "the website"
+  }
 }

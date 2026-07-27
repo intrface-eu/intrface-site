@@ -2,52 +2,39 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
+import { MobileNav } from "@/components/site/mobile-nav";
+import { SiteNav, type NavItem } from "@/components/site/site-nav";
 import type { AppLocale } from "@/i18n/routing";
 
 export async function Header({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "Nav" });
 
-  const navigation = [
-    { href: "/#services", label: t("services") },
-    { href: "/#contact", label: t("contact") },
-  ] as const;
+  const navigation: readonly NavItem[] = [
+    { href: "/work", label: t("work"), match: "/work" },
+    { href: "/method", label: t("method"), match: "/method" },
+    { href: "/about", label: t("about"), match: "/about" },
+    { href: "/about#contact", label: t("contact") },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-background/95 backdrop-blur-sm">
-      <div className="section-shell flex min-h-18 flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
-            <Image
-              src="/brand/intrface-icon.svg"
-              alt="Intrface icon"
-              width={26}
-              height={26}
-              priority
-            />
-            <span className="text-2xl font-medium tracking-[-0.04em] text-foreground">intrface</span>
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/95 backdrop-blur-sm">
+      <div className="section-shell relative flex h-16 items-center justify-between gap-6">
+        <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
+          <Image
+            src="/brand/intrface-icon.svg"
+            alt={t("logoAlt")}
+            width={26}
+            height={26}
+            priority
+          />
+          <span className="text-xl font-medium tracking-[-0.04em] text-ink">intrface</span>
+        </Link>
 
-          <div className="lg:hidden">
-            <LocaleSwitcher />
-          </div>
-        </div>
+        <SiteNav items={navigation} />
 
-        <div className="flex items-center justify-between gap-5 lg:gap-7">
-          <nav className="flex flex-wrap items-center gap-5 lg:gap-7">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm tracking-[-0.01em] text-muted transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block">
-            <LocaleSwitcher />
-          </div>
+        <div className="flex items-center gap-3">
+          <LocaleSwitcher />
+          <MobileNav items={navigation} menuLabel={t("menu")} />
         </div>
       </div>
     </header>

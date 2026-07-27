@@ -1,73 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  /* ===== BASE PALETTE ===== */
-  --background: #f7f7f5;
-  --foreground: #0a0a0b;
-  --muted: #5f6368;
-  --panel: #efefea;
+  /* ===== CORE PALETTE — one paper, one ink, one accent ===== */
+  --paper: #f5f1eb;
+  --paper-raised: #fbf9f4;
   --card: #ffffff;
-  --rule: #d9dcd6;
+  --ink: #0f1729;
+  --ink-muted: #47536b;
+  --line: rgba(15, 23, 41, 0.12);
   --accent: #0f766e;
   --accent-foreground: #f4fffd;
-  --font-brand: "Google Sans Flex", "Inter", "Segoe UI", sans-serif;
 
-  /* ===== PUBLIC PALETTE — Intrface consumer-facing design language ===== */
-  --intrface-ink: #0f1729;
-  --intrface-warm: #f5f1eb;
-  --intrface-slate: #1e293b;
-  --intrface-sun: #d97706;
-  --intrface-tide: #0f766e;
+  /* Text floors for dark (ink) bands — WCAG AA on --ink */
+  --ink-inverse: rgba(255, 255, 255, 0.92);
+  --ink-inverse-muted: rgba(255, 255, 255, 0.78);
+  --ink-inverse-label: rgba(255, 255, 255, 0.64);
 
-  /* ===== SERVICE ACCENTS ===== */
-  --service-blue: #0ea5e9;
-  --service-blue-soft: color-mix(in srgb, #0ea5e9 10%, transparent);
-  --service-green: #10b981;
-  --service-green-soft: color-mix(in srgb, #10b981 10%, transparent);
-  --service-rose: #e11d48;
-  --service-rose-soft: color-mix(in srgb, #e11d48 10%, transparent);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --font-brand: var(--font-google-sans-flex), "Inter", "Segoe UI", sans-serif;
+
+  /* ===== RADIUS SCALE ===== */
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
 
   /* ===== SHADOW SCALE — multi-layer elevation ===== */
   --shadow-surface:
-    0 0 0 1px rgba(0, 0, 0, 0.04),
-    0 1px 1px -0.5px rgba(0, 0, 0, 0.04),
-    0 3px 3px -1.5px rgba(0, 0, 0, 0.04),
-    0 6px 6px -3px rgba(0, 0, 0, 0.04),
-    0 12px 12px -6px rgba(0, 0, 0, 0.04);
-
-  --shadow-surface-hover:
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 2px 2px -1px rgba(0, 0, 0, 0.05),
-    0 6px 6px -3px rgba(0, 0, 0, 0.05),
-    0 12px 12px -6px rgba(0, 0, 0, 0.05),
-    0 20px 20px -10px rgba(0, 0, 0, 0.05);
+    0 0 0 1px rgba(15, 23, 41, 0.04),
+    0 1px 1px -0.5px rgba(15, 23, 41, 0.04),
+    0 3px 3px -1.5px rgba(15, 23, 41, 0.04),
+    0 6px 6px -3px rgba(15, 23, 41, 0.04),
+    0 12px 12px -6px rgba(15, 23, 41, 0.04);
 
   --shadow-elevated:
-    0 0 0 1px rgba(0, 0, 0, 0.04),
-    0 4px 4px -2px rgba(0, 0, 0, 0.04),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    0 20px 20px -10px rgba(0, 0, 0, 0.04),
-    0 40px 40px -20px rgba(0, 0, 0, 0.04);
-
-  --shadow-elevated-hover:
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 8px 8px -4px rgba(0, 0, 0, 0.05),
-    0 20px 20px -10px rgba(0, 0, 0, 0.05),
-    0 40px 40px -20px rgba(0, 0, 0, 0.05);
-
-  /* ===== GLOW SHADOWS — tinted decorative depth ===== */
-  --glow-sm: 0 8px 24px -8px color-mix(in srgb, var(--intrface-ink) 8%, transparent);
-  --glow-md: 0 18px 48px -12px color-mix(in srgb, var(--intrface-ink) 12%, transparent);
-  --glow-lg: 0 30px 70px -20px color-mix(in srgb, var(--intrface-ink) 16%, transparent);
+    0 0 0 1px rgba(15, 23, 41, 0.04),
+    0 4px 4px -2px rgba(15, 23, 41, 0.04),
+    0 10px 10px -5px rgba(15, 23, 41, 0.04),
+    0 20px 20px -10px rgba(15, 23, 41, 0.04),
+    0 40px 40px -20px rgba(15, 23, 41, 0.04);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-panel: var(--panel);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
   --color-card: var(--card);
-  --color-rule: var(--rule);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-muted: var(--ink-muted);
+  --color-rule: var(--line);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-brand);
@@ -81,7 +64,7 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--muted) var(--background);
+  scrollbar-color: var(--ink-muted) var(--paper);
 }
 
 html::-webkit-scrollbar {
@@ -89,80 +72,47 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background-color: var(--background);
+  background-color: var(--paper);
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: var(--muted);
+  background-color: var(--ink-muted);
   border-radius: 3px;
-  border: 1px solid var(--background);
+  border: 1px solid var(--paper);
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background-color: var(--foreground);
+  background-color: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-brand);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 22%, white);
-  color: var(--foreground);
+  background: color-mix(in srgb, var(--accent) 24%, white);
+  color: var(--ink);
 }
 
-/* ===== AMBIENT BACKGROUND UTILITIES ===== */
-.ambient-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.ambient-hero::before {
-  content: '';
-  position: absolute;
-  inset: -20% -30% -20% -30%;
-  background:
-    radial-gradient(ellipse at 50% 20%, color-mix(in oklab, var(--accent) 16%, transparent) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, color-mix(in oklab, var(--service-blue) 10%, transparent) 0%, transparent 55%);
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ambient-hero::before { filter: blur(40px); }
-}
-
-/* ===== ANIMATION KEYFRAMES ===== */
-@keyframes fade-in-up {
+@keyframes halftone-drift {
   from {
-    opacity: 0;
-    transform: translateY(24px);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(1.05rem, -0.7rem, 0);
   }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
 }
 
 @keyframes ripple-pulse {
@@ -179,25 +129,6 @@ a {
   }
 }
 
-@keyframes dot-drift {
-  0%, 100% {
-    background-position: 0 0, 0 0;
-  }
-  50% {
-    background-position: 18px 12px, -12px 18px;
-  }
-}
-
-/* ===== HOVER LIFT UTILITIES ===== */
-.hover-lift {
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* ===== SCROLLBAR NONE UTILITY ===== */
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -221,36 +152,36 @@ a {
 @layer components {
   .type-display {
     font-family: var(--font-brand);
-    font-size: clamp(3rem, 7.5vw, 6rem);
-    line-height: 0.94;
-    letter-spacing: -0.06em;
-    font-weight: 500;
+    font-size: clamp(2.85rem, 7vw, 5.15rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    font-weight: 600;
   }
 
   .type-heading {
     font-family: var(--font-brand);
-    font-size: clamp(1.85rem, 3vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: -0.045em;
-    font-weight: 500;
+    font-size: clamp(2rem, 3.2vw, 3.1rem);
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    font-weight: 550;
   }
 
   .type-section-label {
     font-family: var(--font-brand);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1;
-    letter-spacing: 0.18em;
-    font-weight: 600;
+    letter-spacing: 0.16em;
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--accent);
   }
 
   .type-body-lg {
     font-family: var(--font-brand);
-    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     line-height: 1.7;
     letter-spacing: -0.015em;
-    color: color-mix(in srgb, var(--foreground) 80%, white);
+    color: var(--ink-muted);
   }
 
   .type-body {
@@ -258,7 +189,7 @@ a {
     font-size: 1rem;
     line-height: 1.7;
     letter-spacing: -0.01em;
-    color: color-mix(in srgb, var(--foreground) 78%, white);
+    color: var(--ink-muted);
   }
 
   .type-meta {
@@ -267,7 +198,7 @@ a {
     line-height: 1.35;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink-muted);
   }
 
   .section-shell {
@@ -288,38 +219,231 @@ a {
     }
   }
 
-  .surface-artifact {
-    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-    background:
-      linear-gradient(135deg, color-mix(in srgb, white 82%, var(--artifact-accent, var(--accent)) 18%), rgba(255, 255, 255, 0.7)),
-      radial-gradient(circle at 16% 12%, color-mix(in srgb, var(--artifact-accent, var(--accent)) 18%, transparent), transparent 34%);
-    box-shadow: 0 36px 90px -52px color-mix(in srgb, var(--artifact-accent, var(--intrface-ink)) 48%, transparent);
+  /* ===== TONE CONTEXTS =====
+     A section declares its band once; every token-driven child follows.
+     On ink, hairlines and muted text switch to the WCAG AA floors. */
+  .tone-paper {
+    background: var(--paper);
   }
 
-  .surface-artifact-dark {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background:
-      radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--artifact-accent, var(--service-blue)) 24%, transparent), transparent 34%),
-      linear-gradient(135deg, #08111f, #0d1729 58%, #05070d);
-    box-shadow: 0 44px 110px -58px color-mix(in srgb, var(--artifact-accent, var(--service-blue)) 58%, transparent);
+  .tone-raised {
+    background: var(--paper-raised);
   }
 
+  .tone-ink {
+    background: var(--ink);
+    color: var(--ink-inverse);
+    --line: rgba(255, 255, 255, 0.14);
+    --ink-muted: var(--ink-inverse-muted);
+  }
+
+  .tone-ink .type-section-label,
+  .tone-ink .type-meta {
+    color: var(--ink-inverse-label);
+  }
+
+  .shader-surface {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+  }
+
+  .shader-surface[data-tone="dark"] {
+    opacity: 0.12;
+    mix-blend-mode: screen;
+  }
+
+  /* CMYK halftone landmark — one concentrated print field, not wallpaper */
   .halftone-field {
-    background-image:
-      radial-gradient(circle, color-mix(in srgb, var(--halftone-color, var(--foreground)) 36%, transparent) 1px, transparent 1.5px),
-      radial-gradient(circle, color-mix(in srgb, var(--halftone-color, var(--foreground)) 18%, transparent) 1px, transparent 1.5px);
-    background-position: 0 0, 13px 13px;
-    background-size: var(--halftone-size, 24px) var(--halftone-size, 24px);
-    mask-image: radial-gradient(ellipse at center, black 34%, transparent 76%);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
   }
 
-  .halftone-field[data-drift="true"] {
-    animation: dot-drift 16s ease-in-out infinite;
+  /* The field drifts like a press screen settling. Composited transform only —
+     no repaint — and it stops dead under reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .halftone-field {
+      will-change: transform;
+      animation: halftone-drift 38s ease-in-out infinite alternate;
+    }
+  }
+
+  .halftone-field::before,
+  .halftone-field::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .halftone-field::before {
+    background-image:
+      radial-gradient(circle, rgba(2, 132, 199, 0.55) 0 1.4px, transparent 2px),
+      radial-gradient(circle, rgba(219, 39, 119, 0.45) 0 1.4px, transparent 2px),
+      radial-gradient(circle, rgba(202, 138, 4, 0.55) 0 1.5px, transparent 2.1px);
+    background-size: 13px 13px, 17px 17px, 21px 21px;
+    background-position: 0 0, 6px 4px, 3px 10px;
+    mask-image: radial-gradient(85% 75% at 80% 22%, black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 66%);
+  }
+
+  .halftone-field::after {
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 60%, transparent) 0 2px, transparent 2.7px);
+    background-size: 12px 12px;
+    background-position: 4px 2px;
+    mask-image: radial-gradient(42% 38% at 84% 16%, black 0%, rgba(0, 0, 0, 0.35) 55%, transparent 78%);
+  }
+
+  /* Below `sm` the hero is one column, so the same mask would sit behind the
+     headline and lead. Pull the field up into the corner instead. */
+  @media (max-width: 639px) {
+    .halftone-field::before {
+      mask-image: radial-gradient(78% 26% at 78% 6%, black 0%, rgba(0, 0, 0, 0.45) 42%, transparent 70%);
+    }
+
+    .halftone-field::after {
+      mask-image: radial-gradient(46% 14% at 84% 4%, black 0%, rgba(0, 0, 0, 0.3) 55%, transparent 80%);
+    }
+  }
+
+  /* ===== STAT LEDGER =====
+     A grid whose rules follow the grid, not the source order: no stray left
+     border where a row wraps, and a rule between wrapped rows. */
+  .stat-ledger {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stat-ledger > * {
+    border-top: 1px solid var(--line);
+    padding-block: 1.5rem;
+  }
+
+  .stat-ledger > *:first-child {
+    border-top: 0;
+  }
+
+  @media (min-width: 640px) {
+    .stat-ledger > * {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .stat-ledger[data-cols="2"],
+    .stat-ledger[data-cols="4"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-ledger[data-cols="3"] {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .stat-ledger[data-cols="2"] > *:nth-child(-n + 2),
+    .stat-ledger[data-cols="4"] > *:nth-child(-n + 2),
+    .stat-ledger[data-cols="3"] > *:nth-child(-n + 3) {
+      border-top: 0;
+    }
+
+    .stat-ledger[data-cols="2"] > *:nth-child(2n + 1),
+    .stat-ledger[data-cols="4"] > *:nth-child(2n + 1),
+    .stat-ledger[data-cols="3"] > *:nth-child(3n + 1) {
+      padding-left: 0;
+    }
+
+    .stat-ledger[data-cols="2"] > *:not(:nth-child(2n + 1)),
+    .stat-ledger[data-cols="4"] > *:not(:nth-child(2n + 1)),
+    .stat-ledger[data-cols="3"] > *:not(:nth-child(3n + 1)) {
+      border-left: 1px solid var(--line);
+    }
+
+    .stat-ledger[data-cols="2"] > *:nth-child(2n),
+    .stat-ledger[data-cols="4"] > *:nth-child(2n),
+    .stat-ledger[data-cols="3"] > *:nth-child(3n) {
+      padding-right: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .stat-ledger[data-cols="4"] {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .stat-ledger[data-cols="4"] > * {
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .stat-ledger[data-cols="4"] > *:nth-child(-n + 4) {
+      border-top: 0;
+    }
+
+    .stat-ledger[data-cols="4"] > *:nth-child(4n + 1) {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .stat-ledger[data-cols="4"] > *:nth-child(4n) {
+      padding-right: 0;
+    }
+  }
+
+  .surface-dark {
+    background:
+      radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 40%),
+      linear-gradient(135deg, #0b1322, var(--ink) 58%, #070b14);
+    color: var(--ink-inverse);
+  }
+
+  .interface-panel {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--shadow-elevated);
+    backdrop-filter: blur(18px);
+  }
+
+  .interface-node {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: var(--shadow-surface);
+  }
+
+  .interface-node[data-core="true"] {
+    background: var(--ink);
+    color: var(--ink-inverse);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .trust-ledger-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .trust-ledger-row:last-child {
+    border-bottom: 0;
+  }
+
+  .tactile-tab {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .tactile-tab-indicator {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+  }
+
+  .step-connector {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 42%, transparent), transparent);
   }
 
   .ripple-ring {
     position: absolute;
-    border: 1px solid color-mix(in srgb, var(--ripple-color, var(--accent)) 45%, transparent);
+    inset: -4px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
     border-radius: 999px;
     opacity: 0.32;
     pointer-events: none;
@@ -338,34 +462,39 @@ a {
   }
 
   .artifact-card {
-    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-    background: color-mix(in srgb, white 74%, var(--artifact-accent, var(--accent)) 5%);
-    box-shadow: 0 26px 70px -48px rgba(15, 23, 41, 0.42);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: var(--shadow-surface);
+    transition: border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+  }
+
+  .artifact-card:hover {
+    box-shadow: var(--shadow-elevated);
   }
 
   .artifact-button {
-    transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+    box-shadow: none;
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
   }
 
-  .artifact-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 40px -30px color-mix(in srgb, var(--artifact-accent, var(--accent)) 48%, transparent);
-  }
 
   @media (prefers-reduced-motion: reduce) {
-    .halftone-field[data-drift="true"],
     .ripple-ring[data-pulse="true"] {
       animation: none;
     }
 
     .artifact-button,
-    .hover-lift {
+    .artifact-card {
       transition: none;
     }
-
-    .artifact-button:hover,
-    .hover-lift:hover {
-      transform: none;
-    }
   }
+}
+
+/* Unlayered on purpose: it has to beat the `bg-white/70` utility.
+   On paper the secondary button is a translucent card; over an ink band the
+   same alpha turns grey, so there it goes solid card white. */
+.tone-ink .artifact-button-secondary,
+.tone-ink .artifact-button-secondary:hover {
+  background: var(--card);
+  border-color: transparent;
 }

@@ -27,7 +27,7 @@ export function LocaleSwitcher() {
             router.refresh();
           });
         }}
-        className="rounded-md border border-rule bg-card px-3 py-2 text-sm text-foreground outline-none transition-colors hover:border-foreground/30 disabled:cursor-wait disabled:opacity-70"
+        className="rounded-full border border-rule bg-transparent px-3 py-1.5 text-sm font-medium text-ink-muted outline-none transition-colors hover:border-ink/25 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:cursor-wait disabled:opacity-70"
       >
         {routing.locales.map((value) => (
           <option key={value} value={value}>
