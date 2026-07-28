@@ -26,7 +26,7 @@ const LIVE_SITES = [
   {
     slug: "velum",
     key: "velum",
-    url: "https://velum-winebar.pages.dev",
+    url: "https://velum-winebar.com",
     languages: ["HR", "EN"],
   },
 ] as const;
@@ -42,7 +42,7 @@ const HERO_ARTIFACTS = [
   {
     key: "velum",
     src: "/proof/sites/velum-desktop.png",
-    href: "https://velum-winebar.pages.dev",
+    href: "https://velum-winebar.com",
     external: true,
     priority: true,
   },

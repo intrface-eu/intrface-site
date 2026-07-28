@@ -20,8 +20,8 @@ const SITE_SHAPE = [
   {
     key: "velum",
     languages: ["HR", "EN"],
-    href: "https://velum-winebar.pages.dev",
-    hrefLabel: "velum-winebar.pages.dev",
+    href: "https://velum-winebar.com",
+    hrefLabel: "velum-winebar.com",
     desktop: "/proof/sites/velum-desktop.png",
     mobile: "/proof/sites/velum-mobile.png",
   },

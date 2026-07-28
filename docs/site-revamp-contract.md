@@ -79,7 +79,7 @@ them out.
 **Client sites — the public roster is Velum, and only Velum.**
 
 Publishable today:
-- https://velum-winebar.pages.dev — café/wine bar, Vrsar waterfront. HR/EN,
+- https://velum-winebar.com — café/wine bar, Vrsar waterfront. HR/EN,
   LocalBusiness JSON-LD, hreflang. Motion graphics by the same studio (Remotion).
   Captures live at `apps/web/public/proof/sites/velum-{desktop,mobile}.png`.
 
