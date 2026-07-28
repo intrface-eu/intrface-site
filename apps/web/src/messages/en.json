@@ -10,14 +10,14 @@
     "logoAlt": "Intrface icon"
   },
   "Footer": {
-    "tagline": "IT consulting and business development, Istria. Client software, three platforms of our own, one open-source delivery system.",
+    "tagline": "IT consulting and business development, Istria. Client software; Voyager, Polis and Funda are our own.",
     "location": "Istria, Croatia · EU",
     "newTab": "opens in a new tab",
     "work": {
       "heading": "Work",
       "index": "All work",
       "voyager": "Voyager",
-      "polis": "Polis Interface",
+      "polis": "Polis",
       "funda": "Funda",
       "clientSites": "Client sites"
     },
@@ -27,12 +27,12 @@
     "openSource": {
       "heading": "Open source",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · our agent delivery system",
+      "aocMeta": "Apache-2.0 · 403 commits, 51 commands",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · verifiable public-data infrastructure"
+      "polisMeta": "AGPL-3.0 · government data you can check"
     },
     "cta": "Bring us the messy system",
-    "colophon": "Set in Google Sans Flex. Built and shipped through Agent Ops Cockpit, our open-source agent pipeline: agents propose, a human commits. Four languages."
+    "colophon": "Set in Google Sans Flex. Built and shipped through Agent Ops Cockpit, Apache-2.0: agents propose, a human commits. Four languages."
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -44,11 +44,11 @@
     "screenshotPending": "Screenshot pending"
   },
   "Metadata": {
-    "tagline": "IT consulting from Istria. The delivery system is open source.",
-    "description": "INTRFACE is an IT consultancy in Istria. We build client software and three platforms of our own, on an agent delivery system published under Apache-2.0 — 403 commits, public.",
+    "tagline": "IT consulting from Istria. Our own tooling is public under Apache-2.0.",
+    "description": "INTRFACE is an IT consultancy in Istria. Client software, plus Voyager, Polis and Funda of our own. Agent Ops Cockpit, the tooling behind them, is public: Apache-2.0, 403 commits.",
     "work": {
       "title": "Work",
-      "description": "One live client site in Vrsar, three platforms of our own before launch, and the delivery system that builds them — public on GitHub under Apache-2.0."
+      "description": "Four cases: a live wine-bar site in Vrsar, Voyager, Polis and Funda. Each one states the status it has today, not the status it will have at launch."
     },
     "voyager": {
       "title": "Voyager",
@@ -68,7 +68,7 @@
     },
     "method": {
       "title": "Method",
-      "description": "We build software with orchestrated AI agents and published the delivery system under Apache-2.0. Agents propose; a human-verified gate commits. Workers never push."
+      "description": "Agents propose; a human-verified gate commits. Workers never push. The rules they run under are public under Apache-2.0: AGENTS.md, DESIGN.md, a task ledger, 51 commands."
     },
     "about": {
       "title": "About",
@@ -83,7 +83,7 @@
     "hero": {
       "eyebrow": "Intrface · Istria, Croatia",
       "title": "We build the software. And the system that builds the software.",
-      "lead": "A live client site in Vrsar. Three platforms of our own. The pipeline that builds them, open source under Apache-2.0.",
+      "lead": "One live client site in Vrsar. Voyager, Polis and Funda, still pre-launch. Agent Ops Cockpit, public under Apache-2.0.",
       "seeWork": "See the work",
       "talk": "Talk to us",
       "proofLabel": "Open any of these",
@@ -104,8 +104,8 @@
         "aoc": {
           "name": "Agent Ops Cockpit",
           "status": "Open source",
-          "meta": "The system that built this page",
-          "alt": "The Agent Ops Cockpit terminal — a repository file tree beside an agent pane listing its contract and skills."
+          "meta": "It built this page",
+          "alt": "The Agent Ops Cockpit terminal — a repository file tree beside an agent pane listing its rules and skills."
         }
       }
     },
@@ -113,9 +113,9 @@
       "label": "The thesis",
       "title": "Software is becoming the interface to everything.",
       "p1": "Customers do not experience your strategy. They experience the interface. Citizens meet policy as forms, offices, and delays.",
-      "p2": "A visitor meets a destination as a menu, a walking route, and a question asked in a language nobody at the counter reads. That is the layer we build.",
+      "p2": "A visitor meets a destination as a menu, a walking route, and a question asked in a language nobody at the counter reads. That is what we build.",
       "columns": [
-        { "label": "Orientation", "text": "312 Voyager routes across seven surfaces, one data model." },
+        { "label": "Wayfinding", "text": "312 Voyager routes across seven surfaces, one data model." },
         { "label": "Trust", "text": "Every Polis claim resolves to a hash, a seal, and a timestamp." },
         { "label": "Implementation", "text": "Instagram profile in, live URL out, in six steps." }
       ]
@@ -150,13 +150,13 @@
       }
     },
     "systems": {
-      "label": "Systems",
-      "title": "Three systems. None of them launched.",
+      "label": "Our own software",
+      "title": "Voyager, Polis, Funda.",
       "intro": "Pre-launch means pre-launch. Nothing here claims users it does not have.",
       "voyager": {
         "name": "Voyager",
         "status": "Pre-launch",
-        "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. The tourist board gets a content layer it controls.",
+        "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. The tourist board publishes the official version and edits it itself.",
         "stats": [
           { "value": "365,000", "label": "Lines of first-party TypeScript" },
           { "value": "1,336", "label": "Backend functions" },
@@ -189,30 +189,30 @@
     },
     "method": {
       "label": "Method",
-      "title": "The delivery system is open source.",
-      "body": "Thirteen of our repos run the same versioned agent contract. Agents propose the change; a human-verified gate commits it. 383 commits landed on Voyager in July 2026 alone.",
+      "title": "Read how we work before you hire us.",
+      "body": "Thirteen of our repos carry the same AGENTS.md, DESIGN.md, and task ledger. Agents propose the change; a human-verified gate commits it. 383 commits landed on Voyager in July 2026 alone.",
       "readMethod": "Read the method",
       "readSource": "Read the source",
       "steps": [
         {
-          "label": "Contract before code",
-          "description": "Every repo carries the same contract files on disk. An agent reads them before it reads the code."
+          "label": "AGENTS.md and DESIGN.md",
+          "description": "Every repo carries the same two files on disk. An agent reads them before it reads the code."
         },
         {
           "label": "Agents propose",
-          "description": "Workers run in parallel against that contract. They never push."
+          "description": "Workers run in parallel against those files. They never push."
         },
         {
           "label": "A human-verified gate commits",
           "description": "The orchestrator re-reads the diff, runs the checks, then lands one atomic commit."
         },
         {
-          "label": "The contract is versioned",
-          "description": "Thirteen repos share one schema. When it changes, they migrate together."
+          "label": "The schema is versioned",
+          "description": "The files sit on a schema with migrations. When it changes, all thirteen repos migrate together."
         }
       ],
       "stats": [
-        { "value": "13", "label": "Repos on one contract" },
+        { "value": "13", "label": "Repos, one schema" },
         { "value": "51", "label": "CLI commands" },
         {
           "value": "403",
@@ -238,8 +238,8 @@
   },
   "WorkIndex": {
     "label": "Work",
-    "title": "Four systems. Where each one actually stands.",
-    "lead": "One live client site in Vrsar, built by an automated pipeline. Three platforms of our own, none of them launched. One delivery system, public on GitHub.",
+    "title": "Four projects. Where each one actually stands.",
+    "lead": "One live site in Vrsar, handed to the client. Three of our own, none of them launched. Nothing here counts work a client has not received yet.",
     "entries": {
       "voyager": {
         "name": "Voyager",
@@ -280,13 +280,13 @@
     },
     "method": {
       "label": "05 · Method",
-      "title": "Our delivery system is open source.",
-      "body": "Agent Ops Cockpit runs thirteen of our repos on one versioned contract. Agents propose. A human reads the diff and commits.",
+      "title": "Agent Ops Cockpit is public.",
+      "body": "Thirteen of our repos carry the same AGENTS.md, DESIGN.md, and task ledger. Agents propose. A human reads the diff and commits.",
       "link": "Read how we ship",
       "figures": [
         { "value": "403", "label": "Commits, Apache-2.0" },
         { "value": "51", "label": "CLI commands" },
-        { "value": "13", "label": "Repos on the contract" }
+        { "value": "13", "label": "Repos, one schema" }
       ]
     }
   },
@@ -692,12 +692,12 @@
   "Method": {
     "hero": {
       "label": "Method",
-      "title": "Our delivery system is open source. Read it.",
-      "lead": "We build software with orchestrated AI agents, and we wrote down the rules they run under. That contract, the tooling that runs them, and the gate that stops their output from landing unread are all published under Apache-2.0.",
+      "title": "Our method is a public repository. Read it.",
+      "lead": "We build software with orchestrated AI agents, and we wrote down the rules they run under. AGENTS.md, DESIGN.md, the 51 commands that run them, and the gate that stops their output from landing unread — all published under Apache-2.0.",
       "readRepo": "Read the repository",
       "howItWorks": "How it works",
       "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "The delivery system itself: the contract every repo carries, the schema it is versioned on, and the commands that run it.",
+      "repoSummary": "Four files in every repo, the schema they are versioned on, and 51 commands that run them.",
       "repoChips": ["Apache-2.0", "Rust", "Command-line"]
     },
     "howItWorks": {
@@ -706,15 +706,15 @@
       "intro": "The same four moves in every repository we touch, including yours. Nothing here depends on a person remembering how we do things.",
       "contractTitle": "The contract, on disk",
       "artifacts": [
-        "The behavioral contract: how agents work in this repo, and what they may not do.",
-        "The design contract: tokens, type scale, component rules, and the do-not list.",
-        "The context snapshot: the current shape of the repo, generated and never hand-written.",
-        "The task ledger: tasks, sub-tasks, tags, and status, versioned next to the code."
+        "AGENTS.md — how agents work in this repo, and what they may not do.",
+        "DESIGN.md — tokens, type scale, component rules, and the do-not list.",
+        "The context snapshot — the current shape of the repo, generated and never hand-written.",
+        "The task ledger — tasks, sub-tasks, tags, and status, versioned next to the code."
       ],
       "steps": [
         {
           "label": "Every repository carries a versioned contract",
-          "description": "The contract sits in the repo on a schema with migrations. An agent starting work reads the same files a new engineer would."
+          "description": "It sits on a schema with migrations. An agent starting work reads the same files a new engineer would."
         },
         {
           "label": "Work is split into scoped packets",
@@ -751,7 +751,7 @@
     "numbers": {
       "label": "Numbers",
       "title": "What is public, and what it has produced.",
-      "intro": "The delivery system is a repository you can clone. The output is commit history on the systems we build with it.",
+      "intro": "Agent Ops Cockpit is a repository you can clone. The output is commit history on the software we build with it.",
       "systemStats": [
         { "value": "403", "label": "Commits", "note": "Public history, Apache-2.0" },
         { "value": "8", "label": "Rust crates" },
@@ -779,16 +779,16 @@
       "repos": {
         "label": "Repositories on the contract",
         "alt": "A three-column file browser showing a directory of repositories and one repository's expanded contract directory",
-        "caption": "The same contract directory in every repository — context snapshot, prompts, task state, routing config — sitting beside the code, next to the other repos on the contract."
+        "caption": "One directory per repository, the same in all thirteen — AGENTS.md, DESIGN.md, the context snapshot, prompts, task state, routing config — sitting beside the code."
       }
     },
     "why": {
       "label": "What you get",
       "title": "Three things a public method buys you.",
-      "intro": "You are not buying enthusiasm about agents. You are buying a delivery pipeline whose rules are written down.",
+      "intro": "You are not buying enthusiasm about agents. You are buying written rules.",
       "noteLabel": "What we did not build",
       "noteP1": "We operate on third-party agent runtimes and terminal tooling. We did not write them and do not claim them.",
-      "noteP2": "What we built and open-sourced is the layer that makes them repeatable: the repository contract and its schema, the task ledger, the packet format, and the gate that keeps agent output from landing unread.",
+      "noteP2": "What we built and open-sourced is what makes them repeatable: AGENTS.md and DESIGN.md on a versioned schema, the task ledger, and the packet format.",
       "reasons": [
         {
           "title": "Throughput without unreviewed agent output",
@@ -796,7 +796,7 @@
         },
         {
           "title": "Context that lives in the repo, not in someone's chat history",
-          "text": "The contract, the design rules, and the task ledger are files in your codebase. Hand the project to another team and the operating knowledge goes with it."
+          "text": "AGENTS.md, DESIGN.md, and the task ledger are files in your codebase. Hand the project to another team and the knowledge goes with it."
         },
         {
           "title": "A method you can audit",
@@ -806,7 +806,7 @@
     },
     "next": {
       "label": "Next",
-      "title": "Read the system, then bring us yours.",
+      "title": "Read our repo. Then bring us your system.",
       "body": "Check the method before you hire anyone to use it on your codebase.",
       "cta": "Start a system review"
     }
@@ -815,23 +815,23 @@
     "hero": {
       "label": "About",
       "title": "A consultancy that ships its own software.",
-      "lead": "INTRFACE is an IT consulting and business development company in Istria, Croatia. We build software for clients across the EU, and three platforms of our own on the same delivery system. That system is open source."
+      "lead": "INTRFACE is an IT consulting and business development company in Istria, Croatia. We build software for clients across the EU, and Voyager, Polis and Funda for ourselves. Client work and our own go through the same commit gate."
     },
     "company": {
       "label": "The company",
-      "title": "Two kinds of work, one pipeline.",
+      "title": "Two kinds of work, one set of checks.",
       "p1": "Client work usually starts the same way: something already runs, and the software around it has stopped explaining it. Nobody can see the current state, the operators keep a private spreadsheet, and the people who need to trust the output cannot check it.",
-      "p2": "Building our own platforms is not a side activity. Voyager, Polis and Funda are where we hit the hard constraints first: fine-grained authorization, audit trails nobody can quietly rewrite, multilingual content that has to stay correct, deploys that have to keep working. We pay for those lessons on our own time and bring the result to client work.",
-      "p3": "The delivery system is public. You can read how we work before you hire us — the contract our agents run under, the commands, and the gate that puts a human in front of every commit.",
+      "p2": "Voyager, Polis and Funda are not a side activity. They are where we hit the hard constraints first: fine-grained authorization, audit trails nobody can quietly rewrite, multilingual content that has to stay correct, deploys that have to keep working. We pay for those lessons on our own time and bring the result to client work.",
+      "p3": "You can read how we work before you hire us: AGENTS.md, DESIGN.md, 51 commands, and the gate that puts a human in front of every commit. All of it is public under Apache-2.0.",
       "facts": {
         "company": { "term": "Company", "value": "INTRFACE — IT consulting and business development" },
         "based": { "term": "Based", "value": "Istria, Croatia. Working across the EU." },
         "work": {
           "term": "Work",
-          "value": "Software for clients, and three platforms we build ourselves"
+          "value": "Software for clients; Voyager, Polis and Funda for ourselves"
         },
         "delivery": {
-          "term": "Delivery",
+          "term": "Open source",
           "value": "Agent Ops Cockpit — Apache-2.0, public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "contact": { "term": "Contact" }
@@ -841,8 +841,8 @@
       "label": "Engagement",
       "title": "How working with us runs.",
       "intro": "Four steps. The first one is worth having on its own.",
-      "aside": "Every step leaves something you keep: the map, the written interface, the repo with its contract and task ledger, the deploy and its check output. If we stop after step one, you are not back where you started.",
-      "link": "The delivery system in detail",
+      "aside": "Every step leaves something you keep: the map, the written scope, the repo with its task ledger, the deploy and its check output. If we stop after step one, you are not back where you started.",
+      "link": "The method in detail",
       "steps": [
         {
           "label": "Map the system",
@@ -853,8 +853,8 @@
           "description": "We agree what the software has to make legible, who is allowed to see what, and what counts as proof. Scope gets cut here, in writing, before anyone opens an editor."
         },
         {
-          "label": "Build with the agent pipeline",
-          "description": "Agents do the work against a versioned contract kept in the repo: how to behave, how it should look, what the current state is, what is still open. Agents propose; a human reads the diff and commits."
+          "label": "Build with agents",
+          "description": "Agents work against AGENTS.md and DESIGN.md in your repo, and a task ledger that says what is still open. They propose; a human reads the diff and commits."
         },
         {
           "label": "Prove it",
@@ -864,8 +864,8 @@
     },
     "platforms": {
       "label": "Our own software",
-      "title": "What we carry ourselves.",
-      "intro": "Three platforms we build ourselves. Status as of today, not as of the pitch.",
+      "title": "What we pay for ourselves.",
+      "intro": "Status as of today, not as of the pitch.",
       "voyager": {
         "name": "Voyager",
         "status": "Pre-launch",
@@ -881,7 +881,7 @@
         "status": "Active build",
         "description": "EU funding matched to the organizations that can win it. Agent ingestion of SEDIA and TED sources, geospatial matching, three languages."
       },
-      "clientNote": "Client work runs on the same pipeline: an Instagram profile goes in, a bilingual site on a live URL comes out, with the automated audit built in — <link>see how that pipeline works</link>."
+      "clientNote": "Client sites run the same way: an Instagram profile goes in, a bilingual site on a live URL comes out, with a Playwright audit in the middle — <link>see the six steps</link>."
     },
     "contact": {
       "label": "Contact",
@@ -926,7 +926,7 @@
       },
       "copyright": {
         "title": "Copyright",
-        "body": "Text, images, and code published on this site belong to {siteName} unless another owner is named. Quote us with a source link. Ask before reproducing a page in full. Our delivery system, Agent Ops Cockpit, is published separately under the Apache-2.0 licence, and that licence governs its use."
+        "body": "Text, images, and code published on this site belong to {siteName} unless another owner is named. Quote us with a source link. Ask before reproducing a page in full. Agent Ops Cockpit, the software we build with, is published separately under the Apache-2.0 licence, and that licence governs its use."
       },
       "form": {
         "title": "The contact form",

@@ -10,14 +10,14 @@
     "logoAlt": "Icône Intrface"
   },
   "Footer": {
-    "tagline": "Conseil informatique et développement d'entreprise, Istrie. Des logiciels pour les clients, trois plateformes à nous, un système de livraison open source.",
+    "tagline": "Conseil informatique et développement d'entreprise, Istrie. Des logiciels pour nos clients ; Voyager, Polis et Funda sont à nous.",
     "location": "Istrie, Croatie · UE",
     "newTab": "s'ouvre dans un nouvel onglet",
     "work": {
       "heading": "Réalisations",
       "index": "Toutes les réalisations",
       "voyager": "Voyager",
-      "polis": "Polis Interface",
+      "polis": "Polis",
       "funda": "Funda",
       "clientSites": "Sites clients"
     },
@@ -27,12 +27,12 @@
     "openSource": {
       "heading": "Open source",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · notre système de livraison par agents",
+      "aocMeta": "Apache-2.0 · 403 commits, 51 commandes",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · infrastructure de données publiques vérifiables"
+      "polisMeta": "AGPL-3.0 · des données publiques que l'on peut vérifier"
     },
     "cta": "Apportez-nous le système qui vous échappe",
-    "colophon": "Composé en Google Sans Flex. Construit et livré avec Agent Ops Cockpit, notre pipeline d'agents open source : les agents proposent, un humain valide le commit. Quatre langues."
+    "colophon": "Composé en Google Sans Flex. Construit et livré avec Agent Ops Cockpit, Apache-2.0 : les agents proposent, un humain valide le commit. Quatre langues."
   },
   "LocaleSwitcher": {
     "label": "Langue"
@@ -44,11 +44,11 @@
     "screenshotPending": "Capture à venir"
   },
   "Metadata": {
-    "tagline": "Conseil informatique depuis l'Istrie. Le système de livraison est open source.",
-    "description": "INTRFACE est un cabinet de conseil informatique en Istrie. Nous construisons des logiciels pour nos clients et trois plateformes à nous, sur un système de livraison par agents publié sous Apache-2.0 — 403 commits, public.",
+    "tagline": "Conseil informatique depuis l'Istrie. Nos propres outils sont publics, sous Apache-2.0.",
+    "description": "INTRFACE est un cabinet de conseil informatique en Istrie. Des logiciels pour nos clients, plus Voyager, Polis et Funda à nous. Agent Ops Cockpit, l'outillage derrière, est public : Apache-2.0, 403 commits.",
     "work": {
       "title": "Réalisations",
-      "description": "Un site client en ligne à Vrsar, trois plateformes à nous avant lancement, et le système de livraison qui les construit — public sur GitHub sous Apache-2.0."
+      "description": "Quatre cas : un site de bar à vins en ligne à Vrsar, Voyager, Polis et Funda. Chacun indique le statut qu'il a aujourd'hui, pas celui qu'il aura au lancement."
     },
     "voyager": {
       "title": "Voyager",
@@ -68,7 +68,7 @@
     },
     "method": {
       "title": "Méthode",
-      "description": "Nous construisons des logiciels avec des agents IA orchestrés et avons publié le système de livraison sous Apache-2.0. Les agents proposent ; un contrôle humain valide le commit. Les workers ne poussent jamais."
+      "description": "Les agents proposent ; un contrôle humain valide le commit. Les workers ne poussent jamais. Les règles qu'ils suivent sont publiques sous Apache-2.0 : AGENTS.md, DESIGN.md, un registre de tâches, 51 commandes."
     },
     "about": {
       "title": "À propos",
@@ -83,7 +83,7 @@
     "hero": {
       "eyebrow": "Intrface · Istrie, Croatie",
       "title": "Nous construisons le logiciel. Et le système qui le construit.",
-      "lead": "Un site client en ligne à Vrsar. Trois plateformes à nous. La chaîne qui les construit — open source, Apache-2.0.",
+      "lead": "Un site client en ligne à Vrsar. Voyager, Polis et Funda, encore avant lancement. Agent Ops Cockpit, public sous Apache-2.0.",
       "seeWork": "Voir les réalisations",
       "talk": "Parlons-en",
       "proofLabel": "Ouvrez n'importe lequel",
@@ -104,8 +104,8 @@
         "aoc": {
           "name": "Agent Ops Cockpit",
           "status": "Open source",
-          "meta": "Le système qui a construit cette page",
-          "alt": "Le terminal Agent Ops Cockpit — l'arborescence du dépôt à côté d'un panneau d'agent listant son contrat et ses compétences."
+          "meta": "Il a construit cette page",
+          "alt": "Le terminal Agent Ops Cockpit — l'arborescence du dépôt à côté d'un panneau d'agent listant ses règles et ses compétences."
         }
       }
     },
@@ -113,9 +113,9 @@
       "label": "La thèse",
       "title": "Le logiciel devient l'interface de tout.",
       "p1": "Les clients ne vivent pas votre stratégie. Ils vivent l'interface. Les citoyens rencontrent la politique publique sous forme de formulaires, de guichets et de délais.",
-      "p2": "Un visiteur rencontre une destination sous forme de carte, d'itinéraire à pied et de question posée dans une langue que personne au comptoir ne lit. C'est cette couche que nous construisons.",
+      "p2": "Un visiteur rencontre une destination sous forme de carte, d'itinéraire à pied et de question posée dans une langue que personne au comptoir ne lit. C'est cela que nous construisons.",
       "columns": [
-        { "label": "Orientation", "text": "312 routes Voyager sur sept interfaces, un seul modèle de données." },
+        { "label": "Se repérer", "text": "312 routes Voyager sur sept interfaces, un seul modèle de données." },
         { "label": "Confiance", "text": "Chaque affirmation dans Polis mène à une empreinte, un cachet et un horodatage." },
         { "label": "Réalisation", "text": "Profil Instagram en entrée, URL en ligne en sortie, en six étapes." }
       ]
@@ -150,13 +150,13 @@
       }
     },
     "systems": {
-      "label": "Systèmes",
-      "title": "Trois systèmes. Aucun n'est lancé.",
+      "label": "Nos propres logiciels",
+      "title": "Voyager, Polis, Funda.",
       "intro": "Avant lancement veut dire avant lancement. Rien ici ne revendique des utilisateurs qu'il n'a pas.",
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
-        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. L'office de tourisme obtient une couche de contenu qu'il pilote.",
+        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. L'office de tourisme publie la version officielle et la modifie lui-même.",
         "stats": [
           { "value": "365 000", "label": "Lignes de TypeScript maison" },
           { "value": "1 336", "label": "Fonctions backend" },
@@ -189,30 +189,30 @@
     },
     "method": {
       "label": "Méthode",
-      "title": "Notre système de livraison est open source.",
-      "body": "Treize de nos dépôts tournent sur le même contrat d'agents versionné. Les agents proposent la modification ; un contrôle humain la valide. 383 commits sur Voyager pour le seul mois de juillet 2026.",
+      "title": "Lisez comment nous travaillons avant de nous engager.",
+      "body": "Treize de nos dépôts portent les mêmes AGENTS.md, DESIGN.md et registre de tâches. Les agents proposent la modification ; un contrôle humain la valide. 383 commits sur Voyager pour le seul mois de juillet 2026.",
       "readMethod": "Lire la méthode",
       "readSource": "Lire le code source",
       "steps": [
         {
-          "label": "Le contrat avant le code",
-          "description": "Chaque dépôt porte les mêmes fichiers de contrat sur le disque. Un agent les lit avant de lire le code."
+          "label": "AGENTS.md et DESIGN.md",
+          "description": "Chaque dépôt porte les deux mêmes fichiers sur le disque. Un agent les lit avant de lire le code."
         },
         {
           "label": "Les agents proposent",
-          "description": "Les workers travaillent en parallèle sur ce contrat. Ils ne poussent jamais."
+          "description": "Les workers travaillent en parallèle sur ces fichiers. Ils ne poussent jamais."
         },
         {
           "label": "Un contrôle humain valide le commit",
           "description": "L'orchestrateur relit le diff, lance les vérifications, puis pose un commit atomique."
         },
         {
-          "label": "Le contrat est versionné",
-          "description": "Treize dépôts partagent un schéma. Quand il change, ils migrent ensemble."
+          "label": "Le schéma est versionné",
+          "description": "Les fichiers reposent sur un schéma avec migrations. Quand il change, les treize dépôts migrent ensemble."
         }
       ],
       "stats": [
-        { "value": "13", "label": "Dépôts sur un contrat" },
+        { "value": "13", "label": "Dépôts, un schéma" },
         { "value": "51", "label": "Commandes CLI" },
         {
           "value": "403",
@@ -238,8 +238,8 @@
   },
   "WorkIndex": {
     "label": "Réalisations",
-    "title": "Quatre systèmes. Où chacun en est vraiment.",
-    "lead": "Un site client en ligne à Vrsar, construit par une chaîne automatisée. Trois plateformes à nous, aucune lancée. Un système de livraison, public sur GitHub.",
+    "title": "Quatre projets. Où chacun en est vraiment.",
+    "lead": "Un site en ligne à Vrsar, remis au client. Trois à nous, aucun lancé. Rien ici ne compte un travail qu'un client n'a pas encore reçu.",
     "entries": {
       "voyager": {
         "name": "Voyager",
@@ -280,13 +280,13 @@
     },
     "method": {
       "label": "05 · Méthode",
-      "title": "Notre système de livraison est open source.",
-      "body": "Agent Ops Cockpit fait tourner treize de nos dépôts sur un seul contrat versionné. Les agents proposent. Un humain lit le diff et valide.",
+      "title": "Agent Ops Cockpit est public.",
+      "body": "Treize de nos dépôts portent les mêmes AGENTS.md, DESIGN.md et registre de tâches. Les agents proposent. Un humain lit le diff et valide.",
       "link": "Lire comment nous livrons",
       "figures": [
         { "value": "403", "label": "Commits, Apache-2.0" },
         { "value": "51", "label": "Commandes CLI" },
-        { "value": "13", "label": "Dépôts sur le contrat" }
+        { "value": "13", "label": "Dépôts, un schéma" }
       ]
     }
   },
@@ -696,12 +696,12 @@
   "Method": {
     "hero": {
       "label": "Méthode",
-      "title": "Notre système de livraison est open source. Lisez-le.",
-      "lead": "Nous construisons des logiciels avec des agents IA orchestrés, et nous avons écrit les règles sous lesquelles ils tournent. Ce contrat, l'outillage qui les fait tourner et le contrôle qui empêche leur production d'être intégrée sans relecture sont tous publiés sous Apache-2.0.",
+      "title": "Notre méthode est un dépôt public. Lisez-le.",
+      "lead": "Nous construisons des logiciels avec des agents IA orchestrés, et nous avons écrit les règles sous lesquelles ils tournent. AGENTS.md, DESIGN.md, les 51 commandes qui les font tourner et le contrôle qui empêche leur production d'être intégrée sans relecture — le tout publié sous Apache-2.0.",
       "readRepo": "Lire le dépôt",
       "howItWorks": "Comment ça marche",
       "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "Le système de livraison lui-même : le contrat que porte chaque dépôt, le schéma sur lequel il est versionné, et les commandes qui l'exécutent.",
+      "repoSummary": "Quatre fichiers dans chaque dépôt, le schéma sur lequel ils sont versionnés, et 51 commandes qui les exécutent.",
       "repoChips": ["Apache-2.0", "Rust", "Ligne de commande"]
     },
     "howItWorks": {
@@ -710,15 +710,15 @@
       "intro": "Les mêmes quatre gestes dans chaque dépôt que nous touchons, y compris le vôtre. Rien ici ne dépend de la mémoire de quelqu'un sur notre façon de faire.",
       "contractTitle": "Le contrat, sur le disque",
       "artifacts": [
-        "Le contrat de comportement : comment les agents travaillent dans ce dépôt, et ce qu'ils ne peuvent pas faire.",
-        "Le contrat de design : jetons, échelle typographique, règles de composants et liste des interdits.",
-        "L'instantané de contexte : la forme actuelle du dépôt, généré et jamais écrit à la main.",
-        "Le registre de tâches : tâches, sous-tâches, étiquettes et statut, versionnés à côté du code."
+        "AGENTS.md — comment les agents travaillent dans ce dépôt, et ce qu'ils ne peuvent pas faire.",
+        "DESIGN.md — jetons, échelle typographique, règles de composants et liste des interdits.",
+        "L'instantané de contexte — la forme actuelle du dépôt, généré et jamais écrit à la main.",
+        "Le registre de tâches — tâches, sous-tâches, étiquettes et statut, versionnés à côté du code."
       ],
       "steps": [
         {
           "label": "Chaque dépôt porte un contrat versionné",
-          "description": "Le contrat vit dans le dépôt, sur un schéma avec migrations. Un agent qui commence à travailler lit les mêmes fichiers qu'un nouvel ingénieur."
+          "description": "Il repose sur un schéma avec migrations. Un agent qui commence à travailler lit les mêmes fichiers qu'un nouvel ingénieur."
         },
         {
           "label": "Le travail est découpé en paquets délimités",
@@ -755,7 +755,7 @@
     "numbers": {
       "label": "Chiffres",
       "title": "Ce qui est public, et ce que cela a produit.",
-      "intro": "Le système de livraison est un dépôt que vous pouvez cloner. Le résultat, c'est l'historique des commits sur les systèmes que nous construisons avec.",
+      "intro": "Agent Ops Cockpit est un dépôt que vous pouvez cloner. Le résultat, c'est l'historique des commits des logiciels que nous construisons avec.",
       "systemStats": [
         { "value": "403", "label": "Commits", "note": "Historique public, Apache-2.0" },
         { "value": "8", "label": "Crates Rust" },
@@ -783,16 +783,16 @@
       "repos": {
         "label": "Dépôts sur le contrat",
         "alt": "Un navigateur de fichiers en trois colonnes montrant un répertoire de dépôts et le répertoire de contrat déplié d'un dépôt",
-        "caption": "Le même répertoire de contrat dans chaque dépôt — instantané de contexte, prompts, état des tâches, configuration de routage — posé à côté du code, aux côtés des autres dépôts sur le contrat."
+        "caption": "Un répertoire par dépôt, le même dans les treize — AGENTS.md, DESIGN.md, instantané de contexte, prompts, état des tâches, configuration de routage — posé à côté du code."
       }
     },
     "why": {
       "label": "Ce que vous obtenez",
       "title": "Trois choses qu'une méthode publique vous apporte.",
-      "intro": "Vous n'achetez pas de l'enthousiasme sur les agents. Vous achetez une chaîne de livraison dont les règles sont écrites.",
+      "intro": "Vous n'achetez pas de l'enthousiasme sur les agents. Vous achetez des règles écrites.",
       "noteLabel": "Ce que nous n'avons pas construit",
       "noteP1": "Nous travaillons sur des runtimes d'agents et des outils de terminal tiers. Nous ne les avons pas écrits et ne les revendiquons pas.",
-      "noteP2": "Ce que nous avons construit et ouvert, c'est la couche qui les rend reproductibles : le contrat de dépôt et son schéma, le registre de tâches, le format des paquets et le contrôle qui empêche la production d'un agent d'être intégrée sans relecture.",
+      "noteP2": "Ce que nous avons construit et ouvert, c'est ce qui les rend reproductibles : AGENTS.md et DESIGN.md sur un schéma versionné, le registre de tâches et le format des paquets.",
       "reasons": [
         {
           "title": "Du débit sans production d'agent non relue",
@@ -800,7 +800,7 @@
         },
         {
           "title": "Un contexte qui vit dans le dépôt, pas dans l'historique de discussion de quelqu'un",
-          "text": "Le contrat, les règles de design et le registre de tâches sont des fichiers de votre code. Confiez le projet à une autre équipe et le savoir opérationnel part avec."
+          "text": "AGENTS.md, DESIGN.md et le registre de tâches sont des fichiers de votre code. Confiez le projet à une autre équipe et le savoir part avec."
         },
         {
           "title": "Une méthode que vous pouvez auditer",
@@ -810,7 +810,7 @@
     },
     "next": {
       "label": "Ensuite",
-      "title": "Lisez le système, puis apportez-nous le vôtre.",
+      "title": "Lisez notre dépôt. Puis apportez-nous votre système.",
       "body": "Vérifiez la méthode avant d'engager quiconque pour l'appliquer à votre code.",
       "cta": "Lancer une revue de système"
     }
@@ -819,14 +819,14 @@
     "hero": {
       "label": "À propos",
       "title": "Un cabinet de conseil qui livre son propre logiciel.",
-      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Nous construisons des logiciels pour des clients dans toute l'UE, et trois plateformes à nous sur le même système de livraison. Ce système est open source."
+      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Nous construisons des logiciels pour des clients dans toute l'UE, et Voyager, Polis et Funda pour nous-mêmes. Le travail client et le nôtre passent par le même contrôle avant chaque commit."
     },
     "company": {
       "label": "L'entreprise",
-      "title": "Deux types de travail, une seule chaîne.",
+      "title": "Deux types de travail, les mêmes vérifications.",
       "p1": "Le travail client commence presque toujours pareil : quelque chose tourne déjà, et le logiciel autour a cessé de l'expliquer. Personne ne voit l'état courant, les exploitants tiennent un tableur privé, et ceux qui doivent faire confiance au résultat ne peuvent pas le vérifier.",
-      "p2": "Construire nos propres plateformes n'est pas une activité annexe. Voyager, Polis et Funda sont là où nous heurtons les contraintes dures en premier : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui doivent continuer de fonctionner. Nous payons ces leçons sur notre temps et en apportons le résultat au travail client.",
-      "p3": "Le système de livraison est public. Vous pouvez lire comment nous travaillons avant de nous engager — le contrat sous lequel nos agents tournent, les commandes, et le contrôle qui place un humain devant chaque commit.",
+      "p2": "Voyager, Polis et Funda ne sont pas une activité annexe. C'est là que nous heurtons les contraintes dures en premier : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui doivent continuer de fonctionner. Nous payons ces leçons sur notre temps et en apportons le résultat au travail client.",
+      "p3": "Vous pouvez lire comment nous travaillons avant de nous engager : AGENTS.md, DESIGN.md, 51 commandes, et le contrôle qui place un humain devant chaque commit. Tout est public sous Apache-2.0.",
       "facts": {
         "company": {
           "term": "Société",
@@ -835,10 +835,10 @@
         "based": { "term": "Basé à", "value": "Istrie, Croatie. Nous travaillons dans toute l'UE." },
         "work": {
           "term": "Travail",
-          "value": "Des logiciels pour des clients, et trois plateformes que nous construisons nous-mêmes"
+          "value": "Des logiciels pour des clients ; Voyager, Polis et Funda pour nous-mêmes"
         },
         "delivery": {
-          "term": "Livraison",
+          "term": "Open source",
           "value": "Agent Ops Cockpit — Apache-2.0, public sur <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "contact": { "term": "Contact" }
@@ -848,8 +848,8 @@
       "label": "Collaboration",
       "title": "Comment se déroule le travail avec nous.",
       "intro": "Quatre étapes. La première vaut déjà à elle seule.",
-      "aside": "Chaque étape laisse quelque chose que vous gardez : la cartographie, l'interface écrite, le dépôt avec son contrat et son registre de tâches, le déploiement et ses résultats de vérification. Si nous nous arrêtons après la première étape, vous n'êtes pas revenu au point de départ.",
-      "link": "Le système de livraison en détail",
+      "aside": "Chaque étape laisse quelque chose que vous gardez : la cartographie, le périmètre écrit, le dépôt avec son registre de tâches, le déploiement et ses résultats de vérification. Si nous nous arrêtons après la première étape, vous n'êtes pas revenu au point de départ.",
+      "link": "La méthode en détail",
       "steps": [
         {
           "label": "Cartographier le système",
@@ -860,8 +860,8 @@
           "description": "Nous convenons de ce que le logiciel doit rendre lisible, de qui a le droit de voir quoi, et de ce qui compte comme preuve. Le périmètre se taille ici, par écrit, avant que quiconque n'ouvre un éditeur."
         },
         {
-          "label": "Construire avec la chaîne d'agents",
-          "description": "Les agents travaillent sur un contrat versionné conservé dans le dépôt : comment se comporter, à quoi cela doit ressembler, quel est l'état courant, ce qui reste ouvert. Les agents proposent ; un humain lit le diff et valide."
+          "label": "Construire avec des agents",
+          "description": "Les agents travaillent sur AGENTS.md et DESIGN.md dans votre dépôt, et sur un registre de tâches qui dit ce qui reste ouvert. Ils proposent ; un humain lit le diff et valide."
         },
         {
           "label": "Le prouver",
@@ -871,8 +871,8 @@
     },
     "platforms": {
       "label": "Nos propres logiciels",
-      "title": "Ce que nous portons nous-mêmes.",
-      "intro": "Trois plateformes que nous construisons nous-mêmes. Statut d'aujourd'hui, pas statut du discours commercial.",
+      "title": "Ce que nous payons nous-mêmes.",
+      "intro": "Statut d'aujourd'hui, pas statut du discours commercial.",
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
@@ -888,7 +888,7 @@
         "status": "Construction active",
         "description": "Des financements européens rapprochés des organisations qui peuvent les obtenir. Lecture des sources SEDIA et TED par des agents, rapprochement géospatial, trois langues."
       },
-      "clientNote": "Le travail client tourne sur la même chaîne : un profil Instagram entre, un site bilingue sur une URL en ligne sort, l'audit automatisé compris — <link>voyez comment cette chaîne fonctionne</link>."
+      "clientNote": "Les sites clients suivent le même chemin : un profil Instagram entre, un site bilingue sur une URL en ligne sort, avec un audit Playwright au milieu — <link>voyez les six étapes</link>."
     },
     "contact": {
       "label": "Contact",
@@ -936,7 +936,7 @@
       },
       "copyright": {
         "title": "Droits d'auteur",
-        "body": "Les textes, images et codes publiés sur ce site appartiennent à {siteName}, sauf mention d'un autre titulaire. Citez-nous avec un lien vers la source. Demandez avant de reproduire une page en entier. Notre système de livraison, Agent Ops Cockpit, est publié séparément sous licence Apache-2.0, et cette licence régit son usage."
+        "body": "Les textes, images et codes publiés sur ce site appartiennent à {siteName}, sauf mention d'un autre titulaire. Citez-nous avec un lien vers la source. Demandez avant de reproduire une page en entier. Agent Ops Cockpit, le logiciel avec lequel nous construisons, est publié séparément sous licence Apache-2.0, et cette licence régit son usage."
       },
       "form": {
         "title": "Le formulaire de contact",

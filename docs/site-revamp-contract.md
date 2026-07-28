@@ -54,6 +54,73 @@ These are the habits that made the copy read machine-written. They recur; watch 
 6. **Say only what is true of today's status.** We do not "operate" pre-launch platforms;
    the public roster is one live site, not "client sites" plural.
 
+### Lexicon budget (added 2026-07-28)
+
+The copy drifted into abstract-noun bloat: "system", "contract", "delivery", "platform",
+"pipeline" doing work that concrete nouns should do, so every section read as a restatement
+of the last. The fix is not synonyms. Name the object: `AGENTS.md` and `DESIGN.md` instead of
+"the contract files", "Agent Ops Cockpit" instead of "our delivery system", "the Playwright
+audit" instead of "the automated pipeline", "Voyager, Polis and Funda" instead of "three
+platforms of our own". Where an approved number fits, use the number.
+
+**One canonical carrier per term.** Everywhere else, say the concrete thing.
+
+| Term | Owner | Budget elsewhere |
+|---|---|---|
+| contract | `/method` (AGENTS.md and DESIGN.md are literally contract files) | 0 |
+| agent · agents | `/method`, plus the operating rule wherever it is quoted | ≤2 per namespace |
+| pipeline | `/work/client-sites` (the Instagram-to-deployed-site pipeline) | ≤1 per namespace |
+| delivery | nowhere — say "Agent Ops Cockpit", or name the files | ≤1, UI labels only ("In delivery") |
+| platform · platforms | `/work/voyager` ("place-intelligence platform") | 0 — name Voyager, Polis, Funda |
+| system | the protected CTA "Bring us the messy system", the home H1, `/about` step "Map the system" | ≤2 per namespace |
+| source | `/work/polis` ("source document") | ≤2 per namespace; "Open source" as a status label does not count against prose |
+| layer | `/work/polis` (accountability layer) | 0 |
+| proof · evidence | section labels on `/work/*` | ≤1 per namespace |
+| interface | the thesis line, and the product names Polis Interface / INTRFACE | ≤1 per namespace |
+
+**Namespace ceiling: ~35 hits per 1,000 words.** Three namespaces sit structurally above it
+and that is expected — the metric counts proper nouns and canonical labels it cannot
+distinguish from prose:
+
+- **Footer** (~93/1k): 75 words carrying "Agent Ops Cockpit" ×2, "Polis Interface",
+  "Open source", the protected colophon and the protected CTA. Every remaining hit is a
+  product name or a protected line. Nothing left to cut.
+- **HomePage** (~53/1k): the H1 and its meta title, three product names, the canonical status
+  labels, and image alt text account for roughly two thirds. Prose-controllable share is
+  ~17/1k.
+- **Method** (~39/1k): owns "contract" and "agents" by design.
+
+Note the density script tokenises `AGENTS.md` as "agents" and counts it. Filenames are proper
+nouns, not abstraction — mask them before judging a number.
+
+**Check before shipping copy:**
+
+```
+python3 - <<'EOF'
+import json,re,collections
+d=json.load(open('apps/web/src/messages/en.json'))
+KEY=["system","contract","delivery","agent","agents","proof","interface","pipeline","operating",
+     "layer","source","build","builds","built","evidence","platform","platforms","orientation",
+     "verified","verifiable"]
+def collect(o,acc):
+    if isinstance(o,dict):
+        for v in o.values(): collect(v,acc)
+    elif isinstance(o,list):
+        for v in o: collect(v,acc)
+    elif isinstance(o,str): acc.append(o)
+for ns,val in d.items():
+    acc=[]; collect(val,acc)
+    text=" ".join(acc).replace('AGENTS.md','FILE1').replace('DESIGN.md','FILE2')
+    words=re.findall(r"[a-z][a-z'-]+",text.lower())
+    if len(words)<40: continue
+    c=collections.Counter(words); hits={k:c[k] for k in KEY if c[k]}
+    print(f"{sum(hits.values())/len(words)*1000:6.1f}/1k  {ns:22s} {len(words):5d}w   {hits}")
+EOF
+```
+
+The four locale files must keep identical key paths and array lengths; a translation that
+drops the concrete noun and restores the abstract one re-opens the problem in that language.
+
 Lines that carry the site's voice — the honest-status notes, "Bring us the messy system",
 the footer colophon, "There are no screenshots on this page", "Counted from the repository,
 not estimated", "Pre-launch means pre-launch", "No mock-ups — this is the terminal we work

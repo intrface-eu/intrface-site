@@ -10,14 +10,14 @@
     "logoAlt": "Intrface-Symbol"
   },
   "Footer": {
-    "tagline": "IT-Beratung und Geschäftsentwicklung, Istrien. Software für Kunden, drei eigene Plattformen, ein quelloffenes Entwicklungssystem.",
+    "tagline": "IT-Beratung und Geschäftsentwicklung, Istrien. Software für Kunden; Voyager, Polis und Funda sind unsere eigenen.",
     "location": "Istrien, Kroatien · EU",
     "newTab": "öffnet in einem neuen Tab",
     "work": {
       "heading": "Arbeiten",
       "index": "Alle Arbeiten",
       "voyager": "Voyager",
-      "polis": "Polis Interface",
+      "polis": "Polis",
       "funda": "Funda",
       "clientSites": "Kundenseiten"
     },
@@ -27,12 +27,12 @@
     "openSource": {
       "heading": "Open Source",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · unser Agenten-Liefersystem",
+      "aocMeta": "Apache-2.0 · 403 Commits, 51 Befehle",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · Infrastruktur für überprüfbare Verwaltungsdaten"
+      "polisMeta": "AGPL-3.0 · Verwaltungsdaten, die man prüfen kann"
     },
     "cta": "Her mit dem chaotischen System",
-    "colophon": "Gesetzt in Google Sans Flex. Gebaut und ausgeliefert mit Agent Ops Cockpit, unserer quelloffenen Agenten-Pipeline: Agenten schlagen vor, ein Mensch committet. Vier Sprachen."
+    "colophon": "Gesetzt in Google Sans Flex. Gebaut und ausgeliefert mit Agent Ops Cockpit, Apache-2.0: Agenten schlagen vor, ein Mensch committet. Vier Sprachen."
   },
   "LocaleSwitcher": {
     "label": "Sprache"
@@ -44,11 +44,11 @@
     "screenshotPending": "Screenshot folgt"
   },
   "Metadata": {
-    "tagline": "IT-Beratung aus Istrien. Das Entwicklungssystem ist open source.",
-    "description": "INTRFACE ist eine IT-Beratung in Istrien. Wir bauen Software für Kunden und drei eigene Plattformen, auf einem Agenten-Entwicklungssystem, veröffentlicht unter Apache-2.0 — 403 Commits, öffentlich.",
+    "tagline": "IT-Beratung aus Istrien. Unsere eigenen Werkzeuge sind öffentlich, Apache-2.0.",
+    "description": "INTRFACE ist eine IT-Beratung in Istrien. Software für Kunden, dazu Voyager, Polis und Funda als eigene. Agent Ops Cockpit, das Werkzeug dahinter, ist öffentlich: Apache-2.0, 403 Commits.",
     "work": {
       "title": "Arbeiten",
-      "description": "Eine laufende Kundenwebsite in Vrsar, drei eigene Plattformen vor dem Launch und das Entwicklungssystem, das sie baut — öffentlich auf GitHub unter Apache-2.0."
+      "description": "Vier Fälle: eine laufende Weinbar-Website in Vrsar, Voyager, Polis und Funda. Jeder nennt den Stand von heute, nicht den Stand zum Launch."
     },
     "voyager": {
       "title": "Voyager",
@@ -68,7 +68,7 @@
     },
     "method": {
       "title": "Methode",
-      "description": "Wir bauen Software mit orchestrierten KI-Agenten und haben das Entwicklungssystem unter Apache-2.0 veröffentlicht. Agenten schlagen vor; ein von Menschen geprüftes Tor committet. Worker pushen nie."
+      "description": "Agenten schlagen vor; ein von Menschen geprüftes Tor committet. Worker pushen nie. Die Regeln dafür sind öffentlich, Apache-2.0: AGENTS.md, DESIGN.md, ein Aufgabenregister, 51 Befehle."
     },
     "about": {
       "title": "Über uns",
@@ -83,7 +83,7 @@
     "hero": {
       "eyebrow": "Intrface · Istrien, Kroatien",
       "title": "Wir bauen die Software. Und das System, das die Software baut.",
-      "lead": "Eine laufende Kundenwebsite in Vrsar. Drei eigene Plattformen. Die Strecke, die sie baut — open source, Apache-2.0.",
+      "lead": "Eine laufende Kundenwebsite in Vrsar. Voyager, Polis und Funda, noch vor dem Launch. Agent Ops Cockpit, öffentlich unter Apache-2.0.",
       "seeWork": "Arbeiten ansehen",
       "talk": "Sprechen Sie uns an",
       "proofLabel": "Öffnen Sie jedes davon",
@@ -104,8 +104,8 @@
         "aoc": {
           "name": "Agent Ops Cockpit",
           "status": "Open Source",
-          "meta": "Das System, das diese Seite gebaut hat",
-          "alt": "Das Terminal des Agent Ops Cockpit — ein Repository-Dateibaum neben einer Agentenspalte mit Vertrag und Skills."
+          "meta": "Es hat diese Seite gebaut",
+          "alt": "Das Terminal des Agent Ops Cockpit — ein Repository-Dateibaum neben einer Agentenspalte mit Regeln und Skills."
         }
       }
     },
@@ -113,9 +113,9 @@
       "label": "Die These",
       "title": "Software wird zur Schnittstelle zu allem.",
       "p1": "Kunden erleben nicht Ihre Strategie. Sie erleben die Schnittstelle. Bürgern begegnet Politik als Formular, Amt und Wartezeit.",
-      "p2": "Einem Gast begegnet ein Reiseziel als Speisekarte, als Fußweg und als Frage in einer Sprache, die am Tresen niemand liest. Diese Ebene bauen wir.",
+      "p2": "Einem Gast begegnet ein Reiseziel als Speisekarte, als Fußweg und als Frage in einer Sprache, die am Tresen niemand liest. Das ist es, was wir bauen.",
       "columns": [
-        { "label": "Orientierung", "text": "312 Voyager-Routen über sieben Oberflächen, ein Datenmodell." },
+        { "label": "Wegfindung", "text": "312 Voyager-Routen über sieben Oberflächen, ein Datenmodell." },
         { "label": "Vertrauen", "text": "Jede Polis-Aussage führt zu Hash, Siegel und Zeitstempel." },
         { "label": "Umsetzung", "text": "Instagram-Profil rein, laufende URL raus, in sechs Schritten." }
       ]
@@ -150,13 +150,13 @@
       }
     },
     "systems": {
-      "label": "Systeme",
-      "title": "Drei Systeme. Keines davon gelauncht.",
+      "label": "Unsere eigene Software",
+      "title": "Voyager, Polis, Funda.",
       "intro": "Vor dem Launch heißt vor dem Launch. Nichts hier behauptet Nutzer, die es nicht hat.",
       "voyager": {
         "name": "Voyager",
         "status": "Vor dem Launch",
-        "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Der Tourismusverband bekommt eine Inhaltsebene, die er selbst steuert.",
+        "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Der Tourismusverband veröffentlicht die offizielle Fassung und ändert sie selbst.",
         "stats": [
           { "value": "365.000", "label": "Zeilen eigener TypeScript-Code" },
           { "value": "1.336", "label": "Backend-Funktionen" },
@@ -189,30 +189,30 @@
     },
     "method": {
       "label": "Methode",
-      "title": "Unser Entwicklungssystem ist open source.",
-      "body": "Dreizehn unserer Repos laufen auf demselben versionierten Agentenvertrag. Agenten schlagen die Änderung vor; ein von Menschen geprüftes Tor committet sie. Allein im Juli 2026 landeten 383 Commits auf Voyager.",
+      "title": "Lesen Sie nach, wie wir arbeiten, bevor Sie uns beauftragen.",
+      "body": "Dreizehn unserer Repos tragen dieselbe AGENTS.md, dieselbe DESIGN.md und dasselbe Aufgabenregister. Agenten schlagen die Änderung vor; ein von Menschen geprüftes Tor committet sie. Allein im Juli 2026 landeten 383 Commits auf Voyager.",
       "readMethod": "Die Methode lesen",
       "readSource": "Den Quellcode lesen",
       "steps": [
         {
-          "label": "Vertrag vor Code",
-          "description": "Jedes Repo trägt dieselben Vertragsdateien auf der Platte. Ein Agent liest sie, bevor er den Code liest."
+          "label": "AGENTS.md und DESIGN.md",
+          "description": "Jedes Repo trägt dieselben zwei Dateien auf der Platte. Ein Agent liest sie, bevor er den Code liest."
         },
         {
           "label": "Agenten schlagen vor",
-          "description": "Worker laufen parallel gegen diesen Vertrag. Sie pushen nie."
+          "description": "Worker laufen parallel gegen diese Dateien. Sie pushen nie."
         },
         {
           "label": "Ein von Menschen geprüftes Tor committet",
           "description": "Der Orchestrator liest den Diff erneut, lässt die Prüfungen laufen und setzt dann einen atomaren Commit."
         },
         {
-          "label": "Der Vertrag ist versioniert",
-          "description": "Dreizehn Repos teilen ein Schema. Ändert es sich, migrieren sie gemeinsam."
+          "label": "Das Schema ist versioniert",
+          "description": "Die Dateien liegen auf einem Schema mit Migrationen. Ändert es sich, migrieren alle dreizehn Repos gemeinsam."
         }
       ],
       "stats": [
-        { "value": "13", "label": "Repos auf einem Vertrag" },
+        { "value": "13", "label": "Repos, ein Schema" },
         { "value": "51", "label": "CLI-Befehle" },
         {
           "value": "403",
@@ -238,8 +238,8 @@
   },
   "WorkIndex": {
     "label": "Arbeiten",
-    "title": "Vier Systeme. Wo jedes wirklich steht.",
-    "lead": "Eine laufende Kundenwebsite in Vrsar, von einer automatisierten Strecke gebaut. Drei eigene Plattformen, keine davon gelauncht. Ein Entwicklungssystem, öffentlich auf GitHub.",
+    "title": "Vier Projekte. Wo jedes wirklich steht.",
+    "lead": "Eine laufende Website in Vrsar, an den Kunden übergeben. Drei eigene, keines davon gelauncht. Nichts hier zählt Arbeit mit, die ein Kunde noch nicht bekommen hat.",
     "entries": {
       "voyager": {
         "name": "Voyager",
@@ -280,13 +280,13 @@
     },
     "method": {
       "label": "05 · Methode",
-      "title": "Unser Entwicklungssystem ist open source.",
-      "body": "Agent Ops Cockpit führt dreizehn unserer Repos auf einem versionierten Vertrag. Agenten schlagen vor. Ein Mensch liest den Diff und committet.",
+      "title": "Agent Ops Cockpit ist öffentlich.",
+      "body": "Dreizehn unserer Repos tragen dieselbe AGENTS.md, dieselbe DESIGN.md und dasselbe Aufgabenregister. Agenten schlagen vor. Ein Mensch liest den Diff und committet.",
       "link": "Lesen, wie wir liefern",
       "figures": [
         { "value": "403", "label": "Commits, Apache-2.0" },
         { "value": "51", "label": "CLI-Befehle" },
-        { "value": "13", "label": "Repos auf dem Vertrag" }
+        { "value": "13", "label": "Repos, ein Schema" }
       ]
     }
   },
@@ -696,12 +696,12 @@
   "Method": {
     "hero": {
       "label": "Methode",
-      "title": "Unser Entwicklungssystem ist open source. Lesen Sie es.",
-      "lead": "Wir bauen Software mit orchestrierten KI-Agenten, und wir haben die Regeln aufgeschrieben, unter denen sie laufen. Dieser Vertrag, das Werkzeug, das sie ausführt, und das Tor, das ihre Ergebnisse nicht ungelesen landen lässt, sind unter Apache-2.0 veröffentlicht.",
+      "title": "Unsere Methode ist ein öffentliches Repository. Lesen Sie es.",
+      "lead": "Wir bauen Software mit orchestrierten KI-Agenten, und wir haben die Regeln aufgeschrieben, unter denen sie laufen. AGENTS.md, DESIGN.md, die 51 Befehle, die sie ausführen, und das Tor, das ihre Ergebnisse nicht ungelesen landen lässt — alles unter Apache-2.0 veröffentlicht.",
       "readRepo": "Das Repository lesen",
       "howItWorks": "Wie es funktioniert",
       "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "Das Entwicklungssystem selbst: der Vertrag, den jedes Repo trägt, das Schema, auf dem er versioniert ist, und die Befehle, die ihn ausführen.",
+      "repoSummary": "Vier Dateien in jedem Repo, das Schema, auf dem sie versioniert sind, und 51 Befehle, die sie ausführen.",
       "repoChips": ["Apache-2.0", "Rust", "Kommandozeile"]
     },
     "howItWorks": {
@@ -710,15 +710,15 @@
       "intro": "Dieselben vier Züge in jedem Repository, das wir anfassen, auch in Ihrem. Nichts davon hängt daran, dass sich ein Mensch erinnert, wie wir arbeiten.",
       "contractTitle": "Der Vertrag, auf der Platte",
       "artifacts": [
-        "Der Verhaltensvertrag: wie Agenten in diesem Repo arbeiten und was sie nicht dürfen.",
-        "Der Designvertrag: Tokens, Typo-Skala, Komponentenregeln und die Nicht-Liste.",
-        "Der Kontext-Snapshot: die aktuelle Form des Repos, generiert und nie von Hand geschrieben.",
-        "Das Aufgabenregister: Aufgaben, Teilaufgaben, Tags und Status, versioniert neben dem Code."
+        "AGENTS.md — wie Agenten in diesem Repo arbeiten und was sie nicht dürfen.",
+        "DESIGN.md — Tokens, Typo-Skala, Komponentenregeln und die Nicht-Liste.",
+        "Der Kontext-Snapshot — die aktuelle Form des Repos, generiert und nie von Hand geschrieben.",
+        "Das Aufgabenregister — Aufgaben, Teilaufgaben, Tags und Status, versioniert neben dem Code."
       ],
       "steps": [
         {
           "label": "Jedes Repository trägt einen versionierten Vertrag",
-          "description": "Der Vertrag liegt im Repo, auf einem Schema mit Migrationen. Ein Agent, der zu arbeiten beginnt, liest dieselben Dateien wie ein neuer Entwickler."
+          "description": "Er liegt auf einem Schema mit Migrationen. Ein Agent, der zu arbeiten beginnt, liest dieselben Dateien wie ein neuer Entwickler."
         },
         {
           "label": "Arbeit wird in klar umrissene Pakete geteilt",
@@ -755,7 +755,7 @@
     "numbers": {
       "label": "Zahlen",
       "title": "Was öffentlich ist und was es hervorgebracht hat.",
-      "intro": "Das Entwicklungssystem ist ein Repository, das Sie klonen können. Das Ergebnis ist Commit-Historie auf den Systemen, die wir damit bauen.",
+      "intro": "Agent Ops Cockpit ist ein Repository, das Sie klonen können. Das Ergebnis ist Commit-Historie in der Software, die wir damit bauen.",
       "systemStats": [
         { "value": "403", "label": "Commits", "note": "Öffentliche Historie, Apache-2.0" },
         { "value": "8", "label": "Rust-Crates" },
@@ -783,16 +783,16 @@
       "repos": {
         "label": "Repositories auf dem Vertrag",
         "alt": "Ein dreispaltiger Dateibrowser mit einem Verzeichnis von Repositories und dem aufgeklappten Vertragsverzeichnis eines Repositorys",
-        "caption": "Dasselbe Vertragsverzeichnis in jedem Repository — Kontext-Snapshot, Prompts, Aufgabenstand, Routing-Konfiguration — direkt neben dem Code, neben den anderen Repos auf dem Vertrag."
+        "caption": "Ein Verzeichnis je Repository, in allen dreizehn dasselbe — AGENTS.md, DESIGN.md, Kontext-Snapshot, Prompts, Aufgabenstand, Routing-Konfiguration — direkt neben dem Code."
       }
     },
     "why": {
       "label": "Was Sie bekommen",
       "title": "Drei Dinge, die Ihnen eine öffentliche Methode bringt.",
-      "intro": "Sie kaufen keine Begeisterung über Agenten. Sie kaufen eine Lieferstrecke, deren Regeln aufgeschrieben sind.",
+      "intro": "Sie kaufen keine Begeisterung über Agenten. Sie kaufen aufgeschriebene Regeln.",
       "noteLabel": "Was wir nicht gebaut haben",
       "noteP1": "Wir arbeiten auf fremden Agenten-Runtimes und Terminal-Werkzeugen. Wir haben sie nicht geschrieben und beanspruchen sie nicht.",
-      "noteP2": "Gebaut und quelloffen gemacht haben wir die Ebene, die sie wiederholbar macht: den Repository-Vertrag und sein Schema, das Aufgabenregister, das Paketformat und das Tor, das Agentenausgaben nicht ungelesen landen lässt.",
+      "noteP2": "Gebaut und quelloffen gemacht haben wir, was sie wiederholbar macht: AGENTS.md und DESIGN.md auf einem versionierten Schema, das Aufgabenregister und das Paketformat.",
       "reasons": [
         {
           "title": "Durchsatz ohne ungeprüfte Agentenausgabe",
@@ -800,7 +800,7 @@
         },
         {
           "title": "Kontext, der im Repo lebt, nicht im Chatverlauf von irgendwem",
-          "text": "Der Vertrag, die Designregeln und das Aufgabenregister sind Dateien in Ihrem Code. Geben Sie das Projekt an ein anderes Team, geht das Betriebswissen mit."
+          "text": "AGENTS.md, DESIGN.md und das Aufgabenregister sind Dateien in Ihrem Code. Geben Sie das Projekt an ein anderes Team, geht das Wissen mit."
         },
         {
           "title": "Eine Methode, die Sie prüfen können",
@@ -810,7 +810,7 @@
     },
     "next": {
       "label": "Weiter",
-      "title": "Lesen Sie das System, dann bringen Sie uns Ihres.",
+      "title": "Lesen Sie unser Repository. Dann bringen Sie uns Ihr System.",
       "body": "Prüfen Sie die Methode, bevor Sie jemanden dafür engagieren, sie auf Ihren Code loszulassen.",
       "cta": "Systemprüfung starten"
     }
@@ -819,14 +819,14 @@
     "hero": {
       "label": "Über uns",
       "title": "Eine Beratung, die ihre eigene Software ausliefert.",
-      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Istrien, Kroatien. Wir bauen Software für Kunden in der EU und drei eigene Plattformen auf demselben Entwicklungssystem. Dieses System ist open source."
+      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Istrien, Kroatien. Wir bauen Software für Kunden in der ganzen EU und Voyager, Polis und Funda für uns selbst. Kundenarbeit und eigene Arbeit laufen durch dasselbe Tor vor jedem Commit."
     },
     "company": {
       "label": "Das Unternehmen",
-      "title": "Zwei Arten von Arbeit, eine Strecke.",
+      "title": "Zwei Arten von Arbeit, dieselben Prüfungen.",
       "p1": "Kundenarbeit beginnt meist gleich: etwas läuft schon, und die Software drumherum erklärt es nicht mehr. Niemand sieht den aktuellen Stand, die Betreiber führen eine private Tabelle, und wer dem Ergebnis vertrauen muss, kann es nicht prüfen.",
-      "p2": "Eigene Plattformen zu bauen ist keine Nebenbeschäftigung. Voyager, Polis und Funda sind der Ort, an dem wir zuerst gegen die harten Grenzen laufen: feingranulare Autorisierung, Prüfspuren, die niemand still umschreiben kann, mehrsprachige Inhalte, die richtig bleiben müssen, Deployments, die weiter funktionieren müssen. Wir bezahlen diese Lehren mit eigener Zeit und bringen das Ergebnis in die Kundenarbeit.",
-      "p3": "Das Entwicklungssystem ist öffentlich. Sie können nachlesen, wie wir arbeiten, bevor Sie uns beauftragen — den Vertrag, unter dem unsere Agenten laufen, die Befehle und das Tor, das vor jeden Commit einen Menschen stellt.",
+      "p2": "Voyager, Polis und Funda sind keine Nebenbeschäftigung. Dort laufen wir zuerst gegen die harten Grenzen: feingranulare Autorisierung, Prüfspuren, die niemand still umschreiben kann, mehrsprachige Inhalte, die richtig bleiben müssen, Deployments, die weiter funktionieren müssen. Wir bezahlen diese Lehren mit eigener Zeit und bringen das Ergebnis in die Kundenarbeit.",
+      "p3": "Sie können nachlesen, wie wir arbeiten, bevor Sie uns beauftragen: AGENTS.md, DESIGN.md, 51 Befehle und das Tor, das vor jeden Commit einen Menschen stellt. Alles öffentlich unter Apache-2.0.",
       "facts": {
         "company": {
           "term": "Unternehmen",
@@ -835,10 +835,10 @@
         "based": { "term": "Sitz", "value": "Istrien, Kroatien. Tätig in der ganzen EU." },
         "work": {
           "term": "Arbeit",
-          "value": "Software für Kunden und drei Plattformen, die wir selbst bauen"
+          "value": "Software für Kunden; Voyager, Polis und Funda für uns selbst"
         },
         "delivery": {
-          "term": "Lieferung",
+          "term": "Open Source",
           "value": "Agent Ops Cockpit — Apache-2.0, öffentlich auf <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "contact": { "term": "Kontakt" }
@@ -848,8 +848,8 @@
       "label": "Zusammenarbeit",
       "title": "Wie die Arbeit mit uns läuft.",
       "intro": "Vier Schritte. Der erste lohnt sich schon für sich allein.",
-      "aside": "Jeder Schritt hinterlässt etwas, das Ihnen bleibt: die Karte, die schriftliche Schnittstelle, das Repo mit Vertrag und Aufgabenregister, das Deployment und seine Prüfausgabe. Hören wir nach Schritt eins auf, stehen Sie nicht wieder am Anfang.",
-      "link": "Das Entwicklungssystem im Detail",
+      "aside": "Jeder Schritt hinterlässt etwas, das Ihnen bleibt: die Karte, den schriftlichen Umfang, das Repo mit seinem Aufgabenregister, das Deployment und seine Prüfausgabe. Hören wir nach Schritt eins auf, stehen Sie nicht wieder am Anfang.",
+      "link": "Die Methode im Detail",
       "steps": [
         {
           "label": "Das System kartieren",
@@ -860,8 +860,8 @@
           "description": "Wir einigen uns, was die Software sichtbar machen muss, wer was sehen darf und was als Nachweis gilt. Der Umfang wird hier gekürzt, schriftlich, bevor jemand einen Editor öffnet."
         },
         {
-          "label": "Mit der Agentenstrecke bauen",
-          "description": "Agenten arbeiten gegen einen versionierten Vertrag im Repo: wie zu handeln ist, wie es aussehen soll, was der aktuelle Stand ist, was noch offen ist. Agenten schlagen vor; ein Mensch liest den Diff und committet."
+          "label": "Mit Agenten bauen",
+          "description": "Agenten arbeiten gegen AGENTS.md und DESIGN.md in Ihrem Repo und ein Aufgabenregister, das sagt, was noch offen ist. Sie schlagen vor; ein Mensch liest den Diff und committet."
         },
         {
           "label": "Es belegen",
@@ -871,8 +871,8 @@
     },
     "platforms": {
       "label": "Unsere eigene Software",
-      "title": "Was wir selbst tragen.",
-      "intro": "Drei Plattformen, die wir selbst bauen. Status von heute, nicht Status aus dem Pitch.",
+      "title": "Was wir selbst bezahlen.",
+      "intro": "Status von heute, nicht Status aus dem Pitch.",
       "voyager": {
         "name": "Voyager",
         "status": "Vor dem Launch",
@@ -888,7 +888,7 @@
         "status": "Im aktiven Bau",
         "description": "EU-Förderung, zugeordnet zu den Organisationen, die sie gewinnen können. Agenten lesen SEDIA und TED ein, Geodaten-Matching, drei Sprachen."
       },
-      "clientNote": "Kundenarbeit läuft auf derselben Strecke: ein Instagram-Profil geht hinein, eine zweisprachige Website unter laufender URL kommt heraus, die automatische Prüfung eingebaut — <link>so funktioniert diese Strecke</link>."
+      "clientNote": "Kundenseiten entstehen genauso: ein Instagram-Profil geht hinein, eine zweisprachige Website unter laufender URL kommt heraus, dazwischen eine Playwright-Prüfung — <link>die sechs Schritte ansehen</link>."
     },
     "contact": {
       "label": "Kontakt",
@@ -936,7 +936,7 @@
       },
       "copyright": {
         "title": "Urheberrecht",
-        "body": "Texte, Bilder und Code auf dieser Seite gehören {siteName}, sofern kein anderer Inhaber genannt ist. Zitieren Sie uns mit Quellenlink. Fragen Sie, bevor Sie eine Seite vollständig übernehmen. Unser Entwicklungssystem, Agent Ops Cockpit, ist getrennt unter der Apache-2.0-Lizenz veröffentlicht, und diese Lizenz regelt seine Nutzung."
+        "body": "Texte, Bilder und Code auf dieser Seite gehören {siteName}, sofern kein anderer Inhaber genannt ist. Zitieren Sie uns mit Quellenlink. Fragen Sie, bevor Sie eine Seite vollständig übernehmen. Agent Ops Cockpit, die Software, mit der wir bauen, ist getrennt unter der Apache-2.0-Lizenz veröffentlicht, und diese Lizenz regelt seine Nutzung."
       },
       "form": {
         "title": "Das Kontaktformular",
