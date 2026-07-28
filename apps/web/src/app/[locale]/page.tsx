@@ -14,17 +14,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  // The home page titles itself off its own headline, so the search result and
+  // the first screen say the same thing.
+  const home = await getTranslations({ locale, namespace: "HomePage" });
+  const title = home("hero.metaTitle");
 
   return {
     ...buildPageMetadata({
       locale,
       path: PATH,
-      title: t("tagline"),
+      title,
       description: t("description"),
     }),
     // The home page carries the site name itself rather than the `%s · INTRFACE` template.
     title: {
-      absolute: `${SITE_NAME} — ${t("tagline")}`,
+      absolute: `${SITE_NAME} — ${title}`,
     },
   };
 }

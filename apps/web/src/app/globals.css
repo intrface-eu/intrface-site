@@ -327,25 +327,26 @@ body {
       radial-gradient(circle, rgba(202, 138, 4, 0.55) 0 1.5px, transparent 2.1px);
     background-size: 13px 13px, 17px 17px, 21px 21px;
     background-position: 0 0, 6px 4px, 3px 10px;
-    mask-image: radial-gradient(85% 75% at 80% 22%, black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 66%);
+    mask-image: radial-gradient(38% 36% at 90% 13%, black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 72%);
   }
 
   .halftone-field::after {
     background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 60%, transparent) 0 2px, transparent 2.7px);
     background-size: 12px 12px;
     background-position: 4px 2px;
-    mask-image: radial-gradient(42% 38% at 84% 16%, black 0%, rgba(0, 0, 0, 0.35) 55%, transparent 78%);
+    mask-image: radial-gradient(20% 18% at 92% 9%, black 0%, rgba(0, 0, 0, 0.35) 55%, transparent 78%);
   }
 
-  /* Below `sm` the hero is one column, so the same mask would sit behind the
-     headline and lead. Pull the field up into the corner instead. */
+  /* The hero headline runs wide at every width, so the field stays a corner
+     landmark above it rather than a wash behind it. Below `sm` there is no
+     free corner at all — the field sits in the strip above the eyebrow. */
   @media (max-width: 639px) {
     .halftone-field::before {
-      mask-image: radial-gradient(78% 26% at 78% 6%, black 0%, rgba(0, 0, 0, 0.45) 42%, transparent 70%);
+      mask-image: radial-gradient(60% 12% at 92% 2%, black 0%, rgba(0, 0, 0, 0.45) 42%, transparent 74%);
     }
 
     .halftone-field::after {
-      mask-image: radial-gradient(46% 14% at 84% 4%, black 0%, rgba(0, 0, 0, 0.3) 55%, transparent 80%);
+      mask-image: radial-gradient(30% 7% at 94% 1%, black 0%, rgba(0, 0, 0, 0.3) 55%, transparent 80%);
     }
   }
 
@@ -459,6 +460,41 @@ body {
     background: var(--ink);
     color: var(--ink-inverse);
     box-shadow: var(--shadow-elevated);
+  }
+
+  /* ===== HERO PROOF PLATE =====
+     The screenshot frame from DESIGN.md — card surface, hairline, elevated
+     shadow — with the one hover gesture the hero gets: a 2px lift, the same
+     travel and the same house curve as TactileButton. Only `translate` and
+     `box-shadow` change, so hovering the strip never reflows the first
+     screen. */
+  .proof-plate-frame {
+    border: 1px solid var(--line);
+    background: var(--card);
+    box-shadow: var(--shadow-surface);
+    transition:
+      translate 220ms cubic-bezier(0.2, 0.8, 0.3, 1),
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .proof-plate:hover .proof-plate-frame,
+  .proof-plate:focus-visible .proof-plate-frame {
+    translate: 0 -2px;
+    border-color: color-mix(in srgb, var(--ink) 22%, transparent);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Reduced motion keeps the state change and drops the travel. */
+  @media (prefers-reduced-motion: reduce) {
+    .proof-plate-frame {
+      transition: none;
+    }
+
+    .proof-plate:hover .proof-plate-frame,
+    .proof-plate:focus-visible .proof-plate-frame {
+      translate: none;
+    }
   }
 
   .trust-ledger-row {

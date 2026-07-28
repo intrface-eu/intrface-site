@@ -1,12 +1,12 @@
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import { StatBand, type Stat } from "@/components/case";
+import { HeroProof, type HeroArtifact } from "@/components/home/hero-proof";
 import { LiveSiteRow, type LiveSite } from "@/components/home/live-site-row";
 import { SystemLedger, type FeaturedSystem, type SystemStat } from "@/components/home/system-ledger";
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { ProcessSteps, type ProcessStep } from "@/components/site/process-steps";
-import { SystemMap, type SystemMapItem } from "@/components/site/system-map";
 import { TactileButton } from "@/components/site/tactile-button";
 import { PaperShaderSurface } from "@/components/visual/paper-shader-surface";
 import { Link, getPathname } from "@/i18n/navigation";
@@ -31,6 +31,34 @@ const LIVE_SITES = [
   },
 ] as const;
 
+/**
+ * The three hero plates: a client site anyone can open, a platform of our own,
+ * and the delivery system this page was built with. Capture, target, and
+ * whether the link leaves the site — the copy sits in the messages file.
+ *
+ * Same roster rule as above: only Velum may be named or linked.
+ */
+const HERO_ARTIFACTS = [
+  {
+    key: "velum",
+    src: "/proof/sites/velum-desktop.png",
+    href: "https://velum-winebar.pages.dev",
+    external: true,
+    priority: true,
+  },
+  {
+    key: "voyager",
+    src: "/proof/voyager/voyager-atlas-map.png",
+    href: "/work/voyager",
+  },
+  {
+    key: "aoc",
+    src: "/proof/hero/aoc-agent-pane.png",
+    href: AOC_REPO_URL,
+    external: true,
+  },
+] as const;
+
 const FEATURED_SYSTEMS = [
   { key: "voyager", href: "/work/voyager" },
   { key: "polis", href: "/work/polis" },
@@ -46,6 +74,14 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
   const methodSteps = t.raw("method.steps") as ProcessStep[];
   const deliveryStats = t.raw("method.stats") as Stat[];
   const contactTopics = t.raw("contact.topics") as string[];
+
+  const heroArtifacts: HeroArtifact[] = HERO_ARTIFACTS.map((artifact) => ({
+    ...artifact,
+    name: t(`hero.proof.${artifact.key}.name`),
+    status: t(`hero.proof.${artifact.key}.status`),
+    meta: t(`hero.proof.${artifact.key}.meta`),
+    alt: t(`hero.proof.${artifact.key}.alt`),
+  }));
 
   const liveSites: LiveSite[] = LIVE_SITES.map((site) => ({
     slug: site.slug,
@@ -77,64 +113,48 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
   return (
     <main className="bg-paper text-ink">
-      {/* HERO — paper, halftone landmark, orientation diagram */}
-      <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden border-b border-rule tone-paper">
+      {/* HERO — one sentence, then the evidence for it. Paper, halftone
+          landmark in the corner, three real captures along the bottom edge of
+          the first screen. */}
+      <section className="relative overflow-hidden border-b border-rule tone-paper">
         <div className="halftone-field" aria-hidden="true" />
-        <div className="section-shell relative grid min-h-[calc(100svh-4rem)] gap-10 py-20 sm:py-24 lg:grid-cols-[1fr_.9fr] lg:items-center lg:py-28">
-          <div className="max-w-4xl">
+        <div className="section-shell relative flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-10 py-6 sm:py-10 lg:gap-12">
+          <div>
             <FadeIn>
               <p className="type-section-label">{t("hero.eyebrow")}</p>
             </FadeIn>
-            <FadeIn delay={100}>
-              <h1 className="type-display mt-6 max-w-4xl">{t("hero.title")}</h1>
+            <FadeIn delay={80}>
+              <h1 className="type-display mt-4 max-w-[16ch] sm:mt-5">
+                {t("hero.title")}
+              </h1>
             </FadeIn>
-            <FadeIn delay={200}>
-              <p className="type-body-lg mt-7 max-w-2xl font-medium">{t("hero.lead")}</p>
-            </FadeIn>
-            <FadeIn delay={300}>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <TactileButton
-                  className="min-w-[12rem] text-base"
-                  href={path("/work")}
-                  trailingIcon={<IconArrowRight className="h-4 w-4" />}
-                >
-                  {t("hero.seeWork")}
-                </TactileButton>
-                <TactileButton className="text-base" href={path("/method")} variant="secondary">
-                  {t("hero.howWeBuild")}
-                </TactileButton>
-              </div>
-            </FadeIn>
-            <FadeIn delay={380}>
-              <p className="mt-7 text-sm text-ink-muted">
-                {t.rich("hero.openSource", {
-                  repo: (chunks) => (
-                    <a
-                      className="font-semibold text-accent hover:underline"
-                      href={AOC_REPO_URL}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {chunks}
-                    </a>
-                  ),
-                })}
-              </p>
-            </FadeIn>
+            <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
+              <FadeIn delay={160}>
+                <p className="type-body-lg max-w-xl font-medium">{t("hero.lead")}</p>
+              </FadeIn>
+              <FadeIn delay={240}>
+                <div className="flex flex-wrap gap-3">
+                  <TactileButton
+                    className="text-base"
+                    href={path("/work")}
+                    trailingIcon={<IconArrowRight className="h-4 w-4" />}
+                  >
+                    {t("hero.seeWork")}
+                  </TactileButton>
+                  <TactileButton className="text-base" href="#contact" variant="secondary">
+                    {t("hero.talk")}
+                  </TactileButton>
+                </div>
+              </FadeIn>
+            </div>
           </div>
-          <FadeIn delay={180}>
-            <SystemMap
-              ariaLabel={t("systemMap.ariaLabel")}
-              core={t.raw("systemMap.core") as SystemMapItem}
-              inputs={t.raw("systemMap.inputs") as SystemMapItem[]}
-              output={t.raw("systemMap.output") as SystemMapItem}
-              stages={{
-                inputs: t("systemMap.stageInputs"),
-                core: t("systemMap.stageCore"),
-                output: t("systemMap.stageOutput"),
-              }}
-            />
-          </FadeIn>
+
+          <div>
+            <FadeIn delay={300}>
+              <p className="type-section-label mb-3">{t("hero.proofLabel")}</p>
+            </FadeIn>
+            <HeroProof artifacts={heroArtifacts} baseDelay={340} />
+          </div>
         </div>
       </section>
 

@@ -84,30 +84,31 @@
   "HomePage": {
     "hero": {
       "eyebrow": "Intrface · Istra, Hrvatska",
-      "title": "Pouzdana sučelja za složene stvarne sustave.",
-      "lead": "Žive klijentske stranice na istarskoj obali, izgrađene iz Instagram profila jednim automatiziranim tokom. Turistička platforma pred pokretanjem, 365.000 redaka koda. Javna infrastruktura u kojoj svaka tvrdnja vodi do izvornog dokumenta.",
+      "title": "Gradimo softver. I sustav koji gradi softver.",
+      "lead": "Klijentske stranice na istarskoj obali. Vlastite platforme. Tok koji ih gradi — otvoreni kod, Apache-2.0.",
       "seeWork": "Pogledajte radove",
-      "howWeBuild": "Kako gradimo",
-      "openSource": "Naš sustav isporuke je open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
-    },
-    "systemMap": {
-      "ariaLabel": "Kako Intrface pretvara signale iz stvarnosti u pouzdano djelovanje",
-      "stageInputs": "Signali iz stvarnosti",
-      "stageCore": "Sloj orijentacije",
-      "stageOutput": "Pouzdano djelovanje",
-      "inputs": [
-        { "label": "Mjesto", "detail": "Staze, radno vrijeme, prijevoz" },
-        { "label": "Poslovanje", "detail": "Jelovnici, usluge, rezervacije" },
-        { "label": "Dokument", "detail": "Izvori i dokazi" },
-        { "label": "Proces", "detail": "Uloge, provjere, primopredaje" }
-      ],
-      "core": {
-        "label": "Sučelje",
-        "detail": "Stanje, izvori i sljedeći korak — na jeziku čitatelja."
-      },
-      "output": {
-        "label": "Potpomognuto djelovanje",
-        "detail": "AI odgovara. Odgovoran ostaje čovjek s imenom i prezimenom."
+      "talk": "Javite nam se",
+      "proofLabel": "Otvorite bilo koje od ovoga",
+      "metaTitle": "Softver i sustav koji ga gradi.",
+      "proof": {
+        "velum": {
+          "name": "Velum",
+          "status": "Uživo",
+          "meta": "velum-winebar.pages.dev",
+          "alt": "Početna stranica Veluma — kafić i vinski bar na vrsarskoj rivi, na hrvatskom i engleskom."
+        },
+        "voyager": {
+          "name": "Voyager",
+          "status": "Pred pokretanjem",
+          "meta": "Pročitajte Voyagerov slučaj",
+          "alt": "Voyagerova karta Vrsara s označenim mjestima uz obalu i jednom stazom."
+        },
+        "aoc": {
+          "name": "Agent Ops Cockpit",
+          "status": "Otvoreni kod",
+          "meta": "Sustav koji je izgradio ovu stranicu",
+          "alt": "Terminal Agent Ops Cockpita — stablo datoteka repozitorija uz agentsku ploču s ugovorom i vještinama."
+        }
       }
     },
     "thesis": {

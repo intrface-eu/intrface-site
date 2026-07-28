@@ -84,30 +84,31 @@
   "HomePage": {
     "hero": {
       "eyebrow": "Intrface · Istrie, Croatie",
-      "title": "Des interfaces fiables pour des systèmes réels complexes.",
-      "lead": "Des sites clients en ligne sur la côte istrienne, construits à partir d'un profil Instagram par une seule chaîne automatisée. Une plateforme touristique de 365 000 lignes, avant lancement. Une infrastructure civique où chaque affirmation publique remonte à un document source.",
+      "title": "Nous construisons le logiciel. Et le système qui le construit.",
+      "lead": "Des sites clients sur la côte istrienne. Nos propres plateformes. La chaîne qui les construit — open source, Apache-2.0.",
       "seeWork": "Voir les réalisations",
-      "howWeBuild": "Comment nous construisons",
-      "openSource": "Notre système de livraison est open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
-    },
-    "systemMap": {
-      "ariaLabel": "Comment Intrface transforme des signaux du réel en action fiable",
-      "stageInputs": "Signaux du réel",
-      "stageCore": "Couche d'orientation",
-      "stageOutput": "Action fiable",
-      "inputs": [
-        { "label": "Lieu", "detail": "Sentiers, horaires, transports" },
-        { "label": "Commerce", "detail": "Cartes, services, réservations" },
-        { "label": "Document", "detail": "Sources et preuves" },
-        { "label": "Processus", "detail": "Rôles, contrôles, transmissions" }
-      ],
-      "core": {
-        "label": "Interface",
-        "detail": "L'état, les sources et l'action suivante — dans la langue du lecteur."
-      },
-      "output": {
-        "label": "Action assistée",
-        "detail": "L'IA répond. Une personne nommée reste responsable."
+      "talk": "Parlons-en",
+      "proofLabel": "Ouvrez n'importe lequel",
+      "metaTitle": "Le logiciel, et le système qui le construit.",
+      "proof": {
+        "velum": {
+          "name": "Velum",
+          "status": "En ligne",
+          "meta": "velum-winebar.pages.dev",
+          "alt": "La page d'accueil de Velum — café et bar à vins sur le front de mer de Vrsar, en croate et en anglais."
+        },
+        "voyager": {
+          "name": "Voyager",
+          "status": "Avant lancement",
+          "meta": "Lire l'étude de cas Voyager",
+          "alt": "La carte de Vrsar dans Voyager, avec des lieux repérés le long de la côte et un sentier balisé."
+        },
+        "aoc": {
+          "name": "Agent Ops Cockpit",
+          "status": "Open source",
+          "meta": "Le système qui a construit cette page",
+          "alt": "Le terminal Agent Ops Cockpit — l'arborescence du dépôt à côté d'un panneau d'agent listant son contrat et ses compétences."
+        }
       }
     },
     "thesis": {

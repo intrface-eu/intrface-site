@@ -84,30 +84,31 @@
   "HomePage": {
     "hero": {
       "eyebrow": "Intrface · Istria, Croatia",
-      "title": "Trusted interfaces for complex real-world systems.",
-      "lead": "Live client sites on the Istrian coast, built from an Instagram profile by one automated pipeline. A tourism platform in pre-launch at 365,000 lines. Civic infrastructure where every public claim traces to a source document.",
+      "title": "We build the software. And the system that builds the software.",
+      "lead": "Client sites on the Istrian coast. Platforms of our own. The pipeline that builds them, open source under Apache-2.0.",
       "seeWork": "See the work",
-      "howWeBuild": "How we build it",
-      "openSource": "The delivery system is open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
-    },
-    "systemMap": {
-      "ariaLabel": "How Intrface turns real-world signals into trusted action",
-      "stageInputs": "Signals from reality",
-      "stageCore": "Orientation layer",
-      "stageOutput": "Trusted action",
-      "inputs": [
-        { "label": "Place", "detail": "Trails, hours, transport" },
-        { "label": "Business", "detail": "Menus, services, bookings" },
-        { "label": "Document", "detail": "Sources and evidence" },
-        { "label": "Workflow", "detail": "Roles, reviews, handoffs" }
-      ],
-      "core": {
-        "label": "Interface",
-        "detail": "State, sources, and the next action — in the reader's language."
-      },
-      "output": {
-        "label": "Assisted action",
-        "detail": "AI answers. A named person stays accountable."
+      "talk": "Talk to us",
+      "proofLabel": "Open any of these",
+      "metaTitle": "Software, and the system that builds it.",
+      "proof": {
+        "velum": {
+          "name": "Velum",
+          "status": "Live",
+          "meta": "velum-winebar.pages.dev",
+          "alt": "The Velum home page — a café and wine bar on the Vrsar waterfront, in Croatian and English."
+        },
+        "voyager": {
+          "name": "Voyager",
+          "status": "Pre-launch",
+          "meta": "Read the Voyager case",
+          "alt": "Voyager's map of Vrsar, with places pinned along the coast and a marked trail."
+        },
+        "aoc": {
+          "name": "Agent Ops Cockpit",
+          "status": "Open source",
+          "meta": "The system that built this page",
+          "alt": "The Agent Ops Cockpit terminal — a repository file tree beside an agent pane listing its contract and skills."
+        }
       }
     },
     "thesis": {
