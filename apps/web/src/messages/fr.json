@@ -277,47 +277,59 @@
       "name": "Voyager",
       "claim": "Un QR code sur la table d'un restaurant devient un hôte IA multilingue qui répond à partir de la carte et des horaires de ce restaurant précis.",
       "status": "Avant lancement",
-      "tags": ["Propriétaire", "Tourisme", "Multi-locataire", "Six langues"]
+      "tags": [
+        "Propriétaire",
+        "Tourisme",
+        "Multi-locataire",
+        "Six langues"
+      ]
     },
     "scale": {
       "label": "Échelle",
       "intro": "Compté dans le dépôt, pas estimé.",
-      "scaleStats": [
+      "stats": [
         {
           "value": "~365 000",
           "label": "Lignes de TypeScript",
           "note": "Code maison. Dépendances exclues."
         },
-        { "value": "220", "label": "Tables de base de données" },
-        { "value": "1 336", "label": "Fonctions backend" },
-        { "value": "312", "label": "Routes" }
-      ],
-      "buildStats": [
-        { "value": "7", "label": "Interfaces produit", "note": "Un seul modèle de données derrière." },
-        { "value": "6", "label": "Langues", "note": "Interface et réponses générées." },
-        { "value": "1 580", "label": "Tests automatisés", "note": "Répartis sur 286 fichiers de test." },
-        { "value": "1 080", "label": "Commits", "note": "Sur 20 mois." }
+        {
+          "value": "220",
+          "label": "Tables de base de données"
+        },
+        {
+          "value": "312",
+          "label": "Routes",
+          "note": "Sur sept interfaces produit, un seul modèle de données."
+        },
+        {
+          "value": "6",
+          "label": "Langues",
+          "note": "Interface et réponses générées."
+        },
+        {
+          "value": "1 580",
+          "label": "Tests automatisés",
+          "note": "Répartis sur 286 fichiers de test."
+        }
       ]
     },
     "whatItIs": {
       "label": "Ce que c'est",
       "title": "Trois publics, une plateforme.",
-      "intro": "Une destination compte trois parties qui n'ont jamais partagé de système : le visiteur avec son téléphone, le commerce dont la carte a changé ce matin, et l'office de tourisme qui répond de ce qui est officiellement vrai. Voyager met les trois sur un même modèle de données.",
+      "intro": "Un visiteur avec son téléphone, un commerce dont la carte a changé ce matin, un office de tourisme qui répond de ce qui est officiel. Un seul modèle de données sous les trois.",
       "audiences": [
         {
           "role": "Visiteurs",
-          "headline": "Une carte de ce qui vous entoure, et l'itinéraire à pied pour y aller.",
-          "body": "L'application s'ouvre sur une carte, pas sur un fil. Elle vous y conduit à pied et répond aux questions sur le lieu dans l'une des six langues. L'entrée se fait par un QR code ou un lien — sans détour par un magasin d'applications."
+          "line": "L'application s'ouvre sur une carte, pas sur un fil, et vous y conduit à pied dans votre langue."
         },
         {
           "role": "Commerces",
-          "headline": "Un QR code sur la table, et l'hôte IA répond à partir de votre carte.",
-          "body": "Un restaurant charge sa carte, ses horaires et ses règles de maison. L'hôte répond à partir de là, dans la langue du visiteur, et le patron voit un indice de préparation avant de l'activer."
+          "line": "Le patron charge sa carte, ses horaires et ses règles de maison, puis voit un indice de préparation avant d'activer l'hôte."
         },
         {
           "role": "Offices de tourisme",
-          "headline": "Une couche officielle que l'office pilote et peut corriger.",
-          "body": "Des fiches de commerces vérifiées, des événements, des sentiers et des avis que l'office publie lui-même. Quand un sentier ferme ou qu'un événement se déplace, l'office modifie la fiche au lieu de demander à une plateforme de la corriger."
+          "line": "L'office publie des fiches vérifiées, des événements, des sentiers et des avis, et modifie lui-même la fiche quand quelque chose change."
         }
       ]
     },
@@ -328,86 +340,71 @@
       "entries": [
         {
           "title": "Autorisation multi-locataire, vérifiée par un test qui lit le code source",
-          "what": "Les droits passent par WorkOS FGA avec un cache d'autorisations synchrone : un contrôle coûte une lecture plutôt qu'un aller-retour réseau. Un test de non-régression parcourt le code à la recherche de routes qui atteignent les données sans passer le contrôle.",
-          "why": "Un office de tourisme et tous les commerces de la destination partagent une même base. Une seule fuite au travers de cette ligne met fin au pilote."
+          "body": "L'office de tourisme et tous les commerces partagent une base, et une seule fuite met fin au pilote. Les droits passent par WorkOS FGA avec un cache d'autorisations synchrone, et un test au niveau du code fait échouer le build sur toute route qui lit les données sans contrôle."
         },
         {
           "title": "Une recherche qui sait quand ignorer l'index vectoriel",
-          "what": "Une question sur les horaires part vers une requête structurée. La photo d'une carte part vers un index multimodal. Ni l'une ni l'autre n'est forcée dans un unique magasin vectoriel sous prétexte que c'était le plus simple à construire.",
-          "why": "Des horaires tirés d'une recherche par similarité sont une supposition. Lus dans une colonne, ce sont des faits — et une mauvaise heure de fermeture, c'est ce dont un client se souvient."
+          "body": "Une question sur les horaires part vers une requête structurée, la photo d'une carte vers un index multimodal — pas tout vers un seul magasin vectoriel. Lus dans une colonne, les horaires sont des faits ; une mauvaise heure de fermeture, c'est ce dont un client se souvient."
         },
         {
           "title": "Le scraping et le calcul d'itinéraires piétons tournent chez nous",
-          "what": "La collecte de contenu et les itinéraires piétons OSRM tournent comme services auto-hébergés sur Railway, plutôt que via des API louées à la requête.",
-          "why": "Des itinéraires facturés à la requête transforment un mois d'août chargé en facture que personne n'avait prévue, et un quota en carte morte."
+          "body": "La collecte de contenu et les itinéraires piétons OSRM sont auto-hébergés sur Railway, pas loués à la requête. Des itinéraires facturés à la requête transforment un mois d'août chargé en facture que personne n'avait prévue."
         },
         {
           "title": "Un système de design avec sa propre suite de tests",
-          "what": "Seize sous-systèmes encadrés couvrent l'interface commune, et le système est testé comme le reste du code.",
-          "why": "Sept interfaces produit restent un seul produit. Une correction sur un composant les atteint toutes en une seule modification."
+          "body": "Seize sous-systèmes encadrés composent l'interface commune, testée comme le reste du code. Une correction sur un composant atteint chaque interface en une seule modification."
         }
       ]
     },
     "evidence": {
       "label": "Preuves",
-      "title": "À quoi cela ressemble.",
-      "intro": "Chaque écran ci-dessous tourne sur le contenu pilote chargé pour Vrsar. Rien de tout cela n'est du trafic réel.",
-      "explore": {
-        "label": "Application visiteur — exploration",
-        "alt": "Vue exploration de Voyager : une carte de la côte istrienne à côté d'une liste de lieux proches",
-        "caption": "La vue exploration publique. La carte mène, la liste suit. Ce qui est tracé ici correspond à la zone de Vrsar chargée."
+      "title": "À quoi cela ressemble aujourd'hui.",
+      "intro": "Des écrans de la version actuelle. Tout tourne sur le contenu pilote chargé pour Vrsar, jamais sur du trafic réel.",
+      "atlas": {
+        "label": "Atlas visiteur",
+        "alt": "Carte Atlas de Voyager sur le littoral de Vrsar, avec des grappes de lieux et un itinéraire balisé",
+        "caption": "La carte publique. Des grappes de lieux, un itinéraire balisé, et aucun compte requis pour l'ouvrir."
       },
       "board": {
-        "label": "Office de tourisme — fiche officielle",
-        "alt": "Fiche officielle de la Turistička zajednica Vrsar avec un badge de vérification et une liste d'événements",
-        "caption": "La fiche officielle de l'office de tourisme : badge de vérification, événements et champs que seul l'office peut modifier. Chargée à partir des documents de la Turistička zajednica Vrsar."
+        "label": "Office de tourisme — fiche publique",
+        "alt": "Fiche officielle de TZ Vrsar avec badge de vérification, avis et registre des lieux",
+        "caption": "La fiche officielle de TZ Vrsar : badge de vérification, avis datés et un registre que seul l'office peut modifier."
       },
       "host": {
         "label": "Console commerce — hôte IA",
-        "alt": "Écran de configuration de l'hôte IA montrant les sources et un indice de préparation pour un commerce",
-        "caption": "Un commerce configure son hôte IA et voit un indice de préparation avant de l'activer. L'indice reflète la part de son propre contenu à partir de laquelle l'hôte peut répondre."
-      },
-      "events": {
-        "label": "Agence — événements",
-        "alt": "Tableau de bord d'agence listant des événements chargés avec leurs dates et leur statut de publication",
-        "caption": "Le tableau de bord de l'agence, où les événements sont créés, datés et publiés dans la couche officielle. Les événements listés sont des données du pilote."
-      },
-      "phone": {
-        "label": "Application visiteur — téléphone",
-        "alt": "Fiche de lieu Voyager sur un écran de téléphone de 390 pixels de large",
-        "caption": "La même fiche à 390 px — la largeur que la plupart des visiteurs tiennent réellement en main."
+        "alt": "Réglages de l'agent Nexus montrant le ton, les spécialités et un panneau de préparation au lancement",
+        "caption": "Un commerce règle le ton et les connaissances de son hôte, et voit ce qui bloque encore le chat public."
       }
     },
     "pilot": {
-      "label": "Pilote",
-      "title": "Chargé pour une destination d'Istrie.",
-      "intro": "Vrsar–Orsera est chargée. Les documents de la Turistička zajednica Vrsar sont déjà en base : un pilote démarre donc avec du contenu, pas avec une destination vide.",
+      "label": "Pilote et statut",
+      "title": "Chargé pour Vrsar. Pas lancé.",
+      "intro": "Les documents de la Turistička zajednica Vrsar sont déjà en base : un pilote démarre avec du contenu, pas avec une destination vide.",
       "items": [
         {
           "label": "Sentiers nommés",
-          "detail": "Itinéraires de marche et de vélo portant leurs vrais noms, pas des épingles génériques sur une carte."
+          "detail": "Itinéraires de marche et de vélo portant leurs vrais noms."
         },
         {
           "label": "Qualité de l'eau de mer",
-          "detail": "Indicateurs de qualité des eaux de baignade par plage, sur la même fiche que la plage elle-même."
+          "detail": "Indicateurs de baignade portés par la fiche de la plage."
         },
         {
           "label": "Horaires des navettes",
-          "detail": "Départs des navettes locales, pour qu'une réponse sur l'accès contienne des horaires."
+          "detail": "Départs locaux, pour que l'accès se réponde avec des horaires."
         },
         {
           "label": "Événements",
           "detail": "L'agenda de l'office, publié depuis sa propre fiche vérifiée."
         }
-      ]
-    },
-    "status": {
-      "label": "Statut",
-      "title": "Construit et instrumenté pour le lancement. Pas lancé.",
-      "p1": "Les sept interfaces sont construites, les tests passent, l'instrumentation du lancement est en place. Il manque une destination qui dise on y va — un office de tourisme ou un groupe de commerces d'un même lieu, prêt à faire une première saison dessus.",
-      "p2": "D'ici là, nous préférons vous montrer le dépôt et le pilote chargé plutôt qu'une courbe de croissance.",
-      "noteP1": "Avant lancement. Le déploiement en production n'a pas été fait : il n'y a donc pas d'utilisateurs finaux réels, pas de trafic public et aucun chiffre d'exploitation à citer.",
-      "noteP2": "Chaque chiffre de cette page est compté dans le dépôt. Chaque capture montre du contenu pilote chargé."
+      ],
+      "phone": {
+        "label": "La même fiche à 390 px",
+        "alt": "Fiche TZ Vrsar sur un téléphone, avec qualité de l'eau, navette et événements du jour",
+        "caption": "La couche officielle à la largeur qu'un visiteur tient réellement en main."
+      },
+      "noteP1": "Avant lancement. Pas de déploiement en production, pas d'utilisateurs finaux réels, aucun chiffre d'exploitation à citer.",
+      "noteP2": "Il manque une destination qui dise on y va — un office ou un groupe de commerces prêt pour une première saison."
     },
     "next": {
       "label": "Ensuite",

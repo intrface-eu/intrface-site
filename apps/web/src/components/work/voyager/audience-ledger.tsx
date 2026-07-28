@@ -6,15 +6,13 @@ export type AudienceRow = {
   role: string;
   /** Tabler icon component. */
   icon: ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
-  /** One line: what this audience gets. */
-  headline: string;
-  /** Two or three sentences of plain detail. */
-  body: string;
+  /** One line. What this audience gets — no sub-paragraph. */
+  line: string;
 };
 
 /**
- * Three audiences on one hairline ledger. Deliberately not a card grid — the
- * point is that these sit on the same data model, not in separate boxes.
+ * Three audiences on one hairline ledger, one line each. Deliberately not a
+ * card grid — the point is that these sit on the same data model.
  */
 export function AudienceLedger({ rows, className = "" }: { rows: readonly AudienceRow[]; className?: string }) {
   return (
@@ -24,7 +22,7 @@ export function AudienceLedger({ rows, className = "" }: { rows: readonly Audien
 
         return (
           <FadeIn
-            className="grid gap-4 py-9 lg:grid-cols-[13rem_1fr] lg:items-start lg:gap-12"
+            className="grid gap-3 py-7 lg:grid-cols-[13rem_1fr] lg:items-baseline lg:gap-12"
             delay={index * 80}
             key={row.role}
           >
@@ -33,10 +31,7 @@ export function AudienceLedger({ rows, className = "" }: { rows: readonly Audien
               <p className="type-meta text-ink">{row.role}</p>
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold tracking-[-.035em] text-ink">{row.headline}</h3>
-              <p className="type-body mt-3 max-w-2xl">{row.body}</p>
-            </div>
+            <p className="type-body-lg max-w-2xl">{row.line}</p>
           </FadeIn>
         );
       })}

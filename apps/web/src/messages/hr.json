@@ -277,47 +277,59 @@
       "name": "Voyager",
       "claim": "Jedan QR kod na stolu u restoranu postaje višejezični AI domaćin koji odgovara iz jelovnika i radnog vremena baš tog restorana.",
       "status": "Prije pokretanja",
-      "tags": ["Vlasnički", "Turizam", "Više najmoprimaca", "Šest jezika"]
+      "tags": [
+        "Vlasnički",
+        "Turizam",
+        "Više najmoprimaca",
+        "Šest jezika"
+      ]
     },
     "scale": {
       "label": "Veličina",
       "intro": "Prebrojeno iz repozitorija, ne procijenjeno.",
-      "scaleStats": [
+      "stats": [
         {
           "value": "~365.000",
           "label": "Redaka TypeScripta",
           "note": "Vlastiti kod. Bez vanjskih biblioteka."
         },
-        { "value": "220", "label": "Tablica u bazi" },
-        { "value": "1.336", "label": "Backend funkcija" },
-        { "value": "312", "label": "Ruta" }
-      ],
-      "buildStats": [
-        { "value": "7", "label": "Sučelja proizvoda", "note": "Iza svih jedan podatkovni model." },
-        { "value": "6", "label": "Jezika", "note": "Sučelje i generirani odgovori." },
-        { "value": "1.580", "label": "Automatiziranih testova", "note": "Kroz 286 testnih datoteka." },
-        { "value": "1.080", "label": "Commita", "note": "Kroz 20 mjeseci." }
+        {
+          "value": "220",
+          "label": "Tablica u bazi"
+        },
+        {
+          "value": "312",
+          "label": "Ruta",
+          "note": "Kroz sedam sučelja proizvoda, jedan podatkovni model."
+        },
+        {
+          "value": "6",
+          "label": "Jezika",
+          "note": "Sučelje i generirani odgovori."
+        },
+        {
+          "value": "1.580",
+          "label": "Automatiziranih testova",
+          "note": "Kroz 286 testnih datoteka."
+        }
       ]
     },
     "whatItIs": {
       "label": "Što je to",
       "title": "Tri publike, jedna platforma.",
-      "intro": "U destinaciji postoje tri strane koje nikada nisu dijelile sustav: gost s mobitelom u ruci, poslovanje kojem se jelovnik promijenio jutros i turistička zajednica koja odgovara za ono što je službeno točno. Voyager sve tri stavlja na jedan podatkovni model.",
+      "intro": "Gost s mobitelom, poslovanje kojem se jelovnik promijenio jutros, turistička zajednica koja odgovara za ono što je službeno. Ispod sve tri jedan podatkovni model.",
       "audiences": [
         {
           "role": "Gosti",
-          "headline": "Karta onoga što je oko vas i pješačke upute do toga.",
-          "body": "Aplikacija se otvara na karti, ne na feedu. Vodi vas pješice i odgovara na pitanja o mjestu na jednom od šest jezika. Ulaz je QR kod ili link — bez zaobilaska preko trgovine aplikacija."
+          "line": "Aplikacija se otvara na karti, a ne na feedu, i vodi vas pješice na vašem jeziku."
         },
         {
           "role": "Poslovni subjekti",
-          "headline": "Jedan QR kod na stolu i AI domaćin odgovara iz vašeg jelovnika.",
-          "body": "Restoran učita jelovnik, radno vrijeme i kućna pravila. Domaćin odgovara iz njih, na jeziku gosta, a vlasnik prije uključivanja vidi ocjenu spremnosti."
+          "line": "Vlasnik učita jelovnik, radno vrijeme i kućna pravila, pa vidi ocjenu spremnosti prije nego uključi domaćina."
         },
         {
           "role": "Turističke zajednice",
-          "headline": "Službeni sloj kojim zajednica upravlja i koji može ispraviti.",
-          "body": "Provjereni profili poslovnih subjekata, događanja, staze i obavijesti koje zajednica objavljuje sama. Kad se staza zatvori ili se događanje pomakne, zajednica uredi zapis umjesto da moli platformu za ispravak."
+          "line": "Zajednica objavljuje provjerene profile, događanja, staze i obavijesti te sama uredi zapis kad se nešto promijeni."
         }
       ]
     },
@@ -328,86 +340,71 @@
       "entries": [
         {
           "title": "Autorizacija za više najmoprimaca, provjerena testom koji čita izvorni kod",
-          "what": "Ovlasti idu kroz WorkOS FGA sa sinkronim cacheom odobrenja, pa provjera košta jedno traženje umjesto odlaska na mrežu. Regresijski test pretražuje izvorni kod za rutama koje dolaze do podataka bez te provjere.",
-          "why": "Turistička zajednica i svako poslovanje u destinaciji dijele jednu bazu. Jedno curenje preko te crte gasi pilot."
+          "body": "Turistička zajednica i svako poslovanje dijele jednu bazu, pa jedno curenje gasi pilot. Ovlasti idu kroz WorkOS FGA sa sinkronim cacheom odobrenja, a test na razini izvornog koda ruši build na svakoj ruti koja čita podatke bez provjere."
         },
         {
           "title": "Dohvat koji zna kada preskočiti vektorski indeks",
-          "what": "Pitanje o radnom vremenu ide na strukturirani upit. Fotografija jelovnika ide na multimodalni indeks. Nijedno se ne tjera kroz jedan vektorski spremnik samo zato što je to bilo najlakše izgraditi.",
-          "why": "Radno vrijeme izvučeno pretragom po sličnosti je nagađanje. Pročitano iz stupca je činjenica — a krivo vrijeme zatvaranja gost pamti najduže."
+          "body": "Pitanje o radnom vremenu ide na strukturirani upit, fotografija jelovnika na multimodalni indeks — ne sve kroz jedan vektorski spremnik. Pročitano iz stupca, vrijeme je činjenica; krivo vrijeme zatvaranja gost pamti najduže."
         },
         {
           "title": "Prikupljanje sadržaja i pješačke rute vrtimo kao vlastite servise",
-          "what": "Prikupljanje sadržaja i OSRM pješačke rute rade kao vlastiti servisi na Railwayu, a ne kao unajmljeni API-ji koji se plaćaju po upitu.",
-          "why": "Upute koje se plaćaju po upitu pretvaraju pun kolovoz u račun koji nitko nije predvidio, a ograničenje broja upita u mrtvu kartu."
+          "body": "Prikupljanje sadržaja i OSRM pješačke rute vrtimo sami na Railwayu, a ne unajmljene po upitu. Upute koje se plaćaju po upitu pretvaraju pun kolovoz u račun koji nitko nije predvidio."
         },
         {
           "title": "Dizajnerski sustav s vlastitim testovima",
-          "what": "Šesnaest upravljanih podsustava pokriva zajedničko sučelje, a sustav se testira kao i ostatak koda.",
-          "why": "Sedam sučelja proizvoda ostaje jedan proizvod. Ispravak na komponenti stigne do svih u jednoj promjeni."
+          "body": "Šesnaest upravljanih podsustava čini zajedničko sučelje, testirano kao i ostatak koda. Ispravak na jednoj komponenti stigne do svakog sučelja u jednoj promjeni."
         }
       ]
     },
     "evidence": {
       "label": "Dokazi",
-      "title": "Kako to izgleda.",
-      "intro": "Svaki zaslon ispod radi na unesenom pilot sadržaju za Vrsar. Ništa od toga nije stvarni promet.",
-      "explore": {
-        "label": "Aplikacija za goste — istraživanje",
-        "alt": "Voyagerov prikaz istraživanja: karta istarske obale uz popis obližnjih mjesta",
-        "caption": "Javni prikaz istraživanja. Karta vodi, popis je prati. Ucrtano je uneseno područje oko Vrsara."
+      "title": "Kako danas izgleda.",
+      "intro": "Zasloni iz aktualne verzije. Sve radi na unesenom pilot sadržaju za Vrsar, nikad na stvarnom prometu.",
+      "atlas": {
+        "label": "Atlas za goste",
+        "alt": "Voyagerova Atlas karta vrsarske obale s grupiranim oznakama mjesta i označenom pješačkom rutom",
+        "caption": "Javna karta. Skupine mjesta, označena ruta i nikakav račun nije potreban da se otvori."
       },
       "board": {
-        "label": "Turistička zajednica — službeni profil",
-        "alt": "Službeni profil Turističke zajednice Vrsar s oznakom provjere i popisom događanja",
-        "caption": "Službeni profil turističke zajednice: oznaka provjere, događanja i polja koja može uređivati samo zajednica. Uneseno iz materijala Turističke zajednice Vrsar."
+        "label": "Turistička zajednica — javni profil",
+        "alt": "Službeni profil TZ Vrsar s oznakom provjere, obavijestima i registrom mjesta",
+        "caption": "Službeni profil TZ Vrsar: oznaka provjere, datirane obavijesti i registar koji može uređivati samo zajednica."
       },
       "host": {
         "label": "Konzola poslovanja — AI domaćin",
-        "alt": "Zaslon za postavljanje AI domaćina s izvorima i ocjenom spremnosti za poslovni subjekt",
-        "caption": "Poslovni subjekt postavlja svog AI domaćina i vidi ocjenu spremnosti prije nego ga uključi. Ocjena pokazuje koliko vlastitog sadržaja domaćin ima za odgovaranje."
-      },
-      "events": {
-        "label": "Agencija — događanja",
-        "alt": "Nadzorna ploča agencije s popisom unesenih događanja, datumima i statusom objave",
-        "caption": "Nadzorna ploča agencije na kojoj se događanja stvaraju, datiraju i objavljuju u službeni sloj. Navedena su događanja pilot podaci."
-      },
-      "phone": {
-        "label": "Aplikacija za goste — mobitel",
-        "alt": "Voyagerov profil mjesta na zaslonu mobitela širine 390 piksela",
-        "caption": "Isti profil na 390 px — širini koju većina gostiju zapravo drži u ruci."
+        "alt": "Postavke Nexus agenta s tonom, specijalnostima i pločom spremnosti za pokretanje",
+        "caption": "Poslovni subjekt postavlja ton i znanje svog domaćina i vidi što još blokira javni chat."
       }
     },
     "pilot": {
-      "label": "Pilot",
-      "title": "Uneseno za jednu destinaciju u Istri.",
-      "intro": "Vrsar–Orsera je učitan. Materijali Turističke zajednice Vrsar već su u bazi, pa pilot kreće sa sadržajem, a ne s praznom destinacijom.",
+      "label": "Pilot i status",
+      "title": "Uneseno za Vrsar. Nije pokrenuto.",
+      "intro": "Materijali Turističke zajednice Vrsar već su u bazi, pa pilot kreće sa sadržajem, a ne s praznom destinacijom.",
       "items": [
         {
           "label": "Imenovane staze",
-          "detail": "Pješačke i biciklističke rute pod svojim pravim imenima, a ne generičke pribadače na karti."
+          "detail": "Pješačke i biciklističke rute pod svojim pravim imenima."
         },
         {
           "label": "Kakvoća mora",
-          "detail": "Podaci o kakvoći mora po plaži, na istom zapisu kao i sama plaža."
+          "detail": "Podaci o kakvoći mora na samom zapisu plaže."
         },
         {
           "label": "Vozni redovi shuttlea",
-          "detail": "Polasci lokalnih shuttle linija, da odgovor o dolasku ima i vremena u sebi."
+          "detail": "Lokalni polasci, da upute o dolasku imaju i vremena."
         },
         {
           "label": "Događanja",
-          "detail": "Kalendar zajednice, objavljen s njezina vlastitog provjerenog profila."
+          "detail": "Kalendar zajednice, objavljen s njezina provjerenog profila."
         }
-      ]
-    },
-    "status": {
-      "label": "Status",
-      "title": "Izgrađeno i opremljeno za pokretanje. Nije pokrenuto.",
-      "p1": "Sedam sučelja je izgrađeno, testovi prolaze, mjerenja za pokretanje su postavljena. Nedostaje destinacija koja kaže krećemo — turistička zajednica ili skupina poslovnih subjekata na jednom mjestu, spremna odraditi prvu sezonu na tome.",
-      "p2": "Do tada vam radije pokazujemo repozitorij i uneseni pilot nego graf rasta.",
-      "noteP1": "Prije pokretanja. Produkcijsko uvođenje još nije napravljeno, pa nema stvarnih korisnika, nema javnog prometa ni radnih brojki za citiranje.",
-      "noteP2": "Svaka brojka na ovoj stranici prebrojena je iz repozitorija. Svaka snimka zaslona prikazuje uneseni pilot sadržaj."
+      ],
+      "phone": {
+        "label": "Isti profil na 390 px",
+        "alt": "Profil TZ Vrsar na mobitelu s kakvoćom mora, shuttleom i današnjim događanjima",
+        "caption": "Službeni sloj na širini koju gost zapravo drži u ruci."
+      },
+      "noteP1": "Prije pokretanja. Nema produkcijskog uvođenja, nema stvarnih korisnika, nema radnih brojki za citiranje.",
+      "noteP2": "Nedostaje destinacija koja kaže krećemo — zajednica ili skupina poslovnih subjekata spremna za prvu sezonu."
     },
     "next": {
       "label": "Dalje",

@@ -52,16 +52,8 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
 
       <CaseSection label={t("scale.label")} tone="raised">
         <p className="type-body-lg -mt-4 max-w-2xl">{t("scale.intro")}</p>
-        {/* One panel, two rows: the eight figures are one count of the same repo. */}
-        <StatBand
-          className="mt-10"
-          columns={4}
-          stats={[
-            ...(t.raw("scale.scaleStats") as Stat[]),
-            ...(t.raw("scale.buildStats") as Stat[]),
-          ]}
-          tone="ink"
-        />
+        {/* One panel. Five figures, all counted from the same repository. */}
+        <StatBand className="mt-10" columns={3} stats={t.raw("scale.stats") as Stat[]} tone="ink" />
       </CaseSection>
 
       <CaseSection
@@ -93,13 +85,13 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
       >
         <div className="space-y-14">
           <EvidenceFrame
-            alt={t("evidence.explore.alt")}
+            alt={t("evidence.atlas.alt")}
             aspect="16/10"
-            caption={t("evidence.explore.caption")}
-            label={t("evidence.explore.label")}
+            caption={t("evidence.atlas.caption")}
+            label={t("evidence.atlas.label")}
             priority
             sizes="(min-width: 1024px) 68rem, 100vw"
-            src="/proof/voyager/voyager-explore-map.png"
+            src="/proof/voyager/voyager-atlas-map.png"
           />
 
           <div className="grid gap-12 lg:grid-cols-2">
@@ -109,7 +101,7 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
               caption={t("evidence.board.caption")}
               label={t("evidence.board.label")}
               sizes="(min-width: 1024px) 33rem, 100vw"
-              src="/proof/voyager/voyager-tourist-board-profile.png"
+              src="/proof/voyager/voyager-tz-vrsar-profile.png"
             />
 
             <EvidenceFrame
@@ -118,31 +110,27 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
               caption={t("evidence.host.caption")}
               label={t("evidence.host.label")}
               sizes="(min-width: 1024px) 33rem, 100vw"
-              src="/proof/voyager/voyager-ai-desk-officer.png"
-            />
-          </div>
-
-          <div className="grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:items-start">
-            <EvidenceFrame
-              alt={t("evidence.events.alt")}
-              aspect="16/10"
-              caption={t("evidence.events.caption")}
-              label={t("evidence.events.label")}
-              sizes="(min-width: 1024px) 42rem, 100vw"
-              src="/proof/voyager/voyager-agency-events.png"
-            />
-
-            <MobileShot
-              alt={t("evidence.phone.alt")}
-              caption={t("evidence.phone.caption")}
-              label={t("evidence.phone.label")}
-              src="/proof/voyager/voyager-mobile-profile.png"
+              src="/proof/voyager/voyager-nexus-ai-host.png"
             />
           </div>
         </div>
       </CaseSection>
 
       <CaseSection
+        aside={
+          <div>
+            <MobileShot
+              alt={t("pilot.phone.alt")}
+              caption={t("pilot.phone.caption")}
+              label={t("pilot.phone.label")}
+              src="/proof/voyager/voyager-tz-vrsar-mobile.png"
+            />
+            <HonestNote className="mt-10">
+              <p>{t("pilot.noteP1")}</p>
+              <p className="mt-3">{t("pilot.noteP2")}</p>
+            </HonestNote>
+          </div>
+        }
         id="pilot"
         intro={t("pilot.intro")}
         label={t("pilot.label")}
@@ -150,22 +138,6 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
         tone="paper"
       >
         <PilotSeed items={pilotSeed} />
-      </CaseSection>
-
-      <CaseSection
-        aside={
-          <HonestNote>
-            <p>{t("status.noteP1")}</p>
-            <p className="mt-3">{t("status.noteP2")}</p>
-          </HonestNote>
-        }
-        id="status"
-        label={t("status.label")}
-        title={t("status.title")}
-        tone="raised"
-      >
-        <p className="type-body max-w-2xl">{t("status.p1")}</p>
-        <p className="type-body mt-4 max-w-2xl">{t("status.p2")}</p>
       </CaseSection>
 
       <section className="tone-ink border-t border-rule">

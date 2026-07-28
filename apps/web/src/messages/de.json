@@ -277,47 +277,59 @@
       "name": "Voyager",
       "claim": "Ein QR-Code auf dem Restauranttisch wird zum mehrsprachigen KI-Gastgeber, der aus der Karte und den Zeiten genau dieses Restaurants antwortet.",
       "status": "Vor dem Launch",
-      "tags": ["Proprietär", "Tourismus", "Mandantenfähig", "Sechs Sprachen"]
+      "tags": [
+        "Proprietär",
+        "Tourismus",
+        "Mandantenfähig",
+        "Sechs Sprachen"
+      ]
     },
     "scale": {
       "label": "Größe",
       "intro": "Aus dem Repository gezählt, nicht geschätzt.",
-      "scaleStats": [
+      "stats": [
         {
           "value": "~365.000",
           "label": "Zeilen TypeScript",
           "note": "Eigener Code. Ohne Abhängigkeiten."
         },
-        { "value": "220", "label": "Datenbanktabellen" },
-        { "value": "1.336", "label": "Backend-Funktionen" },
-        { "value": "312", "label": "Routen" }
-      ],
-      "buildStats": [
-        { "value": "7", "label": "Produktoberflächen", "note": "Ein Datenmodell hinter allen." },
-        { "value": "6", "label": "Sprachen", "note": "Oberfläche und generierte Antworten." },
-        { "value": "1.580", "label": "Automatisierte Testfälle", "note": "Über 286 Testdateien." },
-        { "value": "1.080", "label": "Commits", "note": "Über 20 Monate." }
+        {
+          "value": "220",
+          "label": "Datenbanktabellen"
+        },
+        {
+          "value": "312",
+          "label": "Routen",
+          "note": "Über sieben Produktoberflächen, ein Datenmodell."
+        },
+        {
+          "value": "6",
+          "label": "Sprachen",
+          "note": "Oberfläche und generierte Antworten."
+        },
+        {
+          "value": "1.580",
+          "label": "Automatisierte Testfälle",
+          "note": "Über 286 Testdateien."
+        }
       ]
     },
     "whatItIs": {
       "label": "Was es ist",
       "title": "Drei Zielgruppen, eine Plattform.",
-      "intro": "In einem Reiseziel gibt es drei Parteien, die nie ein System geteilt haben: den Gast mit dem Handy, den Betrieb, dessen Karte sich heute Morgen geändert hat, und den Tourismusverband, der für das offiziell Gültige geradesteht. Voyager setzt alle drei auf ein Datenmodell.",
+      "intro": "Ein Gast mit dem Handy, ein Betrieb, dessen Karte sich heute Morgen geändert hat, ein Tourismusverband, der für das offiziell Gültige geradesteht. Unter allen dreien ein Datenmodell.",
       "audiences": [
         {
           "role": "Gäste",
-          "headline": "Eine Karte dessen, was um Sie herum ist, und der Fußweg dorthin.",
-          "body": "Die App öffnet auf einer Karte, nicht in einem Feed. Sie führt Sie zu Fuß hin und beantwortet Fragen zum Ort in einer von sechs Sprachen. Einstieg ist ein QR-Code oder ein Link — kein Umweg über den App Store."
+          "line": "Die App öffnet auf einer Karte, nicht in einem Feed, und führt Sie in Ihrer Sprache zu Fuß hin."
         },
         {
           "role": "Betriebe",
-          "headline": "Ein QR-Code auf dem Tisch, und der KI-Gastgeber antwortet aus Ihrer Karte.",
-          "body": "Ein Restaurant lädt Karte, Öffnungszeiten und Hausregeln hoch. Der Gastgeber antwortet daraus, in der Sprache des Gastes, und der Wirt sieht einen Bereitschaftswert, bevor er ihn einschaltet."
+          "line": "Der Wirt lädt Karte, Öffnungszeiten und Hausregeln hoch und sieht einen Bereitschaftswert, bevor er den Gastgeber einschaltet."
         },
         {
           "role": "Tourismusverbände",
-          "headline": "Eine offizielle Ebene, die der Verband steuert und korrigieren kann.",
-          "body": "Geprüfte Betriebsprofile, Veranstaltungen, Wege und Hinweise, die der Verband selbst veröffentlicht. Sperrt ein Weg oder verschiebt sich ein Termin, ändert der Verband den Eintrag, statt eine Plattform um Korrektur zu bitten."
+          "line": "Der Verband veröffentlicht geprüfte Profile, Veranstaltungen, Wege und Hinweise und ändert den Eintrag selbst, wenn sich etwas ändert."
         }
       ]
     },
@@ -328,86 +340,71 @@
       "entries": [
         {
           "title": "Mandantenfähige Autorisierung, geprüft von einem Test, der den Quellcode liest",
-          "what": "Rechte laufen über WorkOS FGA mit einem synchronen Grant-Cache, damit eine Prüfung ein Lookup kostet und keinen Roundtrip. Ein Regressionstest durchsucht den Quellcode nach Routen, die Daten erreichen, ohne die Prüfung zu passieren.",
-          "why": "Ein Tourismusverband und jeder Betrieb im Reiseziel teilen eine Datenbank. Ein einziges Leck über diese Linie beendet den Pilotbetrieb."
+          "body": "Der Tourismusverband und jeder Betrieb teilen eine Datenbank, ein einziges Leck beendet den Piloten. Rechte laufen über WorkOS FGA mit einem synchronen Grant-Cache, und ein Test auf Quellcode-Ebene lässt den Build scheitern, sobald eine Route ohne Prüfung Daten liest."
         },
         {
           "title": "Retrieval, das weiß, wann es den Vektorindex überspringt",
-          "what": "Eine Frage nach Öffnungszeiten geht an eine strukturierte Abfrage. Ein Foto einer Speisekarte geht an einen multimodalen Index. Keines wird durch einen einzigen Vektorspeicher gezwungen, nur weil das am einfachsten zu bauen war.",
-          "why": "Öffnungszeiten aus einer Ähnlichkeitssuche sind geraten. Aus einer Spalte gelesen sind sie eine Tatsache — und eine falsche Schließzeit ist genau das, woran sich ein Gast erinnert."
+          "body": "Eine Frage nach Öffnungszeiten geht an eine strukturierte Abfrage, ein Foto der Speisekarte an einen multimodalen Index — nicht alles durch einen Vektorspeicher. Aus einer Spalte gelesen sind Zeiten eine Tatsache; eine falsche Schließzeit merkt sich ein Gast."
         },
         {
           "title": "Scraping und Fußgänger-Routing laufen als eigene Dienste",
-          "what": "Inhaltserfassung und OSRM-Fußwege laufen als selbst gehostete Dienste auf Railway statt über gemietete APIs mit Preis pro Anfrage.",
-          "why": "Wegbeschreibungen mit Preis pro Anfrage machen aus einem vollen August eine Rechnung, die niemand geplant hat, und aus einem Limit eine tote Karte."
+          "body": "Inhaltserfassung und OSRM-Fußwege laufen selbst gehostet auf Railway, nicht gemietet pro Anfrage. Wegbeschreibungen mit Preis pro Anfrage machen aus einem vollen August eine Rechnung, die niemand geplant hat."
         },
         {
           "title": "Ein Designsystem mit eigener Testsuite",
-          "what": "Sechzehn geregelte Teilsysteme decken die gemeinsame Oberfläche ab, und das System wird getestet wie der übrige Code.",
-          "why": "Sieben Produktoberflächen bleiben ein Produkt. Eine Korrektur an einer Komponente erreicht sie alle in einer Änderung."
+          "body": "Sechzehn geregelte Teilsysteme bilden die gemeinsame Oberfläche, getestet wie der übrige Code. Eine Korrektur an einer Komponente erreicht jede Oberfläche in einer Änderung."
         }
       ]
     },
     "evidence": {
       "label": "Belege",
-      "title": "Wie es aussieht.",
-      "intro": "Jeder Screen unten läuft auf eingespielten Vrsar-Pilotinhalten. Nichts davon ist echter Traffic.",
-      "explore": {
-        "label": "Gäste-App — Erkunden",
-        "alt": "Voyager-Erkundungsansicht: eine Karte der istrischen Küste neben einer Liste naher Orte",
-        "caption": "Die öffentliche Erkundungsansicht. Die Karte führt, die Liste folgt ihr. Eingezeichnet ist das eingespielte Gebiet um Vrsar."
+      "title": "Wie es heute aussieht.",
+      "intro": "Screens aus dem aktuellen Build. Alles läuft auf eingespielten Vrsar-Pilotinhalten, nie auf echtem Traffic.",
+      "atlas": {
+        "label": "Gäste-Atlas",
+        "alt": "Voyager-Atlas-Karte der Küste von Vrsar mit gebündelten Ortsnadeln und einem markierten Wanderweg",
+        "caption": "Die öffentliche Karte. Ortsbündel, ein ausgeschilderter Weg, und kein Konto nötig, um sie zu öffnen."
       },
       "board": {
-        "label": "Tourismusverband — offizielles Profil",
-        "alt": "Offizielles Profil der Turistička zajednica Vrsar mit Prüfsiegel und einer Liste von Veranstaltungen",
-        "caption": "Das offizielle Profil des Tourismusverbands: Prüfsiegel, Veranstaltungen und Felder, die nur der Verband ändern kann. Eingespielt aus Material der Turistička zajednica Vrsar."
+        "label": "Tourismusverband — öffentliches Profil",
+        "alt": "Offizielles Profil der TZ Vrsar mit Prüfsiegel, Hinweisen und einem Ortsverzeichnis",
+        "caption": "Das offizielle Profil der TZ Vrsar: Prüfsiegel, datierte Hinweise und ein Verzeichnis, das nur der Verband ändern kann."
       },
       "host": {
         "label": "Betriebskonsole — KI-Gastgeber",
-        "alt": "Konfigurationsbildschirm des KI-Gastgebers mit Quellen und einem Bereitschaftswert für einen Betrieb",
-        "caption": "Ein Betrieb richtet seinen KI-Gastgeber ein und sieht einen Bereitschaftswert, bevor er ihn einschaltet. Der Wert zeigt, wie viel eigener Inhalt dem Gastgeber zum Antworten zur Verfügung steht."
-      },
-      "events": {
-        "label": "Agentur — Veranstaltungen",
-        "alt": "Agentur-Dashboard mit eingespielten Veranstaltungen samt Datum und Veröffentlichungsstatus",
-        "caption": "Das Agentur-Dashboard, in dem Veranstaltungen angelegt, datiert und in die offizielle Ebene veröffentlicht werden. Die gelisteten Termine sind Pilotdaten."
-      },
-      "phone": {
-        "label": "Gäste-App — Handy",
-        "alt": "Voyager-Ortsprofil auf einem 390 Pixel breiten Handybildschirm",
-        "caption": "Dasselbe Profil bei 390 px — der Breite, die die meisten Gäste tatsächlich in der Hand halten."
+        "alt": "Einstellungen des Nexus-Agenten mit Tonalität, Schwerpunkten und einer Bereitschaftsanzeige",
+        "caption": "Ein Betrieb stellt Tonalität und Wissen seines Gastgebers ein und sieht, was den öffentlichen Chat noch blockiert."
       }
     },
     "pilot": {
-      "label": "Pilot",
-      "title": "Eingespielt für ein Reiseziel in Istrien.",
-      "intro": "Vrsar–Orsera ist geladen. Das Material der Turistička zajednica Vrsar liegt bereits in der Datenbank, ein Pilot startet also mit Inhalt statt mit einem leeren Reiseziel.",
+      "label": "Pilot und Status",
+      "title": "Eingespielt für Vrsar. Nicht gelauncht.",
+      "intro": "Das Material der Turistička zajednica Vrsar liegt bereits in der Datenbank, ein Pilot startet also mit Inhalt statt mit einem leeren Reiseziel.",
       "items": [
         {
           "label": "Benannte Wege",
-          "detail": "Wander- und Radrouten mit ihren echten Namen, keine generischen Nadeln auf einer Karte."
+          "detail": "Wander- und Radrouten mit ihren echten Namen."
         },
         {
           "label": "Badewasserqualität",
-          "detail": "Werte je Strand, am selben Datensatz wie der Strand selbst."
+          "detail": "Werte je Strand, am Datensatz des Strands selbst."
         },
         {
           "label": "Shuttle-Fahrpläne",
-          "detail": "Abfahrten der lokalen Shuttles, damit eine Antwort zur Anreise Uhrzeiten enthält."
+          "detail": "Lokale Abfahrten, damit Wegauskünfte Uhrzeiten enthalten."
         },
         {
           "label": "Veranstaltungen",
-          "detail": "Der Kalender des Verbands, veröffentlicht aus seinem eigenen geprüften Profil."
+          "detail": "Der Kalender des Verbands, aus seinem eigenen geprüften Profil."
         }
-      ]
-    },
-    "status": {
-      "label": "Status",
-      "title": "Gebaut und für den Launch instrumentiert. Nicht gelauncht.",
-      "p1": "Die sieben Oberflächen stehen, die Tests laufen, die Messpunkte für den Launch sind gesetzt. Es fehlt ein Reiseziel, das los sagt — ein Tourismusverband oder eine Gruppe von Betrieben an einem Ort, die eine erste Saison darauf fahren will.",
-      "p2": "Bis dahin zeigen wir Ihnen lieber das Repository und den eingespielten Piloten als eine Wachstumskurve.",
-      "noteP1": "Vor dem Launch. Das Produktiv-Deployment steht aus, es gibt also keine echten Endnutzer, keinen öffentlichen Traffic und keine Betriebszahlen zum Zitieren.",
-      "noteP2": "Jede Zahl auf dieser Seite ist aus dem Repository gezählt. Jeder Screenshot zeigt eingespielte Pilotinhalte."
+      ],
+      "phone": {
+        "label": "Dasselbe Profil bei 390 px",
+        "alt": "Profil der TZ Vrsar auf einem Handy mit Wasserqualität, Shuttle und Terminen des Tages",
+        "caption": "Die offizielle Ebene in der Breite, die ein Gast tatsächlich in der Hand hält."
+      },
+      "noteP1": "Vor dem Launch. Kein Produktiv-Deployment, keine echten Endnutzer, keine Betriebszahlen zum Zitieren.",
+      "noteP2": "Es fehlt ein Reiseziel, das los sagt — ein Verband oder eine Gruppe von Betrieben, bereit für eine erste Saison."
     },
     "next": {
       "label": "Weiter",

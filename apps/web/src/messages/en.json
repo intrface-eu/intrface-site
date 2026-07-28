@@ -277,47 +277,59 @@
       "name": "Voyager",
       "claim": "One QR code on a restaurant table becomes a multilingual AI host that answers from that restaurant's own menu and hours.",
       "status": "Pre-launch",
-      "tags": ["Proprietary", "Tourism", "Multi-tenant", "Six languages"]
+      "tags": [
+        "Proprietary",
+        "Tourism",
+        "Multi-tenant",
+        "Six languages"
+      ]
     },
     "scale": {
       "label": "Scale",
       "intro": "Counted from the repository, not estimated.",
-      "scaleStats": [
+      "stats": [
         {
           "value": "~365,000",
           "label": "Lines of TypeScript",
           "note": "First-party. Dependencies excluded."
         },
-        { "value": "220", "label": "Database tables" },
-        { "value": "1,336", "label": "Backend functions" },
-        { "value": "312", "label": "Routes" }
-      ],
-      "buildStats": [
-        { "value": "7", "label": "Product surfaces", "note": "One data model behind all of them." },
-        { "value": "6", "label": "Languages", "note": "Interface and generated answers." },
-        { "value": "1,580", "label": "Automated test cases", "note": "Across 286 test files." },
-        { "value": "1,080", "label": "Commits", "note": "Over 20 months." }
+        {
+          "value": "220",
+          "label": "Database tables"
+        },
+        {
+          "value": "312",
+          "label": "Routes",
+          "note": "Across seven product surfaces, one data model."
+        },
+        {
+          "value": "6",
+          "label": "Languages",
+          "note": "Interface and generated answers."
+        },
+        {
+          "value": "1,580",
+          "label": "Automated test cases",
+          "note": "Across 286 test files."
+        }
       ]
     },
     "whatItIs": {
       "label": "What it is",
       "title": "Three audiences, one platform.",
-      "intro": "A destination has three parties who have never shared a system: the visitor holding a phone, the business whose menu changed this morning, and the tourist board answerable for what is officially true. Voyager puts all three on one data model.",
+      "intro": "A visitor with a phone, a business whose menu changed this morning, a tourist board answerable for what is official. One data model under all three.",
       "audiences": [
         {
           "role": "Visitors",
-          "headline": "A map of what is around you, and walking directions to it.",
-          "body": "The app opens on a map, not a feed. It routes you there on foot and answers questions about the place in one of six languages. A QR code or a link is the entry point — no app store detour."
+          "line": "The app opens on a map, not a feed, and routes you there on foot in your own language."
         },
         {
           "role": "Businesses",
-          "headline": "One QR code on the table, and the AI host answers from your menu.",
-          "body": "A restaurant loads its menu, hours, and house rules. The host answers from those, in the visitor's language, and the owner sees a readiness score before switching it on."
+          "line": "The owner loads a menu, hours, and house rules, then sees a readiness score before switching the host on."
         },
         {
           "role": "Tourist boards",
-          "headline": "An official layer the board controls and can correct.",
-          "body": "Verified business profiles, events, trails, and advisories the board publishes itself. When a trail closes or an event moves, the board edits the record instead of asking a platform to fix it."
+          "line": "The board publishes verified profiles, events, trails, and advisories, and edits the record itself when something changes."
         }
       ]
     },
@@ -328,86 +340,71 @@
       "entries": [
         {
           "title": "Multi-tenant authorization, checked by a test that reads the source",
-          "what": "Permissions run through WorkOS FGA with a synchronous grant cache, so a check costs a lookup rather than a round trip. A regression test scans the source for routes that reach data without passing the check.",
-          "why": "A tourist board and every business in the destination share one database. One leak across that line ends the pilot."
+          "body": "The tourist board and every business share one database, so a single leak ends the pilot. Permissions run through WorkOS FGA with a synchronous grant cache, and a source-level test fails the build on any route that reads data without checking."
         },
         {
           "title": "Retrieval that knows when to skip the vector index",
-          "what": "A question about opening hours is routed to a structured lookup. A photo of a menu goes to a multimodal index. Neither is forced through a single vector store because that was the easiest thing to build.",
-          "why": "Opening hours pulled from a similarity search are a guess. Read from a column, they are a fact — and a wrong closing time is the thing a guest remembers."
+          "body": "Opening hours go to a structured lookup, a menu photo to a multimodal index — not everything through one vector store. Read from a column, hours are a fact; a wrong closing time is what a guest remembers."
         },
         {
           "title": "Scraping and pedestrian routing run as our own services",
-          "what": "Content ingestion and OSRM walking routes run as self-hosted services on Railway instead of rented per-request APIs.",
-          "why": "Directions priced per request turn a busy August into a bill nobody forecast, and a rate limit into a dead map."
+          "body": "Content ingestion and OSRM walking routes are self-hosted on Railway, not rented per request. Directions priced per request turn a busy August into a bill nobody forecast."
         },
         {
           "title": "A design system with its own test suite",
-          "what": "Sixteen governed subsystems cover the shared interface, and the system is tested like the rest of the code.",
-          "why": "Seven product surfaces stay one product. A correction to a component reaches all of them in one change."
+          "body": "Sixteen governed subsystems make up the shared interface, tested like the rest of the code. A fix to one component reaches every surface in one change."
         }
       ]
     },
     "evidence": {
       "label": "Evidence",
-      "title": "What it looks like.",
-      "intro": "Every screen below runs on seeded Vrsar pilot content. None of it is live traffic.",
-      "explore": {
-        "label": "Visitor app — explore",
-        "alt": "Voyager explore view: a coastal Istria map beside a list of nearby places",
-        "caption": "The public explore view. The map leads and the list follows it. What is plotted here is the seeded Vrsar area."
+      "title": "What it looks like today.",
+      "intro": "Screens from the current build. All of it runs on seeded Vrsar pilot content, never live traffic.",
+      "atlas": {
+        "label": "Visitor Atlas",
+        "alt": "Voyager Atlas map of the Vrsar coastline with clustered place pins and a marked walking route",
+        "caption": "The public map. Place clusters, a signposted route, and no account needed to open it."
       },
       "board": {
-        "label": "Tourist board — official profile",
-        "alt": "Official Turistička zajednica Vrsar profile with a verified badge and a list of events",
-        "caption": "The tourist board's official profile: verified badge, events, and fields only the board can edit. Seeded from Turistička zajednica Vrsar material."
+        "label": "Tourist board — public profile",
+        "alt": "TZ Vrsar official profile with a verified badge, notices, and a register of places",
+        "caption": "TZ Vrsar's official profile: a verified badge, dated notices, and a register only the board can edit."
       },
       "host": {
         "label": "Business console — AI host",
-        "alt": "AI host configuration screen showing grounding sources and a readiness score for a business",
-        "caption": "A business configures its AI host and sees a readiness score before switching it on. The score reflects how much of its own content the host can answer from."
-      },
-      "events": {
-        "label": "Agency — events",
-        "alt": "Agency dashboard listing seeded events with their dates and publication status",
-        "caption": "The agency dashboard, where events are created, dated, and published to the official layer. The events listed are pilot seed data."
-      },
-      "phone": {
-        "label": "Visitor app — phone",
-        "alt": "Voyager place profile on a 390 pixel wide phone screen",
-        "caption": "The same profile at 390 px — the width most visitors will actually hold."
+        "alt": "Nexus agent settings showing tone, specialties, and a launch-readiness panel",
+        "caption": "A business sets its host's tone and knowledge, and sees what still blocks public chat."
       }
     },
     "pilot": {
-      "label": "Pilot",
-      "title": "Seeded for one destination in Istria.",
-      "intro": "Vrsar–Orsera is loaded. Turistička zajednica Vrsar's material sits in the database already, so a pilot starts with content instead of an empty destination.",
+      "label": "Pilot and status",
+      "title": "Seeded for Vrsar. Not launched.",
+      "intro": "Turistička zajednica Vrsar's material is already in the database, so a pilot starts with content, not an empty destination.",
       "items": [
         {
           "label": "Named trails",
-          "detail": "Walking and cycling routes carrying their real names, not generic pins on a map."
+          "detail": "Walking and cycling routes under their real names."
         },
         {
           "label": "Sea-water quality",
-          "detail": "Bathing-water signals per beach, held on the same record as the beach itself."
+          "detail": "Bathing-water signals on the beach record itself."
         },
         {
           "label": "Shuttle timetables",
-          "detail": "Local shuttle departures, so an answer about getting there has times in it."
+          "detail": "Local departures, so directions come with times."
         },
         {
           "label": "Events",
           "detail": "The board's calendar, published from its own verified profile."
         }
-      ]
-    },
-    "status": {
-      "label": "Status",
-      "title": "Built and instrumented for launch. Not launched.",
-      "p1": "The seven surfaces are built, the tests run, and the launch instrumentation is in place. What is missing is a destination that says go — a tourist board or a group of businesses in one place, willing to run a first season on it.",
-      "p2": "Until then we would rather show you the repository and the seeded pilot than a growth chart.",
-      "noteP1": "Pre-launch. The production deployment has not been cut, so there are no real end users, no public traffic, and no operating numbers to quote.",
-      "noteP2": "Every figure on this page is counted from the repository. Every screenshot shows seeded pilot content."
+      ],
+      "phone": {
+        "label": "The same profile at 390 px",
+        "alt": "TZ Vrsar profile on a phone, showing water quality, the shuttle, and today's events",
+        "caption": "The official layer at the width a visitor actually holds."
+      },
+      "noteP1": "Pre-launch. No production deployment, no real end users, no operating numbers to quote.",
+      "noteP2": "What is missing is a destination that says go — a board or a group of businesses ready for a first season."
     },
     "next": {
       "label": "Next",
