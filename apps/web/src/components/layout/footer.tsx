@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import { Link } from "@/i18n/navigation";
+import { AnimatedMark } from "@/components/site/animated-mark";
 import type { AppLocale } from "@/i18n/routing";
 import { AOC_REPO_URL, CONTACT_EMAIL, SITE_NAME } from "@/lib/site/config";
 
@@ -21,7 +21,8 @@ export async function Footer({ locale }: { locale: AppLocale }) {
       <div className="section-shell grid gap-10 py-14 lg:grid-cols-[1.1fr_1fr] lg:items-start">
         <div>
           <div className="flex items-center gap-3">
-            <Image src="/brand/intrface-icon.svg" alt="" width={20} height={20} />
+            {/* Below the fold, so it rests rather than composing where nobody sees it. */}
+            <AnimatedMark animate={false} className="text-ink" size={20} />
             <span className="text-lg font-medium tracking-[-0.04em] text-ink">intrface</span>
           </div>
           <p className="type-body mt-4 max-w-sm text-sm leading-6">{footer("tagline")}</p>

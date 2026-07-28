@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { AnimatedMark } from "@/components/site/animated-mark";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
 import { MobileNav } from "@/components/site/mobile-nav";
 import { SiteNav, type NavItem } from "@/components/site/site-nav";
@@ -20,13 +20,8 @@ export async function Header({ locale }: { locale: AppLocale }) {
     <header className="sticky top-0 z-50 border-b border-rule bg-paper/95 backdrop-blur-sm">
       <div className="section-shell relative flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
-          <Image
-            src="/brand/intrface-icon.svg"
-            alt={t("logoAlt")}
-            width={26}
-            height={26}
-            priority
-          />
+          {/* Decorative: the link already carries its own accessible name. */}
+          <AnimatedMark className="text-ink" size={26} />
           <span className="text-xl font-medium tracking-[-0.04em] text-ink">intrface</span>
         </Link>
 

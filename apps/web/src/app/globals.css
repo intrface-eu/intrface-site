@@ -115,6 +115,31 @@ body {
   }
 }
 
+/* The mark composes itself: the big star swings 45deg into square — half of
+   its four-fold symmetry period, so it starts on the diagonal and lands
+   upright — and the small star spins a full quarter turn in behind it. */
+@keyframes mark-compose {
+  from {
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes mark-compose-spark {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
 @keyframes ripple-pulse {
   0% {
     opacity: 0.42;
@@ -459,6 +484,27 @@ body {
 
   .ripple-ring[data-delay="2"] {
     animation-delay: 2.4s;
+  }
+
+  /* ===== BRAND MARK =====
+     Each star turns about its own centre, not the shared viewBox, so the two
+     shapes settle independently. The whole entrance runs 620ms and stops.
+     Under reduced motion the rule never applies and the mark is simply there. */
+  .brand-mark path {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-mark path {
+      animation: mark-compose 460ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+    }
+
+    .brand-mark .brand-mark__spark {
+      animation-name: mark-compose-spark;
+      animation-duration: 380ms;
+      animation-delay: 240ms;
+    }
   }
 
   .artifact-card {
