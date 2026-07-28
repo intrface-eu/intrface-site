@@ -16,8 +16,11 @@ export async function Header({ locale }: { locale: AppLocale }) {
     { href: "/about#contact", label: t("contact") },
   ];
 
+  // The bar carries no backdrop-filter on purpose: it is a sticky, full-width
+  // layer, so a blur makes the compositor re-read and re-blur everything behind
+  // it on every scroll frame. At 97% paper there is nothing legible to blur.
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/97">
       <div className="section-shell relative flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
           {/* Decorative: the link already carries its own accessible name. */}

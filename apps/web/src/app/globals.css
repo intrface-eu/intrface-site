@@ -438,11 +438,15 @@ body {
     color: var(--ink-inverse);
   }
 
+  /* On the home page this panel sits directly over the drifting halftone
+     field, and a backdrop-filter above a moving backdrop has to re-blur on
+     every frame of that drift. The extra card alpha does the same job the
+     blur did — settle the dots behind the diagram — for no per-frame cost.
+     0.88 stays inside the 80–90% band DESIGN.md sets for `--card` on paper. */
   .interface-panel {
     border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.88);
     box-shadow: var(--shadow-elevated);
-    backdrop-filter: blur(18px);
   }
 
   .interface-node {
