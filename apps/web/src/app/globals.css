@@ -140,6 +140,23 @@ body {
   }
 }
 
+/* Ambient tilt for the mark. A pendulum, not a metronome: zero velocity at the
+   two extremes, fastest through centre, and dead-on the resting pose at 0%/100%
+   so the loop can start and stop without a step. Amplitude is `--bm-tilt` deg,
+   set per star. */
+@keyframes bm-tilt {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: calc(1deg * var(--bm-tilt));
+  }
+  75% {
+    rotate: calc(-1deg * var(--bm-tilt));
+  }
+}
+
 @keyframes ripple-pulse {
   0% {
     opacity: 0.42;
@@ -487,23 +504,217 @@ body {
   }
 
   /* ===== BRAND MARK =====
-     Each star turns about its own centre, not the shared viewBox, so the two
-     shapes settle independently. The whole entrance runs 620ms and stops.
-     Under reduced motion the rule never applies and the mark is simply there. */
-  .brand-mark path {
-    transform-box: fill-box;
-    transform-origin: center;
+     Zero JS. Every animated value is an individual transform property on a
+     plain span, so the whole thing lives on the compositor.
+
+     Pivots (viewBox 0 0 1000 1000 on a square box, so a percentage of the box
+     maps 1:1 onto a user unit):
+
+       big star    (500, 500)      ->  50%       50%
+       small star  (202.17, 221.48) -> 20.217%   22.148%
+
+     Both stars are four-point concave stars whose control points sit on their
+     bounding-box corners, so the box centre is the true centre of symmetry.
+
+     Three layers of motion, one wrapper each, so none of them fight:
+
+       entrance     the original compose — each star turns and scales into
+                    place once, 620ms end to end, on `__*-enter`.
+       ambient      a slow counter-phased tilt on both stars, on `__*-tilt`,
+                    delayed until the entrance has landed. Different periods
+                    (master/3 and master/2) in opposite directions, so the pair
+                    drifts apart and recomposes over one master period.
+       interaction  hover / keyboard focus / press, as transitions on the outer
+                    `__star` and `__spark`. Because interaction is a transition
+                    on a different element, opening or closing it never
+                    restarts — and so never jumps — the ambient loop beneath.
+
+     The small star's travel is a true mirror about the box centre: its centre
+     sits at (202.17, 221.48), the mirror is (797.83, 778.52), so the trip is
+     (595.66, 557.04) user units. The big star is symmetric under a half turn,
+     so the landing pose sits in the opposite notch exactly as the resting pose
+     sits in its own.
+
+     Interaction easing is a spring — mass 1, stiffness 200, damping 20 —
+     sampled into a linear() curve, with a cubic-bezier of roughly the same
+     shape declared first for engines without linear(). */
+  .brand-mark {
+    /* Master period 14400ms, so the pair recomposes then. Fixed chrome above
+       every page of reading, so the ambient tilt is barely there; the gesture
+       is saved for hover and keyboard focus of the link. */
+    --bm-star-period: 4800ms; /* master / 3 */
+    --bm-spark-period: 7200ms; /* master / 2 */
+    --bm-star-tilt: 0.9; /* deg */
+    --bm-spark-tilt: 3; /* deg */
+    --bm-enter-end: 620ms;
+
+    /* Interaction, all identity at rest. */
+    --bm-travel: 0%;
+    --bm-spin: 0deg;
+    --bm-swing: 0deg;
+    --bm-press: 1;
+    --bm-ease: cubic-bezier(0.37, 0, 0.63, 1); /* sine-in-out */
+
+    position: relative;
+    display: inline-block;
+    width: var(--bm-size, 26px);
+    height: var(--bm-size, 26px);
+
+    /* Press kick, on the whole mark. */
+    scale: var(--bm-press);
+    transition: scale 650ms cubic-bezier(0.34, 1.22, 0.64, 1);
+    transition: scale 650ms
+      linear(
+        0, 0.12 5%, 0.359 10%, 0.601 15%, 0.792 20%, 0.921 25%, 0.995 30%,
+        1.029 35%, 1.038 40%, 1.034 45%, 1.025 50%, 1.016 55%, 1.008 60%,
+        1.003 65%, 1 70%, 0.999 75%, 0.999 80%, 0.999 85%, 0.999 90%,
+        0.999 95%, 1
+      );
   }
 
+  .brand-mark__star,
+  .brand-mark__star-tilt,
+  .brand-mark__star-enter,
+  .brand-mark__spark,
+  .brand-mark__spark-tilt,
+  .brand-mark__spark-enter {
+    position: absolute;
+    inset: 0;
+  }
+
+  .brand-mark__glyph {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: currentColor;
+  }
+
+  .brand-mark__star,
+  .brand-mark__star-tilt,
+  .brand-mark__star-enter {
+    transform-origin: 50% 50%;
+  }
+
+  .brand-mark__spark,
+  .brand-mark__spark-tilt,
+  .brand-mark__spark-enter {
+    transform-origin: 20.217% 22.148%;
+  }
+
+  /* Outer pivot: pointer / keyboard / press swing only. Both stars are
+     four-fold symmetric, so a quarter turn lands on the resting pose and the
+     gesture is read entirely in flight. */
+  .brand-mark__star {
+    rotate: var(--bm-swing);
+    transition: rotate 800ms cubic-bezier(0.34, 1.22, 0.64, 1);
+    transition: rotate 800ms
+      linear(
+        0, 0.122 5%, 0.365 10%, 0.61 15%, 0.804 20%, 0.933 25%, 1.006 30%,
+        1.037 35%, 1.043 40%, 1.037 45%, 1.026 50%, 1.016 55%, 1.008 60%,
+        1.002 65%, 1 70%, 0.998 75%, 0.998 80%, 0.999 85%, 0.999 90%,
+        0.999 95%, 1
+      );
+  }
+
+  /* Outer pivot: the mirror travel and the spin that rides it. `translate` and
+     `rotate` are separate properties, so they compose without either one
+     having to know about the other. */
+  .brand-mark__spark {
+    translate: var(--bm-travel);
+    rotate: var(--bm-spin);
+    transition:
+      translate 800ms cubic-bezier(0.34, 1.22, 0.64, 1),
+      rotate 800ms cubic-bezier(0.34, 1.22, 0.64, 1);
+    transition:
+      translate 800ms
+        linear(
+          0, 0.122 5%, 0.365 10%, 0.61 15%, 0.804 20%, 0.933 25%, 1.006 30%,
+          1.037 35%, 1.043 40%, 1.037 45%, 1.026 50%, 1.016 55%, 1.008 60%,
+          1.002 65%, 1 70%, 0.998 75%, 0.998 80%, 0.999 85%, 0.999 90%,
+          0.999 95%, 1
+        ),
+      rotate 800ms
+        linear(
+          0, 0.122 5%, 0.365 10%, 0.61 15%, 0.804 20%, 0.933 25%, 1.006 30%,
+          1.037 35%, 1.043 40%, 1.037 45%, 1.026 50%, 1.016 55%, 1.008 60%,
+          1.002 65%, 1 70%, 0.998 75%, 0.998 80%, 0.999 85%, 0.999 90%,
+          0.999 95%, 1
+        );
+  }
+
+  /* Entrance and ambient both only exist under no-preference. Under reduced
+     motion the rules never apply and the mark is simply there, composed. */
   @media (prefers-reduced-motion: no-preference) {
-    .brand-mark path {
+    .brand-mark:not(.brand-mark--static) .brand-mark__star-enter {
       animation: mark-compose 460ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
     }
 
+    .brand-mark:not(.brand-mark--static) .brand-mark__spark-enter {
+      animation: mark-compose-spark 380ms cubic-bezier(0.2, 0.8, 0.3, 1) 240ms both;
+    }
+
+    /* Inner pivot: the always-on tilt, held back until the entrance has
+       landed. The keyframe rests at 0deg, so it picks up exactly where the
+       entrance stopped. */
+    .brand-mark:not(.brand-mark--static) .brand-mark__star-tilt {
+      --bm-tilt: var(--bm-star-tilt);
+
+      animation: bm-tilt var(--bm-star-period) var(--bm-ease) var(--bm-enter-end) infinite;
+    }
+
+    /* Run in reverse so the small star leans away from the big one. */
+    .brand-mark:not(.brand-mark--static) .brand-mark__spark-tilt {
+      --bm-tilt: var(--bm-spark-tilt);
+
+      animation: bm-tilt var(--bm-spark-period) var(--bm-ease) var(--bm-enter-end) infinite
+        reverse;
+    }
+  }
+
+  /* Triggered by the mark itself and by a wrapping link or button, because the
+     header mark is the inside of a <Link>. `static` is excluded rather than
+     overridden, so it can never be re-enabled by specificity. */
+  .brand-mark:not(.brand-mark--static):hover,
+  .brand-mark:not(.brand-mark--static):focus-visible,
+  a:hover .brand-mark:not(.brand-mark--static),
+  a:focus-visible .brand-mark:not(.brand-mark--static),
+  button:hover .brand-mark:not(.brand-mark--static),
+  button:focus-visible .brand-mark:not(.brand-mark--static) {
+    --bm-travel: 59.566% 55.704%;
+    --bm-spin: 180deg;
+    --bm-swing: -90deg;
+  }
+
+  /* Press: a little further, a little bigger. */
+  .brand-mark:not(.brand-mark--static):active,
+  a:active .brand-mark:not(.brand-mark--static),
+  button:active .brand-mark:not(.brand-mark--static) {
+    --bm-travel: 59.566% 55.704%;
+    --bm-spin: 202deg;
+    --bm-swing: -97deg;
+    --bm-press: 1.05;
+  }
+
+  /* Every transform at identity: the composed mark is the brand file exactly.
+     That is the pose `static` freezes on. */
+  .brand-mark--static,
+  .brand-mark--static .brand-mark__star,
+  .brand-mark--static .brand-mark__spark {
+    transition: none;
+    translate: none;
+    rotate: 0deg;
+    scale: 1;
+  }
+
+  /* Reduced motion: no entrance, no ambient loop, and no animated travel — but
+     hover still has to say something, so the interaction poses apply instantly
+     instead of being sprung into place. */
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark,
+    .brand-mark .brand-mark__star,
     .brand-mark .brand-mark__spark {
-      animation-name: mark-compose-spark;
-      animation-duration: 380ms;
-      animation-delay: 240ms;
+      transition: none;
     }
   }
 
