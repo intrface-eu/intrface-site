@@ -32,6 +32,34 @@ a screenshot, or a named artifact.
 - Honesty is a feature. Pre-launch is "pre-launch". A pilot seed is "pilot-ready".
   Polis's own honest-status discipline is part of the pitch.
 
+## Copy anti-patterns (from the 2026-07-28 editorial audit — check before adding copy)
+
+These are the habits that made the copy read machine-written. They recur; watch for them.
+
+1. **One fact, five wordings.** Repeating a line *verbatim* reads as a position; repeating
+   it in variants reads as a machine generating variants. Each fact gets ONE canonical
+   sentence, reused character-for-character (the Voyager QR line, the contract-files line,
+   each honest-status label). Never paraphrase to avoid repetition.
+2. **Status labels are the product.** Exactly these spellings, everywhere: Voyager
+   "Pre-launch" · Polis "Open source · AGPL · pre-deployment" · Funda "Active build".
+   Inconsistent labels disprove the pitch they carry.
+3. **Sentence-shape templates.** "N X, one Y." and "X is not A. It is B." are the house
+   voice in small doses. Rule: no antithesis in a section intro, never two in consecutive
+   sentences, and no more than three per page. Never run the same construction three
+   times in a row (anaphora is the loudest tell).
+4. **Announcing intros.** Label → title → intro all saying the same thing before any
+   content arrives. Say it once, then say something new.
+5. **Abstraction where evidence exists.** If a number from Approved facts fits, use the
+   number. Unfalsifiable principles ("clarity before spectacle") do not earn their space.
+6. **Say only what is true of today's status.** We do not "operate" pre-launch platforms;
+   the public roster is one live site, not "client sites" plural.
+
+Lines that carry the site's voice — the honest-status notes, "Bring us the messy system",
+the footer colophon, "There are no screenshots on this page", "Counted from the repository,
+not estimated", "Pre-launch means pre-launch", "No mock-ups — this is the terminal we work
+in", the whole ContactForm namespace — are load-bearing. Tighten around them; do not smooth
+them out.
+
 ## Forbidden claims (stale docs overstate these; an informed reader will check)
 
 - Voyager: NO production launch, NO real end users, NO Arabic/RTL, NO "10+ languages"
