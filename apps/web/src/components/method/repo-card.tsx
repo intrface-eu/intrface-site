@@ -35,11 +35,11 @@ export function RepoCard({ label, summary, chips, className = "" }: RepoCardProp
         />
       </div>
 
-      <p className="mt-5 break-words font-mono text-base font-medium tracking-[-.01em] text-ink sm:text-lg">
+      <p className="type-data mt-5 break-words text-base font-medium text-ink sm:text-lg">
         github.com/basicalex/agent-ops-cockpit
       </p>
 
-      <p className="type-body mt-4 text-sm leading-6">{summary}</p>
+      <p className="type-body-sm mt-4">{summary}</p>
 
       {chips?.length ? (
         <div className="mt-6 flex flex-wrap gap-2 border-t border-rule pt-6">

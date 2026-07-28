@@ -36,10 +36,10 @@ export async function MethodPage({ locale }: { locale: AppLocale }) {
               <p className="type-section-label">{t("hero.label")}</p>
             </FadeIn>
             <FadeIn delay={100}>
-              <h1 className="type-display mt-6 max-w-3xl">{t("hero.title")}</h1>
+              <h1 className="type-display mt-6">{t("hero.title")}</h1>
             </FadeIn>
             <FadeIn delay={200}>
-              <p className="type-body-lg mt-7 max-w-2xl font-medium">{t("hero.lead")}</p>
+              <p className="type-body-lg mt-7 font-medium">{t("hero.lead")}</p>
             </FadeIn>
             <FadeIn delay={300}>
               <div className="mt-9 flex flex-wrap gap-3">
@@ -154,14 +154,17 @@ export async function MethodPage({ locale }: { locale: AppLocale }) {
       >
         <ol className="divide-y divide-rule border-y border-rule">
           {clientReasons.map((reason, index) => (
-            <li key={reason.title}>
+            /* The padding sits on the row that carries the hairline, not on a
+               wrapper inside it, so the last line of each reason keeps a real
+               inset from the rule below it. */
+            <li className="py-7" key={reason.title}>
               <FadeIn delay={80 + index * 70}>
-                <div className="grid grid-cols-[3rem_1fr] items-baseline gap-4 py-6">
-                  <span className="font-mono text-sm font-semibold text-accent">
+                <div className="grid grid-cols-[3rem_1fr] items-baseline gap-4">
+                  <span className="type-data text-sm font-semibold text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="text-lg font-semibold tracking-[-.03em] text-ink sm:text-xl">
+                    <h3 className="type-title text-ink">
                       {reason.title}
                     </h3>
                     <p className="type-body mt-2">{reason.text}</p>
@@ -182,10 +185,10 @@ export async function MethodPage({ locale }: { locale: AppLocale }) {
                 <p className="type-section-label">{t("next.label")}</p>
               </FadeIn>
               <FadeIn delay={100}>
-                <h2 className="type-heading mt-5 max-w-2xl">{t("next.title")}</h2>
+                <h2 className="type-heading mt-5">{t("next.title")}</h2>
               </FadeIn>
               <FadeIn delay={200}>
-                <p className="type-body-lg mt-6 max-w-2xl">{t("next.body")}</p>
+                <p className="type-body-lg mt-6">{t("next.body")}</p>
               </FadeIn>
             </div>
 

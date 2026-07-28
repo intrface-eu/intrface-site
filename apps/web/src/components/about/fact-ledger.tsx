@@ -29,7 +29,7 @@ export function FactLedger({ facts, className = "" }: FactLedgerProps) {
           key={fact.term}
         >
           <dt className="type-meta sm:pt-1">{fact.term}</dt>
-          <dd className="text-base leading-7 text-ink">{fact.value}</dd>
+          <dd className="type-body text-ink">{fact.value}</dd>
         </FadeIn>
       ))}
     </dl>

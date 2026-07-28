@@ -77,20 +77,20 @@ export async function SiteShowcase({
       <FadeIn className={mediaFirst ? "lg:order-2" : "lg:order-1"} delay={80}>
         <p className="type-section-label">{site.place}</p>
 
-        <h3 className="mt-4 text-2xl font-semibold tracking-[-.035em] sm:text-3xl">{site.name}</h3>
+        <h3 className="type-subheading mt-4">{site.name}</h3>
 
         <p className="type-body mt-4 max-w-md">{site.line}</p>
 
         <dl className="mt-7 flex flex-wrap gap-x-8 gap-y-4">
           <div>
             <dt className="type-meta">{t("languagesLabel")}</dt>
-            <dd className="mt-2 font-mono text-sm font-semibold tracking-[.06em]">
+            <dd className="type-data mt-2 text-sm font-semibold tracking-[.06em]">
               {site.languages.join(" · ")}
             </dd>
           </div>
           <div>
             <dt className="type-meta">{t("markupLabel")}</dt>
-            <dd className="type-body mt-2 text-sm leading-6">{site.notes.join(", ")}</dd>
+            <dd className="type-body-sm mt-2 leading-6">{site.notes.join(", ")}</dd>
           </div>
         </dl>
 

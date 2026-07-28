@@ -30,16 +30,16 @@ export function OperatingRule({ label, rule, clauses, className = "" }: Operatin
               <p className="type-section-label">{label}</p>
             </FadeIn>
             <FadeIn delay={100}>
-              <h2 className="type-heading mt-5 max-w-2xl">{rule}</h2>
+              <h2 className="type-heading mt-5">{rule}</h2>
             </FadeIn>
           </div>
 
           <FadeIn delay={180}>
             <dl className="divide-y divide-rule border-y border-rule">
               {clauses.map((clause) => (
-                <div className="py-5 first:pt-0 last:pb-0" key={clause.text}>
-                  <dt className="text-base font-semibold tracking-[-.025em]">{clause.text}</dt>
-                  <dd className="type-body mt-2 text-sm leading-6">{clause.detail}</dd>
+                <div className="py-5" key={clause.text}>
+                  <dt className="type-title">{clause.text}</dt>
+                  <dd className="type-body-sm mt-2 leading-6">{clause.detail}</dd>
                 </div>
               ))}
             </dl>

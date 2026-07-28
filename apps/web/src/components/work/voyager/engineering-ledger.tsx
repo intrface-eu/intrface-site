@@ -27,11 +27,11 @@ export function EngineeringLedger({
           key={entry.title}
         >
           <div className="flex gap-4">
-            <span className="type-meta shrink-0 font-mono tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-            <h3 className="text-xl font-semibold tracking-[-.035em]">{entry.title}</h3>
+            <span className="type-meta shrink-0 tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+            <h3 className="type-title">{entry.title}</h3>
           </div>
 
-          <p className="type-body max-w-2xl">{entry.body}</p>
+          <p className="type-body">{entry.body}</p>
         </FadeIn>
       ))}
     </div>

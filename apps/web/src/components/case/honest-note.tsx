@@ -22,7 +22,7 @@ export async function HonestNote({ label, children, className = "" }: HonestNote
   return (
     <aside className={`border-l-2 border-l-accent pl-5 ${className}`}>
       <p className="type-section-label">{label ?? t("honestStatus")}</p>
-      <div className="type-body mt-3 max-w-2xl text-sm leading-6">{children}</div>
+      <div className="type-body-sm mt-3">{children}</div>
     </aside>
   );
 }

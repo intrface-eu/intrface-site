@@ -111,7 +111,7 @@ export async function ImprintPage({ locale }: { locale: AppLocale }) {
             <h1 className="type-heading mt-6 max-w-3xl">{t("title")}</h1>
           </FadeIn>
           <FadeIn delay={200}>
-            <p className="type-body-lg mt-6 max-w-2xl">
+            <p className="type-body-lg mt-6">
               {t("lead", { siteName: SITE_NAME, host })}
             </p>
           </FadeIn>
@@ -137,7 +137,7 @@ export async function ImprintPage({ locale }: { locale: AppLocale }) {
           <div className="grid max-w-3xl gap-12">
             {sections.map((section, index) => (
               <FadeIn delay={index * 60} key={section.title}>
-                <h2 className="text-lg font-semibold tracking-[-.02em] text-ink">
+                <h2 className="type-title text-ink">
                   {section.title}
                 </h2>
                 <div className="mt-3">{section.body}</div>

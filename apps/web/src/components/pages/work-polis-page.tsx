@@ -53,12 +53,12 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
       >
         <div className="grid gap-10 lg:grid-cols-2">
           <FadeIn>
-            <h3 className="text-lg font-semibold tracking-[-.02em]">{t("whatItIs.surfacesTitle")}</h3>
-            <p className="type-body mt-3 max-w-xl text-sm leading-6">{t("whatItIs.surfacesBody")}</p>
+            <h3 className="type-title">{t("whatItIs.surfacesTitle")}</h3>
+            <p className="type-body-sm mt-3">{t("whatItIs.surfacesBody")}</p>
           </FadeIn>
           <FadeIn delay={80}>
-            <h3 className="text-lg font-semibold tracking-[-.02em]">{t("whatItIs.addressTitle")}</h3>
-            <p className="type-body mt-3 max-w-xl text-sm leading-6">{t("whatItIs.addressBody")}</p>
+            <h3 className="type-title">{t("whatItIs.addressTitle")}</h3>
+            <p className="type-body-sm mt-3">{t("whatItIs.addressBody")}</p>
           </FadeIn>
         </div>
       </CaseSection>
@@ -73,13 +73,13 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
           {engineering.map((item, index) => (
             <FadeIn delay={index * 60} key={item.title}>
               <li className="grid gap-x-10 gap-y-4 py-8 lg:grid-cols-[4rem_1fr]">
-                <span className="font-mono text-[0.8rem] text-accent">
+                <span className="type-data text-[0.8rem] text-accent">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="max-w-2xl">
-                  <h3 className="text-lg font-semibold tracking-[-.02em]">{item.title}</h3>
-                  <p className="type-body mt-3 text-sm leading-6">{item.body}</p>
-                  <p className="mt-3 text-sm leading-6 text-ink">
+                  <h3 className="type-title">{item.title}</h3>
+                  <p className="type-body-sm mt-3">{item.body}</p>
+                  <p className="type-body-sm mt-3 text-ink">
                     <span className="type-meta mr-2">{t("engineering.whyLabel")}</span>
                     {item.why}
                   </p>
@@ -90,7 +90,7 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
         </ol>
 
         <FadeIn>
-          <p className="type-body mt-10 max-w-2xl">{t("engineering.closing")}</p>
+          <p className="type-body mt-10">{t("engineering.closing")}</p>
         </FadeIn>
       </CaseSection>
 
@@ -105,7 +105,7 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
         </FadeIn>
 
         <FadeIn delay={120}>
-          <p className="type-body mt-10 max-w-2xl">{t("honesty.closing")}</p>
+          <p className="type-body mt-10">{t("honesty.closing")}</p>
         </FadeIn>
       </CaseSection>
 
@@ -132,7 +132,7 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
         tone="paper"
       >
         <FadeIn>
-          <h2 className="type-heading max-w-2xl">{t("next.title")}</h2>
+          <h2 className="type-heading">{t("next.title")}</h2>
           <p className="type-body-lg mt-5 max-w-xl">{t("next.body")}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link className={tactileButtonClasses("primary")} href="/about#contact">

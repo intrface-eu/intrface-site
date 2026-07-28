@@ -36,13 +36,13 @@ export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
         title={t("whatItDoes.title")}
         tone="paper"
       >
-        <p className="type-body max-w-2xl">{t("whatItDoes.body")}</p>
+        <p className="type-body">{t("whatItDoes.body")}</p>
 
         <dl className="mt-10 grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-rule bg-rule sm:grid-cols-2">
           {surfaces.map((surface) => (
             <div className="bg-paper p-5" key={surface.name}>
-              <dt className="text-base font-semibold tracking-[-.02em]">{surface.name}</dt>
-              <dd className="type-body mt-1.5 text-sm leading-6">{surface.note}</dd>
+              <dt className="type-title">{surface.name}</dt>
+              <dd className="type-body-sm mt-1.5">{surface.note}</dd>
             </div>
           ))}
         </dl>
@@ -66,10 +66,10 @@ export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
       <section className="tone-paper">
         <div className="section-shell py-20 sm:py-28">
           <FadeIn>
-            <h2 className="type-heading max-w-2xl">{t("next.title")}</h2>
+            <h2 className="type-heading">{t("next.title")}</h2>
           </FadeIn>
           <FadeIn delay={100}>
-            <p className="type-body-lg mt-6 max-w-2xl">{t("next.body")}</p>
+            <p className="type-body-lg mt-6">{t("next.body")}</p>
           </FadeIn>
           <FadeIn delay={180}>
             <Link className={tactileButtonClasses("primary", "mt-9")} href="/about#contact">

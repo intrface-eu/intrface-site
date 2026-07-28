@@ -40,10 +40,10 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
             <p className="type-section-label">{t("label")}</p>
           </FadeIn>
           <FadeIn delay={100}>
-            <h1 className="type-display mt-6 max-w-4xl">{t("title")}</h1>
+            <h1 className="type-display mt-6">{t("title")}</h1>
           </FadeIn>
           <FadeIn delay={200}>
-            <p className="type-body-lg mt-7 max-w-2xl font-medium">{t("lead")}</p>
+            <p className="type-body-lg mt-7 font-medium">{t("lead")}</p>
           </FadeIn>
         </div>
       </section>
@@ -62,7 +62,7 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
                 <p className="type-section-label">{t("method.label")}</p>
               </FadeIn>
               <FadeIn delay={80}>
-                <h2 className="type-heading mt-5 max-w-2xl">{t("method.title")}</h2>
+                <h2 className="type-heading mt-5">{t("method.title")}</h2>
               </FadeIn>
               <FadeIn delay={160}>
                 <p className="type-body mt-6 max-w-xl">{t("method.body")}</p>
@@ -81,10 +81,10 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
             <dl className="grid gap-8 sm:grid-cols-3 lg:gap-6">
               {methodFigures.map((figure, index) => (
                 <FadeIn delay={index * 70} key={figure.label}>
-                  <dd className="font-mono text-3xl font-semibold leading-none tracking-[-.04em] tabular-nums">
+                  <dd className="type-data text-3xl font-semibold leading-none tracking-[-.04em]">
                     {figure.value}
                   </dd>
-                  <dt className="type-meta mt-3">{figure.label}</dt>
+                  <dt className="type-caption mt-3">{figure.label}</dt>
                 </FadeIn>
               ))}
             </dl>

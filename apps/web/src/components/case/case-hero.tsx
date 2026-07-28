@@ -37,11 +37,11 @@ export function CaseHero({
         ) : null}
 
         <FadeIn delay={eyebrow ? 80 : 0}>
-          <h1 className="type-display mt-6 max-w-4xl">{name}</h1>
+          <h1 className="type-display mt-6">{name}</h1>
         </FadeIn>
 
         <FadeIn delay={160}>
-          <p className="type-body-lg mt-7 max-w-2xl font-medium">{claim}</p>
+          <p className="type-body-lg mt-7 font-medium">{claim}</p>
         </FadeIn>
 
         <FadeIn delay={240}>
@@ -55,7 +55,7 @@ export function CaseHero({
                     : "h-1.5 w-1.5 rounded-full border border-ink-muted"
                 }
               />
-              <span className="type-meta">{status}</span>
+              <span className="type-caption">{status}</span>
             </span>
 
             {tags?.map((tag) => (

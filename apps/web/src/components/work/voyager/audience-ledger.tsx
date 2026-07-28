@@ -31,7 +31,7 @@ export function AudienceLedger({ rows, className = "" }: { rows: readonly Audien
               <p className="type-meta text-ink">{row.role}</p>
             </div>
 
-            <p className="type-body-lg max-w-2xl">{row.line}</p>
+            <p className="type-body-lg">{row.line}</p>
           </FadeIn>
         );
       })}

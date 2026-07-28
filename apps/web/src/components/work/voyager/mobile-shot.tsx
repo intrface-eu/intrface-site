@@ -28,7 +28,7 @@ export function MobileShot({ src, alt, label, caption, className = "" }: MobileS
       </div>
 
       {caption ? (
-        <figcaption className="type-body mt-4 text-sm leading-6">{caption}</figcaption>
+        <figcaption className="type-body-sm mt-4">{caption}</figcaption>
       ) : null}
     </figure>
   );

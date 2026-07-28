@@ -51,7 +51,7 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
       />
 
       <CaseSection label={t("scale.label")} tone="raised">
-        <p className="type-body-lg -mt-4 max-w-2xl">{t("scale.intro")}</p>
+        <p className="type-body-lg -mt-4">{t("scale.intro")}</p>
         {/* One panel. Five figures, all counted from the same repository. */}
         <StatBand className="mt-10" columns={3} stats={t.raw("scale.stats") as Stat[]} tone="ink" />
       </CaseSection>
@@ -146,10 +146,10 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
             <p className="type-section-label">{t("next.label")}</p>
           </FadeIn>
           <FadeIn delay={80}>
-            <h2 className="type-heading mt-4 max-w-2xl">{t("next.title")}</h2>
+            <h2 className="type-heading mt-4">{t("next.title")}</h2>
           </FadeIn>
           <FadeIn delay={160}>
-            <p className="type-body-lg mt-6 max-w-2xl">{t("next.body")}</p>
+            <p className="type-body-lg mt-6">{t("next.body")}</p>
           </FadeIn>
           <FadeIn delay={240}>
             <TactileButton

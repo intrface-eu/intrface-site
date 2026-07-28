@@ -60,7 +60,7 @@ export async function EvidenceFrame({
           <Image alt={alt} className="object-cover" fill priority={priority} sizes={sizes} src={src} />
         ) : (
           <div className="flex h-full w-full items-center justify-center border border-rule bg-paper-raised">
-            <p className="type-meta">{placeholderText}</p>
+            <p className="type-caption">{placeholderText}</p>
           </div>
         )}
       </div>
@@ -85,7 +85,7 @@ export async function EvidenceFrame({
       )}
 
       {caption ? (
-        <figcaption className="type-body mt-4 max-w-2xl text-sm leading-6">
+        <figcaption className="type-body-sm mt-4">
           {caption}
           {href ? (
             <a

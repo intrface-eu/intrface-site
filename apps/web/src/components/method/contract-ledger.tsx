@@ -26,10 +26,10 @@ export function ContractLedger({ title, artifacts, className = "" }: ContractLed
         <dl className="mt-5 divide-y divide-rule border-t border-rule">
           {artifacts.map((artifact) => (
             <div className="py-4 last:pb-0" key={artifact.file}>
-              <dt className="font-mono text-sm font-semibold tracking-[-.01em] text-ink">
+              <dt className="type-data text-sm font-semibold text-ink">
                 {artifact.file}
               </dt>
-              <dd className="type-body mt-1.5 text-sm leading-6">{artifact.description}</dd>
+              <dd className="type-body-sm mt-1.5">{artifact.description}</dd>
             </div>
           ))}
         </dl>

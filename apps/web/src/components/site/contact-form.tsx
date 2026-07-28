@@ -47,7 +47,7 @@ const dangerToken = { "--form-danger": "#be123c" } as CSSProperties;
 const fieldClasses =
   "w-full rounded-[var(--radius-md)] border border-rule bg-card px-4 py-3 text-base text-ink outline-none transition-colors placeholder:text-ink-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-[var(--form-danger)] aria-[invalid=true]:focus:border-[var(--form-danger)] aria-[invalid=true]:focus:ring-[var(--form-danger)]/25";
 
-const labelClasses = "type-meta block";
+const labelClasses = "type-body-sm block max-w-none font-semibold text-ink";
 
 const errorTextClasses = "text-sm font-medium leading-6 text-[var(--form-danger)]";
 
@@ -151,7 +151,7 @@ export function ContactForm({
           tabIndex={-1}
         >
           <p className="type-section-label">{t("sentLabel")}</p>
-          <p className="mt-3 text-base leading-7 text-ink">{t("sentBody", { email })}</p>
+          <p className="type-body mt-3 text-ink">{t("sentBody", { email })}</p>
         </div>
         <div>
           <button
@@ -240,7 +240,7 @@ export function ContactForm({
       <div className="grid gap-2">
         <label className={labelClasses} htmlFor="contact-company">
           {t("companyLabel")}{" "}
-          <span className="lowercase tracking-normal">{t("companyOptional")}</span>
+          <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
         </label>
         <input
           autoComplete="organization"
@@ -303,7 +303,7 @@ export function ContactForm({
           role="alert"
           tabIndex={-1}
         >
-          <p className="text-base leading-7 text-ink">
+          <p className="type-body text-ink">
             {fallback === "failed" ? t("fallbackFailed") : t("fallbackMailClient")}{" "}
             {t.rich("fallbackTail", {
               email,
@@ -333,7 +333,7 @@ export function ContactForm({
             )}
           </span>
         </button>
-        <p className="type-body text-sm">
+        <p className="type-body-sm">
           {t.rich("mailNote", {
             email,
             mail: (chunks) => (

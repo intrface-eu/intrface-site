@@ -35,11 +35,11 @@ export function StatBand({ stats, tone = "paper", columns = 3, className = "" }:
     <dl className={`stat-ledger ${toneClasses[tone]} ${className}`} data-cols={columns}>
       {stats.map((stat, index) => (
         <FadeIn className="flex flex-col" delay={index * 60} key={stat.label}>
-          <dd className="order-1 font-mono text-4xl font-semibold leading-none tracking-[-.04em] tabular-nums sm:text-5xl">
+          <dd className="type-data order-1 text-4xl font-semibold leading-none tracking-[-.04em] sm:text-5xl">
             {stat.value}
           </dd>
-          <dt className="type-meta order-2 mt-3">{stat.label}</dt>
-          {stat.note ? <dd className="type-body order-3 mt-2 text-sm leading-6">{stat.note}</dd> : null}
+          <dt className="type-caption order-2 mt-3">{stat.label}</dt>
+          {stat.note ? <dd className="type-body-sm order-3 mt-2">{stat.note}</dd> : null}
         </FadeIn>
       ))}
     </dl>

@@ -61,7 +61,7 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
       <div className="interface-panel rounded-[var(--radius-xl)] p-5 sm:p-7">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h3 className="type-section-label">{t("title")}</h3>
-          <p className="font-mono text-[0.8rem] text-ink-muted">{t("subtitle")}</p>
+          <p className="type-caption">{t("subtitle")}</p>
         </div>
 
         <ol className="mt-6 grid gap-5 lg:grid-cols-6">
@@ -69,10 +69,10 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
             <li className="relative flex flex-col" key={stage.step}>
               <div className="interface-node flex flex-1 flex-col rounded-[var(--radius-md)] px-4 py-4">
                 <span className="font-mono text-[0.8rem] text-accent">{stage.step}</span>
-                <h4 className="mt-2 text-base font-semibold tracking-[-.02em] text-ink">
+                <h4 className="type-title mt-2 text-ink">
                   {stageCopy[index]?.name}
                 </h4>
-                <p className="mt-1.5 text-sm leading-6 text-ink-muted">{stageCopy[index]?.detail}</p>
+                <p className="type-body-sm mt-1.5">{stageCopy[index]?.detail}</p>
                 <p className="mt-4 inline-flex self-start rounded-full border border-rule px-2.5 py-1 font-mono text-[0.8rem] text-ink-muted">
                   {stage.artifact}
                 </p>
@@ -90,7 +90,7 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
         <div className="mt-10 border-t border-rule pt-8">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             <h3 className="type-section-label">{t("ledgerTitle")}</h3>
-            <p className="font-mono text-[0.8rem] text-ink-muted">{t("ledgerSubtitle")}</p>
+            <p className="type-caption">{t("ledgerSubtitle")}</p>
           </div>
 
           <ol className="mt-5 overflow-hidden rounded-[var(--radius-md)] border border-rule bg-card/60">
@@ -102,7 +102,7 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
                 <span className="font-mono text-[0.8rem] text-accent">#{row.seq}</span>
                 <div>
                   <p className="font-mono text-[0.85rem] font-semibold text-ink">{row.event}</p>
-                  <p className="mt-1 text-sm leading-6 text-ink-muted">{ledgerCopy[index]}</p>
+                  <p className="type-body-sm mt-1">{ledgerCopy[index]}</p>
                 </div>
                 <div className="font-mono text-[0.8rem] sm:text-right">
                   <p className="flex items-center gap-1 text-ink-muted sm:justify-end">
@@ -121,7 +121,7 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
         </div>
       </div>
 
-      <figcaption className="type-body mt-5 max-w-3xl text-sm leading-6">{t("caption")}</figcaption>
+      <figcaption className="type-body-sm mt-5">{t("caption")}</figcaption>
     </figure>
   );
 }

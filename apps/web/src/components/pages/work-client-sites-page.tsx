@@ -76,7 +76,7 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
         <FadeIn>
           <div className="mt-4 border-t border-rule pt-8 lg:mt-10">
             <p className="type-section-label">{t("showcase.inDeliveryLabel")}</p>
-            <p className="type-body mt-3 max-w-2xl">{t("showcase.inDelivery")}</p>
+            <p className="type-body mt-3">{t("showcase.inDelivery")}</p>
           </div>
         </FadeIn>
       </CaseSection>
@@ -91,17 +91,17 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
 
         <div className="mt-14 border-t border-rule pt-8">
           <p className="type-section-label">{t("pipeline.alsoLabel")}</p>
-          <p className="type-body mt-3 max-w-2xl">{t("pipeline.alsoBody")}</p>
+          <p className="type-body mt-3">{t("pipeline.alsoBody")}</p>
         </div>
       </CaseSection>
 
       <section className="tone-raised">
         <div className="section-shell py-20 sm:py-28">
           <FadeIn>
-            <h2 className="type-heading max-w-2xl">{t("next.title")}</h2>
+            <h2 className="type-heading">{t("next.title")}</h2>
           </FadeIn>
           <FadeIn delay={100}>
-            <p className="type-body-lg mt-6 max-w-2xl">{t("next.body")}</p>
+            <p className="type-body-lg mt-6">{t("next.body")}</p>
           </FadeIn>
           <FadeIn delay={180}>
             <Link className={tactileButtonClasses("primary", "mt-9")} href="/about#contact">

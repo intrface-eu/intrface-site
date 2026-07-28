@@ -48,7 +48,7 @@ export function HeroProof({
         const body = (
           <>
             <div className="flex items-baseline justify-between gap-3">
-              <span className="text-base font-semibold leading-6 text-ink">{artifact.name}</span>
+              <span className="type-title text-ink">{artifact.name}</span>
               <span className="type-meta shrink-0">{artifact.status}</span>
             </div>
 

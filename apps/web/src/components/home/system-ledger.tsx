@@ -38,24 +38,24 @@ export function SystemLedger({ systems }: { systems: readonly FeaturedSystem[] }
             }`}
           >
             <div>
-              <h3 className="text-2xl font-semibold text-white sm:text-3xl">{system.name}</h3>
+              <h3 className="type-subheading text-white">{system.name}</h3>
               <p className="mt-4">
-                <span className="type-meta inline-block rounded-full border border-rule px-3.5 py-1.5">
+                <span className="type-caption inline-block rounded-full border border-rule px-3.5 py-1.5">
                   {system.status}
                 </span>
               </p>
             </div>
 
             <div>
-              <p className="type-body-lg max-w-xl">{system.claim}</p>
+              <p className="type-body-lg">{system.claim}</p>
 
               <dl className="mt-7 grid gap-x-8 gap-y-6 border-t border-rule pt-6 sm:grid-cols-3">
                 {system.stats.map((stat) => (
                   <div className="flex flex-col" key={stat.label}>
-                    <dd className="order-1 font-mono text-2xl font-semibold leading-none tabular-nums text-white sm:text-3xl">
+                    <dd className="type-data order-1 text-2xl font-semibold leading-none text-white sm:text-3xl">
                       {stat.value}
                     </dd>
-                    <dt className="type-meta order-2 mt-3">{stat.label}</dt>
+                    <dt className="type-caption order-2 mt-3">{stat.label}</dt>
                   </div>
                 ))}
               </dl>

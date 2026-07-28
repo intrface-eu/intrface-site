@@ -39,7 +39,9 @@ export function PortfolioLedger({ entries }: { entries: readonly LedgerEntry[] }
             href={entry.href}
           >
             <div className="grid gap-6 lg:grid-cols-[2.5rem_minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-10">
-              <span className="type-meta font-mono tabular-nums">{entry.index}</span>
+              {/* A row number is a label, not a measurement — mono is reserved for
+                  things you could do arithmetic on. */}
+              <span className="type-meta tabular-nums">{entry.index}</span>
 
               <div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
@@ -62,11 +64,11 @@ export function PortfolioLedger({ entries }: { entries: readonly LedgerEntry[] }
                           : "h-1.5 w-1.5 rounded-full border border-ink-muted"
                       }
                     />
-                    <span className="type-meta">{entry.status}</span>
+                    <span className="type-caption">{entry.status}</span>
                   </span>
                 </div>
 
-                <p className="type-body mt-4 max-w-xl">{entry.claim}</p>
+                <p className="type-body mt-4">{entry.claim}</p>
               </div>
 
               {/* One figure per line at `lg` so every row's numbers align down
@@ -74,10 +76,10 @@ export function PortfolioLedger({ entries }: { entries: readonly LedgerEntry[] }
               <dl className="flex flex-wrap gap-x-10 gap-y-5 lg:grid lg:justify-items-end lg:gap-y-6">
                 {entry.figures.map((figure) => (
                   <div key={figure.label} className="lg:text-right">
-                    <dd className="font-mono text-2xl font-semibold leading-none tracking-[-.04em] tabular-nums">
+                    <dd className="type-data text-2xl font-semibold leading-none tracking-[-.04em]">
                       {figure.value}
                     </dd>
-                    <dt className="type-meta mt-2.5">{figure.label}</dt>
+                    <dt className="type-caption mt-2.5">{figure.label}</dt>
                   </div>
                 ))}
               </dl>

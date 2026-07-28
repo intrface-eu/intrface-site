@@ -19,27 +19,58 @@ colors:
 typography:
   display:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
-    fontSize: "clamp(2.85rem, 7vw, 5.15rem)"
+    fontSize: "clamp(2.4rem, 5.6vw, 3.6rem)"
     fontWeight: "600"
-    lineHeight: "0.98"
-    letterSpacing: "-0.055em"
+    lineHeight: "1.04"
+    letterSpacing: "-0.04em"
+    maxInlineSize: "20ch"
   heading:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
-    fontSize: "clamp(2rem, 3.2vw, 3.1rem)"
+    fontSize: "clamp(1.6rem, 2.7vw, 2.2rem)"
     fontWeight: "550"
-    lineHeight: "1.06"
-    letterSpacing: "-0.04em"
+    lineHeight: "1.14"
+    letterSpacing: "-0.03em"
+  subheading:
+    fontFamily: "Google Sans Flex, Inter, sans-serif"
+    fontSize: "clamp(1.3rem, 1.8vw, 1.55rem)"
+    fontWeight: "600"
+    lineHeight: "1.2"
+    letterSpacing: "-0.025em"
+  title:
+    fontFamily: "Google Sans Flex, Inter, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: "600"
+    lineHeight: "1.4"
+    letterSpacing: "-0.015em"
+  body-lg:
+    fontFamily: "Google Sans Flex, Inter, sans-serif"
+    fontSize: "clamp(1.0625rem, 1.15vw, 1.1875rem)"
+    fontWeight: "400"
+    lineHeight: "1.65"
+    maxInlineSize: "56ch"
   body-md:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
     fontSize: "1rem"
     fontWeight: "400"
     lineHeight: "1.7"
+    maxInlineSize: "64ch"
+  body-sm:
+    fontFamily: "Google Sans Flex, Inter, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: "400"
+    lineHeight: "1.62"
+    maxInlineSize: "60ch"
+  caption:
+    fontFamily: "Google Sans Flex, Inter, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: "500"
+    lineHeight: "1.5"
   label:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
     fontSize: "0.8rem"
-    fontWeight: "700"
-    lineHeight: "1"
-    letterSpacing: "0.16em"
+    fontWeight: "600"
+    lineHeight: "1.2"
+    letterSpacing: "0.13em"
 rounded:
   md: "1rem"
   lg: "1.5rem"
@@ -135,16 +166,34 @@ This is the project-wide visual and product design contract for agents and human
 | `--line` | `rgba(15,23,41,.12)` | Hairlines/borders | |
 | success `#15803d` / warning `#b45309` / danger `#be123c` | | Status only | |
 
-Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `rgba(255,255,255,.64)` minimum — never below (WCAG AA on `#0f1729`).
+Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `rgba(255,255,255,.64)` minimum — never below (WCAG AA on `#0f1729`). `.tone-ink` also relights `--accent` to `#7cb8b1`: the paper teal is only 3.2:1 on ink, below AA for the accent links that appear on these bands. Same hue, same single working accent — only the value moves.
 
 ## Typography
 
 - Primary font: Google Sans Flex (variable), loaded via Google Fonts
 - Secondary/fallback font: Inter, Segoe UI, sans-serif; Geist Mono for numeric/technical fragments
-- Heading style: tight tracking (−0.04 to −0.055em), weight 550–600, use `.type-display` / `.type-heading` — never inline arbitrary heading sizes
-- Body style: `.type-body` / `.type-body-lg`, line-height 1.7, `--ink-muted`
-- Numeric/metric style: `--font-mono`, tabular where available
-- Line-height/measure notes: body measure ≤ ~65ch (`max-w-2xl`/`max-w-3xl`)
+- Role scale, top to bottom — every step changes at least two of size, weight, colour and case, so the ranking survives a squint:
+
+  | Class | Role | Size | Weight | Colour |
+  | --- | --- | --- | --- | --- |
+  | `.type-display` | the page claim, one per page | 38–58px | 600 | ink |
+  | `.type-heading` | a section | 26–35px | 550 | ink |
+  | `.type-subheading` | a named thing in a ledger row | 21–25px | 600 | inherits the band |
+  | `.type-title` | a step, a clause, a card head | 17px | 600 | inherits the band |
+  | `.type-body-lg` | the lead under a heading | 17–19px | 400 | `--ink-muted` |
+  | `.type-body` | prose | 16px | 400 | `--ink-muted` |
+  | `.type-body-sm` | secondary prose, notes, colophon | 15px | 400 | `--ink-muted` |
+  | `.type-caption` | what a number counts, a field label | 14px | 500 | `--ink-muted` |
+  | `.type-meta` | uppercase micro-label | 12.5px | 600 | `--ink-muted` |
+  | `.type-section-label` | the accent kicker | 12.8px | 600 | `--accent` |
+  | `.type-data` | figures, hashes, filenames, identifiers | inherits | inherits | inherits |
+
+- Heading style: tracking −0.03 to −0.04em, weight 550–600, use the `.type-*` classes — never inline arbitrary heading sizes. −0.04em is the floor: past it letterforms stop holding their own shapes.
+- Display is sized for a full-sentence headline, not a single word. Three lines of ~60 characters stay inside ~20vh at its ceiling.
+- Body style: `.type-body` / `.type-body-lg`, line-height 1.62–1.7, `--ink-muted`
+- Numeric/metric style: `.type-data` (`--font-mono`, tabular). Mono is the numeric and technical voice — figures, hashes, filenames, identifiers, bracketed literals. Never a costume for prose; keep it under ~15% of the text on a page.
+- Uppercase is for short labels only. Anything with a verb in it is a `.type-caption`, not a `.type-meta` — uppercase strips the word shapes a reader navigates by, and it costs more the longer the run.
+- Measure lives on the role, not on the page: each prose class carries its own `max-inline-size` in `ch`, so no component has to remember one. Do **not** reach for `max-w-2xl` / `max-w-3xl` on prose — 42rem at 15px is a 96-character line. A `max-w-*` utility is for a column that must be *narrower* than its role.
 
 ## Component rules
 
@@ -190,7 +239,7 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Keyboard/focus behavior: visible focus (`outline-offset: 4px` ink outline); tabs support arrow/Home/End keys
 - Reduced motion: honored in every animated component and shader
 - Captions/alt text: meaningful alt for informative images, `aria-hidden` for decorative surfaces
-- Minimum readable sizes: 0.78rem, and only for uppercase tracked labels
+- Minimum readable sizes: 0.78rem, and only for uppercase tracked labels (`.type-meta`, `.type-section-label`). Sentence-case text bottoms out at `.type-caption`, 0.875rem.
 
 ## Design do / don't
 

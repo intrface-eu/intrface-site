@@ -82,7 +82,7 @@ export function LiveSiteRow({
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
           {liveLabel}
         </p>
-        <h3 className="mt-4 text-2xl font-semibold text-ink sm:text-3xl">{site.name}</h3>
+        <h3 className="type-subheading mt-4 text-ink">{site.name}</h3>
         <p className="type-meta mt-2">{site.kind}</p>
         <p className="type-body mt-4 max-w-md">{site.description}</p>
         {site.facts?.length ? (
@@ -90,7 +90,7 @@ export function LiveSiteRow({
             {site.facts.map((fact) => (
               <div key={fact.label}>
                 <dt className="type-meta">{fact.label}</dt>
-                <dd className="type-body mt-2 text-sm leading-6">{fact.value}</dd>
+                <dd className="type-body-sm mt-2 leading-6">{fact.value}</dd>
               </div>
             ))}
           </dl>

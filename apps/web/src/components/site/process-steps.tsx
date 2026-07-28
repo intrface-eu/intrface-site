@@ -20,14 +20,14 @@ export function ProcessSteps({ steps }: { steps: readonly ProcessStep[] }) {
         return (
           <li className="artifact-card relative grid grid-cols-[3rem_1fr] gap-4 rounded-[var(--radius-lg)] p-5" key={step.label}>
             <div className="relative flex justify-center">
-              <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-white font-mono text-xs font-bold text-ink">
+              <span className="type-data relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-white text-xs font-bold text-ink">
                 {number}
               </span>
               {!isLast ? <span className="step-connector absolute top-11 h-[calc(100%+0.75rem)] w-px" /> : null}
             </div>
             <div className="pb-1">
-              <h3 className="text-base font-semibold tracking-[-.015em] text-ink">{step.label}</h3>
-              <p className="mt-2 text-base leading-7 text-ink-muted">{step.description}</p>
+              <h3 className="type-title text-ink">{step.label}</h3>
+              <p className="type-body mt-2">{step.description}</p>
             </div>
           </li>
         );

@@ -18,12 +18,12 @@ export function PipelineSteps({ steps }: { steps: readonly PipelineStep[] }) {
         <FadeIn delay={index * 70} key={step.name}>
           <li className="border-t border-rule py-6">
             <div className="flex items-baseline gap-4">
-              <span className="font-mono text-sm font-semibold tabular-nums text-ink-muted">
+              <span className="type-data text-sm font-semibold text-ink-muted">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 className="text-lg font-semibold tracking-[-.03em]">{step.name}</h3>
+              <h3 className="type-title">{step.name}</h3>
             </div>
-            <p className="type-body mt-3 max-w-md pl-8 text-sm leading-6">{step.body}</p>
+            <p className="type-body-sm mt-3 pl-8">{step.body}</p>
           </li>
         </FadeIn>
       ))}

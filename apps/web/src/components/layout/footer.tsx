@@ -61,7 +61,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
             <AnimatedMark animate={false} className="text-ink" size={22} />
             <span className="text-lg font-medium tracking-[-0.04em] text-ink">intrface</span>
           </div>
-          <p className="type-body mt-5 max-w-sm text-sm leading-6">{t("tagline")}</p>
+          <p className="type-body-sm mt-5 max-w-sm">{t("tagline")}</p>
           <Link className={tactileButtonClasses("secondary", "mt-7")} href="/about#contact">
             {t("cta")}
             <IconArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -114,8 +114,9 @@ export async function Footer({ locale }: { locale: AppLocale }) {
                       className="ml-1 inline-block h-3.5 w-3.5 align-[-0.1em]"
                     />
                   </a>
-                  {/* 0.78rem is the floor in DESIGN.md; don't take it lower. */}
-                  <p className="mt-1 font-mono text-[0.78rem] leading-5 text-ink-muted">
+                  {/* Licence plus a plain-English line. Mono is the numeric/technical
+                      voice, not a costume for prose — so this reads as a caption. */}
+                  <p className="type-caption mt-1">
                     {repo.meta}
                   </p>
                 </li>
@@ -127,14 +128,16 @@ export async function Footer({ locale }: { locale: AppLocale }) {
 
       <div className="section-shell">
         <div className="flex flex-col gap-5 border-t border-rule py-7 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
-          <p className="type-body max-w-2xl text-sm leading-6">{t("colophon")}</p>
+          <p className="type-body-sm">{t("colophon")}</p>
           <LocaleSwitcher />
         </div>
       </div>
 
       <div className="section-shell">
         <div className="flex flex-col gap-2 border-t border-rule py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="type-meta">
+          {/* A 38-character sentence, not a label: sentence case keeps the word
+              shapes a reader navigates by. */}
+          <p className="type-caption">
             © {year} {SITE_NAME} · {t("location")}
           </p>
           <Link

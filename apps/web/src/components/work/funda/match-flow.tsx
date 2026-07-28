@@ -19,13 +19,13 @@ export function MatchFlow({ steps }: { steps: readonly MatchStep[] }) {
       {steps.map((step, index) => (
         <FadeIn delay={index * 80} key={step.name}>
           <li className="relative flex gap-5 pb-9 last:pb-0 sm:gap-7">
-            <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rule bg-card font-mono text-xs font-semibold tabular-nums sm:h-10 sm:w-10 sm:text-sm">
+            <span className="type-data relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rule bg-card text-xs font-semibold sm:h-10 sm:w-10 sm:text-sm">
               {index + 1}
             </span>
 
             <div className="pt-1 sm:pt-2">
-              <h3 className="text-lg font-semibold tracking-[-.03em]">{step.name}</h3>
-              <p className="type-body mt-2 max-w-xl text-sm leading-6">{step.body}</p>
+              <h3 className="type-title">{step.name}</h3>
+              <p className="type-body-sm mt-2">{step.body}</p>
             </div>
           </li>
         </FadeIn>

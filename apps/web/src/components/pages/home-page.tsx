@@ -118,13 +118,16 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           the first screen. */}
       <section className="relative overflow-hidden border-b border-rule tone-paper">
         <div className="halftone-field" aria-hidden="true" />
-        <div className="section-shell relative flex min-h-[calc(100svh-4rem)] flex-col justify-between gap-10 py-6 sm:py-10 lg:gap-12">
-          <div>
+        <div className="section-shell relative flex min-h-[calc(100svh-4rem)] flex-col gap-10 py-8 sm:py-12 lg:gap-12">
+          {/* The claim centres in whatever height is left over the evidence
+              strip, so the free space reads as air on both sides of it rather
+              than as a gap that opened under the headline. */}
+          <div className="my-auto">
             <FadeIn>
               <p className="type-section-label">{t("hero.eyebrow")}</p>
             </FadeIn>
             <FadeIn delay={80}>
-              <h1 className="type-display mt-4 max-w-[16ch] sm:mt-5">
+              <h1 className="type-display mt-4 sm:mt-5">
                 {t("hero.title")}
               </h1>
             </FadeIn>
@@ -177,12 +180,20 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                   <p>{t("thesis.p2")}</p>
                 </div>
               </FadeIn>
+              {/* The cell padding lives on the FadeIn wrapper, not inside it. On the
+                  inner div `first:`/`last:` both matched every cell — each one is the
+                  only child of its own wrapper — so `sm:px-5` was cancelled on all
+                  three and the text sat flush against the divider. */}
               <div className="mt-10 grid gap-0 divide-y divide-rule border-y border-rule sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                 {thesisColumns.map((item, index) => (
-                  <FadeIn delay={220 + index * 70} key={item.label}>
-                    <div className="h-full py-5 sm:px-5 sm:py-2 sm:first:pl-0 sm:last:pr-0">
-                      <h3 className="text-base font-semibold text-ink">{item.label}</h3>
-                      <p className="type-body mt-2 text-sm">{item.text}</p>
+                  <FadeIn
+                    className="py-6 sm:px-6 sm:first:pl-0 sm:last:pr-0"
+                    delay={220 + index * 70}
+                    key={item.label}
+                  >
+                    <div className="h-full">
+                      <h3 className="type-title text-ink">{item.label}</h3>
+                      <p className="type-body-sm mt-2">{item.text}</p>
                     </div>
                   </FadeIn>
                 ))}
@@ -211,7 +222,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
             <ol className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-rule py-4">
               {clientPipeline.map((step, index) => (
                 <li className="flex items-center gap-3" key={step}>
-                  <span className="type-meta font-mono">{step}</span>
+                  <span className="type-meta">{step}</span>
                   {index < clientPipeline.length - 1 ? (
                     <IconArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-accent" />
                   ) : null}
@@ -238,7 +249,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
             <div className="mt-14 grid gap-8 border-t border-rule pt-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
               <div>
                 <p className="type-section-label">{t("proof.inDeliveryLabel")}</p>
-                <p className="type-body mt-3 max-w-xl">{t("proof.inDelivery")}</p>
+                <p className="type-body mt-3">{t("proof.inDelivery")}</p>
               </div>
               <Link
                 className="inline-flex items-center gap-2 rounded-full text-base font-semibold text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
@@ -327,7 +338,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                 <p className="type-meta text-[color:var(--ink-inverse-label)]">{t("contact.label")}</p>
               </FadeIn>
               <FadeIn delay={100}>
-                <h2 className="type-heading mt-5 max-w-2xl text-white">{t("contact.title")}</h2>
+                <h2 className="type-heading mt-5 text-white">{t("contact.title")}</h2>
               </FadeIn>
               <FadeIn delay={200}>
                 <p className="type-body-lg mt-7 max-w-xl text-[color:var(--ink-inverse-muted)]">
@@ -335,7 +346,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                 </p>
               </FadeIn>
               <FadeIn delay={280}>
-                <p className="mt-7 text-sm text-[color:var(--ink-inverse-muted)]">
+                <p className="type-body-sm mt-7 text-[color:var(--ink-inverse-muted)]">
                   {t.rich("contact.mailNote", {
                     email: CONTACT_EMAIL,
                     mail: (chunks) => (

@@ -57,10 +57,10 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
             <p className="type-section-label">{t("hero.label")}</p>
           </FadeIn>
           <FadeIn delay={100}>
-            <h1 className="type-display mt-6 max-w-4xl">{t("hero.title")}</h1>
+            <h1 className="type-display mt-6">{t("hero.title")}</h1>
           </FadeIn>
           <FadeIn delay={200}>
-            <p className="type-body-lg mt-7 max-w-2xl font-medium">{t("hero.lead")}</p>
+            <p className="type-body-lg mt-7 font-medium">{t("hero.lead")}</p>
           </FadeIn>
         </div>
       </section>
@@ -117,21 +117,21 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
             >
               <dt>
                 <Link
-                  className="inline-flex items-center gap-2 text-xl font-semibold tracking-[-.02em] transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+                  className="type-subheading inline-flex items-center gap-2 transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
                   href={platform.href}
                 >
                   {t(`platforms.${platform.key}.name`)}
                   <IconArrowUpRight aria-hidden="true" className="h-4 w-4" />
                 </Link>
-                <p className="type-meta mt-2">{t(`platforms.${platform.key}.status`)}</p>
+                <p className="type-caption mt-2">{t(`platforms.${platform.key}.status`)}</p>
               </dt>
-              <dd className="type-body max-w-2xl">{t(`platforms.${platform.key}.description`)}</dd>
+              <dd className="type-body">{t(`platforms.${platform.key}.description`)}</dd>
             </FadeIn>
           ))}
         </dl>
 
         <FadeIn delay={220}>
-          <p className="type-body mt-8 max-w-2xl">
+          <p className="type-body mt-8">
             {t.rich("platforms.clientNote", {
               link: (chunks) => (
                 <Link className="font-semibold text-accent hover:underline" href="/work/client-sites">
@@ -159,7 +159,7 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
               <FadeIn delay={240}>
                 <div className="mt-8 border-t border-rule pt-6">
                   <p className="type-meta">{t("contact.helpsLabel")}</p>
-                  <ul className="type-body mt-3 grid gap-2 text-sm leading-6">
+                  <ul className="type-body-sm mt-3 grid gap-2">
                     {helps.map((help) => (
                       <li key={help}>{help}</li>
                     ))}
@@ -167,7 +167,7 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
                 </div>
               </FadeIn>
               <FadeIn delay={300}>
-                <p className="type-body mt-6 text-sm">
+                <p className="type-body-sm mt-6">
                   {t.rich("contact.mailNote", {
                     email: CONTACT_EMAIL,
                     mail: (chunks) => (

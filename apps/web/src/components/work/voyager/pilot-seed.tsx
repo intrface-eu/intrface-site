@@ -20,8 +20,8 @@ export function PilotSeed({ items, className = "" }: { items: readonly SeedItem[
           <FadeIn className="flex gap-4" delay={index * 70} key={item.label}>
             <Icon aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
             <div>
-              <h3 className="text-base font-semibold tracking-[-.025em] text-ink">{item.label}</h3>
-              <p className="type-body mt-1.5 text-sm leading-6">{item.detail}</p>
+              <h3 className="type-title text-ink">{item.label}</h3>
+              <p className="type-body-sm mt-1.5">{item.detail}</p>
             </div>
           </FadeIn>
         );
