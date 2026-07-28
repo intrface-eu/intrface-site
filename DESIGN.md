@@ -96,7 +96,7 @@ This is the project-wide visual and product design contract for agents and human
 
 - Product/project: Intrface public web surfaces
 - Primary audience: businesses, destination operators, institutions, technical teams, and collaborators evaluating Intrface for trusted interfaces across real-world systems
-- Primary promise: Intrface builds trusted interfaces for complex real-world systems
+- Primary promise: Intrface builds the software, and the system that builds the software — client work in Istria, three platforms of its own, one open-source delivery pipeline
 - Desired emotional impression: clear, trustworthy, precise, grounded, intelligent, interface-first
 - Trust/energy level: calm confidence — an engineering studio, not a hype landing page
 

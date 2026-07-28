@@ -1,18 +1,16 @@
 {
   "Nav": {
     "work": "Réalisations",
-    "services": "Services",
     "method": "Méthode",
     "about": "À propos",
     "imprint": "Mentions légales",
-    "principles": "Principes",
     "contact": "Contact",
     "home": "Accueil Intrface",
     "menu": "Menu",
     "logoAlt": "Icône Intrface"
   },
   "Footer": {
-    "tagline": "Intrface construit des interfaces fiables pour des systèmes réels complexes.",
+    "tagline": "Conseil informatique et développement d'entreprise, Istrie. Des logiciels pour les clients, trois plateformes à nous, un système de livraison open source.",
     "location": "Istrie, Croatie · UE",
     "newTab": "s'ouvre dans un nouvel onglet",
     "work": {
@@ -46,15 +44,15 @@
     "screenshotPending": "Capture à venir"
   },
   "Metadata": {
-    "tagline": "Des logiciels pour des systèmes réels complexes.",
-    "description": "INTRFACE construit des logiciels avec un système de livraison industrialisé et open source, piloté par des agents IA : sites clients en ligne, plateformes de fond, et le système de livraison lui-même.",
+    "tagline": "Conseil informatique depuis l'Istrie. Le système de livraison est open source.",
+    "description": "INTRFACE est un cabinet de conseil informatique en Istrie. Nous construisons des logiciels pour nos clients et trois plateformes à nous, sur un système de livraison par agents publié sous Apache-2.0 — 403 commits, public.",
     "work": {
       "title": "Réalisations",
-      "description": "Des sites clients en Istrie, construits sur une seule chaîne automatisée. Trois plateformes en construction. Un système de livraison, public sur GitHub."
+      "description": "Un site client en ligne à Vrsar, trois plateformes à nous avant lancement, et le système de livraison qui les construit — public sur GitHub sous Apache-2.0."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa propre carte. Plateforme d'intelligence des lieux pour destinations touristiques, avant lancement : 365 000 lignes de TypeScript maison, 1 580 tests automatisés."
+      "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Plateforme d'intelligence des lieux pour destinations touristiques, avant lancement : 365 000 lignes de TypeScript maison, 1 580 tests automatisés."
     },
     "polis": {
       "title": "Polis Interface",
@@ -85,7 +83,7 @@
     "hero": {
       "eyebrow": "Intrface · Istrie, Croatie",
       "title": "Nous construisons le logiciel. Et le système qui le construit.",
-      "lead": "Des sites clients sur la côte istrienne. Nos propres plateformes. La chaîne qui les construit — open source, Apache-2.0.",
+      "lead": "Un site client en ligne à Vrsar. Trois plateformes à nous. La chaîne qui les construit — open source, Apache-2.0.",
       "seeWork": "Voir les réalisations",
       "talk": "Parlons-en",
       "proofLabel": "Ouvrez n'importe lequel",
@@ -101,7 +99,7 @@
           "name": "Voyager",
           "status": "Avant lancement",
           "meta": "Lire l'étude de cas Voyager",
-          "alt": "La carte de Vrsar dans Voyager, avec des lieux repérés le long de la côte et un sentier balisé."
+          "alt": "La fiche Voyager officielle de TZ Vrsar — badge de vérification, avis datés et registre des lieux."
         },
         "aoc": {
           "name": "Agent Ops Cockpit",
@@ -114,18 +112,18 @@
     "thesis": {
       "label": "La thèse",
       "title": "Le logiciel devient l'interface de tout.",
-      "p1": "Les clients ne vivent pas votre stratégie. Ils vivent l'interface. Les citoyens ne vivent pas la politique publique. Ils vivent des formulaires, des guichets et des délais.",
-      "p2": "Les visiteurs ne vivent pas la stratégie d'une destination. Ils vivent des cartes, des itinéraires et des questions dans une langue qu'ils ne lisent pas forcément. Nous construisons la couche où cette complexité devient utilisable.",
+      "p1": "Les clients ne vivent pas votre stratégie. Ils vivent l'interface. Les citoyens rencontrent la politique publique sous forme de formulaires, de guichets et de délais.",
+      "p2": "Un visiteur rencontre une destination sous forme de carte, d'itinéraire à pied et de question posée dans une langue que personne au comptoir ne lit. C'est cette couche que nous construisons.",
       "columns": [
-        { "label": "Orientation", "text": "Rendre le système compréhensible." },
-        { "label": "Confiance", "text": "Montrer les sources, les états et les responsables." },
-        { "label": "Réalisation", "text": "Construire le logiciel derrière la promesse." }
+        { "label": "Orientation", "text": "312 routes Voyager sur sept interfaces, un seul modèle de données." },
+        { "label": "Confiance", "text": "Chaque affirmation dans Polis mène à une empreinte, un cachet et un horodatage." },
+        { "label": "Réalisation", "text": "Profil Instagram en entrée, URL en ligne en sortie, en six étapes." }
       ]
     },
     "proof": {
       "label": "Preuve",
       "title": "Livré et en ligne.",
-      "intro": "Un bar à vins sur le front de mer de Vrsar, construit à partir du profil Instagram du client et mené jusqu'à une URL en ligne d'un seul tenant — contenu lu, marque reprise, site construit, chaque page auditée, puis déployée.",
+      "intro": "Un bar à vins sur le front de mer de Vrsar, construit à partir du profil Instagram du client et mené jusqu'à une URL en ligne d'un seul tenant.",
       "pipeline": [
         "Profil Instagram",
         "Analyse du contenu",
@@ -153,12 +151,12 @@
     },
     "systems": {
       "label": "Systèmes",
-      "title": "Trois systèmes, et où chacun en est vraiment.",
+      "title": "Trois systèmes. Aucun n'est lancé.",
       "intro": "Avant lancement veut dire avant lancement. Rien ici ne revendique des utilisateurs qu'il n'a pas.",
       "voyager": {
         "name": "Voyager",
-        "status": "Plateforme avant lancement",
-        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires ; l'office de tourisme obtient une couche de contenu qu'il pilote.",
+        "status": "Avant lancement",
+        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. L'office de tourisme obtient une couche de contenu qu'il pilote.",
         "stats": [
           { "value": "365 000", "label": "Lignes de TypeScript maison" },
           { "value": "1 336", "label": "Fonctions backend" },
@@ -168,21 +166,21 @@
       },
       "polis": {
         "name": "Polis Interface",
-        "status": "Open source · Avant déploiement",
+        "status": "Open source · AGPL · avant déploiement",
         "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
         "stats": [
           { "value": "55", "label": "Tables Postgres" },
-          { "value": "10", "label": "Modules de politique à l'exécution" },
+          { "value": "10", "label": "Modules de politique" },
           { "value": "17", "label": "Scripts de recette" }
         ],
         "linkLabel": "Lire le cas Polis"
       },
       "funda": {
         "name": "Funda",
-        "status": "En construction",
+        "status": "Construction active",
         "claim": "Rapproche les organisations des appels à financement européens, lus par des agents sur SEDIA et TED.",
         "stats": [
-          { "value": "4", "label": "Rôles dans un même SaaS" },
+          { "value": "4", "label": "Interfaces par rôle" },
           { "value": "2", "label": "Sources européennes lues" },
           { "value": "3", "label": "Langues" }
         ],
@@ -192,13 +190,13 @@
     "method": {
       "label": "Méthode",
       "title": "Notre système de livraison est open source.",
-      "body": "Treize de nos dépôts tournent sur le même contrat d'agents versionné. Les agents proposent la modification ; un contrôle humain la valide. Ce rythme se lit dans le journal — 383 commits sur Voyager pour le seul mois de juillet 2026.",
+      "body": "Treize de nos dépôts tournent sur le même contrat d'agents versionné. Les agents proposent la modification ; un contrôle humain la valide. 383 commits sur Voyager pour le seul mois de juillet 2026.",
       "readMethod": "Lire la méthode",
       "readSource": "Lire le code source",
       "steps": [
         {
           "label": "Le contrat avant le code",
-          "description": "Chaque dépôt porte un contrat de comportement, un contrat de design, un instantané de contexte généré et un registre de tâches."
+          "description": "Chaque dépôt porte les mêmes fichiers de contrat sur le disque. Un agent les lit avant de lire le code."
         },
         {
           "label": "Les agents proposent",
@@ -226,7 +224,7 @@
     "contact": {
       "label": "Contact",
       "title": "Apportez-nous le système qui vous échappe.",
-      "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier. Nous le cartographions, dessinons l'interface et construisons le logiciel derrière.",
+      "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier.",
       "mailNote": "Ou écrivez directement à <mail>{email}</mail>.",
       "topics": [
         "Système métier",
@@ -240,13 +238,13 @@
   },
   "WorkIndex": {
     "label": "Réalisations",
-    "title": "Des preuves, de trois façons.",
-    "lead": "Des sites clients en Istrie, construits sur une seule chaîne automatisée. Trois plateformes en construction. Un système de livraison, public sur GitHub.",
+    "title": "Quatre systèmes. Où chacun en est vraiment.",
+    "lead": "Un site client en ligne à Vrsar, construit par une chaîne automatisée. Trois plateformes à nous, aucune lancée. Un système de livraison, public sur GitHub.",
     "entries": {
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
-        "claim": "Un QR code transforme la carte et les horaires d'un restaurant en hôte IA multilingue.",
+        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires.",
         "figures": [
           { "value": "~365 000", "label": "Lignes de TypeScript maison" },
           { "value": "1 580", "label": "Tests automatisés" }
@@ -254,10 +252,10 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL",
+        "status": "Open source · AGPL · avant déploiement",
         "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
         "figures": [
-          { "value": "10", "label": "Politiques Rego à l'exécution" },
+          { "value": "10", "label": "Modules de politique" },
           { "value": "55", "label": "Tables Postgres" }
         ]
       },
@@ -283,7 +281,7 @@
     "method": {
       "label": "05 · Méthode",
       "title": "Notre système de livraison est open source.",
-      "body": "Agent Ops Cockpit fait tourner treize de nos dépôts sur un seul contrat versionné : un contrat de comportement, un contrat de design, un instantané de contexte généré et un registre de tâches. Les agents proposent. Un humain lit le diff et valide.",
+      "body": "Agent Ops Cockpit fait tourner treize de nos dépôts sur un seul contrat versionné. Les agents proposent. Un humain lit le diff et valide.",
       "link": "Lire comment nous livrons",
       "figures": [
         { "value": "403", "label": "Commits, Apache-2.0" },
@@ -296,7 +294,7 @@
     "hero": {
       "eyebrow": "Intelligence des lieux",
       "name": "Voyager",
-      "claim": "Un QR code sur la table d'un restaurant devient un hôte IA multilingue qui répond à partir de la carte et des horaires de ce restaurant précis.",
+      "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires.",
       "status": "Avant lancement",
       "tags": [
         "Propriétaire",
@@ -332,6 +330,11 @@
           "value": "1 580",
           "label": "Tests automatisés",
           "note": "Répartis sur 286 fichiers de test."
+        },
+        {
+          "value": "1 080",
+          "label": "Commits",
+          "note": "Sur 20 mois."
         }
       ]
     },
@@ -365,7 +368,7 @@
         },
         {
           "title": "Une recherche qui sait quand ignorer l'index vectoriel",
-          "body": "Une question sur les horaires part vers une requête structurée, la photo d'une carte vers un index multimodal — pas tout vers un seul magasin vectoriel. Lus dans une colonne, les horaires sont des faits ; une mauvaise heure de fermeture, c'est ce dont un client se souvient."
+          "body": "Une question sur les horaires part vers une requête structurée, la photo d'une carte vers un index multimodal. Lue dans une colonne, une heure d'ouverture est un fait. Devinée dans un magasin vectoriel, une mauvaise heure de fermeture est ce dont un client se souvient."
         },
         {
           "title": "Le scraping et le calcul d'itinéraires piétons tournent chez nous",
@@ -429,7 +432,7 @@
     },
     "next": {
       "label": "Ensuite",
-      "title": "Parlons d'un pilote sur votre destination.",
+      "title": "Une destination qui dit on y va.",
       "body": "Dites-nous la destination et qui y détient le contenu officiel. Nous vous montrerons le jeu de données de Vrsar et ce que le vôtre demanderait.",
       "cta": "Parler d'un pilote"
     }
@@ -482,7 +485,7 @@
         {
           "title": "Un élu ne peut pas marquer sa propre promesse comme tenue",
           "body": "La couche de redevabilité sépare l'acteur qui affirme de l'acteur qui confirme. Un passage au statut tenue enregistre qui a confirmé, et cette personne n'est pas le porteur de la promesse.",
-          "why": "L'auto-déclaration est le mode de défaillance de tous les suivis de promesses jamais livrés."
+          "why": "L'auto-déclaration est le mode de défaillance habituel d'un suivi de promesses."
         }
       ],
       "closing": "eIDAS, RFC 3161, caviardage au format RGPD : la règle est dans le modèle de données, pas dans une annexe de conformité écrite après la construction."
@@ -496,7 +499,7 @@
         "L'écran fonctionne ; derrière, c'est un substitut. Ne bâtissez pas un déploiement autour.",
         "Spécifié et conçu. Pas construit."
       ],
-      "closing": "Voilà ce qu'une institution devrait exiger en achetant un logiciel, écran par écran. Un fournisseur capable de vous dire lequel de ses écrans est réel, lequel est une démo et lequel est une diapositive vous a donné de quoi planifier. Un fournisseur qui ne le peut pas vous a donné un argumentaire."
+      "closing": "Voilà ce qu'une institution devrait exiger en achetant un logiciel, écran par écran. Un fournisseur capable de vous dire lequel de ses écrans est réel, lequel est une démo et lequel est une diapositive vous a donné de quoi planifier."
     },
     "evidence": {
       "label": "Preuves",
@@ -542,7 +545,7 @@
       "caption": "Les empreintes montrées ici sont illustratives. Dans le code en fonctionnement, l'empreinte précédente d'une ligne est calculée et écrite dans la transaction même qui insère la ligne : deux écrivains en course ne peuvent pas aboutir à deux chaînes valides."
     },
     "next": {
-      "title": "Parlons d'infrastructure de confiance",
+      "title": "Là où une affirmation doit être vérifiable.",
       "body": "Si vous construisez quelque chose où un citoyen, un auditeur ou un régulateur doit pouvoir vérifier l'affirmation plutôt que la croire, c'est exactement la conversation que nous cherchons.",
       "cta": "Parler d'infrastructure de confiance",
       "readSource": "Lire le code source",
@@ -584,7 +587,6 @@
     "matching": {
       "label": "Comment le rapprochement fonctionne",
       "title": "De l'appel publié à la bonne boîte de réception",
-      "intro": "Quatre étapes, en mots simples.",
       "steps": [
         {
           "name": "Lire les sources",
@@ -606,9 +608,9 @@
     },
     "shows": {
       "label": "Ce que ça montre",
-      "title": "La troisième plateforme sur la même forme",
-      "p1": "Sur Voyager, nous avons construit une recherche qui reste ancrée dans le contenu propre du client. Sur Polis, nous avons construit la piste d'audit qui rend une affirmation vérifiable. Funda place les deux sur une empreinte plus petite : une collecte qui doit être exacte, un rapprochement qu'un utilisateur peut contester, et quatre rôles qui lisent un même jeu de données typé.",
-      "p2": "La pile est volontairement réduite — Next.js devant, Convex pour les données et les fonctions, Clerk pour l'identité et les rôles. Le travail intéressant n'est pas le choix du framework. C'est de garder une chaîne d'agents honnête quand l'entrée est un document d'appel écrit en langue administrative et la sortie une décision sur laquelle quelqu'un va agir."
+      "title": "Même forme, empreinte plus petite",
+      "p1": "Sur Voyager, nous avons construit une recherche qui reste ancrée dans le contenu propre du client. Sur Polis, le plus dur était la piste d'audit qui rend une affirmation vérifiable. Funda porte les deux à plus petite échelle : une collecte qui doit être exacte, un rapprochement qu'un utilisateur peut contester, et quatre rôles qui lisent un même jeu de données typé.",
+      "p2": "La pile est volontairement réduite — Next.js devant, Convex pour les données et les fonctions, Clerk pour l'identité et les rôles. Le plus dur est de garder une chaîne d'agents honnête quand l'entrée est un document d'appel écrit en langue administrative et la sortie une décision sur laquelle quelqu'un va agir."
     },
     "next": {
       "title": "Vous avez un système de cette forme ?",
@@ -625,8 +627,8 @@
       "tags": ["Astro", "Cloudflare Pages", "i18n croate d'abord", "JSON-LD"]
     },
     "stats": [
-      { "value": "1", "label": "Profil Instagram en entrée", "note": "Personne n'écrit de brief" },
-      { "value": "6", "label": "Étapes du profil à l'URL", "note": "Les mêmes six à chaque fois" },
+      { "value": "1", "label": "Site en ligne aujourd'hui", "note": "Remis au client, public et lié plus bas" },
+      { "value": "6", "label": "Étapes du profil à l'URL", "note": "L'étape cinq est un audit automatisé de chaque page" },
       {
         "value": "2",
         "label": "Langues sur le site en ligne",
@@ -636,7 +638,7 @@
     "showcase": {
       "label": "Le site",
       "title": "En ligne, et vous pouvez vérifier",
-      "intro": "Un café et bar à vins sur le front de mer de Vrsar. Ouvrez-le — c'est le site tel qu'il tourne aujourd'hui.",
+      "intro": "Ouvrez-le — c'est le site tel qu'il tourne aujourd'hui, à l'adresse que le commerce donne à ses hôtes.",
       "languagesLabel": "Langues",
       "markupLabel": "Dans le balisage",
       "inDeliveryLabel": "En cours de livraison",
@@ -695,11 +697,11 @@
     "hero": {
       "label": "Méthode",
       "title": "Notre système de livraison est open source. Lisez-le.",
-      "lead": "Nous construisons des logiciels avec des agents IA orchestrés, et nous l'avons industrialisé. Le contrat sous lequel ces agents travaillent, l'outillage qui les fait tourner et le contrôle qui empêche leur production d'être intégrée sans relecture sont tous publiés sous Apache-2.0.",
+      "lead": "Nous construisons des logiciels avec des agents IA orchestrés, et nous avons écrit les règles sous lesquelles ils tournent. Ce contrat, l'outillage qui les fait tourner et le contrôle qui empêche leur production d'être intégrée sans relecture sont tous publiés sous Apache-2.0.",
       "readRepo": "Lire le dépôt",
       "howItWorks": "Comment ça marche",
       "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "Le système de livraison lui-même : le contrat de dépôt et son schéma, le registre de tâches, le format des paquets et les commandes qui les exécutent.",
+      "repoSummary": "Le système de livraison lui-même : le contrat que porte chaque dépôt, le schéma sur lequel il est versionné, et les commandes qui l'exécutent.",
       "repoChips": ["Apache-2.0", "Rust", "Ligne de commande"]
     },
     "howItWorks": {
@@ -710,13 +712,13 @@
       "artifacts": [
         "Le contrat de comportement : comment les agents travaillent dans ce dépôt, et ce qu'ils ne peuvent pas faire.",
         "Le contrat de design : jetons, échelle typographique, règles de composants et liste des interdits.",
-        "Généré, jamais écrit à la main — la forme actuelle du dépôt, rafraîchie à la demande.",
+        "L'instantané de contexte : la forme actuelle du dépôt, généré et jamais écrit à la main.",
         "Le registre de tâches : tâches, sous-tâches, étiquettes et statut, versionnés à côté du code."
       ],
       "steps": [
         {
           "label": "Chaque dépôt porte un contrat versionné",
-          "description": "Un contrat de comportement, un contrat de design, un instantané de contexte généré et un registre de tâches vivent dans le dépôt, sur un schéma avec migrations. Un agent qui commence à travailler lit les mêmes fichiers qu'un nouvel ingénieur."
+          "description": "Le contrat vit dans le dépôt, sur un schéma avec migrations. Un agent qui commence à travailler lit les mêmes fichiers qu'un nouvel ingénieur."
         },
         {
           "label": "Le travail est découpé en paquets délimités",
@@ -785,8 +787,8 @@
       }
     },
     "why": {
-      "label": "Pourquoi cela compte pour vous",
-      "title": "Ce que vous apporte une méthode que vous pouvez lire.",
+      "label": "Ce que vous obtenez",
+      "title": "Trois choses qu'une méthode publique vous apporte.",
       "intro": "Vous n'achetez pas de l'enthousiasme sur les agents. Vous achetez une chaîne de livraison dont les règles sont écrites.",
       "noteLabel": "Ce que nous n'avons pas construit",
       "noteP1": "Nous travaillons sur des runtimes d'agents et des outils de terminal tiers. Nous ne les avons pas écrits et ne les revendiquons pas.",
@@ -809,7 +811,7 @@
     "next": {
       "label": "Ensuite",
       "title": "Lisez le système, puis apportez-nous le vôtre.",
-      "body": "Vérifiez la méthode avant d'engager quiconque pour l'appliquer à votre code. Dites-nous ensuite ce qui, dans votre système, est lent à exploiter, difficile à comprendre ou impossible à vérifier.",
+      "body": "Vérifiez la méthode avant d'engager quiconque pour l'appliquer à votre code.",
       "cta": "Lancer une revue de système"
     }
   },
@@ -817,13 +819,12 @@
     "hero": {
       "label": "À propos",
       "title": "Un cabinet de conseil qui livre son propre logiciel.",
-      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Nous construisons des logiciels pour des clients dans toute l'UE, et nous construisons et exploitons nos propres plateformes sur le même système de livraison. Ce système est open source."
+      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Nous construisons des logiciels pour des clients dans toute l'UE, et trois plateformes à nous sur le même système de livraison. Ce système est open source."
     },
     "company": {
       "label": "L'entreprise",
       "title": "Deux types de travail, une seule chaîne.",
-      "intro": "Du conseil, et des produits que nous portons nous-mêmes.",
-      "p1": "Le travail client commence presque toujours pareil. Quelque chose tourne déjà — un commerce, une destination, une institution — et le logiciel autour a cessé de l'expliquer. Personne ne voit l'état courant, les exploitants tiennent un tableur privé, et ceux qui doivent faire confiance au résultat ne peuvent pas le vérifier.",
+      "p1": "Le travail client commence presque toujours pareil : quelque chose tourne déjà, et le logiciel autour a cessé de l'expliquer. Personne ne voit l'état courant, les exploitants tiennent un tableur privé, et ceux qui doivent faire confiance au résultat ne peuvent pas le vérifier.",
       "p2": "Construire nos propres plateformes n'est pas une activité annexe. Voyager, Polis et Funda sont là où nous heurtons les contraintes dures en premier : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui doivent continuer de fonctionner. Nous payons ces leçons sur notre temps et en apportons le résultat au travail client.",
       "p3": "Le système de livraison est public. Vous pouvez lire comment nous travaillons avant de nous engager — le contrat sous lequel nos agents tournent, les commandes, et le contrôle qui place un humain devant chaque commit.",
       "facts": {
@@ -834,7 +835,7 @@
         "based": { "term": "Basé à", "value": "Istrie, Croatie. Nous travaillons dans toute l'UE." },
         "work": {
           "term": "Travail",
-          "value": "Des logiciels pour des clients, et des plateformes que nous construisons et exploitons nous-mêmes"
+          "value": "Des logiciels pour des clients, et trois plateformes que nous construisons nous-mêmes"
         },
         "delivery": {
           "term": "Livraison",
@@ -871,15 +872,15 @@
     "platforms": {
       "label": "Nos propres logiciels",
       "title": "Ce que nous portons nous-mêmes.",
-      "intro": "Trois plateformes que nous construisons et exploitons. Statut d'aujourd'hui, pas statut du discours commercial.",
+      "intro": "Trois plateformes que nous construisons nous-mêmes. Statut d'aujourd'hui, pas statut du discours commercial.",
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
-        "description": "Intelligence des lieux pour destinations touristiques : un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Chargé pour Vrsar, sans lancement public à ce jour."
+        "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Intelligence des lieux pour destinations touristiques, chargée pour Vrsar, sans lancement public à ce jour."
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source, avant déploiement",
+        "status": "Open source · AGPL · avant déploiement",
         "description": "Infrastructure civique pour des données publiques vérifiables, où chaque affirmation publique remonte à un document source. Sa propre documentation étiquette chaque interface : vérifiable, démonstration, ou pas encore en ligne."
       },
       "funda": {
@@ -904,7 +905,7 @@
         "Système métier",
         "Intelligence des lieux",
         "Flux documentaire",
-        "Interface IA",
+        "Site client",
         "Stratégie technique",
         "Infrastructure civique"
       ]
@@ -913,7 +914,7 @@
   "Imprint": {
     "label": "Mentions légales",
     "title": "Qui exploite ce site.",
-    "lead": "{siteName} publie et exploite {host}. Tout ce qui figure sur cette page est une déclaration nous concernant, pas un texte type recopié.",
+    "lead": "{siteName} publie et exploite {host}.",
     "operatorLabel": "Éditeur",
     "operator": {
       "operator": {

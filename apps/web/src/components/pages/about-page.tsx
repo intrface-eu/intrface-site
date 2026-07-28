@@ -67,7 +67,6 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
 
       <CaseSection
         aside={<FactLedger facts={facts} />}
-        intro={t("company.intro")}
         label={t("company.label")}
         title={t("company.title")}
         tone="raised"

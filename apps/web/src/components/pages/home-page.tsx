@@ -48,7 +48,7 @@ const HERO_ARTIFACTS = [
   },
   {
     key: "voyager",
-    src: "/proof/voyager/voyager-atlas-map.png",
+    src: "/proof/voyager/voyager-tz-vrsar-profile.png",
     href: "/work/voyager",
   },
   {

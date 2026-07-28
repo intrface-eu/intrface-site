@@ -49,7 +49,6 @@ export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
       </CaseSection>
 
       <CaseSection
-        intro={t("matching.intro")}
         label={t("matching.label")}
         title={t("matching.title")}
         tone="raised"

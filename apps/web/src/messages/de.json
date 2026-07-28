@@ -1,18 +1,16 @@
 {
   "Nav": {
     "work": "Arbeiten",
-    "services": "Leistungen",
     "method": "Methode",
     "about": "Über uns",
     "imprint": "Impressum",
-    "principles": "Prinzipien",
     "contact": "Kontakt",
     "home": "Intrface Startseite",
     "menu": "Menü",
     "logoAlt": "Intrface-Symbol"
   },
   "Footer": {
-    "tagline": "Intrface baut verlässliche Schnittstellen für komplexe reale Systeme.",
+    "tagline": "IT-Beratung und Geschäftsentwicklung, Istrien. Software für Kunden, drei eigene Plattformen, ein quelloffenes Entwicklungssystem.",
     "location": "Istrien, Kroatien · EU",
     "newTab": "öffnet in einem neuen Tab",
     "work": {
@@ -46,15 +44,15 @@
     "screenshotPending": "Screenshot folgt"
   },
   "Metadata": {
-    "tagline": "Software für komplexe reale Systeme.",
-    "description": "INTRFACE baut Software mit einem industrialisierten, quelloffenen Entwicklungssystem aus KI-Agenten: laufende Kundenwebsites, tiefe Plattformen und das Entwicklungssystem selbst.",
+    "tagline": "IT-Beratung aus Istrien. Das Entwicklungssystem ist open source.",
+    "description": "INTRFACE ist eine IT-Beratung in Istrien. Wir bauen Software für Kunden und drei eigene Plattformen, auf einem Agenten-Entwicklungssystem, veröffentlicht unter Apache-2.0 — 403 Commits, öffentlich.",
     "work": {
       "title": "Arbeiten",
-      "description": "Kundenwebsites in Istrien, gebaut auf einer automatisierten Strecke. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub."
+      "description": "Eine laufende Kundenwebsite in Vrsar, drei eigene Plattformen vor dem Launch und das Entwicklungssystem, das sie baut — öffentlich auf GitHub unter Apache-2.0."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Ein QR-Code macht aus der Speisekarte eines Restaurants einen mehrsprachigen KI-Gastgeber. Plattform für Ortsdaten in Reisezielen, vor dem Launch: 365.000 Zeilen eigener TypeScript-Code, 1.580 automatisierte Testfälle."
+      "description": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Plattform für Ortsdaten in Reisezielen, vor dem Launch: 365.000 Zeilen eigener TypeScript-Code, 1.580 automatisierte Testfälle."
     },
     "polis": {
       "title": "Polis Interface",
@@ -85,7 +83,7 @@
     "hero": {
       "eyebrow": "Intrface · Istrien, Kroatien",
       "title": "Wir bauen die Software. Und das System, das die Software baut.",
-      "lead": "Kundenwebsites an der istrischen Küste. Eigene Plattformen. Die Strecke, die beides baut — open source, Apache-2.0.",
+      "lead": "Eine laufende Kundenwebsite in Vrsar. Drei eigene Plattformen. Die Strecke, die sie baut — open source, Apache-2.0.",
       "seeWork": "Arbeiten ansehen",
       "talk": "Sprechen Sie uns an",
       "proofLabel": "Öffnen Sie jedes davon",
@@ -101,7 +99,7 @@
           "name": "Voyager",
           "status": "Vor dem Launch",
           "meta": "Voyager-Fallstudie lesen",
-          "alt": "Voyagers Karte von Vrsar, mit Orten entlang der Küste und einem markierten Weg."
+          "alt": "Das offizielle Voyager-Profil der TZ Vrsar — Prüfsiegel, datierte Hinweise und ein Ortsverzeichnis."
         },
         "aoc": {
           "name": "Agent Ops Cockpit",
@@ -114,18 +112,18 @@
     "thesis": {
       "label": "Die These",
       "title": "Software wird zur Schnittstelle zu allem.",
-      "p1": "Kunden erleben nicht Ihre Strategie. Sie erleben die Schnittstelle. Bürger erleben nicht die Politik. Sie erleben Formulare, Ämter und Wartezeiten.",
-      "p2": "Gäste erleben nicht die Strategie eines Reiseziels. Sie erleben Speisekarten, Wege und Fragen in einer Sprache, die sie vielleicht nicht lesen. Wir bauen die Ebene, auf der diese Komplexität benutzbar wird.",
+      "p1": "Kunden erleben nicht Ihre Strategie. Sie erleben die Schnittstelle. Bürgern begegnet Politik als Formular, Amt und Wartezeit.",
+      "p2": "Einem Gast begegnet ein Reiseziel als Speisekarte, als Fußweg und als Frage in einer Sprache, die am Tresen niemand liest. Diese Ebene bauen wir.",
       "columns": [
-        { "label": "Orientierung", "text": "Das System verständlich machen." },
-        { "label": "Vertrauen", "text": "Quellen, Zustände und Zuständige zeigen." },
-        { "label": "Umsetzung", "text": "Die Software hinter dem Versprechen bauen." }
+        { "label": "Orientierung", "text": "312 Voyager-Routen über sieben Oberflächen, ein Datenmodell." },
+        { "label": "Vertrauen", "text": "Jede Polis-Aussage führt zu Hash, Siegel und Zeitstempel." },
+        { "label": "Umsetzung", "text": "Instagram-Profil rein, laufende URL raus, in sechs Schritten." }
       ]
     },
     "proof": {
       "label": "Beleg",
       "title": "Ausgeliefert und online.",
-      "intro": "Eine Weinbar an der Uferpromenade von Vrsar, aus dem eigenen Instagram-Profil des Kunden gebaut und in einem durchgehenden Lauf zur laufenden URL gebracht — Inhalt gelesen, Marke übernommen, Website gebaut, jede Seite geprüft, dann veröffentlicht.",
+      "intro": "Eine Weinbar an der Uferpromenade von Vrsar, aus dem eigenen Instagram-Profil des Kunden gebaut und in einem durchgehenden Lauf zur laufenden URL gebracht.",
       "pipeline": [
         "Instagram-Profil",
         "Inhaltsanalyse",
@@ -153,12 +151,12 @@
     },
     "systems": {
       "label": "Systeme",
-      "title": "Drei Systeme, und wo jedes wirklich steht.",
+      "title": "Drei Systeme. Keines davon gelauncht.",
       "intro": "Vor dem Launch heißt vor dem Launch. Nichts hier behauptet Nutzer, die es nicht hat.",
       "voyager": {
         "name": "Voyager",
-        "status": "Plattform vor dem Launch",
-        "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet; der Tourismusverband bekommt eine Inhaltsebene, die er selbst steuert.",
+        "status": "Vor dem Launch",
+        "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Der Tourismusverband bekommt eine Inhaltsebene, die er selbst steuert.",
         "stats": [
           { "value": "365.000", "label": "Zeilen eigener TypeScript-Code" },
           { "value": "1.336", "label": "Backend-Funktionen" },
@@ -168,21 +166,21 @@
       },
       "polis": {
         "name": "Polis Interface",
-        "status": "Open source · Vor dem Deployment",
+        "status": "Open source · AGPL · vor dem Deployment",
         "claim": "Ein Governance-Graph, in dem jede öffentliche Aussage auf ein Quelldokument zurückführt.",
         "stats": [
           { "value": "55", "label": "Postgres-Tabellen" },
-          { "value": "10", "label": "Policy-Module zur Laufzeit" },
+          { "value": "10", "label": "Policy-Module" },
           { "value": "17", "label": "Abnahmeskripte" }
         ],
         "linkLabel": "Den Polis-Fall lesen"
       },
       "funda": {
         "name": "Funda",
-        "status": "Im Bau",
+        "status": "Im aktiven Bau",
         "claim": "Ordnet Organisationen EU-Förderaufrufe zu, die Agenten aus SEDIA und TED einlesen.",
         "stats": [
-          { "value": "4", "label": "Rollen in einem SaaS" },
+          { "value": "4", "label": "Rollen-Oberflächen" },
           { "value": "2", "label": "Eingelesene EU-Quellen" },
           { "value": "3", "label": "Sprachen" }
         ],
@@ -192,13 +190,13 @@
     "method": {
       "label": "Methode",
       "title": "Unser Entwicklungssystem ist open source.",
-      "body": "Dreizehn unserer Repos laufen auf demselben versionierten Agentenvertrag. Agenten schlagen die Änderung vor; ein von Menschen geprüftes Tor committet sie. Das Tempo steht im Log — allein im Juli 2026 landeten 383 Commits auf Voyager.",
+      "body": "Dreizehn unserer Repos laufen auf demselben versionierten Agentenvertrag. Agenten schlagen die Änderung vor; ein von Menschen geprüftes Tor committet sie. Allein im Juli 2026 landeten 383 Commits auf Voyager.",
       "readMethod": "Die Methode lesen",
       "readSource": "Den Quellcode lesen",
       "steps": [
         {
           "label": "Vertrag vor Code",
-          "description": "Jedes Repo trägt einen Verhaltensvertrag, einen Designvertrag, einen generierten Kontext-Snapshot und ein Aufgabenregister."
+          "description": "Jedes Repo trägt dieselben Vertragsdateien auf der Platte. Ein Agent liest sie, bevor er den Code liest."
         },
         {
           "label": "Agenten schlagen vor",
@@ -226,7 +224,7 @@
     "contact": {
       "label": "Kontakt",
       "title": "Her mit dem chaotischen System.",
-      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut. Wir kartieren es, entwerfen die Schnittstelle und bauen die Software dahinter.",
+      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut.",
       "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
       "topics": [
         "Geschäftssystem",
@@ -240,13 +238,13 @@
   },
   "WorkIndex": {
     "label": "Arbeiten",
-    "title": "Belege, dreifach.",
-    "lead": "Kundenwebsites in Istrien, gebaut auf einer automatisierten Strecke. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub.",
+    "title": "Vier Systeme. Wo jedes wirklich steht.",
+    "lead": "Eine laufende Kundenwebsite in Vrsar, von einer automatisierten Strecke gebaut. Drei eigene Plattformen, keine davon gelauncht. Ein Entwicklungssystem, öffentlich auf GitHub.",
     "entries": {
       "voyager": {
         "name": "Voyager",
         "status": "Vor dem Launch",
-        "claim": "Ein QR-Code macht aus Karte und Öffnungszeiten eines Restaurants einen mehrsprachigen KI-Gastgeber.",
+        "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet.",
         "figures": [
           { "value": "~365.000", "label": "Zeilen eigener TypeScript-Code" },
           { "value": "1.580", "label": "Automatisierte Testfälle" }
@@ -254,10 +252,10 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL",
+        "status": "Open source · AGPL · vor dem Deployment",
         "claim": "Ein Governance-Graph, in dem jede öffentliche Aussage auf ein Quelldokument zurückführt.",
         "figures": [
-          { "value": "10", "label": "Rego-Policies zur Laufzeit" },
+          { "value": "10", "label": "Policy-Module" },
           { "value": "55", "label": "Postgres-Tabellen" }
         ]
       },
@@ -283,7 +281,7 @@
     "method": {
       "label": "05 · Methode",
       "title": "Unser Entwicklungssystem ist open source.",
-      "body": "Agent Ops Cockpit führt dreizehn unserer Repos auf einem versionierten Vertrag: ein Verhaltensvertrag, ein Designvertrag, ein generierter Kontext-Snapshot und ein Aufgabenregister. Agenten schlagen vor. Ein Mensch liest den Diff und committet.",
+      "body": "Agent Ops Cockpit führt dreizehn unserer Repos auf einem versionierten Vertrag. Agenten schlagen vor. Ein Mensch liest den Diff und committet.",
       "link": "Lesen, wie wir liefern",
       "figures": [
         { "value": "403", "label": "Commits, Apache-2.0" },
@@ -296,7 +294,7 @@
     "hero": {
       "eyebrow": "Place Intelligence",
       "name": "Voyager",
-      "claim": "Ein QR-Code auf dem Restauranttisch wird zum mehrsprachigen KI-Gastgeber, der aus der Karte und den Zeiten genau dieses Restaurants antwortet.",
+      "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet.",
       "status": "Vor dem Launch",
       "tags": [
         "Proprietär",
@@ -332,6 +330,11 @@
           "value": "1.580",
           "label": "Automatisierte Testfälle",
           "note": "Über 286 Testdateien."
+        },
+        {
+          "value": "1.080",
+          "label": "Commits",
+          "note": "Über 20 Monate."
         }
       ]
     },
@@ -365,7 +368,7 @@
         },
         {
           "title": "Retrieval, das weiß, wann es den Vektorindex überspringt",
-          "body": "Eine Frage nach Öffnungszeiten geht an eine strukturierte Abfrage, ein Foto der Speisekarte an einen multimodalen Index — nicht alles durch einen Vektorspeicher. Aus einer Spalte gelesen sind Zeiten eine Tatsache; eine falsche Schließzeit merkt sich ein Gast."
+          "body": "Eine Frage nach Öffnungszeiten geht an eine strukturierte Abfrage, ein Foto der Speisekarte an einen multimodalen Index. Aus einer Spalte gelesen ist eine Öffnungszeit eine Tatsache. Aus einem Vektorspeicher geraten, merkt sich ein Gast die falsche Schließzeit."
         },
         {
           "title": "Scraping und Fußgänger-Routing laufen als eigene Dienste",
@@ -429,7 +432,7 @@
     },
     "next": {
       "label": "Weiter",
-      "title": "Über einen Piloten in Ihrem Reiseziel sprechen.",
+      "title": "Ein Reiseziel, das los sagt.",
       "body": "Nennen Sie uns das Reiseziel und wer dort die offiziellen Inhalte verantwortet. Wir zeigen Ihnen den Vrsar-Datenstand und was Ihrer bräuchte.",
       "cta": "Über einen Piloten sprechen"
     }
@@ -482,7 +485,7 @@
         {
           "title": "Ein Amtsträger kann sein eigenes Versprechen nicht als erfüllt markieren",
           "body": "Die Rechenschaftsebene hält den Akteur, der behauptet, getrennt vom Akteur, der bestätigt. Eine Statusänderung auf erfüllt hält fest, wer bestätigt hat, und diese Person ist nicht der Träger des Versprechens.",
-          "why": "Selbst gemeldete Erfüllung ist das Versagensmuster jedes je ausgelieferten Versprechen-Trackers."
+          "why": "Selbst gemeldete Erfüllung ist das übliche Versagensmuster eines Versprechen-Trackers."
         }
       ],
       "closing": "eIDAS, RFC 3161, DSGVO-konforme Schwärzung: die Regulierung steckt im Datenmodell, nicht in einem Compliance-Anhang, der nach dem Bau geschrieben wurde."
@@ -496,7 +499,7 @@
         "Der Bildschirm funktioniert; dahinter steht ein Platzhalter. Planen Sie keinen Rollout darum herum.",
         "Spezifiziert und entworfen. Nicht gebaut."
       ],
-      "closing": "Das sollte eine Institution beim Softwarekauf verlangen, Bildschirm für Bildschirm. Ein Anbieter, der Ihnen sagen kann, welcher seiner Bildschirme echt ist, welcher eine Demo und welcher eine Folie, hat Ihnen etwas gegeben, womit Sie planen können. Ein Anbieter, der das nicht kann, hat Ihnen eine Verkaufsshow gegeben."
+      "closing": "Das sollte eine Institution beim Softwarekauf verlangen, Bildschirm für Bildschirm. Ein Anbieter, der Ihnen sagen kann, welcher seiner Bildschirme echt ist, welcher eine Demo und welcher eine Folie, hat Ihnen etwas gegeben, womit Sie planen können."
     },
     "evidence": {
       "label": "Belege",
@@ -542,7 +545,7 @@
       "caption": "Die Hashes hier sind beispielhaft. Im laufenden Code wird der Vorgänger-Hash einer Zeile innerhalb derselben Transaktion berechnet und geschrieben, die die Zeile einfügt, damit zwei Schreiber im Wettlauf nicht mit zwei gültigen Ketten enden."
     },
     "next": {
-      "title": "Über Vertrauensinfrastruktur sprechen",
+      "title": "Wo eine Aussage nachprüfbar sein muss.",
       "body": "Wenn Sie etwas bauen, bei dem ein Bürger, ein Prüfer oder eine Aufsicht die Aussage nachprüfen können muss, statt sie zu glauben, ist das genau das Gespräch, das wir suchen.",
       "cta": "Über Vertrauensinfrastruktur sprechen",
       "readSource": "Den Quellcode lesen",
@@ -584,7 +587,6 @@
     "matching": {
       "label": "Wie das Matching läuft",
       "title": "Vom veröffentlichten Aufruf ins richtige Postfach",
-      "intro": "Vier Stufen, in klaren Worten.",
       "steps": [
         {
           "name": "Die Quellen lesen",
@@ -606,9 +608,9 @@
     },
     "shows": {
       "label": "Was es zeigt",
-      "title": "Die dritte Plattform auf derselben Form",
-      "p1": "Auf Voyager haben wir Retrieval gebaut, das im eigenen Inhalt des Kunden verankert bleibt. Auf Polis haben wir die Prüfspur gebaut, die eine Aussage nachprüfbar macht. Funda setzt beides auf kleinerer Fläche: Erfassung, die stimmen muss, Matching, dem ein Nutzer widersprechen kann, und vier Rollen, die einen typisierten Datenbestand lesen.",
-      "p2": "Der Stack ist bewusst klein — Next.js vorn, Convex für Daten und Funktionen, Clerk für Identität und Rollen. Die interessante Arbeit ist nicht die Wahl des Frameworks. Sie besteht darin, eine Agentenstrecke ehrlich zu halten, wenn der Eingang ein in Behördensprache verfasstes Aufrufdokument ist und der Ausgang eine Entscheidung, nach der jemand handelt."
+      "title": "Dieselbe Form, kleinere Fläche",
+      "p1": "Auf Voyager haben wir Retrieval gebaut, das im eigenen Inhalt des Kunden verankert bleibt. Bei Polis war der harte Teil die Prüfspur, die eine Aussage nachprüfbar macht. Funda trägt beides in kleinerem Maßstab: Erfassung, die stimmen muss, Matching, dem ein Nutzer widersprechen kann, und vier Rollen, die einen typisierten Datenbestand lesen.",
+      "p2": "Der Stack ist bewusst klein — Next.js vorn, Convex für Daten und Funktionen, Clerk für Identität und Rollen. Schwierig ist, eine Agentenstrecke ehrlich zu halten, wenn der Eingang ein in Behördensprache verfasstes Aufrufdokument ist und der Ausgang eine Entscheidung, nach der jemand handelt."
     },
     "next": {
       "title": "Ein System mit dieser Form?",
@@ -625,8 +627,8 @@
       "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
     },
     "stats": [
-      { "value": "1", "label": "Instagram-Profil rein", "note": "Niemand schreibt ein Briefing" },
-      { "value": "6", "label": "Schritte vom Profil zur URL", "note": "Jedes Mal dieselben sechs" },
+      { "value": "1", "label": "Website heute live", "note": "Übergeben, öffentlich und unten verlinkt" },
+      { "value": "6", "label": "Schritte vom Profil zur URL", "note": "Schritt fünf ist eine automatische Prüfung jeder Seite" },
       {
         "value": "2",
         "label": "Sprachen auf der laufenden Website",
@@ -636,7 +638,7 @@
     "showcase": {
       "label": "Die Website",
       "title": "Live, und Sie können nachsehen",
-      "intro": "Ein Café und eine Weinbar an der Uferpromenade von Vrsar. Öffnen Sie sie — das ist die Website, wie sie heute läuft.",
+      "intro": "Öffnen Sie sie — das ist die Website, wie sie heute läuft, unter der Adresse, die der Kunde seinen Gästen nennt.",
       "languagesLabel": "Sprachen",
       "markupLabel": "Im Markup",
       "inDeliveryLabel": "In Auslieferung",
@@ -695,11 +697,11 @@
     "hero": {
       "label": "Methode",
       "title": "Unser Entwicklungssystem ist open source. Lesen Sie es.",
-      "lead": "Wir bauen Software mit orchestrierten KI-Agenten, und wir haben das industrialisiert. Der Vertrag, unter dem diese Agenten arbeiten, das Werkzeug, das sie ausführt, und das Tor, das ihre Ergebnisse nicht ungelesen landen lässt, sind unter Apache-2.0 veröffentlicht.",
+      "lead": "Wir bauen Software mit orchestrierten KI-Agenten, und wir haben die Regeln aufgeschrieben, unter denen sie laufen. Dieser Vertrag, das Werkzeug, das sie ausführt, und das Tor, das ihre Ergebnisse nicht ungelesen landen lässt, sind unter Apache-2.0 veröffentlicht.",
       "readRepo": "Das Repository lesen",
       "howItWorks": "Wie es funktioniert",
       "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "Das Entwicklungssystem selbst: der Repository-Vertrag und sein Schema, das Aufgabenregister, das Paketformat und die Befehle, die sie ausführen.",
+      "repoSummary": "Das Entwicklungssystem selbst: der Vertrag, den jedes Repo trägt, das Schema, auf dem er versioniert ist, und die Befehle, die ihn ausführen.",
       "repoChips": ["Apache-2.0", "Rust", "Kommandozeile"]
     },
     "howItWorks": {
@@ -710,13 +712,13 @@
       "artifacts": [
         "Der Verhaltensvertrag: wie Agenten in diesem Repo arbeiten und was sie nicht dürfen.",
         "Der Designvertrag: Tokens, Typo-Skala, Komponentenregeln und die Nicht-Liste.",
-        "Generiert, nie von Hand geschrieben — die aktuelle Form des Repos, auf Abruf erneuert.",
+        "Der Kontext-Snapshot: die aktuelle Form des Repos, generiert und nie von Hand geschrieben.",
         "Das Aufgabenregister: Aufgaben, Teilaufgaben, Tags und Status, versioniert neben dem Code."
       ],
       "steps": [
         {
           "label": "Jedes Repository trägt einen versionierten Vertrag",
-          "description": "Ein Verhaltensvertrag, ein Designvertrag, ein generierter Kontext-Snapshot und ein Aufgabenregister liegen im Repo, auf einem Schema mit Migrationen. Ein Agent, der zu arbeiten beginnt, liest dieselben Dateien wie ein neuer Entwickler."
+          "description": "Der Vertrag liegt im Repo, auf einem Schema mit Migrationen. Ein Agent, der zu arbeiten beginnt, liest dieselben Dateien wie ein neuer Entwickler."
         },
         {
           "label": "Arbeit wird in klar umrissene Pakete geteilt",
@@ -785,8 +787,8 @@
       }
     },
     "why": {
-      "label": "Warum das für Sie zählt",
-      "title": "Was Ihnen eine Methode bringt, die Sie lesen können.",
+      "label": "Was Sie bekommen",
+      "title": "Drei Dinge, die Ihnen eine öffentliche Methode bringt.",
       "intro": "Sie kaufen keine Begeisterung über Agenten. Sie kaufen eine Lieferstrecke, deren Regeln aufgeschrieben sind.",
       "noteLabel": "Was wir nicht gebaut haben",
       "noteP1": "Wir arbeiten auf fremden Agenten-Runtimes und Terminal-Werkzeugen. Wir haben sie nicht geschrieben und beanspruchen sie nicht.",
@@ -809,7 +811,7 @@
     "next": {
       "label": "Weiter",
       "title": "Lesen Sie das System, dann bringen Sie uns Ihres.",
-      "body": "Prüfen Sie die Methode, bevor Sie jemanden dafür engagieren, sie auf Ihren Code loszulassen. Sagen Sie uns dann, was in Ihrem System den Betrieb bremst, schwer zu verstehen ist oder wem niemand traut.",
+      "body": "Prüfen Sie die Methode, bevor Sie jemanden dafür engagieren, sie auf Ihren Code loszulassen.",
       "cta": "Systemprüfung starten"
     }
   },
@@ -817,13 +819,12 @@
     "hero": {
       "label": "Über uns",
       "title": "Eine Beratung, die ihre eigene Software ausliefert.",
-      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Istrien, Kroatien. Wir bauen Software für Kunden in der EU, und wir bauen und betreiben eigene Plattformen auf demselben Entwicklungssystem. Dieses System ist open source."
+      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Istrien, Kroatien. Wir bauen Software für Kunden in der EU und drei eigene Plattformen auf demselben Entwicklungssystem. Dieses System ist open source."
     },
     "company": {
       "label": "Das Unternehmen",
       "title": "Zwei Arten von Arbeit, eine Strecke.",
-      "intro": "Beratungsarbeit und Produkte, die wir selbst tragen.",
-      "p1": "Kundenarbeit beginnt meist gleich. Etwas läuft schon — ein Betrieb, ein Reiseziel, eine Institution — und die Software drumherum erklärt es nicht mehr. Niemand sieht den aktuellen Stand, die Betreiber führen eine private Tabelle, und wer dem Ergebnis vertrauen muss, kann es nicht prüfen.",
+      "p1": "Kundenarbeit beginnt meist gleich: etwas läuft schon, und die Software drumherum erklärt es nicht mehr. Niemand sieht den aktuellen Stand, die Betreiber führen eine private Tabelle, und wer dem Ergebnis vertrauen muss, kann es nicht prüfen.",
       "p2": "Eigene Plattformen zu bauen ist keine Nebenbeschäftigung. Voyager, Polis und Funda sind der Ort, an dem wir zuerst gegen die harten Grenzen laufen: feingranulare Autorisierung, Prüfspuren, die niemand still umschreiben kann, mehrsprachige Inhalte, die richtig bleiben müssen, Deployments, die weiter funktionieren müssen. Wir bezahlen diese Lehren mit eigener Zeit und bringen das Ergebnis in die Kundenarbeit.",
       "p3": "Das Entwicklungssystem ist öffentlich. Sie können nachlesen, wie wir arbeiten, bevor Sie uns beauftragen — den Vertrag, unter dem unsere Agenten laufen, die Befehle und das Tor, das vor jeden Commit einen Menschen stellt.",
       "facts": {
@@ -834,7 +835,7 @@
         "based": { "term": "Sitz", "value": "Istrien, Kroatien. Tätig in der ganzen EU." },
         "work": {
           "term": "Arbeit",
-          "value": "Software für Kunden und Plattformen, die wir selbst bauen und betreiben"
+          "value": "Software für Kunden und drei Plattformen, die wir selbst bauen"
         },
         "delivery": {
           "term": "Lieferung",
@@ -871,15 +872,15 @@
     "platforms": {
       "label": "Unsere eigene Software",
       "title": "Was wir selbst tragen.",
-      "intro": "Drei Plattformen, die wir bauen und betreiben. Status von heute, nicht Status aus dem Pitch.",
+      "intro": "Drei Plattformen, die wir selbst bauen. Status von heute, nicht Status aus dem Pitch.",
       "voyager": {
         "name": "Voyager",
         "status": "Vor dem Launch",
-        "description": "Ortsdaten für Reiseziele: ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Für Vrsar eingespielt, noch ohne öffentlichen Launch."
+        "description": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Ortsdaten für Reiseziele, für Vrsar eingespielt, noch ohne öffentlichen Launch."
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source, vor dem Deployment",
+        "status": "Open source · AGPL · vor dem Deployment",
         "description": "Infrastruktur für überprüfbare Verwaltungsdaten, in der jede öffentliche Aussage auf ein Quelldokument zurückführt. Die eigene Dokumentation kennzeichnet jede Oberfläche als überprüfbar, Demonstration oder noch nicht live."
       },
       "funda": {
@@ -904,7 +905,7 @@
         "Geschäftssystem",
         "Place Intelligence",
         "Dokumenten-Workflow",
-        "KI-Schnittstelle",
+        "Kundenwebsite",
         "Technische Strategie",
         "Öffentliche Infrastruktur"
       ]
@@ -913,7 +914,7 @@
   "Imprint": {
     "label": "Impressum",
     "title": "Wer diese Seite betreibt.",
-    "lead": "{siteName} veröffentlicht und betreibt {host}. Alles auf dieser Seite ist eine Aussage über uns, kein kopierter Textbaustein.",
+    "lead": "{siteName} veröffentlicht und betreibt {host}.",
     "operatorLabel": "Betreiber",
     "operator": {
       "operator": {

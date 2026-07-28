@@ -208,6 +208,20 @@ body {
     font-weight: 550;
   }
 
+  /* Narrow screens only. A German compound at display size ("Entwicklungssystem")
+     is wider than a 390 px column, and an unbreakable word sets the min-content
+     width of the whole grid — the page then scrolls sideways. Hyphenation only
+     fires when a word cannot fit its line, so shorter-word locales render
+     unchanged; the per-locale `lang` on <html> picks the dictionary. Above `lg`
+     there is room to spare, so headings keep their unhyphenated setting. */
+  @media (width < 64rem) {
+    .type-display,
+    .type-heading {
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+  }
+
   .type-section-label {
     font-family: var(--font-brand);
     font-size: 0.8rem;

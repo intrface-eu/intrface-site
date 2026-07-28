@@ -2,10 +2,10 @@ export const SITE_NAME = "INTRFACE";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://intrface.eu").replace(/\/$/, "");
 
-export const SITE_TAGLINE = "Software for complex real-world systems.";
+export const SITE_TAGLINE = "IT consulting from Istria. The delivery system is open source.";
 
 export const SITE_DESCRIPTION =
-  "INTRFACE builds software with an industrialized, open-source AI-agent delivery system: live client sites, deep platforms, and the delivery system itself.";
+  "INTRFACE is an IT consultancy in Istria. We build client software and three platforms of our own, on an agent delivery system published under Apache-2.0 — 403 commits, public.";
 
 export const CONTACT_EMAIL = "hello@intrface.eu";
 
