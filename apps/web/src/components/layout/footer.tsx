@@ -22,7 +22,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
         <div>
           <div className="flex items-center gap-3">
             {/* Below the fold, so it rests rather than composing where nobody sees it. */}
-            <AnimatedMark animate={false} className="text-ink" size={20} />
+            <AnimatedMark className="text-ink" size={20} />
             <span className="text-lg font-medium tracking-[-0.04em] text-ink">intrface</span>
           </div>
           <p className="type-body mt-4 max-w-sm text-sm leading-6">{footer("tagline")}</p>

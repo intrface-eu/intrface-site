@@ -529,11 +529,11 @@ body {
                     on a different element, opening or closing it never
                     restarts — and so never jumps — the ambient loop beneath.
 
-     The small star's travel is a true mirror about the box centre: its centre
-     sits at (202.17, 221.48), the mirror is (797.83, 778.52), so the trip is
-     (595.66, 557.04) user units. The big star is symmetric under a half turn,
-     so the landing pose sits in the opposite notch exactly as the resting pose
-     sits in its own.
+     The small star's travel is a horizontal mirror about the box centre: its
+     centre sits at (202.17, 221.48) and lands at (797.83, 221.48) — a trip of
+     (595.66, 0) user units, upper-left notch to upper-right notch. The big
+     star's reflection symmetry means the landing pose reads exactly like the
+     resting one.
 
      Interaction easing is a spring — mass 1, stiffness 200, damping 20 —
      sampled into a linear() curve, with a cubic-bezier of roughly the same
@@ -681,7 +681,7 @@ body {
   a:focus-visible .brand-mark:not(.brand-mark--static),
   button:hover .brand-mark:not(.brand-mark--static),
   button:focus-visible .brand-mark:not(.brand-mark--static) {
-    --bm-travel: 59.566% 55.704%;
+    --bm-travel: 59.566% 0%;
     --bm-spin: 180deg;
     --bm-swing: -90deg;
   }
@@ -690,7 +690,7 @@ body {
   .brand-mark:not(.brand-mark--static):active,
   a:active .brand-mark:not(.brand-mark--static),
   button:active .brand-mark:not(.brand-mark--static) {
-    --bm-travel: 59.566% 55.704%;
+    --bm-travel: 59.566% 0%;
     --bm-spin: 202deg;
     --bm-swing: -97deg;
     --bm-press: 1.05;
