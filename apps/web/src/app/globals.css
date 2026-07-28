@@ -507,6 +507,35 @@ body {
     }
   }
 
+  /* ===== SECTION REVEAL =====
+     The whole motion budget of the FadeIn wrapper. A shared
+     IntersectionObserver sets data-reveal="pending" on mount and flips it to
+     "shown" once the block is in view; opacity and transform are composited,
+     so a scroll reveal never touches the main thread.
+
+     Both rules live inside no-preference on purpose. Under reduced motion the
+     hidden state simply does not exist, so the content is in place no matter
+     what the observer does — and because the attribute is only ever added by
+     script, server markup is the same for every visitor and nothing is hidden
+     when JavaScript is off. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      transition: opacity 460ms cubic-bezier(0.2, 0.8, 0.3, 1),
+        transform 460ms cubic-bezier(0.2, 0.8, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    [data-reveal="pending"] {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+    }
+
+    [data-reveal="shown"] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   .artifact-card {
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.82);

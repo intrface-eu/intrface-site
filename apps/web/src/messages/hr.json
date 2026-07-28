@@ -30,7 +30,7 @@
     "description": "INTRFACE gradi softver industrijaliziranim, otvorenim sustavom isporuke s AI agentima: žive klijentske stranice, ozbiljne platforme i sam sustav isporuke.",
     "work": {
       "title": "Radovi",
-      "description": "Četiri klijentske stranice rade u Istri. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu."
+      "description": "Klijentske stranice u Istri, izgrađene na jednom automatiziranom toku. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu."
     },
     "voyager": {
       "title": "Voyager",
@@ -46,7 +46,7 @@
     },
     "clientSites": {
       "title": "Klijentske stranice u Istri",
-      "description": "Četiri žive dvojezične stranice za obrte i tvrtke na istarskoj obali, svaka izgrađena iz klijentova Instagram profila i objavljena u nekoliko dana. Snimke zaslona i linkovi."
+      "description": "Dvojezične stranice za obrte i tvrtke na istarskoj obali, izgrađene iz klijentova Instagram profila i objavljene jednim automatiziranim tokom. Snimke zaslona, živi link i šest koraka."
     },
     "method": {
       "title": "Metoda",
@@ -65,7 +65,7 @@
     "hero": {
       "eyebrow": "Intrface · Istra, Hrvatska",
       "title": "Pouzdana sučelja za složene stvarne sustave.",
-      "lead": "Četiri žive stranice za obrte i tvrtke na istarskoj obali. Turistička platforma pred pokretanjem, 365.000 redaka koda. Javna infrastruktura u kojoj svaka tvrdnja vodi do izvornog dokumenta.",
+      "lead": "Žive klijentske stranice na istarskoj obali, izgrađene iz Instagram profila jednim automatiziranim tokom. Turistička platforma pred pokretanjem, 365.000 redaka koda. Javna infrastruktura u kojoj svaka tvrdnja vodi do izvornog dokumenta.",
       "seeWork": "Pogledajte radove",
       "howWeBuild": "Kako gradimo",
       "openSource": "Naš sustav isporuke je open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
@@ -104,7 +104,7 @@
     "proof": {
       "label": "Dokaz",
       "title": "Isporučeno i online.",
-      "intro": "Četiri dvojezične stranice za obalne obrte i tvrtke u Istri. Svaka izgrađena iz klijentova Instagram profila i objavljena u nekoliko dana — nekoliko njih u jednom danu.",
+      "intro": "Vinski bar na vrsarskoj rivi, izgrađen iz klijentova Instagram profila i doveden do živog URL-a u jednom potezu — sadržaj pročitan, brend preuzet, stranica izgrađena, svaka stranica provjerena, pa objavljena.",
       "pipeline": [
         "Instagram profil",
         "Analiza sadržaja",
@@ -115,34 +115,18 @@
       ],
       "liveIn": "Live · {place}",
       "howWeShip": "Kako ih isporučujemo",
+      "languagesLabel": "Jezici",
+      "markupLabel": "U kodu stranice",
+      "inDeliveryLabel": "U isporuci",
+      "inDelivery": "Još tri stranice trenutačno su u toku. Ovdje idu kad ih klijenti dobiju u ruke, a ne prije toga.",
       "sites": {
-        "cannaclean": {
-          "name": "CannaClean",
-          "place": "Poreč",
-          "kind": "Detailing studio",
-          "description": "Hrvatski i engleski, s LocalBusiness strukturiranim podacima da se studio točno prikaže u lokalnoj pretrazi.",
-          "alt": "Početna stranica CannaCleana — detailing studio u Poreču"
-        },
         "velum": {
           "name": "Velum",
           "place": "Vrsarska riva",
           "kind": "Kafić i vinski bar",
-          "description": "Hrvatski i engleski. Isti studio napravio je i motion grafiku za bar.",
+          "description": "Hrvatski i engleski, na dizajnerskim tokenima uzetim iz vlastitog materijala bara. Isti studio napravio mu je i motion grafiku u Remotionu.",
+          "notes": ["LocalBusiness JSON-LD", "hreflang", "Motion grafika u Remotionu"],
           "alt": "Početna stranica Veluma — kafić i vinski bar na vrsarskoj rivi"
-        },
-        "astyleMarine": {
-          "name": "Astyle Marine",
-          "place": "Poreč",
-          "kind": "Charter jahti",
-          "description": "Hrvatski i engleski, na dizajnerskim tokenima uzetim iz vlastitog vizualnog identiteta.",
-          "alt": "Početna stranica Astyle Marinea — charter jahti u Poreču"
-        },
-        "vrsarBoatTours": {
-          "name": "Vrsar Private Boat Tours",
-          "place": "Vrsar",
-          "kind": "Privatni izleti brodom",
-          "description": "Četiri jezika, svaki sa svojim hreflangom: engleski, hrvatski, talijanski, njemački.",
-          "alt": "Početna stranica Vrsar Private Boat Toursa — privatni izleti brodom u Vrsaru"
         }
       }
     },
@@ -236,7 +220,7 @@
   "WorkIndex": {
     "label": "Radovi",
     "title": "Dokazi, na tri načina.",
-    "lead": "Četiri klijentske stranice rade u Istri. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu.",
+    "lead": "Klijentske stranice u Istri, izgrađene na jednom automatiziranom toku. Tri platforme u izradi. Jedan sustav isporuke, javan na GitHubu.",
     "entries": {
       "voyager": {
         "name": "Voyager",
@@ -267,11 +251,11 @@
       },
       "clientSites": {
         "name": "Klijentske stranice u Istri",
-        "status": "Live ×4",
-        "claim": "Četiri obalna posla u nekoliko su dana od Instagram profila došla do žive dvojezične stranice.",
+        "status": "Live · Vrsar",
+        "claim": "Obalni posao u jednom potezu ide od Instagram profila do žive dvojezične stranice.",
         "figures": [
-          { "value": "4", "label": "Stranice danas online" },
-          { "value": "2–4", "label": "Jezika po stranici" }
+          { "value": "6", "label": "Koraka od profila do URL-a" },
+          { "value": "2", "label": "Jezika na živoj stranici" }
         ]
       }
     },
@@ -618,35 +602,29 @@
     "hero": {
       "eyebrow": "Rad za klijente",
       "name": "Klijentske stranice u Istri",
-      "claim": "Četiri dvojezične stranice za obalne obrte i tvrtke u Istri, svaka izgrađena iz klijentova Instagram profila i online u nekoliko dana.",
-      "status": "Live ×4",
+      "claim": "Dvojezična stranica za vinski bar na vrsarskoj rivi, izgrađena iz klijentova Instagram profila i objavljena jednim automatiziranim tokom.",
+      "status": "Live · Vrsar",
       "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
     },
     "stats": [
-      { "value": "4", "label": "Stranica online", "note": "Sve četiri provjerene 27. srpnja 2026." },
+      { "value": "1", "label": "Instagram profil unutra", "note": "Nitko ne piše brief" },
+      { "value": "6", "label": "Koraka od profila do URL-a", "note": "Svaki put istih šest" },
       {
-        "value": "2–4",
-        "label": "Jezika po stranici",
+        "value": "2",
+        "label": "Jezika na živoj stranici",
         "note": "Hrvatski prvi, hreflang na svakoj stranici"
-      },
-      { "value": "6", "label": "Koraka od profila do URL-a", "note": "Svaki put istih šest" }
+      }
     ],
     "showcase": {
-      "label": "Stranice",
+      "label": "Stranica",
       "title": "Online, i možete provjeriti",
-      "intro": "Četiri posla na istarskoj obali. Otvorite bilo koju — ovo su stranice onakve kakve rade danas.",
+      "intro": "Kafić i vinski bar na vrsarskoj rivi. Otvorite ga — ovo je stranica onakva kakva radi danas.",
       "languagesLabel": "Jezici",
-      "markupLabel": "U kodu stranice"
+      "markupLabel": "U kodu stranice",
+      "inDeliveryLabel": "U isporuci",
+      "inDelivery": "Još tri stranice prošle su isti tok i u isporuci su kod svojih klijenata. Klijentov rad objavljujemo ovdje kad ga klijent ima u rukama, a ne kad build završi."
     },
     "sites": {
-      "cannaclean": {
-        "name": "CannaClean",
-        "place": "Poreč",
-        "line": "Detailing studio koji ručno pere automobile, brodove i kampere po cijeloj Istri.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang"],
-        "desktopAlt": "Početna stranica CannaCleana: tamnoplavi hero s natpisom „Detailing bez kompromisa“, gumbi za rezervaciju i prebacivanje hrvatski/engleski.",
-        "mobileAlt": "Isti CannaClean hero složen za zaslon mobitela."
-      },
       "velum": {
         "name": "Velum",
         "place": "Vrsarska riva",
@@ -654,28 +632,12 @@
         "notes": ["LocalBusiness JSON-LD", "hreflang"],
         "desktopAlt": "Početna stranica Veluma: fotografija kave i vlastitog jelovnika bara uz redak „Uz more, bez žurbe.“",
         "mobileAlt": "Velumova početna stranica na mobitelu, fotografija iznad naslova."
-      },
-      "astyleMarine": {
-        "name": "Astyle Marine",
-        "place": "Poreč",
-        "line": "Charter jahti s cjelodnevnim izletima na otvorenom Jadranu iz Poreča.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang"],
-        "desktopAlt": "Početna stranica Astyle Marinea: serifni naslov „Luxury in full speed“ na crnom, uz fotografiju jahte s crvenim detaljima pred porečkom obalom.",
-        "mobileAlt": "Početna stranica Astyle Marinea na mobitelu, naslov iznad fotografije jahte."
-      },
-      "vrsarBoatTours": {
-        "name": "Vrsar Private Boat Tours",
-        "place": "Marina Vrsar",
-        "line": "Privatni izleti brodom za najviše deset gostiju, rezervacija po danu.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang", "Prebacivanje između četiri jezika"],
-        "desktopAlt": "Početna stranica Vrsar Private Boat Toursa: istarska obala u sumrak iza trake za rezervaciju, s jezičnim opcijama EN, HR, IT i DE.",
-        "mobileAlt": "Početna stranica Vrsar Private Boat Toursa na mobitelu, gumb za rezervaciju ispod naslova."
       }
     },
     "pipeline": {
       "label": "Kako ih isporučujemo",
       "title": "Instagram profil unutra, živi URL van",
-      "intro": "Svaki put istih šest koraka. Zato stranica traje dane, a ne tromjesečje.",
+      "intro": "Svaki put istih šest koraka, odrađenih u jednom potezu. Zato rok koji vam damo stoji.",
       "steps": [
         {
           "name": "Pročitati Instagram profil",
@@ -699,14 +661,14 @@
         },
         {
           "name": "Objaviti na Cloudflare Pages",
-          "body": "Stranica ide online na Cloudflareov edge, a klijent isti dan dobije URL koji može staviti u svoj Instagram bio."
+          "body": "Stranica ide online na Cloudflareov edge, a klijent dobije URL koji odmah može staviti u svoj Instagram bio."
         }
       ],
       "alsoLabel": "Također iz istog studija",
       "alsoBody": "Velumovu motion grafiku napravio je u Remotionu isti tim koji je izradio stranicu — isti tokeni brenda, isti izvorni materijal, renderirano iz koda."
     },
     "next": {
-      "title": "Vaša stranica, online ovaj tjedan.",
+      "title": "Vaša stranica, na istom toku.",
       "body": "Pošaljite nam Instagram profil koji ionako vodite. Vraćamo vam stranicu koja iz njega nastane — na hrvatskom i na jezicima na kojima vaši gosti stvarno rezerviraju.",
       "cta": "Pošaljite nam svoj profil"
     }
@@ -904,7 +866,7 @@
         "status": "U aktivnoj izradi",
         "description": "EU sredstva povezana s organizacijama koje ih mogu dobiti. Agenti čitaju izvore SEDIA i TED, geoprostorno povezivanje, tri jezika."
       },
-      "clientNote": "Rad za klijente ide istim tokom. Četiri dvojezične stranice za istarske poslove su online, svaka isporučena u nekoliko dana — <link>pogledajte kako taj tok radi</link>."
+      "clientNote": "Rad za klijente ide istim tokom: Instagram profil ulazi, dvojezična stranica na živom URL-u izlazi, s automatskom provjerom ugrađenom u put — <link>pogledajte kako taj tok radi</link>."
     },
     "contact": {
       "label": "Kontakt",

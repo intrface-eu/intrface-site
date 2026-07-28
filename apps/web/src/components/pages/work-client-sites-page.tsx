@@ -8,16 +8,15 @@ import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { PipelineSteps, type PipelineStep } from "@/components/work/client-sites/pipeline-steps";
 import { SiteShowcase, type SiteEntry } from "@/components/work/client-sites/site-showcase";
 
-/** Capture paths, live URL, and the language chips. Copy comes from messages. */
+/**
+ * Capture paths, live URL, and the language chips. Copy comes from messages.
+ *
+ * Only sites the client has been handed belong here. Others exist but are
+ * still in delivery — see `docs/site-revamp-contract.md`, which names them and
+ * says why they must not be named, linked, or shown on this site yet. Do not
+ * add one back without the owner saying so.
+ */
 const SITE_SHAPE = [
-  {
-    key: "cannaclean",
-    languages: ["HR", "EN"],
-    href: "https://cannaclean.pages.dev",
-    hrefLabel: "cannaclean.pages.dev",
-    desktop: "/proof/sites/cannaclean-desktop.png",
-    mobile: "/proof/sites/cannaclean-mobile.png",
-  },
   {
     key: "velum",
     languages: ["HR", "EN"],
@@ -25,22 +24,6 @@ const SITE_SHAPE = [
     hrefLabel: "velum-winebar.pages.dev",
     desktop: "/proof/sites/velum-desktop.png",
     mobile: "/proof/sites/velum-mobile.png",
-  },
-  {
-    key: "astyleMarine",
-    languages: ["HR", "EN"],
-    href: "https://astyle-marine.pages.dev",
-    hrefLabel: "astyle-marine.pages.dev",
-    desktop: "/proof/sites/astyle-marine-desktop.png",
-    mobile: "/proof/sites/astyle-marine-mobile.png",
-  },
-  {
-    key: "vrsarBoatTours",
-    languages: ["EN", "HR", "IT", "DE"],
-    href: "https://vrsar-private-boat-tours.pages.dev",
-    hrefLabel: "vrsar-private-boat-tours.pages.dev",
-    desktop: "/proof/sites/vrsar-boat-tours-desktop.png",
-    mobile: "/proof/sites/vrsar-boat-tours-mobile.png",
   },
 ] as const;
 
@@ -87,6 +70,15 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
             <SiteShowcase index={index} key={site.name} priority={index === 0} site={site} />
           ))}
         </div>
+
+        {/* More sites exist. None of them are ours to name, link, or show
+            until the client has been handed the work. */}
+        <FadeIn>
+          <div className="mt-4 border-t border-rule pt-8 lg:mt-10">
+            <p className="type-section-label">{t("showcase.inDeliveryLabel")}</p>
+            <p className="type-body mt-3 max-w-2xl">{t("showcase.inDelivery")}</p>
+          </div>
+        </FadeIn>
       </CaseSection>
 
       <CaseSection

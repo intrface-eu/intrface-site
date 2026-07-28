@@ -9,8 +9,9 @@ deep dive, 2026-07-27) and the file-ownership map that keeps parallel work from 
 INTRFACE builds software with an industrialized, open-source AI-agent delivery system,
 and proves it three ways:
 
-1. **Live client work** — four live bilingual sites for Istrian coastal businesses,
-   shipped in days, produced by a repeatable Instagram-to-deployed-site pipeline.
+1. **Live client work** — bilingual sites for Istrian coastal businesses, produced by a
+   repeatable Instagram-to-deployed-site pipeline. One is public (Velum); see the
+   roster rule under Approved facts before naming or linking any other.
 2. **Deep platforms** — Voyager (tourism place-intelligence platform), Polis (civic
    trust infrastructure), Funda (EU-funding matching SaaS).
 3. **The delivery system itself** — AOC, open source at
@@ -47,16 +48,31 @@ a screenshot, or a named artifact.
 
 ## Approved facts and numbers
 
-**Client sites (all verified live 2026-07-27):**
-- https://cannaclean.pages.dev — detailing studio, Poreč. HR/EN, LocalBusiness JSON-LD.
-- https://velum-winebar.pages.dev — café/wine bar, Vrsar waterfront. HR/EN.
-- https://astyle-marine.pages.dev — yacht charter, Poreč. HR/EN.
-- https://vrsar-private-boat-tours.pages.dev — private boat tours, Vrsar. EN/HR/IT/DE.
-- Delivery: each shipped in days, several in a single day. Pipeline: Instagram profile →
-  content analysis → design tokens from the client's brand → Astro build (HR-first i18n,
-  JSON-LD, hreflang) → automated Playwright audit (including per-image aspect-ratio
-  checks) → Cloudflare Pages deploy. Same studio also produced motion graphics for
-  Velum (Remotion).
+**Client sites — the public roster is Velum, and only Velum.**
+
+Publishable today:
+- https://velum-winebar.pages.dev — café/wine bar, Vrsar waterfront. HR/EN,
+  LocalBusiness JSON-LD, hreflang. Motion graphics by the same studio (Remotion).
+  Captures live at `apps/web/public/proof/sites/velum-{desktop,mobile}.png`.
+
+**Built but NOT deliverable — do not name, link, screenshot, or count (2026-07-28):**
+cannaclean, astyle-marine, vrsar-boat-tours. These sites exist and run, but the clients
+have not been handed them. The repo is public, so their captures were deleted from
+`apps/web/public/proof/sites/` rather than merely unreferenced. Do not re-add a name, a
+URL, a capture, or a headcount that includes them until the owner says otherwise —
+"three more in delivery", unnamed, is the most the site may say.
+
+Because of this: no "four live sites" phrasing anywhere — not in copy, not in metadata
+descriptions, not in a stat cell, not in a status label. Figures on the client-sites
+page count the pipeline (six steps, two languages on the live site), not the roster.
+
+- Delivery claim: the pipeline is the claim, not the clock. Say "one continuous pass",
+  "one automated pipeline", "the date we give you holds". Do NOT say "in days", "several
+  in a single day", "the same day", "live this week", and do not put a delivery
+  day-count in a stat cell. The timeline is real; stated as a day-count it reads cheap.
+- Pipeline: Instagram profile → content analysis → design tokens from the client's brand
+  → Astro build (HR-first i18n, JSON-LD, hreflang) → automated Playwright audit
+  (including per-image aspect-ratio checks) → Cloudflare Pages deploy.
 
 **Voyager** (proprietary, pre-launch): verified place-intelligence platform for tourism
 destinations. One QR code gives a restaurant a multilingual AI host grounded in its own
@@ -115,7 +131,7 @@ All routes under `apps/web/src/app/[locale]/`:
 | `/work/voyager` | `components/pages/work-voyager-page.tsx` | Case study |
 | `/work/polis` | `components/pages/work-polis-page.tsx` | Case study |
 | `/work/funda` | `components/pages/work-funda-page.tsx` | Case study |
-| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Istria sites case study with screenshots + live links |
+| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Istria client-site case study: the Velum exhibit, the pipeline, an unnamed "in delivery" note |
 | `/method` | `components/pages/method-page.tsx` | The agent-orchestrated delivery system, linking the public AOC repo |
 | `/about` | `components/pages/about-page.tsx` | Who/where/how we engage + contact form |
 | `/imprint` | `components/pages/imprint-page.tsx` | Legal/imprint basics for an .eu company |

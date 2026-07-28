@@ -16,6 +16,8 @@ export type LiveSite = {
   alt: string;
   /** The live URL. Opens in a new tab. */
   url: string;
+  /** Short verifiable facts about the build — languages, markup, extras. */
+  facts?: readonly { label: string; value: string }[];
 };
 
 function displayHost(url: string) {
@@ -83,6 +85,16 @@ export function LiveSiteRow({
         <h3 className="mt-4 text-2xl font-semibold text-ink sm:text-3xl">{site.name}</h3>
         <p className="type-meta mt-2">{site.kind}</p>
         <p className="type-body mt-4 max-w-md">{site.description}</p>
+        {site.facts?.length ? (
+          <dl className="mt-7 flex flex-wrap gap-x-8 gap-y-4">
+            {site.facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="type-meta">{fact.label}</dt>
+                <dd className="type-body mt-2 text-sm leading-6">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
         <a
           className="mt-6 inline-flex items-center gap-1.5 rounded-full text-sm font-semibold text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
           href={site.url}

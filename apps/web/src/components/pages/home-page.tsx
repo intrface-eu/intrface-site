@@ -13,15 +13,21 @@ import { Link, getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import { AOC_REPO_URL, CONTACT_EMAIL } from "@/lib/site/config";
 
-/** Screenshot slug, message key, and live URL. The copy sits in the messages file. */
+/**
+ * Screenshot slug, message key, live URL, and the language chips. The copy
+ * sits in the messages file.
+ *
+ * Only sites the client has been handed belong here. Others exist but are
+ * still in delivery — see `docs/site-revamp-contract.md`, which names them and
+ * says why they must not appear on this site yet. Do not add one back without
+ * the owner saying so.
+ */
 const LIVE_SITES = [
-  { slug: "cannaclean", key: "cannaclean", url: "https://cannaclean.pages.dev" },
-  { slug: "velum", key: "velum", url: "https://velum-winebar.pages.dev" },
-  { slug: "astyle-marine", key: "astyleMarine", url: "https://astyle-marine.pages.dev" },
   {
-    slug: "vrsar-boat-tours",
-    key: "vrsarBoatTours",
-    url: "https://vrsar-private-boat-tours.pages.dev",
+    slug: "velum",
+    key: "velum",
+    url: "https://velum-winebar.pages.dev",
+    languages: ["HR", "EN"],
   },
 ] as const;
 
@@ -49,6 +55,13 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
     kind: t(`proof.sites.${site.key}.kind`),
     description: t(`proof.sites.${site.key}.description`),
     alt: t(`proof.sites.${site.key}.alt`),
+    facts: [
+      { label: t("proof.languagesLabel"), value: site.languages.join(" · ") },
+      {
+        label: t("proof.markupLabel"),
+        value: (t.raw(`proof.sites.${site.key}.notes`) as string[]).join(", "),
+      },
+    ],
   }));
 
   const featuredSystems: FeaturedSystem[] = FEATURED_SYSTEMS.map((system) => ({
@@ -159,7 +172,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
         </div>
       </section>
 
-      {/* PROOF — paper, four live sites as framed receipts */}
+      {/* PROOF — paper, the live site as a framed receipt, pipeline above it */}
       <section className="scroll-mt-24 border-b border-rule tone-paper" id="live">
         <div className="section-shell py-20 sm:py-28">
           <div className="max-w-3xl">
@@ -198,8 +211,15 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
             ))}
           </div>
 
+          {/* The honest closer: more sites exist, none of them are ours to
+              show until the client has been handed the work. No names, no
+              URLs, no captures — see docs/site-revamp-contract.md. */}
           <FadeIn delay={80}>
-            <div className="mt-14 border-t border-rule pt-8">
+            <div className="mt-14 grid gap-8 border-t border-rule pt-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-14">
+              <div>
+                <p className="type-section-label">{t("proof.inDeliveryLabel")}</p>
+                <p className="type-body mt-3 max-w-xl">{t("proof.inDelivery")}</p>
+              </div>
               <Link
                 className="inline-flex items-center gap-2 rounded-full text-base font-semibold text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
                 href="/work/client-sites"

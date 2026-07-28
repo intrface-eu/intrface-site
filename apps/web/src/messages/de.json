@@ -30,7 +30,7 @@
     "description": "INTRFACE baut Software mit einem industrialisierten, quelloffenen Entwicklungssystem aus KI-Agenten: laufende Kundenwebsites, tiefe Plattformen und das Entwicklungssystem selbst.",
     "work": {
       "title": "Arbeiten",
-      "description": "Vier Kundenwebsites laufen in Istrien. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub."
+      "description": "Kundenwebsites in Istrien, gebaut auf einer automatisierten Strecke. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub."
     },
     "voyager": {
       "title": "Voyager",
@@ -46,7 +46,7 @@
     },
     "clientSites": {
       "title": "Kundenwebsites in Istrien",
-      "description": "Vier zweisprachige Websites für Betriebe an der istrischen Küste, jede aus dem Instagram-Profil des Kunden gebaut und binnen Tagen online. Screenshots und Links."
+      "description": "Zweisprachige Websites für Betriebe an der istrischen Küste, aus dem Instagram-Profil des Kunden gebaut und über eine automatisierte Strecke veröffentlicht. Screenshots, ein Link und die sechs Schritte."
     },
     "method": {
       "title": "Methode",
@@ -65,7 +65,7 @@
     "hero": {
       "eyebrow": "Intrface · Istrien, Kroatien",
       "title": "Verlässliche Schnittstellen für komplexe reale Systeme.",
-      "lead": "Vier laufende Websites für Betriebe an der istrischen Küste. Eine Tourismusplattform mit 365.000 Zeilen, kurz vor dem Launch. Öffentliche Infrastruktur, in der jede Aussage auf ein Quelldokument zurückführt.",
+      "lead": "Laufende Kundenwebsites an der istrischen Küste, aus einem Instagram-Profil gebaut von einer automatisierten Strecke. Eine Tourismusplattform mit 365.000 Zeilen, kurz vor dem Launch. Öffentliche Infrastruktur, in der jede Aussage auf ein Quelldokument zurückführt.",
       "seeWork": "Arbeiten ansehen",
       "howWeBuild": "Wie wir bauen",
       "openSource": "Unser Entwicklungssystem ist open source — <repo>agent-ops-cockpit</repo>, Apache-2.0."
@@ -104,7 +104,7 @@
     "proof": {
       "label": "Beleg",
       "title": "Ausgeliefert und online.",
-      "intro": "Vier zweisprachige Websites für Küstenbetriebe in Istrien. Jede aus dem eigenen Instagram-Profil des Kunden gebaut und in Tagen veröffentlicht — mehrere an einem einzigen Tag.",
+      "intro": "Eine Weinbar an der Uferpromenade von Vrsar, aus dem eigenen Instagram-Profil des Kunden gebaut und in einem durchgehenden Lauf zur laufenden URL gebracht — Inhalt gelesen, Marke übernommen, Website gebaut, jede Seite geprüft, dann veröffentlicht.",
       "pipeline": [
         "Instagram-Profil",
         "Inhaltsanalyse",
@@ -115,34 +115,18 @@
       ],
       "liveIn": "Live · {place}",
       "howWeShip": "So liefern wir sie aus",
+      "languagesLabel": "Sprachen",
+      "markupLabel": "Im Markup",
+      "inDeliveryLabel": "In Auslieferung",
+      "inDelivery": "Drei weitere Websites stecken gerade in der Strecke. Sie stehen hier, sobald die Kunden sie in der Hand haben — vorher nicht.",
       "sites": {
-        "cannaclean": {
-          "name": "CannaClean",
-          "place": "Poreč",
-          "kind": "Detailing-Studio",
-          "description": "Kroatisch und Englisch, mit LocalBusiness-Daten, damit das Studio in der lokalen Suche richtig erscheint.",
-          "alt": "Startseite von CannaClean — Detailing-Studio in Poreč"
-        },
         "velum": {
           "name": "Velum",
           "place": "Uferpromenade Vrsar",
           "kind": "Café und Weinbar",
-          "description": "Kroatisch und Englisch. Dasselbe Studio hat die Motion Graphics der Bar produziert.",
+          "description": "Kroatisch und Englisch, auf Designtokens aus dem eigenen Material der Bar. Dasselbe Studio hat ihre Motion Graphics in Remotion produziert.",
+          "notes": ["LocalBusiness JSON-LD", "hreflang", "Motion Graphics in Remotion"],
           "alt": "Startseite von Velum — Café und Weinbar an der Uferpromenade von Vrsar"
-        },
-        "astyleMarine": {
-          "name": "Astyle Marine",
-          "place": "Poreč",
-          "kind": "Yachtcharter",
-          "description": "Kroatisch und Englisch, auf Designtokens aus der eigenen Marke des Betreibers.",
-          "alt": "Startseite von Astyle Marine — Yachtcharter in Poreč"
-        },
-        "vrsarBoatTours": {
-          "name": "Vrsar Private Boat Tours",
-          "place": "Vrsar",
-          "kind": "Private Bootstouren",
-          "description": "Vier Sprachen, jede mit hreflang: Englisch, Kroatisch, Italienisch, Deutsch.",
-          "alt": "Startseite von Vrsar Private Boat Tours — private Bootstouren in Vrsar"
         }
       }
     },
@@ -236,7 +220,7 @@
   "WorkIndex": {
     "label": "Arbeiten",
     "title": "Belege, dreifach.",
-    "lead": "Vier Kundenwebsites laufen in Istrien. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub.",
+    "lead": "Kundenwebsites in Istrien, gebaut auf einer automatisierten Strecke. Drei Plattformen im Bau. Ein Entwicklungssystem, öffentlich auf GitHub.",
     "entries": {
       "voyager": {
         "name": "Voyager",
@@ -267,11 +251,11 @@
       },
       "clientSites": {
         "name": "Kundenwebsites in Istrien",
-        "status": "Live ×4",
-        "claim": "Vier Küstenbetriebe kamen in Tagen vom Instagram-Profil zur laufenden zweisprachigen Website.",
+        "status": "Live · Vrsar",
+        "claim": "Ein Küstenbetrieb kommt in einem durchgehenden Lauf vom Instagram-Profil zur laufenden zweisprachigen Website.",
         "figures": [
-          { "value": "4", "label": "Websites heute live" },
-          { "value": "2–4", "label": "Sprachen pro Website" }
+          { "value": "6", "label": "Schritte vom Profil zur URL" },
+          { "value": "2", "label": "Sprachen auf der laufenden Website" }
         ]
       }
     },
@@ -618,35 +602,29 @@
     "hero": {
       "eyebrow": "Kundenarbeit",
       "name": "Kundenwebsites in Istrien",
-      "claim": "Vier zweisprachige Websites für Betriebe an der istrischen Küste, jede aus dem eigenen Instagram-Profil des Kunden gebaut und binnen Tagen online.",
-      "status": "Live ×4",
+      "claim": "Eine zweisprachige Website für eine Weinbar an der Uferpromenade von Vrsar, aus dem eigenen Instagram-Profil des Kunden gebaut und von einer automatisierten Strecke veröffentlicht.",
+      "status": "Live · Vrsar",
       "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
     },
     "stats": [
-      { "value": "4", "label": "Websites live", "note": "Alle vier geprüft am 27. Juli 2026" },
+      { "value": "1", "label": "Instagram-Profil rein", "note": "Niemand schreibt ein Briefing" },
+      { "value": "6", "label": "Schritte vom Profil zur URL", "note": "Jedes Mal dieselben sechs" },
       {
-        "value": "2–4",
-        "label": "Sprachen pro Website",
+        "value": "2",
+        "label": "Sprachen auf der laufenden Website",
         "note": "Kroatisch zuerst, hreflang auf jeder Seite"
-      },
-      { "value": "6", "label": "Schritte vom Profil zur URL", "note": "Jedes Mal dieselben sechs" }
+      }
     ],
     "showcase": {
-      "label": "Die Websites",
+      "label": "Die Website",
       "title": "Live, und Sie können nachsehen",
-      "intro": "Vier Betriebe an der istrischen Küste. Öffnen Sie jede davon — das sind die Websites, wie sie heute laufen.",
+      "intro": "Ein Café und eine Weinbar an der Uferpromenade von Vrsar. Öffnen Sie sie — das ist die Website, wie sie heute läuft.",
       "languagesLabel": "Sprachen",
-      "markupLabel": "Im Markup"
+      "markupLabel": "Im Markup",
+      "inDeliveryLabel": "In Auslieferung",
+      "inDelivery": "Drei weitere Websites sind durch dieselbe Strecke gelaufen und stehen bei ihren Kunden in der Auslieferung. Wir zeigen die Arbeit eines Kunden hier, wenn er sie in der Hand hat, nicht wenn der Build fertig ist."
     },
     "sites": {
-      "cannaclean": {
-        "name": "CannaClean",
-        "place": "Poreč",
-        "line": "Ein Detailing-Studio, das Autos, Boote und Camper in ganz Istrien von Hand wäscht.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang"],
-        "desktopAlt": "Startseite von CannaClean: ein tiefblauer Hero mit „Detailing ohne Kompromiss“, dazu Buchungsbuttons und ein Sprachwechsel Kroatisch/Englisch.",
-        "mobileAlt": "Derselbe CannaClean-Hero, für einen Handybildschirm gestapelt."
-      },
       "velum": {
         "name": "Velum",
         "place": "Uferpromenade Vrsar",
@@ -654,28 +632,12 @@
         "notes": ["LocalBusiness JSON-LD", "hreflang"],
         "desktopAlt": "Startseite von Velum: ein Foto von Kaffee und der eigenen Karte der Bar neben der Zeile „Am Meer, ohne Eile.“",
         "mobileAlt": "Die Velum-Startseite auf einem Handy, Foto über der Überschrift."
-      },
-      "astyleMarine": {
-        "name": "Astyle Marine",
-        "place": "Poreč",
-        "line": "Ein Yachtcharter mit Tagesfahrten auf der offenen Adria ab Poreč.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang"],
-        "desktopAlt": "Startseite von Astyle Marine: Serifen-Überschrift „Luxury in full speed“ auf Schwarz, daneben ein Foto der rot abgesetzten Yacht vor der Küste von Poreč.",
-        "mobileAlt": "Die Astyle-Marine-Startseite auf einem Handy, Überschrift über dem Yachtfoto."
-      },
-      "vrsarBoatTours": {
-        "name": "Vrsar Private Boat Tours",
-        "place": "Marina Vrsar",
-        "line": "Private Bootstouren für bis zu zehn Gäste, tageweise buchbar.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang", "Sprachwechsel für vier Sprachen"],
-        "desktopAlt": "Startseite von Vrsar Private Boat Tours: die istrische Küste in der Dämmerung hinter der Buchungsleiste, mit den Sprachoptionen EN, HR, IT und DE.",
-        "mobileAlt": "Die Startseite von Vrsar Private Boat Tours auf einem Handy, Buchungsbutton unter der Überschrift."
       }
     },
     "pipeline": {
       "label": "So liefern wir sie aus",
       "title": "Instagram-Profil rein, laufende URL raus",
-      "intro": "Jedes Mal dieselben sechs Schritte. Deshalb dauert eine Website Tage statt ein Quartal.",
+      "intro": "Jedes Mal dieselben sechs Schritte, als ein durchgehender Lauf. Deshalb hält der Termin, den wir Ihnen nennen.",
       "steps": [
         {
           "name": "Das Instagram-Profil lesen",
@@ -699,14 +661,14 @@
         },
         {
           "name": "Auf Cloudflare Pages veröffentlichen",
-          "body": "Die Website geht am Cloudflare-Edge online und der Kunde bekommt am selben Tag eine URL für seine Instagram-Bio."
+          "body": "Die Website geht am Cloudflare-Edge online und der Kunde bekommt eine URL, die er direkt in seine Instagram-Bio setzen kann."
         }
       ],
       "alsoLabel": "Ebenfalls aus demselben Studio",
       "alsoBody": "Die Motion Graphics von Velum entstanden in Remotion, gebaut vom selben Team wie die Website — dieselben Markentokens, dasselbe Ausgangsmaterial, aus Code gerendert."
     },
     "next": {
-      "title": "Ihre Website, diese Woche online.",
+      "title": "Ihre Website, auf derselben Strecke.",
       "body": "Schicken Sie uns das Instagram-Profil, das Sie ohnehin pflegen. Sie bekommen die Website zurück, die daraus wird — auf Kroatisch und in den Sprachen, in denen Ihre Gäste wirklich buchen.",
       "cta": "Schicken Sie uns Ihr Profil"
     }
@@ -907,7 +869,7 @@
         "status": "Im aktiven Bau",
         "description": "EU-Förderung, zugeordnet zu den Organisationen, die sie gewinnen können. Agenten lesen SEDIA und TED ein, Geodaten-Matching, drei Sprachen."
       },
-      "clientNote": "Kundenarbeit läuft auf derselben Strecke. Vier zweisprachige Websites für istrische Betriebe sind live, jede in Tagen ausgeliefert — <link>so funktioniert diese Strecke</link>."
+      "clientNote": "Kundenarbeit läuft auf derselben Strecke: ein Instagram-Profil geht hinein, eine zweisprachige Website unter laufender URL kommt heraus, die automatische Prüfung eingebaut — <link>so funktioniert diese Strecke</link>."
     },
     "contact": {
       "label": "Kontakt",

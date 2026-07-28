@@ -15,7 +15,7 @@ export type LedgerEntry = {
   name: string;
   /** Route under the current locale, e.g. `/work/voyager`. */
   href: string;
-  /** Honest status: "Pre-launch", "Open source · AGPL", "Live ×4". */
+  /** Honest status: "Pre-launch", "Open source · AGPL", "Live · Vrsar". */
   status: string;
   /** `true` marks something running in the world. */
   live?: boolean;
