@@ -13,8 +13,28 @@
   },
   "Footer": {
     "tagline": "Intrface gradi pouzdana sučelja za složene stvarne sustave.",
-    "aocLink": "Agent Ops Cockpit na GitHubu",
-    "location": "Istra, Hrvatska · EU"
+    "location": "Istra, Hrvatska · EU",
+    "newTab": "otvara se u novoj kartici",
+    "work": {
+      "heading": "Radovi",
+      "index": "Svi radovi",
+      "voyager": "Voyager",
+      "polis": "Polis Interface",
+      "funda": "Funda",
+      "clientSites": "Stranice klijenata"
+    },
+    "company": {
+      "heading": "Tvrtka"
+    },
+    "openSource": {
+      "heading": "Otvoreni kod",
+      "aoc": "Agent Ops Cockpit",
+      "aocMeta": "Apache-2.0 · naš agentski sustav isporuke",
+      "polis": "Polis Interface",
+      "polisMeta": "AGPL-3.0 · infrastruktura provjerljivih javnih podataka"
+    },
+    "cta": "Donesite nam svoj najzamršeniji sustav",
+    "colophon": "Složeno u pismu Google Sans Flex. Izrađeno i objavljeno kroz Agent Ops Cockpit, naš open-source agentski pipeline: agenti predlažu, čovjek potvrđuje commit. Četiri jezika."
   },
   "LocaleSwitcher": {
     "label": "Jezik"

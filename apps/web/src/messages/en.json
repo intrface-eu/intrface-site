@@ -13,8 +13,28 @@
   },
   "Footer": {
     "tagline": "Intrface builds trusted interfaces for complex real-world systems.",
-    "aocLink": "Agent Ops Cockpit on GitHub",
-    "location": "Istria, Croatia · EU"
+    "location": "Istria, Croatia · EU",
+    "newTab": "opens in a new tab",
+    "work": {
+      "heading": "Work",
+      "index": "All work",
+      "voyager": "Voyager",
+      "polis": "Polis Interface",
+      "funda": "Funda",
+      "clientSites": "Client sites"
+    },
+    "company": {
+      "heading": "Company"
+    },
+    "openSource": {
+      "heading": "Open source",
+      "aoc": "Agent Ops Cockpit",
+      "aocMeta": "Apache-2.0 · our agent delivery system",
+      "polis": "Polis Interface",
+      "polisMeta": "AGPL-3.0 · verifiable public-data infrastructure"
+    },
+    "cta": "Bring us the messy system",
+    "colophon": "Set in Google Sans Flex. Built and shipped through Agent Ops Cockpit, our open-source agent pipeline: agents propose, a human commits. Four languages."
   },
   "LocaleSwitcher": {
     "label": "Language"

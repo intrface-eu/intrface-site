@@ -11,6 +11,8 @@ export const CONTACT_EMAIL = "hello@intrface.eu";
 
 export const AOC_REPO_URL = "https://github.com/basicalex/agent-ops-cockpit";
 
+export const POLIS_REPO_URL = "https://github.com/basicalex/polis";
+
 /** Every locale-prefixed route on the site. Sitemap, hreflang, and nav read from here. */
 export const SITE_PATHS = [
   "/",

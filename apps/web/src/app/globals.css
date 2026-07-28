@@ -718,6 +718,99 @@ body {
     }
   }
 
+  /* ===== FOOTER WORDMARK =====
+     The colophon signature, in the same family as the brand mark: no JS, one
+     gesture, everything on the compositor.
+
+     At rest INTRFACE is an unprinted plate — hairline outlines, no fill.
+     Hover or keyboard-focus the link and ink floods each letter from the
+     baseline up, raked left to right at 42ms a letter. Leave, and it drains
+     back down right to left, like the press lifting. One move; the stagger is
+     the whole of the choreography.
+
+     Only `clip-path` animates, on an absolutely positioned duplicate of the
+     glyph, so nothing reflows and the row's height never changes. The easing
+     is the house entrance curve — the same one the mark composes on and every
+     FadeIn reveals on — so the flare reads as the same hand.
+
+     Sizing is in `cqw` against the shell, not `vw`, so the letter gaps stay
+     the same fraction of the type size whatever the responsive padding does.
+     The row is spread with space-between, so the word sits flush to the shell
+     at every width and can never set a scrollbar. The first and last glyphs
+     pull back by their side bearings so the ink — not the box — lines up with
+     the colophon above. */
+  .footer-wordmark {
+    display: block;
+    container-type: inline-size;
+    border-radius: 0.5rem;
+  }
+
+  .footer-wordmark:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 6px;
+  }
+
+  .footer-wordmark__row {
+    --fw-count: 8;
+    --fw-stroke: max(1px, 0.0095em);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: var(--font-brand);
+    font-size: 19.4cqw;
+    font-weight: 600;
+    line-height: 0.96;
+    letter-spacing: 0;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .footer-wordmark__letter {
+    position: relative;
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: var(--fw-stroke) color-mix(in srgb, var(--ink) 55%, transparent);
+  }
+
+  .footer-wordmark__letter:first-child {
+    margin-left: -0.045em;
+  }
+
+  .footer-wordmark__letter:last-child {
+    margin-right: -0.02em;
+  }
+
+  /* The ink: a solid copy of the same glyph, revealed bottom-up. */
+  .footer-wordmark__letter::after {
+    content: attr(data-glyph);
+    position: absolute;
+    inset: 0;
+    color: var(--ink);
+    -webkit-text-stroke: var(--fw-stroke) var(--ink);
+    clip-path: inset(108% -6% -8% -6%);
+    /* Draining: right to left, quicker than it filled. */
+    transition: clip-path 360ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    transition-delay: calc((var(--fw-count) - 1 - var(--fw-i)) * 30ms);
+  }
+
+  .footer-wordmark:hover .footer-wordmark__letter::after,
+  .footer-wordmark:focus-visible .footer-wordmark__letter::after {
+    clip-path: inset(-8% -6% -8% -6%);
+    /* Filling: left to right, the way the sheet runs through the press. */
+    transition-duration: 520ms;
+    transition-delay: calc(var(--fw-i) * 48ms);
+  }
+
+  /* Reduced motion: the plate still inks, it just does it at once. Same as the
+     brand mark — the gesture survives, the travel does not. */
+  @media (prefers-reduced-motion: reduce) {
+    .footer-wordmark__letter::after {
+      transition: none;
+      transition-delay: 0s;
+    }
+  }
+
   /* ===== SECTION REVEAL =====
      The whole motion budget of the FadeIn wrapper. A shared
      IntersectionObserver sets data-reveal="pending" on mount and flips it to

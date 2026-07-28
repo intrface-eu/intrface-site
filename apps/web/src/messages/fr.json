@@ -13,8 +13,28 @@
   },
   "Footer": {
     "tagline": "Intrface construit des interfaces fiables pour des systèmes réels complexes.",
-    "aocLink": "Agent Ops Cockpit sur GitHub",
-    "location": "Istrie, Croatie · UE"
+    "location": "Istrie, Croatie · UE",
+    "newTab": "s'ouvre dans un nouvel onglet",
+    "work": {
+      "heading": "Réalisations",
+      "index": "Toutes les réalisations",
+      "voyager": "Voyager",
+      "polis": "Polis Interface",
+      "funda": "Funda",
+      "clientSites": "Sites clients"
+    },
+    "company": {
+      "heading": "Entreprise"
+    },
+    "openSource": {
+      "heading": "Open source",
+      "aoc": "Agent Ops Cockpit",
+      "aocMeta": "Apache-2.0 · notre système de livraison par agents",
+      "polis": "Polis Interface",
+      "polisMeta": "AGPL-3.0 · infrastructure de données publiques vérifiables"
+    },
+    "cta": "Apportez-nous le système qui vous échappe",
+    "colophon": "Composé en Google Sans Flex. Construit et livré avec Agent Ops Cockpit, notre pipeline d'agents open source : les agents proposent, un humain valide le commit. Quatre langues."
   },
   "LocaleSwitcher": {
     "label": "Langue"
