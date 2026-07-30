@@ -142,7 +142,7 @@ This is the project-wide visual and product design contract for agents and human
 
 1. Interface is the brand: every surface should turn complexity into orientation.
 2. Trust is visible: proof, sources, state, responsibility, and uncertainty should be legible.
-3. Atmosphere supports meaning: the CMYK halftone is a print-inspired landmark, and it has to resolve into something. On the home page each separation is registered to one of the four contract files it names (`.contract-plate`). A halftone that fills a corner is wallpaper — never that, and never behind reading content.
+3. Atmosphere supports meaning: the halftone is a print-inspired landmark, and it has to resolve into something. On the home page it is the live screen behind the hero (`HeroHalftone`), where the pointer reads as pressure on the plate. Its mask ramps from nothing across the type to solid at the trim edge, so no dot ever sits behind a word. A halftone that fills a corner is wallpaper — never that, and never behind reading content.
 4. One paper, one ink, one accent: warm paper `#f5f1eb` everywhere, ink `#0f1729` for text and dark bands, teal `#0f766e` as the single working accent.
 
 ## Layout system
@@ -216,11 +216,11 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Easing: ease-out / gentle springs (stiffness ≈ 420, damping ≈ 34)
 - What should animate: section reveals (FadeIn), tab continuity (layout spring), CTA feedback
 - What should not animate: core reading layout, trust/proof content, essential navigation, reduced-motion experiences
-- Reduced-motion expectations: replace movement with static state or opacity; set shader speed to 0
+- Reduced-motion expectations: replace movement with static state or opacity; a shader draws one still frame and starts no loop
 
 ## Imagery and media
 
-- Image style: the registered CMYK halftone plate (hero only), interface diagrams (SystemMap), proof panels, document/place/workflow motifs; no generic AI gradients or robot imagery
+- Image style: the live halftone screen (hero only), interface diagrams (SystemMap), proof panels, document/place/workflow motifs; no generic AI gradients or robot imagery
 - Illustration style: diagrammatic — nodes, hairline connectors, state badges
 - Iconography style: Tabler, outline
 - Screenshot/product-frame treatment: white card frame, hairline border, `--shadow-elevated`
@@ -239,7 +239,7 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Contrast: WCAG AA minimum everywhere, including on dark bands (see color table floors)
 - Keyboard/focus behavior: visible focus (`outline-offset: 4px` ink outline) on every stop; tabs support arrow/Home/End keys. Never `outline-none` on a focusable control — in Tailwind v4 it sets `--tw-outline-style: none`, which a later `focus-visible:outline` reads back, and the ring cancels itself
 - Skip link: `.skip-link` is the first tab stop on every page — parked off-screen, a paper pill on the header band when focused, pointing at `#main-content`
-- Reduced motion: honored in every animated component and shader
+- Reduced motion: honored in every animated component and shader; a canvas surface also pauses offscreen and with the tab
 - Captions/alt text: meaningful alt for informative images, `aria-hidden` for decorative surfaces
 - Minimum readable sizes: 0.78rem, and only for uppercase tracked labels (`.type-meta`, `.type-section-label`). Sentence-case text bottoms out at `.type-caption`, 0.875rem.
 
@@ -250,13 +250,13 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Use the token variables (`--paper`, `--ink`, `--accent`, `--line`) — never re-hardcode hexes in components
 - Route all type through the `.type-*` classes
 - Alternate paper/paper-raised/ink bands to create rhythm
-- Give the halftone a job: register it to something the page is actually about, and keep it out from behind type
+- Give the halftone a job: make it respond to something real, and keep it out from behind type
 
 ### Don't
 
 - Don't introduce Tailwind gray/slate text colors alongside ink tokens
 - Don't add new radii, off-white backgrounds, or accent colors
-- Don't put animated shaders behind body text
+- Don't put animated shaders behind body text — the hero screen is allowed because its mask keeps it off the measure entirely
 - Don't make every section a card grid — vary the form (band, ledger, diagram, steps)
 
 ## Subsystem design extensions

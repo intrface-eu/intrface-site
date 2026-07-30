@@ -453,71 +453,71 @@ body {
     mix-blend-mode: screen;
   }
 
-  /* ===== CONTRACT PLATE =====
-     The CMYK halftone, registered instead of washed. It used to fill the
-     hero's top-right quadrant with coloured dots that meant nothing; now each
-     separation is a band aligned to one of the four files every repository we
-     touch carries, and the four bands stack into a single printed plate. The
-     screen ramps from open at the type to solid at the trim edge, so the row
-     reads left to right as a name resolving into ink. No dot ever sits behind
-     a word. */
-  .contract-plate {
-    max-inline-size: 27rem;
+  /* ===== HERO HALFTONE =====
+     The live screen behind the hero. The canvas draws the dots; everything
+     here is the two things CSS still owns — the mask that keeps ink off the
+     type, and the still frame anyone without WebGL2 gets instead.
+
+     Both layers use the same ramp: nothing across the measure, solid at the
+     trim edge. The type never sits on a dot, which is how an animated surface
+     is allowed in this hero at all. */
+  .hero-halftone {
+    --halftone-mask: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.5) 66%,
+      black 88%
+    );
   }
 
-  .contract-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(6rem, 30vw, 11rem);
-    align-items: center;
-    gap: 1rem;
-    border-top: 1px solid var(--line);
+  @media (max-width: 63.99em) {
+    .hero-halftone {
+      --halftone-mask: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 46%,
+        rgba(0, 0, 0, 0.45) 74%,
+        black 99%
+      );
+    }
   }
 
-  .contract-row:last-child {
-    border-bottom: 1px solid var(--line);
+  .hero-halftone-static {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--ink) 42%, transparent) 0 1.4px,
+      transparent 2px
+    );
+    background-size: 9px 9px;
+    mask-image: var(--halftone-mask);
+    transition: opacity 420ms ease;
   }
 
-  /* Paths break after a slash and nowhere else — the row markup puts a `wbr`
-     there, and `overflow-wrap: normal` keeps the browser from splitting
-     `tasks.json` down the middle when the column gets tight at 320px. */
-  .contract-name {
-    padding-block: 0.7rem;
-    font-size: 0.78rem;
-    line-height: 1.4;
-    color: var(--ink);
-    overflow-wrap: normal;
+  /* The canvas carries its own mask in the shader, so it is not masked twice. */
+  .hero-halftone-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    opacity: 0;
+    transition: opacity 420ms ease;
   }
 
-  /* The screen goes finer row by row, so the plate reads top to bottom as an
-     image coming into resolution rather than four decorative bars. */
-  .contract-screen {
-    height: 100%;
-    min-height: 2.3rem;
-    background-repeat: repeat;
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 34%, black 88%);
+  .hero-halftone[data-live="true"] .hero-halftone-static {
+    opacity: 0;
   }
 
-  .contract-screen[data-sep="c"] {
-    background-image: radial-gradient(circle, rgba(2, 132, 199, 0.85) 0 1.5px, transparent 2.1px);
-    background-size: 11px 11px;
+  .hero-halftone[data-live="true"] .hero-halftone-canvas {
+    opacity: 1;
   }
 
-  .contract-screen[data-sep="m"] {
-    background-image: radial-gradient(circle, rgba(219, 39, 119, 0.72) 0 1.5px, transparent 2.1px);
-    background-size: 9.5px 9.5px;
-    background-position: 3px 2px;
-  }
-
-  .contract-screen[data-sep="y"] {
-    background-image: radial-gradient(circle, rgba(202, 138, 4, 0.92) 0 1.5px, transparent 2.1px);
-    background-size: 8px 8px;
-    background-position: 5px 4px;
-  }
-
-  .contract-screen[data-sep="k"] {
-    background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 72%, transparent) 0 1.4px, transparent 2px);
-    background-size: 6.5px 6.5px;
-    background-position: 2px 3px;
+  @media (prefers-reduced-motion: reduce) {
+    .hero-halftone-static,
+    .hero-halftone-canvas {
+      transition: none;
+    }
   }
 
   /* ===== STAT LEDGER =====

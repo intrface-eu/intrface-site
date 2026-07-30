@@ -7,6 +7,7 @@ import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { ProcessSteps, type ProcessStep } from "@/components/site/process-steps";
 import { TactileButton } from "@/components/site/tactile-button";
+import { HeroHalftone } from "@/components/visual/hero-halftone";
 import { Link, getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -68,21 +69,6 @@ const FEATURED_SYSTEMS = [
   { key: "funda", href: "/work/funda" },
 ] as const;
 
-/**
- * The four files every repository we touch carries, as they are named on disk.
- * Filenames are not copy — they stay here and out of the message files.
- *
- * `sep` is the halftone separation each row is printed in: cyan, magenta,
- * yellow, key. Four files, four plates, one registered image — which is the
- * whole reason there is a dot screen in this hero at all.
- */
-const CONTRACT_FILES = [
-  { name: "AGENTS.md", sep: "c" },
-  { name: "DESIGN.md", sep: "m" },
-  { name: ".aoc/context.md", sep: "y" },
-  { name: ".taskmaster/tasks/tasks.json", sep: "k" },
-] as const;
-
 export async function HomePage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomePage" });
   const path = (href: string) => getPathname({ href, locale });
@@ -131,82 +117,54 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
   return (
     <main className="bg-paper text-ink">
-      {/* HERO — one sentence, the two actions it argues for directly under it,
-          and the contract plate beside them. Then the evidence.
+      {/* HERO — the claim and the two actions it argues for, on a live
+          halftone. The screen is the site's own print metaphor made physical:
+          the pointer is pressure on the plate, the dots under it open, the ink
+          runs toward the accent, and it closes again behind you.
 
-          No `100svh` band: the old one centred the claim in leftover height,
-          so a locale with a shorter headline was rewarded with more dead space,
-          not less. Height is content plus padding now, at every length. */}
-      <section className="border-b border-rule tone-paper">
-        <div className="section-shell flex flex-col gap-12 py-10 sm:gap-14 sm:py-14 lg:gap-16 lg:py-16">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-end lg:gap-16">
-            <div>
-              <FadeIn>
-                <p className="type-section-label">{t("hero.eyebrow")}</p>
-              </FadeIn>
-              <FadeIn delay={80}>
-                <h1 className="type-display mt-4 sm:mt-5">
-                  {t("hero.title")}
-                </h1>
-              </FadeIn>
-              <FadeIn delay={160}>
-                <p className="type-body-lg mt-6 max-w-xl font-medium sm:mt-7">{t("hero.lead")}</p>
-              </FadeIn>
-              {/* Under the sentence that motivates them, not stranded in a
-                  column 350px to the right of it. */}
-              <FadeIn delay={240}>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <TactileButton
-                    className="text-base"
-                    href={path("/work")}
-                    trailingIcon={<IconArrowRight className="h-4 w-4" />}
-                  >
-                    {t("hero.seeWork")}
-                  </TactileButton>
-                  <TactileButton className="text-base" href="#contact" variant="secondary">
-                    {t("hero.talk")}
-                  </TactileButton>
-                </div>
-              </FadeIn>
+          Full viewport height on purpose. The screen needs a sheet to be a
+          sheet; the evidence strip starts below the fold and is the reward for
+          the first scroll. `isolate` keeps the canvas's stacking context local
+          so the sticky header still passes over it. */}
+      <section className="relative isolate border-b border-rule tone-paper">
+        <HeroHalftone />
+        <div className="section-shell flex min-h-[calc(100svh-4rem)] flex-col justify-center py-16 sm:py-20">
+          <FadeIn>
+            <p className="type-section-label">{t("hero.eyebrow")}</p>
+          </FadeIn>
+          <FadeIn delay={80}>
+            <h1 className="type-display mt-4 max-w-4xl sm:mt-5">{t("hero.title")}</h1>
+          </FadeIn>
+          <FadeIn delay={160}>
+            <p className="type-body-lg mt-6 max-w-xl font-medium sm:mt-7">{t("hero.lead")}</p>
+          </FadeIn>
+          {/* Under the sentence that motivates them, not stranded in a column
+              350px to the right of it. */}
+          <FadeIn delay={240}>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <TactileButton
+                className="text-base"
+                href={path("/work")}
+                trailingIcon={<IconArrowRight className="h-4 w-4" />}
+              >
+                {t("hero.seeWork")}
+              </TactileButton>
+              <TactileButton className="text-base" href="#contact" variant="secondary">
+                {t("hero.talk")}
+              </TactileButton>
             </div>
+          </FadeIn>
+        </div>
+      </section>
 
-            {/* The halftone, registered. Four files, four separations, the
-                names in the type they are written in. */}
-            <FadeIn delay={300}>
-              <div className="contract-plate">
-                <p className="type-meta">{t("hero.contract.label")}</p>
-                <ul className="mt-4">
-                  {CONTRACT_FILES.map((file) => (
-                    <li className="contract-row" key={file.name}>
-                      <span className="type-data contract-name">
-                        {/* A path breaks after a slash or not at all. Without
-                            these the longest one split mid-filename at 390px. */}
-                        {file.name.split("/").map((segment, index, all) => (
-                          <span key={segment}>
-                            {segment}
-                            {index < all.length - 1 ? (
-                              <>
-                                /<wbr />
-                              </>
-                            ) : null}
-                          </span>
-                        ))}
-                      </span>
-                      <span aria-hidden="true" className="contract-screen" data-sep={file.sep} />
-                    </li>
-                  ))}
-                </ul>
-                <p className="type-caption mt-4">{t("hero.contract.note")}</p>
-              </div>
-            </FadeIn>
-          </div>
-
-          <div>
-            <FadeIn delay={340}>
-              <p className="type-section-label mb-3">{t("hero.proofLabel")}</p>
-            </FadeIn>
-            <HeroProof artifacts={heroArtifacts} baseDelay={380} />
-          </div>
+      {/* EVIDENCE — three things anyone can open, on their own band now that
+          the hero takes the whole sheet. */}
+      <section className="border-b border-rule tone-paper">
+        <div className="section-shell py-12 sm:py-16">
+          <FadeIn>
+            <p className="type-section-label mb-3">{t("hero.proofLabel")}</p>
+          </FadeIn>
+          <HeroProof artifacts={heroArtifacts} baseDelay={60} />
         </div>
       </section>
 
