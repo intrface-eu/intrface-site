@@ -55,7 +55,7 @@ export function SystemLedger({ systems }: { systems: readonly FeaturedSystem[] }
               <ul className="mt-5 flex flex-wrap gap-2">
                 {system.spec.map((field) => (
                   <li
-                    className="type-data rounded-full border border-rule px-3 py-1 text-[0.8125rem] text-[color:var(--ink-inverse-muted)]"
+                    className="type-artifact rounded-full border border-rule px-3 py-1 text-[color:var(--ink-inverse-muted)]"
                     key={field}
                   >
                     {field}

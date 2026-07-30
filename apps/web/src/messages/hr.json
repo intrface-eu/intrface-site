@@ -285,6 +285,11 @@
       ]
     }
   },
+  "CaseNav": {
+    "label": "Projektni dosjei",
+    "index": "Svi projekti",
+    "next": "Sljedeći dosje"
+  },
   "WorkVoyager": {
     "hero": {
       "eyebrow": "Place intelligence",

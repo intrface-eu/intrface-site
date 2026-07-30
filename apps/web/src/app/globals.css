@@ -353,6 +353,18 @@ body {
     letter-spacing: -0.01em;
   }
 
+  /* A mono literal at chip scale: a filename, a hash, a step number, a ledger
+     row. `.type-data` sets voice and leaves size to whatever it sits in, which
+     is right for a figure inside a heading and wrong for a chip — every chip on
+     the site used to pick its own arbitrary value. This is that size. */
+  .type-artifact {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+
   .section-shell {
     width: min(100%, 80rem);
     margin-inline: auto;

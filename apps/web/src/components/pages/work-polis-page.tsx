@@ -1,6 +1,6 @@
 import { IconArrowRight, IconArrowUpRight, IconBrandGithub } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
-import { CaseHero, CaseSection, HonestNote, StatBand, type Stat } from "@/components/case";
+import { CaseHero, CaseNav, CaseSection, HonestNote, StatBand, type Stat } from "@/components/case";
 import { FadeIn } from "@/components/site/fade-in";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { LabelTaxonomy } from "@/components/work/polis/label-taxonomy";
@@ -73,7 +73,7 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
           {engineering.map((item, index) => (
             <FadeIn delay={index * 60} key={item.title}>
               <li className="grid gap-x-10 gap-y-4 py-8 lg:grid-cols-[4rem_1fr]">
-                <span className="type-data text-[0.8rem] text-accent">
+                <span className="type-artifact text-accent">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="max-w-2xl">
@@ -146,6 +146,8 @@ export async function WorkPolisPage({ locale }: { locale: AppLocale }) {
           </div>
         </FadeIn>
       </CaseSection>
+
+      <CaseNav current="polis" />
     </main>
   );
 }

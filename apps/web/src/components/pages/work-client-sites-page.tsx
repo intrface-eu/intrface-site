@@ -2,7 +2,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
-import { CaseHero, CaseSection, StatBand, type Stat } from "@/components/case";
+import { CaseHero, CaseNav, CaseSection, StatBand, type Stat } from "@/components/case";
 import { FadeIn } from "@/components/site/fade-in";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { PipelineSteps, type PipelineStep } from "@/components/work/client-sites/pipeline-steps";
@@ -116,6 +116,8 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
           </FadeIn>
         </div>
       </section>
+
+      <CaseNav current="clientSites" />
     </main>
   );
 }

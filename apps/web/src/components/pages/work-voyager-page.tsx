@@ -10,7 +10,15 @@ import {
 } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 
-import { CaseHero, CaseSection, EvidenceFrame, HonestNote, StatBand, type Stat } from "@/components/case";
+import {
+  CaseHero,
+  CaseNav,
+  CaseSection,
+  EvidenceFrame,
+  HonestNote,
+  StatBand,
+  type Stat,
+} from "@/components/case";
 import { FadeIn } from "@/components/site/fade-in";
 import { TactileButton } from "@/components/site/tactile-button";
 import {
@@ -163,6 +171,8 @@ export async function WorkVoyagerPage({ locale }: { locale: AppLocale }) {
           </FadeIn>
         </div>
       </section>
+
+      <CaseNav current="voyager" />
     </main>
   );
 }

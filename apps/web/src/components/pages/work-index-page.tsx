@@ -1,4 +1,4 @@
-import { IconArrowUpRight } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
@@ -73,7 +73,7 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
                   href="/method"
                 >
                   {t("method.link")}
-                  <IconArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                  <IconArrowRight aria-hidden="true" className="h-4 w-4" />
                 </Link>
               </FadeIn>
             </div>

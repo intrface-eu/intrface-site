@@ -285,6 +285,11 @@
       ]
     }
   },
+  "CaseNav": {
+    "label": "Case files",
+    "index": "All work",
+    "next": "Next case file"
+  },
   "WorkVoyager": {
     "hero": {
       "eyebrow": "Place intelligence",

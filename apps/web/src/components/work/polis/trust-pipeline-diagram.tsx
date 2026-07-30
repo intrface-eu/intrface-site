@@ -68,12 +68,12 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
           {STAGES.map((stage, index) => (
             <li className="relative flex flex-col" key={stage.step}>
               <div className="interface-node flex flex-1 flex-col rounded-[var(--radius-md)] px-4 py-4">
-                <span className="font-mono text-[0.8rem] text-accent">{stage.step}</span>
+                <span className="type-artifact text-accent">{stage.step}</span>
                 <h4 className="type-title mt-2 text-ink">
                   {stageCopy[index]?.name}
                 </h4>
                 <p className="type-body-sm mt-1.5">{stageCopy[index]?.detail}</p>
-                <p className="mt-4 inline-flex self-start rounded-full border border-rule px-2.5 py-1 font-mono text-[0.8rem] text-ink-muted">
+                <p className="type-artifact mt-auto inline-flex self-start rounded-full border border-rule px-2.5 py-1 text-ink-muted">
                   {stage.artifact}
                 </p>
               </div>
@@ -99,12 +99,12 @@ export async function TrustPipelineDiagram({ className = "" }: { className?: str
                 className="grid gap-x-6 gap-y-3 border-b border-rule px-4 py-4 last:border-b-0 sm:grid-cols-[4.5rem_1fr_11rem] sm:items-baseline sm:px-5"
                 key={row.seq}
               >
-                <span className="font-mono text-[0.8rem] text-accent">#{row.seq}</span>
+                <span className="type-artifact text-accent">#{row.seq}</span>
                 <div>
-                  <p className="font-mono text-[0.85rem] font-semibold text-ink">{row.event}</p>
+                  <p className="type-artifact font-semibold text-ink">{row.event}</p>
                   <p className="type-body-sm mt-1">{ledgerCopy[index]}</p>
                 </div>
-                <div className="font-mono text-[0.8rem] sm:text-right">
+                <div className="type-artifact sm:text-right">
                   <p className="flex items-center gap-1 text-ink-muted sm:justify-end">
                     {index > 0 ? (
                       <IconArrowNarrowUp aria-hidden="true" className="h-3.5 w-3.5 text-accent" />

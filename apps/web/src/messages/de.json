@@ -285,6 +285,11 @@
       ]
     }
   },
+  "CaseNav": {
+    "label": "Projektdossiers",
+    "index": "Alle Projekte",
+    "next": "Nächstes Dossier"
+  },
   "WorkVoyager": {
     "hero": {
       "eyebrow": "Place Intelligence",

@@ -16,7 +16,7 @@ export async function LabelTaxonomy({ className = "" }: { className?: string }) 
       {LABELS.map((label, index) => (
         <div className="grid gap-x-8 gap-y-2 py-5 sm:grid-cols-[13rem_1fr] sm:items-baseline" key={label}>
           <dt>
-            <span className="type-data inline-flex rounded-full border border-rule px-3 py-1 text-[0.8rem]">
+            <span className="type-artifact inline-flex rounded-full border border-rule px-3 py-1">
               {label}
             </span>
           </dt>

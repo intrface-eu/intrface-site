@@ -2,7 +2,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
-import { CaseHero, CaseSection, HonestNote, StatBand, type Stat } from "@/components/case";
+import { CaseHero, CaseNav, CaseSection, HonestNote, StatBand, type Stat } from "@/components/case";
 import { FadeIn } from "@/components/site/fade-in";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { MatchFlow, type MatchStep } from "@/components/work/funda/match-flow";
@@ -79,6 +79,8 @@ export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
           </FadeIn>
         </div>
       </section>
+
+      <CaseNav current="funda" />
     </main>
   );
 }

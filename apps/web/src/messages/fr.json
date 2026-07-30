@@ -285,6 +285,11 @@
       ]
     }
   },
+  "CaseNav": {
+    "label": "Dossiers de projet",
+    "index": "Tous les projets",
+    "next": "Dossier suivant"
+  },
   "WorkVoyager": {
     "hero": {
       "eyebrow": "Intelligence des lieux",
