@@ -28,12 +28,12 @@
     "openSource": {
       "heading": "Otvoreni kod",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · 403 commita, 51 naredba",
+      "aocMeta": "Čime gradimo softver za klijente",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · javni podaci koje možete provjeriti"
+      "polisMeta": "Javni podaci koje možete provjeriti"
     },
     "cta": "Donesite nam svoj najzamršeniji sustav",
-    "colophon": "Složeno u pismu Google Sans Flex. Izrađeno i objavljeno kroz Agent Ops Cockpit, Apache-2.0: agenti predlažu, čovjek potvrđuje commit. Četiri jezika."
+    "colophon": "Složeno u pismu Google Sans Flex. Izrađeno kao i klijentski rad: agenti predlažu, čovjek odobrava. Četiri jezika."
   },
   "LocaleSwitcher": {
     "label": "Jezik"
@@ -45,19 +45,19 @@
     "screenshotPending": "Snimka zaslona slijedi"
   },
   "Metadata": {
-    "tagline": "IT savjetovanje iz Istre. Vlastiti alati su nam javni, pod Apache-2.0.",
-    "description": "INTRFACE je tvrtka za IT savjetovanje u Istri. Softver za klijente, uz vlastite Voyager, Polis i Fundu. Agent Ops Cockpit, alat iza svega toga, javan je: Apache-2.0, 403 commita.",
+    "tagline": "IT savjetovanje iz Istre. Softver za tvrtke koje već rade.",
+    "description": "INTRFACE je tvrtka za IT savjetovanje u Vrsaru, u Istri. Softver za tvrtke koje već rade, uz vlastite Voyager, Polis i Fundu.",
     "work": {
       "title": "Radovi",
       "description": "Četiri slučaja: živa stranica vinskog bara u Vrsaru, Voyager, Polis i Funda. Svaki navodi status koji ima danas, ne onaj koji će imati na pokretanju."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena. Platforma podataka o mjestu za turističke destinacije, prije pokretanja: 365.000 redaka vlastitog TypeScripta, 1.580 automatiziranih testova."
+      "description": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena. Prije pokretanja, na šest jezika."
     },
     "polis": {
       "title": "Polis Interface",
-      "description": "Otvorena (AGPL) infrastruktura za provjerljive javne podatke: revizijski zapisnik ulančan hashevima, vremenski žig dokumenata po RFC 3161 i policy-vrata koja se u dvojbi zatvaraju. Prije uvođenja."
+      "description": "Infrastruktura za javne podatke koje građanin može provjeriti: svaka tvrdnja vodi do dokumenta, pečata i vremenskog žiga. Prije uvođenja."
     },
     "funda": {
       "title": "Funda",
@@ -65,11 +65,11 @@
     },
     "clientSites": {
       "title": "Klijentske stranice u Istri",
-      "description": "Dvojezične stranice za obrte i tvrtke na istarskoj obali, izgrađene iz klijentova Instagram profila i objavljene jednim automatiziranim tokom. Snimke zaslona, živi link i šest koraka."
+      "description": "Dvojezične stranice za obrte i tvrtke na istarskoj obali, izgrađene iz klijentova Instagram profila i objavljene na vlastitoj adresi. Šest koraka."
     },
     "method": {
       "title": "Metoda",
-      "description": "Agenti predlažu; commit prolazi kroz vrata koja provjerava čovjek. Workeri nikada ne pushaju. Pravila po kojima rade javna su pod Apache-2.0: AGENTS.md, DESIGN.md, registar zadataka, 51 naredba."
+      "description": "Gradimo uz vođene AI agente po zapisanim pravilima, a čovjek pročita svaku promjenu prije nego što uđe. Pravila su javna."
     },
     "about": {
       "title": "O nama",
@@ -84,13 +84,9 @@
     "hero": {
       "eyebrow": "Intrface · Istra, Hrvatska",
       "title": "Gradimo softver. I sustav koji gradi softver.",
-      "lead": "Jedna živa klijentska stranica u Vrsaru. Voyager, Polis i Funda, još prije pokretanja. Agent Ops Cockpit, javan pod Apache-2.0.",
+      "lead": "Jedna živa klijentska stranica u Vrsaru i tri vlastita sustava još prije pokretanja. Sve na ovoj stranici može se otvoriti i provjeriti.",
       "seeWork": "Pogledajte gdje svaki sustav stoji",
       "talk": "Pokrenite pregled sustava",
-      "contract": {
-        "label": "Ugovor, na disku",
-        "note": "Iste četiri datoteke u svakom repozitoriju kojeg dotaknemo, uključujući i vaš."
-      },
       "proofLabel": "Otvorite bilo koje od ovoga",
       "metaTitle": "Softver i sustav koji ga gradi.",
       "proof": {
@@ -172,39 +168,39 @@
         "name": "Polis Interface",
         "status": "Prije uvođenja",
         "claim": "Graf upravljanja u kojem svaka javna tvrdnja vodi natrag do izvornog dokumenta.",
-        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
+        "spec": ["Otvoreni kod", "Svaka tvrdnja provjerljiva", "Ništa samoprijavljeno"],
         "linkLabel": "Pročitajte slučaj Polis"
       },
       "funda": {
         "name": "Funda",
         "status": "U izradi",
-        "claim": "Povezuje organizacije s natječajima EU fondova koje agenti čitaju sa SEDIA-e i TED-a.",
-        "spec": ["4 sučelja po ulogama", "3 jezika", "SEDIA + TED"],
+        "claim": "Povezuje organizacije s natječajima EU fondova koje stvarno mogu dobiti, čitanima čim izađu.",
+        "spec": ["4 uloge", "3 jezika", "Izvori EU fondova"],
         "linkLabel": "Pročitajte slučaj Funda"
       }
     },
     "method": {
       "label": "Metoda",
       "title": "Pročitajte kako radimo prije nego nas unajmite.",
-      "body": "Trinaest naših repozitorija nosi iste datoteke AGENTS.md, DESIGN.md i registar zadataka. Agenti predlažu promjenu; commit prolazi kroz vrata koja provjerava čovjek. Samo u srpnju 2026. na Voyager je sletjelo 383 commita.",
+      "body": "Trinaest projekata radi po istim zapisanim pravilima. Agenti predlažu promjenu; čovjek je pročita i odobri prije nego što uđe. Ništa ne dođe do vašeg koda nepročitano.",
       "readMethod": "Pročitajte metodu",
       "readSource": "Pročitajte izvorni kod",
       "steps": [
         {
-          "label": "AGENTS.md i DESIGN.md",
-          "description": "Svaki repozitorij nosi iste dvije datoteke na disku. Agent ih pročita prije nego pročita kod."
+          "label": "Pravila su zapisana",
+          "description": "Svaki projekt nosi ista pravila na disku. Agent ih pročita prije nego što pročita kod."
         },
         {
           "label": "Agenti predlažu",
-          "description": "Workeri rade usporedno po tim datotekama. Nikada ne pushaju."
+          "description": "Workeri rade paralelno prema tim pravilima. Nikada ne pushaju."
         },
         {
-          "label": "Commit prolazi kroz ljudsku provjeru",
-          "description": "Orkestrator ponovno pročita diff, pokrene provjere i onda spusti jedan atomarni commit."
+          "label": "Čovjek odobrava",
+          "description": "Promjena se ponovno pročita i provjere se pokrenu prije nego išta od nje uđe."
         },
         {
-          "label": "Shema je verzionirana",
-          "description": "Datoteke stoje na shemi s migracijama. Kad se ona promijeni, svih trinaest repozitorija migrira zajedno."
+          "label": "Pravila su verzionirana",
+          "description": "Kad se promijene, svih trinaest projekata prelazi na novu verziju zajedno."
         }
       ]
     },
@@ -241,17 +237,17 @@
         "status": "Prije pokretanja",
         "claim": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena.",
         "figures": [
-          { "value": "~365.000", "label": "Redaka vlastitog TypeScripta" },
-          { "value": "1.580", "label": "Automatiziranih testova" }
+          { "value": "6", "label": "Jezika na kojima gost može pitati" },
+          { "value": "7", "label": "Mjesta na kojima se pojavljuje isti odgovor" }
         ]
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · prije uvođenja",
+        "status": "Otvoreni kod · prije uvođenja",
         "claim": "Graf upravljanja u kojem svaka javna tvrdnja vodi natrag do izvornog dokumenta.",
         "figures": [
-          { "value": "10", "label": "Policy modula" },
-          { "value": "55", "label": "Postgres tablica" }
+          { "value": "6", "label": "Koraka od dokumenta do javne provjere" },
+          { "value": "0", "label": "Računa potrebnih za provjeru" }
         ]
       },
       "funda": {
@@ -275,13 +271,13 @@
     },
     "method": {
       "label": "05 · Metoda",
-      "title": "Agent Ops Cockpit je javan.",
-      "body": "Trinaest naših repozitorija nosi iste datoteke AGENTS.md, DESIGN.md i registar zadataka. Agenti predlažu. Čovjek pročita diff i commita.",
+      "title": "Kako radimo, zapisano je.",
+      "body": "Trinaest projekata radi po istim zapisanim pravilima. Agenti predlažu promjenu; čovjek je pročita i odobri prije nego što uđe.",
       "link": "Pročitajte kako isporučujemo",
       "figures": [
-        { "value": "403", "label": "Commita, Apache-2.0" },
-        { "value": "51", "label": "CLI naredbi" },
-        { "value": "13", "label": "Repozitorija, jedna shema" }
+        { "value": "13", "label": "Projekata po istim zapisanim pravilima" },
+        { "value": "0", "label": "Promjena koje uđu nepročitane" },
+        { "value": "1", "label": "Čovjek koji odobrava svaku" }
       ]
     }
   },
@@ -304,38 +300,25 @@
       ]
     },
     "scale": {
-      "label": "Veličina",
-      "intro": "Prebrojeno iz repozitorija, ne procijenjeno.",
+      "label": "Što pokriva",
+      "intro": "Izbrojeno na sustavu koji radi, nije procijenjeno.",
       "stats": [
         {
-          "value": "~365.000",
-          "label": "Redaka TypeScripta",
-          "note": "Vlastiti kod. Bez vanjskih biblioteka."
-        },
-        {
-          "value": "220",
-          "label": "Tablica u bazi"
-        },
-        {
-          "value": "312",
-          "label": "Ruta",
-          "note": "Kroz sedam sučelja proizvoda, jedan podatkovni model."
-        },
-        {
           "value": "6",
-          "label": "Jezika",
-          "note": "Sučelje i generirani odgovori."
+          "label": "Jezika na kojima gost može pitati",
+          "note": "Sučelje i odgovori koje domaćin daje."
         },
         {
-          "value": "1.580",
-          "label": "Automatiziranih testova",
-          "note": "Kroz 286 testnih datoteka."
+          "value": "7",
+          "label": "Mjesta na kojima se pojavljuje isti odgovor",
+          "note": "Gost, obrt i službeni profil turističke zajednice među njima."
         },
         {
-          "value": "1.080",
-          "label": "Commita",
-          "note": "Kroz 20 mjeseci."
-        }
+          "value": "1",
+          "label": "Mjesto na kojem se podatak mijenja",
+          "note": "Promijeni jednom; mijenja se svugdje."
+        },
+        { "value": "0", "label": "Korisnika danas", "note": "Prije pokretanja znači prije pokretanja." }
       ]
     },
     "whatItIs": {
@@ -442,14 +425,26 @@
       "eyebrow": "Javna infrastruktura",
       "name": "Polis Interface",
       "claim": "Javna infrastruktura koja državne podatke tretira kao nešto što se provjerava, a ne kao nešto u što se vjeruje.",
-      "status": "Open source · AGPL · prije uvođenja",
-      "tags": ["Postgres", "OPA/Rego", "RFC 3161", "E-pečati po uzoru na eIDAS"]
+      "status": "Otvoreni kod · prije uvođenja",
+      "tags": ["Javni podaci", "Provjerljive tvrdnje", "Ništa samoprijavljeno", "Prije uvođenja"]
     },
     "stats": [
-      { "value": "16", "label": "Servisa", "note": "Četiri aplikacije na njima." },
-      { "value": "55", "label": "Postgres tablica" },
-      { "value": "10", "label": "Policy modula", "note": "OPA/Rego, ocjenjuju se u izvođenju." },
-      { "value": "~100", "label": "Jediničnih testova", "note": "Plus 17 skripti za prihvaćanje." }
+      { "value": "6", "label": "Koraka od dokumenta do javne provjere" },
+      {
+        "value": "10",
+        "label": "Pravila koja odlučuju tko što vidi",
+        "note": "Provjerena na svakom zahtjevu. U dvojbi, odbijeno."
+      },
+      {
+        "value": "0",
+        "label": "Računa potrebnih za provjeru tvrdnje",
+        "note": "Svatko provjeri bez traženja dopuštenja."
+      },
+      {
+        "value": "0",
+        "label": "Javnih tijela koja ga danas koriste",
+        "note": "Prije uvođenja, i ova stranica to kaže."
+      }
     ],
     "readSourceRepo": "Pročitajte izvorni kod — github.com/basicalex/polis",
     "whatItIs": {
@@ -560,7 +555,7 @@
       "name": "Funda",
       "claim": "Čita natječaje EU fondova čim izađu i povezuje ih s organizacijama koje im odgovaraju.",
       "status": "U aktivnoj izradi",
-      "tags": ["Next.js", "Convex", "Clerk", "Geoprostorno povezivanje"]
+      "tags": ["EU fondovi", "Četiri uloge", "Tri jezika", "Geoprostorno uparivanje"]
     },
     "stats": [
       {
@@ -624,7 +619,7 @@
       "name": "Klijentske stranice u Istri",
       "claim": "Dvojezična stranica za vinski bar na vrsarskoj rivi, izgrađena iz klijentova Instagram profila i objavljena jednim automatiziranim tokom.",
       "status": "Live · Vrsar",
-      "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
+      "tags": ["Hrvatski prvo", "Dvojezično", "Vlastita domena", "Automatski izgrađeno"]
     },
     "stats": [
       { "value": "1", "label": "Stranica online danas", "note": "Predana klijentu, javna i povezana niže" },
@@ -632,7 +627,7 @@
       {
         "value": "2",
         "label": "Jezika na živoj stranici",
-        "note": "Hrvatski prvi, hreflang na svakoj stranici"
+        "note": "Hrvatski prvo, a gost dobije svoj jezik."
       }
     ],
     "showcase": {
@@ -672,15 +667,15 @@
           "body": "Boja, tipografija i razmaci uzimaju se iz klijentova vlastitog materijala i zapisuju kao dizajnerski tokeni, pa stranica izgleda kao on, a ne kao predložak."
         },
         {
-          "name": "Izgraditi u Astru, hrvatski prvi",
+          "name": "Izgradi je, hrvatski prvo",
           "body": "Statične stranice, hrvatski kao glavni jezik, engleski i ostali uz njega, s hreflangom i LocalBusiness JSON-LD-om u kodu stranice."
         },
         {
-          "name": "Provjeriti Playwrightom",
+          "name": "Provjeri svaku stranicu automatski",
           "body": "Automatski prolaz prošeta svaku stranicu prije nego je itko vidi, uključujući provjeru da se svaka slika prikazuje u omjeru za koji je izrezana."
         },
         {
-          "name": "Objaviti na Cloudflare Pages",
+          "name": "Objavi je na vlastitoj adresi",
           "body": "Stranica ide online na Cloudflareov edge, a klijent dobije URL koji odmah može staviti u svoj Instagram bio."
         }
       ],
@@ -819,14 +814,14 @@
     "hero": {
       "label": "O nama",
       "title": "Konzultantska kuća koja isporučuje vlastiti softver.",
-      "lead": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Vrsaru, u Istri — cijeli razvoj vodi jedna osoba, Alex Bašić. Softver za poslovne klijente diljem EU-a, te vlastiti Voyager, Polis i Funda. Sve prolazi kroz ista vrata pred svakim commitom."
+      "lead": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Vrsaru, u Istri — cijeli razvoj vodi jedna osoba, Alex Bašić. Softver za poslovne klijente diljem EU-a, te vlastiti Voyager, Polis i Funda. Sve prolazi istu provjeru prije nego što išta ode van."
     },
     "company": {
       "label": "Tvrtka",
       "title": "Dvije vrste posla, iste provjere.",
       "p1": "Rad za klijente obično počinje jednako: nešto već radi, a softver oko toga to više ne objašnjava. Nitko ne vidi trenutačno stanje, oni koji ga vode drže privatnu tablicu, a ljudi koji rezultatu moraju vjerovati ne mogu ga provjeriti.",
       "p2": "Voyager, Polis i Funda nisu usputna aktivnost. Ondje prvi udaramo u tvrda ograničenja: fina autorizacija, revizijski tragovi koje nitko ne može tiho prepisati, višejezični sadržaj koji mora ostati točan, uvođenja koja moraju nastaviti raditi. Te lekcije plaćamo vlastitim vremenom i rezultat donosimo u rad za klijente.",
-      "p3": "Možete pročitati kako radimo prije nego nas unajmite: AGENTS.md, DESIGN.md, 51 naredba i vrata koja pred svaki commit stavljaju čovjeka. Sve je javno pod Apache-2.0.",
+      "p3": "Prije nego nas angažirate možete pročitati kako radimo: pravila po kojima naši agenti rade i provjeru koja pred svaku promjenu stavlja čovjeka. Sve je javno.",
       "facts": {
         "company": { "term": "Tvrtka", "value": "INTRFACE — IT savjetovanje i razvoj poslovanja" },
         "person": {
@@ -841,7 +836,7 @@
         },
         "delivery": {
           "term": "Otvoreni kod",
-          "value": "Agent Ops Cockpit — Apache-2.0, javno na <repo>github.com/basicalex/agent-ops-cockpit</repo>"
+          "value": "Agent Ops Cockpit — javno na <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "registry": {
           "term": "Registracija",
@@ -869,7 +864,7 @@
         },
         {
           "label": "Graditi s agentima",
-          "description": "Agenti rade po datotekama AGENTS.md i DESIGN.md u vašem repozitoriju i po registru zadataka koji kaže što je još otvoreno. Predlažu; čovjek pročita diff i commita."
+          "description": "Agenti rade prema zapisanim pravilima u vašem projektu i popisu zadataka koji kaže što je još otvoreno. Oni predlažu; čovjek pročita promjenu i odobri je."
         },
         {
           "label": "Dokazati",
@@ -888,7 +883,7 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · prije uvođenja",
+        "status": "Otvoreni kod · prije uvođenja",
         "description": "Javna infrastruktura za provjerljive državne podatke, gdje svaka javna tvrdnja vodi do izvornog dokumenta. Vlastita dokumentacija svako sučelje označava kao provjerljivo, demonstraciju ili još nije uživo."
       },
       "funda": {

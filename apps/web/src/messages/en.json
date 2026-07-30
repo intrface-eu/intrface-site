@@ -28,12 +28,12 @@
     "openSource": {
       "heading": "Open source",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · 403 commits, 51 commands",
+      "aocMeta": "How we build client software",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · government data you can check"
+      "polisMeta": "Government data you can check"
     },
     "cta": "Bring us the messy system",
-    "colophon": "Set in Google Sans Flex. Built and shipped through Agent Ops Cockpit, Apache-2.0: agents propose, a human commits. Four languages."
+    "colophon": "Set in Google Sans Flex. Built the way we build client work: agents propose, a person signs off. Four languages."
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -45,19 +45,19 @@
     "screenshotPending": "Screenshot pending"
   },
   "Metadata": {
-    "tagline": "IT consulting from Istria. Our own tooling is public under Apache-2.0.",
-    "description": "INTRFACE is an IT consultancy in Istria. Client software, plus Voyager, Polis and Funda of our own. Agent Ops Cockpit, the tooling behind them, is public: Apache-2.0, 403 commits.",
+    "tagline": "IT consulting from Istria. Software for businesses that already run.",
+    "description": "INTRFACE is an IT consultancy in Vrsar, Istria. Software for businesses that already run, plus Voyager, Polis and Funda of our own.",
     "work": {
       "title": "Work",
       "description": "Four cases: a live wine-bar site in Vrsar, Voyager, Polis and Funda. Each one states the status it has today, not the status it will have at launch."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. Pre-launch place-intelligence platform for tourism destinations: 365,000 lines of first-party TypeScript, 1,580 automated test cases."
+      "description": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. A pre-launch platform for tourism destinations, in six languages."
     },
     "polis": {
       "title": "Polis Interface",
-      "description": "Open-source (AGPL) civic infrastructure for verifiable government data: a hash-chained audit ledger, RFC 3161 document timestamping, and policy gates that fail closed. Pre-deployment."
+      "description": "Civic infrastructure for public data a citizen can check: every claim resolves to a document, a seal, and a timestamp anyone can re-check. Pre-deployment."
     },
     "funda": {
       "title": "Funda",
@@ -65,11 +65,11 @@
     },
     "clientSites": {
       "title": "Istria client sites",
-      "description": "Bilingual sites for Istrian coastal businesses, built from the client's Instagram profile and deployed through one automated pipeline. Screenshots, a live link, and the six steps."
+      "description": "Bilingual sites for Istrian coastal businesses, built from the client's own Instagram profile and live at their own address. Screenshots and the six steps."
     },
     "method": {
       "title": "Method",
-      "description": "Agents propose; a human-verified gate commits. Workers never push. The rules they run under are public under Apache-2.0: AGENTS.md, DESIGN.md, a task ledger, 51 commands."
+      "description": "We build with orchestrated AI agents under written rules, and a person reads every change before it lands. The rules are public. Read them before you hire us."
     },
     "about": {
       "title": "About",
@@ -84,13 +84,9 @@
     "hero": {
       "eyebrow": "Intrface · Istria, Croatia",
       "title": "We build the software. And the system that builds the software.",
-      "lead": "One live client site in Vrsar. Voyager, Polis and Funda, still pre-launch. Agent Ops Cockpit, public under Apache-2.0.",
+      "lead": "One live client site in Vrsar, and three systems of our own still pre-launch. Everything on this page can be opened and checked.",
       "seeWork": "See where each system stands",
       "talk": "Start a system review",
-      "contract": {
-        "label": "The contract, on disk",
-        "note": "The same four files in every repository we touch, including yours."
-      },
       "proofLabel": "Open any of these",
       "metaTitle": "Software, and the system that builds it.",
       "proof": {
@@ -172,39 +168,39 @@
         "name": "Polis Interface",
         "status": "Pre-deployment",
         "claim": "A governance graph where every public claim traces back to a source document.",
-        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
+        "spec": ["Open source", "Every claim checkable", "Nothing self-reported"],
         "linkLabel": "Read the Polis case"
       },
       "funda": {
         "name": "Funda",
         "status": "In build",
-        "claim": "Matches organizations to EU funding calls, ingested from SEDIA and TED by agents.",
-        "spec": ["4 role surfaces", "3 languages", "SEDIA + TED"],
+        "claim": "Matches organizations to the EU funding calls they can actually win, read as they publish.",
+        "spec": ["4 roles", "3 languages", "EU funding sources"],
         "linkLabel": "Read the Funda case"
       }
     },
     "method": {
       "label": "Method",
       "title": "Read how we work before you hire us.",
-      "body": "Thirteen of our repos carry the same AGENTS.md, DESIGN.md, and task ledger. Agents propose the change; a human-verified gate commits it. 383 commits landed on Voyager in July 2026 alone.",
+      "body": "Thirteen projects run under the same written rules. Agents propose the change; a person reads it and signs off before it lands. Nothing reaches your code unread.",
       "readMethod": "Read the method",
       "readSource": "Read the source",
       "steps": [
         {
-          "label": "AGENTS.md and DESIGN.md",
-          "description": "Every repo carries the same two files on disk. An agent reads them before it reads the code."
+          "label": "The rules are written down",
+          "description": "Every project carries the same rules on disk. An agent reads them before it reads the code."
         },
         {
           "label": "Agents propose",
-          "description": "Workers run in parallel against those files. They never push."
+          "description": "Workers run in parallel against those rules. They never push."
         },
         {
-          "label": "A human-verified gate commits",
-          "description": "The orchestrator re-reads the diff, runs the checks, then lands one atomic commit."
+          "label": "A person signs off",
+          "description": "The change is re-read and the checks are run before any of it lands."
         },
         {
-          "label": "The schema is versioned",
-          "description": "The files sit on a schema with migrations. When it changes, all thirteen repos migrate together."
+          "label": "The rules are versioned",
+          "description": "When they change, all thirteen projects move to the new version together."
         }
       ]
     },
@@ -241,17 +237,17 @@
         "status": "Pre-launch",
         "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours.",
         "figures": [
-          { "value": "~365,000", "label": "First-party TypeScript lines" },
-          { "value": "1,580", "label": "Automated test cases" }
+          { "value": "6", "label": "Languages a guest can ask in" },
+          { "value": "7", "label": "Places the same answer appears" }
         ]
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · pre-deployment",
+        "status": "Open source · pre-deployment",
         "claim": "A governance graph where every public claim traces back to a source document.",
         "figures": [
-          { "value": "10", "label": "Policy modules" },
-          { "value": "55", "label": "Postgres tables" }
+          { "value": "6", "label": "Steps from filed document to public check" },
+          { "value": "0", "label": "Accounts needed to check one" }
         ]
       },
       "funda": {
@@ -275,13 +271,13 @@
     },
     "method": {
       "label": "05 · Method",
-      "title": "Agent Ops Cockpit is public.",
-      "body": "Thirteen of our repos carry the same AGENTS.md, DESIGN.md, and task ledger. Agents propose. A human reads the diff and commits.",
+      "title": "How we work is written down.",
+      "body": "Thirteen projects run under the same written rules. Agents propose the change; a person reads it and signs off before it lands.",
       "link": "Read how we ship",
       "figures": [
-        { "value": "403", "label": "Commits, Apache-2.0" },
-        { "value": "51", "label": "CLI commands" },
-        { "value": "13", "label": "Repos, one schema" }
+        { "value": "13", "label": "Projects on the same written rules" },
+        { "value": "0", "label": "Changes that land unread" },
+        { "value": "1", "label": "Person who signs off on each" }
       ]
     }
   },
@@ -304,38 +300,17 @@
       ]
     },
     "scale": {
-      "label": "Scale",
-      "intro": "Counted from the repository, not estimated.",
+      "label": "What it handles",
+      "intro": "Counted from the running system, not estimated.",
       "stats": [
+        { "value": "6", "label": "Languages a guest can ask in", "note": "Interface and the answers the host gives." },
         {
-          "value": "~365,000",
-          "label": "Lines of TypeScript",
-          "note": "First-party. Dependencies excluded."
+          "value": "7",
+          "label": "Places the same answer appears",
+          "note": "Guest, business, and the tourist board's own profile among them."
         },
-        {
-          "value": "220",
-          "label": "Database tables"
-        },
-        {
-          "value": "312",
-          "label": "Routes",
-          "note": "Across seven product surfaces, one data model."
-        },
-        {
-          "value": "6",
-          "label": "Languages",
-          "note": "Interface and generated answers."
-        },
-        {
-          "value": "1,580",
-          "label": "Automated test cases",
-          "note": "Across 286 test files."
-        },
-        {
-          "value": "1,080",
-          "label": "Commits",
-          "note": "Over 20 months."
-        }
+        { "value": "1", "label": "Place a fact gets updated", "note": "Change it once; it changes everywhere." },
+        { "value": "0", "label": "Users today", "note": "Pre-launch means pre-launch." }
       ]
     },
     "whatItIs": {
@@ -442,14 +417,22 @@
       "eyebrow": "Civic infrastructure",
       "name": "Polis Interface",
       "claim": "Civic infrastructure that treats government data as something you check, not something you believe.",
-      "status": "Open source · AGPL · pre-deployment",
-      "tags": ["Postgres", "OPA/Rego", "RFC 3161", "eIDAS-shaped e-seals"]
+      "status": "Open source · pre-deployment",
+      "tags": ["Public data", "Checkable claims", "Nothing self-reported", "Pre-deployment"]
     },
     "stats": [
-      { "value": "16", "label": "Services", "note": "Four apps on top of them." },
-      { "value": "55", "label": "Postgres tables" },
-      { "value": "10", "label": "Policy modules", "note": "OPA/Rego, evaluated at runtime." },
-      { "value": "~100", "label": "Unit tests", "note": "Plus 17 acceptance scripts." }
+      { "value": "6", "label": "Steps from filed document to public check" },
+      {
+        "value": "10",
+        "label": "Rules deciding who sees what",
+        "note": "Checked on every request. In doubt, denied."
+      },
+      {
+        "value": "0",
+        "label": "Accounts needed to check a claim",
+        "note": "Anyone re-checks it without asking permission."
+      },
+      { "value": "0", "label": "Public bodies running it today", "note": "Pre-deployment, and this page says so." }
     ],
     "readSourceRepo": "Read the source — github.com/basicalex/polis",
     "whatItIs": {
@@ -560,7 +543,7 @@
       "name": "Funda",
       "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
       "status": "Active build",
-      "tags": ["Next.js", "Convex", "Clerk", "Geospatial matching"]
+      "tags": ["EU funding", "Four roles", "Three languages", "Geospatial matching"]
     },
     "stats": [
       { "value": "4", "label": "Role surfaces", "note": "Admin, consultant, corporate, director" },
@@ -620,7 +603,7 @@
       "name": "Istria client sites",
       "claim": "A bilingual site for a wine bar on the Vrsar waterfront, built from the client's own Instagram profile and deployed by one automated pipeline.",
       "status": "Live · Vrsar",
-      "tags": ["Astro", "Cloudflare Pages", "HR-first i18n", "JSON-LD"]
+      "tags": ["Croatian first", "Bilingual", "Their own domain", "Built automatically"]
     },
     "stats": [
       { "value": "1", "label": "Site live today", "note": "Handed over, public, and linked below" },
@@ -628,7 +611,7 @@
       {
         "value": "2",
         "label": "Languages on the live site",
-        "note": "Croatian first, hreflang on every page"
+        "note": "Croatian first, and a guest gets their own language."
       }
     ],
     "showcase": {
@@ -668,15 +651,15 @@
           "body": "Color, type and spacing are lifted from the client's own material and written as design tokens, so the site looks like them and not like a template."
         },
         {
-          "name": "Build it in Astro, Croatian first",
+          "name": "Build it, Croatian first",
           "body": "Static pages, Croatian as the primary language, English and any others alongside it, with hreflang and LocalBusiness JSON-LD in the markup."
         },
         {
-          "name": "Audit it with Playwright",
+          "name": "Check every page automatically",
           "body": "An automated pass walks every page before anyone sees it, including a check that each image renders at the aspect ratio it was cropped for."
         },
         {
-          "name": "Deploy to Cloudflare Pages",
+          "name": "Put it live on their own address",
           "body": "The site goes live on Cloudflare's edge and the client gets a URL they can put straight in their Instagram bio."
         }
       ],
@@ -815,14 +798,14 @@
     "hero": {
       "label": "About",
       "title": "A consultancy that ships its own software.",
-      "lead": "INTRFACE is an IT consulting and business development company in Vrsar, Istria — one engineer, Alex Bašić. Client software for businesses across the EU, plus Voyager, Polis and Funda of our own. All of it goes through the same commit gate."
+      "lead": "INTRFACE is an IT consulting and business development company in Vrsar, Istria — one engineer, Alex Bašić. Client software for businesses across the EU, plus Voyager, Polis and Funda of our own. All of it goes through the same review before anything ships."
     },
     "company": {
       "label": "The company",
       "title": "Two kinds of work, one set of checks.",
       "p1": "Client work usually starts the same way: something already runs, and the software around it has stopped explaining it. Nobody can see the current state, the operators keep a private spreadsheet, and the people who need to trust the output cannot check it.",
       "p2": "Voyager, Polis and Funda are not a side activity. They are where we hit the hard constraints first: fine-grained authorization, audit trails nobody can quietly rewrite, multilingual content that has to stay correct, deploys that have to keep working. We pay for those lessons on our own time and bring the result to client work.",
-      "p3": "You can read how we work before you hire us: AGENTS.md, DESIGN.md, 51 commands, and the gate that puts a human in front of every commit. All of it is public under Apache-2.0.",
+      "p3": "You can read how we work before you hire us: the rules our agents run under, and the check that puts a person in front of every change. All of it is public.",
       "facts": {
         "company": { "term": "Company", "value": "INTRFACE — IT consulting and business development" },
         "person": {
@@ -837,7 +820,7 @@
         },
         "delivery": {
           "term": "Open source",
-          "value": "Agent Ops Cockpit — Apache-2.0, public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
+          "value": "Agent Ops Cockpit — public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "registry": {
           "term": "Registered",
@@ -865,7 +848,7 @@
         },
         {
           "label": "Build with agents",
-          "description": "Agents work against AGENTS.md and DESIGN.md in your repo, and a task ledger that says what is still open. They propose; a human reads the diff and commits."
+          "description": "Agents work against the written rules in your own project and a task list that says what is still open. They propose; a person reads the change and signs it off."
         },
         {
           "label": "Prove it",
@@ -884,7 +867,7 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · pre-deployment",
+        "status": "Open source · pre-deployment",
         "description": "Civic infrastructure for verifiable government data, where every public claim traces to a source document. Its own docs label each surface verifiable, demonstration, or not yet live."
       },
       "funda": {

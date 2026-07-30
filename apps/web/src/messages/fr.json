@@ -28,12 +28,12 @@
     "openSource": {
       "heading": "Open source",
       "aoc": "Agent Ops Cockpit",
-      "aocMeta": "Apache-2.0 · 403 commits, 51 commandes",
+      "aocMeta": "Comment nous construisons les logiciels clients",
       "polis": "Polis Interface",
-      "polisMeta": "AGPL-3.0 · des données publiques que l'on peut vérifier"
+      "polisMeta": "Des données publiques que l'on peut vérifier"
     },
     "cta": "Apportez-nous le système qui vous échappe",
-    "colophon": "Composé en Google Sans Flex. Construit et livré avec Agent Ops Cockpit, Apache-2.0 : les agents proposent, un humain valide le commit. Quatre langues."
+    "colophon": "Composé en Google Sans Flex. Construit comme le travail client : les agents proposent, un humain valide. Quatre langues."
   },
   "LocaleSwitcher": {
     "label": "Langue"
@@ -45,19 +45,19 @@
     "screenshotPending": "Capture à venir"
   },
   "Metadata": {
-    "tagline": "Conseil informatique depuis l'Istrie. Nos propres outils sont publics, sous Apache-2.0.",
-    "description": "INTRFACE est un cabinet de conseil informatique en Istrie. Des logiciels pour nos clients, plus Voyager, Polis et Funda à nous. Agent Ops Cockpit, l'outillage derrière, est public : Apache-2.0, 403 commits.",
+    "tagline": "Conseil informatique depuis l'Istrie. Des logiciels pour des entreprises qui tournent déjà.",
+    "description": "INTRFACE est un cabinet de conseil informatique à Vrsar, en Istrie. Des logiciels pour des entreprises qui tournent déjà, plus Voyager, Polis et Funda à nous.",
     "work": {
       "title": "Réalisations",
       "description": "Quatre cas : un site de bar à vins en ligne à Vrsar, Voyager, Polis et Funda. Chacun indique le statut qu'il a aujourd'hui, pas celui qu'il aura au lancement."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Plateforme d'intelligence des lieux pour destinations touristiques, avant lancement : 365 000 lignes de TypeScript maison, 1 580 tests automatisés."
+      "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Avant lancement, en six langues."
     },
     "polis": {
       "title": "Polis Interface",
-      "description": "Infrastructure civique open source (AGPL) pour des données publiques vérifiables : journal d'audit chaîné par hachage, horodatage RFC 3161 des documents et contrôles de politique qui refusent par défaut. Avant déploiement."
+      "description": "Infrastructure pour des données publiques qu'un citoyen peut vérifier : chaque affirmation mène à un document, un sceau et un horodatage. Avant déploiement."
     },
     "funda": {
       "title": "Funda",
@@ -65,11 +65,11 @@
     },
     "clientSites": {
       "title": "Sites clients en Istrie",
-      "description": "Des sites bilingues pour des commerces de la côte istrienne, construits à partir du profil Instagram du client et livrés par une seule chaîne automatisée. Captures, lien en ligne et les six étapes."
+      "description": "Des sites bilingues pour des commerces de la côte istrienne, construits à partir de leur profil Instagram et en ligne à leur propre adresse. Les six étapes."
     },
     "method": {
       "title": "Méthode",
-      "description": "Les agents proposent ; un contrôle humain valide le commit. Les workers ne poussent jamais. Les règles qu'ils suivent sont publiques sous Apache-2.0 : AGENTS.md, DESIGN.md, un registre de tâches, 51 commandes."
+      "description": "Nous construisons avec des agents IA orchestrés selon des règles écrites, et un humain relit chaque changement avant qu'il ne parte. Les règles sont publiques."
     },
     "about": {
       "title": "À propos",
@@ -84,13 +84,9 @@
     "hero": {
       "eyebrow": "Intrface · Istrie, Croatie",
       "title": "Nous construisons le logiciel. Et le système qui le construit.",
-      "lead": "Un site client en ligne à Vrsar. Voyager, Polis et Funda, encore avant lancement. Agent Ops Cockpit, public sous Apache-2.0.",
+      "lead": "Un site client en ligne à Vrsar, et trois systèmes à nous encore avant lancement. Tout ce qui est sur cette page peut être ouvert et vérifié.",
       "seeWork": "Voir où en est chaque système",
       "talk": "Lancer une revue de système",
-      "contract": {
-        "label": "Le contrat, sur le disque",
-        "note": "Les mêmes quatre fichiers dans chaque dépôt que nous touchons, y compris le vôtre."
-      },
       "proofLabel": "Ouvrez n'importe lequel",
       "metaTitle": "Le logiciel, et le système qui le construit.",
       "proof": {
@@ -172,39 +168,39 @@
         "name": "Polis Interface",
         "status": "Avant déploiement",
         "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
-        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
+        "spec": ["Open source", "Chaque affirmation vérifiable", "Rien d'auto-déclaré"],
         "linkLabel": "Lire le cas Polis"
       },
       "funda": {
         "name": "Funda",
         "status": "En construction",
-        "claim": "Rapproche les organisations des appels à financement européens, lus par des agents sur SEDIA et TED.",
-        "spec": ["4 interfaces par rôle", "3 langues", "SEDIA + TED"],
+        "claim": "Rapproche les organisations des appels européens qu'elles peuvent réellement gagner, lus dès leur publication.",
+        "spec": ["4 rôles", "3 langues", "Sources de financement européen"],
         "linkLabel": "Lire le cas Funda"
       }
     },
     "method": {
       "label": "Méthode",
       "title": "Lisez comment nous travaillons avant de nous engager.",
-      "body": "Treize de nos dépôts portent les mêmes AGENTS.md, DESIGN.md et registre de tâches. Les agents proposent la modification ; un contrôle humain la valide. 383 commits sur Voyager pour le seul mois de juillet 2026.",
+      "body": "Treize projets tournent sous les mêmes règles écrites. Les agents proposent le changement ; un humain le relit et le valide avant qu'il ne parte. Rien n'atteint votre code sans relecture.",
       "readMethod": "Lire la méthode",
       "readSource": "Lire le code source",
       "steps": [
         {
-          "label": "AGENTS.md et DESIGN.md",
-          "description": "Chaque dépôt porte les deux mêmes fichiers sur le disque. Un agent les lit avant de lire le code."
+          "label": "Les règles sont écrites",
+          "description": "Chaque projet porte les mêmes règles sur disque. Un agent les lit avant de lire le code."
         },
         {
           "label": "Les agents proposent",
-          "description": "Les workers travaillent en parallèle sur ces fichiers. Ils ne poussent jamais."
+          "description": "Les workers travaillent en parallèle contre ces règles. Ils ne poussent jamais."
         },
         {
-          "label": "Un contrôle humain valide le commit",
-          "description": "L'orchestrateur relit le diff, lance les vérifications, puis pose un commit atomique."
+          "label": "Un humain valide",
+          "description": "Le changement est relu et les contrôles sont passés avant que quoi que ce soit ne parte."
         },
         {
-          "label": "Le schéma est versionné",
-          "description": "Les fichiers reposent sur un schéma avec migrations. Quand il change, les treize dépôts migrent ensemble."
+          "label": "Les règles sont versionnées",
+          "description": "Quand elles changent, les treize projets passent ensemble à la nouvelle version."
         }
       ]
     },
@@ -241,17 +237,17 @@
         "status": "Avant lancement",
         "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires.",
         "figures": [
-          { "value": "~365 000", "label": "Lignes de TypeScript maison" },
-          { "value": "1 580", "label": "Tests automatisés" }
+          { "value": "6", "label": "Langues dans lesquelles un visiteur peut demander" },
+          { "value": "7", "label": "Endroits où la même réponse apparaît" }
         ]
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · avant déploiement",
+        "status": "Open source · avant déploiement",
         "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
         "figures": [
-          { "value": "10", "label": "Modules de politique" },
-          { "value": "55", "label": "Tables Postgres" }
+          { "value": "6", "label": "Étapes du document déposé à la vérification publique" },
+          { "value": "0", "label": "Comptes nécessaires pour vérifier" }
         ]
       },
       "funda": {
@@ -275,13 +271,13 @@
     },
     "method": {
       "label": "05 · Méthode",
-      "title": "Agent Ops Cockpit est public.",
-      "body": "Treize de nos dépôts portent les mêmes AGENTS.md, DESIGN.md et registre de tâches. Les agents proposent. Un humain lit le diff et valide.",
+      "title": "Notre façon de travailler est écrite.",
+      "body": "Treize projets tournent sous les mêmes règles écrites. Les agents proposent le changement ; un humain le relit et le valide avant qu'il ne parte.",
       "link": "Lire comment nous livrons",
       "figures": [
-        { "value": "403", "label": "Commits, Apache-2.0" },
-        { "value": "51", "label": "Commandes CLI" },
-        { "value": "13", "label": "Dépôts, un schéma" }
+        { "value": "13", "label": "Projets sous les mêmes règles écrites" },
+        { "value": "0", "label": "Changements qui passent sans relecture" },
+        { "value": "1", "label": "Humain qui valide chacun" }
       ]
     }
   },
@@ -304,38 +300,25 @@
       ]
     },
     "scale": {
-      "label": "Échelle",
-      "intro": "Compté dans le dépôt, pas estimé.",
+      "label": "Ce qu'il gère",
+      "intro": "Compté sur le système qui tourne, pas estimé.",
       "stats": [
         {
-          "value": "~365 000",
-          "label": "Lignes de TypeScript",
-          "note": "Code maison. Dépendances exclues."
-        },
-        {
-          "value": "220",
-          "label": "Tables de base de données"
-        },
-        {
-          "value": "312",
-          "label": "Routes",
-          "note": "Sur sept interfaces produit, un seul modèle de données."
-        },
-        {
           "value": "6",
-          "label": "Langues",
-          "note": "Interface et réponses générées."
+          "label": "Langues dans lesquelles un visiteur peut demander",
+          "note": "L'interface et les réponses de l'hôte."
         },
         {
-          "value": "1 580",
-          "label": "Tests automatisés",
-          "note": "Répartis sur 286 fichiers de test."
+          "value": "7",
+          "label": "Endroits où la même réponse apparaît",
+          "note": "Le visiteur, le commerce et le profil de l'office de tourisme, entre autres."
         },
         {
-          "value": "1 080",
-          "label": "Commits",
-          "note": "Sur 20 mois."
-        }
+          "value": "1",
+          "label": "Endroit où une information se met à jour",
+          "note": "On la change une fois ; elle change partout."
+        },
+        { "value": "0", "label": "Utilisateurs aujourd'hui", "note": "Avant lancement veut dire avant lancement." }
       ]
     },
     "whatItIs": {
@@ -442,14 +425,26 @@
       "eyebrow": "Infrastructure civique",
       "name": "Polis Interface",
       "claim": "Une infrastructure civique qui traite les données publiques comme quelque chose que l'on vérifie, pas comme quelque chose que l'on croit.",
-      "status": "Open source · AGPL · avant déploiement",
-      "tags": ["Postgres", "OPA/Rego", "RFC 3161", "Cachets électroniques façon eIDAS"]
+      "status": "Open source · avant déploiement",
+      "tags": ["Données publiques", "Affirmations vérifiables", "Rien d'auto-déclaré", "Avant déploiement"]
     },
     "stats": [
-      { "value": "16", "label": "Services", "note": "Quatre applications par-dessus." },
-      { "value": "55", "label": "Tables Postgres" },
-      { "value": "10", "label": "Modules de politique", "note": "OPA/Rego, évalués à l'exécution." },
-      { "value": "~100", "label": "Tests unitaires", "note": "Plus 17 scripts de recette." }
+      { "value": "6", "label": "Étapes du document déposé à la vérification publique" },
+      {
+        "value": "10",
+        "label": "Règles décidant qui voit quoi",
+        "note": "Vérifiées à chaque requête. Dans le doute, refusé."
+      },
+      {
+        "value": "0",
+        "label": "Comptes nécessaires pour vérifier une affirmation",
+        "note": "Chacun revérifie sans demander la permission."
+      },
+      {
+        "value": "0",
+        "label": "Administrations qui l'utilisent aujourd'hui",
+        "note": "Avant déploiement, et cette page le dit."
+      }
     ],
     "readSourceRepo": "Lire le code source — github.com/basicalex/polis",
     "whatItIs": {
@@ -560,7 +555,7 @@
       "name": "Funda",
       "claim": "Lit les appels à financement européens dès leur parution et les rapproche des organisations qui correspondent.",
       "status": "Construction active",
-      "tags": ["Next.js", "Convex", "Clerk", "Rapprochement géospatial"]
+      "tags": ["Financements européens", "Quatre rôles", "Trois langues", "Correspondance géographique"]
     },
     "stats": [
       {
@@ -624,7 +619,7 @@
       "name": "Sites clients en Istrie",
       "claim": "Un site bilingue pour un bar à vins du front de mer de Vrsar, construit à partir du profil Instagram du client et déployé par une seule chaîne automatisée.",
       "status": "En ligne · Vrsar",
-      "tags": ["Astro", "Cloudflare Pages", "i18n croate d'abord", "JSON-LD"]
+      "tags": ["Croate d'abord", "Bilingue", "Leur propre domaine", "Construit automatiquement"]
     },
     "stats": [
       { "value": "1", "label": "Site en ligne aujourd'hui", "note": "Remis au client, public et lié plus bas" },
@@ -632,7 +627,7 @@
       {
         "value": "2",
         "label": "Langues sur le site en ligne",
-        "note": "Croate d'abord, hreflang sur chaque page"
+        "note": "Croate d'abord, et un visiteur obtient sa propre langue."
       }
     ],
     "showcase": {
@@ -672,15 +667,15 @@
           "body": "Couleur, typographie et espacements sont tirés du matériau du client et écrits comme jetons de design, pour que le site lui ressemble et non à un modèle."
         },
         {
-          "name": "Construire en Astro, croate d'abord",
+          "name": "Le construire, croate d'abord",
           "body": "Pages statiques, croate en langue principale, anglais et autres à côté, avec hreflang et LocalBusiness JSON-LD dans le balisage."
         },
         {
-          "name": "Auditer avec Playwright",
+          "name": "Vérifier chaque page automatiquement",
           "body": "Un passage automatisé parcourt chaque page avant que quiconque la voie, y compris une vérification que chaque image s'affiche au format pour lequel elle a été recadrée."
         },
         {
-          "name": "Déployer sur Cloudflare Pages",
+          "name": "Le mettre en ligne à leur propre adresse",
           "body": "Le site part en ligne sur l'edge de Cloudflare et le client reçoit une URL à mettre directement dans sa bio Instagram."
         }
       ],
@@ -819,14 +814,14 @@
     "hero": {
       "label": "À propos",
       "title": "Un cabinet de conseil qui livre son propre logiciel.",
-      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise à Vrsar, en Istrie — une seule personne au développement, Alex Bašić. Des logiciels pour des entreprises clientes dans toute l'UE, plus Voyager, Polis et Funda en propre. Tout passe par le même contrôle avant chaque commit."
+      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise à Vrsar, en Istrie — une seule personne au développement, Alex Bašić. Des logiciels pour des entreprises clientes dans toute l'UE, plus Voyager, Polis et Funda en propre. Tout passe par le même contrôle avant la moindre mise en ligne."
     },
     "company": {
       "label": "L'entreprise",
       "title": "Deux types de travail, les mêmes vérifications.",
       "p1": "Le travail client commence presque toujours pareil : quelque chose tourne déjà, et le logiciel autour a cessé de l'expliquer. Personne ne voit l'état courant, les exploitants tiennent un tableur privé, et ceux qui doivent faire confiance au résultat ne peuvent pas le vérifier.",
       "p2": "Voyager, Polis et Funda ne sont pas une activité annexe. C'est là que nous heurtons les contraintes dures en premier : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui doivent continuer de fonctionner. Nous payons ces leçons sur notre temps et en apportons le résultat au travail client.",
-      "p3": "Vous pouvez lire comment nous travaillons avant de nous engager : AGENTS.md, DESIGN.md, 51 commandes, et le contrôle qui place un humain devant chaque commit. Tout est public sous Apache-2.0.",
+      "p3": "Vous pouvez lire comment nous travaillons avant de nous engager : les règles que suivent nos agents, et le contrôle qui met un humain devant chaque changement. Tout est public.",
       "facts": {
         "company": {
           "term": "Société",
@@ -847,7 +842,7 @@
         },
         "delivery": {
           "term": "Open source",
-          "value": "Agent Ops Cockpit — Apache-2.0, public sur <repo>github.com/basicalex/agent-ops-cockpit</repo>"
+          "value": "Agent Ops Cockpit — public sur <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
         "registry": {
           "term": "Immatriculation",
@@ -878,7 +873,7 @@
         },
         {
           "label": "Construire avec des agents",
-          "description": "Les agents travaillent sur AGENTS.md et DESIGN.md dans votre dépôt, et sur un registre de tâches qui dit ce qui reste ouvert. Ils proposent ; un humain lit le diff et valide."
+          "description": "Les agents travaillent contre les règles écrites de votre propre projet et une liste de tâches qui dit ce qui reste ouvert. Ils proposent ; un humain relit le changement et le valide."
         },
         {
           "label": "Le prouver",
@@ -897,7 +892,7 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · avant déploiement",
+        "status": "Open source · avant déploiement",
         "description": "Infrastructure civique pour des données publiques vérifiables, où chaque affirmation publique remonte à un document source. Sa propre documentation étiquette chaque interface : vérifiable, démonstration, ou pas encore en ligne."
       },
       "funda": {
