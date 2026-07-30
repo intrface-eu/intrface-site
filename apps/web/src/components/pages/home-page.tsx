@@ -11,7 +11,12 @@ import { TactileButton } from "@/components/site/tactile-button";
 import { PaperShaderSurface } from "@/components/visual/paper-shader-surface";
 import { Link, getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
-import { AOC_REPO_URL, CONTACT_EMAIL } from "@/lib/site/config";
+import {
+  AOC_REPO_URL,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+} from "@/lib/site/config";
 
 /**
  * Screenshot slug, message key, live URL, and the language chips. The copy
@@ -74,6 +79,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
   const methodSteps = t.raw("method.steps") as ProcessStep[];
   const deliveryStats = t.raw("method.stats") as Stat[];
   const contactTopics = t.raw("contact.topics") as string[];
+  const contactHelps = t.raw("contact.helps") as string[];
 
   const heroArtifacts: HeroArtifact[] = HERO_ARTIFACTS.map((artifact) => ({
     ...artifact,
@@ -345,8 +351,43 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                   {t("contact.intro")}
                 </p>
               </FadeIn>
-              <FadeIn delay={280}>
-                <p className="type-body-sm mt-7 text-[color:var(--ink-inverse-muted)]">
+              {/* The same three prompts /about carries. Without them this column
+                  stopped at the intro and left the form standing on its own. */}
+              <FadeIn delay={260}>
+                <div className="mt-10 border-t border-white/15 pt-6">
+                  <p className="type-meta text-[color:var(--ink-inverse-label)]">
+                    {t("contact.helpsLabel")}
+                  </p>
+                  <ul className="mt-4 grid gap-3">
+                    {contactHelps.map((help) => (
+                      <li
+                        className="type-body-sm flex gap-3 text-[color:var(--ink-inverse-muted)]"
+                        key={help}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-[.6em] h-1 w-1 shrink-0 rounded-full bg-white/45"
+                        />
+                        {help}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
+              {/* Who answers, and when — the reassurance an SME buyer looks for
+                  before typing anything into the form. */}
+              <FadeIn delay={320}>
+                <div className="mt-8 border-t border-white/15 pt-6">
+                  <p className="type-body text-[color:var(--ink-inverse)]">
+                    {t("contact.person")}
+                  </p>
+                  <p className="type-body-sm mt-2 text-[color:var(--ink-inverse-muted)]">
+                    {t("contact.reply")}
+                  </p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={380}>
+                <p className="type-body-sm mt-8 text-[color:var(--ink-inverse-muted)]">
                   {t.rich("contact.mailNote", {
                     email: CONTACT_EMAIL,
                     mail: (chunks) => (
@@ -358,6 +399,26 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                       </a>
                     ),
                   })}
+                </p>
+              </FadeIn>
+              <FadeIn delay={420}>
+                <p className="type-body-sm mt-2 text-[color:var(--ink-inverse-muted)]">
+                  {t.rich("contact.phoneNote", {
+                    phone: CONTACT_PHONE_DISPLAY,
+                    tel: (chunks) => (
+                      <a
+                        className="font-semibold text-white underline underline-offset-4"
+                        href={`tel:${CONTACT_PHONE_TEL}`}
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                  })}
+                </p>
+              </FadeIn>
+              <FadeIn delay={460}>
+                <p className="type-caption mt-6 text-[color:var(--ink-inverse-muted)]">
+                  {t("contact.dataNote")}
                 </p>
               </FadeIn>
             </div>

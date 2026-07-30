@@ -7,7 +7,8 @@
     "contact": "Contact",
     "home": "Accueil Intrface",
     "menu": "Menu",
-    "logoAlt": "Icône Intrface"
+    "logoAlt": "Icône Intrface",
+    "skipToContent": "Aller au contenu"
   },
   "Footer": {
     "tagline": "Conseil informatique et développement d'entreprise, Istrie. Des logiciels pour nos clients ; Voyager, Polis et Funda sont à nous.",
@@ -225,6 +226,16 @@
       "label": "Contact",
       "title": "Apportez-nous le système qui vous échappe.",
       "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier.",
+      "helpsLabel": "Ce qui aide",
+      "helps": [
+        "Ce que le système fait aujourd'hui, et qui l'exploite.",
+        "Où il casse, ou là où personne ne fait confiance aux chiffres.",
+        "Toute date déjà fixée."
+      ],
+      "person": "Vous travaillez directement avec Alex Bašić, à Vrsar — une seule personne, pas une séquence commerciale.",
+      "reply": "Une réponse en un jour ouvré.",
+      "phoneNote": "Si c'est urgent, appelez le <tel>{phone}</tel>.",
+      "dataNote": "Votre message est conservé pour pouvoir y répondre, et ne sert à rien d'autre. Demandez sa suppression et il sera supprimé.",
       "mailNote": "Ou écrivez directement à <mail>{email}</mail>.",
       "topics": [
         "Système métier",
@@ -819,7 +830,7 @@
     "hero": {
       "label": "À propos",
       "title": "Un cabinet de conseil qui livre son propre logiciel.",
-      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Nous construisons des logiciels pour des clients dans toute l'UE, et Voyager, Polis et Funda pour nous-mêmes. Le travail client et le nôtre passent par le même contrôle avant chaque commit."
+      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise à Vrsar, en Istrie — une seule personne au développement, Alex Bašić. Des logiciels pour des entreprises clientes dans toute l'UE, plus Voyager, Polis et Funda en propre. Tout passe par le même contrôle avant chaque commit."
     },
     "company": {
       "label": "L'entreprise",
@@ -832,7 +843,15 @@
           "term": "Société",
           "value": "INTRFACE — conseil informatique et développement d'entreprise"
         },
-        "based": { "term": "Basé à", "value": "Istrie, Croatie. Nous travaillons dans toute l'UE." },
+        "person": {
+          "term": "Avec qui vous travaillez",
+          "value": "Alex Bašić — développement et direction. Une seule personne, pas une équipe qui tourne."
+        },
+        "based": {
+          "term": "Basé à",
+          "value": "Dalmatinska 34, Vrsar, Istrie. Nous travaillons dans toute l'UE."
+        },
+        "languages": { "term": "Langues", "value": "Croate, italien, anglais" },
         "work": {
           "term": "Travail",
           "value": "Des logiciels pour des clients ; Voyager, Polis et Funda pour nous-mêmes"
@@ -841,6 +860,15 @@
           "term": "Open source",
           "value": "Agent Ops Cockpit — Apache-2.0, public sur <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
+        "registry": {
+          "term": "Immatriculation",
+          "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
+        },
+        "vat": {
+          "term": "TVA",
+          "value": "Non assujettie à la TVA, donc pas de PDV sur les factures."
+        },
+        "phone": { "term": "Téléphone" },
         "contact": { "term": "Contact" }
       }
     },
@@ -893,7 +921,7 @@
     "contact": {
       "label": "Contact",
       "title": "Apportez-nous le système qui vous échappe.",
-      "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier. Vous obtenez une personne, pas une séquence commerciale.",
+      "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier. Vous obtenez Alex, pas une séquence commerciale, et une réponse en un jour ouvré.",
       "helpsLabel": "Ce qui aide",
       "helps": [
         "Ce que le système fait aujourd'hui, et qui l'exploite.",
@@ -901,6 +929,8 @@
         "Toute date déjà fixée."
       ],
       "mailNote": "Ou écrivez directement à <mail>{email}</mail>.",
+      "phoneNote": "Si c'est urgent, appelez le <tel>{phone}</tel>.",
+      "dataNote": "Votre message est conservé pour pouvoir y répondre, et ne sert à rien d'autre. Demandez sa suppression et il sera supprimé.",
       "topics": [
         "Système métier",
         "Intelligence des lieux",
@@ -919,10 +949,21 @@
     "operator": {
       "operator": {
         "term": "Éditeur",
-        "value": "{siteName} — conseil informatique et développement d'entreprise"
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
       },
-      "location": { "term": "Lieu", "value": "Istrie, Croatie (Union européenne)" },
+      "location": { "term": "Lieu", "value": "Vrsar, Istrie, Croatie (Union européenne)" },
+      "address": { "term": "Adresse du siège", "value": "Dalmatinska 34, 52440 Vrsar, Croatie" },
+      "director": { "term": "Direction", "value": "Alex Bašić" },
+      "oib": { "term": "OIB", "value": "34363240459" },
+      "mbs": { "term": "MBS", "value": "130172611" },
+      "court": { "term": "Registre du commerce", "value": "Trgovački sud u Pazinu" },
+      "activity": {
+        "term": "Activité enregistrée",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": { "term": "TVA", "value": "Non assujettie à la TVA (nije u sustavu PDV-a)" },
       "email": { "term": "E-mail" },
+      "phone": { "term": "Téléphone" },
       "website": { "term": "Site" }
     },
     "sections": {
@@ -955,7 +996,7 @@
     "messageLabel": "Qu'est-ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier ?",
     "honeypotLabel": "Laissez ce champ vide",
     "sentLabel": "Message reçu",
-    "sentBody": "Il nous est bien parvenu. La réponse arrivera de {email}.",
+    "sentBody": "Il nous est bien parvenu. La réponse arrivera de {email}, en un jour ouvré.",
     "writeAnother": "Écrire un autre message",
     "fallbackFailed": "Nous n'avons pas pu enregistrer le message à l'instant.",
     "fallbackMailClient": "Ce formulaire transmet le message à votre logiciel de messagerie.",

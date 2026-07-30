@@ -30,7 +30,7 @@ export function MobileNav({ items, menuLabel }: { items: readonly NavItem[]; men
       <button
         aria-expanded={open}
         aria-label={menuLabel}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-card text-ink transition-colors hover:border-ink/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-card text-ink transition-colors hover:border-ink/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -53,7 +53,7 @@ export function MobileNav({ items, menuLabel }: { items: readonly NavItem[]; men
                   <li key={item.href}>
                     <Link
                       aria-current={active ? "page" : undefined}
-                      className={`block rounded-xl px-3 py-3 text-base font-medium transition-colors hover:bg-ink/5 ${
+                      className={`block rounded-xl px-3 py-3 text-base font-medium transition-colors hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none ${
                         active ? "bg-ink/5 text-ink" : "text-ink-muted"
                       }`}
                       href={item.href}

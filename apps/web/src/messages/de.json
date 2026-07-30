@@ -7,7 +7,8 @@
     "contact": "Kontakt",
     "home": "Intrface Startseite",
     "menu": "Menü",
-    "logoAlt": "Intrface-Symbol"
+    "logoAlt": "Intrface-Symbol",
+    "skipToContent": "Zum Inhalt springen"
   },
   "Footer": {
     "tagline": "IT-Beratung und Geschäftsentwicklung, Istrien. Software für Kunden; Voyager, Polis und Funda sind unsere eigenen.",
@@ -225,6 +226,16 @@
       "label": "Kontakt",
       "title": "Her mit dem chaotischen System.",
       "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut.",
+      "helpsLabel": "Was hilft",
+      "helps": [
+        "Was das System heute tut und wer es betreibt.",
+        "Wo es bricht, oder wo niemand den Zahlen traut.",
+        "Jeder Termin, der schon feststeht."
+      ],
+      "person": "Sie arbeiten direkt mit Alex Bašić in Vrsar — eine Person, die alles selbst entwickelt, keine Verkaufsstrecke.",
+      "reply": "Eine Antwort innerhalb eines Werktags.",
+      "phoneNote": "Wenn es dringend ist, rufen Sie <tel>{phone}</tel> an.",
+      "dataNote": "Ihre Nachricht wird gespeichert, damit wir sie beantworten können, und für nichts anderes verwendet. Bitten Sie um Löschung, und sie wird gelöscht.",
       "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
       "topics": [
         "Geschäftssystem",
@@ -819,7 +830,7 @@
     "hero": {
       "label": "Über uns",
       "title": "Eine Beratung, die ihre eigene Software ausliefert.",
-      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Istrien, Kroatien. Wir bauen Software für Kunden in der ganzen EU und Voyager, Polis und Funda für uns selbst. Kundenarbeit und eigene Arbeit laufen durch dasselbe Tor vor jedem Commit."
+      "lead": "INTRFACE ist ein Unternehmen für IT-Beratung und Geschäftsentwicklung in Vrsar, Istrien — die gesamte Entwicklung liegt bei einer Person, Alex Bašić. Kundensoftware für Unternehmen in der ganzen EU, dazu Voyager, Polis und Funda aus eigener Hand. Alles läuft durch dasselbe Tor vor jedem Commit."
     },
     "company": {
       "label": "Das Unternehmen",
@@ -832,7 +843,12 @@
           "term": "Unternehmen",
           "value": "INTRFACE — IT-Beratung und Geschäftsentwicklung"
         },
-        "based": { "term": "Sitz", "value": "Istrien, Kroatien. Tätig in der ganzen EU." },
+        "person": {
+          "term": "Mit wem Sie arbeiten",
+          "value": "Alex Bašić — Entwicklung und Geschäftsführung. Eine Person, kein wechselndes Team."
+        },
+        "based": { "term": "Sitz", "value": "Dalmatinska 34, Vrsar, Istrien. Tätig in der ganzen EU." },
+        "languages": { "term": "Sprachen", "value": "Kroatisch, Italienisch, Englisch" },
         "work": {
           "term": "Arbeit",
           "value": "Software für Kunden; Voyager, Polis und Funda für uns selbst"
@@ -841,6 +857,15 @@
           "term": "Open Source",
           "value": "Agent Ops Cockpit — Apache-2.0, öffentlich auf <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
+        "registry": {
+          "term": "Registriert",
+          "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
+        },
+        "vat": {
+          "term": "Umsatzsteuer",
+          "value": "Nicht umsatzsteuerpflichtig, also kein PDV auf Rechnungen."
+        },
+        "phone": { "term": "Telefon" },
         "contact": { "term": "Kontakt" }
       }
     },
@@ -893,7 +918,7 @@
     "contact": {
       "label": "Kontakt",
       "title": "Her mit dem chaotischen System.",
-      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut. Sie bekommen einen Menschen, keine Verkaufsstrecke.",
+      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut. Sie bekommen Alex, keine Verkaufsstrecke, und eine Antwort innerhalb eines Werktags.",
       "helpsLabel": "Was hilft",
       "helps": [
         "Was das System heute tut und wer es betreibt.",
@@ -901,6 +926,8 @@
         "Jeder Termin, der schon feststeht."
       ],
       "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
+      "phoneNote": "Wenn es dringend ist, rufen Sie <tel>{phone}</tel> an.",
+      "dataNote": "Ihre Nachricht wird gespeichert, damit wir sie beantworten können, und für nichts anderes verwendet. Bitten Sie um Löschung, und sie wird gelöscht.",
       "topics": [
         "Geschäftssystem",
         "Place Intelligence",
@@ -919,10 +946,24 @@
     "operator": {
       "operator": {
         "term": "Betreiber",
-        "value": "{siteName} — IT-Beratung und Geschäftsentwicklung"
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
       },
-      "location": { "term": "Ort", "value": "Istrien, Kroatien (Europäische Union)" },
+      "location": { "term": "Ort", "value": "Vrsar, Istrien, Kroatien (Europäische Union)" },
+      "address": {
+        "term": "Registrierte Adresse",
+        "value": "Dalmatinska 34, 52440 Vrsar, Kroatien"
+      },
+      "director": { "term": "Geschäftsführung", "value": "Alex Bašić" },
+      "oib": { "term": "OIB", "value": "34363240459" },
+      "mbs": { "term": "MBS", "value": "130172611" },
+      "court": { "term": "Handelsregister", "value": "Trgovački sud u Pazinu" },
+      "activity": {
+        "term": "Registrierte Tätigkeit",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": { "term": "Umsatzsteuer", "value": "Nicht für die Umsatzsteuer registriert (nije u sustavu PDV-a)" },
       "email": { "term": "E-Mail" },
+      "phone": { "term": "Telefon" },
       "website": { "term": "Website" }
     },
     "sections": {
@@ -955,7 +996,7 @@
     "messageLabel": "Was ist schwer zu verstehen, bremst den Betrieb oder findet keinen Glauben?",
     "honeypotLabel": "Dieses Feld leer lassen",
     "sentLabel": "Nachricht angekommen",
-    "sentBody": "Sie ist bei uns gelandet. Die Antwort kommt von {email}.",
+    "sentBody": "Sie ist bei uns gelandet. Die Antwort kommt von {email}, innerhalb eines Werktags.",
     "writeAnother": "Weitere Nachricht schreiben",
     "fallbackFailed": "Wir konnten die Nachricht gerade nicht speichern.",
     "fallbackMailClient": "Dieses Formular übergibt die Nachricht an Ihr Mailprogramm.",

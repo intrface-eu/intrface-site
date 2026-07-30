@@ -7,7 +7,8 @@
     "contact": "Kontakt",
     "home": "Intrface početna",
     "menu": "Izbornik",
-    "logoAlt": "Intrface ikona"
+    "logoAlt": "Intrface ikona",
+    "skipToContent": "Preskoči na sadržaj"
   },
   "Footer": {
     "tagline": "IT savjetovanje i razvoj poslovanja, Istra. Softver za klijente; Voyager, Polis i Funda su naši.",
@@ -225,6 +226,16 @@
       "label": "Kontakt",
       "title": "Donesite nam svoj najzamršeniji sustav.",
       "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje.",
+      "helpsLabel": "Što pomaže",
+      "helps": [
+        "Što sustav danas radi i tko ga vodi.",
+        "Gdje puca, ili gdje nitko ne vjeruje brojkama.",
+        "Svaki rok koji je već fiksan."
+      ],
+      "person": "Vaš kontakt je Alex Bašić — jedna osoba u Vrsaru, a ne prodajni niz poruka.",
+      "reply": "Odgovor u jednom radnom danu.",
+      "phoneNote": "Ako je hitno, nazovite <tel>{phone}</tel>.",
+      "dataNote": "Vašu poruku čuvamo kako bismo na nju odgovorili i ne koristimo je ni za što drugo. Zatražite brisanje i bit će izbrisana.",
       "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
       "topics": [
         "Poslovni sustav",
@@ -819,7 +830,7 @@
     "hero": {
       "label": "O nama",
       "title": "Konzultantska kuća koja isporučuje vlastiti softver.",
-      "lead": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Istri, Hrvatska. Gradimo softver za klijente diljem EU-a, a Voyager, Polis i Fundu za sebe. Rad za klijente i naš vlastiti prolaze kroz ista vrata pred svakim commitom."
+      "lead": "INTRFACE je tvrtka za IT savjetovanje i razvoj poslovanja u Vrsaru, u Istri — cijeli razvoj vodi jedna osoba, Alex Bašić. Softver za poslovne klijente diljem EU-a, te vlastiti Voyager, Polis i Funda. Sve prolazi kroz ista vrata pred svakim commitom."
     },
     "company": {
       "label": "Tvrtka",
@@ -829,7 +840,12 @@
       "p3": "Možete pročitati kako radimo prije nego nas unajmite: AGENTS.md, DESIGN.md, 51 naredba i vrata koja pred svaki commit stavljaju čovjeka. Sve je javno pod Apache-2.0.",
       "facts": {
         "company": { "term": "Tvrtka", "value": "INTRFACE — IT savjetovanje i razvoj poslovanja" },
-        "based": { "term": "Sjedište", "value": "Istra, Hrvatska. Radimo diljem EU-a." },
+        "person": {
+          "term": "S kim radite",
+          "value": "Alex Bašić — razvoj i vođenje društva. Jedna osoba, a ne tim koji se mijenja."
+        },
+        "based": { "term": "Sjedište", "value": "Dalmatinska 34, Vrsar, Istra. Radimo diljem EU-a." },
+        "languages": { "term": "Jezici", "value": "Hrvatski, talijanski, engleski" },
         "work": {
           "term": "Posao",
           "value": "Softver za klijente; Voyager, Polis i Funda za nas same"
@@ -838,6 +854,12 @@
           "term": "Otvoreni kod",
           "value": "Agent Ops Cockpit — Apache-2.0, javno na <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
+        "registry": {
+          "term": "Registracija",
+          "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
+        },
+        "vat": { "term": "PDV", "value": "Nije u sustavu PDV-a, pa na računima nema PDV-a." },
+        "phone": { "term": "Telefon" },
         "contact": { "term": "Kontakt" }
       }
     },
@@ -890,7 +912,7 @@
     "contact": {
       "label": "Kontakt",
       "title": "Donesite nam svoj najzamršeniji sustav.",
-      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje. Dobivate čovjeka, a ne prodajni niz poruka.",
+      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje. Odgovara vam Alex, a ne prodajni niz poruka, i to u jednom radnom danu.",
       "helpsLabel": "Što pomaže",
       "helps": [
         "Što sustav danas radi i tko ga vodi.",
@@ -898,6 +920,8 @@
         "Svaki rok koji je već fiksan."
       ],
       "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
+      "phoneNote": "Ako je hitno, nazovite <tel>{phone}</tel>.",
+      "dataNote": "Vašu poruku čuvamo kako bismo na nju odgovorili i ne koristimo je ni za što drugo. Zatražite brisanje i bit će izbrisana.",
       "topics": [
         "Poslovni sustav",
         "Place intelligence",
@@ -914,9 +938,23 @@
     "lead": "{siteName} objavljuje i vodi {host}.",
     "operatorLabel": "Nositelj",
     "operator": {
-      "operator": { "term": "Nositelj", "value": "{siteName} — IT savjetovanje i razvoj poslovanja" },
-      "location": { "term": "Lokacija", "value": "Istra, Hrvatska (Europska unija)" },
+      "operator": {
+        "term": "Nositelj",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "location": { "term": "Lokacija", "value": "Vrsar, Istra, Hrvatska (Europska unija)" },
+      "address": { "term": "Adresa sjedišta", "value": "Dalmatinska 34, 52440 Vrsar, Hrvatska" },
+      "director": { "term": "Uprava", "value": "Alex Bašić" },
+      "oib": { "term": "OIB", "value": "34363240459" },
+      "mbs": { "term": "MBS", "value": "130172611" },
+      "court": { "term": "Sudski registar", "value": "Trgovački sud u Pazinu" },
+      "activity": {
+        "term": "Registrirana djelatnost",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": { "term": "PDV", "value": "Nije u sustavu PDV-a" },
       "email": { "term": "E-pošta" },
+      "phone": { "term": "Telefon" },
       "website": { "term": "Web" }
     },
     "sections": {
@@ -949,7 +987,7 @@
     "messageLabel": "Što je teško razumjeti, što usporava rad ili čemu nitko ne vjeruje?",
     "honeypotLabel": "Ostavite ovo polje prazno",
     "sentLabel": "Poruka je stigla",
-    "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}.",
+    "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}, u jednom radnom danu.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku trenutačno nismo mogli spremiti.",
     "fallbackMailClient": "Ovaj obrazac poruku predaje vašoj aplikaciji za e-poštu.",

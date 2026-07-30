@@ -7,7 +7,8 @@
     "contact": "Contact",
     "home": "Intrface home",
     "menu": "Menu",
-    "logoAlt": "Intrface icon"
+    "logoAlt": "Intrface icon",
+    "skipToContent": "Skip to content"
   },
   "Footer": {
     "tagline": "IT consulting and business development, Istria. Client software; Voyager, Polis and Funda are our own.",
@@ -225,6 +226,16 @@
       "label": "Contact",
       "title": "Bring us the messy system.",
       "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust.",
+      "helpsLabel": "What helps",
+      "helps": [
+        "What the system does today, and who operates it.",
+        "Where it breaks, or where nobody trusts the numbers.",
+        "Any date that is already fixed."
+      ],
+      "person": "You get Alex Bašić — one engineer, in Vrsar — not a sales sequence.",
+      "reply": "An answer within one working day.",
+      "phoneNote": "If it is urgent, call <tel>{phone}</tel>.",
+      "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
       "mailNote": "Or write straight to <mail>{email}</mail>.",
       "topics": [
         "Business system",
@@ -815,7 +826,7 @@
     "hero": {
       "label": "About",
       "title": "A consultancy that ships its own software.",
-      "lead": "INTRFACE is an IT consulting and business development company in Istria, Croatia. We build software for clients across the EU, and Voyager, Polis and Funda for ourselves. Client work and our own go through the same commit gate."
+      "lead": "INTRFACE is an IT consulting and business development company in Vrsar, Istria — one engineer, Alex Bašić. Client software for businesses across the EU, plus Voyager, Polis and Funda of our own. All of it goes through the same commit gate."
     },
     "company": {
       "label": "The company",
@@ -825,7 +836,12 @@
       "p3": "You can read how we work before you hire us: AGENTS.md, DESIGN.md, 51 commands, and the gate that puts a human in front of every commit. All of it is public under Apache-2.0.",
       "facts": {
         "company": { "term": "Company", "value": "INTRFACE — IT consulting and business development" },
-        "based": { "term": "Based", "value": "Istria, Croatia. Working across the EU." },
+        "person": {
+          "term": "Who you work with",
+          "value": "Alex Bašić — engineer and director. One person, not a rotating team."
+        },
+        "based": { "term": "Based", "value": "Dalmatinska 34, Vrsar, Istria. Working across the EU." },
+        "languages": { "term": "Languages", "value": "Croatian, Italian, English" },
         "work": {
           "term": "Work",
           "value": "Software for clients; Voyager, Polis and Funda for ourselves"
@@ -834,6 +850,12 @@
           "term": "Open source",
           "value": "Agent Ops Cockpit — Apache-2.0, public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
         },
+        "registry": {
+          "term": "Registered",
+          "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
+        },
+        "vat": { "term": "VAT", "value": "Not VAT-registered, so no PDV on invoices." },
+        "phone": { "term": "Phone" },
         "contact": { "term": "Contact" }
       }
     },
@@ -886,7 +908,7 @@
     "contact": {
       "label": "Contact",
       "title": "Bring us the messy system.",
-      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. You get a person, not a sales sequence.",
+      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. You get Alex, not a sales sequence, and an answer within one working day.",
       "helpsLabel": "What helps",
       "helps": [
         "What the system does today, and who operates it.",
@@ -894,6 +916,8 @@
         "Any date that is already fixed."
       ],
       "mailNote": "Or write straight to <mail>{email}</mail>.",
+      "phoneNote": "If it is urgent, call <tel>{phone}</tel>.",
+      "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
       "topics": [
         "Business system",
         "Place intelligence",
@@ -910,9 +934,20 @@
     "lead": "{siteName} publishes and operates {host}.",
     "operatorLabel": "Operator",
     "operator": {
-      "operator": { "term": "Operator", "value": "{siteName} — IT consulting and business development" },
-      "location": { "term": "Location", "value": "Istria, Croatia (European Union)" },
+      "operator": {
+        "term": "Operator",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "location": { "term": "Location", "value": "Vrsar, Istria, Croatia (European Union)" },
+      "address": { "term": "Registered address", "value": "Dalmatinska 34, 52440 Vrsar, Croatia" },
+      "director": { "term": "Director", "value": "Alex Bašić" },
+      "oib": { "term": "OIB", "value": "34363240459" },
+      "mbs": { "term": "MBS", "value": "130172611" },
+      "court": { "term": "Court register", "value": "Trgovački sud u Pazinu" },
+      "activity": { "term": "Registered activity", "value": "K62109 — Ostalo računalno programiranje" },
+      "vat": { "term": "VAT", "value": "Not registered for VAT (nije u sustavu PDV-a)" },
       "email": { "term": "Email" },
+      "phone": { "term": "Phone" },
       "website": { "term": "Website" }
     },
     "sections": {
@@ -945,7 +980,7 @@
     "messageLabel": "What is hard to understand, slow to operate, or difficult to trust?",
     "honeypotLabel": "Leave this field empty",
     "sentLabel": "Message received",
-    "sentBody": "It landed with us. The reply comes from {email}.",
+    "sentBody": "It landed with us. The reply comes from {email}, within one working day.",
     "writeAnother": "Write another message",
     "fallbackFailed": "We could not store the message just now.",
     "fallbackMailClient": "This form hands the message to your mail app.",

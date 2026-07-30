@@ -200,7 +200,7 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Buttons: `TactileButton` only — pill radius, ink primary / white secondary / ghost; motion lift ≤ 2px
 - Cards/panels: `.artifact-card` on paper; radius from the scale (`1rem` / `1.5rem` / `2rem`) — no in-between values
 - Forms/inputs: white card surface, `--line` border, accent focus ring
-- Navigation: sticky header on `--paper` with hairline; nav links `--ink-muted` → `--ink` on hover
+- Navigation: sticky header on `--paper` with hairline; nav links `--ink-muted` → `--ink` on hover. On focus the ink ring is the only mark: the accent underline drops, because at `outline-offset: 4px` the two land on the same line
 - Tables/lists: hairline separators, no zebra striping
 - Modals/dialogs: card surface, radius `xl`, shadow-elevated
 - Notifications/toasts: ink surface, white text
@@ -236,7 +236,8 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 ## Accessibility requirements
 
 - Contrast: WCAG AA minimum everywhere, including on dark bands (see color table floors)
-- Keyboard/focus behavior: visible focus (`outline-offset: 4px` ink outline); tabs support arrow/Home/End keys
+- Keyboard/focus behavior: visible focus (`outline-offset: 4px` ink outline) on every stop; tabs support arrow/Home/End keys. Never `outline-none` on a focusable control — in Tailwind v4 it sets `--tw-outline-style: none`, which a later `focus-visible:outline` reads back, and the ring cancels itself
+- Skip link: `.skip-link` is the first tab stop on every page — parked off-screen, a paper pill on the header band when focused, pointing at `#main-content`
 - Reduced motion: honored in every animated component and shader
 - Captions/alt text: meaningful alt for informative images, `aria-hidden` for decorative surfaces
 - Minimum readable sizes: 0.78rem, and only for uppercase tracked labels (`.type-meta`, `.type-section-label`). Sentence-case text bottoms out at `.type-caption`, 0.875rem.

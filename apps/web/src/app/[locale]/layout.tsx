@@ -81,6 +81,7 @@ export default async function LocaleLayout({
   const activeLocale = locale as (typeof routing.locales)[number];
   setRequestLocale(activeLocale);
   const messages = await getMessages({ locale: activeLocale });
+  const nav = await getTranslations({ locale: activeLocale, namespace: "Nav" });
 
   return (
     <html
@@ -89,8 +90,18 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col bg-paper font-sans text-ink">
         <NextIntlClientProvider locale={activeLocale} messages={messages}>
+          <a className="skip-link type-caption" href="#main-content">
+            {nav("skipToContent")}
+          </a>
           <Header locale={activeLocale} />
-          <div className="flex-1">{children}</div>
+          {/* Each page renders its own `<main>`, so the landmark's wrapper is
+              what the skip link can name. `tabIndex={-1}` is what makes the
+              jump move focus and not just the scroll position; the ring is off
+              because this is a region, not a control, and Chrome would draw one
+              around the entire page. */}
+          <div className="flex-1 focus:outline-none" id="main-content" tabIndex={-1}>
+            {children}
+          </div>
           <Footer locale={activeLocale} />
         </NextIntlClientProvider>
         <OrganizationJsonLd />

@@ -27,7 +27,10 @@ export function LocaleSwitcher() {
             router.refresh();
           });
         }}
-        className="rounded-full border border-rule bg-transparent px-3 py-1.5 text-sm font-medium text-ink-muted outline-none transition-colors hover:border-ink/25 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:cursor-wait disabled:opacity-70"
+        /* No `outline-none` here: in Tailwind v4 it sets `--tw-outline-style:
+           none`, which `focus-visible:outline` then reads back — the ring
+           cancelled itself and this control had no visible focus state. */
+        className="rounded-full border border-rule bg-transparent px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:border-ink/25 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:cursor-wait disabled:opacity-70"
       >
         {routing.locales.map((value) => (
           <option key={value} value={value}>

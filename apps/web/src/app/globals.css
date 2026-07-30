@@ -367,6 +367,35 @@ body {
     }
   }
 
+  /* ===== SKIP LINK =====
+     The first tab stop on every page, and the only thing on the site that is
+     invisible until it is focused. It parks off the top of the viewport and
+     drops onto the header band when it takes focus: a paper chip on the shell's
+     own left margin, wearing the house ink ring, so it reads as the same
+     keyboard language as every other stop. Moved with `transform` and never
+     with `display`, because a hidden element cannot be tabbed to. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 1.5rem;
+    z-index: 60;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    box-shadow: var(--shadow-elevated);
+    color: var(--ink);
+    /* Parked far enough up that the elevation shadow clears the viewport too —
+       at 1.25rem its top layers smudged the corner of every page. */
+    transform: translateY(calc(-100% - 5rem));
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
   /* ===== TONE CONTEXTS =====
      A section declares its band once; every token-driven child follows.
      On ink, hairlines and muted text switch to the WCAG AA floors. */
@@ -891,13 +920,23 @@ body {
      Sizing is in `cqw` against the shell, not `vw`, so the letter gaps stay
      the same fraction of the type size whatever the responsive padding does.
      The row is spread with space-between, so the word sits flush to the shell
-     at every width and can never set a scrollbar. The first and last glyphs
-     pull back by their side bearings so the ink — not the box — lines up with
-     the colophon above. */
+     at every width. The first and last glyphs pull back by their side bearings
+     so the ink — not the box — lines up with the colophon above. */
   .footer-wordmark {
     display: block;
     container-type: inline-size;
     border-radius: 0.5rem;
+
+    /* That pull-back is the one thing here that leaves the box: the outer
+       glyphs hang 0.045em / 0.02em past the shell, ~10px and ~5px at the
+       1200px container ceiling. `clip` — not `hidden` — makes that hang unable
+       to set a horizontal scrollbar at any viewport: it establishes no scroll
+       container, so the overflow never reaches the page. The clip margin is
+       wider than the hang at every size the container can reach, so no ink is
+       cut; the vertical axis stays visible for the reveal's overshoot. */
+    overflow-x: clip;
+    overflow-y: visible;
+    overflow-clip-margin: 0.75rem;
   }
 
   .footer-wordmark:focus-visible {
@@ -907,7 +946,10 @@ body {
 
   .footer-wordmark__row {
     --fw-count: 8;
+    /* The rim you see. The stroke is laid down at twice this and half of it is
+       masked off again — see `.footer-wordmark__letter`. */
     --fw-stroke: max(1px, 0.0095em);
+    --fw-plate: calc(var(--fw-stroke) * 2);
 
     display: flex;
     justify-content: space-between;
@@ -921,11 +963,21 @@ body {
     user-select: none;
   }
 
+  /* The plate rim is a stroke you only see half of. Google Sans Flex leaves its
+     construction overlapping — the T's and F's crossbars, the R's bowl and leg,
+     the A's bar are separate contours the font unions at fill time — so a plain
+     stroke draws every one of those seams and the word reads as un-unioned
+     paths. So: stroke at twice the rim width, then lay a paper-filled copy of
+     the same glyph over it (`::before`). The fill covers the interior and takes
+     the internal seams with it, and what survives is the outer half of the
+     stroke — one outline around the letter's silhouette, nothing inside it.
+     The mask is why this row wants a `--paper` band under it. */
   .footer-wordmark__letter {
     position: relative;
     display: block;
     color: transparent;
-    -webkit-text-stroke: var(--fw-stroke) color-mix(in srgb, var(--ink) 55%, transparent);
+    -webkit-text-stroke-width: var(--fw-plate);
+    -webkit-text-stroke-color: color-mix(in srgb, var(--ink) 55%, transparent);
   }
 
   .footer-wordmark__letter:first-child {
@@ -936,13 +988,25 @@ body {
     margin-right: -0.02em;
   }
 
-  /* The ink: a solid copy of the same glyph, revealed bottom-up. */
+  /* The mask. Stroke width inherits, so it has to be turned off here or the
+     seams come straight back on top of the fill. */
+  .footer-wordmark__letter::before {
+    content: attr(data-glyph);
+    position: absolute;
+    inset: 0;
+    color: var(--paper);
+    -webkit-text-stroke-width: 0;
+  }
+
+  /* The ink: a solid copy of the same glyph, revealed bottom-up. Stroked in ink
+     at the plate's width, so an inked letter lands exactly on the outline. */
   .footer-wordmark__letter::after {
     content: attr(data-glyph);
     position: absolute;
     inset: 0;
     color: var(--ink);
-    -webkit-text-stroke: var(--fw-stroke) var(--ink);
+    -webkit-text-stroke-width: var(--fw-plate);
+    -webkit-text-stroke-color: var(--ink);
     clip-path: inset(108% -6% -8% -6%);
     /* Draining: right to left, quicker than it filled. */
     transition: clip-path 360ms cubic-bezier(0.2, 0.8, 0.3, 1);
@@ -958,9 +1022,14 @@ body {
   }
 
   /* Reduced motion: the plate still inks, it just does it at once. Same as the
-     brand mark — the gesture survives, the travel does not. */
+     brand mark — the gesture survives, the travel does not. The hovered
+     selectors have to be listed too: they carry the fill timing and outrank the
+     resting rule, so overriding the resting rule alone left the 520ms rake
+     running under reduce. */
   @media (prefers-reduced-motion: reduce) {
-    .footer-wordmark__letter::after {
+    .footer-wordmark__letter::after,
+    .footer-wordmark:hover .footer-wordmark__letter::after,
+    .footer-wordmark:focus-visible .footer-wordmark__letter::after {
       transition: none;
       transition-delay: 0s;
     }

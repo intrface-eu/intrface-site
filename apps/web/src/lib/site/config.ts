@@ -12,6 +12,13 @@ export const SITE_DESCRIPTION =
 
 export const CONTACT_EMAIL = "hello@intrface.eu";
 
+// Two forms of one number: the spaced form is what a reader sees, the compact
+// E.164 form is what a `tel:` href needs. Every surface reads from these — no
+// phone number is typed into a component or a message file.
+export const CONTACT_PHONE_DISPLAY = "+385 99 190 5899";
+
+export const CONTACT_PHONE_TEL = "+385991905899";
+
 export const AOC_REPO_URL = "https://github.com/basicalex/agent-ops-cockpit";
 
 export const POLIS_REPO_URL = "https://github.com/basicalex/polis";

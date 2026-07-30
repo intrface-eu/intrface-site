@@ -4,32 +4,33 @@ import type { AppLocale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { FactLedger, type Fact } from "@/components/about/fact-ledger";
 import { FadeIn } from "@/components/site/fade-in";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site/config";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site/config";
 
 /*
- * OPERATOR TODO — required before this page goes live in the EU.
+ * OPERATOR NOTE — what this page states, and what is still open.
  *
- * This page deliberately renders only what we can state truthfully today. Add the
- * registry details below to `operatorDetails` (and delete them from this note) once
- * the legal entity's paperwork is at hand:
+ * Registered name and legal form, seat, OIB, MBS, registering court, NKD activity,
+ * VAT status, the person authorised to represent the company, email and phone are
+ * all rendered below from the court register. Every string is translated in
+ * `messages/*.json` under the `Imprint` namespace; the registered name and the NKD
+ * activity stay in Croatian in all four locales, because they are registry entries
+ * and not prose.
  *
- *   - Full registered company name, including legal form (d.o.o., j.d.o.o., obrt, …)
- *   - Registered seat: street, postal code, town, country
- *   - OIB (Croatian personal identification number of the entity)
- *   - MBS / court register number and the commercial court that keeps the register
- *   - VAT identification number (HR…), or a line stating the entity is not VAT-registered
- *   - Share capital and whether it is paid in full (required for d.o.o. / j.d.o.o.)
- *   - Name(s) of the board member(s) / person authorised to represent the company
- *   - Bank and IBAN, if the legal form requires it on business communications
- *   - A telephone number, if one exists — an email address alone is acceptable but
- *     a phone number is expected for "direct and effective" contact
- *   - Supervisory authority and professional-body details, if any apply
+ * Still open, to add only once each one is known and correct — never as placeholder
+ * text on the live page:
+ *
+ *   - Share capital and whether it is paid in full
+ *   - Bank and IBAN, if a client's accounting asks for it on the site rather than
+ *     on the invoice (deliberately omitted: a published IBAN invites invoice fraud)
+ *   - Supervisory authority and professional-body details, if any ever apply
  *   - If the site ever sells to consumers: the EU ODR platform link and a statement
  *     on participation in consumer dispute resolution
- *
- * Do not ship placeholder text such as "to be completed" on the live page — leave a
- * detail out entirely until it is known and correct. Every string is translated in
- * `messages/*.json` under the `Imprint` namespace.
  */
 
 type Section = {
@@ -49,16 +50,34 @@ export async function ImprintPage({ locale }: { locale: AppLocale }) {
   );
 
   const operatorDetails: Fact[] = [
-    {
-      term: t("operator.operator.term"),
-      value: t("operator.operator.value", { siteName: SITE_NAME }),
-    },
+    { term: t("operator.operator.term"), value: t("operator.operator.value") },
     { term: t("operator.location.term"), value: t("operator.location.value") },
+    { term: t("operator.address.term"), value: t("operator.address.value") },
+    { term: t("operator.director.term"), value: t("operator.director.value") },
+    {
+      term: t("operator.oib.term"),
+      value: <span className="type-data">{t("operator.oib.value")}</span>,
+    },
+    {
+      term: t("operator.mbs.term"),
+      value: <span className="type-data">{t("operator.mbs.value")}</span>,
+    },
+    { term: t("operator.court.term"), value: t("operator.court.value") },
+    { term: t("operator.activity.term"), value: t("operator.activity.value") },
+    { term: t("operator.vat.term"), value: t("operator.vat.value") },
     {
       term: t("operator.email.term"),
       value: (
         <a className="font-semibold text-accent hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
           {CONTACT_EMAIL}
+        </a>
+      ),
+    },
+    {
+      term: t("operator.phone.term"),
+      value: (
+        <a className="font-semibold text-accent hover:underline" href={`tel:${CONTACT_PHONE_TEL}`}>
+          {CONTACT_PHONE_DISPLAY}
         </a>
       ),
     },

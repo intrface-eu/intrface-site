@@ -22,7 +22,11 @@ export async function Header({ locale }: { locale: AppLocale }) {
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-paper/97">
       <div className="section-shell relative flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3" aria-label={t("home")}>
+        <Link
+          href="/"
+          className="flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+          aria-label={t("home")}
+        >
           {/* Decorative: the link already carries its own accessible name. */}
           <AnimatedMark className="text-ink" size={26} />
           <span className="text-xl font-medium tracking-[-0.04em] text-ink">intrface</span>

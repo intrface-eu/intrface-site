@@ -7,7 +7,12 @@ import { FactLedger, type Fact } from "@/components/about/fact-ledger";
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { ProcessSteps, type ProcessStep } from "@/components/site/process-steps";
-import { AOC_REPO_URL, CONTACT_EMAIL } from "@/lib/site/config";
+import {
+  AOC_REPO_URL,
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+} from "@/lib/site/config";
 
 const OWN_PLATFORMS = [
   { key: "voyager", href: "/work/voyager" },
@@ -20,7 +25,9 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
 
   const facts: Fact[] = [
     { term: t("company.facts.company.term"), value: t("company.facts.company.value") },
+    { term: t("company.facts.person.term"), value: t("company.facts.person.value") },
     { term: t("company.facts.based.term"), value: t("company.facts.based.value") },
+    { term: t("company.facts.languages.term"), value: t("company.facts.languages.value") },
     { term: t("company.facts.work.term"), value: t("company.facts.work.value") },
     {
       term: t("company.facts.delivery.term"),
@@ -36,6 +43,18 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
           </a>
         ),
       }),
+    },
+    // Prose type, not `.type-data`: the value is a mixed run of a legal name, two
+    // identifiers and a court, and mono rags badly in the aside's column width.
+    { term: t("company.facts.registry.term"), value: t("company.facts.registry.value") },
+    { term: t("company.facts.vat.term"), value: t("company.facts.vat.value") },
+    {
+      term: t("company.facts.phone.term"),
+      value: (
+        <a className="font-semibold text-accent hover:underline" href={`tel:${CONTACT_PHONE_TEL}`}>
+          {CONTACT_PHONE_DISPLAY}
+        </a>
+      ),
     },
     {
       term: t("company.facts.contact.term"),
@@ -180,6 +199,24 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
                     ),
                   })}
                 </p>
+              </FadeIn>
+              <FadeIn delay={340}>
+                <p className="type-body-sm mt-2">
+                  {t.rich("contact.phoneNote", {
+                    phone: CONTACT_PHONE_DISPLAY,
+                    tel: (chunks) => (
+                      <a
+                        className="font-semibold text-accent hover:underline"
+                        href={`tel:${CONTACT_PHONE_TEL}`}
+                      >
+                        {chunks}
+                      </a>
+                    ),
+                  })}
+                </p>
+              </FadeIn>
+              <FadeIn delay={380}>
+                <p className="type-caption mt-6">{t("contact.dataNote")}</p>
               </FadeIn>
             </div>
 
