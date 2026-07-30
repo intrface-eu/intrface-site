@@ -57,8 +57,11 @@ export function PaperShaderSurface({
       <GrainGradient
         width="100%"
         height="100%"
-        colors={["#0f1729", "#1e293b", "#0f766e"]}
-        colorBack="#05070d"
+        // Token values only. The middle stop used to be `#1e293b` — Tailwind
+        // slate-800, which DESIGN.md rules out — and the backdrop an off-scale
+        // near-black. Ink and the working accent are the whole palette here.
+        colors={["#0f1729", "#0f766e"]}
+        colorBack="#0f1729"
         softness={0.74}
         intensity={0.24}
         noise={0.18}

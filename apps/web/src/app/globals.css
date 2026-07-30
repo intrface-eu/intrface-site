@@ -8,8 +8,15 @@
   --ink: #0f1729;
   --ink-muted: #47536b;
   --line: rgba(15, 23, 41, 0.12);
+  /* The boundary of a control the reader has to find and click: inputs, chips,
+     checkboxes. WCAG 1.4.11 wants 3:1 against the fill and --line is 1.28:1 on
+     white — enough for a hairline between two blocks of text, not enough to
+     mark the edge of a field. 0.5 ink measures 3.41:1 on --card and 3.32:1 on
+     --paper, so it clears on every band the form can sit on. */
+  --line-control: rgba(15, 23, 41, 0.5);
   --accent: #0f766e;
   --accent-foreground: #f4fffd;
+  --danger: #be123c;
 
   /* Text floors for dark (ink) bands — WCAG AA on --ink */
   --ink-inverse: rgba(255, 255, 255, 0.92);
@@ -51,8 +58,10 @@
   --color-ink-muted: var(--ink-muted);
   --color-muted: var(--ink-muted);
   --color-rule: var(--line);
+  --color-rule-control: var(--line-control);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
   --font-sans: var(--font-brand);
   --font-mono: var(--font-geist-mono);
 }
@@ -104,15 +113,6 @@ body {
 ::selection {
   background: color-mix(in srgb, var(--accent) 24%, white);
   color: var(--ink);
-}
-
-@keyframes halftone-drift {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(1.05rem, -0.7rem, 0);
-  }
 }
 
 /* The mark composes itself: the big star swings 45deg into square — half of
@@ -234,18 +234,22 @@ body {
     font-size: clamp(1.6rem, 2.7vw, 2.2rem);
     line-height: 1.14;
     letter-spacing: -0.03em;
-    font-weight: 550;
+    font-weight: 600;
     max-inline-size: 30ch;
   }
 
   /* The name of a thing inside a ledger row — a system, a live site, a client.
-     Colour is inherited so the same class works on paper and on an ink band. */
+     Colour is inherited so the same class works on paper and on an ink band.
+     Lighter than the heading above it: at 550 against a 550 heading the ledger
+     read as four peers instead of one heading and three names. Weight now steps
+     down with size from display to subheading. `.type-title` is the deliberate
+     exception — at 17px it needs 600 to hold its line. */
   .type-subheading {
     font-family: var(--font-brand);
     font-size: clamp(1.3rem, 1.8vw, 1.55rem);
     line-height: 1.2;
     letter-spacing: -0.025em;
-    font-weight: 600;
+    font-weight: 540;
   }
 
   /* The h3 inside a step, a card, a clause. Small enough that it never
@@ -411,6 +415,7 @@ body {
     background: var(--ink);
     color: var(--ink-inverse);
     --line: rgba(255, 255, 255, 0.14);
+    --line-control: rgba(255, 255, 255, 0.55);
     --ink-muted: var(--ink-inverse-muted);
     /* The paper accent is 3.2:1 on ink — below AA for text, and accent links do
        appear on these bands. Lifted toward the paper tone until it clears 8:1.
@@ -436,57 +441,71 @@ body {
     mix-blend-mode: screen;
   }
 
-  /* CMYK halftone landmark — one concentrated print field, not wallpaper */
-  .halftone-field {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  /* ===== CONTRACT PLATE =====
+     The CMYK halftone, registered instead of washed. It used to fill the
+     hero's top-right quadrant with coloured dots that meant nothing; now each
+     separation is a band aligned to one of the four files every repository we
+     touch carries, and the four bands stack into a single printed plate. The
+     screen ramps from open at the type to solid at the trim edge, so the row
+     reads left to right as a name resolving into ink. No dot ever sits behind
+     a word. */
+  .contract-plate {
+    max-inline-size: 27rem;
   }
 
-  /* The field drifts like a press screen settling. Composited transform only —
-     no repaint — and it stops dead under reduced motion. */
-  @media (prefers-reduced-motion: no-preference) {
-    .halftone-field {
-      will-change: transform;
-      animation: halftone-drift 38s ease-in-out infinite alternate;
-    }
+  .contract-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(6rem, 30vw, 11rem);
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid var(--line);
   }
 
-  .halftone-field::before,
-  .halftone-field::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+  .contract-row:last-child {
+    border-bottom: 1px solid var(--line);
   }
 
-  .halftone-field::before {
-    background-image:
-      radial-gradient(circle, rgba(2, 132, 199, 0.55) 0 1.4px, transparent 2px),
-      radial-gradient(circle, rgba(219, 39, 119, 0.45) 0 1.4px, transparent 2px),
-      radial-gradient(circle, rgba(202, 138, 4, 0.55) 0 1.5px, transparent 2.1px);
-    background-size: 13px 13px, 17px 17px, 21px 21px;
-    background-position: 0 0, 6px 4px, 3px 10px;
-    mask-image: radial-gradient(38% 36% at 90% 13%, black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 72%);
+  /* Paths break after a slash and nowhere else — the row markup puts a `wbr`
+     there, and `overflow-wrap: normal` keeps the browser from splitting
+     `tasks.json` down the middle when the column gets tight at 320px. */
+  .contract-name {
+    padding-block: 0.7rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--ink);
+    overflow-wrap: normal;
   }
 
-  .halftone-field::after {
-    background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 60%, transparent) 0 2px, transparent 2.7px);
-    background-size: 12px 12px;
-    background-position: 4px 2px;
-    mask-image: radial-gradient(20% 18% at 92% 9%, black 0%, rgba(0, 0, 0, 0.35) 55%, transparent 78%);
+  /* The screen goes finer row by row, so the plate reads top to bottom as an
+     image coming into resolution rather than four decorative bars. */
+  .contract-screen {
+    height: 100%;
+    min-height: 2.3rem;
+    background-repeat: repeat;
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 34%, black 88%);
   }
 
-  /* The hero headline runs wide at every width, so the field stays a corner
-     landmark above it rather than a wash behind it. Below `sm` there is no
-     free corner at all — the field sits in the strip above the eyebrow. */
-  @media (max-width: 639px) {
-    .halftone-field::before {
-      mask-image: radial-gradient(60% 12% at 92% 2%, black 0%, rgba(0, 0, 0, 0.45) 42%, transparent 74%);
-    }
+  .contract-screen[data-sep="c"] {
+    background-image: radial-gradient(circle, rgba(2, 132, 199, 0.85) 0 1.5px, transparent 2.1px);
+    background-size: 11px 11px;
+  }
 
-    .halftone-field::after {
-      mask-image: radial-gradient(30% 7% at 94% 1%, black 0%, rgba(0, 0, 0, 0.3) 55%, transparent 80%);
-    }
+  .contract-screen[data-sep="m"] {
+    background-image: radial-gradient(circle, rgba(219, 39, 119, 0.72) 0 1.5px, transparent 2.1px);
+    background-size: 9.5px 9.5px;
+    background-position: 3px 2px;
+  }
+
+  .contract-screen[data-sep="y"] {
+    background-image: radial-gradient(circle, rgba(202, 138, 4, 0.92) 0 1.5px, transparent 2.1px);
+    background-size: 8px 8px;
+    background-position: 5px 4px;
+  }
+
+  .contract-screen[data-sep="k"] {
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 72%, transparent) 0 1.4px, transparent 2px);
+    background-size: 6.5px 6.5px;
+    background-position: 2px 3px;
   }
 
   /* ===== STAT LEDGER =====
@@ -583,11 +602,10 @@ body {
     color: var(--ink-inverse);
   }
 
-  /* On the home page this panel sits directly over the drifting halftone
-     field, and a backdrop-filter above a moving backdrop has to re-blur on
-     every frame of that drift. The extra card alpha does the same job the
-     blur did — settle the dots behind the diagram — for no per-frame cost.
-     0.88 stays inside the 80–90% band DESIGN.md sets for `--card` on paper. */
+  /* Card alpha instead of a backdrop-filter: the blur bought nothing a solid
+     surface does not, and it cost a re-blur on every frame of anything moving
+     behind it. 0.88 stays inside the 80–90% band DESIGN.md sets for `--card`
+     on paper. */
   .interface-panel {
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.88);

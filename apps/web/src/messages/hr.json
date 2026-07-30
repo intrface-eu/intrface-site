@@ -85,8 +85,12 @@
       "eyebrow": "Intrface · Istra, Hrvatska",
       "title": "Gradimo softver. I sustav koji gradi softver.",
       "lead": "Jedna živa klijentska stranica u Vrsaru. Voyager, Polis i Funda, još prije pokretanja. Agent Ops Cockpit, javan pod Apache-2.0.",
-      "seeWork": "Pogledajte radove",
-      "talk": "Javite nam se",
+      "seeWork": "Pogledajte gdje svaki sustav stoji",
+      "talk": "Pokrenite pregled sustava",
+      "contract": {
+        "label": "Ugovor, na disku",
+        "note": "Iste četiri datoteke u svakom repozitoriju kojeg dotaknemo, uključujući i vaš."
+      },
       "proofLabel": "Otvorite bilo koje od ovoga",
       "metaTitle": "Softver i sustav koji ga gradi.",
       "proof": {
@@ -112,11 +116,14 @@
     },
     "thesis": {
       "label": "Teza",
-      "title": "Softver postaje sučelje prema svemu.",
+      "title": "Zaslon koji skriva stanje sustava nije sučelje.",
       "p1": "Kupci ne doživljavaju vašu strategiju. Doživljavaju sučelje. Građani politiku susreću kao obrasce, šaltere i čekanje.",
       "p2": "Gost destinaciju susreće kao jelovnik, pješačku rutu i pitanje postavljeno na jeziku koji nitko za šankom ne čita. To je ono što gradimo.",
       "columns": [
-        { "label": "Snalaženje", "text": "312 Voyagerovih ruta kroz sedam sučelja, jedan podatkovni model." },
+        {
+          "label": "Snalaženje",
+          "text": "Voyager gostu odgovara na šest jezika, kroz sedam sučelja, iz jednog podatkovnog modela."
+        },
         { "label": "Povjerenje", "text": "Svaka tvrdnja u Polisu vodi do hasha, pečata i vremenskog žiga." },
         { "label": "Izvedba", "text": "Instagram profil unutra, živi URL van, u šest koraka." }
       ]
@@ -158,33 +165,21 @@
         "name": "Voyager",
         "status": "Prije pokretanja",
         "claim": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena. Turistička zajednica objavljuje službenu verziju i sama je uređuje.",
-        "stats": [
-          { "value": "365.000", "label": "Redaka vlastitog TypeScripta" },
-          { "value": "1.336", "label": "Backend funkcija" },
-          { "value": "1.580", "label": "Automatiziranih testova" }
-        ],
+        "spec": ["6 jezika", "7 sučelja, 1 podatkovni model", "Multi-tenant"],
         "linkLabel": "Pročitajte slučaj Voyager"
       },
       "polis": {
         "name": "Polis Interface",
-        "status": "Open source · AGPL · prije uvođenja",
+        "status": "Prije uvođenja",
         "claim": "Graf upravljanja u kojem svaka javna tvrdnja vodi natrag do izvornog dokumenta.",
-        "stats": [
-          { "value": "55", "label": "Postgres tablica" },
-          { "value": "10", "label": "Policy modula" },
-          { "value": "17", "label": "Skripti za prihvaćanje" }
-        ],
+        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
         "linkLabel": "Pročitajte slučaj Polis"
       },
       "funda": {
         "name": "Funda",
-        "status": "U aktivnoj izradi",
+        "status": "U izradi",
         "claim": "Povezuje organizacije s natječajima EU fondova koje agenti čitaju sa SEDIA-e i TED-a.",
-        "stats": [
-          { "value": "4", "label": "Sučelja po ulogama" },
-          { "value": "2", "label": "Učitana EU izvora" },
-          { "value": "3", "label": "Jezika" }
-        ],
+        "spec": ["4 sučelja po ulogama", "3 jezika", "SEDIA + TED"],
         "linkLabel": "Pročitajte slučaj Funda"
       }
     },
@@ -211,15 +206,6 @@
           "label": "Shema je verzionirana",
           "description": "Datoteke stoje na shemi s migracijama. Kad se ona promijeni, svih trinaest repozitorija migrira zajedno."
         }
-      ],
-      "stats": [
-        { "value": "13", "label": "Repozitorija, jedna shema" },
-        { "value": "51", "label": "CLI naredbi" },
-        {
-          "value": "403",
-          "label": "Commita, Apache-2.0",
-          "note": "Javno na github.com/basicalex/agent-ops-cockpit"
-        }
       ]
     },
     "contact": {
@@ -239,10 +225,8 @@
       "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
       "topics": [
         "Poslovni sustav",
-        "Place intelligence",
-        "Tijek dokumenata",
-        "Klijentska stranica",
         "Tehnička strategija",
+        "Klijentska stranica",
         "Javna infrastruktura"
       ]
     }
@@ -783,17 +767,17 @@
       "intro": "Tri pogleda na jednu radnu sesiju. Bez maketa — ovo je terminal u kojem radimo.",
       "cockpit": {
         "label": "Kokpit",
-        "alt": "Terminalski kokpit: stablo datoteka lijevo, agentska sesija u sredini i ploča sa stanjem repozitorija uživo desno",
+        "alt": "Popis pravila u agentskom oknu: tipkovni prečaci, zatim datoteke AGENTS.md, datoteke vještina i promptovi učitani za ovaj repozitorij",
         "caption": "Jedan repozitorij, jedan zaslon: njegove datoteke lijevo, agentska sesija u sredini i stanje repozitorija uživo desno — broj pripremljenih, nepripremljenih i novih datoteka, s napretkom zadataka uz donji rub."
       },
       "ledger": {
         "label": "Registar zadataka",
-        "alt": "Registar zadataka s numeriranim zadacima, oznakama, prioritetima, statusima i ugniježđenim podzadacima",
+        "alt": "Retci registra zadataka: numerirani zadaci sa stupcima oznake, statusa i prioriteta te tri podzadatka ugniježđena pod zadatkom 6",
         "caption": "Registar zadataka jednog repozitorija: zadaci grupirani po oznaci, podzadaci ugniježđeni pod svojim zadatkom, status u istoj datoteci koju čitaju agenti."
       },
       "repos": {
         "label": "Repozitoriji na ugovoru",
-        "alt": "Preglednik datoteka u tri stupca s direktorijem repozitorija i otvorenim ugovornim direktorijem jednog repozitorija",
+        "alt": "Ispis direktorija repozitorija uz sadržaj njegova .aoc direktorija: layouts, logs, mind, prompts, stm, context.md, memory.md, rtk.toml",
         "caption": "Jedan direktorij po repozitoriju, isti u svih trinaest — AGENTS.md, DESIGN.md, snimka konteksta, promptovi, stanje zadataka, konfiguracija rutiranja — uz kod."
       }
     },
@@ -924,10 +908,8 @@
       "dataNote": "Vašu poruku čuvamo kako bismo na nju odgovorili i ne koristimo je ni za što drugo. Zatražite brisanje i bit će izbrisana.",
       "topics": [
         "Poslovni sustav",
-        "Place intelligence",
-        "Tijek dokumenata",
-        "Klijentska stranica",
         "Tehnička strategija",
+        "Klijentska stranica",
         "Javna infrastruktura"
       ]
     }

@@ -1,6 +1,6 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
-import { api } from "./_generated/api";
+import { internalMutation, mutation } from "./_generated/server";
+import { internal } from "./_generated/api";
 
 /**
  * Public entry point for the website contact form.
@@ -20,6 +20,7 @@ const MAX = {
   subject: 120,
   message: 5000,
   locale: 12,
+  error: 500,
 } as const;
 
 function clean(value: string | undefined, limit: number): string {
@@ -58,7 +59,8 @@ export const submitContact = mutation({
       createdAt: Date.now(),
     });
 
-    await ctx.scheduler.runAfter(0, api.email.sendContactEmail, {
+    await ctx.scheduler.runAfter(0, internal.email.sendContactEmail, {
+      submissionId: id,
       name,
       email,
       subject,
@@ -68,5 +70,29 @@ export const submitContact = mutation({
     });
 
     return { id };
+  },
+});
+
+/**
+ * Delivery outcome for one submission, written by `email.sendContactEmail`.
+ *
+ * Internal: only the scheduled action calls it. A `failed` row keeps the
+ * message and the reason, so it can be answered by hand.
+ */
+export const recordDelivery = internalMutation({
+  args: {
+    submissionId: v.id("contactSubmissions"),
+    status: v.union(v.literal("sent"), v.literal("failed")),
+    error: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const row = await ctx.db.get(args.submissionId);
+    if (!row) return;
+
+    await ctx.db.patch(args.submissionId, {
+      status: args.status,
+      deliveredAt: args.status === "sent" ? Date.now() : undefined,
+      deliveryError: args.status === "failed" ? clean(args.error, MAX.error) : undefined,
+    });
   },
 });

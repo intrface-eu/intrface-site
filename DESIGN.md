@@ -27,13 +27,13 @@ typography:
   heading:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
     fontSize: "clamp(1.6rem, 2.7vw, 2.2rem)"
-    fontWeight: "550"
+    fontWeight: "600"
     lineHeight: "1.14"
     letterSpacing: "-0.03em"
   subheading:
     fontFamily: "Google Sans Flex, Inter, sans-serif"
     fontSize: "clamp(1.3rem, 1.8vw, 1.55rem)"
-    fontWeight: "600"
+    fontWeight: "540"
     lineHeight: "1.2"
     letterSpacing: "-0.025em"
   title:
@@ -142,7 +142,7 @@ This is the project-wide visual and product design contract for agents and human
 
 1. Interface is the brand: every surface should turn complexity into orientation.
 2. Trust is visible: proof, sources, state, responsibility, and uncertainty should be legible.
-3. Atmosphere supports meaning: the CMYK halftone shader and grain are print-inspired landmarks — used sparingly, never as wallpaper behind reading content.
+3. Atmosphere supports meaning: the CMYK halftone is a print-inspired landmark, and it has to resolve into something. On the home page each separation is registered to one of the four contract files it names (`.contract-plate`). A halftone that fills a corner is wallpaper — never that, and never behind reading content.
 4. One paper, one ink, one accent: warm paper `#f5f1eb` everywhere, ink `#0f1729` for text and dark bands, teal `#0f766e` as the single working accent.
 
 ## Layout system
@@ -150,7 +150,7 @@ This is the project-wide visual and product design contract for agents and human
 - Density: generous; sections breathe with `py-20 sm:py-28`
 - Grid/container rules: `.section-shell` — `min(100%, 80rem)` centered, `px-6/8/10` responsive
 - Spacing scale: 4 / 8 / 16 / 24 / 40 px
-- Responsive behavior: single column below `lg`; asymmetric two-column grids at `lg`; header collapses nav into a details-based menu below `lg`
+- Responsive behavior: single column below `lg`; asymmetric two-column grids at `lg`; below `lg` the header swaps its nav for a button that opens `MobileNav`, a React-state panel animated with `AnimatePresence`
 - Empty/loading/error-state layout rules: keep the paper background, show ink text with a muted explanation; never blank white screens
 
 ## Color system
@@ -177,8 +177,8 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
   | Class | Role | Size | Weight | Colour |
   | --- | --- | --- | --- | --- |
   | `.type-display` | the page claim, one per page | 38–58px | 600 | ink |
-  | `.type-heading` | a section | 26–35px | 550 | ink |
-  | `.type-subheading` | a named thing in a ledger row | 21–25px | 600 | inherits the band |
+  | `.type-heading` | a section | 26–35px | 600 | ink |
+  | `.type-subheading` | a named thing in a ledger row | 21–25px | 540 | inherits the band |
   | `.type-title` | a step, a clause, a card head | 17px | 600 | inherits the band |
   | `.type-body-lg` | the lead under a heading | 17–19px | 400 | `--ink-muted` |
   | `.type-body` | prose | 16px | 400 | `--ink-muted` |
@@ -188,7 +188,8 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
   | `.type-section-label` | the accent kicker | 12.8px | 600 | `--accent` |
   | `.type-data` | figures, hashes, filenames, identifiers | inherits | inherits | inherits |
 
-- Heading style: tracking −0.03 to −0.04em, weight 550–600, use the `.type-*` classes — never inline arbitrary heading sizes. −0.04em is the floor: past it letterforms stop holding their own shapes.
+- Weight steps down as size steps down, display → subheading. `.type-title` is the one exception: at 17px it needs 600 to lead its paragraph. A heading lighter than the names under it makes a ledger read as a row of peers.
+- Heading style: tracking −0.03 to −0.04em, weight 540–600, use the `.type-*` classes — never inline arbitrary heading sizes. −0.04em is the floor: past it letterforms stop holding their own shapes.
 - Display is sized for a full-sentence headline, not a single word. Three lines of ~60 characters stay inside ~20vh at its ceiling.
 - Body style: `.type-body` / `.type-body-lg`, line-height 1.62–1.7, `--ink-muted`
 - Numeric/metric style: `.type-data` (`--font-mono`, tabular). Mono is the numeric and technical voice — figures, hashes, filenames, identifiers, bracketed literals. Never a costume for prose; keep it under ~15% of the text on a page.
@@ -213,13 +214,13 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
   header mark's compose entrance (620ms), its ambient tilt loop (4.8–7.2s), and its
   spring interactions (650–800ms, sampled linear() curves) run longer by design.
 - Easing: ease-out / gentle springs (stiffness ≈ 420, damping ≈ 34)
-- What should animate: section reveals (FadeIn), tab continuity (layout spring), CTA feedback, the hero halftone
+- What should animate: section reveals (FadeIn), tab continuity (layout spring), CTA feedback
 - What should not animate: core reading layout, trust/proof content, essential navigation, reduced-motion experiences
 - Reduced-motion expectations: replace movement with static state or opacity; set shader speed to 0
 
 ## Imagery and media
 
-- Image style: CMYK halftone landmark fields (hero only), interface diagrams (SystemMap), proof panels, document/place/workflow motifs; no generic AI gradients or robot imagery
+- Image style: the registered CMYK halftone plate (hero only), interface diagrams (SystemMap), proof panels, document/place/workflow motifs; no generic AI gradients or robot imagery
 - Illustration style: diagrammatic — nodes, hairline connectors, state badges
 - Iconography style: Tabler, outline
 - Screenshot/product-frame treatment: white card frame, hairline border, `--shadow-elevated`
@@ -249,7 +250,7 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 - Use the token variables (`--paper`, `--ink`, `--accent`, `--line`) — never re-hardcode hexes in components
 - Route all type through the `.type-*` classes
 - Alternate paper/paper-raised/ink bands to create rhythm
-- Let the hero halftone be visible; wash only enough for headline legibility
+- Give the halftone a job: register it to something the page is actually about, and keep it out from behind type
 
 ### Don't
 

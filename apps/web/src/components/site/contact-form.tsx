@@ -5,11 +5,12 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   useTransition,
-  type CSSProperties,
   type FormEvent,
 } from "react";
 import { IconArrowRight, IconLoader2 } from "@tabler/icons-react";
+import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { submitContactForm, type ContactFieldName } from "@/app/actions/contact";
@@ -20,12 +21,36 @@ import { CONTACT_EMAIL } from "@/lib/site/config";
  * message in Convex. When no Convex deployment is configured — or the write
  * fails — the form falls back to the visitor's mail client with the message
  * pre-filled, so the page works with no backend and no env var.
+ *
+ * The form carries `noValidate`: the fields keep `required` for assistive tech,
+ * but the browser's own bubble is suppressed so the designed, translated error
+ * states below are what a reader actually sees. The native message follows the
+ * browser's locale, not the page's — a Croatian page would throw English.
  */
+
+/**
+ * Stable identities for the topic chips, in the order the `topics` prop carries
+ * them. Labels are translated and cannot be matched on; `?topic=` matches these.
+ * Changing the order here means changing the `topics` arrays in every message
+ * file to match.
+ *
+ * The order also decides how the row wraps. A long label next to a short one
+ * lands two chips per row at 390px in all four locales; the two long labels
+ * adjacent pushes German, French and Croatian into three ragged rows.
+ */
+export const CONTACT_TOPIC_KEYS = [
+  "business-system",
+  "technical-strategy",
+  "client-site",
+  "civic-infrastructure",
+] as const;
+
+export type ContactTopicKey = (typeof CONTACT_TOPIC_KEYS)[number];
 
 export type ContactFormProps = {
   /** Where the mailto lands. */
   email?: string;
-  /** Selectable topic chips, already translated. The first is preselected. */
+  /** Selectable topic chips, already translated, ordered by `CONTACT_TOPIC_KEYS`. */
   topics: readonly string[];
   /** Label on the submit button. Defaults to the translated label. */
   submitLabel?: string;
@@ -36,20 +61,37 @@ export type ContactFormProps = {
 
 type FieldErrors = Partial<Record<ContactFieldName, string>>;
 
-/*
- * DESIGN.md declares `danger: #be123c` but globals.css does not expose it as a
- * variable yet. Declare it once on the form root and reference the variable
- * everywhere below, rather than reaching for a Tailwind red. Delete this when
- * the token lands in globals.css.
- */
-const dangerToken = { "--form-danger": "#be123c" } as CSSProperties;
-
 const fieldClasses =
-  "w-full rounded-[var(--radius-md)] border border-rule bg-card px-4 py-3 text-base text-ink outline-none transition-colors placeholder:text-ink-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-[var(--form-danger)] aria-[invalid=true]:focus:border-[var(--form-danger)] aria-[invalid=true]:focus:ring-[var(--form-danger)]/25";
+  "w-full rounded-[var(--radius-md)] border border-rule-control bg-card px-4 py-3 text-base text-ink transition-colors placeholder:text-ink-muted/60 focus:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink aria-[invalid=true]:border-danger aria-[invalid=true]:focus:border-danger";
 
 const labelClasses = "type-body-sm block max-w-none font-semibold text-ink";
 
-const errorTextClasses = "text-sm font-medium leading-6 text-[var(--form-danger)]";
+const errorTextClasses = "text-sm font-medium leading-6 text-danger";
+
+/** The URL is read once and never changes under us; nothing to subscribe to. */
+const noSubscribe = () => () => {};
+
+/**
+ * The chip `?topic=` asks for, or none.
+ *
+ * The client-sites page sends people here with a topic already implied. Matched
+ * against the stable key so it works in every locale, and read through
+ * `useSyncExternalStore` rather than `useSearchParams` so the page hosting this
+ * form is not pulled out of static rendering — the server snapshot is empty and
+ * the client fills it in on hydration.
+ */
+function useRequestedTopic(): ContactTopicKey | "" {
+  const search = useSyncExternalStore(
+    noSubscribe,
+    () => window.location.search,
+    () => "",
+  );
+
+  return useMemo(() => {
+    const requested = new URLSearchParams(search).get("topic");
+    return CONTACT_TOPIC_KEYS.find((key) => key === requested) ?? "";
+  }, [search]);
+}
 
 export function ContactForm({
   email = CONTACT_EMAIL,
@@ -59,11 +101,25 @@ export function ContactForm({
   className = "",
 }: ContactFormProps) {
   const t = useTranslations("ContactForm");
+  const shouldReduceMotion = useReducedMotion();
   const [name, setName] = useState("");
   const [replyTo, setReplyTo] = useState("");
   const [company, setCompany] = useState("");
-  const [topic, setTopic] = useState(topics[0] ?? "");
+  // No chip is selected unless the URL asks for one. A filled pill sitting
+  // under three empty fields reads as the submit control, and the topic is not
+  // a required answer. `null` means "the reader has not chosen yet", so the
+  // `?topic=` value still stands.
+  const requestedTopic = useRequestedTopic();
+  const [chosenTopic, setChosenTopic] = useState<ContactTopicKey | null>(null);
+  const topicKey = chosenTopic ?? requestedTopic;
   const [message, setMessage] = useState("");
+
+  const chips = useMemo(
+    () => topics.map((label, index) => ({ key: CONTACT_TOPIC_KEYS[index], label })),
+    [topics],
+  );
+
+  const topic = chips.find((chip) => chip.key === topicKey)?.label ?? "";
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sent, setSent] = useState(false);
@@ -167,12 +223,7 @@ export function ContactForm({
   }
 
   return (
-    <form
-      className={`grid gap-6 ${className}`}
-      noValidate={false}
-      onSubmit={handleSubmit}
-      style={dangerToken}
-    >
+    <form className={`grid gap-6 ${className}`} noValidate onSubmit={handleSubmit}>
       {locale ? <input name="locale" type="hidden" value={locale} /> : null}
 
       {/* Honeypot. Off-screen, skipped by keyboard, hidden from assistive tech. */}
@@ -256,18 +307,23 @@ export function ContactForm({
       <fieldset className="grid gap-3">
         <legend className={labelClasses}>{t("topicLabel")}</legend>
         <div className="flex flex-wrap gap-2">
-          {topics.map((value) => (
-            <label className="cursor-pointer" key={value}>
+          {chips.map(({ key, label }) => (
+            <label className="cursor-pointer" key={key}>
               <input
-                checked={topic === value}
+                checked={topicKey === key}
                 className="peer sr-only"
                 name="topic"
-                onChange={() => setTopic(value)}
+                onChange={() => setChosenTopic(key)}
                 type="radio"
-                value={value}
+                value={label}
               />
-              <span className="block rounded-full border border-rule bg-white/70 px-4 py-2 text-sm font-medium text-ink-muted transition-colors peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
-                {value}
+              {/*
+               * Selected reads as a marked chip, not a button: the accent
+               * border and tint stay in the chip family instead of borrowing
+               * the ink fill the submit control owns.
+               */}
+              <span className="block rounded-full border border-rule-control bg-white/70 px-3.5 py-2 text-sm font-medium text-ink-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
+                {label}
               </span>
             </label>
           ))}
@@ -318,11 +374,18 @@ export function ContactForm({
       ) : null}
 
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <button
+        {/*
+         * The same treatment every other primary action gets. `TactileButton`
+         * itself renders an anchor, and this one has to submit a form, so the
+         * motion is mirrored here rather than faked with a link.
+         */}
+        <motion.button
           aria-busy={pending ? true : undefined}
           className={tactileButtonClasses("primary", pending ? "opacity-70" : "")}
           disabled={pending}
           type="submit"
+          whileHover={shouldReduceMotion || pending ? undefined : { y: -2, scale: 1.015 }}
+          whileTap={shouldReduceMotion || pending ? undefined : { scale: 0.975 }}
         >
           <span>{pending ? t("sending") : (submitLabel ?? t("submitLabel"))}</span>
           <span aria-hidden="true">
@@ -332,7 +395,7 @@ export function ContactForm({
               <IconArrowRight className="h-4 w-4" />
             )}
           </span>
-        </button>
+        </motion.button>
         <p className="type-body-sm">
           {t.rich("mailNote", {
             email,

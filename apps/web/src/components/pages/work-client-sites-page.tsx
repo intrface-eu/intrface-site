@@ -104,7 +104,12 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
             <p className="type-body-lg mt-6">{t("next.body")}</p>
           </FadeIn>
           <FadeIn delay={180}>
-            <Link className={tactileButtonClasses("primary", "mt-9")} href="/about#contact">
+            {/* `?topic=` preselects the matching chip on arrival, so the form
+                does not start on a topic this page is not about. */}
+            <Link
+              className={tactileButtonClasses("primary", "mt-9")}
+              href="/about?topic=client-site#contact"
+            >
               {t("next.cta")}
               <IconArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>

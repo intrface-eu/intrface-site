@@ -85,8 +85,12 @@
       "eyebrow": "Intrface · Istria, Croatia",
       "title": "We build the software. And the system that builds the software.",
       "lead": "One live client site in Vrsar. Voyager, Polis and Funda, still pre-launch. Agent Ops Cockpit, public under Apache-2.0.",
-      "seeWork": "See the work",
-      "talk": "Talk to us",
+      "seeWork": "See where each system stands",
+      "talk": "Start a system review",
+      "contract": {
+        "label": "The contract, on disk",
+        "note": "The same four files in every repository we touch, including yours."
+      },
       "proofLabel": "Open any of these",
       "metaTitle": "Software, and the system that builds it.",
       "proof": {
@@ -112,11 +116,14 @@
     },
     "thesis": {
       "label": "The thesis",
-      "title": "Software is becoming the interface to everything.",
+      "title": "A screen that hides the state of the system is not an interface.",
       "p1": "Customers do not experience your strategy. They experience the interface. Citizens meet policy as forms, offices, and delays.",
       "p2": "A visitor meets a destination as a menu, a walking route, and a question asked in a language nobody at the counter reads. That is what we build.",
       "columns": [
-        { "label": "Wayfinding", "text": "312 Voyager routes across seven surfaces, one data model." },
+        {
+          "label": "Wayfinding",
+          "text": "Voyager answers a visitor in six languages, across seven surfaces, from one data model."
+        },
         { "label": "Trust", "text": "Every Polis claim resolves to a hash, a seal, and a timestamp." },
         { "label": "Implementation", "text": "Instagram profile in, live URL out, in six steps." }
       ]
@@ -158,33 +165,21 @@
         "name": "Voyager",
         "status": "Pre-launch",
         "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. The tourist board publishes the official version and edits it itself.",
-        "stats": [
-          { "value": "365,000", "label": "Lines of first-party TypeScript" },
-          { "value": "1,336", "label": "Backend functions" },
-          { "value": "1,580", "label": "Automated test cases" }
-        ],
+        "spec": ["6 languages", "7 surfaces, 1 data model", "Multi-tenant"],
         "linkLabel": "Read the Voyager case"
       },
       "polis": {
         "name": "Polis Interface",
-        "status": "Open source · AGPL · pre-deployment",
+        "status": "Pre-deployment",
         "claim": "A governance graph where every public claim traces back to a source document.",
-        "stats": [
-          { "value": "55", "label": "Postgres tables" },
-          { "value": "10", "label": "Policy modules" },
-          { "value": "17", "label": "Acceptance scripts" }
-        ],
+        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
         "linkLabel": "Read the Polis case"
       },
       "funda": {
         "name": "Funda",
-        "status": "Active build",
+        "status": "In build",
         "claim": "Matches organizations to EU funding calls, ingested from SEDIA and TED by agents.",
-        "stats": [
-          { "value": "4", "label": "Role surfaces" },
-          { "value": "2", "label": "EU sources ingested" },
-          { "value": "3", "label": "Languages" }
-        ],
+        "spec": ["4 role surfaces", "3 languages", "SEDIA + TED"],
         "linkLabel": "Read the Funda case"
       }
     },
@@ -211,15 +206,6 @@
           "label": "The schema is versioned",
           "description": "The files sit on a schema with migrations. When it changes, all thirteen repos migrate together."
         }
-      ],
-      "stats": [
-        { "value": "13", "label": "Repos, one schema" },
-        { "value": "51", "label": "CLI commands" },
-        {
-          "value": "403",
-          "label": "Commits, Apache-2.0",
-          "note": "Public at github.com/basicalex/agent-ops-cockpit"
-        }
       ]
     },
     "contact": {
@@ -239,10 +225,8 @@
       "mailNote": "Or write straight to <mail>{email}</mail>.",
       "topics": [
         "Business system",
-        "Place intelligence",
-        "Document workflow",
-        "Client site",
         "Technical strategy",
+        "Client site",
         "Civic infrastructure"
       ]
     }
@@ -779,17 +763,17 @@
       "intro": "Three views of one working session. No mock-ups — this is the terminal we work in.",
       "cockpit": {
         "label": "The cockpit",
-        "alt": "A terminal cockpit: file tree on the left, an agent session in the center, and a live repo status panel on the right",
+        "alt": "The agent pane's rules list: keybindings, then the AGENTS.md files, skill files and prompts loaded for this repository",
         "caption": "One repository, one screen: its files on the left, the agent session in the middle, and live repo state on the right — staged, unstaged, and new-file counts, with task progress along the bottom."
       },
       "ledger": {
         "label": "The task ledger",
-        "alt": "A task ledger listing numbered tasks with tags, priorities, statuses, and nested sub-tasks",
+        "alt": "Task ledger rows: numbered tasks with a tag, status and priority column, and three sub-tasks nested under task 6",
         "caption": "The task ledger for a single repository: tasks grouped by tag, sub-tasks nested under their parent, status in the same file the agents read."
       },
       "repos": {
         "label": "Repositories on the contract",
-        "alt": "A three-column file browser showing a directory of repositories and one repository's expanded contract directory",
+        "alt": "A repository directory listing beside the contents of its .aoc directory: layouts, logs, mind, prompts, stm, context.md, memory.md, rtk.toml",
         "caption": "One directory per repository, the same in all thirteen — AGENTS.md, DESIGN.md, the context snapshot, prompts, task state, routing config — sitting beside the code."
       }
     },
@@ -920,10 +904,8 @@
       "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
       "topics": [
         "Business system",
-        "Place intelligence",
-        "Document workflow",
-        "Client site",
         "Technical strategy",
+        "Client site",
         "Civic infrastructure"
       ]
     }

@@ -1,14 +1,12 @@
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
-import { StatBand, type Stat } from "@/components/case";
 import { HeroProof, type HeroArtifact } from "@/components/home/hero-proof";
 import { LiveSiteRow, type LiveSite } from "@/components/home/live-site-row";
-import { SystemLedger, type FeaturedSystem, type SystemStat } from "@/components/home/system-ledger";
+import { SystemLedger, type FeaturedSystem } from "@/components/home/system-ledger";
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { ProcessSteps, type ProcessStep } from "@/components/site/process-steps";
 import { TactileButton } from "@/components/site/tactile-button";
-import { PaperShaderSurface } from "@/components/visual/paper-shader-surface";
 import { Link, getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -70,6 +68,21 @@ const FEATURED_SYSTEMS = [
   { key: "funda", href: "/work/funda" },
 ] as const;
 
+/**
+ * The four files every repository we touch carries, as they are named on disk.
+ * Filenames are not copy — they stay here and out of the message files.
+ *
+ * `sep` is the halftone separation each row is printed in: cyan, magenta,
+ * yellow, key. Four files, four plates, one registered image — which is the
+ * whole reason there is a dot screen in this hero at all.
+ */
+const CONTRACT_FILES = [
+  { name: "AGENTS.md", sep: "c" },
+  { name: "DESIGN.md", sep: "m" },
+  { name: ".aoc/context.md", sep: "y" },
+  { name: ".taskmaster/tasks/tasks.json", sep: "k" },
+] as const;
+
 export async function HomePage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomePage" });
   const path = (href: string) => getPathname({ href, locale });
@@ -77,7 +90,6 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
   const thesisColumns = t.raw("thesis.columns") as { label: string; text: string }[];
   const clientPipeline = t.raw("proof.pipeline") as string[];
   const methodSteps = t.raw("method.steps") as ProcessStep[];
-  const deliveryStats = t.raw("method.stats") as Stat[];
   const contactTopics = t.raw("contact.topics") as string[];
   const contactHelps = t.raw("contact.helps") as string[];
 
@@ -110,7 +122,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
     name: t(`systems.${system.key}.name`),
     status: t(`systems.${system.key}.status`),
     claim: t(`systems.${system.key}.claim`),
-    stats: t.raw(`systems.${system.key}.stats`) as SystemStat[],
+    spec: t.raw(`systems.${system.key}.spec`) as string[],
     linkLabel: t(`systems.${system.key}.linkLabel`),
     // SystemLedger renders the locale-aware `Link`, so the raw route goes in —
     // prefixing here produced /en/en/work/voyager.
@@ -119,30 +131,31 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
   return (
     <main className="bg-paper text-ink">
-      {/* HERO — one sentence, then the evidence for it. Paper, halftone
-          landmark in the corner, three real captures along the bottom edge of
-          the first screen. */}
-      <section className="relative overflow-hidden border-b border-rule tone-paper">
-        <div className="halftone-field" aria-hidden="true" />
-        <div className="section-shell relative flex min-h-[calc(100svh-4rem)] flex-col gap-10 py-8 sm:py-12 lg:gap-12">
-          {/* The claim centres in whatever height is left over the evidence
-              strip, so the free space reads as air on both sides of it rather
-              than as a gap that opened under the headline. */}
-          <div className="my-auto">
-            <FadeIn>
-              <p className="type-section-label">{t("hero.eyebrow")}</p>
-            </FadeIn>
-            <FadeIn delay={80}>
-              <h1 className="type-display mt-4 sm:mt-5">
-                {t("hero.title")}
-              </h1>
-            </FadeIn>
-            <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
-              <FadeIn delay={160}>
-                <p className="type-body-lg max-w-xl font-medium">{t("hero.lead")}</p>
+      {/* HERO — one sentence, the two actions it argues for directly under it,
+          and the contract plate beside them. Then the evidence.
+
+          No `100svh` band: the old one centred the claim in leftover height,
+          so a locale with a shorter headline was rewarded with more dead space,
+          not less. Height is content plus padding now, at every length. */}
+      <section className="border-b border-rule tone-paper">
+        <div className="section-shell flex flex-col gap-12 py-10 sm:gap-14 sm:py-14 lg:gap-16 lg:py-16">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-end lg:gap-16">
+            <div>
+              <FadeIn>
+                <p className="type-section-label">{t("hero.eyebrow")}</p>
               </FadeIn>
+              <FadeIn delay={80}>
+                <h1 className="type-display mt-4 sm:mt-5">
+                  {t("hero.title")}
+                </h1>
+              </FadeIn>
+              <FadeIn delay={160}>
+                <p className="type-body-lg mt-6 max-w-xl font-medium sm:mt-7">{t("hero.lead")}</p>
+              </FadeIn>
+              {/* Under the sentence that motivates them, not stranded in a
+                  column 350px to the right of it. */}
               <FadeIn delay={240}>
-                <div className="flex flex-wrap gap-3">
+                <div className="mt-7 flex flex-wrap gap-3">
                   <TactileButton
                     className="text-base"
                     href={path("/work")}
@@ -156,55 +169,83 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                 </div>
               </FadeIn>
             </div>
+
+            {/* The halftone, registered. Four files, four separations, the
+                names in the type they are written in. */}
+            <FadeIn delay={300}>
+              <div className="contract-plate">
+                <p className="type-meta">{t("hero.contract.label")}</p>
+                <ul className="mt-4">
+                  {CONTRACT_FILES.map((file) => (
+                    <li className="contract-row" key={file.name}>
+                      <span className="type-data contract-name">
+                        {/* A path breaks after a slash or not at all. Without
+                            these the longest one split mid-filename at 390px. */}
+                        {file.name.split("/").map((segment, index, all) => (
+                          <span key={segment}>
+                            {segment}
+                            {index < all.length - 1 ? (
+                              <>
+                                /<wbr />
+                              </>
+                            ) : null}
+                          </span>
+                        ))}
+                      </span>
+                      <span aria-hidden="true" className="contract-screen" data-sep={file.sep} />
+                    </li>
+                  ))}
+                </ul>
+                <p className="type-caption mt-4">{t("hero.contract.note")}</p>
+              </div>
+            </FadeIn>
           </div>
 
           <div>
-            <FadeIn delay={300}>
+            <FadeIn delay={340}>
               <p className="type-section-label mb-3">{t("hero.proofLabel")}</p>
             </FadeIn>
-            <HeroProof artifacts={heroArtifacts} baseDelay={340} />
+            <HeroProof artifacts={heroArtifacts} baseDelay={380} />
           </div>
         </div>
       </section>
 
-      {/* THESIS — raised paper, editorial, no cards */}
+      {/* THESIS — raised paper, an editorial spread. Claim across the full
+          measure, the argument set in two columns under it, three named
+          consequences on a rule below that. Deliberately not the same
+          asymmetric two-column grid the method band uses. */}
       <section className="scroll-mt-24 border-b border-rule tone-raised" id="thesis">
         <div className="section-shell py-20 sm:py-28">
-          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
-            <div>
-              <FadeIn>
-                <p className="type-section-label">{t("thesis.label")}</p>
+          <FadeIn>
+            <p className="type-section-label">{t("thesis.label")}</p>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <h2 className="type-heading mt-4">{t("thesis.title")}</h2>
+          </FadeIn>
+
+          <div className="mt-10 grid gap-x-14 gap-y-5 lg:grid-cols-2">
+            <FadeIn delay={160}>
+              <p className="type-body-lg">{t("thesis.p1")}</p>
+            </FadeIn>
+            <FadeIn delay={220}>
+              <p className="type-body-lg">{t("thesis.p2")}</p>
+            </FadeIn>
+          </div>
+
+          {/* Rule above each cell, gutters from the gap. The old vertical
+              dividers gave the middle cell two insets and the outer two one
+              each, so the third column ran flush into the shell edge. */}
+          <div className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-3">
+            {thesisColumns.map((item, index) => (
+              <FadeIn
+                className="border-t border-rule pt-5"
+                delay={280 + index * 70}
+                key={item.label}
+              >
+                <h3 className="type-title text-ink">{item.label}</h3>
+                <p className="type-body-sm mt-2">{item.text}</p>
               </FadeIn>
-              <FadeIn delay={100}>
-                <h2 className="type-heading mt-4 max-w-xl">{t("thesis.title")}</h2>
-              </FadeIn>
-            </div>
-            <div>
-              <FadeIn delay={160}>
-                <div className="type-body-lg grid gap-5">
-                  <p>{t("thesis.p1")}</p>
-                  <p>{t("thesis.p2")}</p>
-                </div>
-              </FadeIn>
-              {/* The cell padding lives on the FadeIn wrapper, not inside it. On the
-                  inner div `first:`/`last:` both matched every cell — each one is the
-                  only child of its own wrapper — so `sm:px-5` was cancelled on all
-                  three and the text sat flush against the divider. */}
-              <div className="mt-10 grid gap-0 divide-y divide-rule border-y border-rule sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-                {thesisColumns.map((item, index) => (
-                  <FadeIn
-                    className="py-6 sm:px-6 sm:first:pl-0 sm:last:pr-0"
-                    delay={220 + index * 70}
-                    key={item.label}
-                  >
-                    <div className="h-full">
-                      <h3 className="type-title text-ink">{item.label}</h3>
-                      <p className="type-body-sm mt-2">{item.text}</p>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -226,12 +267,15 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
           <FadeIn delay={240}>
             <ol className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-rule py-4">
+              {/* The arrow leads its step rather than trailing it. Trailing, a
+                  wrapped line ended with an arrow pointing at nothing — which
+                  is every line but the last at 390px. */}
               {clientPipeline.map((step, index) => (
                 <li className="flex items-center gap-3" key={step}>
-                  <span className="type-meta">{step}</span>
-                  {index < clientPipeline.length - 1 ? (
+                  {index > 0 ? (
                     <IconArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-accent" />
                   ) : null}
+                  <span className="type-meta">{step}</span>
                 </li>
               ))}
             </ol>
@@ -293,8 +337,11 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
       {/* METHOD — raised paper, the delivery system in the open */}
       <section className="scroll-mt-24 border-b border-rule tone-raised" id="method">
         <div className="section-shell py-20 sm:py-28">
-          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
-            <div>
+          {/* The actions sit at the foot of the left column rather than
+              directly under the paragraph, so the column ends where the steps
+              end instead of stopping at 40% of the band. */}
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+            <div className="flex flex-col">
               <FadeIn>
                 <p className="type-section-label">{t("method.label")}</p>
               </FadeIn>
@@ -304,8 +351,8 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               <FadeIn delay={180}>
                 <p className="type-body mt-5 max-w-lg">{t("method.body")}</p>
               </FadeIn>
-              <FadeIn delay={260}>
-                <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <FadeIn className="mt-auto" delay={260}>
+                <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-rule pt-8">
                   <TactileButton
                     href={path("/method")}
                     trailingIcon={<IconArrowRight className="h-4 w-4" />}
@@ -329,15 +376,14 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               <ProcessSteps steps={methodSteps} />
             </FadeIn>
           </div>
-
-          <StatBand className="mt-16" columns={3} stats={deliveryStats} tone="raised" />
         </div>
       </section>
 
-      {/* CONTACT — ink band, form on a paper panel */}
-      <section className="relative scroll-mt-24 overflow-hidden bg-ink text-white" id="contact">
-        <PaperShaderSurface className="opacity-[.14]" variant="contact" />
-        <div className="section-shell relative py-20 sm:py-28">
+      {/* CONTACT — ink band, form on a paper panel. No shader: it ran a rAF
+          loop behind the heading, the lead and the whole form to contribute one
+          faint corner arc, which is the case DESIGN.md rules out. */}
+      <section className="scroll-mt-24 bg-ink text-white" id="contact">
+        <div className="section-shell py-20 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
             <div>
               <FadeIn>

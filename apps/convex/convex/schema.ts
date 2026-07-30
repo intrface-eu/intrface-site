@@ -15,6 +15,10 @@ export default defineSchema({
       v.literal("failed")
     ),
     createdAt: v.number(),
+    /** When the notification actually left Resend. */
+    deliveredAt: v.optional(v.number()),
+    /** Why delivery failed, so a `failed` row can be retried by hand. */
+    deliveryError: v.optional(v.string()),
   })
     .index("by_status", ["status"])
     .index("by_createdAt", ["createdAt"]),

@@ -101,41 +101,65 @@ export async function MethodPage({ locale }: { locale: AppLocale }) {
         <StatBand className="mt-10" columns={2} stats={t.raw("numbers.outputStats") as Stat[]} tone="ink" />
       </CaseSection>
 
-      {/* EVIDENCE — three screenshots, plainly captioned */}
+      {/* EVIDENCE — three details cut from the captures at native resolution.
+          The whole 4384x2402 frame in a web column is a texture; each plate
+          shows only the region that carries the claim, at a scale where the
+          words are readable. Column widths and crop widths are chosen together
+          — see the note on EvidenceCrop. */}
       <CaseSection
         intro={t("evidence.intro")}
         label={t("evidence.label")}
         title={t("evidence.title")}
         tone="raised"
       >
-        <div className="grid gap-12">
-          <EvidenceFrame
-            alt={t("evidence.cockpit.alt")}
-            aspect="16/9"
-            caption={t("evidence.cockpit.caption")}
-            label={t("evidence.cockpit.label")}
-            sizes="(min-width: 1024px) 76rem, 100vw"
-            src="/proof/aoc/aoc-cockpit-hero.png"
-          />
-
-          <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-14">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,.44fr)_minmax(0,.56fr)] lg:items-start">
             <EvidenceFrame
-              alt={t("evidence.ledger.alt")}
-              aspect="16/9"
-              caption={t("evidence.ledger.caption")}
-              label={t("evidence.ledger.label")}
-              sizes="(min-width: 1024px) 37rem, 100vw"
-              src="/proof/aoc/aoc-taskmaster.png"
+              alt={t("evidence.cockpit.alt")}
+              caption={t("evidence.cockpit.caption")}
+              crop={{
+                src: "/proof/aoc/aoc-cockpit-rules.png",
+                width: 1120,
+                height: 1240,
+                narrow: { src: "/proof/aoc/aoc-cockpit-rules-sm.png", width: 915, height: 850 },
+                sizes: "(min-width: 1024px) 31rem, 94vw",
+                narrowSizes: "94vw",
+                context: "top-right",
+              }}
+              label={t("evidence.cockpit.label")}
+              src="/proof/aoc/aoc-cockpit-hero.png"
             />
+
             <EvidenceFrame
               alt={t("evidence.repos.alt")}
-              aspect="16/9"
               caption={t("evidence.repos.caption")}
+              crop={{
+                src: "/proof/aoc/aoc-contract-dirs.png",
+                width: 1420,
+                height: 1268,
+                narrow: { src: "/proof/aoc/aoc-contract-dirs-sm.png", width: 430, height: 430 },
+                sizes: "(min-width: 1024px) 39rem, 94vw",
+                narrowSizes: "94vw",
+              }}
               label={t("evidence.repos.label")}
-              sizes="(min-width: 1024px) 37rem, 100vw"
               src="/proof/aoc/aoc-yazi-navigation.png"
             />
           </div>
+
+          <EvidenceFrame
+            alt={t("evidence.ledger.alt")}
+            caption={t("evidence.ledger.caption")}
+            crop={{
+              src: "/proof/aoc/aoc-taskmaster-rows.png",
+              width: 2800,
+              height: 1190,
+              narrow: { src: "/proof/aoc/aoc-taskmaster-rows-sm.png", width: 1010, height: 576 },
+              sizes: "(min-width: 1280px) 74rem, 94vw",
+              narrowSizes: "94vw",
+            }}
+            label={t("evidence.ledger.label")}
+            src="/proof/aoc/aoc-taskmaster.png"
+          />
         </div>
       </CaseSection>
 
@@ -219,3 +243,4 @@ export async function MethodPage({ locale }: { locale: AppLocale }) {
     </main>
   );
 }
+

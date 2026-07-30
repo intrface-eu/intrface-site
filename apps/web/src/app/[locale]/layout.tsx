@@ -50,6 +50,14 @@ export async function generateMetadata({
       description: t("description"),
       url: "/",
     },
+    // The card itself is `opengraph-image.tsx` / `twitter-image.tsx` in this
+    // segment; both are inherited by every route under it. Without the card
+    // type here, Twitter renders a text-only `summary`.
+    twitter: {
+      card: "summary_large_image",
+      title: `${SITE_NAME} — ${t("tagline")}`,
+      description: t("description"),
+    },
     icons: {
       icon: [
         { url: "/brand/intrface-icon.svg", media: "(prefers-color-scheme: light)" },

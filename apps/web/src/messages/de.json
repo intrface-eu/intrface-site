@@ -85,8 +85,12 @@
       "eyebrow": "Intrface · Istrien, Kroatien",
       "title": "Wir bauen die Software. Und das System, das die Software baut.",
       "lead": "Eine laufende Kundenwebsite in Vrsar. Voyager, Polis und Funda, noch vor dem Launch. Agent Ops Cockpit, öffentlich unter Apache-2.0.",
-      "seeWork": "Arbeiten ansehen",
-      "talk": "Sprechen Sie uns an",
+      "seeWork": "Sehen Sie, wo jedes System steht",
+      "talk": "Systemprüfung starten",
+      "contract": {
+        "label": "Der Vertrag, auf der Platte",
+        "note": "Dieselben vier Dateien in jedem Repository, das wir anfassen — auch in Ihrem."
+      },
       "proofLabel": "Öffnen Sie jedes davon",
       "metaTitle": "Software — und das System, das sie baut.",
       "proof": {
@@ -112,11 +116,14 @@
     },
     "thesis": {
       "label": "Die These",
-      "title": "Software wird zur Schnittstelle zu allem.",
+      "title": "Ein Bildschirm, der den Zustand des Systems verbirgt, ist keine Schnittstelle.",
       "p1": "Kunden erleben nicht Ihre Strategie. Sie erleben die Schnittstelle. Bürgern begegnet Politik als Formular, Amt und Wartezeit.",
       "p2": "Einem Gast begegnet ein Reiseziel als Speisekarte, als Fußweg und als Frage in einer Sprache, die am Tresen niemand liest. Das ist es, was wir bauen.",
       "columns": [
-        { "label": "Wegfindung", "text": "312 Voyager-Routen über sieben Oberflächen, ein Datenmodell." },
+        {
+          "label": "Wegfindung",
+          "text": "Voyager antwortet Gästen in sechs Sprachen, über sieben Oberflächen, aus einem Datenmodell."
+        },
         { "label": "Vertrauen", "text": "Jede Polis-Aussage führt zu Hash, Siegel und Zeitstempel." },
         { "label": "Umsetzung", "text": "Instagram-Profil rein, laufende URL raus, in sechs Schritten." }
       ]
@@ -158,33 +165,21 @@
         "name": "Voyager",
         "status": "Vor dem Launch",
         "claim": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Der Tourismusverband veröffentlicht die offizielle Fassung und ändert sie selbst.",
-        "stats": [
-          { "value": "365.000", "label": "Zeilen eigener TypeScript-Code" },
-          { "value": "1.336", "label": "Backend-Funktionen" },
-          { "value": "1.580", "label": "Automatisierte Testfälle" }
-        ],
+        "spec": ["6 Sprachen", "7 Oberflächen, 1 Datenmodell", "Multi-Tenant"],
         "linkLabel": "Den Voyager-Fall lesen"
       },
       "polis": {
         "name": "Polis Interface",
-        "status": "Open source · AGPL · vor dem Deployment",
+        "status": "Vor dem Deployment",
         "claim": "Ein Governance-Graph, in dem jede öffentliche Aussage auf ein Quelldokument zurückführt.",
-        "stats": [
-          { "value": "55", "label": "Postgres-Tabellen" },
-          { "value": "10", "label": "Policy-Module" },
-          { "value": "17", "label": "Abnahmeskripte" }
-        ],
+        "spec": ["AGPL", "OPA/Rego", "RFC 3161"],
         "linkLabel": "Den Polis-Fall lesen"
       },
       "funda": {
         "name": "Funda",
-        "status": "Im aktiven Bau",
+        "status": "Im Bau",
         "claim": "Ordnet Organisationen EU-Förderaufrufe zu, die Agenten aus SEDIA und TED einlesen.",
-        "stats": [
-          { "value": "4", "label": "Rollen-Oberflächen" },
-          { "value": "2", "label": "Eingelesene EU-Quellen" },
-          { "value": "3", "label": "Sprachen" }
-        ],
+        "spec": ["4 Rollen-Oberflächen", "3 Sprachen", "SEDIA + TED"],
         "linkLabel": "Den Funda-Fall lesen"
       }
     },
@@ -211,15 +206,6 @@
           "label": "Das Schema ist versioniert",
           "description": "Die Dateien liegen auf einem Schema mit Migrationen. Ändert es sich, migrieren alle dreizehn Repos gemeinsam."
         }
-      ],
-      "stats": [
-        { "value": "13", "label": "Repos, ein Schema" },
-        { "value": "51", "label": "CLI-Befehle" },
-        {
-          "value": "403",
-          "label": "Commits, Apache-2.0",
-          "note": "Öffentlich auf github.com/basicalex/agent-ops-cockpit"
-        }
       ]
     },
     "contact": {
@@ -239,10 +225,8 @@
       "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
       "topics": [
         "Geschäftssystem",
-        "Place Intelligence",
-        "Dokumenten-Workflow",
-        "Kundenwebsite",
         "Technische Strategie",
+        "Kundenwebsite",
         "Öffentliche Infrastruktur"
       ]
     }
@@ -783,17 +767,17 @@
       "intro": "Drei Blicke auf eine Arbeitssitzung. Keine Mock-ups — das ist das Terminal, in dem wir arbeiten.",
       "cockpit": {
         "label": "Das Cockpit",
-        "alt": "Ein Terminal-Cockpit: Dateibaum links, eine Agentensitzung in der Mitte und rechts ein Panel mit dem Live-Status des Repos",
+        "alt": "Die Regelliste im Agentenbereich: Tastenkürzel, dann die AGENTS.md-Dateien, Skill-Dateien und Prompts, die für dieses Repository geladen sind",
         "caption": "Ein Repository, ein Bildschirm: seine Dateien links, die Agentensitzung in der Mitte und rechts der Live-Stand des Repos — gestagete, ungestagete und neue Dateien, mit dem Aufgabenfortschritt unten."
       },
       "ledger": {
         "label": "Das Aufgabenregister",
-        "alt": "Ein Aufgabenregister mit nummerierten Aufgaben samt Tags, Prioritäten, Status und verschachtelten Teilaufgaben",
+        "alt": "Zeilen des Aufgabenregisters: nummerierte Aufgaben mit Tag-, Status- und Prioritätsspalte und drei Teilaufgaben unter Aufgabe 6",
         "caption": "Das Aufgabenregister eines einzelnen Repositorys: Aufgaben nach Tag gruppiert, Teilaufgaben unter ihrer Aufgabe, Status in derselben Datei, die die Agenten lesen."
       },
       "repos": {
         "label": "Repositories auf dem Vertrag",
-        "alt": "Ein dreispaltiger Dateibrowser mit einem Verzeichnis von Repositories und dem aufgeklappten Vertragsverzeichnis eines Repositorys",
+        "alt": "Ein Repository-Verzeichnis neben dem Inhalt seines .aoc-Verzeichnisses: layouts, logs, mind, prompts, stm, context.md, memory.md, rtk.toml",
         "caption": "Ein Verzeichnis je Repository, in allen dreizehn dasselbe — AGENTS.md, DESIGN.md, Kontext-Snapshot, Prompts, Aufgabenstand, Routing-Konfiguration — direkt neben dem Code."
       }
     },
@@ -930,10 +914,8 @@
       "dataNote": "Ihre Nachricht wird gespeichert, damit wir sie beantworten können, und für nichts anderes verwendet. Bitten Sie um Löschung, und sie wird gelöscht.",
       "topics": [
         "Geschäftssystem",
-        "Place Intelligence",
-        "Dokumenten-Workflow",
-        "Kundenwebsite",
         "Technische Strategie",
+        "Kundenwebsite",
         "Öffentliche Infrastruktur"
       ]
     }
