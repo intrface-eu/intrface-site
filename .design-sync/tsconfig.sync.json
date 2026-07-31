@@ -1,0 +1,21 @@
+{
+  // Path map for the Claude Design bundle. Two things differ from the app's
+  // own tsconfig, and both exist because the bundle runs outside Next:
+  //
+  //   next/image          → a plain <img>; the real one needs the image loader
+  //   @/i18n/navigation   → a plain <a>;   the real one needs a locale request
+  //
+  // The exact rules come BEFORE the "@/*" wildcard on purpose: the resolver
+  // takes the first rule that matches, and "@/i18n/navigation" starts with
+  // "@/", so a wildcard listed first would win and pull in the real module.
+  // Targets are relative to baseUrl (apps/web), not to this file.
+  "extends": "../apps/web/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../apps/web",
+    "paths": {
+      "@/i18n/navigation": ["../../.design-sync/shims/i18n-navigation.tsx"],
+      "next/image": ["../../.design-sync/shims/next-image.tsx"],
+      "@/*": ["./src/*"]
+    }
+  }
+}

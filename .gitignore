@@ -58,3 +58,20 @@ next-env.d.ts
 
 
 
+
+!/.omp/
+!/.omp/extensions/
+!/.omp/extensions/**
+!/.omp/agents/
+!/.omp/agents/**
+!/.omp/skills/
+!/.omp/skills/**
+
+# design-sync (staged converter, build output, machine state)
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+apps/web/.ds-css/
+apps/web/.ds-types/

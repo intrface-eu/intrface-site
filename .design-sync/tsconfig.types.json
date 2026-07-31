@@ -1,0 +1,18 @@
+{
+  // Declaration-only build for the design sync. The app never emits types —
+  // it is an app — so without this the converter has no .d.ts tree to read and
+  // every component's contract lands empty, which is what the design agent
+  // codes against. Emitting from the sync entry gives it the real prop types
+  // the components already declare.
+  "extends": "./tsconfig.sync.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../apps/web/.ds-types",
+    "rootDir": "../apps/web",
+    "skipLibCheck": true
+  },
+  "include": ["../apps/web/design-sync-entry.tsx", "../apps/web/next-env.d.ts"],
+  "exclude": ["../apps/web/.next", "../apps/web/node_modules"]
+}
