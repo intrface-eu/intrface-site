@@ -6,10 +6,11 @@ import { useEffect, useRef, useState } from "react";
  * The hero's halftone screen, live.
  *
  * The site's whole visual argument is print: separations, registration, an
- * unprinted plate. This is that screen as a surface you can push on — the
- * pointer acts like pressure, so the dots under it open up and the ink runs
- * toward the accent, then closes again behind you. Nothing else on the page
- * moves on its own.
+ * unprinted plate. The screen drifts on its own — a warped sine field, so the
+ * ink folds across the sheet rather than pulsing in place — and the cursor
+ * stirs it: the flow curls after the hand, the dots under it resolve into
+ * focus, and the ink runs toward the accent. Let go and the tide carries on.
+ * Nothing else on the page moves by itself.
  *
  * Three rules it has to keep, all of them learned the hard way:
  *
@@ -54,10 +55,20 @@ out vec4 outColor;
    read as a grid: no row of dots lines up with an edge of the page. */
 const float ANGLE = 0.2618;
 const float CELL = 9.0;
-const float REACH = 165.0;
+const float REACH = 190.0;
 
-float ambient(vec2 p, float t) {
-  return 0.5 + 0.5 * sin(p.x * 0.011 + t * 0.32 + sin(p.y * 0.009 - t * 0.21) * 1.6);
+/* The ink field, always moving. Three sine layers sampled through a warped
+   coordinate — the warp is what makes it drift and fold instead of pulsing in
+   place, which is the difference between a fluid and a blinking gradient. */
+float flow(vec2 p, float t) {
+  vec2 q = p * 0.0072;
+  q += 0.55 * vec2(sin(q.y * 1.6 - t * 0.20), cos(q.x * 1.4 + t * 0.17));
+
+  float a = sin(q.x * 1.9 + t * 0.24);
+  float b = sin((q.x + q.y) * 1.3 - t * 0.19);
+  float c = sin(q.y * 2.4 - t * 0.27 + a * 0.9);
+
+  return clamp(0.5 + 0.42 * (a * 0.5 + b * 0.34 + c * 0.32), 0.0, 1.0);
 }
 
 void main() {
@@ -71,10 +82,23 @@ void main() {
     u_axis
   );
 
-  float d = distance(frag, u_pointer);
-  float press = u_press * exp(-(d * d) / (2.0 * REACH * REACH));
+  vec2 toPointer = frag - u_pointer;
+  float d = length(toPointer);
+  float focus = u_press * exp(-(d * d) / (2.0 * REACH * REACH));
 
-  float coverage = clamp(0.14 + 0.28 * ambient(frag, u_time) + 0.66 * press, 0.0, 1.0) * mask;
+  /* The cursor does not paint — it stirs. Sampling the field through a small
+     rotation around the pointer drags the flow into a curl that follows the
+     hand, and the field keeps moving on its own the moment it is let go. */
+  vec2 stirred = frag + vec2(-toPointer.y, toPointer.x) * focus * 0.22;
+  float field = flow(stirred, u_time);
+
+  /* Away from the pointer the field reads as a soft tide across the sheet.
+     Under it, the same field is pushed through a steeper curve, so the dots
+     separate into resolved ink instead of just growing: the cursor brings the
+     image into focus rather than adding weight to it. */
+  float drifting = 0.13 + 0.30 * field;
+  float resolved = 0.10 + 0.78 * smoothstep(0.34, 0.74, field);
+  float coverage = clamp(mix(drifting, resolved, focus), 0.0, 1.0) * mask;
 
   float c = cos(ANGLE);
   float s = sin(ANGLE);
@@ -84,7 +108,7 @@ void main() {
   float radius = coverage * CELL * 0.52;
   float dot = 1.0 - smoothstep(radius - 0.75, radius + 0.75, length(cell));
 
-  vec3 ink = mix(u_ink, u_accent, clamp(press * 1.5, 0.0, 0.8));
+  vec3 ink = mix(u_ink, u_accent, clamp(focus * 1.4, 0.0, 0.78));
   outColor = vec4(ink, dot * 0.5);
 }`;
 
