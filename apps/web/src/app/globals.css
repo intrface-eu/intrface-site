@@ -483,6 +483,11 @@ body {
     }
   }
 
+  /* Both layers start invisible. The sheet is blank until the shader's first
+     frame exists, so the dots are never a printed grid waiting to move — they
+     arrive already flowing. The still screen appears only for a browser that
+     cannot run the shader, which is the one case where a static field beats an
+     empty one. */
   .hero-halftone-static {
     position: absolute;
     inset: 0;
@@ -493,7 +498,8 @@ body {
     );
     background-size: 9px 9px;
     mask-image: var(--halftone-mask);
-    transition: opacity 420ms ease;
+    opacity: 0;
+    transition: opacity 620ms ease-out;
   }
 
   /* The canvas carries its own mask in the shader, so it is not masked twice. */
@@ -502,14 +508,14 @@ body {
     inset: 0;
     display: block;
     opacity: 0;
-    transition: opacity 420ms ease;
+    transition: opacity 620ms ease-out;
   }
 
-  .hero-halftone[data-live="true"] .hero-halftone-static {
-    opacity: 0;
+  .hero-halftone[data-state="live"] .hero-halftone-canvas {
+    opacity: 1;
   }
 
-  .hero-halftone[data-live="true"] .hero-halftone-canvas {
+  .hero-halftone[data-state="still"] .hero-halftone-static {
     opacity: 1;
   }
 

@@ -141,15 +141,22 @@ function readColor(element: HTMLElement, property: string, fallback: [number, nu
   ] as [number, number, number];
 }
 
+/** `idle` paints nothing at all — see the note on the render below. */
+type SurfaceState = "idle" | "live" | "still";
+
 export function HeroHalftone({ className = "" }: { className?: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [live, setLive] = useState(false);
+  const [state, setState] = useState<SurfaceState>("idle");
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
     if (!host || !canvas) return;
+
+    /** No WebGL2, or a shader that would not build: fall back to the still
+        screen rather than leaving the sheet bare. */
+    const giveUp = () => setState("still");
 
     const gl = canvas.getContext("webgl2", {
       alpha: true,
@@ -158,17 +165,17 @@ export function HeroHalftone({ className = "" }: { className?: string }) {
       stencil: false,
       powerPreference: "low-power",
     });
-    if (!gl) return;
+    if (!gl) return giveUp();
 
     const vert = compile(gl, gl.VERTEX_SHADER, VERT);
     const frag = compile(gl, gl.FRAGMENT_SHADER, FRAG);
     const program = vert && frag ? gl.createProgram() : null;
-    if (!vert || !frag || !program) return;
+    if (!vert || !frag || !program) return giveUp();
 
     gl.attachShader(program, vert);
     gl.attachShader(program, frag);
     gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return;
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return giveUp();
 
     gl.useProgram(program);
     gl.enable(gl.BLEND);
@@ -193,6 +200,7 @@ export function HeroHalftone({ className = "" }: { className?: string }) {
     let frame = 0;
     let start = 0;
     let inView = true;
+    let announced = false;
 
     const resize = () => {
       const rect = host.getBoundingClientRect();
@@ -223,6 +231,13 @@ export function HeroHalftone({ className = "" }: { className?: string }) {
       gl.uniform2f(uPointer, pointer.x * scale, pointer.y * scale);
       gl.uniform1f(uPress, pointer.press);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
+      // Announced on the first frame that exists, never before it: the dots
+      // arrive already moving instead of sitting there as a printed grid
+      // waiting for the shader to catch up.
+      if (!announced) {
+        announced = true;
+        setState("live");
+      }
     };
 
     const loop = (now: number) => {
@@ -272,11 +287,11 @@ export function HeroHalftone({ className = "" }: { className?: string }) {
     };
 
     resize();
-    setLive(true);
 
     if (reduced.matches) {
-      // One frame, at the middle of the ambient wave. Nothing else runs: no
-      // loop, no listeners, no pointer.
+      // One frame, taken from the middle of the flow. Nothing else runs: no
+      // loop, no listeners, no pointer. `drawAt` announces it, so the screen
+      // still fades in rather than being there from the start.
       drawAt(4.9);
       const onReducedChange = () => window.location.reload();
       reduced.addEventListener("change", onReducedChange);
@@ -319,12 +334,14 @@ export function HeroHalftone({ className = "" }: { className?: string }) {
     <div
       aria-hidden="true"
       className={`hero-halftone pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className}`}
-      data-live={live ? "true" : "false"}
+      data-state={state}
       ref={hostRef}
     >
-      {/* Painted on the server and by anything without WebGL2. The canvas fades
-          over it rather than replacing it, so there is no flash of bare paper
-          between first paint and the first frame. */}
+      {/* Nothing is painted until there is something to see. The server and the
+          first client render both leave the sheet blank, because a printed grid
+          of dots sitting still is exactly what this surface is not; the canvas
+          fades in on its own first frame. The still screen is only for a
+          browser that cannot run the shader at all. */}
       <div className="hero-halftone-static" />
       <canvas className="hero-halftone-canvas" ref={canvasRef} />
     </div>
