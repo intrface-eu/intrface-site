@@ -4,9 +4,9 @@
   "private": true,
   "packageManager": "bun@1.2.21",
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev --port ${AOC_PORT:-3101}",
     "build": "next build",
-    "start": "next start --port 3001",
+    "start": "next start --port ${AOC_PORT:-3101}",
     "lint": "eslint",
     "check-types": "node ../../node_modules/ts7/bin/tsc --noEmit",
     "clean": "rm -rf .turbo .next node_modules"

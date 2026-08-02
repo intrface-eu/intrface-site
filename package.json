@@ -23,6 +23,8 @@
   "devDependencies": {
     "ts7": "^7.0.1-rc",
     "turbo": "^2.9.6"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
   }
-  
 }

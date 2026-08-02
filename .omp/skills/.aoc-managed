@@ -1,0 +1,6 @@
+aoc-managed: true
+asset: omp-skills
+asset-version: 3
+source: .omp/skills
+sha256: 50c3fc9462ca2abf406f16498199f362f83eb00cb62b76888a8446f71fcb84f1
+updated-at: 2026-06-19T13:47:07Z

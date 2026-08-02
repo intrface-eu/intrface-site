@@ -75,3 +75,6 @@ ds-bundle/
 .design-sync/node_modules
 apps/web/.ds-css/
 apps/web/.ds-types/
+
+# Playwright MCP runtime output (screenshots, console logs)
+.playwright-mcp/

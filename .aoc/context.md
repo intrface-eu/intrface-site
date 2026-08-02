@@ -2,7 +2,8 @@
 
 ## Repository
 - Name: intrface-site
-- Root: /home/ceii/dev/intrface-site
+- Root: ../intrface-site
+- VCS: git
 - Git branch: main
 
 ## Key Files
@@ -30,14 +31,18 @@
 ./packages/config
 ./packages/ui
 ./.pi
+./.pi/agents
 ./.pi/extensions
 ./.pi/packages
 ./.pi/prompts
+./.pi/prompts-optional
 ./.pi/settings.json
 ./.pi/skills
 ./pnpm-workspace.yaml
 ./README.md
 ./tsconfig.base.json
+./.turbo
+./.turbo/cache
 ./turbo.json
 ./.vercel
 ./.vercel/project.json
