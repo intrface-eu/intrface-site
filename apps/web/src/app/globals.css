@@ -462,23 +462,33 @@ body {
      trim edge. The type never sits on a dot, which is how an animated surface
      is allowed in this hero at all. */
   .hero-halftone {
+    /* The still screen cannot measure the copy the way the shader does, so it
+       takes the safe reading of the same shape: nothing until the measure has
+       ended, solid before the trim edge. */
     --halftone-mask: linear-gradient(
       to right,
       transparent 0%,
-      transparent 42%,
-      rgba(0, 0, 0, 0.5) 66%,
-      black 88%
+      transparent 64%,
+      rgba(0, 0, 0, 0.55) 74%,
+      black 82%
     );
   }
 
   @media (max-width: 63.99em) {
     .hero-halftone {
+      /* Stacked, the clear sheet is above and below the copy rather than
+         beside it, so the safe reading has two bands. The top one starts a
+         hair under the header rule instead of butting it. */
       --halftone-mask: linear-gradient(
         to bottom,
-        transparent 0%,
-        transparent 46%,
-        rgba(0, 0, 0, 0.45) 74%,
-        black 99%
+        rgba(0, 0, 0, 0.6) 0%,
+        black 2%,
+        black 6%,
+        rgba(0, 0, 0, 0.5) 11%,
+        transparent 15%,
+        transparent 80%,
+        rgba(0, 0, 0, 0.5) 89%,
+        black 96%
       );
     }
   }
