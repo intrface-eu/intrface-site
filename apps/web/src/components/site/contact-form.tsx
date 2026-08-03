@@ -190,10 +190,15 @@ export function ContactForm({
         return;
       }
 
-      // No deployment configured, or the write failed: hand the message to the
-      // visitor's mail client and leave a visible link in case nothing opens.
-      setFallback(result.status === "unconfigured" ? "mail-client" : "failed");
-      window.location.href = href;
+      // Only an unconfigured deployment hands the message to the mail client.
+      // A transport failure remains on the page so the reader can see the error.
+      if (result.status === "unconfigured") {
+        setFallback("mail-client");
+        window.location.href = href;
+        return;
+      }
+
+      setFallback("failed");
     });
   }
 

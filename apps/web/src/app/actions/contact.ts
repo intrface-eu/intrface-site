@@ -8,13 +8,13 @@ import { routing, type AppLocale } from "@/i18n/routing";
 /**
  * Contact form transport.
  *
- * The form posts here; this sends the submission to Convex (`contact:submitContact`,
- * which writes `contactSubmissions` and schedules the Resend action).
+ * The form posts here; this sends the submission to Convex (`contact:submitContact`)
+ * when configured, otherwise directly to Resend.
  *
- * The deployment URL is read at request time from `NEXT_PUBLIC_CONVEX_URL`
- * (falling back to `CONVEX_URL`, the name Convex writes into `apps/convex/.env.local`).
- * When neither is set the action returns `unconfigured` and the form falls back to
- * `mailto:` — nothing here throws at import time, so the build never depends on env.
+ * Convex takes priority when `NEXT_PUBLIC_CONVEX_URL` (or `CONVEX_URL`) is set.
+ * Otherwise, Resend uses `RESEND_API_KEY`, `CONTACT_EMAIL_TO`, and
+ * `CONTACT_EMAIL_FROM`. When neither transport is configured, the action returns
+ * `unconfigured` and the form falls back to `mailto:`.
  */
 
 export type ContactFieldName = "name" | "email" | "message";
@@ -57,6 +57,14 @@ function deploymentUrl(): string {
   return url.trim().replace(/\/$/, "");
 }
 
+function resendConfig(): { apiKey: string; from: string; to: string } | null {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const from = process.env.CONTACT_EMAIL_FROM?.trim();
+  const to = process.env.CONTACT_EMAIL_TO?.trim();
+
+  return apiKey && from && to ? { apiKey, from, to } : null;
+}
+
 export async function submitContactForm(formData: FormData): Promise<ContactActionResult> {
   // Honeypot: a real person never sees this input, so anything in it is a bot.
   // Report success — a bot told it failed just retries.
@@ -71,7 +79,8 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   const topic = field(formData, "topic", LIMITS.subject);
   const locale = field(formData, "locale", LIMITS.locale);
 
-  const t = await getTranslations({ locale: resolveLocale(locale), namespace: "ContactForm" });
+  const resolvedLocale = resolveLocale(locale);
+  const t = await getTranslations({ locale: resolvedLocale, namespace: "ContactForm" });
 
   const errors: Partial<Record<ContactFieldName, string>> = {};
   if (name.length < 2) errors.name = t("errorName");
@@ -82,27 +91,70 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     return { status: "invalid", errors };
   }
 
+  const subject = topic ? t("subjectWithTopic", { topic, name }) : t("subjectFallback");
   const url = deploymentUrl();
-  if (!url) {
+
+  if (url) {
+    try {
+      const client = new ConvexHttpClient(url);
+      await client.mutation(submitContactRef, {
+        name,
+        email,
+        subject,
+        message,
+        company: company || undefined,
+        locale: locale || undefined,
+      });
+
+      return { status: "sent" };
+    } catch (error) {
+      console.error("[contact] Convex submission failed", error);
+      return { status: "failed" };
+    }
+  }
+
+  const resend = resendConfig();
+  if (!resend) {
     return { status: "unconfigured" };
   }
 
-  const subject = topic ? t("subjectWithTopic", { topic, name }) : t("subjectFallback");
+  const text = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    company ? `Company: ${company}` : null,
+    topic ? `Topic: ${topic}` : null,
+    `Locale: ${resolvedLocale}`,
+    "",
+    message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
 
   try {
-    const client = new ConvexHttpClient(url);
-    await client.mutation(submitContactRef, {
-      name,
-      email,
-      subject,
-      message,
-      company: company || undefined,
-      locale: locale || undefined,
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resend.apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: resend.from,
+        to: [resend.to],
+        reply_to: email,
+        subject,
+        text,
+      }),
+      signal: AbortSignal.timeout(10_000),
     });
+
+    if (!response.ok) {
+      console.error("[contact] Resend submission failed", response.status, await response.text());
+      return { status: "failed" };
+    }
 
     return { status: "sent" };
   } catch (error) {
-    console.error("[contact] Convex submission failed", error);
+    console.error("[contact] Resend submission failed", error);
     return { status: "failed" };
   }
 }
