@@ -963,7 +963,7 @@
       },
       "form": {
         "title": "Le formulaire de contact",
-        "body": "Le formulaire de notre <link>section contact</link> transmet le nom, l'adresse e-mail, la société, le sujet et le message que vous saisissez. Nous conservons cet envoi et nous l'expédions à nous-mêmes par e-mail pour pouvoir vous répondre. Nous ne l'utilisons pour rien d'autre et ne le vendons pas. Demandez-nous de supprimer votre message et nous le ferons."
+        "body": "Le formulaire de notre <link>section contact</link> transmet le nom, l'adresse e-mail, la société, le sujet et le message que vous saisissez. Nous conservons cet envoi et nous nous l'envoyons par e-mail pour pouvoir vous répondre — vous répondre est notre seule base juridique (RGPD art. 6(1)(b) : mesures que vous nous demandez de prendre avant un contrat). Trois services le traitent : Vercel héberge ce site et exécute le formulaire, Resend achemine l'e-mail et Google Workspace héberge notre boîte de réception. Nous conservons un message aussi longtemps que la conversation dont il fait partie, puis nous le supprimons. Nous ne l'utilisons pour rien d'autre et ne le vendons pas. Demandez-nous à hello@intrface.eu de supprimer votre message et nous le ferons."
       }
     }
   },

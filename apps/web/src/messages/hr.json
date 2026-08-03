@@ -954,7 +954,7 @@
       },
       "form": {
         "title": "Kontakt obrazac",
-        "body": "Obrazac u našem <link>kontakt dijelu</link> šalje ime, adresu e-pošte, tvrtku, temu i poruku koju upišete. Tu prijavu spremamo i šaljemo si je e-poštom kako bismo vam mogli odgovoriti. Ne koristimo je ni za što drugo i ne prodajemo je. Zatražite brisanje svoje poruke i obrisat ćemo je."
+        "body": "Obrazac u našem <link>kontakt dijelu</link> šalje ime, adresu e-pošte, tvrtku, temu i poruku koju upišete. Tu prijavu spremamo i šaljemo si je e-poštom kako bismo vam mogli odgovoriti — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci koje ste od nas zatražili prije sklapanja ugovora). Obrađuju je tri usluge: Vercel poslužuje ovu stranicu i pokreće obrazac, Resend dostavlja e-poštu, a Google Workspace čuva naš sandučić. Poruku čuvamo koliko i razgovor kojem pripada, a zatim je brišemo. Ne koristimo je ni za što drugo i ne prodajemo je. Zatražite na hello@intrface.eu brisanje svoje poruke i obrisat ćemo je."
       }
     }
   },

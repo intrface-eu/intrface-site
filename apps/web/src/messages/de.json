@@ -963,7 +963,7 @@
       },
       "form": {
         "title": "Das Kontaktformular",
-        "body": "Das Formular in unserem <link>Kontaktbereich</link> übermittelt Name, E-Mail-Adresse, Unternehmen, Thema und Nachricht, die Sie eingeben. Wir speichern diese Übermittlung und schicken sie uns per E-Mail selbst zu, damit wir Ihnen antworten können. Wir nutzen sie für nichts anderes und verkaufen sie nicht. Bitten Sie uns, Ihre Nachricht zu löschen, und wir tun es."
+        "body": "Das Formular in unserem <link>Kontaktbereich</link> übermittelt Name, E-Mail-Adresse, Unternehmen, Thema und Nachricht, die Sie eingeben. Wir speichern diese Übermittlung und schicken sie uns per E-Mail selbst zu, damit wir Ihnen antworten können — Ihnen zu antworten ist die gesamte Rechtsgrundlage (DSGVO Art. 6 Abs. 1 lit. b: Schritte, die Sie vor einem Vertrag von uns verlangt haben). Drei Dienste verarbeiten sie: Vercel stellt diese Website bereit und betreibt das Formular, Resend stellt die E-Mail zu, und Google Workspace hält unser Postfach. Wir bewahren eine Nachricht so lange auf wie das Gespräch, zu dem sie gehört, und löschen sie dann. Wir nutzen sie für nichts anderes und verkaufen sie nicht. Bitten Sie uns unter hello@intrface.eu, Ihre Nachricht zu löschen, und wir tun es."
       }
     }
   },

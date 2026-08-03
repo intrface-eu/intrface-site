@@ -935,7 +935,7 @@
       },
       "form": {
         "title": "The contact form",
-        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you. We do not use it for anything else and we do not sell it. Ask us to delete your message and we will."
+        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you — answering you is the whole legal basis (GDPR Art. 6(1)(b): steps you asked us to take before a contract). Three services carry it: Vercel serves this site and runs the form, Resend delivers the email, and Google Workspace holds our inbox. We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it. Ask us to delete your message at hello@intrface.eu and we will."
       }
     }
   },
