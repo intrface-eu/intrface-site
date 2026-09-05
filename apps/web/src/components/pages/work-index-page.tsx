@@ -9,23 +9,32 @@ import {
   type LedgerFigure,
 } from "@/components/work/index/portfolio-ledger";
 
-/** Row order, route, and the "running in the world" flag. Copy comes from messages. */
+/**
+ * Row order, route, and the "running in the world" flag. Copy comes from
+ * messages. The order is the canonical product table in
+ * `docs/site-revamp-contract.md`. MidiFlow and Patchbay have no case page, so
+ * they carry no route and the ledger renders them as plain rows.
+ */
 const ENTRY_SHAPE = [
   { index: "01", key: "voyager", href: "/work/voyager", live: false },
   { index: "02", key: "polis", href: "/work/polis", live: false },
   { index: "03", key: "funda", href: "/work/funda", live: false },
-  { index: "04", key: "clientSites", href: "/work/client-sites", live: true },
-] as const;
+  { index: "04", key: "midiflow", live: false },
+  { index: "05", key: "patchbay", live: false },
+  { index: "06", key: "clientSites", href: "/work/client-sites", live: true },
+] as const satisfies readonly { index: string; key: string; href?: string; live: boolean }[];
 
 export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "WorkIndex" });
 
   const entries: LedgerEntry[] = ENTRY_SHAPE.map((entry) => ({
     index: entry.index,
-    href: entry.href,
+    ...("href" in entry ? { href: entry.href } : {}),
     live: entry.live,
     name: t(`entries.${entry.key}.name`),
     status: t(`entries.${entry.key}.status`),
+    interfaceLine: t(`entries.${entry.key}.interface`),
+    pair: t(`entries.${entry.key}.pair`),
     claim: t(`entries.${entry.key}.claim`),
     figures: t.raw(`entries.${entry.key}.figures`) as LedgerFigure[],
   }));
@@ -50,7 +59,7 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
 
       <section className="tone-raised">
         <div className="section-shell py-16 sm:py-20">
-          <PortfolioLedger entries={entries} />
+          <PortfolioLedger entries={entries} pairLabel={t("pairLabel")} />
         </div>
       </section>
 

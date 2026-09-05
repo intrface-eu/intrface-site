@@ -14,11 +14,18 @@ import {
   CONTACT_PHONE_TEL,
 } from "@/lib/site/config";
 
+/**
+ * The five products of our own. MidiFlow and Patchbay have no case page, so
+ * their rows are plain text — see `docs/site-revamp-contract.md` for what may
+ * and may not be said about either.
+ */
 const OWN_PLATFORMS = [
   { key: "voyager", href: "/work/voyager" },
   { key: "polis", href: "/work/polis" },
   { key: "funda", href: "/work/funda" },
-] as const;
+  { key: "midiflow" },
+  { key: "patchbay" },
+] as const satisfies readonly { key: string; href?: string }[];
 
 export async function AboutPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "About" });
@@ -47,6 +54,9 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
     // Prose type, not `.type-data`: the value is a mixed run of a legal name, two
     // identifiers and a court, and mono rags badly in the aside's column width.
     { term: t("company.facts.registry.term"), value: t("company.facts.registry.value") },
+    // The registered activity is a legal fact, not the positioning — it lives
+    // here and in the imprint, never in the headline or the description.
+    { term: t("company.facts.activity.term"), value: t("company.facts.activity.value") },
     { term: t("company.facts.vat.term"), value: t("company.facts.vat.value") },
     {
       term: t("company.facts.phone.term"),
@@ -128,25 +138,34 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
         tone="ink"
       >
         <dl className="divide-y divide-rule border-y border-rule">
-          {OWN_PLATFORMS.map((platform, index) => (
-            <FadeIn
-              className="grid gap-3 py-7 lg:grid-cols-[14rem_1fr] lg:gap-10"
-              delay={index * 70}
-              key={platform.key}
-            >
-              <dt>
-                <Link
-                  className="type-subheading inline-flex items-center gap-2 transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-                  href={platform.href}
-                >
-                  {t(`platforms.${platform.key}.name`)}
-                  <IconArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
-                <p className="type-caption mt-2">{t(`platforms.${platform.key}.status`)}</p>
-              </dt>
-              <dd className="type-body">{t(`platforms.${platform.key}.description`)}</dd>
-            </FadeIn>
-          ))}
+          {OWN_PLATFORMS.map((platform, index) => {
+            const href = "href" in platform ? platform.href : undefined;
+            const name = t(`platforms.${platform.key}.name`);
+
+            return (
+              <FadeIn
+                className="grid gap-3 py-7 lg:grid-cols-[14rem_1fr] lg:gap-10"
+                delay={index * 70}
+                key={platform.key}
+              >
+                <dt>
+                  {href ? (
+                    <Link
+                      className="type-subheading inline-flex items-center gap-2 transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+                      href={href}
+                    >
+                      {name}
+                      <IconArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <span className="type-subheading">{name}</span>
+                  )}
+                  <p className="type-caption mt-2">{t(`platforms.${platform.key}.status`)}</p>
+                </dt>
+                <dd className="type-body">{t(`platforms.${platform.key}.description`)}</dd>
+              </FadeIn>
+            );
+          })}
         </dl>
 
         <FadeIn delay={220}>

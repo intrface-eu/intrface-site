@@ -63,17 +63,25 @@ const HERO_ARTIFACTS = [
   },
 ] as const;
 
+/**
+ * The five products of our own, in the canonical table order. MidiFlow and
+ * Patchbay have no case page and no approved numbers yet, so they carry no
+ * href — the ledger renders those rows without a link rather than with a dead
+ * one. See `docs/site-revamp-contract.md`.
+ */
 const FEATURED_SYSTEMS = [
   { key: "voyager", href: "/work/voyager" },
   { key: "polis", href: "/work/polis" },
   { key: "funda", href: "/work/funda" },
-] as const;
+  { key: "midiflow" },
+  { key: "patchbay" },
+] as const satisfies readonly { key: string; href?: string }[];
 
 export async function HomePage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomePage" });
   const path = (href: string) => getPathname({ href, locale });
 
-  const thesisColumns = t.raw("thesis.columns") as { label: string; text: string }[];
+  const doctrineSteps = t.raw("doctrine.columns") as { label: string; text: string }[];
   const clientPipeline = t.raw("proof.pipeline") as string[];
   const methodSteps = t.raw("method.steps") as ProcessStep[];
   const contactTopics = t.raw("contact.topics") as string[];
@@ -104,16 +112,21 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
     ],
   }));
 
-  const featuredSystems: FeaturedSystem[] = FEATURED_SYSTEMS.map((system) => ({
-    name: t(`systems.${system.key}.name`),
-    status: t(`systems.${system.key}.status`),
-    claim: t(`systems.${system.key}.claim`),
-    spec: t.raw(`systems.${system.key}.spec`) as string[],
-    linkLabel: t(`systems.${system.key}.linkLabel`),
-    // SystemLedger renders the locale-aware `Link`, so the raw route goes in —
-    // prefixing here produced /en/en/work/voyager.
-    href: system.href,
-  }));
+  const featuredSystems: FeaturedSystem[] = FEATURED_SYSTEMS.map((system) => {
+    const href = "href" in system ? system.href : undefined;
+
+    return {
+      name: t(`products.${system.key}.name`),
+      status: t(`products.${system.key}.status`),
+      interfaceLine: t(`products.${system.key}.interface`),
+      pair: t(`products.${system.key}.pair`),
+      claim: t(`products.${system.key}.claim`),
+      spec: t.raw(`products.${system.key}.spec`) as string[],
+      // SystemLedger renders the locale-aware `Link`, so the raw route goes in —
+      // prefixing here produced /en/en/work/voyager.
+      ...(href ? { href, linkLabel: t(`products.${system.key}.linkLabel`) } : {}),
+    };
+  });
 
   return (
     <main className="bg-paper text-ink">
@@ -168,48 +181,74 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
         </div>
       </section>
 
-      {/* THESIS — raised paper, an editorial spread. Claim across the full
-          measure, the argument set in two columns under it, three named
-          consequences on a rule below that. Deliberately not the same
-          asymmetric two-column grid the method band uses. */}
-      <section className="scroll-mt-24 border-b border-rule tone-raised" id="thesis">
+      {/* DOCTRINE — raised paper. Three steps of one argument across the
+          measure, then the house line on a rule under them. No lead paragraph:
+          the steps are the argument, and a paragraph restating them before they
+          arrive is the announcing intro DESIGN.md and the copy contract both
+          rule out. */}
+      <section className="scroll-mt-24 border-b border-rule tone-raised" id="doctrine">
         <div className="section-shell py-20 sm:py-28">
           <FadeIn>
-            <p className="type-section-label">{t("thesis.label")}</p>
+            <p className="type-section-label">{t("doctrine.label")}</p>
           </FadeIn>
           <FadeIn delay={100}>
-            <h2 className="type-heading mt-4">{t("thesis.title")}</h2>
+            <h2 className="type-heading mt-4 max-w-3xl">{t("doctrine.title")}</h2>
           </FadeIn>
-
-          <div className="mt-10 grid gap-x-14 gap-y-5 lg:grid-cols-2">
-            <FadeIn delay={160}>
-              <p className="type-body-lg">{t("thesis.p1")}</p>
-            </FadeIn>
-            <FadeIn delay={220}>
-              <p className="type-body-lg">{t("thesis.p2")}</p>
-            </FadeIn>
-          </div>
 
           {/* Rule above each cell, gutters from the gap. The old vertical
               dividers gave the middle cell two insets and the outer two one
               each, so the third column ran flush into the shell edge. */}
-          <div className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-3">
-            {thesisColumns.map((item, index) => (
+          <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-3">
+            {doctrineSteps.map((step, index) => (
               <FadeIn
                 className="border-t border-rule pt-5"
-                delay={280 + index * 70}
-                key={item.label}
+                delay={160 + index * 70}
+                key={step.label}
               >
-                <h3 className="type-title text-ink">{item.label}</h3>
-                <p className="type-body-sm mt-2">{item.text}</p>
+                <p className="type-meta tabular-nums">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="type-title mt-3 text-ink">{step.label}</h3>
+                <p className="type-body-sm mt-2">{step.text}</p>
               </FadeIn>
             ))}
+          </div>
+
+          <FadeIn delay={400}>
+            <p className="type-subheading mt-14 max-w-3xl border-t border-rule pt-8 text-ink">
+              {t("doctrine.house")}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* WHAT WE BUILD — ink band, ledger with the canonical status labels.
+          MidiFlow and Patchbay sit here with no link and no figures; the row
+          shape is identical so the argument reads as one list, not as three
+          products and two footnotes. */}
+      <section className="scroll-mt-24 border-y border-rule tone-ink" id="build">
+        <div className="section-shell py-20 sm:py-28">
+          <div className="max-w-3xl">
+            <FadeIn>
+              <p className="type-section-label">{t("products.label")}</p>
+            </FadeIn>
+            <FadeIn delay={100}>
+              <h2 className="type-heading mt-4 text-white">{t("products.title")}</h2>
+            </FadeIn>
+            <FadeIn delay={180}>
+              <p className="type-body-lg mt-5">{t("products.intro")}</p>
+            </FadeIn>
+          </div>
+
+          <div className="mt-14">
+            <SystemLedger pairLabel={t("products.pairLabel")} systems={featuredSystems} />
           </div>
         </div>
       </section>
 
-      {/* PROOF — paper, the live site as a framed receipt, pipeline above it */}
-      <section className="scroll-mt-24 border-b border-rule tone-paper" id="live">
+      {/* FOR BUSINESSES — paper. The sixth interface, and the services door: a
+          buyer who wants a site has to be able to land here without reading the
+          doctrine, so the pipeline, the live exhibit and the case link all stay
+          above the fold of this band. */}
+      <section className="scroll-mt-24 border-b border-rule tone-paper" id="for-businesses">
         <div className="section-shell py-20 sm:py-28">
           <div className="max-w-3xl">
             <FadeIn>
@@ -218,7 +257,13 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
             <FadeIn delay={100}>
               <h2 className="type-heading mt-4">{t("proof.title")}</h2>
             </FadeIn>
-            <FadeIn delay={180}>
+            <FadeIn delay={160}>
+              <p className="mt-4">
+                <span className="type-meta">{t("products.pairLabel")}</span>{" "}
+                <span className="type-artifact">{t("proof.pair")}</span>
+              </p>
+            </FadeIn>
+            <FadeIn delay={220}>
               <p className="type-body-lg mt-5">{t("proof.intro")}</p>
             </FadeIn>
           </div>
@@ -268,27 +313,6 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               </Link>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* SYSTEMS — ink band, ledger with honest status labels */}
-      <section className="scroll-mt-24 border-y border-rule tone-ink" id="systems">
-        <div className="section-shell py-20 sm:py-28">
-          <div className="max-w-3xl">
-            <FadeIn>
-              <p className="type-section-label">{t("systems.label")}</p>
-            </FadeIn>
-            <FadeIn delay={100}>
-              <h2 className="type-heading mt-4 text-white">{t("systems.title")}</h2>
-            </FadeIn>
-            <FadeIn delay={180}>
-              <p className="type-body-lg mt-5">{t("systems.intro")}</p>
-            </FadeIn>
-          </div>
-
-          <div className="mt-14">
-            <SystemLedger systems={featuredSystems} />
-          </div>
         </div>
       </section>
 

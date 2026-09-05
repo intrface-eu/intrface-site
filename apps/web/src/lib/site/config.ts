@@ -5,10 +5,10 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://intrface.e
 // Kept character-for-character identical to the Metadata namespace in
 // messages/en.json — one canonical sentence per fact, reused rather than
 // paraphrased. Change both or neither.
-export const SITE_TAGLINE = "IT consulting from Istria. Software for businesses that already run.";
+export const SITE_TAGLINE = "Interfaces for the world.";
 
 export const SITE_DESCRIPTION =
-  "INTRFACE is an IT consultancy in Vrsar, Istria. Software for businesses that already run, plus Voyager, Polis and Funda of our own.";
+  "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, Polis, Funda, MidiFlow and Patchbay of our own, and sites for businesses across the EU.";
 
 export const CONTACT_EMAIL = "hello@intrface.eu";
 

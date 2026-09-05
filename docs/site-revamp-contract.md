@@ -4,23 +4,68 @@ This document is the source of truth for the July 2026 site revamp. Every implem
 agent reads this before touching code. It encodes the positioning research (five-agent
 deep dive, 2026-07-27) and the file-ownership map that keeps parallel work from colliding.
 
-## Positioning
+## Positioning (revised 2026-09-03 — supersedes the July frame)
 
-INTRFACE builds software with an industrialized, open-source AI-agent delivery system,
-and proves it three ways:
+**INTRFACE builds interfaces for the world.** Not screens. An interface here is the
+layer a person meets a system through. That single idea is why one company owns a
+tourism platform, a civic ledger, a funding matcher, a music app and an artist network,
+and it is the criterion for what belongs on this site.
 
-1. **Live client work** — bilingual sites for Istrian coastal businesses, produced by a
-   repeatable Instagram-to-deployed-site pipeline. One is public (Velum); see the
-   roster rule under Approved facts before naming or linking any other.
-2. **Deep platforms** — Voyager (tourism place-intelligence platform), Polis (civic
-   trust infrastructure), Funda (EU-funding matching SaaS).
-3. **The delivery system itself** — AOC, open source at
-   github.com/basicalex/agent-ops-cockpit, running thirteen of our own repos on the
-   same versioned agent contract, with human-verified commits.
+The company is a product company with a services door, not a consultancy with side
+projects. The site leads with what we build; client work is one of the interfaces
+(a business and its customers) and stays plainly findable for a buyer who only wants
+a site.
 
-The existing thesis ("software is becoming the interface to everything"; "bring us the
-messy system") stays. What changes: every claim now sits on evidence — a number, a link,
-a screenshot, or a named artifact.
+### The doctrine — fixed wording, used once each on the home page
+
+1. **The world already runs on systems.** Cities, institutions, landscapes, music,
+   businesses, communities.
+2. **Most of them are badly mediated.** Tourism becomes a review site. Civic
+   participation becomes PDFs and office hours. Music software becomes machinery.
+   An artist network becomes a feed.
+3. **INTRFACE builds the missing human side.**
+
+House line, once, on the home page: *"The best interface makes the system behind it
+understandable without making you think about the interface."*
+
+Admission test, once, on `/about`: *"What two things does this create an interface
+between? If there is no clear answer, it is not an INTRFACE product."*
+
+The "Don't make people operate X software. Help them Y." construction is an antithesis
+and counts against the per-page budget below. Use it at most once per page, never as a
+list.
+
+### Canonical product lines — character-for-character everywhere they appear
+
+| Product | The interface … | Pair | Status label (exact) | Claim line (exact) |
+|---|---|---|---|---|
+| Voyager | for a place | visitor ↔ place | Pre-launch | One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. |
+| Polis | to the city | citizen ↔ institution | Open source · AGPL · pre-deployment | A governance graph where every public claim traces back to a source document. |
+| Funda | to EU funding | organization ↔ funding | Active build | Reads EU funding calls as they publish and matches them to the organizations that fit. |
+| MidiFlow | for musical thought | musician ↔ sound | Pre-launch | The least machinery possible between an idea you can hear and a computer that plays it. |
+| Patchbay | for making things with other artists | artist ↔ artist | Pre-launch | Artists find each other and make work together, with no feed in between. |
+| Client sites | between a business and its customers | customer ↔ business | Live · Vrsar | A coastal business goes from an Instagram profile to a live bilingual site in one continuous pass. |
+
+The pair may be rendered with the ↔ glyph or as two words on a rule; whichever, the
+same treatment on every row. "Polis Interface" remains the product's full name in the
+footer and metadata; rows and prose say "Polis".
+
+### Tagline and metadata
+
+- Tagline, exact: **Interfaces for the world.** It is the home H1, the `Metadata.tagline`,
+  the OG-image tagline and the first sentence of the footer tagline.
+- `Metadata.description` names the six interfaces in one sentence and the place (Vrsar,
+  Istria). No "IT consulting" in the description; the registered activity lives in the
+  `/about` facts ledger and the imprint only.
+
+### Home page order
+
+hero (tagline, one defining lead, two actions) → evidence strip (unchanged: Velum,
+Voyager, Agent Ops Cockpit) → doctrine (the three steps above, the house line) →
+what we build (five own products with pair and status; MidiFlow and Patchbay rows carry
+no link) → for businesses (the Velum exhibit and the client-sites link — this is the
+services door) → method teaser (unchanged) → contact (unchanged; "Bring us the messy
+system" stays).
 
 ## Voice rules (from the house prose style — binding)
 
@@ -41,7 +86,8 @@ These are the habits that made the copy read machine-written. They recur; watch 
    sentence, reused character-for-character (the Voyager QR line, the contract-files line,
    each honest-status label). Never paraphrase to avoid repetition.
 2. **Status labels are the product.** Exactly these spellings, everywhere: Voyager
-   "Pre-launch" · Polis "Open source · AGPL · pre-deployment" · Funda "Active build".
+   "Pre-launch" · Polis "Open source · AGPL · pre-deployment" · Funda "Active build" ·
+   MidiFlow "Pre-launch" · Patchbay "Pre-launch" · Client sites "Live · Vrsar".
    Inconsistent labels disprove the pitch they carry.
 3. **Sentence-shape templates.** "N X, one Y." and "X is not A. It is B." are the house
    voice in small doses. Rule: no antithesis in a section intro, never two in consecutive
@@ -74,9 +120,9 @@ platforms of our own". Where an approved number fits, use the number.
 | platform · platforms | `/work/voyager` ("place-intelligence platform") | 0 — name Voyager, Polis, Funda |
 | system | the protected CTA "Bring us the messy system", the home H1, `/about` step "Map the system" | ≤2 per namespace |
 | source | `/work/polis` ("source document") | ≤2 per namespace; "Open source" as a status label does not count against prose |
-| layer | `/work/polis` (accountability layer) | 0 |
+| layer | the doctrine definition on the home hero lead ("the layer a person meets a system through"); `/work/polis` (accountability layer) | 0 |
 | proof · evidence | section labels on `/work/*` | ≤1 per namespace |
-| interface | the thesis line, and the product names Polis Interface / INTRFACE | ≤1 per namespace |
+| interface | the tagline, the doctrine, the house line, the admission test, and the canonical "the interface for/to X" product lines | ≤2 in free prose per namespace, and only in the doctrine sense ("the interface for/to X", "an interface between A and B"). Never "user interface", "UI", "interface design", or "interfaces" meaning screens. |
 
 **Namespace ceiling: ~35 hits per 1,000 words.** Three namespaces sit structurally above it
 and that is expected — the metric counts proper nouns and canonical labels it cannot
@@ -201,6 +247,15 @@ source document.
 funding. Multi-role SaaS (admin/consultant/corporate/director), AI-agent ingestion of
 EU sources (SEDIA/TED), geospatial matching, three languages. Next.js + Convex + Clerk.
 
+**MidiFlow** (proprietary, pre-launch): a music app. It runs as an installed app and has
+been tested on a phone; it is not published. Nothing else is approved: no store link, no
+screenshot, no counts, no feature list beyond the canonical claim line. Spell it "MidiFlow".
+
+**Patchbay** (proprietary, pre-launch): an interface for artists making work together.
+A build is online at a domain that is not yet public. Do not name or link the domain,
+do not screenshot it, do not describe features beyond the canonical claim line. The
+branding is in progress; use the plain word "Patchbay" set in body type, no mark.
+
 **Delivery system / method:**
 - AOC is public: github.com/basicalex/agent-ops-cockpit — Apache-2.0, 403 commits,
   8 Rust crates, 51 CLI commands.
@@ -221,14 +276,14 @@ All routes under `apps/web/src/app/[locale]/`:
 
 | Route | Page component (owner file) | Content |
 |---|---|---|
-| `/` | `components/pages/home-page.tsx` | Thesis → proof strip (live sites) → featured systems (Voyager, Polis, Funda) → method teaser → contact |
-| `/work` | `components/pages/work-index-page.tsx` | Portfolio index: 4 case cards + client-sites card |
+| `/` | `components/pages/home-page.tsx` | See "Home page order" under Positioning |
+| `/work` | `components/pages/work-index-page.tsx` | Ledger of the six interfaces in the canonical table; MidiFlow and Patchbay rows have no case page and no link |
 | `/work/voyager` | `components/pages/work-voyager-page.tsx` | Case study |
 | `/work/polis` | `components/pages/work-polis-page.tsx` | Case study |
 | `/work/funda` | `components/pages/work-funda-page.tsx` | Case study |
 | `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Istria client-site case study: the Velum exhibit, the pipeline, an unnamed "in delivery" note |
 | `/method` | `components/pages/method-page.tsx` | The agent-orchestrated delivery system, linking the public AOC repo |
-| `/about` | `components/pages/about-page.tsx` | Who/where/how we engage + contact form |
+| `/about` | `components/pages/about-page.tsx` | The doctrine and the admission test, who/where/how we engage, own products incl. MidiFlow and Patchbay, contact form |
 | `/imprint` | `components/pages/imprint-page.tsx` | Legal/imprint basics for an .eu company |
 
 Case pages follow one shared shape (shared components, see below): case hero (name,

@@ -11,7 +11,7 @@
     "skipToContent": "Aller au contenu"
   },
   "Footer": {
-    "tagline": "Conseil informatique et développement d'entreprise, Istrie. Des logiciels pour nos clients ; Voyager, Polis et Funda sont à nous.",
+    "tagline": "Des interfaces pour le monde. Voyager, Polis, Funda, MidiFlow et Patchbay sont à nous ; les sites clients sont le même travail sous un autre nom.",
     "location": "Istrie, Croatie · UE",
     "newTab": "s'ouvre dans un nouvel onglet",
     "work": {
@@ -45,11 +45,11 @@
     "screenshotPending": "Capture à venir"
   },
   "Metadata": {
-    "tagline": "Conseil informatique depuis l'Istrie. Des logiciels pour des entreprises qui tournent déjà.",
-    "description": "INTRFACE est un cabinet de conseil informatique à Vrsar, en Istrie. Des logiciels pour des entreprises qui tournent déjà, plus Voyager, Polis et Funda à nous.",
+    "tagline": "Des interfaces pour le monde.",
+    "description": "INTRFACE construit des interfaces pour le monde depuis Vrsar, en Istrie : Voyager, Polis, Funda, MidiFlow et Patchbay à nous, et des sites pour des entreprises dans toute l'UE.",
     "work": {
       "title": "Réalisations",
-      "description": "Quatre cas : un site de bar à vins en ligne à Vrsar, Voyager, Polis et Funda. Chacun indique le statut qu'il a aujourd'hui, pas celui qu'il aura au lancement."
+      "description": "Six interfaces : Voyager, Polis, Funda, MidiFlow, Patchbay et les sites clients. Une est en ligne ; les cinq autres indiquent le statut qu'elles ont aujourd'hui, pas celui qu'elles auront au lancement."
     },
     "voyager": {
       "title": "Voyager",
@@ -73,7 +73,7 @@
     },
     "about": {
       "title": "À propos",
-      "description": "INTRFACE est une société de conseil informatique et de développement d'entreprise en Istrie, Croatie. Comment se déroule une mission, ce que nous construisons nous-mêmes et comment nous joindre."
+      "description": "INTRFACE construit des interfaces pour le monde — une seule personne au développement, à Vrsar, en Istrie. Cinq produits à nous, des sites pour des clients, et le seul test que tout ici doit passer."
     },
     "imprint": {
       "title": "Mentions légales",
@@ -83,12 +83,12 @@
   "HomePage": {
     "hero": {
       "eyebrow": "Intrface · Istrie, Croatie",
-      "title": "Nous construisons le logiciel. Et le système qui le construit.",
-      "lead": "Un site client en ligne à Vrsar, et trois systèmes à nous encore avant lancement. Tout ce qui est sur cette page peut être ouvert et vérifié.",
-      "seeWork": "Voir où en est chaque système",
-      "talk": "Lancer une revue de système",
+      "title": "Des interfaces pour le monde.",
+      "lead": "Une interface, c'est la couche par laquelle une personne rencontre un système : un visiteur et un lieu, un citoyen et une institution, un musicien et un son. Nous construisons le côté humain qui manque, pour nous et pour les entreprises qui nous engagent.",
+      "seeWork": "Voir ce que nous construisons",
+      "talk": "Apportez-nous le vôtre",
       "proofLabel": "Ouvrez n'importe lequel",
-      "metaTitle": "Le logiciel, et le système qui le construit.",
+      "metaTitle": "Des interfaces pour le monde.",
       "proof": {
         "velum": {
           "name": "Velum",
@@ -110,24 +110,90 @@
         }
       }
     },
-    "thesis": {
-      "label": "La thèse",
-      "title": "Un écran qui cache l'état du système n'est pas une interface.",
-      "p1": "Les clients ne vivent pas votre stratégie. Ils vivent l'interface. Les citoyens rencontrent la politique publique sous forme de formulaires, de guichets et de délais.",
-      "p2": "Un visiteur rencontre une destination sous forme de carte, d'itinéraire à pied et de question posée dans une langue que personne au comptoir ne lit. C'est cela que nous construisons.",
+    "doctrine": {
+      "label": "La doctrine",
+      "title": "Pourquoi un registre civique et une application musicale viennent de la même entreprise.",
       "columns": [
         {
-          "label": "Se repérer",
-          "text": "Voyager répond au visiteur en six langues, sur sept interfaces, depuis un seul modèle de données."
+          "label": "Le monde tourne déjà sur des systèmes.",
+          "text": "Villes, institutions, paysages, musique, entreprises, communautés."
         },
-        { "label": "Confiance", "text": "Chaque affirmation dans Polis mène à une empreinte, un cachet et un horodatage." },
-        { "label": "Réalisation", "text": "Profil Instagram en entrée, URL en ligne en sortie, en six étapes." }
-      ]
+        {
+          "label": "La plupart passent par de mauvaises interfaces.",
+          "text": "Le tourisme devient un site d'avis. La participation citoyenne devient des PDF et des heures d'ouverture. Le logiciel musical devient une machinerie. Un réseau d'artistes devient un fil d'actualité."
+        },
+        {
+          "label": "INTRFACE construit le côté humain qui manque.",
+          "text": "N'obligez pas un visiteur à piloter un logiciel touristique. Aidez-le à trouver le sentier, dans une langue qu'il lit."
+        }
+      ],
+      "house": "La meilleure interface rend compréhensible le système qui est derrière sans vous faire penser à l'interface."
+    },
+    "products": {
+      "label": "Ce que nous construisons",
+      "title": "Cinq à nous.",
+      "intro": "Avant lancement veut dire avant lancement. Rien ici ne revendique des utilisateurs qu'il n'a pas.",
+      "pairLabel": "Entre",
+      "voyager": {
+        "name": "Voyager",
+        "status": "Avant lancement",
+        "interface": "L'interface pour un lieu.",
+        "pair": "visiteur ↔ lieu",
+        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires.",
+        "spec": [
+          "6 langues",
+          "7 surfaces, 1 modèle de données",
+          "Multi-tenant"
+        ],
+        "linkLabel": "Lire le cas Voyager"
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Open source · AGPL · avant déploiement",
+        "interface": "L'interface avec la ville.",
+        "pair": "citoyen ↔ institution",
+        "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
+        "spec": [
+          "Open source",
+          "Chaque affirmation vérifiable",
+          "Rien d'auto-déclaré"
+        ],
+        "linkLabel": "Lire le cas Polis"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Construction active",
+        "interface": "L'interface avec les financements européens.",
+        "pair": "organisation ↔ financement",
+        "claim": "Lit les appels à financement européens dès leur parution et les rapproche des organisations qui correspondent.",
+        "spec": [
+          "4 rôles",
+          "3 langues",
+          "Sources de financement européen"
+        ],
+        "linkLabel": "Lire le cas Funda"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Avant lancement",
+        "interface": "L'interface pour la pensée musicale.",
+        "pair": "musicien ↔ son",
+        "claim": "Le moins de machinerie possible entre une idée que vous entendez et un ordinateur qui la joue.",
+        "spec": []
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Avant lancement",
+        "interface": "L'interface pour créer avec d'autres artistes.",
+        "pair": "artiste ↔ artiste",
+        "claim": "Des artistes se trouvent et créent ensemble, sans fil d'actualité entre eux.",
+        "spec": []
+      }
     },
     "proof": {
-      "label": "Preuve",
-      "title": "Livré et en ligne.",
-      "intro": "Un bar à vins sur le front de mer de Vrsar, construit à partir du profil Instagram du client et mené jusqu'à une URL en ligne d'un seul tenant.",
+      "label": "Pour les entreprises",
+      "title": "L'interface entre une entreprise et ses clients.",
+      "intro": "Un commerce du littoral passe d'un profil Instagram à un site bilingue en ligne d'un seul tenant.",
       "pipeline": [
         "Profil Instagram",
         "Analyse du contenu",
@@ -148,36 +214,15 @@
           "place": "Front de mer de Vrsar",
           "kind": "Café et bar à vins",
           "description": "Croate et anglais, sur des jetons de design tirés du matériau du bar. Le même studio a produit son motion design sous Remotion.",
-          "notes": ["LocalBusiness JSON-LD", "hreflang", "Motion design sous Remotion"],
+          "notes": [
+            "LocalBusiness JSON-LD",
+            "hreflang",
+            "Motion design sous Remotion"
+          ],
           "alt": "Page d'accueil de Velum — café et bar à vins sur le front de mer de Vrsar"
         }
-      }
-    },
-    "systems": {
-      "label": "Nos propres logiciels",
-      "title": "Voyager, Polis, Funda.",
-      "intro": "Avant lancement veut dire avant lancement. Rien ici ne revendique des utilisateurs qu'il n'a pas.",
-      "voyager": {
-        "name": "Voyager",
-        "status": "Avant lancement",
-        "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. L'office de tourisme publie la version officielle et la modifie lui-même.",
-        "spec": ["6 langues", "7 interfaces, 1 modèle de données", "Multi-tenant"],
-        "linkLabel": "Lire le cas Voyager"
       },
-      "polis": {
-        "name": "Polis Interface",
-        "status": "Avant déploiement",
-        "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
-        "spec": ["Open source", "Chaque affirmation vérifiable", "Rien d'auto-déclaré"],
-        "linkLabel": "Lire le cas Polis"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "En construction",
-        "claim": "Rapproche les organisations des appels européens qu'elles peuvent réellement gagner, lus dès leur publication.",
-        "spec": ["4 rôles", "3 langues", "Sources de financement européen"],
-        "linkLabel": "Lire le cas Funda"
-      }
+      "pair": "client ↔ entreprise"
     },
     "method": {
       "label": "Méthode",
@@ -229,57 +274,115 @@
   },
   "WorkIndex": {
     "label": "Réalisations",
-    "title": "Quatre projets. Où chacun en est vraiment.",
-    "lead": "Un site en ligne à Vrsar, remis au client. Trois à nous, aucun lancé. Rien ici ne compte un travail qu'un client n'a pas encore reçu.",
+    "title": "Six interfaces. Où chacune en est vraiment.",
+    "lead": "Une est en ligne, entre les mains du client. Les cinq autres ne sont pas lancées, et chaque ligne porte le statut qu'elle a aujourd'hui, pas celui qu'elle aura au lancement. Rien ici ne compte un travail qu'un client n'a pas encore reçu.",
     "entries": {
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
+        "interface": "L'interface pour un lieu.",
+        "pair": "visiteur ↔ lieu",
         "claim": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires.",
         "figures": [
-          { "value": "6", "label": "Langues dans lesquelles un visiteur peut demander" },
-          { "value": "7", "label": "Endroits où la même réponse apparaît" }
+          {
+            "value": "6",
+            "label": "Langues dans lesquelles un visiteur peut demander"
+          },
+          {
+            "value": "7",
+            "label": "Endroits où la même réponse apparaît"
+          }
         ]
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · avant déploiement",
+        "status": "Open source · AGPL · avant déploiement",
+        "interface": "L'interface avec la ville.",
+        "pair": "citoyen ↔ institution",
         "claim": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source.",
         "figures": [
-          { "value": "6", "label": "Étapes du document déposé à la vérification publique" },
-          { "value": "0", "label": "Comptes nécessaires pour vérifier" }
+          {
+            "value": "6",
+            "label": "Étapes du document déposé à la vérification publique"
+          },
+          {
+            "value": "0",
+            "label": "Comptes nécessaires pour vérifier"
+          }
         ]
       },
       "funda": {
         "name": "Funda",
         "status": "Construction active",
+        "interface": "L'interface avec les financements européens.",
+        "pair": "organisation ↔ financement",
         "claim": "Lit les appels à financement européens dès leur parution et les rapproche des organisations qui correspondent.",
         "figures": [
-          { "value": "4", "label": "Interfaces par rôle" },
-          { "value": "3", "label": "Langues" }
+          {
+            "value": "4",
+            "label": "Surfaces par rôle"
+          },
+          {
+            "value": "3",
+            "label": "Langues"
+          }
         ]
       },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Avant lancement",
+        "interface": "L'interface pour la pensée musicale.",
+        "pair": "musicien ↔ son",
+        "claim": "Le moins de machinerie possible entre une idée que vous entendez et un ordinateur qui la joue.",
+        "figures": []
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Avant lancement",
+        "interface": "L'interface pour créer avec d'autres artistes.",
+        "pair": "artiste ↔ artiste",
+        "claim": "Des artistes se trouvent et créent ensemble, sans fil d'actualité entre eux.",
+        "figures": []
+      },
       "clientSites": {
-        "name": "Sites clients en Istrie",
+        "name": "Sites clients",
         "status": "En ligne · Vrsar",
+        "interface": "L'interface entre une entreprise et ses clients.",
+        "pair": "client ↔ entreprise",
         "claim": "Un commerce du littoral passe d'un profil Instagram à un site bilingue en ligne d'un seul tenant.",
         "figures": [
-          { "value": "6", "label": "Étapes du profil à l'URL" },
-          { "value": "2", "label": "Langues sur le site en ligne" }
+          {
+            "value": "6",
+            "label": "Étapes du profil à l'URL"
+          },
+          {
+            "value": "2",
+            "label": "Langues sur le site en ligne"
+          }
         ]
       }
     },
     "method": {
-      "label": "05 · Méthode",
+      "label": "07 · Méthode",
       "title": "Notre façon de travailler est écrite.",
       "body": "Treize projets tournent sous les mêmes règles écrites. Les agents proposent le changement ; un humain le relit et le valide avant qu'il ne parte.",
       "link": "Lire comment nous livrons",
       "figures": [
-        { "value": "13", "label": "Projets sous les mêmes règles écrites" },
-        { "value": "0", "label": "Changements qui passent sans relecture" },
-        { "value": "1", "label": "Humain qui valide chacun" }
+        {
+          "value": "13",
+          "label": "Projets sous les mêmes règles écrites"
+        },
+        {
+          "value": "0",
+          "label": "Changements qui passent sans relecture"
+        },
+        {
+          "value": "1",
+          "label": "Humain qui valide chacun"
+        }
       ]
-    }
+    },
+    "pairLabel": "Entre"
   },
   "CaseNav": {
     "label": "Dossiers de projet",
@@ -306,7 +409,7 @@
         {
           "value": "6",
           "label": "Langues dans lesquelles un visiteur peut demander",
-          "note": "L'interface et les réponses de l'hôte."
+          "note": "L'affichage et les réponses de l'hôte."
         },
         {
           "value": "7",
@@ -318,7 +421,11 @@
           "label": "Endroit où une information se met à jour",
           "note": "On la change une fois ; elle change partout."
         },
-        { "value": "0", "label": "Utilisateurs aujourd'hui", "note": "Avant lancement veut dire avant lancement." }
+        {
+          "value": "0",
+          "label": "Utilisateurs aujourd'hui",
+          "note": "Avant lancement veut dire avant lancement."
+        }
       ]
     },
     "whatItIs": {
@@ -359,7 +466,7 @@
         },
         {
           "title": "Un système de design avec sa propre suite de tests",
-          "body": "Seize sous-systèmes encadrés composent l'interface commune, testée comme le reste du code. Une correction sur un composant atteint chaque interface en une seule modification."
+          "body": "Seize sous-systèmes encadrés composent la surface commune, testée comme le reste du code. Une correction sur un composant atteint chaque surface en une seule modification."
         }
       ]
     },
@@ -425,11 +532,19 @@
       "eyebrow": "Infrastructure civique",
       "name": "Polis Interface",
       "claim": "Une infrastructure civique qui traite les données publiques comme quelque chose que l'on vérifie, pas comme quelque chose que l'on croit.",
-      "status": "Open source · avant déploiement",
-      "tags": ["Données publiques", "Affirmations vérifiables", "Rien d'auto-déclaré", "Avant déploiement"]
+      "status": "Open source · AGPL · avant déploiement",
+      "tags": [
+        "Données publiques",
+        "Affirmations vérifiables",
+        "Rien d'auto-déclaré",
+        "Avant déploiement"
+      ]
     },
     "stats": [
-      { "value": "6", "label": "Étapes du document déposé à la vérification publique" },
+      {
+        "value": "6",
+        "label": "Étapes du document déposé à la vérification publique"
+      },
       {
         "value": "10",
         "label": "Règles décidant qui voit quoi",
@@ -451,8 +566,8 @@
       "label": "Ce que c'est",
       "title": "Un graphe de gouvernance, pas un dépotoir de documents",
       "intro": "Polis modélise ce qu'une collectivité produit réellement — décisions, promesses, budgets, séances, élus — sous forme de graphe. Chaque affirmation publique de ce graphe pointe vers le document source dont elle vient, et ce document porte la preuve de sa propre intégrité.",
-      "surfacesTitle": "Deux interfaces, un seul jeu de données",
-      "surfacesBody": "Une interface de campagne publie un programme. Une couche de redevabilité suit ce même programme face à ce qui a été livré. Les deux lisent les mêmes enregistrements vérifiables : la page des promesses et la page des faits ne peuvent pas diverger pendant que personne ne regarde.",
+      "surfacesTitle": "Deux surfaces, un seul jeu de données",
+      "surfacesBody": "Une surface de campagne publie un programme. Une couche de redevabilité suit ce même programme face à ce qui a été livré. Les deux lisent les mêmes enregistrements vérifiables : la page des promesses et la page des faits ne peuvent pas diverger pendant que personne ne regarde.",
       "addressTitle": "Chaque affirmation a une adresse",
       "addressBody": "« Le conseil a approuvé le budget en mars » n'est pas une phrase dans Polis. C'est un lien vers une décision, qui mène à un document déposé, qui mène à une empreinte, un cachet et un horodatage qu'un inconnu peut revérifier sans demander la permission à qui que ce soit."
     },
@@ -488,7 +603,7 @@
     "honesty": {
       "label": "L'honnêteté comme fonctionnalité",
       "title": "L'étiquette de statut fait partie du produit",
-      "intro": "Dans sa propre documentation, Polis étiquette chaque interface [verifiable], [demonstration/stub] ou [not yet live]. Le pilote simulé annonce dès sa première ligne qu'il est simulé.",
+      "intro": "Dans sa propre documentation, Polis étiquette chaque surface [verifiable], [demonstration/stub] ou [not yet live]. Le pilote simulé annonce dès sa première ligne qu'il est simulé.",
       "labels": [
         "Adossé à des données du système. Remontez jusqu'au document source et vérifiez l'empreinte vous-même.",
         "L'écran fonctionne ; derrière, c'est un substitut. Ne bâtissez pas un déploiement autour.",
@@ -555,16 +670,29 @@
       "name": "Funda",
       "claim": "Lit les appels à financement européens dès leur parution et les rapproche des organisations qui correspondent.",
       "status": "Construction active",
-      "tags": ["Financements européens", "Quatre rôles", "Trois langues", "Correspondance géographique"]
+      "tags": [
+        "Financements européens",
+        "Quatre rôles",
+        "Trois langues",
+        "Correspondance géographique"
+      ]
     },
     "stats": [
       {
         "value": "4",
-        "label": "Interfaces par rôle",
+        "label": "Surfaces par rôle",
         "note": "Admin, consultant, entreprise, direction"
       },
-      { "value": "3", "label": "Langues", "note": "Toutes les interfaces, pas seulement les pages vitrine" },
-      { "value": "2", "label": "Chaînes de sources", "note": "SEDIA et TED, lues par des agents" }
+      {
+        "value": "3",
+        "label": "Langues",
+        "note": "Toutes les surfaces, pas seulement les pages vitrine"
+      },
+      {
+        "value": "2",
+        "label": "Chaînes de sources",
+        "note": "SEDIA et TED, lues par des agents"
+      }
     ],
     "whatItDoes": {
       "label": "Ce que ça fait",
@@ -573,10 +701,22 @@
       "body": "Funda surveille ces sources selon un calendrier, transforme chaque appel en fiche structurée et la présente aux organisations qui correspondent. Les consultants traitent un portefeuille de clients sur le même flux. Un jeu de données, quatre lectures.",
       "note": "Funda est en construction active. Il n'y a pas de déploiement public, pas de données clients derrière ces écrans et aucun résultat à annoncer pour l'instant. Chaque chiffre de cette page compte quelque chose qui existe aujourd'hui dans le code.",
       "surfaces": [
-        { "name": "Admin", "note": "Les personnes qui exploitent la plateforme" },
-        { "name": "Consultant", "note": "Les conseillers qui suivent plusieurs organisations clientes" },
-        { "name": "Entreprise", "note": "L'organisation qui demande le financement" },
-        { "name": "Direction", "note": "Vue d'ensemble sur un compte" }
+        {
+          "name": "Admin",
+          "note": "Les personnes qui exploitent la plateforme"
+        },
+        {
+          "name": "Consultant",
+          "note": "Les conseillers qui suivent plusieurs organisations clientes"
+        },
+        {
+          "name": "Entreprise",
+          "note": "L'organisation qui demande le financement"
+        },
+        {
+          "name": "Direction",
+          "note": "Vue d'ensemble sur un compte"
+        }
       ]
     },
     "matching": {
@@ -597,7 +737,7 @@
         },
         {
           "name": "L'acheminer vers une personne",
-          "body": "Les correspondances arrivent sur l'interface qu'utilise ce rôle, dans la langue de cet utilisateur."
+          "body": "Les correspondances arrivent sur la surface qu'utilise ce rôle, dans la langue de cet utilisateur."
         }
       ]
     },
@@ -619,11 +759,24 @@
       "name": "Sites clients en Istrie",
       "claim": "Un site bilingue pour un bar à vins du front de mer de Vrsar, construit à partir du profil Instagram du client et déployé par une seule chaîne automatisée.",
       "status": "En ligne · Vrsar",
-      "tags": ["Croate d'abord", "Bilingue", "Leur propre domaine", "Construit automatiquement"]
+      "tags": [
+        "Croate d'abord",
+        "Bilingue",
+        "Leur propre domaine",
+        "Construit automatiquement"
+      ]
     },
     "stats": [
-      { "value": "1", "label": "Site en ligne aujourd'hui", "note": "Remis au client, public et lié plus bas" },
-      { "value": "6", "label": "Étapes du profil à l'URL", "note": "L'étape cinq est un audit automatisé de chaque page" },
+      {
+        "value": "1",
+        "label": "Site en ligne aujourd'hui",
+        "note": "Remis au client, public et lié plus bas"
+      },
+      {
+        "value": "6",
+        "label": "Étapes du profil à l'URL",
+        "note": "L'étape cinq est un audit automatisé de chaque page"
+      },
       {
         "value": "2",
         "label": "Langues sur le site en ligne",
@@ -644,7 +797,10 @@
         "name": "Velum",
         "place": "Front de mer de Vrsar",
         "line": "Un café et bar à vins qui sert petits-déjeuners, gâteaux et vins istriens au bord de la mer.",
-        "notes": ["LocalBusiness JSON-LD", "hreflang"],
+        "notes": [
+          "LocalBusiness JSON-LD",
+          "hreflang"
+        ],
         "desktopAlt": "Page d'accueil de Velum : une photo de café et la carte du bar à côté de la ligne « Au bord de la mer, sans hâte. »",
         "mobileAlt": "La page d'accueil de Velum sur un téléphone, photo au-dessus du titre."
       }
@@ -697,7 +853,11 @@
       "howItWorks": "Comment ça marche",
       "repoLabel": "Agent Ops Cockpit",
       "repoSummary": "Quatre fichiers dans chaque dépôt, le schéma sur lequel ils sont versionnés, et 51 commandes qui les exécutent.",
-      "repoChips": ["Apache-2.0", "Rust", "Ligne de commande"]
+      "repoChips": [
+        "Apache-2.0",
+        "Rust",
+        "Ligne de commande"
+      ]
     },
     "howItWorks": {
       "label": "Comment ça marche",
@@ -752,13 +912,31 @@
       "title": "Ce qui est public, et ce que cela a produit.",
       "intro": "Agent Ops Cockpit est un dépôt que vous pouvez cloner. Le résultat, c'est l'historique des commits des logiciels que nous construisons avec.",
       "systemStats": [
-        { "value": "403", "label": "Commits", "note": "Historique public, Apache-2.0" },
-        { "value": "8", "label": "Crates Rust" },
-        { "value": "51", "label": "Commandes CLI" }
+        {
+          "value": "403",
+          "label": "Commits",
+          "note": "Historique public, Apache-2.0"
+        },
+        {
+          "value": "8",
+          "label": "Crates Rust"
+        },
+        {
+          "value": "51",
+          "label": "Commandes CLI"
+        }
       ],
       "outputStats": [
-        { "value": "13", "label": "Dépôts", "note": "Sur le même contrat versionné" },
-        { "value": "383", "label": "Commits sur Voyager", "note": "Juillet 2026 à lui seul" }
+        {
+          "value": "13",
+          "label": "Dépôts",
+          "note": "Sur le même contrat versionné"
+        },
+        {
+          "value": "383",
+          "label": "Commits sur Voyager",
+          "note": "Juillet 2026 à lui seul"
+        }
       ]
     },
     "evidence": {
@@ -813,19 +991,19 @@
   "About": {
     "hero": {
       "label": "À propos",
-      "title": "Un cabinet de conseil qui livre son propre logiciel.",
-      "lead": "INTRFACE est une société de conseil informatique et de développement d'entreprise à Vrsar, en Istrie — une seule personne au développement, Alex Bašić. Des logiciels pour des entreprises clientes dans toute l'UE, plus Voyager, Polis et Funda en propre. Tout passe par le même contrôle avant la moindre mise en ligne."
+      "title": "Une entreprise de produits qui construit aussi pour des clients.",
+      "lead": "INTRFACE construit des interfaces pour le monde depuis Vrsar, en Istrie — une seule personne au développement, Alex Bašić. Voyager, Polis, Funda, MidiFlow et Patchbay sont à nous ; les entreprises de toute l'UE reçoivent le même travail sous leur propre nom."
     },
     "company": {
       "label": "L'entreprise",
-      "title": "Deux types de travail, les mêmes vérifications.",
-      "p1": "Le travail client commence presque toujours pareil : quelque chose tourne déjà, et le logiciel autour a cessé de l'expliquer. Personne ne voit l'état courant, les exploitants tiennent un tableur privé, et ceux qui doivent faire confiance au résultat ne peuvent pas le vérifier.",
-      "p2": "Voyager, Polis et Funda ne sont pas une activité annexe. C'est là que nous heurtons les contraintes dures en premier : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui doivent continuer de fonctionner. Nous payons ces leçons sur notre temps et en apportons le résultat au travail client.",
-      "p3": "Vous pouvez lire comment nous travaillons avant de nous engager : les règles que suivent nos agents, et le contrôle qui met un humain devant chaque changement. Tout est public.",
+      "title": "Deux types de travail, un seul test d'admission.",
+      "p1": "Le monde tourne déjà sur des systèmes : villes, institutions, paysages, musique, entreprises, communautés. La plupart passent par de mauvaises interfaces. Le tourisme devient un site d'avis, la participation citoyenne devient des PDF et des heures d'ouverture, le logiciel musical devient une machinerie, un réseau d'artistes devient un fil d'actualité. INTRFACE construit le côté humain qui manque.",
+      "p2": "Chaque produit doit répondre à la même question. Entre quelles deux choses ce produit crée-t-il une interface ? S'il n'y a pas de réponse claire, ce n'est pas un produit INTRFACE.",
+      "p3": "Le travail client y répond aussi — une entreprise et ses clients — et il hérite de ce que les cinq produits à nous ont payé : autorisation fine, pistes d'audit que personne ne peut réécrire en silence, contenus multilingues qui doivent rester justes, déploiements qui continuent de fonctionner. Les règles que suit ce travail sont publiques : vous pouvez les lire avant de nous engager.",
       "facts": {
         "company": {
           "term": "Société",
-          "value": "INTRFACE — conseil informatique et développement d'entreprise"
+          "value": "INTRFACE — des interfaces pour le monde"
         },
         "person": {
           "term": "Avec qui vous travaillez",
@@ -835,10 +1013,13 @@
           "term": "Basé à",
           "value": "Dalmatinska 34, Vrsar, Istrie. Nous travaillons dans toute l'UE."
         },
-        "languages": { "term": "Langues", "value": "Croate, italien, anglais" },
+        "languages": {
+          "term": "Langues",
+          "value": "Croate, italien, anglais"
+        },
         "work": {
           "term": "Travail",
-          "value": "Des logiciels pour des clients ; Voyager, Polis et Funda pour nous-mêmes"
+          "value": "Voyager, Polis, Funda, MidiFlow et Patchbay sont à nous ; des sites clients pour des entreprises dans toute l'UE"
         },
         "delivery": {
           "term": "Open source",
@@ -848,12 +1029,20 @@
           "term": "Immatriculation",
           "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
         },
+        "activity": {
+          "term": "Activité enregistrée",
+          "value": "Conseil informatique et développement d'entreprise"
+        },
         "vat": {
           "term": "TVA",
           "value": "Non assujettie à la TVA, donc pas de PDV sur les factures."
         },
-        "phone": { "term": "Téléphone" },
-        "contact": { "term": "Contact" }
+        "phone": {
+          "term": "Téléphone"
+        },
+        "contact": {
+          "term": "Contact"
+        }
       }
     },
     "engagement": {
@@ -877,7 +1066,7 @@
         },
         {
           "label": "Le prouver",
-          "description": "Tests et audits automatisés à chaque modification, puis un déploiement que vous pouvez ouvrir dans un navigateur. Chaque interface est étiquetée pour ce qu'elle est : en ligne, démonstration, ou pas encore construite."
+          "description": "Tests et audits automatisés à chaque modification, puis un déploiement que vous pouvez ouvrir dans un navigateur. Chaque surface est étiquetée pour ce qu'elle est : en ligne, démonstration, ou pas encore construite."
         }
       ]
     },
@@ -888,17 +1077,27 @@
       "voyager": {
         "name": "Voyager",
         "status": "Avant lancement",
-        "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Intelligence des lieux pour destinations touristiques, chargée pour Vrsar, sans lancement public à ce jour."
+        "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Amorcé pour Vrsar, sans lancement public à ce jour."
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · avant déploiement",
-        "description": "Infrastructure civique pour des données publiques vérifiables, où chaque affirmation publique remonte à un document source. Sa propre documentation étiquette chaque interface : vérifiable, démonstration, ou pas encore en ligne."
+        "status": "Open source · AGPL · avant déploiement",
+        "description": "Un graphe de gouvernance où chaque affirmation publique remonte à un document source. Sa propre documentation étiquette chaque surface : vérifiable, démonstration, ou pas encore en ligne."
       },
       "funda": {
         "name": "Funda",
         "status": "Construction active",
-        "description": "Des financements européens rapprochés des organisations qui peuvent les obtenir. Lecture des sources SEDIA et TED par des agents, rapprochement géospatial, trois langues."
+        "description": "Lit les appels à financement européens dès leur parution et les rapproche des organisations qui correspondent. Lecture des sources SEDIA et TED par des agents, rapprochement géospatial, trois langues."
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Avant lancement",
+        "description": "Le moins de machinerie possible entre une idée que vous entendez et un ordinateur qui la joue. Il tourne comme application installée et a été testé sur téléphone ; il n'est pas publié."
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Avant lancement",
+        "description": "Des artistes se trouvent et créent ensemble, sans fil d'actualité entre eux. Une version est en ligne sur un domaine qui n'est pas encore public."
       },
       "clientNote": "Les sites clients suivent le même chemin : un profil Instagram entre, un site bilingue sur une URL en ligne sort, avec un audit Playwright au milieu — <link>voyez les six étapes</link>."
     },
@@ -933,20 +1132,47 @@
         "term": "Éditeur",
         "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
       },
-      "location": { "term": "Lieu", "value": "Vrsar, Istrie, Croatie (Union européenne)" },
-      "address": { "term": "Adresse du siège", "value": "Dalmatinska 34, 52440 Vrsar, Croatie" },
-      "director": { "term": "Direction", "value": "Alex Bašić" },
-      "oib": { "term": "OIB", "value": "34363240459" },
-      "mbs": { "term": "MBS", "value": "130172611" },
-      "court": { "term": "Registre du commerce", "value": "Trgovački sud u Pazinu" },
+      "location": {
+        "term": "Lieu",
+        "value": "Vrsar, Istrie, Croatie (Union européenne)"
+      },
+      "address": {
+        "term": "Adresse du siège",
+        "value": "Dalmatinska 34, 52440 Vrsar, Croatie"
+      },
+      "director": {
+        "term": "Direction",
+        "value": "Alex Bašić"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "mbs": {
+        "term": "MBS",
+        "value": "130172611"
+      },
+      "court": {
+        "term": "Registre du commerce",
+        "value": "Trgovački sud u Pazinu"
+      },
       "activity": {
         "term": "Activité enregistrée",
         "value": "K62109 — Ostalo računalno programiranje"
       },
-      "vat": { "term": "TVA", "value": "Non assujettie à la TVA (nije u sustavu PDV-a)" },
-      "email": { "term": "E-mail" },
-      "phone": { "term": "Téléphone" },
-      "website": { "term": "Site" }
+      "vat": {
+        "term": "TVA",
+        "value": "Non assujettie à la TVA (nije u sustavu PDV-a)"
+      },
+      "email": {
+        "term": "E-mail"
+      },
+      "phone": {
+        "term": "Téléphone"
+      },
+      "website": {
+        "term": "Site"
+      }
     },
     "sections": {
       "content": {
