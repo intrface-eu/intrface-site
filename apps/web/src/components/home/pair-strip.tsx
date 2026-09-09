@@ -11,7 +11,7 @@ export function PairStrip({
   return (
     <nav aria-label={label} className="pair-ribbon">
       <div className="section-shell py-5 sm:py-6">
-        <div className="pair-ribbon-links">
+        <div className="pair-ribbon-links" data-ground-quiet="">
           <span className="type-meta">{label}</span>
           {pairs.map(({ name, pair, href }) => (
             // The name comes first so the link's accessible name starts with

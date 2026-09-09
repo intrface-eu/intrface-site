@@ -146,7 +146,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
         {/* Project captures supply the color; captions stay on the paper pane. */}
         <section className="home-proof-pane scroll-mt-24" id="for-businesses" aria-label={t("hero.proofLabel")}>
           <div className="section-shell py-16 sm:py-24 lg:py-28">
-            <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 sm:mb-10">
+            <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 sm:mb-10" data-ground-quiet="">
               <p className="type-section-label">{t("hero.proofLabel")}</p>
               <p className="type-caption">{t("proof.title")}</p>
             </div>
@@ -162,9 +162,9 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           MidiFlow and Patchbay sit here with no link and no figures; the row
           shape is identical so the argument reads as one list, not as three
           products and two footnotes. */}
-        <section className="home-pane home-pane-build scroll-mt-24 tone-ink" id="build">
+        <section className="home-pane home-pane-build scroll-mt-24 tone-ink" data-ground-ink="" id="build">
           <div className="section-shell home-build-layout py-20 sm:py-28">
-            <div className="home-build-intro">
+            <div className="home-build-intro" data-ground-quiet="">
               <FadeIn>
                 <p className="type-section-label">{t("products.label")}</p>
               </FadeIn>
@@ -182,7 +182,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
         <section className="home-pane home-pane-doctrine scroll-mt-24" id="doctrine">
           <div className="section-shell py-16 sm:py-20">
-            <h2 className="type-heading">{t("doctrine.house")}</h2>
+            <h2 className="type-heading" data-ground-quiet="">{t("doctrine.house")}</h2>
           </div>
         </section>
 
@@ -191,10 +191,10 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
 
         {/* CONTACT — an ink close with the paper form plane attached to the
             viewport edge. The plane is structural and never fades as a slab. */}
-        <section className="home-pane home-pane-contact scroll-mt-24" id="contact">
+        <section className="home-pane home-pane-contact scroll-mt-24" data-ground-ink="" id="contact">
           <div className="section-shell">
             <div className="home-contact-grid">
-              <div className="home-contact-copy tone-ink">
+              <div className="home-contact-copy tone-ink" data-ground-quiet="">
                 <FadeIn>
                   <p className="type-meta text-[color:var(--ink-inverse-label)]">
                     {t("contact.label")}
@@ -238,7 +238,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               {/* Reply time and the direct channels. Supplementary to the form,
                   so they follow it in the DOM; at `lg` the grid seats them under
                   the copy in the ink column. */}
-              <div className="home-contact-aside tone-ink">
+              <div className="home-contact-aside tone-ink" data-ground-quiet="">
                 <FadeIn delay={150}>
                   <div className="border-t border-white/15 pt-6">
                     <p className="type-body-sm text-[color:var(--ink-inverse-muted)]">

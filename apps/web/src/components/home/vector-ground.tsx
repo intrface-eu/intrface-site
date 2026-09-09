@@ -40,6 +40,9 @@ const MARK_DEPTH = 0.16;
 // Share of lines that never join a plate: they stay in the depth field behind
 // it, so a gathering never flattens the ground.
 const KEEP_SHARE = 0.35;
+// Content blocks the ground answers to, at most this many on screen at once.
+const MAX_RECTS = 12;
+const PAPER = [0xf5 / 255, 0xf1 / 255, 0xeb / 255];
 const LAND_DEPTH = 0.07;
 const FOCAL = 3.4;
 const VOL_Z_MIN = -2.2;
@@ -64,6 +67,10 @@ uniform float u_stage, u_time, u_lineW, u_lineLen, u_gridAlpha;
 uniform float u_markScale, u_landScale, u_scroll;
 uniform vec2 u_volBox;
 uniform mat3 u_rotMark, u_rotLand, u_rotSwell;
+uniform vec4 u_rects[${MAX_RECTS}];
+uniform vec2 u_rectInfo[${MAX_RECTS}];
+uniform int u_rectN;
+uniform vec3 u_paper;
 uniform vec3 u_ink, u_accent;
 
 flat out float v_halfLen;
@@ -88,6 +95,36 @@ vec2 projectDir(vec3 p, vec3 d, float scale, vec2 pos, vec2 fallback) {
   vec2 dir = project(p + d * 0.02, scale) - pos;
   float l = length(dir);
   return l > 1e-5 ? dir / l : fallback;
+}
+
+float rectSd(vec2 p, vec4 r) {
+  vec2 q = abs(p - r.xy - r.zw * 0.5) - r.zw * 0.5;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
+}
+
+// Content weight, in screen space: a block pulls nearby lines in and turns
+// them along its edges, more for the near lines, so a block scrolling through
+// the field drags a wake with it.
+vec2 weigh(vec2 pos, float depthN, inout vec2 dir) {
+  vec2 acc = vec2(0.0);
+  vec2 tdir = dir;
+  for (int i = 0; i < ${MAX_RECTS}; i++) {
+    if (i >= u_rectN) break;
+    vec4 r = u_rects[i];
+    vec2 nearest = clamp(pos, r.xy, r.xy + r.zw);
+    vec2 away = pos - nearest;
+    float d = length(away);
+    if (d < 1e-3) continue;
+    float R = 0.3 * sqrt(r.z * r.w) + 50.0;
+    float f = exp(-d / R);
+    vec2 n = away / d;
+    acc -= n * f * 0.32 * R * (0.4 + 0.8 * depthN);
+    vec2 tang = vec2(-n.y, n.x);
+    if (dot(tang, dir) < 0.0) tang = -tang;
+    tdir = mix(tdir, tang, f * 0.9);
+  }
+  dir = normalize(tdir);
+  return pos + acc;
 }
 
 struct Line { vec2 pos; vec2 dir; float len; float w; float alpha; vec3 color; };
@@ -122,6 +159,7 @@ Line state(int k) {
     p.xy -= pn * 0.22 * (depthN + 0.15);
     l.pos = project(p, u_markScale);
     l.dir = tangentTo(l.pos);
+    l.pos = weigh(l.pos, depthN, l.dir);
     float persp = F / (F - p.z);
     l.len = u_lineLen * persp;
     l.w = u_lineW * (0.7 + 0.5 * depthN);
@@ -147,6 +185,20 @@ Line state(int k) {
     float bump = 0.42 * exp(-(bx * bx * 1.4 + bs * bs * 0.9));
     h += bump;
     dhdx += bump * -2.8 * bx;
+    // Each block presses the sheet down under itself, by its size.
+    for (int i = 0; i < ${MAX_RECTS}; i++) {
+      if (i >= u_rectN) break;
+      vec4 r = u_rects[i];
+      vec2 c = (r.xy + r.zw * 0.5) / u_res - 0.5;
+      vec2 rb = vec2(c.x * u_volBox.x * 1.3, mix(-4.2, 1.4, 0.5 - c.y));
+      vec2 rad = max(vec2(r.z / u_res.x * u_volBox.x * 1.3, r.w / u_res.y * 2.8), vec2(0.35));
+      float rx = (sx - rb.x) / rad.x;
+      float rs = (ss - rb.y) / rad.y;
+      float e = exp(-(rx * rx + rs * rs) * 0.8);
+      float wgt = 0.55 * min(1.0, sqrt(r.z * r.w) / 480.0);
+      h -= wgt * e;
+      dhdx += wgt * e * 1.6 * rx / rad.x;
+    }
     vec3 p = u_rotSwell * vec3(sx, h - 0.4, ss);
     vec3 t = u_rotSwell * normalize(vec3(1.0, dhdx, 0.0));
     l.pos = project(p, u_markScale);
@@ -188,6 +240,20 @@ void main() {
   float w = mix(a.w, b.w, t);
   float alpha = mix(a.alpha, b.alpha, t);
   vec3 color = mix(a.color, b.color, t);
+
+  // The copy sits on the ground: lines go quiet within a margin of any text
+  // block, and turn paper-coloured inside an ink slab.
+  float quiet = 0.0;
+  float ink = 0.0;
+  for (int i = 0; i < ${MAX_RECTS}; i++) {
+    if (i >= u_rectN) break;
+    float d = rectSd(pos, u_rects[i]);
+    vec2 info = u_rectInfo[i];
+    if (info.x == 2.0) ink = max(ink, 1.0 - smoothstep(-1.0, 1.0, d));
+    else quiet = max(quiet, info.y * (1.0 - smoothstep(0.0, 44.0, d)));
+  }
+  color = mix(color, u_paper, ink);
+  alpha *= mix(1.0, 0.8, ink) * (1.0 - quiet);
 
   int vid = gl_VertexID;
   float along = (vid & 1) == 1 ? 1.0 : -1.0;
@@ -410,9 +476,14 @@ export function VectorGround() {
       rotMark: u("u_rotMark"),
       rotLand: u("u_rotLand"),
       rotSwell: u("u_rotSwell"),
+      rects: u("u_rects"),
+      rectInfo: u("u_rectInfo"),
+      rectN: u("u_rectN"),
+      paper: u("u_paper"),
     };
     gl.uniform3fv(u("u_ink"), INK);
     gl.uniform3fv(u("u_accent"), ACCENT);
+    gl.uniform3fv(u("u_paper"), PAPER);
     gl.uniform1f(U.cell, CELL);
     gl.uniform1f(U.gridAngle, GRID_ANGLE);
     gl.uniform1f(U.lineLen, CELL * 0.44);
@@ -518,6 +589,35 @@ export function VectorGround() {
       lastMove = performance.now();
     };
 
+    // The blocks the ground answers to. Copy is marked `data-ground-quiet`
+    // (lines fade under it), ink slabs `data-ground-ink` (lines turn paper
+    // inside them). Read again on every scroll and resize; blocks off screen
+    // are skipped, so the shader loop stays short.
+    const main = ground.closest("main");
+    const blocks = Array.from(
+      (main ?? document).querySelectorAll<HTMLElement>("[data-ground-quiet], [data-ground-ink]"),
+    ).map((el) => ({ el, info: el.hasAttribute("data-ground-ink") ? [2, 0] : [0, 0.82] }));
+    const rects = new Float32Array(MAX_RECTS * 4);
+    const rectInfo = new Float32Array(MAX_RECTS * 2);
+    const readRects = () => {
+      let n = 0;
+      for (const { el, info } of blocks) {
+        if (n === MAX_RECTS) break;
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -240 || r.top > height + 240 || r.width === 0) continue;
+        rects[n * 4] = r.left;
+        rects[n * 4 + 1] = r.top;
+        rects[n * 4 + 2] = r.width;
+        rects[n * 4 + 3] = r.height;
+        rectInfo[n * 2] = info[0];
+        rectInfo[n * 2 + 1] = info[1];
+        n++;
+      }
+      gl.uniform4fv(U.rects, rects);
+      gl.uniform2fv(U.rectInfo, rectInfo);
+      gl.uniform1i(U.rectN, n);
+    };
+
     let dirty = true;
     let stage = 0;
     let target = 0;
@@ -547,6 +647,7 @@ export function VectorGround() {
 
       if (dirty) {
         dirty = false;
+        readRects();
         target = stageFor(
           markBand?.getBoundingClientRect() ?? null,
           landBand?.getBoundingClientRect() ?? null,
@@ -597,10 +698,12 @@ export function VectorGround() {
       event.preventDefault();
       stop();
       ground.removeAttribute("data-ground-mode");
+      main?.removeAttribute("data-ground-open");
     };
 
     rebuild();
     ground.setAttribute("data-ground-mode", "vector");
+    main?.setAttribute("data-ground-open", "");
     window.addEventListener("pointermove", onPointer, { passive: true });
     window.addEventListener("pointerdown", onPointer, { passive: true });
     window.addEventListener("scroll", markDirty, { passive: true });
@@ -619,6 +722,7 @@ export function VectorGround() {
       document.removeEventListener("visibilitychange", onVisibility);
       canvas.removeEventListener("webglcontextlost", onLost);
       ground.removeAttribute("data-ground-mode");
+      main?.removeAttribute("data-ground-open");
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);

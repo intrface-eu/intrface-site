@@ -18,7 +18,7 @@ export function SystemLedger({ systems, pairLabel }: {
   pairLabel: string;
 }) {
   return (
-    <div className="home-system-index">
+    <div className="home-system-index" data-ground-quiet="">
       {systems.map((system) => (
         <article className="home-system-row" id={system.id} key={system.id}>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">

@@ -36,7 +36,7 @@ export async function ProjectPreviews({
               sizes="(min-width: 1280px) 384px, (min-width: 1024px) calc((100vw - 8rem) / 3), (min-width: 640px) calc((100vw - 5.5rem) / 2), calc(100vw - 3rem)"
               src={project.desktop}
             />
-            <div className="project-preview-caption">
+            <div className="project-preview-caption" data-ground-quiet="">
               <div>
                 <h2 className="type-subheading text-ink">{project.name}</h2>
                 <p className="type-body-sm mt-2">{t(`${key}.role`)}</p>

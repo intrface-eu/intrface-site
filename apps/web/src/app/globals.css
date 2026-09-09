@@ -1435,6 +1435,50 @@ body {
     pointer-events: none;
   }
 
+  /* ===== OPEN PANES =====
+     While the live ground runs (`main[data-ground-open]`, set by VectorGround)
+     the paper panes give up their slabs and the copy sits on the ground itself;
+     the shader quiets its lines under every block marked `data-ground-quiet`.
+     Ink panes keep their slab, but it drops beneath the fixed ground
+     (`z-index: -2` in the root stacking context, which is why these panes stop
+     isolating) so the field runs through the ink in paper-coloured lines. The
+     ground's own paper goes with it; the body's paper is the floor. The hero
+     keeps its sheet: its own screen sits there. Without the live ground none
+     of this applies and the panes are the solid sheets below. */
+  .ground-main[data-ground-open] .ground {
+    background: transparent;
+  }
+
+  .ground-main[data-ground-open] .home-pane:not(.tone-ink):not(.home-pane-contact)::before,
+  .ground-main[data-ground-open] .home-proof-pane::before,
+  .ground-main[data-ground-open] .pair-ribbon::before {
+    background: transparent;
+  }
+
+  .ground-main[data-ground-open] .home-pane.tone-ink,
+  .ground-main[data-ground-open] .home-pane-contact {
+    isolation: auto;
+    background: transparent;
+  }
+
+  .ground-main[data-ground-open] .home-pane.tone-ink::before,
+  .ground-main[data-ground-open] .home-pane-contact::before,
+  .ground-main[data-ground-open] .home-pane-contact::after {
+    z-index: -2;
+  }
+
+  /* The contact close keeps the unskewed ink its box carried as a background:
+     a full slab under the skewed one, so it still joins the footer and the
+     skew still reads at the top. */
+  .ground-main[data-ground-open] .home-pane-contact::after {
+    content: "";
+    position: absolute;
+    inset-inline: -8vw;
+    inset-block: 0;
+    background: var(--ink);
+    pointer-events: none;
+  }
+
   /* ===== HOME PANES =====
      Only decoration crosses the viewport. The outer clip is not a scroll
      container; Ground is its sibling and stays fixed to the viewport. */
