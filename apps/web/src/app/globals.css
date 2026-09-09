@@ -1443,34 +1443,55 @@ body {
      (`z-index: -2` in the root stacking context, which is why these panes stop
      isolating) so the field runs through the ink in paper-coloured lines. The
      ground's own paper goes with it; the body's paper is the floor. The hero
-     keeps its sheet: its own screen sits there. Without the live ground none
-     of this applies and the panes are the solid sheets below. */
-  .ground-main[data-ground-open] .ground {
+     opens too, and the contact form plane and the footer let the field
+     through under their copy. Without the live ground none of this applies
+     and the panes are the solid sheets below. */
+  :root[data-ground-open] .ground {
     background: transparent;
   }
 
-  .ground-main[data-ground-open] .home-pane:not(.tone-ink):not(.home-pane-contact)::before,
-  .ground-main[data-ground-open] .home-proof-pane::before,
-  .ground-main[data-ground-open] .pair-ribbon::before {
+  :root[data-ground-open] .home-pane:not(.tone-ink):not(.home-pane-contact)::before,
+  :root[data-ground-open] .home-proof-pane::before,
+  :root[data-ground-open] .pair-ribbon::before {
     background: transparent;
   }
 
-  .ground-main[data-ground-open] .home-pane.tone-ink,
-  .ground-main[data-ground-open] .home-pane-contact {
+  :root[data-ground-open] .home-pane.tone-ink,
+  :root[data-ground-open] .home-pane-contact {
     isolation: auto;
     background: transparent;
   }
 
-  .ground-main[data-ground-open] .home-pane.tone-ink::before,
-  .ground-main[data-ground-open] .home-pane-contact::before,
-  .ground-main[data-ground-open] .home-pane-contact::after {
+  :root[data-ground-open] .home-pane.tone-ink::before,
+  :root[data-ground-open] .home-pane-contact::before,
+  :root[data-ground-open] .home-pane-contact::after {
+    z-index: -3;
+  }
+
+  :root[data-ground-open] .hero-sheet::before {
+    background: transparent;
+  }
+
+  /* Inside the contact close the copy columns lose their own ink (the slab
+     carries it) and the form plane's paper drops under the ground as well, one
+     step above the ink, so the field runs across the whole close. */
+  :root[data-ground-open] .home-contact-copy,
+  :root[data-ground-open] .home-contact-aside {
+    background: transparent;
+  }
+
+  :root[data-ground-open] .home-contact-form-plane {
+    isolation: auto;
+  }
+
+  :root[data-ground-open] .home-contact-form-plane::before {
     z-index: -2;
   }
 
   /* The contact close keeps the unskewed ink its box carried as a background:
      a full slab under the skewed one, so it still joins the footer and the
      skew still reads at the top. */
-  .ground-main[data-ground-open] .home-pane-contact::after {
+  :root[data-ground-open] .home-pane-contact::after {
     content: "";
     position: absolute;
     inset-inline: -8vw;
@@ -1936,4 +1957,10 @@ body {
   background: transparent;
   padding-inline: 0;
   box-shadow: none;
+}
+
+/* Unlayered on purpose: the footer's paper is a utility class, and only a
+   rule outside the layers can lift it while the live ground runs. */
+:root[data-ground-open] .site-footer {
+  background: transparent;
 }

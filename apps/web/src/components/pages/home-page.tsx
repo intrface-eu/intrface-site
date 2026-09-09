@@ -7,7 +7,6 @@ import { SystemLedger, type FeaturedSystem } from "@/components/home/system-ledg
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
 import { TactileButton } from "@/components/site/tactile-button";
-import { HeroHalftone } from "@/components/visual/hero-halftone";
 import { getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import {
@@ -96,15 +95,11 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           `isolate` keeps the canvas's stacking context local so the sticky
           header still passes over it. */}
         <section className="hero-sheet relative isolate flex min-h-[calc(100svh-4rem)] flex-col">
-          {/* The plate is the sheet above the strip, not the whole section: the
-              shader measures every word inside its own parent, so the pair strip
-              has to sit outside that box or the mask would open to clear it and
-              there would be no ink left anywhere. */}
-          {/* The foot padding is the fade band: the copy is centred in what is
-              left above it, so at no viewport height can a word sit inside the
-              stretch where the paper has gone and pick up a ground dot. */}
+          {/* The copy is centred in the sheet above the foot padding. With the
+              live ground running the sheet is open and the field runs under the
+              words, quiet beneath them; without it the sheet is paper that
+              dissolves into the ground over that foot padding. */}
           <div className="relative isolate flex flex-1 flex-col justify-center pb-[var(--hero-fade)]">
-            <HeroHalftone />
             <div className="section-shell py-16 sm:py-20">
               <FadeIn>
                 <p className="type-section-label">{t("hero.eyebrow")}</p>
@@ -112,10 +107,14 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               <FadeIn delay={80}>
                 {/* One step above display, used nowhere else on the site: four
                     words on one line have to carry the whole first screen. */}
-                <h1 className="type-display-xl mt-4 sm:mt-5">{t("hero.title")}</h1>
+                <h1 className="type-display-xl mt-4 sm:mt-5" data-ground-quiet="soft">
+                  {t("hero.title")}
+                </h1>
               </FadeIn>
               <FadeIn delay={160}>
-                <p className="type-body-lg mt-6 max-w-xl font-medium sm:mt-7">{t("hero.lead")}</p>
+                <p className="type-body-lg mt-6 max-w-xl font-medium sm:mt-7" data-ground-quiet="">
+                  {t("hero.lead")}
+                </p>
               </FadeIn>
               {/* Under the sentence that motivates them, not stranded in a column
                   350px to the right of it. */}
@@ -138,9 +137,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
         </section>
 
         {/* The first floating object, hung off the foot of the hero so it
-            straddles the boundary between the live screen and the ground. It sits
-            outside the hero section because the shader measures every word inside
-            its own parent to cut the mask. */}
+            straddles the boundary between the hero and the ground. */}
         <PairStrip label={t("products.pairLabel")} pairs={heroPairs} />
 
         {/* Project captures supply the color; captions stay on the paper pane. */}
@@ -229,7 +226,7 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
                 </FadeIn>
               </div>
 
-              <div className="home-contact-form-plane">
+              <div className="home-contact-form-plane" data-ground-paper="">
                 <FadeIn delay={250}>
                   <ContactForm locale={locale} topics={contactTopics} />
                 </FadeIn>

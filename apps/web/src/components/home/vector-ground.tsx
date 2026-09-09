@@ -71,6 +71,7 @@ uniform vec4 u_rects[${MAX_RECTS}];
 uniform vec2 u_rectInfo[${MAX_RECTS}];
 uniform int u_rectN;
 uniform vec3 u_paper;
+uniform float u_idle;
 uniform vec3 u_ink, u_accent;
 
 flat out float v_halfLen;
@@ -90,6 +91,22 @@ vec2 tangentTo(vec2 pos) {
   vec2 n = to / d;
   vec2 dir = vec2(-n.y, n.x);
   return rot2(dir, 0.07 * sin(u_time * 0.6 + a_seed * 6.2832 + pos.x * 0.003));
+}
+// The field's own direction: facing the pointer while the hand moves, and
+// once it is still each line turns at its own rate, a share of them in 45°
+// steps, so the ground looks busy computing rather than waiting.
+vec2 fieldDir(vec2 pos) {
+  vec2 t = tangentTo(pos);
+  float r1 = fract(a_seed * 31.7);
+  float r2 = fract(a_seed * 57.3);
+  float rate = mix(0.25, 1.4, r1) * (r2 < 0.5 ? -1.0 : 1.0);
+  float ang = a_seed * 6.2832 + u_time * rate;
+  if (r2 > 0.72) ang = floor(ang / 0.7854) * 0.7854;
+  vec2 spin = vec2(cos(ang), sin(ang));
+  if (dot(spin, t) < 0.0) spin = -spin;
+  vec2 d = mix(t, spin, u_idle);
+  float l = length(d);
+  return l > 1e-3 ? d / l : spin;
 }
 vec2 projectDir(vec3 p, vec3 d, float scale, vec2 pos, vec2 fallback) {
   vec2 dir = project(p + d * 0.02, scale) - pos;
@@ -158,7 +175,7 @@ Line state(int k) {
     p.y = mod(p.y - u_scroll / u_markScale * 0.35 + u_volBox.y, 2.0 * u_volBox.y) - u_volBox.y;
     p.xy -= pn * 0.22 * (depthN + 0.15);
     l.pos = project(p, u_markScale);
-    l.dir = tangentTo(l.pos);
+    l.dir = fieldDir(l.pos);
     l.pos = weigh(l.pos, depthN, l.dir);
     float persp = F / (F - p.z);
     l.len = u_lineLen * persp;
@@ -245,13 +262,17 @@ void main() {
   // block, and turn paper-coloured inside an ink slab.
   float quiet = 0.0;
   float ink = 0.0;
+  float island = 0.0;
   for (int i = 0; i < ${MAX_RECTS}; i++) {
     if (i >= u_rectN) break;
     float d = rectSd(pos, u_rects[i]);
     vec2 info = u_rectInfo[i];
-    if (info.x == 2.0) ink = max(ink, 1.0 - smoothstep(-1.0, 1.0, d));
+    float inside = 1.0 - smoothstep(-1.0, 1.0, d);
+    if (info.x == 2.0) ink = max(ink, inside);
+    else if (info.x == 4.0) { island = max(island, inside); quiet = max(quiet, info.y * inside); }
     else quiet = max(quiet, info.y * (1.0 - smoothstep(0.0, 44.0, d)));
   }
+  ink *= 1.0 - island;
   color = mix(color, u_paper, ink);
   alpha *= mix(1.0, 0.8, ink) * (1.0 - quiet);
 
@@ -480,6 +501,7 @@ export function VectorGround() {
       rectInfo: u("u_rectInfo"),
       rectN: u("u_rectN"),
       paper: u("u_paper"),
+      idle: u("u_idle"),
     };
     gl.uniform3fv(u("u_ink"), INK);
     gl.uniform3fv(u("u_accent"), ACCENT);
@@ -593,10 +615,18 @@ export function VectorGround() {
     // (lines fade under it), ink slabs `data-ground-ink` (lines turn paper
     // inside them). Read again on every scroll and resize; blocks off screen
     // are skipped, so the shader loop stays short.
-    const main = ground.closest("main");
+    // Kinds: copy (0) fades the lines within a margin, `soft` copy less so;
+    // an ink slab (2) turns them paper-coloured; a paper island (4) inside an
+    // ink slab keeps them ink and fades them a little.
+    const kindOf = (el: HTMLElement): [number, number] => {
+      if (el.hasAttribute("data-ground-ink")) return [2, 0];
+      if (el.hasAttribute("data-ground-paper")) return [4, 0.8];
+      return [0, el.dataset.groundQuiet === "soft" ? 0.55 : 0.88];
+    };
     const blocks = Array.from(
-      (main ?? document).querySelectorAll<HTMLElement>("[data-ground-quiet], [data-ground-ink]"),
-    ).map((el) => ({ el, info: el.hasAttribute("data-ground-ink") ? [2, 0] : [0, 0.82] }));
+      document.querySelectorAll<HTMLElement>("[data-ground-quiet], [data-ground-ink], [data-ground-paper]"),
+    ).map((el) => ({ el, info: kindOf(el) }));
+    const root = document.documentElement;
     const rects = new Float32Array(MAX_RECTS * 4);
     const rectInfo = new Float32Array(MAX_RECTS * 2);
     const readRects = () => {
@@ -619,6 +649,7 @@ export function VectorGround() {
     };
 
     let dirty = true;
+    let idleK = coarse ? 1 : 0;
     let stage = 0;
     let target = 0;
     let frame = 0;
@@ -657,12 +688,9 @@ export function VectorGround() {
       stage += (target - stage) * (1 - Math.exp(-STAGE_EASE * dt));
 
       const idle = coarse || now - lastMove > IDLE_MS;
-      let gx = tx;
-      let gy = ty;
-      if (idle) {
-        gx = width * (0.5 + 0.34 * Math.sin(time * 0.23));
-        gy = height * (0.5 + 0.3 * Math.sin(time * 0.17 + 1.3));
-      }
+      idleK += ((idle ? 1 : 0) - idleK) * (1 - Math.exp(-2.2 * dt));
+      const gx = tx;
+      const gy = ty;
       const e = 1 - Math.exp(-SETTLE * dt);
       px += (gx - px) * e;
       py += (gy - py) * e;
@@ -673,6 +701,7 @@ export function VectorGround() {
       gl.uniform2f(U.pointer, px, py);
       gl.uniform1f(U.stage, stage);
       gl.uniform1f(U.time, time);
+      gl.uniform1f(U.idle, idleK);
       gl.uniform1f(U.scroll, window.scrollY);
       gl.uniformMatrix3fv(U.rotMark, false, rotation(0.5 * Math.sin(time * 0.32) + nx * 0.8, 0.24 - ny * 0.6));
       gl.uniformMatrix3fv(U.rotLand, false, rotation(0.22 * Math.sin(time * 0.25) + nx * 0.6, 0.55 - ny * 0.5));
@@ -698,12 +727,12 @@ export function VectorGround() {
       event.preventDefault();
       stop();
       ground.removeAttribute("data-ground-mode");
-      main?.removeAttribute("data-ground-open");
+      root.removeAttribute("data-ground-open");
     };
 
     rebuild();
     ground.setAttribute("data-ground-mode", "vector");
-    main?.setAttribute("data-ground-open", "");
+    root.setAttribute("data-ground-open", "");
     window.addEventListener("pointermove", onPointer, { passive: true });
     window.addEventListener("pointerdown", onPointer, { passive: true });
     window.addEventListener("scroll", markDirty, { passive: true });
@@ -722,7 +751,7 @@ export function VectorGround() {
       document.removeEventListener("visibilitychange", onVisibility);
       canvas.removeEventListener("webglcontextlost", onLost);
       ground.removeAttribute("data-ground-mode");
-      main?.removeAttribute("data-ground-open");
+      root.removeAttribute("data-ground-open");
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, []);

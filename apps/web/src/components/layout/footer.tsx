@@ -46,9 +46,9 @@ export async function Footer({ locale }: { locale: AppLocale }) {
   ] as const;
 
   return (
-    <footer className="border-t border-rule bg-paper text-ink">
+    <footer className="site-footer border-t border-rule bg-paper text-ink">
       <div className="section-shell grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-        <div>
+        <div data-ground-quiet="">
           <div className="flex items-center gap-3">
             {/* Below the fold, so it rests rather than composing where nobody sees it. */}
             <AnimatedMark animate={false} className="text-ink" size={22} />
@@ -67,7 +67,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8" data-ground-quiet="">
           {internalGroups.map((group) => (
             <nav aria-labelledby={group.id} key={group.id}>
               <h2 className="type-meta text-ink" id={group.id}>
