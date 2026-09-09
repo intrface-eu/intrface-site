@@ -30,7 +30,7 @@ export { EngineeringLedger } from "./src/components/work/voyager/engineering-led
 export { FactLedger } from "./src/components/about/fact-ledger";
 export { FadeIn } from "./src/components/site/fade-in";
 export { HeroHalftone } from "./src/components/visual/hero-halftone";
-export { HeroProof } from "./src/components/home/hero-proof";
+export { ProjectPreviews } from "./src/components/home/hero-proof";
 export { LiveSiteRow } from "./src/components/home/live-site-row";
 export { MatchFlow } from "./src/components/work/funda/match-flow";
 export { MobileNav } from "./src/components/site/mobile-nav";

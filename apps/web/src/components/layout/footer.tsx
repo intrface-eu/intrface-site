@@ -1,15 +1,13 @@
 import type { CSSProperties } from "react";
 import { getTranslations } from "next-intl/server";
-import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import { Link } from "@/i18n/navigation";
 import { AnimatedMark } from "@/components/site/animated-mark";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import type { AppLocale } from "@/i18n/routing";
 import {
-  AOC_REPO_URL,
   CONTACT_EMAIL,
-  POLIS_REPO_URL,
   SITE_NAME,
 } from "@/lib/site/config";
 
@@ -30,10 +28,11 @@ export async function Footer({ locale }: { locale: AppLocale }) {
       heading: t("work.heading"),
       links: [
         { href: "/work", label: t("work.index") },
+        { href: "/work/velum", label: t("work.velum") },
         { href: "/work/voyager", label: t("work.voyager") },
+        { href: "/work/astyle-marine", label: t("work.astyleMarine") },
         { href: "/work/polis", label: t("work.polis") },
         { href: "/work/funda", label: t("work.funda") },
-        { href: "/work/client-sites", label: t("work.clientSites") },
       ],
     },
     {
@@ -41,15 +40,9 @@ export async function Footer({ locale }: { locale: AppLocale }) {
       heading: t("company.heading"),
       links: [
         { href: "/about", label: nav("about") },
-        { href: "/method", label: nav("method") },
         { href: "/imprint", label: nav("imprint") },
       ],
     },
-  ] as const;
-
-  const repos = [
-    { href: AOC_REPO_URL, label: t("openSource.aoc"), meta: t("openSource.aocMeta") },
-    { href: POLIS_REPO_URL, label: t("openSource.polis"), meta: t("openSource.polisMeta") },
   ] as const;
 
   return (
@@ -74,7 +67,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8">
           {internalGroups.map((group) => (
             <nav aria-labelledby={group.id} key={group.id}>
               <h2 className="type-meta text-ink" id={group.id}>
@@ -92,43 +85,12 @@ export async function Footer({ locale }: { locale: AppLocale }) {
             </nav>
           ))}
 
-          {/* Two narrow columns would break the licence lines badly; below `sm`
-              the open-source group takes the full row instead. */}
-          <nav aria-labelledby="footer-open-source" className="col-span-2 sm:col-span-1">
-            <h2 className="type-meta text-ink" id="footer-open-source">
-              {t("openSource.heading")}
-            </h2>
-            <ul className="mt-5 grid gap-4">
-              {repos.map((repo) => (
-                <li key={repo.href}>
-                  <a
-                    className={linkClass}
-                    href={repo.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {repo.label}
-                    <span className="sr-only"> ({t("newTab")})</span>
-                    <IconArrowUpRight
-                      aria-hidden="true"
-                      className="ml-1 inline-block h-3.5 w-3.5 align-[-0.1em]"
-                    />
-                  </a>
-                  {/* Licence plus a plain-English line. Mono is the numeric/technical
-                      voice, not a costume for prose — so this reads as a caption. */}
-                  <p className="type-caption mt-1">
-                    {repo.meta}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </nav>
+
         </div>
       </div>
 
       <div className="section-shell">
-        <div className="flex flex-col gap-5 border-t border-rule py-7 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
-          <p className="type-body-sm">{t("colophon")}</p>
+        <div className="flex border-t border-rule py-7 sm:justify-end">
           <LocaleSwitcher />
         </div>
       </div>

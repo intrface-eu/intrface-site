@@ -5,17 +5,17 @@ import { Link } from "@/i18n/navigation";
 /** The order of the work index. A case hands the reader the next file in it,
     so the last thing on a case page is another case rather than a dead end. */
 const ORDER = [
-  { key: "voyager", href: "/work/voyager" },
-  { key: "polis", href: "/work/polis" },
-  { key: "funda", href: "/work/funda" },
-  { key: "clientSites", href: "/work/client-sites" },
+  { key: "velum", href: "/work/velum", name: "Velum" },
+  { key: "voyager", href: "/work/voyager", name: "Voyager" },
+  { key: "astyleMarine", href: "/work/astyle-marine", name: "AstyleMarine" },
+  { key: "polis", href: "/work/polis", name: "Polis" },
+  { key: "funda", href: "/work/funda", name: "Funda" },
 ] as const;
 
 export type CaseKey = (typeof ORDER)[number]["key"];
 
 export async function CaseNav({ current }: { current: CaseKey }) {
   const t = await getTranslations("CaseNav");
-  const index = await getTranslations("WorkIndex");
 
   const position = ORDER.findIndex((entry) => entry.key === current);
   const next = ORDER[(position + 1) % ORDER.length];
@@ -37,7 +37,7 @@ export async function CaseNav({ current }: { current: CaseKey }) {
         >
           <span className="type-meta">{t("next")}</span>
           <span className="type-subheading inline-flex items-center gap-2 border-b border-rule pb-1.5 text-ink transition-colors group-hover:border-current motion-reduce:transition-none">
-            {index(`entries.${next.key}.name`)}
+            {next.name}
             <IconArrowRight aria-hidden="true" className="h-4 w-4" />
           </span>
         </Link>

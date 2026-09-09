@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import { isNavItemActive, type NavItem } from "@/components/site/site-nav";
+import { isNavItemActive, resolveNavHref, type NavItem } from "@/components/site/site-nav";
 
 export type MobileNavItem = NavItem;
 
@@ -104,7 +104,7 @@ export function MobileNav({ items, menuLabel }: { items: readonly NavItem[]; men
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={menuLabel}
-        className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-card text-ink transition-colors hover:border-ink/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+        className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full pointer-coarse:h-11 pointer-coarse:w-11 border border-rule bg-card text-ink transition-colors hover:border-ink/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
         onClick={() => setOpen((value) => !value)}
         ref={toggleRef}
         type="button"
@@ -156,7 +156,7 @@ export function MobileNav({ items, menuLabel }: { items: readonly NavItem[]; men
                       className={`block rounded-xl px-3 py-3 text-base font-medium transition-colors hover:bg-ink/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none ${
                         active ? "bg-ink/5 text-ink" : "text-ink-muted"
                       }`}
-                      href={item.href}
+                      href={resolveNavHref(item, pathname)}
                       onClick={close}
                     >
                       {item.label}

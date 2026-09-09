@@ -1,5 +1,4 @@
 import {
-  AOC_REPO_URL,
   CONTACT_EMAIL,
   CONTACT_PHONE_TEL,
   SITE_DESCRIPTION,
@@ -37,11 +36,9 @@ const organization = {
   areaServed: "EU",
   knowsAbout: [
     "Software engineering",
-    "AI-assisted delivery",
     "Place intelligence",
     "Civic data infrastructure",
   ],
-  sameAs: [AOC_REPO_URL],
 };
 
 /** Organization structured data. Rendered once, in the root layout. */

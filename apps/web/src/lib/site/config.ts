@@ -21,17 +21,16 @@ export const CONTACT_PHONE_TEL = "+385991905899";
 
 export const AOC_REPO_URL = "https://github.com/basicalex/agent-ops-cockpit";
 
-export const POLIS_REPO_URL = "https://github.com/basicalex/polis";
-
 /** Every locale-prefixed route on the site. Sitemap, hreflang, and nav read from here. */
 export const SITE_PATHS = [
   "/",
   "/work",
+  "/work/velum",
   "/work/voyager",
+  "/work/astyle-marine",
   "/work/polis",
   "/work/funda",
   "/work/client-sites",
-  "/method",
   "/about",
   "/imprint",
 ] as const;

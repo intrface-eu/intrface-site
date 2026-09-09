@@ -10,7 +10,17 @@ export type NavItem = {
    * section of a page another link already owns (e.g. Contact on /about).
    */
   match?: string;
+  /**
+   * Destination when the reader is already on the home page. Contact points at
+   * the /about section everywhere else, but Home carries the same form, so the
+   * link stays on the page instead of paying a route change first.
+   */
+  homeHref?: string;
 };
+
+export function resolveNavHref(item: NavItem, pathname: string): string {
+  return pathname === "/" && item.homeHref ? item.homeHref : item.href;
+}
 
 export function isNavItemActive(item: NavItem, pathname: string): boolean {
   if (!item.match) return false;
@@ -38,7 +48,7 @@ export function SiteNav({ items }: { items: readonly NavItem[] }) {
             className={`relative text-sm font-medium tracking-[-0.01em] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:bg-accent after:transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink focus-visible:after:opacity-0 motion-reduce:transition-none ${
               active ? "text-ink after:opacity-100" : "text-ink-muted after:opacity-0 hover:text-ink"
             }`}
-            href={item.href}
+            href={resolveNavHref(item, pathname)}
             key={item.href}
           >
             {item.label}

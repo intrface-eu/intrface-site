@@ -16,7 +16,7 @@ projects. The site leads with what we build; client work is one of the interface
 (a business and its customers) and stays plainly findable for a buyer who only wants
 a site.
 
-### The doctrine — fixed wording, used once each on the home page
+### The doctrine — approved wording; the home page may use the house thesis alone
 
 1. **The world already runs on systems.** Cities, institutions, landscapes, music,
    businesses, communities.
@@ -39,16 +39,18 @@ list.
 
 | Product | The interface … | Pair | Status label (exact) | Claim line (exact) |
 |---|---|---|---|---|
-| Voyager | for a place | visitor ↔ place | Pre-launch | One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. |
-| Polis | to the city | citizen ↔ institution | Open source · AGPL · pre-deployment | A governance graph where every public claim traces back to a source document. |
-| Funda | to EU funding | organization ↔ funding | Active build | Reads EU funding calls as they publish and matches them to the organizations that fit. |
-| MidiFlow | for musical thought | musician ↔ sound | Pre-launch | The least machinery possible between an idea you can hear and a computer that plays it. |
-| Patchbay | for making things with other artists | artist ↔ artist | Pre-launch | Artists find each other and make work together, with no feed in between. |
-| Client sites | between a business and its customers | customer ↔ business | Live · Vrsar | A coastal business goes from an Instagram profile to a live bilingual site in one continuous pass. |
+| Voyager | for a place | visitor ↔ place | Live | A public map for discovering places around Vrsar. |
+| Polis | Civic interfaces | citizen ↔ institution | Coming soon | — |
+| Funda | EU funding | organization ↔ funding | Coming soon | — |
+| MidiFlow | Music | musician ↔ sound | Coming soon | — |
+| Patchbay | Creative collaboration | artist ↔ artist | Coming soon | — |
+| Client sites | between a business and its customers | customer ↔ business | Live | Velum and AstyleMarine: public sites for a waterfront café and wine bar and a yacht charter in Istria. |
 
 The pair may be rendered with the ↔ glyph or as two words on a rule; whichever, the
-same treatment on every row. "Polis Interface" remains the product's full name in the
-footer and metadata; rows and prose say "Polis".
+same treatment on every row. Use "Polis", "Funda", "MidiFlow", and "Patchbay" everywhere,
+including footer and metadata. For these four unreleased products, the table gives
+the entire public description: name, translated "Coming soon", and at most one
+short domain. Minimal identity pairs may stay; do not add a second claim line.
 
 ### Tagline and metadata
 
@@ -60,12 +62,11 @@ footer and metadata; rows and prose say "Polis".
 
 ### Home page order
 
-hero (tagline, one defining lead, two actions) → evidence strip (unchanged: Velum,
-Voyager, Agent Ops Cockpit) → doctrine (the three steps above, the house line) →
-what we build (five own products with pair and status; MidiFlow and Patchbay rows carry
-no link) → for businesses (the Velum exhibit and the client-sites link — this is the
-services door) → method teaser (unchanged) → contact (unchanged; "Bring us the messy
-system" stays).
+Experience mode (owner update, 2026-09-07): work leads; the interface recedes.
+Hero and pair ribbon → selected project previews (Velum, Voyager, AstyleMarine;
+`#for-businesses` remains here) → compact five-product index → short house thesis
+→ contact. Each preview links to its own showcase. Show finished public work,
+not production process, engineering metrics, pilot disclosures, or delivery claims.
 
 ## Voice rules (from the house prose style — binding)
 
@@ -74,8 +75,8 @@ system" stays).
 - Short words, active voice. No "comprehensive", "robust", "seamless", "leverage",
   "ensure", "cutting-edge", "state-of-the-art".
 - Numbers over adjectives. "1,336 backend functions" beats "a powerful backend".
-- Honesty is a feature. Pre-launch is "pre-launch". A pilot seed is "pilot-ready".
-  Polis's own honest-status discipline is part of the pitch.
+- Unreleased products say "Coming soon", translated in every locale. Do not
+  publish their technical status, pilot details, or readiness claims.
 
 ## Copy anti-patterns (from the 2026-07-28 editorial audit — check before adding copy)
 
@@ -85,10 +86,9 @@ These are the habits that made the copy read machine-written. They recur; watch 
    it in variants reads as a machine generating variants. Each fact gets ONE canonical
    sentence, reused character-for-character (the Voyager QR line, the contract-files line,
    each honest-status label). Never paraphrase to avoid repetition.
-2. **Status labels are the product.** Exactly these spellings, everywhere: Voyager
-   "Pre-launch" · Polis "Open source · AGPL · pre-deployment" · Funda "Active build" ·
-   MidiFlow "Pre-launch" · Patchbay "Pre-launch" · Client sites "Live · Vrsar".
-   Inconsistent labels disprove the pitch they carry.
+2. **Status labels stay consistent.** Voyager and client sites say "Live"; Polis,
+   Funda, MidiFlow, and Patchbay say "Coming soon". Translate these labels in
+   German, French, and Croatian.
 3. **Sentence-shape templates.** "N X, one Y." and "X is not A. It is B." are the house
    voice in small doses. Rule: no antithesis in a section intro, never two in consecutive
    sentences, and no more than three per page. Never run the same construction three
@@ -98,7 +98,7 @@ These are the habits that made the copy read machine-written. They recur; watch 
 5. **Abstraction where evidence exists.** If a number from Approved facts fits, use the
    number. Unfalsifiable principles ("clarity before spectacle") do not earn their space.
 6. **Say only what is true of today's status.** We do not "operate" pre-launch platforms;
-   the public roster is one live site, not "client sites" plural.
+   Voyager is live; the approved public client roster is Velum and AstyleMarine.
 
 ### Lexicon budget (added 2026-07-28)
 
@@ -119,8 +119,8 @@ platforms of our own". Where an approved number fits, use the number.
 | delivery | nowhere — say "Agent Ops Cockpit", or name the files | ≤1, UI labels only ("In delivery") |
 | platform · platforms | `/work/voyager` ("place-intelligence platform") | 0 — name Voyager, Polis, Funda |
 | system | the protected CTA "Bring us the messy system", the home H1, `/about` step "Map the system" | ≤2 per namespace |
-| source | `/work/polis` ("source document") | ≤2 per namespace; "Open source" as a status label does not count against prose |
-| layer | the doctrine definition on the home hero lead ("the layer a person meets a system through"); `/work/polis` (accountability layer) | 0 |
+| source | No unreleased-product source claims or repository promotion | ≤2 per namespace |
+| layer | the doctrine definition on the home hero lead ("the layer a person meets a system through") | 0 |
 | proof · evidence | section labels on `/work/*` | ≤1 per namespace |
 | interface | the tagline, the doctrine, the house line, the admission test, and the canonical "the interface for/to X" product lines | ≤2 in free prose per namespace, and only in the doctrine sense ("the interface for/to X", "an interface between A and B"). Never "user interface", "UI", "interface design", or "interfaces" meaning screens. |
 
@@ -128,9 +128,8 @@ platforms of our own". Where an approved number fits, use the number.
 and that is expected — the metric counts proper nouns and canonical labels it cannot
 distinguish from prose:
 
-- **Footer** (~93/1k): 75 words carrying "Agent Ops Cockpit" ×2, "Polis Interface",
-  "Open source", the protected colophon and the protected CTA. Every remaining hit is a
-  product name or a protected line. Nothing left to cut.
+- **Footer**: product names may remain. Unreleased-product repository links,
+  licence labels, and promotional source descriptions must not return.
 - **HomePage** (~53/1k): the H1 and its meta title, three product names, the canonical status
   labels, and image alt text account for roughly two thirds. Prose-controllable share is
   ~17/1k.
@@ -171,15 +170,17 @@ Lines that carry the site's voice — the honest-status notes, "Bring us the mes
 the footer colophon, "There are no screenshots on this page", "Counted from the repository,
 not estimated", "Pre-launch means pre-launch", "No mock-ups — this is the terminal we work
 in", the whole ContactForm namespace — are load-bearing. Tighten around them; do not smooth
-them out.
+them out. This protection does not apply to retired Polis/Funda case-study or
+unreleased-product status copy; remove those details from public translations.
 
 ## Forbidden claims (stale docs overstate these; an informed reader will check)
 
-- Voyager: NO production launch, NO real end users, NO Arabic/RTL, NO "10+ languages"
-  (say six), NO "end-to-end test coverage" (say "1,580 automated tests").
-- Polis: NO production deployment, NO real pilot (the pilot is simulated and says so —
-  that honesty can be quoted). It IS open source (AGPL) — link only after verifying the
-  GitHub repo is publicly reachable.
+- Voyager is now in production (owner confirmation, 2026-09-07). Do not infer
+  real users or adoption from launch. NO Arabic/RTL, language-count, test-coverage,
+  repository-metric, or unverified outcome claims in the public showcase.
+- Polis, Funda, MidiFlow, and Patchbay: no public features, architecture, licences,
+  metrics, repository promotion, source links, screenshots, or technical status.
+  A repository being reachable does not authorize promotion before release.
 - Prism: do not present as a working outreach engine. Leave it off the site.
 - herdr, omp, HyperFrames: third-party tools we operate, not our inventions. Claim
   integration and operating discipline, never authorship.
@@ -189,72 +190,39 @@ them out.
 
 ## Approved facts and numbers
 
-**Client sites — the public roster is Velum, and only Velum.**
+**Client sites — the approved public roster is Velum and AstyleMarine.**
 
-Publishable today:
-- https://velum-winebar.com — café/wine bar, Vrsar waterfront. HR/EN,
-  LocalBusiness JSON-LD, hreflang. Motion graphics by the same studio (Remotion).
-  Captures live at `apps/web/public/proof/sites/velum-{desktop,mobile}.png`.
+Owner approval (2026-09-07) permits both names, production links, and fresh captures:
+- https://velum-winebar.com — café and wine bar, Vrsar waterfront. HR/EN.
+- https://www.astylemarine.com — private yacht experiences from Poreč along the
+  Istrian coast. The public site presents itineraries, the yacht, and enquiries.
+- Captures: `apps/web/public/proof/projects/{velum,astyle-marine}/` with
+  `desktop.webp`, `detail.webp`, and `mobile.webp` for each project.
 
-**Built but NOT deliverable — do not name, link, screenshot, or count (2026-07-28):**
-cannaclean, astyle-marine, vrsar-boat-tours. These sites exist and run, but the clients
-have not been handed them. The repo is public, so their captures were deleted from
-`apps/web/public/proof/sites/` rather than merely unreferenced. Do not re-add a name, a
-URL, a capture, or a headcount that includes them until the owner says otherwise —
-"three more in delivery", unnamed, is the most the site may say.
+**Still private — do not name, link, screenshot, or count publicly:** cannaclean,
+vrsar-boat-tours. Their exclusions remain unchanged. Do not publish unnamed
+pipeline counts, fake client counts, production-process copy, or delivery day counts.
 
-Because of this: no "four live sites" phrasing anywhere — not in copy, not in metadata
-descriptions, not in a stat cell, not in a status label. Figures on the client-sites
-page count the pipeline (six steps, two languages on the live site), not the roster.
+**Voyager** (proprietary, live): https://voyager.intrface.eu. The public Atlas at
+`/scout/atlas` maps places around Vrsar and can be explored without signing in.
+Show production captures at `apps/web/public/proof/projects/voyager/` using
+`desktop.webp`, `detail.webp`, and `mobile.webp`. Public availability does not
+establish user numbers, adoption, or outcomes. Retire the engineering/stat/pilot
+showcase; describe only the visible public work.
 
-- Delivery claim: the pipeline is the claim, not the clock. Say "one continuous pass",
-  "one automated pipeline", "the date we give you holds". Do NOT say "in days", "several
-  in a single day", "the same day", "live this week", and do not put a delivery
-  day-count in a stat cell. The timeline is real; stated as a day-count it reads cheap.
-- Pipeline: Instagram profile → content analysis → design tokens from the client's brand
-  → Astro build (HR-first i18n, JSON-LD, hreflang) → automated Playwright audit
-  (including per-image aspect-ratio checks) → Cloudflare Pages deploy.
+**Unreleased products — public scope (owner update, 2026-09-07):**
+- **Polis**: Civic interfaces. Coming soon.
+- **Funda**: EU funding. Coming soon.
+- **MidiFlow**: Music. Coming soon.
+- **Patchbay**: Creative collaboration. Coming soon.
 
-**Voyager** (proprietary, pre-launch): verified place-intelligence platform for tourism
-destinations. One QR code gives a restaurant a multilingual AI host grounded in its own
-menu and hours; the tourist board gets an official controllable content layer; visitors
-get a map-first app with on-foot routing in their language.
-- ~365,000 lines of first-party TypeScript · 220 database tables · 1,336 backend
-  functions · 312 routes across seven product surfaces · six languages · 286 test files,
-  ~1,580 cases · 20 months, 1,080 commits.
-- Real engineering to name: fine-grained multi-tenant authorization (WorkOS FGA with a
-  synchronous grant cache and a source-level authorization regression test); intent-routed
-  retrieval that sends "opening hours" to structured lookup and menu photos to a
-  multimodal index instead of forcing everything through one vector store; self-hosted
-  scraping and OSRM pedestrian routing services (live on Railway) instead of rented APIs;
-  a governed design system with 16 subsystems and its own test suite.
-- Pilot-ready with seeded content for Turistička zajednica Vrsar (Vrsar–Orsera, Istria):
-  named trails, sea-water-quality signals, shuttle timetables, events.
-
-**Polis Interface** (open source, AGPL, pre-deployment): civic infrastructure for
-verifiable government data — a governance graph where every public claim traces to a
-source document.
-- ~25,000 lines across 16 services and 4 apps · 55 Postgres tables · 10 OPA/Rego policy
-  modules enforced at runtime · ~100 unit tests + 17 acceptance scripts.
-- Real engineering to name: an append-only audit ledger hash-chained inside the insert
-  transaction so concurrent writers cannot fork it; document verification with RFC 3161
-  timestamping and eIDAS-shaped e-seals; policy gates that fail closed; an accountability
-  layer where an elected official cannot mark their own promise "delivered".
-- Its docs label every surface [verifiable], [demonstration/stub], or [not yet live] —
-  present this labeling discipline as part of the work.
-
-**Funda** (active build): funding-opportunity platform matching organizations to EU
-funding. Multi-role SaaS (admin/consultant/corporate/director), AI-agent ingestion of
-EU sources (SEDIA/TED), geospatial matching, three languages. Next.js + Convex + Clerk.
-
-**MidiFlow** (proprietary, pre-launch): a music app. It runs as an installed app and has
-been tested on a phone; it is not published. Nothing else is approved: no store link, no
-screenshot, no counts, no feature list beyond the canonical claim line. Spell it "MidiFlow".
-
-**Patchbay** (proprietary, pre-launch): an interface for artists making work together.
-A build is online at a domain that is not yet public. Do not name or link the domain,
-do not screenshot it, do not describe features beyond the canonical claim line. The
-branding is in progress; use the plain word "Patchbay" set in body type, no mark.
+Translate the domain and status in en/de/fr/hr. Keep canonical names. These lines
+replace all previous approval for features, architecture, metrics, licences,
+source/repository links, device tests, private-domain status, and case-study detail.
+The restriction covers Home, Work, About product entries, metadata, footer
+promotion, and serialized translations. Do not restore retired details before
+owner approval to publish them. Preserve the live Voyager, Velum, and
+AstyleMarine showcases and their assets.
 
 **Delivery system / method:**
 - AOC is public: github.com/basicalex/agent-ops-cockpit — Apache-2.0, 403 commits,
@@ -277,16 +245,23 @@ All routes under `apps/web/src/app/[locale]/`:
 | Route | Page component (owner file) | Content |
 |---|---|---|
 | `/` | `components/pages/home-page.tsx` | See "Home page order" under Positioning |
-| `/work` | `components/pages/work-index-page.tsx` | Ledger of the six interfaces in the canonical table; MidiFlow and Patchbay rows have no case page and no link |
-| `/work/voyager` | `components/pages/work-voyager-page.tsx` | Case study |
-| `/work/polis` | `components/pages/work-polis-page.tsx` | Case study |
-| `/work/funda` | `components/pages/work-funda-page.tsx` | Case study |
-| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Istria client-site case study: the Velum exhibit, the pipeline, an unnamed "in delivery" note |
-| `/method` | `components/pages/method-page.tsx` | The agent-orchestrated delivery system, linking the public AOC repo |
+| `/work` | `components/pages/work-index-page.tsx` | Velum, Voyager and AstyleMarine previews, then minimal coming-soon entries; Polis/Funda may link to their notices, MidiFlow/Patchbay have no routes |
+| `/work/voyager` | `components/pages/work-voyager-page.tsx` | Screenshot-first production showcase |
+| `/work/velum`, `/work/astyle-marine` | `components/work/project-showcase.tsx` | Separate screenshot-first client showcases |
+| `/work/polis` | `components/pages/work-polis-page.tsx` | Minimal coming-soon page: name, short domain, status, back-to-work and contact links |
+| `/work/funda` | `components/pages/work-funda-page.tsx` | Minimal coming-soon page: name, short domain, status, back-to-work and contact links |
+| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Concise client index linking separate Velum and AstyleMarine showcases; no process copy |
 | `/about` | `components/pages/about-page.tsx` | The doctrine and the admission test, who/where/how we engage, own products incl. MidiFlow and Patchbay, contact form |
 | `/imprint` | `components/pages/imprint-page.tsx` | Legal/imprint basics for an .eu company |
 
-Case pages follow one shared shape (shared components, see below): case hero (name,
+Polis and Funda keep their routes, not their former case studies. Remove retired
+case-study and diagram copy from all four locale files, not just from rendered
+components: translations serialize publicly. Do not create MidiFlow/Patchbay routes.
+The three production showcases
+use a name, one-sentence role, live-site link, desktop/detail/mobile screens, brief
+overview, project navigation, and contact CTA. No process or metrics.
+
+Other case pages follow their existing shared shape (shared components, see below): case hero (name,
 one-line claim, status label, stat band) → narrative sections → evidence (screenshots or
 labeled diagram) → honest-status note → CTA to contact.
 

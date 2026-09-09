@@ -6,9 +6,7 @@ import { CaseSection } from "@/components/case";
 import { FactLedger, type Fact } from "@/components/about/fact-ledger";
 import { ContactForm } from "@/components/site/contact-form";
 import { FadeIn } from "@/components/site/fade-in";
-import { ProcessSteps, type ProcessStep } from "@/components/site/process-steps";
 import {
-  AOC_REPO_URL,
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_TEL,
@@ -31,33 +29,7 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "About" });
 
   const facts: Fact[] = [
-    { term: t("company.facts.company.term"), value: t("company.facts.company.value") },
-    { term: t("company.facts.person.term"), value: t("company.facts.person.value") },
     { term: t("company.facts.based.term"), value: t("company.facts.based.value") },
-    { term: t("company.facts.languages.term"), value: t("company.facts.languages.value") },
-    { term: t("company.facts.work.term"), value: t("company.facts.work.value") },
-    {
-      term: t("company.facts.delivery.term"),
-      value: t.rich("company.facts.delivery.value", {
-        repo: (chunks) => (
-          <a
-            className="font-semibold text-accent hover:underline"
-            href={AOC_REPO_URL}
-            rel="noreferrer"
-            target="_blank"
-          >
-            {chunks}
-          </a>
-        ),
-      }),
-    },
-    // Prose type, not `.type-data`: the value is a mixed run of a legal name, two
-    // identifiers and a court, and mono rags badly in the aside's column width.
-    { term: t("company.facts.registry.term"), value: t("company.facts.registry.value") },
-    // The registered activity is a legal fact, not the positioning — it lives
-    // here and in the imprint, never in the headline or the description.
-    { term: t("company.facts.activity.term"), value: t("company.facts.activity.value") },
-    { term: t("company.facts.vat.term"), value: t("company.facts.vat.value") },
     {
       term: t("company.facts.phone.term"),
       value: (
@@ -103,31 +75,6 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
         <div className="grid max-w-2xl gap-5">
           <p className="type-body">{t("company.p1")}</p>
           <p className="type-body">{t("company.p2")}</p>
-          <p className="type-body">{t("company.p3")}</p>
-        </div>
-      </CaseSection>
-
-      <CaseSection
-        intro={t("engagement.intro")}
-        label={t("engagement.label")}
-        title={t("engagement.title")}
-        tone="paper"
-      >
-        <div className="grid gap-10 lg:grid-cols-[1fr_.72fr] lg:items-start">
-          <ProcessSteps steps={t.raw("engagement.steps") as ProcessStep[]} />
-
-          <div className="lg:pt-2">
-            <p className="type-body max-w-md">{t("engagement.aside")}</p>
-            <FadeIn delay={80}>
-              <Link
-                className="type-meta mt-8 inline-flex items-center gap-2 border-b border-rule pb-1.5 transition-colors hover:border-current focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current motion-reduce:transition-none"
-                href="/method"
-              >
-                {t("engagement.link")}
-                <IconArrowRight aria-hidden="true" className="h-4 w-4" />
-              </Link>
-            </FadeIn>
-          </div>
         </div>
       </CaseSection>
 
@@ -167,18 +114,6 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
             );
           })}
         </dl>
-
-        <FadeIn delay={220}>
-          <p className="type-body mt-8">
-            {t.rich("platforms.clientNote", {
-              link: (chunks) => (
-                <Link className="font-semibold text-accent hover:underline" href="/work/client-sites">
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-        </FadeIn>
       </CaseSection>
 
       <section className="scroll-mt-24 border-b border-rule tone-raised" id="contact">

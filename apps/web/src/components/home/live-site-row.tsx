@@ -39,32 +39,27 @@ export function LiveSiteRow({
 
   return (
     <article
-      className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-14 ${
+      className={`home-live-site grid items-center gap-12 lg:gap-16 ${
         isFirst ? "pb-12 sm:pb-16" : "border-t border-rule py-12 sm:py-16"
       }`}
     >
-      <FadeIn className={isReversed ? "lg:order-2" : undefined}>
-        <a
-          className="group relative block rounded-[var(--radius-lg)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
-          href={site.url}
-          rel="noreferrer"
-          target="_blank"
-        >
-          <div className="rounded-[var(--radius-lg)] border border-rule bg-card p-2 shadow-[var(--shadow-elevated)] transition-colors group-hover:border-ink/25 sm:p-3">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-md)]">
-              <Image
-                alt={site.alt}
-                className="object-cover object-top"
-                fill
-                loading="lazy"
-                sizes="(min-width: 1024px) 34rem, (min-width: 640px) 88vw, 92vw"
-                src={`/proof/sites/${site.slug}-desktop.png`}
-              />
-            </div>
+      {/* The square-edged desktop capture reaches the viewport edge. Its mobile
+          state is attached to the image instead of floating in a framed card. */}
+      <FadeIn className={isReversed ? "live-site-media lg:order-2" : "live-site-media"}>
+        <a className="live-site-link group relative block" href={site.url} rel="noreferrer" target="_blank">
+          <div className="live-site-desktop relative aspect-[16/10] overflow-hidden bg-card">
+            <Image
+              alt={site.alt}
+              className="object-cover object-top"
+              fill
+              loading="lazy"
+              sizes="(min-width: 1024px) 68vw, 100vw"
+              src={`/proof/sites/${site.slug}-desktop.png`}
+            />
           </div>
 
-          <div className="absolute -bottom-6 right-5 w-[18%] min-w-[4.75rem] max-w-[6.75rem] rounded-[var(--radius-md)] border border-rule bg-card p-1.5 shadow-[var(--shadow-elevated)] sm:right-8">
-            <div className="relative aspect-[390/844] overflow-hidden rounded-[var(--radius-md)]">
+          <div className="live-site-mobile absolute bottom-0 right-0 w-[18%] min-w-[4.75rem] max-w-[7rem] overflow-hidden border-l border-t border-paper bg-card">
+            <div className="relative aspect-[390/844]">
               <Image
                 alt=""
                 className="object-cover object-top"

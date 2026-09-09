@@ -76,6 +76,12 @@ html {
   scrollbar-color: var(--ink-muted) var(--paper);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 html::-webkit-scrollbar {
   width: 6px;
 }
@@ -171,6 +177,52 @@ body {
   }
 }
 
+/* ===== THE GROUND — ambient drift =====
+   The halftone screen made into the world's pattern. Both loops translate by an
+   exact multiple of the cell in the layer's own rotated coordinates, so the
+   pattern lands on itself and the loop has no seam: near moves 8 cells across
+   and 4 down (9px cell), far 2 cells across and 3 up (27px cell). `translate`
+   only — a `background-position` loop would repaint every frame. */
+@keyframes ground-drift-near {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -72px 36px;
+  }
+}
+
+@keyframes ground-drift-far {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 54px -81px;
+  }
+}
+
+/* Scroll parallax. Driven by `animation-timeline: scroll(root)`, so the whole
+   travel maps to the whole document: no scroll listener, no main-thread work.
+   The near field travels twice as far as the far one, which is what reads as
+   depth. */
+@keyframes ground-parallax-near {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -70vh;
+  }
+}
+
+@keyframes ground-parallax-far {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -35vh;
+  }
+}
+
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -229,6 +281,19 @@ body {
     max-inline-size: 20ch;
   }
 
+  /* One step above display, and only for the home claim: four words on one
+     line. `.type-display` is cut for a three-line sentence, so a four-word
+     headline set in it reads as a caption of the page rather than the page's
+     argument. Leading closes to 1.0 because there is one line to lead. */
+  .type-display-xl {
+    font-family: var(--font-brand);
+    font-size: clamp(3rem, 7.4vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+    max-inline-size: 14ch;
+  }
+
   .type-heading {
     font-family: var(--font-brand);
     font-size: clamp(1.6rem, 2.7vw, 2.2rem);
@@ -270,6 +335,7 @@ body {
      there is room to spare, so headings keep their unhyphenated setting. */
   @media (width < 64rem) {
     .type-display,
+    .type-display-xl,
     .type-heading {
       hyphens: auto;
       overflow-wrap: break-word;
@@ -363,6 +429,38 @@ body {
     font-size: 0.8125rem;
     line-height: 1.45;
     letter-spacing: -0.01em;
+  }
+
+  /* ===== PAIR MARK =====
+     The two sides a product sits between, drawn rather than punctuated: two
+     words on a hairline with a solid accent node at the midpoint. It is the
+     site's illustration language (nodes, hairline connectors) at label scale,
+     and it inherits the band — on `.tone-ink` both tokens are already relit. */
+  .pair-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pair-mark__link {
+    position: relative;
+    flex: none;
+    display: inline-block;
+    inline-size: 2rem;
+    block-size: 1px;
+    background: var(--line);
+  }
+
+  .pair-mark__link::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    inline-size: 5px;
+    block-size: 5px;
+    border-radius: 999px;
+    background: var(--accent);
+    transform: translate(-50%, -50%);
   }
 
   .section-shell {
@@ -652,38 +750,103 @@ body {
     box-shadow: var(--shadow-elevated);
   }
 
-  /* ===== HERO PROOF PLATE =====
-     The screenshot frame from DESIGN.md — card surface, hairline, elevated
-     shadow — with the one hover gesture the hero gets: a 2px lift, the same
-     travel and the same house curve as TactileButton. Only `translate` and
-     `box-shadow` change, so hovering the strip never reflows the first
-     screen. */
-  .proof-plate-frame {
-    border: 1px solid var(--line);
-    background: var(--card);
-    box-shadow: var(--shadow-surface);
-    transition:
-      translate 220ms cubic-bezier(0.2, 0.8, 0.3, 1),
-      border-color 220ms ease,
-      box-shadow 220ms ease;
+  /* ===== PROJECT PREVIEWS / SHOWCASES =====
+     Bounded captures are the exhibit, not containers for whole sections.
+     No frame, radius, shadow, overlay caption, or reveal hides the work. */
+  .project-previews {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem 1.5rem;
+    align-items: start;
   }
 
-  .proof-plate:hover .proof-plate-frame,
-  .proof-plate:focus-visible .proof-plate-frame {
-    translate: 0 -2px;
-    border-color: color-mix(in srgb, var(--ink) 22%, transparent);
-    box-shadow: var(--shadow-elevated);
+  .project-preview {
+    display: block;
+    min-width: 0;
   }
 
-  /* Reduced motion keeps the state change and drops the travel. */
-  @media (prefers-reduced-motion: reduce) {
-    .proof-plate-frame {
-      transition: none;
+  .project-preview-image,
+  .project-capture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .project-preview-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    padding-block-start: 1.25rem;
+  }
+
+  .project-preview-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+  }
+
+  .project-preview:hover .project-preview-action,
+  .project-next-link:hover .type-subheading {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .project-preview:focus-visible,
+  .project-next-link:focus-visible,
+  .pair-ribbon-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  .project-overview {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .project-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .project-mobile-figure {
+    width: min(100% - 2rem, 20rem);
+    justify-self: center;
+  }
+
+  .project-next-link {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .project-previews {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .project-previews {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .proof-plate:hover .proof-plate-frame,
-    .proof-plate:focus-visible .proof-plate-frame {
-      translate: none;
+    .project-overview {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 3rem;
+    }
+
+    .project-detail-layout {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+
+    .project-mobile-figure {
+      width: 100%;
+      margin-block-start: 5rem;
     }
   }
 
@@ -1137,6 +1300,578 @@ body {
       transition: none;
     }
   }
+
+  /* ===== THE GROUND =====
+     The home page is a space, not a stack of bands. One fixed field sits behind
+     everything and never scrolls with the page; the content above it is a set of
+     continuous panes crossing that field. The field is the site's own halftone screen
+     coarsened into a world pattern — two dot layers at different cells, angles,
+     alphas and rates, so the space has a near and a far.
+
+     Nesting is deliberate and each element carries at most one animation
+     (G7): pointer travel on the outer layer, scroll parallax on the plane,
+     ambient drift on the dots. The plane also carries the static screen angle,
+     which is what puts the drift into the pattern's own rotated coordinates —
+     `translate` resolves in the parent's space, `rotate` after it. */
+  .ground {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--paper);
+    pointer-events: none;
+    /* Written by GroundPointer, in rAF, as two normalised −0.5…0.5 scalars. */
+    --ground-nx: 0;
+    --ground-ny: 0;
+  }
+
+  .ground-layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Pointer travel: ±12px near, ±5px far. Enough for the field to answer the
+     hand without anyone being able to point at what moved. */
+  .ground-near {
+    translate: calc(var(--ground-nx) * -24px) calc(var(--ground-ny) * -24px);
+  }
+
+  .ground-far {
+    translate: calc(var(--ground-nx) * -10px) calc(var(--ground-ny) * -10px);
+  }
+
+  .ground-plane {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* 15° is the printer's screen angle the shader uses; the far layer takes a
+     different one so the two grids never beat against each other. */
+  .ground-near .ground-plane {
+    rotate: 15deg;
+  }
+
+  .ground-far .ground-plane {
+    rotate: -8deg;
+  }
+
+  /* Oversized and centred, so neither the rotation nor any travel can bring an
+     edge of the pattern into the viewport. */
+  .ground-dots {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200vmax;
+    height: 200vmax;
+    margin: -100vmax 0 0 -100vmax;
+  }
+
+  .ground-near .ground-dots {
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--ink) 16%, transparent) 0 1.3px,
+      transparent 1.9px
+    );
+    background-size: 9px 9px;
+  }
+
+  .ground-far .ground-dots {
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--ink) 8%, transparent) 0 2.6px,
+      transparent 3.1px
+    );
+    background-size: 27px 27px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ground-near .ground-dots {
+      animation: ground-drift-near 48s linear infinite;
+    }
+
+    .ground-far .ground-dots {
+      animation: ground-drift-far 90s linear infinite;
+    }
+  }
+
+  /* Without scroll-driven animations the ground is a still field with its drift
+     — no scroll listener is added to fake it. */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .ground-near .ground-plane {
+        animation: ground-parallax-near linear both;
+        animation-timeline: scroll(root);
+      }
+
+      .ground-far .ground-plane {
+        animation: ground-parallax-far linear both;
+        animation-timeline: scroll(root);
+      }
+    }
+  }
+
+  /* The live line field draws over the dot layers once it has a WebGL2
+     context; until then, and wherever it cannot run, the dots stay. */
+  .ground-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  .ground[data-ground-mode="vector"] .ground-canvas {
+    display: block;
+  }
+
+  .ground[data-ground-mode="vector"] .ground-layer {
+    display: none;
+  }
+
+  /* Open paper the panes leave for the ground to gather in: one viewport,
+     nothing printed on it. The field keys its convergence to these. */
+  .ground-band {
+    height: 100svh;
+    pointer-events: none;
+  }
+
+  /* ===== HOME PANES =====
+     Only decoration crosses the viewport. The outer clip is not a scroll
+     container; Ground is its sibling and stays fixed to the viewport. */
+  .home-planes {
+    --home-gutter: 1.5rem;
+    --home-edge: calc(max(0px, (100vw - 80rem) / 2) + var(--home-gutter));
+    --pane-gap: clamp(4rem, 8vw, 9rem);
+    overflow-x: clip;
+    padding-block-end: 0;
+  }
+
+  .home-pane,
+  .home-proof-pane,
+  .pair-ribbon {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .home-pane {
+    --pane-color: var(--paper);
+    --pane-angle: 0deg;
+    margin-block-start: var(--pane-gap);
+  }
+
+  .home-pane.tone-ink {
+    --pane-color: var(--ink);
+    background: transparent;
+  }
+
+  .home-pane::before,
+  .home-proof-pane::before,
+  .pair-ribbon::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline: -8vw;
+    background: var(--pane-color, var(--paper));
+    transform: skewY(var(--pane-angle, 0deg));
+    pointer-events: none;
+  }
+
+  .home-pane > .section-shell {
+    /* The angle never cuts into the type, even on very wide monitors. */
+    padding-block: max(5rem, 4vw);
+  }
+
+  .pair-ribbon {
+    --pane-angle: -1.2deg;
+    margin-block-start: -1rem;
+    padding-block: 1.5vw;
+  }
+
+  .pair-ribbon-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+  }
+
+  /* Name first, then the mark. The name never breaks; the only permitted
+     wrap is between name and mark, and only when one link alone is wider
+     than the ribbon (long locales at 390px). */
+  .pair-ribbon-link {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.75rem;
+    min-height: 2.75rem;
+    text-decoration: none;
+    text-underline-offset: 4px;
+  }
+
+  .pair-ribbon-name {
+    white-space: nowrap;
+    color: var(--ink);
+  }
+
+  .pair-ribbon-link:hover {
+    text-decoration: underline;
+  }
+
+  .home-proof-pane {
+    --pane-angle: 0deg;
+    margin-block-start: calc(var(--pane-gap) * 0.65);
+  }
+
+  .home-pane-doctrine {
+    --pane-color: var(--paper-raised);
+    --pane-angle: -1.8deg;
+  }
+
+  .home-doctrine-argument {
+    display: grid;
+    gap: 2.5rem;
+    position: relative;
+  }
+
+  .home-doctrine-clause {
+    position: relative;
+    padding-block-start: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .home-doctrine-clause::before,
+  .home-doctrine-clause::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    width: 0.75rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .home-doctrine-clause::before { left: 0; }
+  .home-doctrine-clause::after { right: 0; }
+
+  .home-doctrine-clause .type-body {
+    max-inline-size: 32ch;
+  }
+
+  .home-doctrine-close {
+    max-inline-size: 30ch;
+    border-top: 1px solid var(--line);
+  }
+
+  .home-pane-build {
+    --pane-angle: 0deg;
+  }
+
+  .home-build-layout {
+    display: grid;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .home-build-intro,
+  .home-system-index {
+    min-width: 0;
+  }
+
+  .home-system-row {
+    position: relative;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 6rem;
+  }
+
+  .home-system-row::before {
+    content: "";
+    position: absolute;
+    inset-block-start: -1px;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0.12);
+    transform-origin: left;
+    transition: transform 220ms ease-out;
+  }
+
+  .home-system-row:is(:hover, :focus-within, :target)::before {
+    transform: scaleX(1);
+  }
+
+  .home-system-row:target h3 {
+    color: var(--accent);
+  }
+
+  .home-system-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-underline-offset: 4px;
+  }
+
+  .home-system-link:hover {
+    text-decoration: underline;
+  }
+
+  .home-system-link:focus-visible {
+    outline: 2px solid var(--ink-inverse);
+    outline-offset: 4px;
+  }
+
+  .home-system-pair {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .home-pane-business {
+    --pane-angle: 0deg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-system-row::before {
+      transition: none;
+    }
+  }
+
+  .home-live-site {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .live-site-media {
+    margin-inline-start: calc(-1 * var(--home-edge));
+  }
+
+  .live-site-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* The contact close joins the footer. Its paper region runs to the right
+     edge on desktop and across the full screen below the copy on mobile. */
+  .home-pane-contact {
+    --pane-color: var(--ink);
+    background: var(--ink);
+  }
+
+  .home-pane-contact::before {
+    transform: skewY(-1.2deg);
+    inset-block-end: 3vw;
+  }
+
+  .home-pane-contact > .section-shell {
+    padding-block: 0;
+  }
+
+  /* Copy, form plane, then the supplementary notes. Below `lg` the three
+     stack in DOM order; at `lg` the notes join the copy in the ink column
+     and the paper plane spans both rows. Named areas, not `order`, so the
+     tab sequence and the reading order stay the same. */
+  .home-contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "form"
+      "aside";
+  }
+
+  .home-contact-copy,
+  .home-contact-aside,
+  .home-contact-form-plane {
+    min-width: 0;
+  }
+
+  .home-contact-copy {
+    grid-area: copy;
+    padding-block: 5rem;
+  }
+
+  .home-contact-aside {
+    grid-area: aside;
+    padding-block: 4rem 5rem;
+  }
+
+  .home-contact-form-plane {
+    grid-area: form;
+  }
+
+  .home-contact-form-plane {
+    position: relative;
+    isolation: isolate;
+    color: var(--ink);
+    padding-block: 4rem;
+  }
+
+  .home-contact-form-plane::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline: calc(-1 * var(--home-edge));
+    background: var(--paper);
+    pointer-events: none;
+  }
+
+  @media (min-width: 640px) {
+    .home-planes {
+      --home-gutter: 2rem;
+    }
+
+    .home-pane > .section-shell {
+      padding-block: max(7rem, 4vw);
+    }
+
+    .home-pane-contact > .section-shell {
+      padding-block: 0;
+    }
+
+    .home-contact-copy {
+      padding-block: 7rem;
+    }
+
+    .home-contact-aside {
+      padding-block: 5rem 7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-planes {
+      --home-gutter: 2.5rem;
+    }
+
+    .home-live-site {
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    }
+
+    .home-doctrine-argument {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .home-doctrine-argument::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .home-doctrine-clause:nth-child(1) {
+      grid-column: 1 / 5;
+    }
+
+    .home-doctrine-clause:nth-child(2) {
+      grid-column: 5 / 10;
+      margin-block-start: 4rem;
+    }
+
+    .home-doctrine-clause:nth-child(3) {
+      grid-column: 10 / -1;
+      margin-block-start: 8rem;
+    }
+
+    .home-build-layout {
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+
+    .home-contact-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-areas:
+        "copy form"
+        "aside form";
+      column-gap: 6rem;
+      row-gap: 0;
+    }
+
+    .home-contact-copy {
+      padding-block: max(7rem, 4vw) 0;
+    }
+
+    .home-contact-aside {
+      align-self: start;
+      padding-block: 2rem max(7rem, 4vw);
+    }
+
+    .home-contact-form-plane {
+      padding-block: max(7rem, 4vw);
+    }
+
+    .home-contact-form-plane::before {
+      inset-inline-start: -3rem;
+      inset-inline-end: calc(-1 * var(--home-edge) - 4rem);
+      transform: skewX(-2deg);
+    }
+  }
+
+  @media (min-width: 1024px) and (min-height: 760px) {
+    /* Pin the structural parent, not a transformed FadeIn child. Short screens
+       get natural flow so the complete intro always remains reachable. */
+    .home-build-intro {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .home-pane-doctrine { --pane-angle: -1deg; }
+  }
+
+  /* ===== HERO SHEET =====
+     The hero keeps opaque paper behind the copy — the shader's mask clears the
+     type, and with a transparent hero the ground's dots would show through that
+     cleared shape and land behind the words. The paper is a masked layer rather
+     than a background so it can dissolve over the last stretch of the hero,
+     which is where the ground first becomes visible. The shader canvas is a
+     separate element and is never touched by this mask, so its own dots still
+     reach the trim edge. */
+  .hero-sheet {
+    /* The band over which the hero's paper dissolves into the ground. The copy
+       column reserves exactly this much padding at its foot, so at no viewport
+       height can a word end up inside the faded band and pick up a ground dot
+       behind it.
+
+       Zero below `lg`, and not for want of trying: stacked, the claim, the lead
+       and two buttons already fill the hero, and the still screen's own safe
+       mask has ink bands above and below them. Reserving a band at the foot
+       there pushes the copy up into the top one. On a phone the ground arrives
+       one strip later instead — under the pair ribbon, which is the first thing
+       past the fold anyway. */
+    --hero-fade: 0px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-sheet {
+      --hero-fade: 20vh;
+    }
+  }
+
+  .hero-sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--paper);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0,
+      #000 calc(100% - var(--hero-fade)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0,
+      #000 calc(100% - var(--hero-fade)),
+      transparent 100%
+    );
+  }
 }
 
 /* Unlayered on purpose: it has to beat the `bg-white/70` utility.
@@ -1146,4 +1881,15 @@ body {
 .tone-ink .artifact-button-secondary:hover {
   background: var(--card);
   border-color: transparent;
+}
+
+/* Home form messages stay on the paper plane. Unlayered to override the shared
+   form's rounded/background/padding utilities without changing other routes. */
+.home-contact-form-plane [role="status"],
+.home-contact-form-plane [role="alert"] {
+  border-radius: 0;
+  border-inline: 0;
+  background: transparent;
+  padding-inline: 0;
+  box-shadow: none;
 }

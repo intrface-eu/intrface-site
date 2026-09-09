@@ -11,9 +11,8 @@ export async function Header({ locale }: { locale: AppLocale }) {
 
   const navigation: readonly NavItem[] = [
     { href: "/work", label: t("work"), match: "/work" },
-    { href: "/method", label: t("method"), match: "/method" },
     { href: "/about", label: t("about"), match: "/about" },
-    { href: "/about#contact", label: t("contact") },
+    { href: "/about#contact", homeHref: "/#contact", label: t("contact") },
   ];
 
   // The bar carries no backdrop-filter on purpose: it is a sticky, full-width

@@ -1,7 +1,6 @@
 {
   "Nav": {
     "work": "Work",
-    "method": "Method",
     "about": "About",
     "imprint": "Imprint",
     "contact": "Contact",
@@ -13,27 +12,19 @@
   "Footer": {
     "tagline": "Interfaces for the world. Voyager, Polis, Funda, MidiFlow and Patchbay are our own; client sites are the same work under someone else's name.",
     "location": "Istria, Croatia · EU",
-    "newTab": "opens in a new tab",
     "work": {
       "heading": "Work",
       "index": "All work",
       "voyager": "Voyager",
       "polis": "Polis",
       "funda": "Funda",
-      "clientSites": "Client sites"
+      "velum": "Velum",
+      "astyleMarine": "AstyleMarine"
     },
     "company": {
       "heading": "Company"
     },
-    "openSource": {
-      "heading": "Open source",
-      "aoc": "Agent Ops Cockpit",
-      "aocMeta": "How we build client software",
-      "polis": "Polis Interface",
-      "polisMeta": "Government data you can check"
-    },
-    "cta": "Bring us the messy system",
-    "colophon": "Set in Google Sans Flex. Built the way we build client work: agents propose, a person signs off. Four languages."
+    "cta": "Bring us the messy system"
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -49,35 +40,39 @@
     "description": "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, Polis, Funda, MidiFlow and Patchbay of our own, and sites for businesses across the EU.",
     "work": {
       "title": "Work",
-      "description": "Six interfaces: Voyager, Polis, Funda, MidiFlow, Patchbay and client sites. One is live; the other five state the status they have today, not the status they will have at launch."
+      "description": "Explore Velum, Voyager and AstyleMarine through their live sites and project showcases. Plus Polis, Funda, MidiFlow and Patchbay, with current statuses."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. A pre-launch platform for tourism destinations, in six languages."
+      "description": "A public map for discovering places around Vrsar."
     },
     "polis": {
-      "title": "Polis Interface",
-      "description": "Civic infrastructure for public data a citizen can check: every claim resolves to a document, a seal, and a timestamp anyone can re-check. Pre-deployment."
+      "title": "Polis",
+      "description": "Civic interfaces. Coming soon."
     },
     "funda": {
       "title": "Funda",
-      "description": "Funda reads EU funding calls from SEDIA and TED as they publish and matches them to the organizations that fit. Multi-role SaaS, in active build."
+      "description": "EU funding. Coming soon."
     },
     "clientSites": {
-      "title": "Istria client sites",
-      "description": "Bilingual sites for Istrian coastal businesses, built from the client's own Instagram profile and live at their own address. Screenshots and the six steps."
-    },
-    "method": {
-      "title": "Method",
-      "description": "We build with orchestrated AI agents under written rules, and a person reads every change before it lands. The rules are public. Read them before you hire us."
+      "title": "Sites for businesses.",
+      "description": "Velum and AstyleMarine: live websites for a waterfront café and wine bar and a yacht charter in Istria."
     },
     "about": {
       "title": "About",
-      "description": "INTRFACE builds interfaces for the world — one engineer in Vrsar, Istria. Five products of our own, sites for clients, and the one test everything here has to pass."
+      "description": "INTRFACE is a studio in Vrsar, Istria. We build our own products and client interfaces for businesses across the EU."
     },
     "imprint": {
       "title": "Imprint",
       "description": "Who operates intrface.eu: company details, responsibility for content, copyright, and what the contact form does with your message."
+    },
+    "velum": {
+      "title": "Velum",
+      "description": "A waterfront café and wine bar, in Croatian and English."
+    },
+    "astyleMarine": {
+      "title": "AstyleMarine",
+      "description": "Private yacht experiences from Poreč along the Istrian coast."
     }
   },
   "HomePage": {
@@ -87,167 +82,54 @@
       "lead": "An interface is the layer a person meets a system through: a visitor and a place, a citizen and an institution, a musician and a sound. We build the missing human side, for ourselves and for the businesses that hire us.",
       "seeWork": "See what we build",
       "talk": "Bring us yours",
-      "proofLabel": "Open any of these",
-      "metaTitle": "Interfaces for the world.",
-      "proof": {
-        "velum": {
-          "name": "Velum",
-          "status": "Live",
-          "meta": "velum-winebar.com",
-          "alt": "The Velum home page — a café and wine bar on the Vrsar waterfront, in Croatian and English."
-        },
-        "voyager": {
-          "name": "Voyager",
-          "status": "Pre-launch",
-          "meta": "Read the Voyager case",
-          "alt": "TZ Vrsar's official Voyager profile — a verified badge, dated notices, and a register of places."
-        },
-        "aoc": {
-          "name": "Agent Ops Cockpit",
-          "status": "Open source",
-          "meta": "It built this page",
-          "alt": "The Agent Ops Cockpit terminal — a repository file tree beside an agent pane listing its rules and skills."
-        }
-      }
+      "proofLabel": "Selected work",
+      "metaTitle": "Interfaces for the world."
     },
     "doctrine": {
-      "label": "The doctrine",
-      "title": "Why a civic ledger and a music app come from the same company.",
-      "columns": [
-        {
-          "label": "The world already runs on systems.",
-          "text": "Cities, institutions, landscapes, music, businesses, communities."
-        },
-        {
-          "label": "Most of them are badly mediated.",
-          "text": "Tourism becomes a review site. Civic participation becomes PDFs and office hours. Music software becomes machinery. An artist network becomes a feed."
-        },
-        {
-          "label": "INTRFACE builds the missing human side.",
-          "text": "Don't make a visitor operate tourism software. Help them find the trail, in a language they read."
-        }
-      ],
-      "house": "The best interface makes the system behind it understandable without making you think about the interface."
+      "house": "The best interface makes the system behind it understandable without making you think about it twice."
     },
     "products": {
       "label": "What we build",
       "title": "Five of our own.",
-      "intro": "Pre-launch means pre-launch. Nothing here claims users it does not have.",
+      "intro": "Our products, with their current status.",
       "pairLabel": "Between",
       "voyager": {
         "name": "Voyager",
-        "status": "Pre-launch",
+        "status": "Live",
         "interface": "The interface for a place.",
         "pair": "visitor ↔ place",
-        "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours.",
-        "spec": [
-          "6 languages",
-          "7 surfaces, 1 data model",
-          "Multi-tenant"
-        ],
-        "linkLabel": "Read the Voyager case"
+        "linkLabel": "View project"
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · pre-deployment",
-        "interface": "The interface to the city.",
+        "status": "Coming soon",
+        "interface": "Civic interfaces",
         "pair": "citizen ↔ institution",
-        "claim": "A governance graph where every public claim traces back to a source document.",
-        "spec": [
-          "Open source",
-          "Every claim checkable",
-          "Nothing self-reported"
-        ],
-        "linkLabel": "Read the Polis case"
+        "linkLabel": "View project"
       },
       "funda": {
         "name": "Funda",
-        "status": "Active build",
-        "interface": "The interface to EU funding.",
+        "status": "Coming soon",
+        "interface": "EU funding",
         "pair": "organization ↔ funding",
-        "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
-        "spec": [
-          "4 roles",
-          "3 languages",
-          "EU funding sources"
-        ],
-        "linkLabel": "Read the Funda case"
+        "linkLabel": "View project"
       },
       "midiflow": {
         "name": "MidiFlow",
-        "status": "Pre-launch",
-        "interface": "The interface for musical thought.",
-        "pair": "musician ↔ sound",
-        "claim": "The least machinery possible between an idea you can hear and a computer that plays it.",
-        "spec": []
+        "status": "Coming soon",
+        "interface": "Music",
+        "pair": "musician ↔ sound"
       },
       "patchbay": {
         "name": "Patchbay",
-        "status": "Pre-launch",
-        "interface": "The interface for making things with other artists.",
-        "pair": "artist ↔ artist",
-        "claim": "Artists find each other and make work together, with no feed in between.",
-        "spec": []
+        "status": "Coming soon",
+        "interface": "Creative collaboration",
+        "pair": "artist ↔ artist"
       }
     },
     "proof": {
-      "label": "For businesses",
-      "title": "The interface between a business and its customers.",
-      "intro": "A coastal business goes from an Instagram profile to a live bilingual site in one continuous pass.",
-      "pipeline": [
-        "Instagram profile",
-        "Content analysis",
-        "Brand design tokens",
-        "Astro build",
-        "Playwright audit",
-        "Cloudflare Pages"
-      ],
-      "liveIn": "Live · {place}",
-      "howWeShip": "How we ship these",
-      "languagesLabel": "Languages",
-      "markupLabel": "In the markup",
-      "inDeliveryLabel": "In delivery",
-      "inDelivery": "Three more sites are in the pipeline right now. They go up here once the clients have them in hand, and not before.",
-      "sites": {
-        "velum": {
-          "name": "Velum",
-          "place": "Vrsar waterfront",
-          "kind": "Café and wine bar",
-          "description": "Croatian and English, on design tokens lifted from the bar's own material. The same studio produced its motion graphics in Remotion.",
-          "notes": [
-            "LocalBusiness JSON-LD",
-            "hreflang",
-            "Remotion motion graphics"
-          ],
-          "alt": "Velum home page — café and wine bar in Vrsar waterfront"
-        }
-      },
+      "title": "Client sites and a product of our own.",
       "pair": "customer ↔ business"
-    },
-    "method": {
-      "label": "Method",
-      "title": "Read how we work before you hire us.",
-      "body": "Thirteen projects run under the same written rules. Agents propose the change; a person reads it and signs off before it lands. Nothing reaches your code unread.",
-      "readMethod": "Read the method",
-      "readSource": "Read the source",
-      "steps": [
-        {
-          "label": "The rules are written down",
-          "description": "Every project carries the same rules on disk. An agent reads them before it reads the code."
-        },
-        {
-          "label": "Agents propose",
-          "description": "Workers run in parallel against those rules. They never push."
-        },
-        {
-          "label": "A person signs off",
-          "description": "The change is re-read and the checks are run before any of it lands."
-        },
-        {
-          "label": "The rules are versioned",
-          "description": "When they change, all thirteen projects move to the new version together."
-        }
-      ]
     },
     "contact": {
       "label": "Contact",
@@ -259,7 +141,6 @@
         "Where it breaks, or where nobody trusts the numbers.",
         "Any date that is already fixed."
       ],
-      "person": "You get Alex Bašić — one engineer, in Vrsar — not a sales sequence.",
       "reply": "An answer within one working day.",
       "phoneNote": "If it is urgent, call <tel>{phone}</tel>.",
       "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
@@ -273,769 +154,79 @@
     }
   },
   "WorkIndex": {
-    "label": "Work",
-    "title": "Six interfaces. Where each one actually stands.",
-    "lead": "One is live and in the client's hands. The other five are not launched, and each row carries the status it has today, not the status it will have at launch. Nothing here counts work a client has not received yet.",
+    "title": "Work you can open.",
+    "lead": "Velum, Voyager and AstyleMarine are live. Explore the projects and visit the sites.",
     "entries": {
-      "voyager": {
-        "name": "Voyager",
-        "status": "Pre-launch",
-        "interface": "The interface for a place.",
-        "pair": "visitor ↔ place",
-        "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours.",
-        "figures": [
-          {
-            "value": "6",
-            "label": "Languages a guest can ask in"
-          },
-          {
-            "value": "7",
-            "label": "Places the same answer appears"
-          }
-        ]
-      },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · pre-deployment",
-        "interface": "The interface to the city.",
-        "pair": "citizen ↔ institution",
-        "claim": "A governance graph where every public claim traces back to a source document.",
-        "figures": [
-          {
-            "value": "6",
-            "label": "Steps from filed document to public check"
-          },
-          {
-            "value": "0",
-            "label": "Accounts needed to check one"
-          }
-        ]
+        "status": "Coming soon",
+        "interface": "Civic interfaces",
+        "pair": "citizen ↔ institution"
       },
       "funda": {
         "name": "Funda",
-        "status": "Active build",
-        "interface": "The interface to EU funding.",
-        "pair": "organization ↔ funding",
-        "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
-        "figures": [
-          {
-            "value": "4",
-            "label": "Role surfaces"
-          },
-          {
-            "value": "3",
-            "label": "Languages"
-          }
-        ]
+        "status": "Coming soon",
+        "interface": "EU funding",
+        "pair": "organization ↔ funding"
       },
       "midiflow": {
         "name": "MidiFlow",
-        "status": "Pre-launch",
-        "interface": "The interface for musical thought.",
-        "pair": "musician ↔ sound",
-        "claim": "The least machinery possible between an idea you can hear and a computer that plays it.",
-        "figures": []
+        "status": "Coming soon",
+        "interface": "Music",
+        "pair": "musician ↔ sound"
       },
       "patchbay": {
         "name": "Patchbay",
-        "status": "Pre-launch",
-        "interface": "The interface for making things with other artists.",
-        "pair": "artist ↔ artist",
-        "claim": "Artists find each other and make work together, with no feed in between.",
-        "figures": []
-      },
-      "clientSites": {
-        "name": "Client sites",
-        "status": "Live · Vrsar",
-        "interface": "The interface between a business and its customers.",
-        "pair": "customer ↔ business",
-        "claim": "A coastal business goes from an Instagram profile to a live bilingual site in one continuous pass.",
-        "figures": [
-          {
-            "value": "6",
-            "label": "Steps from profile to URL"
-          },
-          {
-            "value": "2",
-            "label": "Languages on the live site"
-          }
-        ]
+        "status": "Coming soon",
+        "interface": "Creative collaboration",
+        "pair": "artist ↔ artist"
       }
     },
-    "method": {
-      "label": "07 · Method",
-      "title": "How we work is written down.",
-      "body": "Thirteen projects run under the same written rules. Agents propose the change; a person reads it and signs off before it lands.",
-      "link": "Read how we ship",
-      "figures": [
-        {
-          "value": "13",
-          "label": "Projects on the same written rules"
-        },
-        {
-          "value": "0",
-          "label": "Changes that land unread"
-        },
-        {
-          "value": "1",
-          "label": "Person who signs off on each"
-        }
-      ]
-    },
-    "pairLabel": "Between"
+    "pairLabel": "Between",
+    "selectedWork": "Selected work",
+    "otherProducts": "Other products of our own"
   },
   "CaseNav": {
-    "label": "Case files",
+    "label": "Project navigation",
     "index": "All work",
-    "next": "Next case file"
-  },
-  "WorkVoyager": {
-    "hero": {
-      "eyebrow": "Place intelligence",
-      "name": "Voyager",
-      "claim": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours.",
-      "status": "Pre-launch",
-      "tags": [
-        "Proprietary",
-        "Tourism",
-        "Multi-tenant",
-        "Six languages"
-      ]
-    },
-    "scale": {
-      "label": "What it handles",
-      "intro": "Counted from the running system, not estimated.",
-      "stats": [
-        {
-          "value": "6",
-          "label": "Languages a guest can ask in",
-          "note": "Interface and the answers the host gives."
-        },
-        {
-          "value": "7",
-          "label": "Places the same answer appears",
-          "note": "Guest, business, and the tourist board's own profile among them."
-        },
-        {
-          "value": "1",
-          "label": "Place a fact gets updated",
-          "note": "Change it once; it changes everywhere."
-        },
-        {
-          "value": "0",
-          "label": "Users today",
-          "note": "Pre-launch means pre-launch."
-        }
-      ]
-    },
-    "whatItIs": {
-      "label": "What it is",
-      "title": "Three audiences, one platform.",
-      "intro": "A visitor with a phone, a business whose menu changed this morning, a tourist board answerable for what is official. One data model under all three.",
-      "audiences": [
-        {
-          "role": "Visitors",
-          "line": "The app opens on a map, not a feed, and routes you there on foot in your own language."
-        },
-        {
-          "role": "Businesses",
-          "line": "The owner loads a menu, hours, and house rules, then sees a readiness score before switching the host on."
-        },
-        {
-          "role": "Tourist boards",
-          "line": "The board publishes verified profiles, events, trails, and advisories, and edits the record itself when something changes."
-        }
-      ]
-    },
-    "engineering": {
-      "label": "Engineering",
-      "title": "The parts worth naming.",
-      "intro": "Four decisions that cost time up front and are painful to retrofit later.",
-      "entries": [
-        {
-          "title": "Multi-tenant authorization, checked by a test that reads the source",
-          "body": "The tourist board and every business share one database, so a single leak ends the pilot. Permissions run through WorkOS FGA with a synchronous grant cache, and a source-level test fails the build on any route that reads data without checking."
-        },
-        {
-          "title": "Retrieval that knows when to skip the vector index",
-          "body": "Opening hours go to a structured lookup, a menu photo to a multimodal index. Read from a column, an opening time is a fact. Guessed from a vector store, a wrong closing time is the thing a guest remembers."
-        },
-        {
-          "title": "Scraping and pedestrian routing run as our own services",
-          "body": "Content ingestion and OSRM walking routes are self-hosted on Railway, not rented per request. Directions priced per request turn a busy August into a bill nobody forecast."
-        },
-        {
-          "title": "A design system with its own test suite",
-          "body": "Sixteen governed subsystems make up the shared interface, tested like the rest of the code. A fix to one component reaches every surface in one change."
-        }
-      ]
-    },
-    "evidence": {
-      "label": "Evidence",
-      "title": "What it looks like today.",
-      "intro": "Screens from the current build. All of it runs on seeded Vrsar pilot content, never live traffic.",
-      "atlas": {
-        "label": "Visitor Atlas",
-        "alt": "Voyager Atlas map of the Vrsar coastline with clustered place pins and a marked walking route",
-        "caption": "The public map. Place clusters, a signposted route, and no account needed to open it."
-      },
-      "board": {
-        "label": "Tourist board — public profile",
-        "alt": "TZ Vrsar official profile with a verified badge, notices, and a register of places",
-        "caption": "TZ Vrsar's official profile: a verified badge, dated notices, and a register only the board can edit."
-      },
-      "host": {
-        "label": "Business console — AI host",
-        "alt": "Nexus agent settings showing tone, specialties, and a launch-readiness panel",
-        "caption": "A business sets its host's tone and knowledge, and sees what still blocks public chat."
-      }
-    },
-    "pilot": {
-      "label": "Pilot and status",
-      "title": "Seeded for Vrsar. Not launched.",
-      "intro": "Turistička zajednica Vrsar's material is already in the database, so a pilot starts with content, not an empty destination.",
-      "items": [
-        {
-          "label": "Named trails",
-          "detail": "Walking and cycling routes under their real names."
-        },
-        {
-          "label": "Sea-water quality",
-          "detail": "Bathing-water signals on the beach record itself."
-        },
-        {
-          "label": "Shuttle timetables",
-          "detail": "Local departures, so directions come with times."
-        },
-        {
-          "label": "Events",
-          "detail": "The board's calendar, published from its own verified profile."
-        }
-      ],
-      "phone": {
-        "label": "The same profile at 390 px",
-        "alt": "TZ Vrsar profile on a phone, showing water quality, the shuttle, and today's events",
-        "caption": "The official layer at the width a visitor actually holds."
-      },
-      "noteP1": "Pre-launch. No production deployment, no real end users, no operating numbers to quote.",
-      "noteP2": "What is missing is a destination that says go — a board or a group of businesses ready for a first season."
-    },
-    "next": {
-      "label": "Next",
-      "title": "A destination that says go.",
-      "body": "Tell us the destination and who owns the official content there. We will show you the Vrsar seed and what yours would take.",
-      "cta": "Discuss a destination pilot"
-    }
+    "next": "Next project"
   },
   "WorkPolis": {
-    "hero": {
-      "eyebrow": "Civic infrastructure",
-      "name": "Polis Interface",
-      "claim": "Civic infrastructure that treats government data as something you check, not something you believe.",
-      "status": "Open source · AGPL · pre-deployment",
-      "tags": [
-        "Public data",
-        "Checkable claims",
-        "Nothing self-reported",
-        "Pre-deployment"
-      ]
-    },
-    "stats": [
-      {
-        "value": "6",
-        "label": "Steps from filed document to public check"
-      },
-      {
-        "value": "10",
-        "label": "Rules deciding who sees what",
-        "note": "Checked on every request. In doubt, denied."
-      },
-      {
-        "value": "0",
-        "label": "Accounts needed to check a claim",
-        "note": "Anyone re-checks it without asking permission."
-      },
-      {
-        "value": "0",
-        "label": "Public bodies running it today",
-        "note": "Pre-deployment, and this page says so."
-      }
-    ],
-    "readSourceRepo": "Read the source — github.com/basicalex/polis",
-    "whatItIs": {
-      "label": "What it is",
-      "title": "A governance graph, not a document dump",
-      "intro": "Polis models what a public body actually produces — decisions, promises, budgets, meetings, officials — as a graph. Every public claim in that graph points back to the source document it came from, and the document carries proof of its own integrity.",
-      "surfacesTitle": "Two surfaces, one dataset",
-      "surfacesBody": "A campaigning surface publishes a program. An accountability layer tracks the same program against what was delivered. Both read the same verifiable records, so the promise page and the record page cannot drift apart while nobody is looking.",
-      "addressTitle": "Every claim has an address",
-      "addressBody": "\"The council approved the budget in March\" is not a sentence in Polis. It is an edge to a decision, which resolves to a filed document, which resolves to a hash, a seal, and a timestamp a stranger can re-check without asking anyone's permission."
-    },
-    "engineering": {
-      "label": "Engineering",
-      "title": "Where the trust actually comes from",
-      "intro": "Four pieces are worth naming, because they are the parts a public buyer or an auditor would go looking for.",
-      "whyLabel": "Why it matters",
-      "entries": [
-        {
-          "title": "The audit ledger is hash-chained inside the insert transaction",
-          "body": "Each event stores the hash of the event before it, computed and written in the same transaction that inserts the row. Two writers racing each other cannot both win.",
-          "why": "An audit log you can quietly reorder afterwards is not evidence of anything."
-        },
-        {
-          "title": "Documents are verified, not just uploaded",
-          "body": "A canonical hash, an eIDAS-shaped e-seal, and an RFC 3161 timestamp from an outside authority travel with the file. Redaction rules take precedence over publication, so a document can be proved authentic without exposing what should stay closed.",
-          "why": "Authentic and publishable are two different questions. Systems that answer them together leak."
-        },
-        {
-          "title": "Policy gates fail closed",
-          "body": "Ten OPA/Rego modules decide who may read and write what. When the policy layer cannot answer, the request is denied rather than allowed through.",
-          "why": "Most access-control bugs are a check that silently returned nothing and was read as a yes."
-        },
-        {
-          "title": "An elected official cannot mark their own promise delivered",
-          "body": "The accountability layer keeps the actor who claims separate from the actor who confirms. A status change to delivered records who confirmed it, and that person is not the subject of the promise.",
-          "why": "Self-reported delivery is the standard failure mode of a promise tracker."
-        }
-      ],
-      "closing": "eIDAS, RFC 3161, GDPR-shaped redaction: the regulation sits in the data model, not in a compliance appendix written after the build."
-    },
-    "honesty": {
-      "label": "Honesty as a feature",
-      "title": "The status label is part of the product",
-      "intro": "Polis labels every surface in its own documentation as [verifiable], [demonstration/stub], or [not yet live]. The simulated pilot says it is simulated in its first line.",
-      "labels": [
-        "Backed by data in the system. Follow it to a source document and check the hash yourself.",
-        "The screen works; what sits behind it is a placeholder. Do not plan a rollout around it.",
-        "Specified and designed. Not built."
-      ],
-      "closing": "This is what an institution buying software should demand, screen by screen. A vendor who can tell you which of their screens is real, which is a demo, and which is a slide has given you something to plan against."
-    },
-    "evidence": {
-      "label": "Evidence",
-      "title": "How a document becomes checkable",
-      "intro": "There are no screenshots on this page — Polis is not deployed, and a screenshot of an undeployed system proves nothing. This is the pipeline as built: from the file a clerk uploads to the verdict a citizen gets."
-    },
-    "pipeline": {
-      "title": "Document trust pipeline",
-      "subtitle": "source file → public verdict",
-      "stages": [
-        {
-          "name": "Document",
-          "detail": "A decision, contract, or set of minutes, exactly as filed."
-        },
-        {
-          "name": "Canonicalize",
-          "detail": "Bytes normalized to one form, then hashed. Same file, same hash, every time."
-        },
-        {
-          "name": "Seal",
-          "detail": "The issuing body signs the hash, not the file. eIDAS-shaped e-seal."
-        },
-        {
-          "name": "Timestamp",
-          "detail": "An RFC 3161 authority attests that the hash existed at a given moment."
-        },
-        {
-          "name": "Registry",
-          "detail": "Hash, seal, and token are recorded together and linked to the claims that cite them."
-        },
-        {
-          "name": "Verify",
-          "detail": "Anyone re-hashes the file and checks it against the record. No account needed."
-        }
-      ],
-      "ledgerTitle": "Audit ledger",
-      "ledgerSubtitle": "each row carries the row before it",
-      "ledgerRows": [
-        "Minutes accepted; hash, seal, and timestamp written.",
-        "A program item is bound to the decision it depends on.",
-        "Status moves to delivered — recorded with the confirming actor, who is not the official."
-      ],
-      "caption": "Hashes here are illustrative. In the running code, a row's previous-hash is computed and written inside the same transaction that inserts the row, so two writers racing each other cannot end up with two valid chains."
-    },
-    "next": {
-      "title": "Where a claim has to be checkable.",
-      "body": "If you are building something where a citizen, an auditor, or a regulator has to be able to check the claim rather than take it on trust, that is the conversation we want.",
-      "cta": "Discuss trust infrastructure",
-      "readSource": "Read the source",
-      "noteLabel": "Honest status",
-      "noteP1": "Polis is pre-deployment. No public body runs it. The pilot in the repository is simulated and labels itself simulated in its first line. External integrations — registries, timestamp authorities, identity providers — are stubbed behind interfaces.",
-      "noteP2": "The code, the schema, the policy modules, and the tests are real and public. The deployment is not."
-    }
+    "name": "Polis",
+    "domain": "Civic interfaces",
+    "status": "Coming soon",
+    "backToWork": "Back to work",
+    "contact": "Contact us"
   },
   "WorkFunda": {
-    "hero": {
-      "eyebrow": "EU funding",
-      "name": "Funda",
-      "claim": "Reads EU funding calls as they publish and matches them to the organizations that fit.",
-      "status": "Active build",
-      "tags": [
-        "EU funding",
-        "Four roles",
-        "Three languages",
-        "Geospatial matching"
-      ]
-    },
-    "stats": [
-      {
-        "value": "4",
-        "label": "Role surfaces",
-        "note": "Admin, consultant, corporate, director"
-      },
-      {
-        "value": "3",
-        "label": "Languages",
-        "note": "Every surface, not just the marketing pages"
-      },
-      {
-        "value": "2",
-        "label": "Source pipelines",
-        "note": "SEDIA and TED, read by agents"
-      }
-    ],
-    "whatItDoes": {
-      "label": "What it does",
-      "title": "Funding you qualify for, before the deadline",
-      "intro": "EU funding is public money that is hard to find. Calls land on SEDIA and TED as long documents with their own vocabulary, eligibility rules and deadlines. Most organizations hear about the right one too late.",
-      "body": "Funda watches those sources on a schedule, turns each call into a structured record, and puts it in front of the organizations that match. Consultants work a portfolio of clients against the same feed. One dataset, read four ways.",
-      "note": "Funda is in active build. There is no public deployment, no customer data behind these screens, and no results to report yet. Every number on this page counts something that exists in the codebase today.",
-      "surfaces": [
-        {
-          "name": "Admin",
-          "note": "The people who run the platform"
-        },
-        {
-          "name": "Consultant",
-          "note": "Advisors carrying several client organizations"
-        },
-        {
-          "name": "Corporate",
-          "note": "The organization applying for the funding"
-        },
-        {
-          "name": "Director",
-          "note": "Oversight across an account"
-        }
-      ]
-    },
-    "matching": {
-      "label": "How matching works",
-      "title": "From a published call to the right inbox",
-      "steps": [
-        {
-          "name": "Read the sources",
-          "body": "Agents pull calls from SEDIA and TED as they publish, instead of waiting for someone to check a portal."
-        },
-        {
-          "name": "Turn documents into fields",
-          "body": "Each call becomes a record: who may apply, for what, in which regions, by when."
-        },
-        {
-          "name": "Score against the organization",
-          "body": "An organization's profile is compared field by field — sector, size, and where it actually operates, which is where the geospatial part earns its keep."
-        },
-        {
-          "name": "Route it to a person",
-          "body": "Matches land on the surface that role uses, in that user's language."
-        }
-      ]
-    },
-    "shows": {
-      "label": "What it shows",
-      "title": "Same shape, smaller footprint",
-      "p1": "Voyager is where we built retrieval that stays grounded in a client's own content. On Polis, the hard part was an audit trail that makes a claim checkable. Funda carries both at a smaller scale: ingestion that has to be accurate, matching a user can argue with, and four roles reading one typed dataset.",
-      "p2": "The stack is deliberately small — Next.js on the front, Convex for data and functions, Clerk for identity and roles. The hard part is keeping an agent pipeline honest when the input is a call document written in institutional language and the output is a decision someone will act on."
-    },
-    "next": {
-      "title": "Have a system with this shape?",
-      "body": "Tell us what it has to read, who has to see the result, and what happens if it is wrong. We will tell you what it takes.",
-      "cta": "Bring us the system"
-    }
+    "name": "Funda",
+    "domain": "EU funding",
+    "status": "Coming soon",
+    "backToWork": "Back to work",
+    "contact": "Contact us"
   },
   "WorkClientSites": {
-    "hero": {
-      "eyebrow": "Client work",
-      "name": "Istria client sites",
-      "claim": "A bilingual site for a wine bar on the Vrsar waterfront, built from the client's own Instagram profile and deployed by one automated pipeline.",
-      "status": "Live · Vrsar",
-      "tags": [
-        "Croatian first",
-        "Bilingual",
-        "Their own domain",
-        "Built automatically"
-      ]
-    },
-    "stats": [
-      {
-        "value": "1",
-        "label": "Site live today",
-        "note": "Handed over, public, and linked below"
-      },
-      {
-        "value": "6",
-        "label": "Steps from profile to URL",
-        "note": "Step five is an automated audit of every page"
-      },
-      {
-        "value": "2",
-        "label": "Languages on the live site",
-        "note": "Croatian first, and a guest gets their own language."
-      }
-    ],
-    "showcase": {
-      "label": "The site",
-      "title": "Live, and you can check",
-      "intro": "Open it — this is the site as it runs today, at the address the client gives their guests.",
-      "languagesLabel": "Languages",
-      "markupLabel": "In the markup",
-      "inDeliveryLabel": "In delivery",
-      "inDelivery": "Three more sites are through the same pipeline and in delivery with their clients. We publish a client's work here when the client has it in hand, not when the build finishes."
-    },
-    "sites": {
-      "velum": {
-        "name": "Velum",
-        "place": "Vrsar waterfront",
-        "line": "A café and wine bar serving breakfast, cakes and Istrian wine by the sea.",
-        "notes": [
-          "LocalBusiness JSON-LD",
-          "hreflang"
-        ],
-        "desktopAlt": "Velum home page: a photograph of coffee and the bar's own menu beside the line 'By the sea, in no hurry.'",
-        "mobileAlt": "The Velum home page on a phone, photo above headline."
-      }
-    },
-    "pipeline": {
-      "label": "How we ship these",
-      "title": "Instagram profile in, live URL out",
-      "intro": "The same six steps every time, run as one continuous pass. That is why the date we give you holds.",
-      "steps": [
-        {
-          "name": "Read the Instagram profile",
-          "body": "We start from what the business already publishes — posts, captions, photos, opening hours. Nobody has to write a brief."
-        },
-        {
-          "name": "Pull the content apart",
-          "body": "Services, prices, location and tone of voice come out of that material and get sorted into the pages the site will need."
-        },
-        {
-          "name": "Take the brand as tokens",
-          "body": "Color, type and spacing are lifted from the client's own material and written as design tokens, so the site looks like them and not like a template."
-        },
-        {
-          "name": "Build it, Croatian first",
-          "body": "Static pages, Croatian as the primary language, English and any others alongside it, with hreflang and LocalBusiness JSON-LD in the markup."
-        },
-        {
-          "name": "Check every page automatically",
-          "body": "An automated pass walks every page before anyone sees it, including a check that each image renders at the aspect ratio it was cropped for."
-        },
-        {
-          "name": "Put it live on their own address",
-          "body": "The site goes live on Cloudflare's edge and the client gets a URL they can put straight in their Instagram bio."
-        }
-      ],
-      "alsoLabel": "Also from the same studio",
-      "alsoBody": "Velum's motion graphics were made in Remotion by the team that built the site — same brand tokens, same source material, rendered from code."
-    },
-    "next": {
-      "title": "Your site, on the same pipeline.",
-      "body": "Send us the Instagram profile you already run. You get back the site it turns into — in Croatian and the languages your guests actually book in.",
-      "cta": "Send us your profile"
-    }
-  },
-  "Method": {
-    "hero": {
-      "label": "Method",
-      "title": "Our method is a public repository. Read it.",
-      "lead": "We build software with orchestrated AI agents, and we wrote down the rules they run under. AGENTS.md, DESIGN.md, the 51 commands that run them, and the gate that stops their output from landing unread — all published under Apache-2.0.",
-      "readRepo": "Read the repository",
-      "howItWorks": "How it works",
-      "repoLabel": "Agent Ops Cockpit",
-      "repoSummary": "Four files in every repo, the schema they are versioned on, and 51 commands that run them.",
-      "repoChips": [
-        "Apache-2.0",
-        "Rust",
-        "Command-line"
-      ]
-    },
-    "howItWorks": {
-      "label": "How it works",
-      "title": "Four moves, repeated until they are boring.",
-      "intro": "The same four moves in every repository we touch, including yours. Nothing here depends on a person remembering how we do things.",
-      "contractTitle": "The contract, on disk",
-      "artifacts": [
-        "AGENTS.md — how agents work in this repo, and what they may not do.",
-        "DESIGN.md — tokens, type scale, component rules, and the do-not list.",
-        "The context snapshot — the current shape of the repo, generated and never hand-written.",
-        "The task ledger — tasks, sub-tasks, tags, and status, versioned next to the code."
-      ],
-      "steps": [
-        {
-          "label": "Every repository carries a versioned contract",
-          "description": "It sits on a schema with migrations. An agent starting work reads the same files a new engineer would."
-        },
-        {
-          "label": "Work is split into scoped packets",
-          "description": "A packet names the files it may touch, the outcome it owes, and the check that proves it. Packets that do not overlap run at the same time on isolated workers."
-        },
-        {
-          "label": "Every diff is read again by something that did not write it",
-          "description": "A worker finishes and stops. The orchestrator walks the change line by line and runs the checks against it. Work that fails goes back with the failure attached."
-        },
-        {
-          "label": "A human owns the commit",
-          "description": "Commits are atomic and human-verified. Workers have no push access, so nothing reaches a branch that a person has not signed for."
-        }
-      ]
-    },
-    "rule": {
-      "label": "The operating rule",
-      "rule": "Agents propose; a human-verified gate commits. Workers never push.",
-      "clauses": [
-        {
-          "text": "Agents propose",
-          "detail": "A worker produces a diff and a report. That is the whole of its authority."
-        },
-        {
-          "text": "A human-verified gate commits",
-          "detail": "The diff is re-read and the checks run before an atomic commit lands."
-        },
-        {
-          "text": "Workers never push",
-          "detail": "No worker holds push access. There is no path from agent output to your branch that skips a person."
-        }
-      ]
-    },
-    "numbers": {
-      "label": "Numbers",
-      "title": "What is public, and what it has produced.",
-      "intro": "Agent Ops Cockpit is a repository you can clone. The output is commit history on the software we build with it.",
-      "systemStats": [
-        {
-          "value": "403",
-          "label": "Commits",
-          "note": "Public history, Apache-2.0"
-        },
-        {
-          "value": "8",
-          "label": "Rust crates"
-        },
-        {
-          "value": "51",
-          "label": "CLI commands"
-        }
-      ],
-      "outputStats": [
-        {
-          "value": "13",
-          "label": "Repositories",
-          "note": "Running the same versioned contract"
-        },
-        {
-          "value": "383",
-          "label": "Commits on Voyager",
-          "note": "July 2026 alone"
-        }
-      ]
-    },
-    "evidence": {
-      "label": "Evidence",
-      "title": "What it looks like while it runs.",
-      "intro": "Three views of one working session. No mock-ups — this is the terminal we work in.",
-      "cockpit": {
-        "label": "The cockpit",
-        "alt": "The agent pane's rules list: keybindings, then the AGENTS.md files, skill files and prompts loaded for this repository",
-        "caption": "One repository, one screen: its files on the left, the agent session in the middle, and live repo state on the right — staged, unstaged, and new-file counts, with task progress along the bottom."
-      },
-      "ledger": {
-        "label": "The task ledger",
-        "alt": "Task ledger rows: numbered tasks with a tag, status and priority column, and three sub-tasks nested under task 6",
-        "caption": "The task ledger for a single repository: tasks grouped by tag, sub-tasks nested under their parent, status in the same file the agents read."
-      },
-      "repos": {
-        "label": "Repositories on the contract",
-        "alt": "A repository directory listing beside the contents of its .aoc directory: layouts, logs, mind, prompts, stm, context.md, memory.md, rtk.toml",
-        "caption": "One directory per repository, the same in all thirteen — AGENTS.md, DESIGN.md, the context snapshot, prompts, task state, routing config — sitting beside the code."
-      }
-    },
-    "why": {
-      "label": "What you get",
-      "title": "Three things a public method buys you.",
-      "intro": "You are not buying enthusiasm about agents. You are buying written rules.",
-      "noteLabel": "What we did not build",
-      "noteP1": "We operate on third-party agent runtimes and terminal tooling. We did not write them and do not claim them.",
-      "noteP2": "What we built and open-sourced is what makes them repeatable: AGENTS.md and DESIGN.md on a versioned schema, the task ledger, and the packet format.",
-      "reasons": [
-        {
-          "title": "Throughput without unreviewed agent output",
-          "text": "Several scoped packets run at once. None of them can commit. Speed comes from parallelism, not from skipping the read."
-        },
-        {
-          "title": "Context that lives in the repo, not in someone's chat history",
-          "text": "AGENTS.md, DESIGN.md, and the task ledger are files in your codebase. Hand the project to another team and the knowledge goes with it."
-        },
-        {
-          "title": "A method you can audit",
-          "text": "The contract schema, the command surface, and the gate are public. Read them before you sign anything."
-        }
-      ]
-    },
-    "next": {
-      "label": "Next",
-      "title": "Read our repo. Then bring us your system.",
-      "body": "Check the method before you hire anyone to use it on your codebase.",
-      "cta": "Start a system review"
-    }
+    "title": "Sites for businesses.",
+    "lead": "Velum on the Vrsar waterfront. AstyleMarine on the Istrian coast.",
+    "allWork": "All work",
+    "contactTitle": "A project in mind?",
+    "contact": "Tell us about it"
   },
   "About": {
     "hero": {
       "label": "About",
-      "title": "A product company that also builds for clients.",
-      "lead": "INTRFACE builds interfaces for the world from Vrsar, Istria — one engineer, Alex Bašić. Voyager, Polis, Funda, MidiFlow and Patchbay are ours; businesses across the EU get the same work under their own name."
+      "title": "A studio building products and client interfaces.",
+      "lead": "Based in Vrsar, Istria. Working across the EU."
     },
     "company": {
-      "label": "The company",
-      "title": "Two kinds of work, one admission test.",
-      "p1": "The world already runs on systems: cities, institutions, landscapes, music, businesses, communities. Most of them are badly mediated. Tourism becomes a review site, civic participation becomes PDFs and office hours, music software becomes machinery, an artist network becomes a feed. INTRFACE builds the missing human side.",
-      "p2": "Every product has to answer the same question. What two things does this create an interface between? If there is no clear answer, it is not an INTRFACE product.",
-      "p3": "Client work answers it too — a business and its customers — and it inherits what the five own products paid for: fine-grained authorization, audit trails nobody can quietly rewrite, multilingual content that has to stay correct, deploys that keep working. The rules the work runs under are public, so you can read them before you hire us.",
+      "label": "The studio",
+      "title": "What we make.",
+      "p1": "We build our own software for tourism, civic life, EU funding, music and collaboration.",
+      "p2": "For clients, we build websites and interfaces between businesses and their customers.",
       "facts": {
-        "company": {
-          "term": "Company",
-          "value": "INTRFACE — interfaces for the world"
-        },
-        "person": {
-          "term": "Who you work with",
-          "value": "Alex Bašić — engineer and director. One person, not a rotating team."
-        },
         "based": {
           "term": "Based",
-          "value": "Dalmatinska 34, Vrsar, Istria. Working across the EU."
-        },
-        "languages": {
-          "term": "Languages",
-          "value": "Croatian, Italian, English"
-        },
-        "work": {
-          "term": "Work",
-          "value": "Voyager, Polis, Funda, MidiFlow and Patchbay are ours; client sites for businesses across the EU"
-        },
-        "delivery": {
-          "term": "Open source",
-          "value": "Agent Ops Cockpit — public at <repo>github.com/basicalex/agent-ops-cockpit</repo>"
-        },
-        "registry": {
-          "term": "Registered",
-          "value": "INTRFACE j.d.o.o. · OIB 34363240459 · MBS 130172611 · Trgovački sud u Pazinu"
-        },
-        "activity": {
-          "term": "Registered activity",
-          "value": "IT consulting and business development"
-        },
-        "vat": {
-          "term": "VAT",
-          "value": "Not VAT-registered, so no PDV on invoices."
+          "value": "Vrsar, Istria, Croatia"
         },
         "phone": {
           "term": "Phone"
@@ -1044,31 +235,6 @@
           "term": "Contact"
         }
       }
-    },
-    "engagement": {
-      "label": "Engagement",
-      "title": "How working with us runs.",
-      "intro": "Four steps. The first one is worth having on its own.",
-      "aside": "Every step leaves something you keep: the map, the written scope, the repo with its task ledger, the deploy and its check output. If we stop after step one, you are not back where you started.",
-      "link": "The method in detail",
-      "steps": [
-        {
-          "label": "Map the system",
-          "description": "We sit with the people who operate it and write down what actually happens — the steps, the exceptions, the spreadsheet everyone quietly depends on. You keep the map whether or not we build anything."
-        },
-        {
-          "label": "Define the interface",
-          "description": "We agree what the software has to make legible, who is allowed to see what, and what counts as proof. Scope gets cut here, in writing, before anyone opens an editor."
-        },
-        {
-          "label": "Build with agents",
-          "description": "Agents work against the written rules in your own project and a task list that says what is still open. They propose; a person reads the change and signs it off."
-        },
-        {
-          "label": "Prove it",
-          "description": "Automated tests and audits on every change, then a deploy you can open in a browser. Every surface is labeled for what it is: live, demonstration, or not built yet."
-        }
-      ]
     },
     "platforms": {
       "label": "Our own software",
@@ -1081,30 +247,29 @@
       },
       "polis": {
         "name": "Polis",
-        "status": "Open source · AGPL · pre-deployment",
-        "description": "A governance graph where every public claim traces back to a source document. Its own docs label each surface verifiable, demonstration, or not yet live."
+        "status": "Coming soon",
+        "description": "Civic interfaces"
       },
       "funda": {
         "name": "Funda",
-        "status": "Active build",
-        "description": "Reads EU funding calls as they publish and matches them to the organizations that fit. Agent ingestion of SEDIA and TED sources, geospatial matching, three languages."
+        "status": "Coming soon",
+        "description": "EU funding"
       },
       "midiflow": {
         "name": "MidiFlow",
-        "status": "Pre-launch",
-        "description": "The least machinery possible between an idea you can hear and a computer that plays it. It runs as an installed app and has been tested on a phone; it is not published."
+        "status": "Coming soon",
+        "description": "Music"
       },
       "patchbay": {
         "name": "Patchbay",
-        "status": "Pre-launch",
-        "description": "Artists find each other and make work together, with no feed in between. A build is online at a domain that is not public yet."
-      },
-      "clientNote": "Client sites run the same way: an Instagram profile goes in, a bilingual site on a live URL comes out, with a Playwright audit in the middle — <link>see the six steps</link>."
+        "status": "Coming soon",
+        "description": "Creative collaboration"
+      }
     },
     "contact": {
       "label": "Contact",
       "title": "Bring us the messy system.",
-      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. You get Alex, not a sales sequence, and an answer within one working day.",
+      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. An answer within one working day.",
       "helpsLabel": "What helps",
       "helps": [
         "What the system does today, and who operates it.",
@@ -1185,7 +350,7 @@
       },
       "copyright": {
         "title": "Copyright",
-        "body": "Text, images, and code published on this site belong to {siteName} unless another owner is named. Quote us with a source link. Ask before reproducing a page in full. Agent Ops Cockpit, the software we build with, is published separately under the Apache-2.0 licence, and that licence governs its use."
+        "body": "Text, images, and code published on this site belong to {siteName} unless another owner is named. Quote us with a source link. Ask before reproducing a page in full."
       },
       "form": {
         "title": "The contact form",
@@ -1220,5 +385,46 @@
     "mailtoCompany": "Company",
     "mailtoTopic": "Topic",
     "mailtoWebsite": "the website"
+  },
+  "Projects": {
+    "viewProject": "View project",
+    "visitSite": "Visit live site",
+    "newTab": "opens in a new tab",
+    "allWork": "All work",
+    "overview": "The project",
+    "nextProject": "Next project",
+    "projectNavigation": "Project navigation",
+    "contactTitle": "A project in mind?",
+    "contact": "Tell us about it",
+    "velum": {
+      "role": "A waterfront café and wine bar, in Croatian and English.",
+      "overview": "Breakfast, cakes and Istrian wine on the Vrsar waterfront. Velum’s site brings the menu, the atmosphere and the information for a visit into one place.",
+      "desktopAlt": "Velum website with café photography and the headline “By the sea, in no hurry.”",
+      "desktopCaption": "Velum’s home page, by the Vrsar waterfront.",
+      "detailAlt": "Velum website showing the breakfast menu.",
+      "detailCaption": "The breakfast menu.",
+      "mobileAlt": "The Velum home page on a phone.",
+      "mobileCaption": "The same place, on a smaller screen."
+    },
+    "voyager": {
+      "role": "A public map for discovering places around Vrsar.",
+      "overview": "Voyager Atlas puts places around Vrsar on a map: from Punta Montraker and Koversada to the Dušan Džamonja Sculpture Park and Kontija Forest. The public Atlas is open to explore without signing in.",
+      "desktopAlt": "Voyager home page with the headline “Discover the culture of a place your way.”",
+      "desktopCaption": "Voyager’s public home page.",
+      "detailAlt": "Voyager Atlas with the Dušan Džamonja Sculpture Park place panel open beside the map.",
+      "detailCaption": "Dušan Džamonja Sculpture Park: description, location and address.",
+      "mobileAlt": "The public Voyager Atlas map of Vrsar filling a phone screen.",
+      "mobileCaption": "The public Vrsar map on mobile."
+    },
+    "astyleMarine": {
+      "role": "Private yacht experiences from Poreč along the Istrian coast.",
+      "overview": "AstyleMarine’s site brings together the yacht, coastal itineraries and a gallery. Visitors can choose an experience and send an enquiry through WhatsApp.",
+      "desktopAlt": "AstyleMarine yacht charter website with the headline “Luxury in full speed”.",
+      "desktopCaption": "AstyleMarine’s home page, for yacht experiences from Poreč.",
+      "detailAlt": "The AstyleMarine website presenting the yacht and its specifications.",
+      "detailCaption": "The yacht and its specifications.",
+      "mobileAlt": "The AstyleMarine yacht charter home page on a phone.",
+      "mobileCaption": "AstyleMarine on mobile."
+    }
   }
 }

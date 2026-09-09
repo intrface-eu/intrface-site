@@ -8,7 +8,11 @@ export type ProcessStep = {
   status?: "complete" | "active" | "pending";
 };
 
-export function ProcessSteps({ steps }: { steps: readonly ProcessStep[] }) {
+export function ProcessSteps({
+  steps,
+}: {
+  steps: readonly ProcessStep[];
+}) {
   if (steps.length === 0) return null;
 
   return (
@@ -18,12 +22,19 @@ export function ProcessSteps({ steps }: { steps: readonly ProcessStep[] }) {
         const number = String(index + 1).padStart(2, "0");
 
         return (
-          <li className="artifact-card relative grid grid-cols-[3rem_1fr] gap-4 rounded-[var(--radius-lg)] p-5" key={step.label}>
+          <li
+            className="artifact-card relative grid grid-cols-[3rem_1fr] gap-4 rounded-[var(--radius-lg)] p-5"
+            key={step.label}
+          >
             <div className="relative flex justify-center">
-              <span className="type-data relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-white text-xs font-bold text-ink">
+              <span
+                className="type-data relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-rule bg-white text-xs font-bold text-ink"
+              >
                 {number}
               </span>
-              {!isLast ? <span className="step-connector absolute top-11 h-[calc(100%+0.75rem)] w-px" /> : null}
+              {!isLast ? (
+                <span className="step-connector absolute top-11 h-[calc(100%+0.75rem)] w-px" />
+              ) : null}
             </div>
             <div className="pb-1">
               <h3 className="type-title text-ink">{step.label}</h3>

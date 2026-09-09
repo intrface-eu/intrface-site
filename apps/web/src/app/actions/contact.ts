@@ -4,6 +4,7 @@ import { ConvexHttpClient } from "convex/browser";
 import { makeFunctionReference } from "convex/server";
 import { getTranslations } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
+import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 
 /**
  * Contact form transport.
@@ -17,7 +18,7 @@ import { routing, type AppLocale } from "@/i18n/routing";
  * `unconfigured` and the form falls back to `mailto:`.
  */
 
-export type ContactFieldName = "name" | "email" | "message";
+export type { ContactFieldName };
 
 export type ContactActionResult =
   /** Stored. */
@@ -37,8 +38,6 @@ const LIMITS = {
   message: 5000,
   locale: 12,
 } as const;
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const submitContactRef = makeFunctionReference<"mutation">("contact:submitContact");
 
@@ -83,9 +82,9 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   const t = await getTranslations({ locale: resolvedLocale, namespace: "ContactForm" });
 
   const errors: Partial<Record<ContactFieldName, string>> = {};
-  if (name.length < 2) errors.name = t("errorName");
-  if (!EMAIL_PATTERN.test(email)) errors.email = t("errorEmail");
-  if (message.length < 10) errors.message = t("errorMessage");
+  for (const failed of failingContactFields({ name, email, message })) {
+    errors[failed] = t(failed === "name" ? "errorName" : failed === "email" ? "errorEmail" : "errorMessage");
+  }
 
   if (Object.keys(errors).length > 0) {
     return { status: "invalid", errors };

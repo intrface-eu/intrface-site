@@ -1,124 +1,48 @@
 import { IconArrowRight } from "@tabler/icons-react";
-import { FadeIn } from "@/components/site/fade-in";
+import { PairMark } from "@/components/site/pair-mark";
 import { Link } from "@/i18n/navigation";
 
-export type LedgerFigure = {
-  /** Already formatted: "~365,000", "2–4", "10". */
-  value: string;
-  /** What it counts. Uppercase tracked label. */
-  label: string;
-};
-
 export type LedgerEntry = {
-  /** Row number, zero-padded: "01". */
-  index: string;
   name: string;
-  /** Route under the current locale, e.g. `/work/voyager`. Absent when the
-   *  entry has no case page — the row is then plain text, with no arrow and no
-   *  hover affordance, so nothing invites a click that goes nowhere. */
   href?: string;
-  /** Honest status: "Pre-launch", "Open source · AGPL · pre-deployment". */
   status: string;
-  /** `true` marks something running in the world. */
-  live?: boolean;
-  /** The canonical product line: "The interface for a place." */
   interfaceLine: string;
-  /** The two sides it sits between: "visitor ↔ place". */
   pair: string;
-  /** One line. What it does, in plain words. */
-  claim: string;
-  /** One or two hard numbers. Never more, and none at all for a product with
-   *  no approved figures yet. */
-  figures: readonly LedgerFigure[];
 };
 
-/**
- * The work index as a ledger, not a card grid: one hairline row per interface,
- * numbers right-aligned so they read down the column.
- */
-export function PortfolioLedger({
-  entries,
-  pairLabel,
-}: {
+/** A compact companion index. Unpublished products never pretend to be links. */
+export function PortfolioLedger({ entries, pairLabel }: {
   entries: readonly LedgerEntry[];
   pairLabel: string;
 }) {
   return (
     <div className="border-b border-rule">
-      {entries.map((entry, index) => {
+      {entries.map((entry) => {
         const body = (
-          <div className="grid gap-6 lg:grid-cols-[2.5rem_minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-10">
-            {/* A row number is a label, not a measurement — mono is reserved for
-                things you could do arithmetic on. */}
-            <span className="type-meta tabular-nums">{entry.index}</span>
-
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
             <div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-                <h2 className="type-heading inline-flex items-center gap-2">
-                  {entry.name}
-                  {/* These rows go to our own case pages, so the arrow points
-                      along the page, not out of the site. A row without a case
-                      page gets no arrow at all. */}
-                  {entry.href ? (
-                    <IconArrowRight
-                      aria-hidden="true"
-                      className="h-[.6em] w-[.6em] text-accent transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
-                    />
-                  ) : null}
-                </h2>
-
-                <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-white/72 px-3 py-1.5">
-                  <span
-                    aria-hidden="true"
-                    className={
-                      entry.live
-                        ? "h-1.5 w-1.5 rounded-full bg-accent"
-                        : "h-1.5 w-1.5 rounded-full border border-ink-muted"
-                    }
-                  />
-                  <span className="type-caption">{entry.status}</span>
-                </span>
-              </div>
-
-              <p className="type-title mt-4 text-ink">{entry.interfaceLine}</p>
-              <p className="type-body mt-2">{entry.claim}</p>
-              <p className="mt-4">
-                <span className="type-meta">{pairLabel}</span>{" "}
-                <span className="type-artifact">{entry.pair}</span>
+              <h3 className="type-subheading inline-flex items-center gap-3 text-ink">
+                {entry.name}
+                {entry.href ? <IconArrowRight aria-hidden="true" className="h-4 w-4 text-accent" /> : null}
+              </h3>
+              <p className="type-caption mt-2">{entry.status}</p>
+            </div>
+            <div>
+              <p className="type-body-sm">{entry.interfaceLine}</p>
+              <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-2">
+                <span className="type-meta">{pairLabel}</span>
+                <PairMark pair={entry.pair} />
               </p>
             </div>
-
-            {/* One figure per line at `lg` so every row's numbers align down
-                the column instead of wrapping differently per label length. */}
-            {entry.figures.length > 0 ? (
-              <dl className="flex flex-wrap gap-x-10 gap-y-5 lg:grid lg:justify-items-end lg:gap-y-6">
-                {entry.figures.map((figure) => (
-                  <div key={figure.label} className="lg:text-right">
-                    <dd className="type-data text-2xl font-semibold leading-none tracking-[-.04em]">
-                      {figure.value}
-                    </dd>
-                    <dt className="type-caption mt-2.5">{figure.label}</dt>
-                  </div>
-                ))}
-              </dl>
-            ) : null}
           </div>
         );
-
-        return (
-          <FadeIn delay={index * 70} key={entry.name}>
-            {entry.href ? (
-              <Link
-                className="group block border-t border-rule py-9 transition-colors hover:bg-white/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none sm:py-11"
-                href={entry.href}
-              >
-                {body}
-              </Link>
-            ) : (
-              <div className="border-t border-rule py-9 sm:py-11">{body}</div>
-            )}
-          </FadeIn>
-        );
+        return entry.href ? (
+          <Link
+            className="block border-t border-rule py-6 hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:py-8"
+            href={entry.href}
+            key={entry.name}
+          >{body}</Link>
+        ) : <div className="border-t border-rule py-6 sm:py-8" key={entry.name}>{body}</div>;
       })}
     </div>
   );

@@ -13,7 +13,8 @@ import { IconArrowRight, IconLoader2 } from "@tabler/icons-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
-import { submitContactForm, type ContactFieldName } from "@/app/actions/contact";
+import { submitContactForm } from "@/app/actions/contact";
+import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 import { CONTACT_EMAIL } from "@/lib/site/config";
 
 /*
@@ -171,6 +172,20 @@ export function ContactForm({
 
     setErrors({});
     setFallback(null);
+
+    // The same three rules the server applies, answered here first so an
+    // empty or malformed entry never waits on the network. The server checks
+    // again and remains the authority.
+    const failing = failingContactFields({ name, email: replyTo, message });
+    if (failing.length > 0) {
+      const next: FieldErrors = {};
+      for (const failed of failing) {
+        next[failed] = t(failed === "name" ? "errorName" : failed === "email" ? "errorEmail" : "errorMessage");
+      }
+      setErrors(next);
+      focusFirstError(next);
+      return;
+    }
 
     startTransition(async () => {
       const result = await submitContactForm(data);
