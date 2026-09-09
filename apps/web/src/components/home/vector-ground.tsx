@@ -4,16 +4,19 @@ import { useEffect, useRef } from "react";
 import { ISTRIA_OUTLINE } from "@/lib/site/istria-outline";
 
 /**
- * The live ground: one short line pinned to every vertex of the halftone grid,
- * each turned perpendicular to the pointer, so the whole field answers the
- * hand as rings. Scrolling moves the field through four states, keyed to two
- * bands of open paper the page leaves for it (`data-ground-key`):
+ * The live ground: a field of short lines, one per grid vertex, each turned
+ * perpendicular to the pointer, so the whole field answers the hand as rings.
+ * Scrolling moves the field through four states, keyed to two bands of open
+ * paper the page leaves for it (`data-ground-key`):
  *
- *   0  grid   — the flat 18px field, 15° screen angle, tangent to the pointer
- *   1  mark   — the lines gather into the intrface mark as a hatched plate
- *   2  volume — they scatter again, this time through depth: a sparse field
- *               with perspective, scroll parallax, and pointer parallax
- *   3  land   — the last gathering, into the outline of Istria
+ *   0  volume — a sparse field through depth: perspective, scroll parallax
+ *               and pointer parallax
+ *   1  mark   — most lines gather into the intrface mark as a hatched plate;
+ *               the rest stay in the depth field behind it
+ *   2  swell  — a rolling sheet seen from above, carried toward the eye by
+ *               scroll and lifted under the pointer
+ *   3  land   — the last gathering, into the outline of Istria, again with a
+ *               share of lines kept behind it
  *
  * Everything is one instanced draw: a quad per line, the grid position derived
  * from the instance index, the mark, volume and land targets read from a
@@ -34,6 +37,9 @@ const IDLE_MS = 2000;
 const SETTLE = 6.5;
 const STAGE_EASE = 9;
 const MARK_DEPTH = 0.16;
+// Share of lines that never join a plate: they stay in the depth field behind
+// it, so a gathering never flattens the ground.
+const KEEP_SHARE = 0.35;
 const LAND_DEPTH = 0.07;
 const FOCAL = 3.4;
 const VOL_Z_MIN = -2.2;
@@ -57,7 +63,7 @@ uniform float u_cols, u_rows, u_cell, u_gridAngle;
 uniform float u_stage, u_time, u_lineW, u_lineLen, u_gridAlpha;
 uniform float u_markScale, u_landScale, u_scroll;
 uniform vec2 u_volBox;
-uniform mat3 u_rotMark, u_rotLand;
+uniform mat3 u_rotMark, u_rotLand, u_rotSwell;
 uniform vec3 u_ink, u_accent;
 
 flat out float v_halfLen;
@@ -102,30 +108,54 @@ Line plate(vec3 target, vec3 tdir, mat3 rot, float scale) {
   return l;
 }
 
-Line state(int k, vec2 gridPos) {
+Line state(int k) {
   Line l;
+  vec2 pn = u_pointer / u_res - 0.5;
+  bool keep = fract(a_seed * 13.7) < ${KEEP_SHARE.toFixed(2)};
+  float bg = 1.0;
+  if (keep && (k == 1 || k == 3)) { k = 0; bg = 0.7; }
   if (k == 0) {
-    l.pos = gridPos;
-    l.dir = tangentTo(gridPos);
-    l.len = u_lineLen;
-    l.w = u_lineW;
-    l.alpha = u_gridAlpha;
-    l.color = u_ink;
-  } else if (k == 1) {
-    l = plate(a_mark, a_markDir, u_rotMark, u_markScale);
-  } else if (k == 2) {
+    // A sparse field through depth: perspective, scroll parallax, pointer parallax.
     vec3 p = a_vol;
     float depthN = (p.z - ${VOL_Z_MIN.toFixed(2)}) / ${(VOL_Z_MAX - VOL_Z_MIN).toFixed(2)};
-    // Scroll parallax in world units; perspective makes the near lines pass faster.
     p.y = mod(p.y - u_scroll / u_markScale * 0.35 + u_volBox.y, 2.0 * u_volBox.y) - u_volBox.y;
-    vec2 pn = u_pointer / u_res - 0.5;
     p.xy -= pn * 0.22 * (depthN + 0.15);
     l.pos = project(p, u_markScale);
     l.dir = tangentTo(l.pos);
     float persp = F / (F - p.z);
     l.len = u_lineLen * persp;
     l.w = u_lineW * (0.7 + 0.5 * depthN);
-    l.alpha = mix(0.09, 0.4, depthN);
+    l.alpha = mix(0.09, 0.4, depthN) * bg;
+    l.color = u_ink;
+  } else if (k == 1) {
+    l = plate(a_mark, a_markDir, u_rotMark, u_markScale);
+  } else if (k == 2) {
+    // A swell: a rolling sheet seen from above, lines lying across it. Scroll
+    // carries the sheet toward the eye; the pointer lifts it where it hovers.
+    float zr = ${(VOL_Z_MAX - VOL_Z_MIN).toFixed(2)};
+    float sx = a_vol.x;
+    float sn = mod((a_vol.z - ${VOL_Z_MIN.toFixed(2)}) / zr + u_scroll / u_markScale * 0.11, 1.0);
+    float ss = mix(-4.2, 1.4, sn);
+    float ph = u_time * 0.45;
+    float k1 = 1.6 * sx + 0.9 * ss + ph;
+    float k2 = 2.7 * ss + 0.8 * sx - 0.7 * ph;
+    float k3 = 3.1 * sx - 1.3 * ph;
+    float h = 0.16 * sin(k1) + 0.10 * sin(k2) + 0.06 * sin(k3);
+    float dhdx = 0.256 * cos(k1) + 0.08 * cos(k2) + 0.186 * cos(k3);
+    vec2 b = vec2(pn.x * u_volBox.x * 1.3, mix(-4.2, 1.4, 0.5 - pn.y));
+    float bx = sx - b.x, bs = ss - b.y;
+    float bump = 0.42 * exp(-(bx * bx * 1.4 + bs * bs * 0.9));
+    h += bump;
+    dhdx += bump * -2.8 * bx;
+    vec3 p = u_rotSwell * vec3(sx, h - 0.4, ss);
+    vec3 t = u_rotSwell * normalize(vec3(1.0, dhdx, 0.0));
+    l.pos = project(p, u_markScale);
+    l.dir = projectDir(p, t, u_markScale, l.pos, tangentTo(l.pos));
+    float persp = min(F / max(F - p.z, 0.6), 2.4);
+    float near = smoothstep(-4.2, -1.6, ss);
+    l.len = u_lineLen * 1.9 * persp;
+    l.w = u_lineW * (0.7 + 0.5 * near);
+    l.alpha = mix(0.06, 0.42, near) * (1.0 - smoothstep(0.9, 1.4, ss));
     l.color = u_ink;
   } else {
     l = plate(a_land, a_landDir, u_rotLand, u_landScale);
@@ -143,8 +173,8 @@ void main() {
   float stage = clamp(u_stage, 0.0, 3.0);
   int k = int(min(floor(stage), 2.0));
   float f = stage - float(k);
-  Line a = state(k, gridPos);
-  Line b = state(k + 1, gridPos);
+  Line a = state(k);
+  Line b = state(k + 1);
   float t = smoothstep(0.0, 1.0, clamp((f - STAGGER * a_seed) / (1.0 - STAGGER), 0.0, 1.0));
 
   vec2 delta = b.pos - a.pos;
@@ -379,6 +409,7 @@ export function VectorGround() {
       volBox: u("u_volBox"),
       rotMark: u("u_rotMark"),
       rotLand: u("u_rotLand"),
+      rotSwell: u("u_rotSwell"),
     };
     gl.uniform3fv(u("u_ink"), INK);
     gl.uniform3fv(u("u_accent"), ACCENT);
@@ -544,6 +575,7 @@ export function VectorGround() {
       gl.uniform1f(U.scroll, window.scrollY);
       gl.uniformMatrix3fv(U.rotMark, false, rotation(0.5 * Math.sin(time * 0.32) + nx * 0.8, 0.24 - ny * 0.6));
       gl.uniformMatrix3fv(U.rotLand, false, rotation(0.22 * Math.sin(time * 0.25) + nx * 0.6, 0.55 - ny * 0.5));
+      gl.uniformMatrix3fv(U.rotSwell, false, rotation(nx * 0.25, 0.85 - ny * 0.3));
       gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, count);
 
       frame = requestAnimationFrame(tick);
