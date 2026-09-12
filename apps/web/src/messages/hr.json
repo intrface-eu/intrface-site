@@ -131,6 +131,10 @@
       "title": "Web-stranice za klijente i naš proizvod.",
       "pair": "kupac ↔ tvrtka"
     },
+    "ground": {
+      "here": "Odavde",
+      "world": "u svijet"
+    },
     "contact": {
       "label": "Kontakt",
       "title": "Donesite nam svoj najzamršeniji sustav.",
@@ -215,7 +219,7 @@
   "About": {
     "hero": {
       "label": "O nama",
-      "title": "Studio za vlastite proizvode i sučelja za klijente.",
+      "title": "Intrface gradi najljudskija sučelja za probleme koje je najvrjednije riješiti.",
       "lead": "U Vrsaru, u Istri. Radimo diljem EU-a."
     },
     "company": {

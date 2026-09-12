@@ -131,6 +131,10 @@
       "title": "Kundenwebsites und ein eigenes Produkt.",
       "pair": "Kunde ↔ Betrieb"
     },
+    "ground": {
+      "here": "Von hier",
+      "world": "in die Welt"
+    },
     "contact": {
       "label": "Kontakt",
       "title": "Her mit dem chaotischen System.",
@@ -215,7 +219,7 @@
   "About": {
     "hero": {
       "label": "Über uns",
-      "title": "Ein Studio für eigene Produkte und Schnittstellen für Kunden.",
+      "title": "Bei Intrface geht es darum, die menschlichsten Schnittstellen für die lohnendsten Probleme zu bauen.",
       "lead": "In Vrsar, Istrien. Tätig in der ganzen EU."
     },
     "company": {

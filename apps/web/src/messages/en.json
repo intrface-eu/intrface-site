@@ -131,6 +131,10 @@
       "title": "Client sites and a product of our own.",
       "pair": "customer ↔ business"
     },
+    "ground": {
+      "here": "From here",
+      "world": "to the world"
+    },
     "contact": {
       "label": "Contact",
       "title": "Bring us the messy system.",
@@ -215,7 +219,7 @@
   "About": {
     "hero": {
       "label": "About",
-      "title": "A studio building products and client interfaces.",
+      "title": "Intrface is about building the most human interfaces solving the most worthwhile problems.",
       "lead": "Based in Vrsar, Istria. Working across the EU."
     },
     "company": {

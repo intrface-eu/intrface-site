@@ -31,6 +31,10 @@ understandable without making you think about the interface."*
 Admission test, once, on `/about`: *"What two things does this create an interface
 between? If there is no clear answer, it is not an INTRFACE product."*
 
+The `/about` H1 is, character for character: *"Intrface is about building the most
+human interfaces solving the most worthwhile problems."* Set on 2026-09-11 by owner
+decision.
+
 The "Don't make people operate X software. Help them Y." construction is an antithesis
 and counts against the per-page budget below. Use it at most once per page, never as a
 list.

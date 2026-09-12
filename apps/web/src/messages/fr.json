@@ -131,6 +131,10 @@
       "title": "Des sites clients et un produit à nous.",
       "pair": "client ↔ entreprise"
     },
+    "ground": {
+      "here": "D'ici",
+      "world": "vers le monde"
+    },
     "contact": {
       "label": "Contact",
       "title": "Apportez-nous le système qui vous échappe.",
@@ -215,7 +219,7 @@
   "About": {
     "hero": {
       "label": "À propos",
-      "title": "Un studio de produits et d’interfaces pour les entreprises.",
+      "title": "Intrface, c’est construire les interfaces les plus humaines pour les problèmes les plus dignes d’être résolus.",
       "lead": "À Vrsar, en Istrie. Nous travaillons dans toute l'UE."
     },
     "company": {

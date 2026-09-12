@@ -1,10 +1,7 @@
 import type { CSSProperties } from "react";
 import { getTranslations } from "next-intl/server";
-import { IconArrowRight } from "@tabler/icons-react";
 import { Link } from "@/i18n/navigation";
-import { AnimatedMark } from "@/components/site/animated-mark";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
-import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import type { AppLocale } from "@/i18n/routing";
 import {
   CONTACT_EMAIL,
@@ -46,21 +43,16 @@ export async function Footer({ locale }: { locale: AppLocale }) {
   ] as const;
 
   return (
-    <footer className="site-footer border-t border-rule bg-paper text-ink">
+    <footer className="site-footer bg-paper text-ink">
+      {/* No rules anywhere in the footer: the field runs from the contact
+          close straight into the signature. The signature carries the name,
+          so there is no small mark here, and the contact section a screen
+          above carries the call, so only the address remains. */}
       <div className="section-shell grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
         <div data-ground-quiet="">
-          <div className="flex items-center gap-3">
-            {/* Below the fold, so it rests rather than composing where nobody sees it. */}
-            <AnimatedMark animate={false} className="text-ink" size={22} />
-            <span className="text-lg font-medium tracking-[-0.04em] text-ink">intrface</span>
-          </div>
-          <p className="type-body-sm mt-5 max-w-sm">{t("tagline")}</p>
-          <Link className={tactileButtonClasses("secondary", "mt-7")} href="/about#contact">
-            {t("cta")}
-            <IconArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
+          <p className="type-body-sm max-w-sm">{t("tagline")}</p>
           <a
-            className="mt-5 block break-words text-sm font-semibold text-accent transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
+            className="mt-6 block break-words text-sm font-semibold text-accent transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
             href={`mailto:${CONTACT_EMAIL}`}
           >
             {CONTACT_EMAIL}
@@ -90,24 +82,16 @@ export async function Footer({ locale }: { locale: AppLocale }) {
       </div>
 
       <div className="section-shell">
-        <div className="flex border-t border-rule py-7 sm:justify-end">
-          <LocaleSwitcher />
-        </div>
-      </div>
-
-      <div className="section-shell">
-        <div className="flex flex-col gap-2 border-t border-rule py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          className="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between"
+          data-ground-quiet=""
+        >
           {/* A 38-character sentence, not a label: sentence case keeps the word
-              shapes a reader navigates by. */}
+              shapes a reader navigates by. Imprint lives under Company above. */}
           <p className="type-caption">
             © {year} {SITE_NAME} · {t("location")}
           </p>
-          <Link
-            className="type-meta transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
-            href="/imprint"
-          >
-            {nav("imprint")}
-          </Link>
+          <LocaleSwitcher />
         </div>
       </div>
 

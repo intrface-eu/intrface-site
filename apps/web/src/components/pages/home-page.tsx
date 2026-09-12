@@ -151,9 +151,23 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
-        {/* Open paper between the evidence and the products: the ground gathers
-            its lines into the mark here, then scatters them through depth. */}
-        <div className="ground-band" data-ground-key="mark" aria-hidden="true" />
+        {/* Open paper between the evidence and the products: the swell under
+            the hero gathers into Istria here, then scatters through depth. The
+            field marks Vrsar with a red X, and these two words come out of it
+            once it has arrived — decoration of the ground, so aria-hidden, and
+            absent entirely wherever the live ground does not run. */}
+        <div className="ground-band" data-ground-key="land" aria-hidden="true">
+          <div className="ground-band-layer">
+            <p className="ground-phrase ground-phrase-here">
+              <span>{t("ground.here")}</span>
+            </p>
+            <div className="section-shell ground-band-foot">
+              <p className="ground-phrase ground-phrase-world">
+                <span>{t("ground.world")}</span>
+              </p>
+            </div>
+          </div>
+        </div>
 
       {/* WHAT WE BUILD — ink band, ledger with the canonical status labels.
           MidiFlow and Patchbay sit here with no link and no figures; the row
@@ -183,8 +197,8 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
-        {/* The last gathering before the close: the field draws Istria. */}
-        <div className="ground-band" data-ground-key="land" aria-hidden="true" />
+        {/* The last gathering before the close: the field draws the mark. */}
+        <div className="ground-band" data-ground-key="mark" aria-hidden="true" />
 
         {/* CONTACT — an ink close with the paper form plane attached to the
             viewport edge. The plane is structural and never fades as a slab. */}

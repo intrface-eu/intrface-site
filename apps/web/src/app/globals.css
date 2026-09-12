@@ -223,6 +223,27 @@ body {
   }
 }
 
+/* The two phrases beside the X on Vrsar. "From here" comes out from under the
+   X, leftward; "to the world" is written across, left to right. Transform and
+   clip-path only, and both run once, off one attribute the ground sets. */
+@keyframes ground-phrase-out {
+  from {
+    transform: translateX(calc(101% + var(--phrase-gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes ground-phrase-write {
+  from {
+    clip-path: inset(-12% 100% -22% 0);
+  }
+  to {
+    clip-path: inset(-12% -4% -22% 0);
+  }
+}
+
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1428,11 +1449,112 @@ body {
     display: none;
   }
 
-  /* Open paper the panes leave for the ground to gather in: one viewport,
-     nothing printed on it. The field keys its convergence to these. */
+  /* Open paper the panes leave for the ground to gather in: one viewport, and
+     on the land band the one mark the site carries. The field keys its
+     convergence to these. */
   .ground-band {
+    position: relative;
     height: 100svh;
     pointer-events: none;
+  }
+
+  /* ===== THE MARK ON THE GROUND =====
+     The land band is where the field draws Istria, and it puts a red X on
+     Vrsar — the only red on the site, and not a UI colour. VectorGround sets
+     `data-ground-x` on the band the moment the X has converged, and these two
+     phrases are that attribute and nothing else: no per-frame work, and
+     nothing at all where the live ground cannot run, because the attribute is
+     never set. The offsets track the plate: the field scales Istria by 0.38 of
+     the short viewport side, and the X sits at (-0.592, -0.114) in the
+     outline's own space, north up. These two are the plate at rest; the ground
+     overwrites them with the projected point on every resize, so the anchor is
+     exact rather than close. */
+  .ground-band {
+    --x-dx: calc(0.2254 * min(100vw, 100svh));
+    --x-dy: calc(0.065 * min(100vw, 100svh));
+  }
+
+  /* The layer the phrases ride on. The plate is fixed to the screen while the
+     band scrolls past it, so the ground writes the difference between the X's
+     live screen point and the point the band anchors them at, and this one
+     transform carries both phrases with the map. Entrance transforms stay on
+     the elements inside, so the two never fight. */
+  .ground-band-layer {
+    position: absolute;
+    inset: 0;
+    transform: translate3d(var(--ground-travel-x, 0px), var(--ground-travel-y, 0px), 0);
+  }
+
+  .ground-phrase {
+    font-family: var(--font-brand);
+    /* One quiet line beside the mark, near display scale on a wide screen and
+       well under it on a phone. Never a second headline. */
+    font-size: clamp(1.75rem, 3.6vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* The window's right edge is the X itself, so the phrase starts hidden under
+     the strokes and slides out to the left; the padding is the gap it keeps
+     from them once it has settled. */
+  .ground-phrase-here {
+    --phrase-gap: 1.4em;
+    position: absolute;
+    top: calc(50% + var(--x-dy));
+    right: calc(50% + var(--x-dx));
+    transform: translateY(-50%);
+    padding-right: var(--phrase-gap);
+    overflow: hidden;
+  }
+
+  .ground-phrase-here > span {
+    display: inline-block;
+    transform: translateX(calc(101% + var(--phrase-gap)));
+  }
+
+  /* The corner phrase rides the plate going up, where it has the whole band
+     to move in, and gives back half the travel going down, where the band's
+     bottom edge and the ink pane under it are close. Never less than half, so
+     it stays part of the same movement. */
+  .ground-band-foot {
+    position: absolute;
+    inset-inline: 0;
+    bottom: clamp(2rem, 6svh, 4rem);
+    text-align: right;
+    transform: translate3d(0, calc(max(var(--ground-travel-y, 0px), 0px) * -0.5), 0);
+  }
+
+  .ground-phrase-world > span {
+    display: inline-block;
+    clip-path: inset(-12% 100% -22% 0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ground-band[data-ground-x] .ground-phrase-here > span {
+      animation: ground-phrase-out 420ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+    }
+
+    .ground-band[data-ground-x] .ground-phrase-world > span {
+      animation: ground-phrase-write 460ms cubic-bezier(0.25, 0.6, 0.3, 1) 560ms both;
+    }
+  }
+
+  /* At phone width the plate fills the band and there is no lateral room, so
+     the phrase sits above the X instead of beside it, on the shell's own
+     margin. */
+  @media (max-width: 639px) {
+    .ground-phrase-here {
+      top: auto;
+      right: auto;
+      left: 1.5rem;
+      bottom: calc(50% - var(--x-dy) + 2rem);
+      transform: none;
+      padding-right: 0.5em;
+      max-width: calc(100% - 3rem);
+    }
   }
 
   /* ===== OPEN PANES =====
@@ -1722,9 +1844,10 @@ body {
     background: var(--ink);
   }
 
+  /* No skew here: the paper form plane sits flush with the section top, so a
+     skewed ink layer showed as a thin wedge above it on the right. */
   .home-pane-contact::before {
-    transform: skewY(-1.2deg);
-    inset-block-end: 3vw;
+    transform: none;
   }
 
   .home-pane-contact > .section-shell {
