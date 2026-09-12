@@ -41,7 +41,6 @@ skills = [
   "aoc-understand",
   "aoc-update",
   "architecture-design",
-  "browser-qa",
   "design-diff",
   "design-director",
   "design-handoff",
@@ -60,8 +59,6 @@ skills = [
   "omarchy-theme-ops",
   "rlm-analysis",
   "safe-gamification",
-  "spec-rpg-authoring",
-  "tm-cc",
   "ponytail-workflows",
   "website-to-hyperframes",
 ]
@@ -90,13 +87,6 @@ skills = [
   "aoc-update",
   "herdr-agent-observation",
 ]
-agents = []
-
-[profiles.qa]
-description = "Authenticated browser QA workflow."
-risk = "medium"
-extensions = []
-skills = ["browser-qa"]
 agents = []
 
 [profiles.design-product]
@@ -218,7 +208,6 @@ skills = [
   "aoc-understand",
   "aoc-update",
   "architecture-design",
-  "browser-qa",
   "design-diff",
   "design-director",
   "design-handoff",
@@ -237,8 +226,6 @@ skills = [
   "omarchy-theme-ops",
   "rlm-analysis",
   "safe-gamification",
-  "spec-rpg-authoring",
-  "tm-cc",
   "ponytail-workflows",
   "website-to-hyperframes",
 ]

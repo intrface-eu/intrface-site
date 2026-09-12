@@ -1,15 +1,6 @@
 {
   "aocAssetVersion": 4,
   "assets": {
-    ".aoc/layouts/design.kdl": {
-      "asset": "layout/design",
-      "assetVersion": 3,
-      "expectedSha256": "2266dae0aa3edd0b4f1809d25e043824972cfab5d19ff60a5a9bfb70891d0c77",
-      "marker": ".aoc/layouts/design.kdl.aoc-managed",
-      "sha256": "2266dae0aa3edd0b4f1809d25e043824972cfab5d19ff60a5a9bfb70891d0c77",
-      "source": "../.config/aoc/layouts/design.kdl",
-      "status": "current"
-    },
     ".aoc/presets/design": {
       "asset": "preset/design",
       "assetVersion": 4,
@@ -31,9 +22,9 @@
     ".aoc/presets/ops": {
       "asset": "preset/ops",
       "assetVersion": 4,
-      "expectedSha256": "ba5d4e0d908108a0d85d08527cfd1435c6c6c10abec6f3d20099ce6833f0fc96",
+      "expectedSha256": "9ce5dd82be603855835b5457edb89097f7f97e928e9f73b3d6e1ec65eda934f5",
       "marker": ".aoc/presets/ops/.aoc-managed",
-      "sha256": "ba5d4e0d908108a0d85d08527cfd1435c6c6c10abec6f3d20099ce6833f0fc96",
+      "sha256": "9ce5dd82be603855835b5457edb89097f7f97e928e9f73b3d6e1ec65eda934f5",
       "source": "../.config/aoc/presets/ops",
       "status": "current"
     },
@@ -67,27 +58,27 @@
     ".omp/extensions": {
       "asset": "omp-extensions",
       "assetVersion": 4,
-      "expectedSha256": "637f27972d7f0d0440356191c5df910c1f316654ac37993422f09771184898cb",
+      "expectedSha256": "413adb6329dcecd1cff5ddb36ef078d03aac2fc082b7ac259fbca14192afeca2",
       "marker": ".omp/extensions/.aoc-managed",
-      "sha256": "637f27972d7f0d0440356191c5df910c1f316654ac37993422f09771184898cb",
+      "sha256": "413adb6329dcecd1cff5ddb36ef078d03aac2fc082b7ac259fbca14192afeca2",
       "source": "../.config/aoc/omp/extensions",
       "status": "current"
     },
     ".omp/manifest.toml": {
       "asset": "omp-manifest",
       "assetVersion": 4,
-      "expectedSha256": "9a39e48f9a92f653859360f57df557eda556866990d14f2af430b9029638fbf0",
+      "expectedSha256": "9152f625b48823b81ede5b1b92822bb60cbf83f04406a707095e5c768d6cc990",
       "marker": ".omp/manifest.toml.aoc-managed",
-      "sha256": "9a39e48f9a92f653859360f57df557eda556866990d14f2af430b9029638fbf0",
+      "sha256": "9152f625b48823b81ede5b1b92822bb60cbf83f04406a707095e5c768d6cc990",
       "source": "../.config/aoc/omp/manifest.toml",
       "status": "current"
     },
     ".omp/skills": {
       "asset": "omp-skills",
       "assetVersion": 4,
-      "expectedSha256": "7d57cdbde9399af44e6852ca99e3af903e82950fe16b73c6573162ad0d6ba8e3",
+      "expectedSha256": "dd8d449df3381de886bfda9e87823c673cdb8adfee7ea9911a78ae774d03f031",
       "marker": ".omp/skills/.aoc-managed",
-      "sha256": "7d57cdbde9399af44e6852ca99e3af903e82950fe16b73c6573162ad0d6ba8e3",
+      "sha256": "dd8d449df3381de886bfda9e87823c673cdb8adfee7ea9911a78ae774d03f031",
       "source": "../.config/aoc/omp/skills",
       "status": "current"
     },
@@ -96,7 +87,7 @@
       "assetVersion": 3,
       "expectedSha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
       "marker": ".omp/skills/aoc-hyperframes/.aoc-managed",
-      "sha256": "325630d26d903ead6568f0f8decfb67cbabfcacb007a9e0a378ac547027b4bff",
+      "sha256": "530dd9970ba93b03822bf3a2948c03615227843efd96e87100341d29acd473ff",
       "source": "../.config/aoc/pi/skills/aoc-hyperframes",
       "status": "dirty"
     },
@@ -105,7 +96,7 @@
       "assetVersion": 3,
       "expectedSha256": "58726bcb19041ae80310ee9937971277eb46c55746da92ec5fecd549c6127236",
       "marker": ".omp/skills/aoc-init-ops/.aoc-managed",
-      "sha256": "e52909e82492708a145f5c3af38d17959347689ad0453d8b65388a6b76f8b237",
+      "sha256": "096618926f492e4c550f0fca9f99b6469928ef80a08ed96db3f133df4c189491",
       "source": "../.config/aoc/pi/skills/aoc-init-ops",
       "status": "dirty"
     },
@@ -132,9 +123,9 @@
       "assetVersion": 3,
       "expectedSha256": "28596583c13cfb0d6eaec3abc9e3296001ee194e978e21882cfa7522972423af",
       "marker": ".omp/skills/architecture-design/.aoc-managed",
-      "sha256": "28596583c13cfb0d6eaec3abc9e3296001ee194e978e21882cfa7522972423af",
+      "sha256": "0741af245d62788b58f3ab62de7e8ab63ebb2568cedacf3a26b20d6610bea6da",
       "source": "../.config/aoc/pi/skills/architecture-design",
-      "status": "current"
+      "status": "dirty"
     },
     ".omp/skills/design-diff": {
       "asset": "skill/design-diff",
@@ -231,7 +222,7 @@
       "assetVersion": 3,
       "expectedSha256": "015c50a2ecd29e00457384aa8a3a17c0731200058685d7478bbdf56ddff54d10",
       "marker": ".omp/skills/funnel-design/.aoc-managed",
-      "sha256": "7268621271e86cd965469c3e1ffd327b057d0e531ce4e7d6402b57ec1a26f787",
+      "sha256": "101105d806d9ae0da1ae576561178e077904e6b5212953ee654fcf27cdbf2c67",
       "source": "../.config/aoc/pi/skills/funnel-design",
       "status": "dirty"
     },
@@ -261,24 +252,6 @@
       "sha256": "a8044d5601d26c3f13bc9bbb09cc6a0d1227b9d74843c5fadf5715a43fdc4500",
       "source": "../.config/aoc/pi/skills/safe-gamification",
       "status": "current"
-    },
-    ".omp/skills/spec-rpg-authoring": {
-      "asset": "skill/spec-rpg-authoring",
-      "assetVersion": 3,
-      "expectedSha256": "834f069461031316226821b6a7175210c1d48ea97e27855ae1280212a074f817",
-      "marker": ".omp/skills/spec-rpg-authoring/.aoc-managed",
-      "sha256": "9121d9f597a077e8d265b1136ad72f0345e1f6969b2def8ff57fe2f6bc29507a",
-      "source": "../.config/aoc/pi/skills/spec-rpg-authoring",
-      "status": "dirty"
-    },
-    ".omp/skills/tm-cc": {
-      "asset": "skill/tm-cc",
-      "assetVersion": 3,
-      "expectedSha256": "bf18338a71c856dd9b23188e5dfecfbbe95bb66e2498602af294c1dd7e2482af",
-      "marker": ".omp/skills/tm-cc/.aoc-managed",
-      "sha256": "e5b2d578ed597a7d55b077795aa839a5beb0dc12a348059b6316f2d6c9d720ae",
-      "source": "../.config/aoc/pi/skills/tm-cc",
-      "status": "dirty"
     },
     ".pi/extensions/aoc-presets": {
       "asset": "pi-extension-family/aoc-presets",
@@ -660,11 +633,11 @@
     }
   },
   "counts": {
-    "current": 67,
-    "dirty": 6,
+    "current": 65,
+    "dirty": 5,
     "stale": 0,
     "unknown": 0
   },
   "schemaVersion": 1,
-  "updatedAt": "2026-09-12T07:31:08.975794Z"
+  "updatedAt": "2026-09-12T08:01:03.647694Z"
 }

@@ -2,5 +2,5 @@ aoc-managed: true
 asset: preset/ops
 asset-version: 4
 source: ../.config/aoc/presets/ops
-sha256: ba5d4e0d908108a0d85d08527cfd1435c6c6c10abec6f3d20099ce6833f0fc96
-updated-at: 2026-09-12T07:31:07Z
+sha256: 9ce5dd82be603855835b5457edb89097f7f97e928e9f73b3d6e1ec65eda934f5
+updated-at: 2026-09-12T08:01:01Z

@@ -2,5 +2,5 @@ aoc-managed: true
 asset: omp-manifest
 asset-version: 4
 source: ../.config/aoc/omp/manifest.toml
-sha256: 9a39e48f9a92f653859360f57df557eda556866990d14f2af430b9029638fbf0
-updated-at: 2026-09-12T07:31:06Z
+sha256: 9152f625b48823b81ede5b1b92822bb60cbf83f04406a707095e5c768d6cc990
+updated-at: 2026-09-12T08:01:00Z

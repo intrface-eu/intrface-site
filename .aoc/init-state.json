@@ -1,13 +1,11 @@
 {
   "schemaVersion": 1,
   "projectAocVersion": 4,
-  "previousProjectAocVersion": 3,
-  "lastInitializedAt": "2026-09-12T07:31:08.995300Z",
+  "previousProjectAocVersion": 4,
+  "lastInitializedAt": "2026-09-12T08:01:03.667273Z",
   "lastInitScriptDir": "/Users/basicalex/.local/bin",
   "runtime": {
     "canonical": "omp"
   },
-  "migrationsApplied": [
-    "v4-retired-memory-cleanup"
-  ]
+  "migrationsApplied": []
 }

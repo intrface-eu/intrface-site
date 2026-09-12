@@ -43,6 +43,8 @@
 ./.omp/.aoc-backups
 ./.omp/agents
 ./.omp/extensions
+./.omp/manifest.toml
+./.omp/manifest.toml.aoc-managed
 ./.omp/skills
 ./.pi
 ./.pi/agents
@@ -51,8 +53,6 @@
 ./.pi/prompts
 ./.pi/prompts-optional
 ./.pi/settings.json
-./.pi/skills
-./.playwright-mcp
 ... [tree truncated to 40 lines]
 ```
 
@@ -71,29 +71,3 @@
 ## Design Contract
 - Root DESIGN.md: present
 - Use as visual/product design source before product-facing UI, docs-site, marketing, or media changes.
-
-## Current Task Tag
-```
-master
-```
-
-## Active Workstreams (Tags)
-```
-master (7)
-site-about (2)
-site-aoc (2)
-site-aoc-subdomain (7)
-site-contact (2)
-site-core (1)
-site-funda (2)
-site-homepage (2)
-site-monorepo (1)
-site-projects (2)
-site-voyager (2)
-```
-
-## Task spec Location
-- Directory: .taskmaster/docs/specs
-- Resolve tag spec default with: aoc-task tag spec show --tag <tag>
-- Resolve task spec override with: aoc-task spec show <id> --tag <tag>
-- Effective precedence: task spec override -> tag spec default
