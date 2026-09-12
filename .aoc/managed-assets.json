@@ -1,5 +1,5 @@
 {
-  "aocAssetVersion": 3,
+  "aocAssetVersion": 4,
   "assets": {
     ".aoc/layouts/design.kdl": {
       "asset": "layout/design",
@@ -12,74 +12,83 @@
     },
     ".aoc/presets/design": {
       "asset": "preset/design",
-      "assetVersion": 3,
-      "expectedSha256": "66ee8af82f27bcce2f25dd6fa3714d3dfcb806dba2db669da25098109bd6189e",
+      "assetVersion": 4,
+      "expectedSha256": "13624ad686bd5868a0d34fa6bb574eebd1ae2f07d30b8bcc5ee6faa36132f5b3",
       "marker": ".aoc/presets/design/.aoc-managed",
-      "sha256": "66ee8af82f27bcce2f25dd6fa3714d3dfcb806dba2db669da25098109bd6189e",
-      "source": ".aoc/presets/design",
+      "sha256": "13624ad686bd5868a0d34fa6bb574eebd1ae2f07d30b8bcc5ee6faa36132f5b3",
+      "source": "../.config/aoc/presets/design",
       "status": "current"
     },
     ".aoc/presets/hyperframes": {
       "asset": "preset/hyperframes",
-      "assetVersion": 3,
-      "expectedSha256": "e861f3597d22e564d10360d4452815938d96be52ce35747a99eae0b92c8051af",
+      "assetVersion": 4,
+      "expectedSha256": "e35aa4706b8911d231f4a16628796639729c5705b9b7dfd8e3acb803d907df85",
       "marker": ".aoc/presets/hyperframes/.aoc-managed",
-      "sha256": "e861f3597d22e564d10360d4452815938d96be52ce35747a99eae0b92c8051af",
-      "source": ".aoc/presets/hyperframes",
+      "sha256": "e35aa4706b8911d231f4a16628796639729c5705b9b7dfd8e3acb803d907df85",
+      "source": "../.config/aoc/presets/hyperframes",
       "status": "current"
     },
     ".aoc/presets/ops": {
       "asset": "preset/ops",
-      "assetVersion": 3,
-      "expectedSha256": "63142ff9ec383188d83ecf75505a2324c80118b9f517c292cff7e0f8f2f2617e",
+      "assetVersion": 4,
+      "expectedSha256": "ba5d4e0d908108a0d85d08527cfd1435c6c6c10abec6f3d20099ce6833f0fc96",
       "marker": ".aoc/presets/ops/.aoc-managed",
-      "sha256": "63142ff9ec383188d83ecf75505a2324c80118b9f517c292cff7e0f8f2f2617e",
-      "source": ".aoc/presets/ops",
+      "sha256": "ba5d4e0d908108a0d85d08527cfd1435c6c6c10abec6f3d20099ce6833f0fc96",
+      "source": "../.config/aoc/presets/ops",
       "status": "current"
     },
     ".aoc/presets/research": {
       "asset": "preset/research",
-      "assetVersion": 3,
-      "expectedSha256": "db3a38c19330c414dd5b889dc12a6f6de6d4ae52230293b3047a473dc37f76aa",
+      "assetVersion": 4,
+      "expectedSha256": "63a9d70188308f7fff87833106899f8ee8feacd0d0e57ae40972d6ea72341951",
       "marker": ".aoc/presets/research/.aoc-managed",
-      "sha256": "db3a38c19330c414dd5b889dc12a6f6de6d4ae52230293b3047a473dc37f76aa",
-      "source": ".aoc/presets/research",
+      "sha256": "63a9d70188308f7fff87833106899f8ee8feacd0d0e57ae40972d6ea72341951",
+      "source": "../.config/aoc/presets/research",
       "status": "current"
     },
     ".aoc/presets/test": {
       "asset": "preset/test",
-      "assetVersion": 3,
-      "expectedSha256": "d06a9b32ac516c4e5c1d80ee1e77276289a79e7cee7cb634ba73cd86cd5fa4cc",
+      "assetVersion": 4,
+      "expectedSha256": "10a772f8e8f5d809d65e0e72ea5d928ff5882339cf45b1e292d1951c77679fce",
       "marker": ".aoc/presets/test/.aoc-managed",
-      "sha256": "d06a9b32ac516c4e5c1d80ee1e77276289a79e7cee7cb634ba73cd86cd5fa4cc",
-      "source": ".aoc/presets/test",
+      "sha256": "10a772f8e8f5d809d65e0e72ea5d928ff5882339cf45b1e292d1951c77679fce",
+      "source": "../.config/aoc/presets/test",
       "status": "current"
     },
     ".omp/agents": {
       "asset": "omp-agents",
-      "assetVersion": 3,
+      "assetVersion": 4,
       "expectedSha256": "e37ba23cb76f2f39c77846b3820f391145e3d70d984d8d478f72cad5eb90e017",
       "marker": ".omp/agents/.aoc-managed",
       "sha256": "e37ba23cb76f2f39c77846b3820f391145e3d70d984d8d478f72cad5eb90e017",
-      "source": ".omp/agents",
+      "source": "../.config/aoc/omp/agents",
       "status": "current"
     },
     ".omp/extensions": {
       "asset": "omp-extensions",
-      "assetVersion": 3,
-      "expectedSha256": "92d3096761059323814672ca6a02ed319b6068cc521fd83306b45b7b0def81be",
+      "assetVersion": 4,
+      "expectedSha256": "637f27972d7f0d0440356191c5df910c1f316654ac37993422f09771184898cb",
       "marker": ".omp/extensions/.aoc-managed",
-      "sha256": "92d3096761059323814672ca6a02ed319b6068cc521fd83306b45b7b0def81be",
-      "source": ".omp/extensions",
+      "sha256": "637f27972d7f0d0440356191c5df910c1f316654ac37993422f09771184898cb",
+      "source": "../.config/aoc/omp/extensions",
+      "status": "current"
+    },
+    ".omp/manifest.toml": {
+      "asset": "omp-manifest",
+      "assetVersion": 4,
+      "expectedSha256": "9a39e48f9a92f653859360f57df557eda556866990d14f2af430b9029638fbf0",
+      "marker": ".omp/manifest.toml.aoc-managed",
+      "sha256": "9a39e48f9a92f653859360f57df557eda556866990d14f2af430b9029638fbf0",
+      "source": "../.config/aoc/omp/manifest.toml",
       "status": "current"
     },
     ".omp/skills": {
       "asset": "omp-skills",
-      "assetVersion": 3,
-      "expectedSha256": "50c3fc9462ca2abf406f16498199f362f83eb00cb62b76888a8446f71fcb84f1",
+      "assetVersion": 4,
+      "expectedSha256": "7d57cdbde9399af44e6852ca99e3af903e82950fe16b73c6573162ad0d6ba8e3",
       "marker": ".omp/skills/.aoc-managed",
-      "sha256": "50c3fc9462ca2abf406f16498199f362f83eb00cb62b76888a8446f71fcb84f1",
-      "source": ".omp/skills",
+      "sha256": "7d57cdbde9399af44e6852ca99e3af903e82950fe16b73c6573162ad0d6ba8e3",
+      "source": "../.config/aoc/omp/skills",
       "status": "current"
     },
     ".omp/skills/aoc-hyperframes": {
@@ -87,16 +96,16 @@
       "assetVersion": 3,
       "expectedSha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
       "marker": ".omp/skills/aoc-hyperframes/.aoc-managed",
-      "sha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
+      "sha256": "325630d26d903ead6568f0f8decfb67cbabfcacb007a9e0a378ac547027b4bff",
       "source": "../.config/aoc/pi/skills/aoc-hyperframes",
-      "status": "current"
+      "status": "dirty"
     },
     ".omp/skills/aoc-init-ops": {
       "asset": "skill/aoc-init-ops",
       "assetVersion": 3,
       "expectedSha256": "58726bcb19041ae80310ee9937971277eb46c55746da92ec5fecd549c6127236",
       "marker": ".omp/skills/aoc-init-ops/.aoc-managed",
-      "sha256": "df27e3d33e8531d17b9c885eca8413984517da9e588bfd459f0451c33289b51b",
+      "sha256": "e52909e82492708a145f5c3af38d17959347689ad0453d8b65388a6b76f8b237",
       "source": "../.config/aoc/pi/skills/aoc-init-ops",
       "status": "dirty"
     },
@@ -105,9 +114,9 @@
       "assetVersion": 3,
       "expectedSha256": "000954162e01e3d47617e0d9b4f754dfc3585ded0c5e747b6c443d20732e8863",
       "marker": ".omp/skills/aoc-map/.aoc-managed",
-      "sha256": "000954162e01e3d47617e0d9b4f754dfc3585ded0c5e747b6c443d20732e8863",
+      "sha256": "25888cc92026e6063aa1a9b360cdeb99342cefdcff57bcc265d05ed3b635b211",
       "source": "../.config/aoc/pi/skills/aoc-map",
-      "status": "current"
+      "status": "dirty"
     },
     ".omp/skills/aoc-understand": {
       "asset": "skill/aoc-understand",
@@ -222,9 +231,9 @@
       "assetVersion": 3,
       "expectedSha256": "015c50a2ecd29e00457384aa8a3a17c0731200058685d7478bbdf56ddff54d10",
       "marker": ".omp/skills/funnel-design/.aoc-managed",
-      "sha256": "015c50a2ecd29e00457384aa8a3a17c0731200058685d7478bbdf56ddff54d10",
+      "sha256": "7268621271e86cd965469c3e1ffd327b057d0e531ce4e7d6402b57ec1a26f787",
       "source": "../.config/aoc/pi/skills/funnel-design",
-      "status": "current"
+      "status": "dirty"
     },
     ".omp/skills/motion-director": {
       "asset": "skill/motion-director",
@@ -258,18 +267,18 @@
       "assetVersion": 3,
       "expectedSha256": "834f069461031316226821b6a7175210c1d48ea97e27855ae1280212a074f817",
       "marker": ".omp/skills/spec-rpg-authoring/.aoc-managed",
-      "sha256": "834f069461031316226821b6a7175210c1d48ea97e27855ae1280212a074f817",
+      "sha256": "9121d9f597a077e8d265b1136ad72f0345e1f6969b2def8ff57fe2f6bc29507a",
       "source": "../.config/aoc/pi/skills/spec-rpg-authoring",
-      "status": "current"
+      "status": "dirty"
     },
     ".omp/skills/tm-cc": {
       "asset": "skill/tm-cc",
       "assetVersion": 3,
       "expectedSha256": "bf18338a71c856dd9b23188e5dfecfbbe95bb66e2498602af294c1dd7e2482af",
       "marker": ".omp/skills/tm-cc/.aoc-managed",
-      "sha256": "bf18338a71c856dd9b23188e5dfecfbbe95bb66e2498602af294c1dd7e2482af",
+      "sha256": "e5b2d578ed597a7d55b077795aa839a5beb0dc12a348059b6316f2d6c9d720ae",
       "source": "../.config/aoc/pi/skills/tm-cc",
-      "status": "current"
+      "status": "dirty"
     },
     ".pi/extensions/aoc-presets": {
       "asset": "pi-extension-family/aoc-presets",
@@ -651,11 +660,11 @@
     }
   },
   "counts": {
-    "current": 71,
-    "dirty": 1,
+    "current": 67,
+    "dirty": 6,
     "stale": 0,
     "unknown": 0
   },
   "schemaVersion": 1,
-  "updatedAt": "2026-06-19T13:47:16.057456Z"
+  "updatedAt": "2026-09-12T07:31:08.975794Z"
 }

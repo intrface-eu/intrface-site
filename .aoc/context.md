@@ -1,8 +1,8 @@
 # Project Context Snapshot
 
 ## Repository
-- Name: intrface-site
-- Root: ../intrface-site
+- Name: .
+- Root: .
 - VCS: git
 - Git branch: main
 
@@ -14,22 +14,36 @@
 ## Project Structure (tree -L 2)
 ```
 .
-./AGENTS.md
-./apps
-./apps/aoc
-./apps/convex
-./apps/web
-./bun.lock
-./CLAUDE.md
+./.claude
+./.claude/skills
 ./.cursorrules
-./design.md
-./DESIGN.md
+./.design-sync
+./.design-sync/.cache
+./.design-sync/config.json
+./.design-sync/conventions.md
+./.design-sync/NOTES.md
+./.design-sync/previews
+./.design-sync/shims
+./.design-sync/stage-css.mjs
+./.design-sync/tsconfig.sync.json
+./.design-sync/tsconfig.types.json
+./.ds-sync
+./.ds-sync/lib
+./.ds-sync/package-build.mjs
+./.ds-sync/package-capture.mjs
+./.ds-sync/package-lock.json
+./.ds-sync/package-validate.mjs
+./.ds-sync/package.json
+./.ds-sync/resync.mjs
+./.ds-sync/storybook
 ./.gitignore
-./package.json
-./packages
-./packages/branding
-./packages/config
-./packages/ui
+./.impeccable
+./.impeccable/critique
+./.omp
+./.omp/.aoc-backups
+./.omp/agents
+./.omp/extensions
+./.omp/skills
 ./.pi
 ./.pi/agents
 ./.pi/extensions
@@ -38,15 +52,8 @@
 ./.pi/prompts-optional
 ./.pi/settings.json
 ./.pi/skills
-./pnpm-workspace.yaml
-./README.md
-./tsconfig.base.json
-./.turbo
-./.turbo/cache
-./turbo.json
-./.vercel
-./.vercel/project.json
-./.vercel/README.txt
+./.playwright-mcp
+... [tree truncated to 40 lines]
 ```
 
 ## README Headings
