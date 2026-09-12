@@ -151,9 +151,9 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
-        {/* Open paper between the evidence and the products: the swell under
-            the hero gathers into Istria here, then scatters through depth. The
-            field marks Vrsar with a red X, and these two words come out of it
+        {/* Open paper between the evidence and the products: the current under
+            the hero gathers into Istria here, then opens into the contour map.
+            The field marks Vrsar with a red X, and these two words come out of it
             once it has arrived — decoration of the ground, so aria-hidden, and
             absent entirely wherever the live ground does not run. */}
         <div className="ground-band" data-ground-key="land" aria-hidden="true">

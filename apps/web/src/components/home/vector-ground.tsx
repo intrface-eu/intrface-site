@@ -6,30 +6,32 @@ import vertSource from "./vector-ground.vert.glsl";
 import FRAG from "./vector-ground.frag.glsl";
 
 /**
- * The live ground: a field of short lines, one per grid vertex, each turned
- * perpendicular to the pointer, so the whole field answers the hand as rings.
+ * The live ground: a field of short lines, one per grid vertex, each pointing
+ * at the pointer, so the whole field answers the hand as rays into it.
  * Scrolling moves the field through four states, keyed to two bands of open
  * paper the page leaves for it (`data-ground-key`). The kinds, as the shader
  * names them:
  *
- *   0  volume — a sparse field through depth: perspective, scroll parallax
- *               and pointer parallax
- *   1  mark   — most lines gather into the intrface mark as a hatched plate;
- *               the rest stay in the depth field behind it
- *   2  swell  — a rolling sheet seen from above, carried toward the eye by
- *               scroll and lifted under the pointer
- *   3  land   — the last gathering, into the outline of Istria, again with a
- *               share of lines kept behind it
+ *   0  contour — a slow height map read as a topographic chart: each line lies
+ *                along its isoline, strong on a contour level and faint
+ *                between, and the hand raises a hill the contours ring
+ *   1  mark    — most lines gather into the intrface mark as a hatched plate;
+ *                the rest stay in the field behind it
+ *   2  flow    — a slow current: each line lies along a streamline, the
+ *                potential sets light and dark bands, and near the hand the
+ *                current turns into it
+ *   3  land    — the last gathering, into the outline of Istria, again with a
+ *                share of lines kept behind it
  *
- * The page runs them in the order swell (hero), land (first band), volume,
+ * The page runs them in the order flow (hero), land (first band), contour,
  * mark (second band); `kindFor` in the vertex shader maps the scroll stage
  * to the kind.
  *
  * Everything is one instanced draw: a quad per line, the grid position derived
- * from the instance index, the mark, volume and land targets read from a
- * per-instance buffer, and the current state blended in the vertex shader
- * with a per-line stagger. The main thread does nothing per frame but write a
- * few uniforms.
+ * from the instance index, the mark and land targets, a per-line jitter and a
+ * per-line depth read from a per-instance buffer, and the current state
+ * blended in the vertex shader with a per-line stagger. The main thread does
+ * nothing per frame but write a few uniforms.
  *
  * The land carries one mark: a red X on Vrsar, drawn by a few dozen lines
  * taken from the pool that would otherwise join the coast. They set out late,
@@ -349,10 +351,8 @@ export function VectorGround() {
       markScale: u("u_markScale"),
       landScale: u("u_landScale"),
       scroll: u("u_scroll"),
-      volBox: u("u_volBox"),
       rotMark: u("u_rotMark"),
       rotLand: u("u_rotLand"),
-      rotSwell: u("u_rotSwell"),
       rects: u("u_rects"),
       rectInfo: u("u_rectInfo"),
       rectN: u("u_rectN"),
@@ -441,9 +441,6 @@ export function VectorGround() {
       count = cols * rows;
       const markScale = 0.3 * Math.min(width, height);
       landScale = 0.38 * Math.min(width, height);
-      // The volume must cover the viewport even for the farthest lines.
-      const kFar = FOCAL / (FOCAL - VOL_Z_MIN);
-      const box: [number, number] = [(width / 2 / (markScale * kFar)) * 1.15, (height / 2 / (markScale * kFar)) * 1.15];
 
       // The X's lines, spread evenly through the grid so they converge from
       // everywhere, and never taken from the share kept behind the plate.
@@ -475,8 +472,10 @@ export function VectorGround() {
         data[o + 9] = l.t[0];
         data[o + 10] = l.t[1];
         data[o + 11] = l.t[2];
-        data[o + 12] = (hash(i, 3) * 2 - 1) * box[0];
-        data[o + 13] = (hash(i, 4) * 2 - 1) * box[1];
+        // A jitter in pixels, so the flat fields never read as a lattice, and
+        // the line's own depth.
+        data[o + 12] = (hash(i, 3) * 2 - 1) * CELL * 0.5;
+        data[o + 13] = (hash(i, 4) * 2 - 1) * CELL * 0.5;
         data[o + 14] = VOL_Z_MIN + hash(i, 5) * (VOL_Z_MAX - VOL_Z_MIN);
         data[o + 15] = hash(i, 6);
         data[o + 16] = x ? 1 : 0;
@@ -488,7 +487,6 @@ export function VectorGround() {
       gl.uniform1f(U.rows, rows);
       gl.uniform1f(U.markScale, markScale);
       gl.uniform1f(U.landScale, landScale);
-      gl.uniform2f(U.volBox, box[0], box[1]);
 
       landBand = document.querySelector<HTMLElement>('[data-ground-key="land"]');
       markBand = document.querySelector<HTMLElement>('[data-ground-key="mark"]');
@@ -625,7 +623,6 @@ export function VectorGround() {
       gl.uniformMatrix3fv(U.rotMark, false, rotation(0.5 * Math.sin(time * 0.32) + nx * 0.8, 0.24 - ny * 0.6));
       const rotLand = rotation(0.22 * Math.sin(time * 0.25) + nx * 0.6, 0.55 - ny * 0.5);
       gl.uniformMatrix3fv(U.rotLand, false, rotLand);
-      gl.uniformMatrix3fv(U.rotSwell, false, rotation(nx * 0.25, 0.85 - ny * 0.3));
       gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, count);
 
       // The plate is fixed to the screen while the band scrolls past it, so
