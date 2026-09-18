@@ -60,7 +60,7 @@
     },
     "about": {
       "title": "Über uns",
-      "description": "INTRFACE ist ein Studio in Vrsar, Istrien. Wir entwickeln eigene Produkte und Schnittstellen für Unternehmen in der ganzen EU."
+      "description": "Alex Bašić hat INTRFACE in Vrsar, Istrien, gegründet. Die Arbeit besteht meist darin, den Teil eines Systems zu reparieren, der seit Jahren keinen Sinn ergibt."
     },
     "imprint": {
       "title": "Impressum",
@@ -222,73 +222,22 @@
       "title": "Bei Intrface geht es darum, die menschlichsten Schnittstellen für die lohnendsten Probleme zu bauen.",
       "lead": "In Vrsar, Istrien. Tätig in der ganzen EU."
     },
-    "company": {
-      "label": "Das Studio",
-      "title": "Was wir entwickeln.",
-      "p1": "Wir entwickeln eigene Software für Tourismus, Bürgerbeteiligung, EU-Förderung, Musik und Zusammenarbeit.",
-      "p2": "Für Kunden bauen wir Websites und Schnittstellen zwischen Unternehmen und ihren Kunden.",
-      "facts": {
-        "based": {
-          "term": "Sitz",
-          "value": "Vrsar, Istrien, Kroatien"
-        },
-        "phone": {
-          "term": "Telefon"
-        },
-        "contact": {
-          "term": "Kontakt"
-        }
-      }
-    },
-    "platforms": {
-      "label": "Unsere eigene Software",
-      "title": "Was wir selbst bezahlen.",
-      "intro": "Status von heute, nicht Status aus dem Pitch.",
-      "voyager": {
-        "name": "Voyager",
-        "status": "Vor dem Launch",
-        "description": "Ein QR-Code gibt einem Restaurant einen mehrsprachigen KI-Gastgeber, der aus der eigenen Karte und den eigenen Zeiten antwortet. Für Vrsar eingespielt, noch ohne öffentlichen Launch."
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Demnächst",
-        "description": "Bürgerschnittstellen"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Demnächst",
-        "description": "EU-Förderung"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Demnächst",
-        "description": "Musik"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Demnächst",
-        "description": "Kreative Zusammenarbeit"
-      }
-    },
-    "contact": {
-      "label": "Kontakt",
-      "title": "Her mit dem chaotischen System.",
-      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut. Eine Antwort innerhalb eines Werktags.",
-      "helpsLabel": "Was hilft",
-      "helps": [
-        "Was das System heute tut und wer es betreibt.",
-        "Wo es bricht, oder wo niemand den Zahlen traut.",
-        "Jeder Termin, der schon feststeht."
-      ],
-      "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
-      "phoneNote": "Wenn es dringend ist, rufen Sie <tel>{phone}</tel> an.",
-      "dataNote": "Ihre Nachricht wird gespeichert, damit wir sie beantworten können, und für nichts anderes verwendet. Bitten Sie um Löschung, und sie wird gelöscht.",
-      "topics": [
-        "Geschäftssystem",
-        "Technische Strategie",
-        "Kundenwebsite",
-        "Öffentliche Infrastruktur"
+    "person": {
+      "label": "Gründer",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, Gründer von Intrface.",
+      "body": [
+        "Ich habe eine Menge Dinge gemacht, und bei den meisten ging es um dasselbe: den Teil eines Systems zu reparieren, der seit Jahren keinen Sinn ergab.",
+        "Einer hat ihn einmal umgangen, dann alle, und der Umweg wurde zum Verfahren.",
+        "Ich finde diesen Teil gern und nehme ihn heraus.",
+        "Darum baut das Studio Schnittstellen — an der Schnittstelle ergibt ein System Sinn oder eben nicht.",
+        "Ich arbeite von Vrsar aus, an der Küste Istriens."
       ]
+    },
+    "close": {
+      "title": "Wenn etwas in Ihrem System keinen Sinn mehr ergibt, erzählen Sie uns davon.",
+      "work": "Die Arbeiten ansehen",
+      "contact": "Her mit Ihrem System"
     }
   },
   "Imprint": {
@@ -307,7 +256,7 @@
       },
       "address": {
         "term": "Registrierte Adresse",
-        "value": "Dalmatinska 34, 52440 Vrsar, Kroatien"
+        "value": "Dalmatinska 34, 52450 Vrsar, Kroatien"
       },
       "director": {
         "term": "Geschäftsführung",

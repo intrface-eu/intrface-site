@@ -8,9 +8,9 @@ import FRAG from "./vector-ground.frag.glsl";
 /**
  * The live ground: a field of short lines, one per grid vertex, each pointing
  * at the pointer, so the whole field answers the hand as rays into it.
- * Scrolling moves the field through four states, keyed to two bands of open
- * paper the page leaves for it (`data-ground-key`). The kinds, as the shader
- * names them:
+ * Scrolling moves the field through four states, keyed to the two places the
+ * page leaves for it (`data-ground-key`): a band of open paper, and the edge
+ * the contact close joins the footer on. The kinds, as the shader names them:
  *
  *   0  contour — a slow height map read as a topographic chart: each line lies
  *                along its isoline, strong on a contour level and faint
@@ -23,9 +23,15 @@ import FRAG from "./vector-ground.frag.glsl";
  *   3  land    — the last gathering, into the outline of Istria, again with a
  *                share of lines kept behind it
  *
- * The page runs them in the order flow (hero), land (first band), contour,
- * mark (second band); `kindFor` in the vertex shader maps the scroll stage
- * to the kind.
+ * The home page runs them in the order contour (hero), land (first band),
+ * contour again, mark (the close's edge); `kindFor` in the vertex shader maps
+ * the scroll stage to the kind. The flow kind is still in the shader but off
+ * the sequence: the field keeps one style and only the two gatherings vary it. The land band stands between the evidence and the
+ * products; the mark is keyed from the bottom edge of the contact close
+ * instead of a band of its own, so the close shows the contour map the way
+ * What we build does and the mark is gathered by the time the footer holds the
+ * screen. A page with only the land band, as about has, stops at contour:
+ * `stageFor` caps the stage at 2 when there is no second key.
  *
  * Everything is one instanced draw: a quad per line, the grid position derived
  * from the instance index, the mark and land targets, a per-line jitter and a
@@ -287,19 +293,21 @@ const smooth = (x: number) => {
   return c * c * (3 - 2 * c);
 };
 
-/* 0…3 from where the two open bands sit in the viewport: 1 at the first band
-   (land), 3 at the second (mark). A band is fully gathered while its centre is
-   within a quarter viewport of the middle, and ramps over the 0.6 viewports
-   either side of that. */
+/* 0…3 from where the ground's two keys sit in the viewport: 1 at the land
+   band, 3 once the contact close has gone by. The land band is a viewport of
+   open paper and gathers around its centre — whole while that centre is within
+   a quarter viewport of the middle, ramping over the 0.6 viewports either side
+   of it. The mark's key is an edge instead: the bottom edge of the close,
+   where it joins the footer. Nothing gathers while that edge is below the foot
+   of the screen, so the close keeps the contour map; the mark is whole by the
+   time the edge is a quarter of the way up the screen and the footer holds the
+   rest of it. */
 function stageFor(first: DOMRect | null, second: DOMRect | null, vh: number): number {
   if (!first) return 0;
   const d1 = (first.top + first.height / 2 - vh / 2) / vh;
   const t1 = smooth((0.85 - Math.abs(d1)) / 0.6);
   let stage = d1 > 0 ? t1 : 2 - t1;
-  if (stage >= 2 && second) {
-    const d2 = Math.max(0, (second.top + second.height / 2 - vh / 2) / vh);
-    stage = 2 + smooth((0.85 - d2) / 0.6);
-  }
+  if (stage >= 2 && second) stage = 3 - smooth((second.top - vh * 0.25) / (vh * 0.75));
   return stage;
 }
 
@@ -397,7 +405,7 @@ export function VectorGround() {
     let width = 0;
     let height = 0;
     let count = 0;
-    let markBand: HTMLElement | null = null;
+    let markEdge: HTMLElement | null = null;
     let landBand: HTMLElement | null = null;
     let landScale = 0;
     // The X where the plate rests, as an offset from the middle of the screen,
@@ -489,7 +497,7 @@ export function VectorGround() {
       gl.uniform1f(U.landScale, landScale);
 
       landBand = document.querySelector<HTMLElement>('[data-ground-key="land"]');
-      markBand = document.querySelector<HTMLElement>('[data-ground-key="mark"]');
+      markEdge = document.querySelector<HTMLElement>('[data-ground-key="mark"]');
 
       // Where the phrases are anchored: the X with the plate at rest, no hand
       // on it. The loop writes the difference from here as the layer's
@@ -592,7 +600,7 @@ export function VectorGround() {
         bandCX = lr ? lr.left + lr.width / 2 : 0;
         bandCY = lr ? lr.top + lr.height / 2 : 0;
         bandOn = !!lr && lr.bottom > -240 && lr.top < height + 240;
-        target = stageFor(lr, markBand?.getBoundingClientRect() ?? null, height);
+        target = stageFor(lr, markEdge?.getBoundingClientRect() ?? null, height);
       }
       stage += (target - stage) * (1 - Math.exp(-STAGE_EASE * dt));
       // One attribute write when the X arrives and one when it goes: the two

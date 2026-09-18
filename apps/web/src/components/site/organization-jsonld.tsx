@@ -21,7 +21,7 @@ const organization = {
   address: {
     "@type": "PostalAddress",
     streetAddress: "Dalmatinska 34",
-    postalCode: "52440",
+    postalCode: "52450",
     addressLocality: "Vrsar",
     addressRegion: "Istria",
     addressCountry: "HR",

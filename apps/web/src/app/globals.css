@@ -1458,6 +1458,19 @@ body {
     pointer-events: none;
   }
 
+  /* The mark is keyed from an edge rather than a band: the bottom edge of the
+     contact close, where it joins the footer. Out of flow and of no height, so
+     the close and the footer still meet on the same line and the page gains
+     nothing to scroll past the signature. `stageFor` draws the mark as this
+     edge rises off the screen. */
+  .ground-mark-edge {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 0;
+    pointer-events: none;
+  }
+
   /* ===== THE MARK ON THE GROUND =====
      The land band is where the field draws Istria, and it puts a red X on
      Vrsar — the only red on the site, and not a UI colour. VectorGround sets
@@ -2012,6 +2025,54 @@ body {
     .home-pane-doctrine { --pane-angle: -1deg; }
   }
 
+  /* ===== ABOUT: THE PERSON =====
+     The about page runs the same planes and panes as the home page, so it
+     inherits every open-ground rule above. It adds one block of its own: the
+     portrait plate and the paragraph beside it. Below `lg` they stack, plate
+     first. From `lg` the plate takes the left column and crosses the pane's
+     own edge the way the live-site capture does on home — content has weight
+     on the ground, and this plate is the weight on this page. */
+  .about-person {
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: center;
+  }
+
+  .about-portrait {
+    position: relative;
+    width: 100%;
+    max-width: 26rem;
+  }
+
+  .about-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-person-copy {
+    min-width: 0;
+  }
+
+  /* A step of tone under the close, for the fallback ground where the panes
+     still paint their slabs. With the live ground running it is transparent
+     like every other paper pane. */
+  .about-close-pane {
+    --pane-color: var(--paper-raised);
+  }
+
+  @media (min-width: 1024px) {
+    .about-person {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+
+    .about-portrait {
+      margin-inline-start: calc(-1 * var(--home-edge));
+      max-width: 32rem;
+    }
+  }
+
   /* ===== HERO SHEET =====
      The hero keeps opaque paper behind the copy — the shader's mask clears the
      type, and with a transparent hero the ground's dots would show through that
@@ -2086,4 +2147,28 @@ body {
    rule outside the layers can lift it while the live ground runs. */
 :root[data-ground-open] .site-footer {
   background: transparent;
+}
+
+/* Unlayered on purpose: the form's fills are utility classes, and only a rule
+   outside the layers can clear them while the live ground runs.
+
+   The close is an ink slab again and the field runs through it in paper lines.
+   The form plane is a paper island inside that slab, so over the plane the
+   lines come back to ink at half strength and run straight through the paper.
+   Nothing in the form may lay a second sheet over them: the controls give up
+   their fills and keep their outlines, and the shader quiets its lines under
+   each control group (`data-ground-quiet` in contact-form.tsx) the way it
+   quiets the copy in What we build, so type inside a control has open paper
+   behind it. The send control is the one filled thing that stays: an ink pill
+   with a white label, because that is where contrast has to be certain. */
+:root[data-ground-open] .home-contact-form-plane input,
+:root[data-ground-open] .home-contact-form-plane textarea,
+:root[data-ground-open] .home-contact-form-plane .artifact-button-secondary,
+:root[data-ground-open] .home-contact-form-plane fieldset label > span {
+  background: transparent;
+}
+
+/* A chosen topic still reads as chosen, in a tint thin enough to see through. */
+:root[data-ground-open] .home-contact-form-plane fieldset input:checked + span {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
 }

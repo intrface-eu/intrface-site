@@ -1,185 +1,133 @@
+import Image from "next/image";
 import { IconArrowRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
-import type { AppLocale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
-import { CaseSection } from "@/components/case";
-import { FactLedger, type Fact } from "@/components/about/fact-ledger";
-import { ContactForm } from "@/components/site/contact-form";
+import { Ground } from "@/components/home/ground";
 import { FadeIn } from "@/components/site/fade-in";
-import {
-  CONTACT_EMAIL,
-  CONTACT_PHONE_DISPLAY,
-  CONTACT_PHONE_TEL,
-} from "@/lib/site/config";
+import { TactileButton } from "@/components/site/tactile-button";
+import { getPathname } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 
 /**
- * The five products of our own. MidiFlow and Patchbay have no case page, so
- * their rows are plain text — see `docs/site-revamp-contract.md` for what may
- * and may not be said about either.
+ * About is four moves on the same ground the home page runs: the claim, the
+ * person, the place, and the way out.
+ *
+ * The page carries no studio blurb, no product list and no second contact
+ * form — the home page argues the work and the footer carries the channels.
+ * What it has instead is a name, a face, and the map gathering on Vrsar.
  */
-const OWN_PLATFORMS = [
-  { key: "voyager", href: "/work/voyager" },
-  { key: "polis", href: "/work/polis" },
-  { key: "funda", href: "/work/funda" },
-  { key: "midiflow" },
-  { key: "patchbay" },
-] as const satisfies readonly { key: string; href?: string }[];
-
 export async function AboutPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "About" });
-
-  const facts: Fact[] = [
-    { term: t("company.facts.based.term"), value: t("company.facts.based.value") },
-    {
-      term: t("company.facts.phone.term"),
-      value: (
-        <a className="font-semibold text-accent hover:underline" href={`tel:${CONTACT_PHONE_TEL}`}>
-          {CONTACT_PHONE_DISPLAY}
-        </a>
-      ),
-    },
-    {
-      term: t("company.facts.contact.term"),
-      value: (
-        <a className="font-semibold text-accent hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
-          {CONTACT_EMAIL}
-        </a>
-      ),
-    },
-  ];
-
-  const helps = t.raw("contact.helps") as string[];
+  const path = (href: string) => getPathname({ href, locale });
+  const body = t.raw("person.body") as string[];
 
   return (
-    <main className="bg-paper text-ink">
-      <section className="border-b border-rule tone-paper">
-        <div className="section-shell py-20 sm:py-28">
-          <FadeIn>
-            <p className="type-section-label">{t("hero.label")}</p>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <h1 className="type-display mt-6">{t("hero.title")}</h1>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <p className="type-body-lg mt-7 font-medium">{t("hero.lead")}</p>
-          </FadeIn>
-        </div>
-      </section>
+    /* Same two prohibitions as the home page: this element must not create a
+       stacking context (no `isolate`, no `z-index`, no `opacity`), or the
+       ground's negative z-index stops reaching the root context and the fixed
+       ground paints over the footer; and it must not take a `transform` or a
+       `filter`, either of which would make it the containing block for the
+       ground and stop it being fixed. It carries no background either — the
+       ground is what paints the paper. */
+    <main className="ground-main text-ink">
+      <Ground />
 
-      <CaseSection
-        aside={<FactLedger facts={facts} />}
-        label={t("company.label")}
-        title={t("company.title")}
-        tone="raised"
-      >
-        <div className="grid max-w-2xl gap-5">
-          <p className="type-body">{t("company.p1")}</p>
-          <p className="type-body">{t("company.p2")}</p>
-        </div>
-      </CaseSection>
-
-      <CaseSection
-        intro={t("platforms.intro")}
-        label={t("platforms.label")}
-        title={t("platforms.title")}
-        tone="ink"
-      >
-        <dl className="divide-y divide-rule border-y border-rule">
-          {OWN_PLATFORMS.map((platform, index) => {
-            const href = "href" in platform ? platform.href : undefined;
-            const name = t(`platforms.${platform.key}.name`);
-
-            return (
-              <FadeIn
-                className="grid gap-3 py-7 lg:grid-cols-[14rem_1fr] lg:gap-10"
-                delay={index * 70}
-                key={platform.key}
-              >
-                <dt>
-                  {href ? (
-                    <Link
-                      className="type-subheading inline-flex items-center gap-2 transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-                      href={href}
-                    >
-                      {name}
-                      <IconArrowRight aria-hidden="true" className="h-4 w-4" />
-                    </Link>
-                  ) : (
-                    <span className="type-subheading">{name}</span>
-                  )}
-                  <p className="type-caption mt-2">{t(`platforms.${platform.key}.status`)}</p>
-                </dt>
-                <dd className="type-body">{t(`platforms.${platform.key}.description`)}</dd>
-              </FadeIn>
-            );
-          })}
-        </dl>
-      </CaseSection>
-
-      <section className="scroll-mt-24 border-b border-rule tone-raised" id="contact">
-        <div className="section-shell py-20 sm:py-28">
-          <div className="grid gap-12 lg:grid-cols-[.78fr_1fr] lg:gap-16">
-            <div>
+      <div className="home-planes">
+        {/* 1 — THE CLAIM. Set like the home hero: the field runs under the
+            words and quiets beneath them. The sentence itself is fixed copy
+            in every locale. */}
+        <section className="hero-sheet relative isolate flex min-h-[calc(100svh-4rem)] flex-col">
+          <div className="relative isolate flex flex-1 flex-col justify-center pb-[var(--hero-fade)]">
+            <div className="section-shell py-16 sm:py-20">
               <FadeIn>
-                <p className="type-section-label">{t("contact.label")}</p>
+                <p className="type-section-label">{t("hero.label")}</p>
               </FadeIn>
               <FadeIn delay={80}>
-                <h2 className="type-heading mt-4">{t("contact.title")}</h2>
+                <h1 className="type-display mt-4 sm:mt-5" data-ground-quiet="soft">
+                  {t("hero.title")}
+                </h1>
               </FadeIn>
               <FadeIn delay={160}>
-                <p className="type-body-lg mt-5 max-w-md">{t("contact.intro")}</p>
-              </FadeIn>
-              <FadeIn delay={240}>
-                <div className="mt-8 border-t border-rule pt-6">
-                  <p className="type-meta">{t("contact.helpsLabel")}</p>
-                  <ul className="type-body-sm mt-3 grid gap-2">
-                    {helps.map((help) => (
-                      <li key={help}>{help}</li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
-              <FadeIn delay={300}>
-                <p className="type-body-sm mt-6">
-                  {t.rich("contact.mailNote", {
-                    email: CONTACT_EMAIL,
-                    mail: (chunks) => (
-                      <a
-                        className="font-semibold text-accent hover:underline"
-                        href={`mailto:${CONTACT_EMAIL}`}
-                      >
-                        {chunks}
-                      </a>
-                    ),
-                  })}
+                <p className="type-body-lg mt-6 font-medium sm:mt-7" data-ground-quiet="">
+                  {t("hero.lead")}
                 </p>
-              </FadeIn>
-              <FadeIn delay={340}>
-                <p className="type-body-sm mt-2">
-                  {t.rich("contact.phoneNote", {
-                    phone: CONTACT_PHONE_DISPLAY,
-                    tel: (chunks) => (
-                      <a
-                        className="font-semibold text-accent hover:underline"
-                        href={`tel:${CONTACT_PHONE_TEL}`}
-                      >
-                        {chunks}
-                      </a>
-                    ),
-                  })}
-                </p>
-              </FadeIn>
-              <FadeIn delay={380}>
-                <p className="type-caption mt-6">{t("contact.dataNote")}</p>
               </FadeIn>
             </div>
-
-            <FadeIn delay={120}>
-              <ContactForm locale={locale} topics={t.raw("contact.topics") as string[]} />
-            </FadeIn>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* 2 — THE PERSON. The heaviest block on the page: the plate crosses
+            the pane's own edge at `lg` and the paragraph stands beside it. */}
+        <section className="home-pane about-person-pane">
+          <div className="section-shell about-person">
+            <div className="about-portrait">
+              {/* Placeholder plate, not the photograph: swap
+                  `public/about/alex-basic-placeholder.svg` for the picture and
+                  keep the 4:5 box. `unoptimized` because the optimizer refuses
+                  SVG; a JPEG replacement can drop it. */}
+              <Image
+                alt={t("person.portraitAlt")}
+                height={1000}
+                priority={false}
+                sizes="(min-width: 1024px) 32rem, 100vw"
+                src="/about/alex-basic-placeholder.svg"
+                unoptimized
+                width={800}
+              />
+            </div>
+
+            <div className="about-person-copy" data-ground-quiet="">
+              <FadeIn>
+                <p className="type-section-label">{t("person.label")}</p>
+              </FadeIn>
+              <FadeIn delay={80}>
+                <h2 className="type-heading mt-4">{t("person.name")}</h2>
+              </FadeIn>
+              <FadeIn className="mt-6 grid gap-4 sm:mt-7" delay={160}>
+                {body.map((line) => (
+                  <p className="type-body-lg" key={line}>
+                    {line}
+                  </p>
+                ))}
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+
+        {/* 3 — THE PLACE. One viewport of open paper: the field gathers into
+            Istria and marks Vrsar. No caption and no label — the map is the
+            section. The two phrases stay a home-only moment. */}
+        <div className="ground-band" data-ground-key="land" aria-hidden="true" />
+
+        {/* 4 — THE WAY OUT. One sentence and two doors. The footer already
+            carries the email and the phone. */}
+        <section className="home-pane about-close-pane">
+          <div className="section-shell">
+            <div data-ground-quiet="">
+              <FadeIn>
+                <h2 className="type-heading">{t("close.title")}</h2>
+              </FadeIn>
+              <FadeIn delay={100}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <TactileButton
+                    className="text-base"
+                    href={path("/work")}
+                    trailingIcon={<IconArrowRight className="h-4 w-4" />}
+                  >
+                    {t("close.work")}
+                  </TactileButton>
+                  <TactileButton
+                    className="text-base"
+                    href={`${path("/")}#contact`}
+                    variant="secondary"
+                  >
+                    {t("close.contact")}
+                  </TactileButton>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

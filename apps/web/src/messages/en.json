@@ -60,7 +60,7 @@
     },
     "about": {
       "title": "About",
-      "description": "INTRFACE is a studio in Vrsar, Istria. We build our own products and client interfaces for businesses across the EU."
+      "description": "Alex Bašić founded INTRFACE in Vrsar, Istria. The work is mostly fixing the part of a system that has not made sense for years."
     },
     "imprint": {
       "title": "Imprint",
@@ -222,73 +222,22 @@
       "title": "Intrface is about building the most human interfaces solving the most worthwhile problems.",
       "lead": "Based in Vrsar, Istria. Working across the EU."
     },
-    "company": {
-      "label": "The studio",
-      "title": "What we make.",
-      "p1": "We build our own software for tourism, civic life, EU funding, music and collaboration.",
-      "p2": "For clients, we build websites and interfaces between businesses and their customers.",
-      "facts": {
-        "based": {
-          "term": "Based",
-          "value": "Vrsar, Istria, Croatia"
-        },
-        "phone": {
-          "term": "Phone"
-        },
-        "contact": {
-          "term": "Contact"
-        }
-      }
-    },
-    "platforms": {
-      "label": "Our own software",
-      "title": "What we pay for ourselves.",
-      "intro": "Status as of today, not as of the pitch.",
-      "voyager": {
-        "name": "Voyager",
-        "status": "Pre-launch",
-        "description": "One QR code gives a restaurant a multilingual AI host grounded in its own menu and hours. Seeded for Vrsar, with no public launch yet."
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Coming soon",
-        "description": "Civic interfaces"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Coming soon",
-        "description": "EU funding"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Coming soon",
-        "description": "Music"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Coming soon",
-        "description": "Creative collaboration"
-      }
-    },
-    "contact": {
-      "label": "Contact",
-      "title": "Bring us the messy system.",
-      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust. An answer within one working day.",
-      "helpsLabel": "What helps",
-      "helps": [
-        "What the system does today, and who operates it.",
-        "Where it breaks, or where nobody trusts the numbers.",
-        "Any date that is already fixed."
-      ],
-      "mailNote": "Or write straight to <mail>{email}</mail>.",
-      "phoneNote": "If it is urgent, call <tel>{phone}</tel>.",
-      "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
-      "topics": [
-        "Business system",
-        "Technical strategy",
-        "Client site",
-        "Civic infrastructure"
+    "person": {
+      "label": "Founder",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, founder of Intrface.",
+      "body": [
+        "I have done a ton of things, and most of them came down to the same one: fixing the part of a system that had not made sense for years.",
+        "Someone worked around it once, then everyone did, and the workaround became the process.",
+        "I like finding that part and taking it out.",
+        "That is why the studio builds interfaces — the interface is where a system either makes sense or does not.",
+        "I work from Vrsar, on the coast of Istria."
       ]
+    },
+    "close": {
+      "title": "If something in your system stopped making sense, tell us about it.",
+      "work": "See the work",
+      "contact": "Bring us yours"
     }
   },
   "Imprint": {
@@ -307,7 +256,7 @@
       },
       "address": {
         "term": "Registered address",
-        "value": "Dalmatinska 34, 52440 Vrsar, Croatia"
+        "value": "Dalmatinska 34, 52450 Vrsar, Croatia"
       },
       "director": {
         "term": "Director",

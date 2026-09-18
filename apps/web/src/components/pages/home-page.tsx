@@ -197,11 +197,14 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
-        {/* The last gathering before the close: the field draws the mark. */}
-        <div className="ground-band" data-ground-key="mark" aria-hidden="true" />
-
         {/* CONTACT — an ink close with the paper form plane attached to the
-            viewport edge. The plane is structural and never fades as a slab. */}
+            viewport edge. The plane is structural and never fades as a slab.
+            `data-ground-ink` marks the close the way it marks What we build:
+            the slab drops under the ground and the shader redraws the field
+            inside it in paper-coloured lines, while the copy blocks quiet the
+            lines under the words. The form plane is a paper island inside the
+            slab, so over it the field is ink again at half strength and passes
+            straight through the paper. */}
         <section className="home-pane home-pane-contact scroll-mt-24" data-ground-ink="" id="contact">
           <div className="section-shell">
             <div className="home-contact-grid">
@@ -289,6 +292,14 @@ export async function HomePage({ locale }: { locale: AppLocale }) {
               </div>
             </div>
           </div>
+
+          {/* Where the last gathering is keyed from. Not a band of open paper
+              above the close — that put the mark on top of the form — but the
+              close's own bottom edge, the line it joins the footer on. The
+              field stays a contour map across the close, the way it is across
+              What we build, and draws the mark as this edge leaves the screen,
+              so the mark is whole over the footer. */}
+          <div className="ground-mark-edge" data-ground-key="mark" aria-hidden="true" />
         </section>
       </div>
     </main>

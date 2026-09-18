@@ -60,7 +60,7 @@
     },
     "about": {
       "title": "O nama",
-      "description": "INTRFACE je studio u Vrsaru, u Istri. Razvijamo vlastite proizvode i sučelja za tvrtke diljem EU-a."
+      "description": "Alex Bašić osnovao je INTRFACE u Vrsaru, u Istri. Posao je uglavnom popraviti onaj dio sustava koji godinama nema smisla."
     },
     "imprint": {
       "title": "Impresum",
@@ -222,73 +222,22 @@
       "title": "Intrface gradi najljudskija sučelja za probleme koje je najvrjednije riješiti.",
       "lead": "U Vrsaru, u Istri. Radimo diljem EU-a."
     },
-    "company": {
-      "label": "Studio",
-      "title": "Što gradimo.",
-      "p1": "Razvijamo vlastiti softver za turizam, sudjelovanje građana, EU fondove, glazbu i suradnju.",
-      "p2": "Za klijente gradimo web-stranice i sučelja između tvrtki i njihovih kupaca.",
-      "facts": {
-        "based": {
-          "term": "Sjedište",
-          "value": "Vrsar, Istra, Hrvatska"
-        },
-        "phone": {
-          "term": "Telefon"
-        },
-        "contact": {
-          "term": "Kontakt"
-        }
-      }
-    },
-    "platforms": {
-      "label": "Naš vlastiti softver",
-      "title": "Što plaćamo sami.",
-      "intro": "Status od danas, ne status iz prezentacije.",
-      "voyager": {
-        "name": "Voyager",
-        "status": "Prije pokretanja",
-        "description": "Jedan QR kod daje restoranu višejezičnog AI domaćina koji odgovara iz njegova jelovnika i radnog vremena. Uneseno za Vrsar, bez javnog pokretanja."
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Uskoro",
-        "description": "Građanska sučelja"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Uskoro",
-        "description": "EU fondovi"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Uskoro",
-        "description": "Glazba"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Uskoro",
-        "description": "Kreativna suradnja"
-      }
-    },
-    "contact": {
-      "label": "Kontakt",
-      "title": "Donesite nam svoj najzamršeniji sustav.",
-      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje. Odgovor u jednom radnom danu.",
-      "helpsLabel": "Što pomaže",
-      "helps": [
-        "Što sustav danas radi i tko ga vodi.",
-        "Gdje puca, ili gdje nitko ne vjeruje brojkama.",
-        "Svaki rok koji je već fiksan."
-      ],
-      "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
-      "phoneNote": "Ako je hitno, nazovite <tel>{phone}</tel>.",
-      "dataNote": "Vašu poruku čuvamo kako bismo na nju odgovorili i ne koristimo je ni za što drugo. Zatražite brisanje i bit će izbrisana.",
-      "topics": [
-        "Poslovni sustav",
-        "Tehnička strategija",
-        "Klijentska stranica",
-        "Javna infrastruktura"
+    "person": {
+      "label": "Osnivač",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, osnivač Intrfacea.",
+      "body": [
+        "Radio sam štošta, a većina se svodila na isto: popraviti onaj dio sustava koji godinama nije imao smisla.",
+        "Netko ga je jednom zaobišao, onda svi, i zaobilaznica je postala postupak.",
+        "Volim naći taj dio i izbaciti ga.",
+        "Zato studio gradi sučelja — na sučelju sustav ili ima smisla ili nema.",
+        "Radim iz Vrsara, s istarske obale."
       ]
+    },
+    "close": {
+      "title": "Ako nešto u vašem sustavu više nema smisla, javite nam.",
+      "work": "Pogledajte radove",
+      "contact": "Donesite nam svoj sustav"
     }
   },
   "Imprint": {
@@ -307,7 +256,7 @@
       },
       "address": {
         "term": "Adresa sjedišta",
-        "value": "Dalmatinska 34, 52440 Vrsar, Hrvatska"
+        "value": "Dalmatinska 34, 52450 Vrsar, Hrvatska"
       },
       "director": {
         "term": "Uprava",

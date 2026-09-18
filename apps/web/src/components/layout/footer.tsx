@@ -48,8 +48,16 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           close straight into the signature. The signature carries the name,
           so there is no small mark here, and the contact section a screen
           above carries the call, so only the address remains. */}
+      {/* The footer is where the field is meant to show, so the address, the
+          colophon and the signature carry no quiet at all and the mark draws
+          straight through them. The link lists are the one exception: the mark
+          gathers at the middle of the viewport, and at full strength it took
+          `Velum` and `Imprint` off the page. Each column quiets only its own
+          words — `w-fit` keeps the nav as narrow as its longest link, so the
+          quiet rectangle is the text and not the column, and the mark still
+          runs at full strength through the gap between the two. */}
       <div className="section-shell grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-        <div data-ground-quiet="">
+        <div>
           <p className="type-body-sm max-w-sm">{t("tagline")}</p>
           <a
             className="mt-6 block break-words text-sm font-semibold text-accent transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
@@ -59,9 +67,9 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8" data-ground-quiet="">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8">
           {internalGroups.map((group) => (
-            <nav aria-labelledby={group.id} key={group.id}>
+            <nav aria-labelledby={group.id} className="w-fit" data-ground-quiet="" key={group.id}>
               <h2 className="type-meta text-ink" id={group.id}>
                 {group.heading}
               </h2>
@@ -82,10 +90,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
       </div>
 
       <div className="section-shell">
-        <div
-          className="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between"
-          data-ground-quiet=""
-        >
+        <div className="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between">
           {/* A 38-character sentence, not a label: sentence case keeps the word
               shapes a reader navigates by. Imprint lives under Company above. */}
           <p className="type-caption">

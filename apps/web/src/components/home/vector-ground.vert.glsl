@@ -213,10 +213,13 @@ Line state(int k, vec2 gridPos) {
   return l;
 }
 
-/* The scroll sequence: the current under the hero, Istria in the first band,
-   the contour map between, the mark in the second band. */
+/* The scroll sequence: the contour map under the hero, Istria in the first
+   band, the contour map again between, the mark at the close's edge. The
+   current (kind 2) is kept but no longer on the sequence: the two gatherings
+   are variation enough, and one field style either side of them reads as
+   one page. */
 int kindFor(int s) {
-  return s == 0 ? 2 : s == 1 ? 3 : s == 2 ? 0 : 1;
+  return s == 1 ? 3 : s == 2 ? 0 : s == 3 ? 1 : 0;
 }
 
 void main() {

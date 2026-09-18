@@ -60,7 +60,7 @@
     },
     "about": {
       "title": "À propos",
-      "description": "INTRFACE est un studio à Vrsar, en Istrie. Nous développons nos propres produits et des interfaces pour les entreprises de toute l'UE."
+      "description": "Alex Bašić a fondé INTRFACE à Vrsar, en Istrie. Le travail consiste surtout à réparer la partie d'un système qui n'a plus de sens depuis des années."
     },
     "imprint": {
       "title": "Mentions légales",
@@ -222,73 +222,22 @@
       "title": "Intrface, c’est construire les interfaces les plus humaines pour les problèmes les plus dignes d’être résolus.",
       "lead": "À Vrsar, en Istrie. Nous travaillons dans toute l'UE."
     },
-    "company": {
-      "label": "Le studio",
-      "title": "Ce que nous créons.",
-      "p1": "Nous développons nos propres logiciels pour le tourisme, la vie civique, les financements européens, la musique et la collaboration.",
-      "p2": "Pour nos clients, nous créons des sites web et des interfaces entre les entreprises et leurs clients.",
-      "facts": {
-        "based": {
-          "term": "Basé à",
-          "value": "Vrsar, Istrie, Croatie"
-        },
-        "phone": {
-          "term": "Téléphone"
-        },
-        "contact": {
-          "term": "Contact"
-        }
-      }
-    },
-    "platforms": {
-      "label": "Nos propres logiciels",
-      "title": "Ce que nous payons nous-mêmes.",
-      "intro": "Statut d'aujourd'hui, pas statut du discours commercial.",
-      "voyager": {
-        "name": "Voyager",
-        "status": "Avant lancement",
-        "description": "Un QR code donne à un restaurant un hôte IA multilingue qui répond à partir de sa carte et de ses horaires. Amorcé pour Vrsar, sans lancement public à ce jour."
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Bientôt disponible",
-        "description": "Interfaces citoyennes"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Bientôt disponible",
-        "description": "Financements européens"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Bientôt disponible",
-        "description": "Musique"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Bientôt disponible",
-        "description": "Collaboration créative"
-      }
-    },
-    "contact": {
-      "label": "Contact",
-      "title": "Apportez-nous le système qui vous échappe.",
-      "intro": "Dites-nous ce qui est difficile à comprendre, lent à exploiter ou impossible à vérifier. Une réponse en un jour ouvré.",
-      "helpsLabel": "Ce qui aide",
-      "helps": [
-        "Ce que le système fait aujourd'hui, et qui l'exploite.",
-        "Où il casse, ou là où personne ne fait confiance aux chiffres.",
-        "Toute date déjà fixée."
-      ],
-      "mailNote": "Ou écrivez directement à <mail>{email}</mail>.",
-      "phoneNote": "Si c'est urgent, appelez le <tel>{phone}</tel>.",
-      "dataNote": "Votre message est conservé pour pouvoir y répondre, et ne sert à rien d'autre. Demandez sa suppression et il sera supprimé.",
-      "topics": [
-        "Système métier",
-        "Stratégie technique",
-        "Site client",
-        "Infrastructure civique"
+    "person": {
+      "label": "Fondateur",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, fondateur d'Intrface.",
+      "body": [
+        "J'ai fait une quantité de choses, et la plupart revenaient à la même : réparer la partie d'un système qui n'avait plus de sens depuis des années.",
+        "Quelqu'un l'a contournée une fois, puis tout le monde, et le contournement est devenu la procédure.",
+        "J'aime trouver cette partie et la retirer.",
+        "C'est pour cela que le studio construit des interfaces — c'est à l'interface qu'un système a du sens, ou n'en a pas.",
+        "Je travaille depuis Vrsar, sur la côte d'Istrie."
       ]
+    },
+    "close": {
+      "title": "Si quelque chose dans votre système n'a plus de sens, parlez-nous-en.",
+      "work": "Voir les projets",
+      "contact": "Apportez-nous le vôtre"
     }
   },
   "Imprint": {
@@ -307,7 +256,7 @@
       },
       "address": {
         "term": "Adresse du siège",
-        "value": "Dalmatinska 34, 52440 Vrsar, Croatie"
+        "value": "Dalmatinska 34, 52450 Vrsar, Croatie"
       },
       "director": {
         "term": "Direction",

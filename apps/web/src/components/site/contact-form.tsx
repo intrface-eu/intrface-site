@@ -258,7 +258,16 @@ export function ContactForm({
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      {/*
+        * `data-ground-quiet` on each control group, not on the form as a whole.
+        * On the home page the form sits on a paper island inside the contact
+        * close, and the live ground draws its field straight through that
+        * island. These marks are what the shader reads to fade the field under
+        * a group the way it fades it under the copy in What we build, so a
+        * field with no fill of its own still has open paper behind its type.
+        * The attribute does nothing on routes without the ground.
+        */}
+      <div className="grid gap-6 sm:grid-cols-2" data-ground-quiet="">
         <div className="grid gap-2">
           <label className={labelClasses} htmlFor="contact-name">
             {t("nameLabel")}
@@ -308,7 +317,7 @@ export function ContactForm({
         </div>
       </div>
 
-      <div className="grid gap-2">
+      <div className="grid gap-2" data-ground-quiet="">
         <label className={labelClasses} htmlFor="contact-company">
           {t("companyLabel")}{" "}
           <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
@@ -324,7 +333,7 @@ export function ContactForm({
         />
       </div>
 
-      <fieldset className="grid gap-3">
+      <fieldset className="grid gap-3" data-ground-quiet="">
         <legend className={labelClasses}>{t("topicLabel")}</legend>
         <div className="flex flex-wrap gap-2">
           {chips.map(({ key, label }) => (
@@ -350,7 +359,7 @@ export function ContactForm({
         </div>
       </fieldset>
 
-      <div className="grid gap-2">
+      <div className="grid gap-2" data-ground-quiet="">
         <label className={labelClasses} htmlFor="contact-message">
           {t("messageLabel")}
         </label>
@@ -393,7 +402,7 @@ export function ContactForm({
         </div>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-3" data-ground-quiet="soft">
         {/*
          * The same treatment every other primary action gets. `TactileButton`
          * itself renders an anchor, and this one has to submit a form, so the

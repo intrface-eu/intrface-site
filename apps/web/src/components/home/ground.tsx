@@ -2,13 +2,13 @@ import { GroundPointer } from "@/components/home/ground-pointer";
 import { VectorGround } from "@/components/home/vector-ground";
 
 /**
- * The ground the home page stands on.
+ * The ground the home and about pages stand on.
  *
  * The site's halftone stops being decoration on one section and becomes the
  * pattern of the world: one fixed field, two dot layers at different cells,
  * screen angles and alphas, behind every sheet on the page. It is the page
- * background for the home page only — the layout keeps its plain paper, and
- * every other page keeps its bands.
+ * background for the home and about pages — the layout keeps its plain paper,
+ * and every other page keeps its bands.
  *
  * Nothing here reads or writes layout. The layers move three ways, and each
  * element carries exactly one of them so the transforms compose instead of
@@ -27,9 +27,9 @@ import { VectorGround } from "@/components/home/vector-ground";
  *
  * With WebGL2 and no reduced-motion preference, `VectorGround` takes over the
  * same fixed box: a line pinned to every vertex of the grid, turned to face the
- * pointer, gathering into the mark and into Istria at the two open bands the
- * page leaves for it. The dot layers are hidden while it runs and return the
- * moment it cannot.
+ * pointer, gathering into the mark and into Istria at the open bands the page
+ * leaves for it — two on home, the land band alone on about. The dot layers are
+ * hidden while it runs and return the moment it cannot.
  */
 export function Ground() {
   return (
