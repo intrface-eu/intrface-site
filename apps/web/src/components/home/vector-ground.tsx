@@ -65,8 +65,10 @@ const MARK_DEPTH = 0.16;
 // Share of lines that never join a plate: they stay in the depth field behind
 // it, so a gathering never flattens the ground.
 const KEEP_SHARE = 0.35;
-// Content blocks the ground answers to, at most this many on screen at once.
-const MAX_RECTS = 12;
+// Content blocks the ground answers to, at most this many in reach at once.
+// Blocks are kept while their pull can still be seen, not while they are on
+// screen, so a large slab counts for a while after it has scrolled past.
+const MAX_RECTS = 24;
 const PAPER = [0xf5 / 255, 0xf1 / 255, 0xeb / 255];
 const LAND_DEPTH = 0.07;
 const FOCAL = 3.4;
@@ -525,8 +527,12 @@ export function VectorGround() {
 
     // The blocks the ground answers to. Copy is marked `data-ground-quiet`
     // (lines fade under it), ink slabs `data-ground-ink` (lines turn paper
-    // inside them). Read again on every scroll and resize; blocks off screen
-    // are skipped, so the shader loop stays short.
+    // inside them). Read again on every scroll and resize. A block is skipped
+    // once it is out of reach: its pull in the shader (`weigh`) decays as
+    // exp(-d / R) with R = 0.3 * sqrt(w * h) + 50, so it is dropped only past
+    // 5R from the viewport, where the pull is under a pixel. A fixed margin
+    // cut the ink slabs off while they still pulled the lines a hundred
+    // pixels, and the whole field jumped the frame they left.
     // Kinds: copy (0) fades the lines within a margin, `soft` copy less so;
     // an ink slab (2) turns them paper-coloured; a paper island (4) inside an
     // ink slab keeps them ink and fades them a little.
@@ -548,7 +554,9 @@ export function VectorGround() {
       for (const { el, info } of blocks) {
         if (n === MAX_RECTS) break;
         const r = el.getBoundingClientRect();
-        if (r.bottom < -240 || r.top > height + 240 || r.width === 0) continue;
+        if (r.width === 0) continue;
+        const reach = 5 * (0.3 * Math.sqrt(r.width * r.height) + 50);
+        if (r.bottom < -reach || r.top > height + reach) continue;
         rects[n * 4] = r.left;
         rects[n * 4 + 1] = r.top;
         rects[n * 4 + 2] = r.width;
