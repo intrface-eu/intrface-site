@@ -7,14 +7,15 @@ import type { AppLocale } from "@/i18n/routing";
 
 export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "WorkFunda" });
+  const grid = await getTranslations({ locale, namespace: "HomeGrid.common" });
 
   return (
     <main className="bg-paper text-ink">
       <CaseHero claim={t("domain")} name={t("name")} status={t("status")} />
       <div className="section-shell flex flex-wrap gap-3 py-12 sm:py-16">
-        <Link className={tactileButtonClasses("secondary")} href="/work">
+        <Link className={tactileButtonClasses("secondary")} href="/">
           <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
-          {t("backToWork")}
+          {grid("backToGrid")}
         </Link>
         <Link className={tactileButtonClasses("primary")} href="/about#contact">
           {t("contact")}

@@ -27,6 +27,12 @@
   --foreground: var(--ink);
   --font-brand: var(--font-google-sans-flex), "Inter", "Segoe UI", sans-serif;
 
+  /* ===== HOME GRID =====
+     The gap between cells, which is open ground, and the strip of ground
+     above the grid that the maker's mark sits in. */
+  --grid-gap: clamp(8px, 1vw, 14px);
+  --mark-band: 3.5rem;
+
   /* ===== RADIUS SCALE ===== */
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
@@ -220,27 +226,6 @@ body {
   }
   to {
     translate: 0 -35vh;
-  }
-}
-
-/* The two phrases beside the X on Vrsar. "From here" comes out from under the
-   X, leftward; "to the world" is written across, left to right. Transform and
-   clip-path only, and both run once, off one attribute the ground sets. */
-@keyframes ground-phrase-out {
-  from {
-    transform: translateX(calc(101% + var(--phrase-gap)));
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes ground-phrase-write {
-  from {
-    clip-path: inset(-12% 100% -22% 0);
-  }
-  to {
-    clip-path: inset(-12% -4% -22% 0);
   }
 }
 
@@ -559,102 +544,6 @@ body {
     color: var(--ink-inverse-label);
   }
 
-  .shader-surface {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    opacity: 0.18;
-    mix-blend-mode: multiply;
-  }
-
-  .shader-surface[data-tone="dark"] {
-    opacity: 0.12;
-    mix-blend-mode: screen;
-  }
-
-  /* ===== HERO HALFTONE =====
-     The live screen behind the hero. The canvas draws the dots; everything
-     here is the two things CSS still owns — the mask that keeps ink off the
-     type, and the still frame anyone without WebGL2 gets instead.
-
-     Both layers use the same ramp: nothing across the measure, solid at the
-     trim edge. The type never sits on a dot, which is how an animated surface
-     is allowed in this hero at all. */
-  .hero-halftone {
-    /* The still screen cannot measure the copy the way the shader does, so it
-       takes the safe reading of the same shape: nothing until the measure has
-       ended, solid before the trim edge. */
-    --halftone-mask: linear-gradient(
-      to right,
-      transparent 0%,
-      transparent 64%,
-      rgba(0, 0, 0, 0.55) 74%,
-      black 82%
-    );
-  }
-
-  @media (max-width: 63.99em) {
-    .hero-halftone {
-      /* Stacked, the clear sheet is above and below the copy rather than
-         beside it, so the safe reading has two bands. The top one starts a
-         hair under the header rule instead of butting it. */
-      --halftone-mask: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.6) 0%,
-        black 2%,
-        black 6%,
-        rgba(0, 0, 0, 0.5) 11%,
-        transparent 15%,
-        transparent 80%,
-        rgba(0, 0, 0, 0.5) 89%,
-        black 96%
-      );
-    }
-  }
-
-  /* Both layers start invisible. The sheet is blank until the shader's first
-     frame exists, so the dots are never a printed grid waiting to move — they
-     arrive already flowing. The still screen appears only for a browser that
-     cannot run the shader, which is the one case where a static field beats an
-     empty one. */
-  .hero-halftone-static {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(
-      circle,
-      color-mix(in srgb, var(--ink) 42%, transparent) 0 1.4px,
-      transparent 2px
-    );
-    background-size: 9px 9px;
-    mask-image: var(--halftone-mask);
-    opacity: 0;
-    transition: opacity 620ms ease-out;
-  }
-
-  /* The canvas carries its own mask in the shader, so it is not masked twice. */
-  .hero-halftone-canvas {
-    position: absolute;
-    inset: 0;
-    display: block;
-    opacity: 0;
-    transition: opacity 620ms ease-out;
-  }
-
-  .hero-halftone[data-state="live"] .hero-halftone-canvas {
-    opacity: 1;
-  }
-
-  .hero-halftone[data-state="still"] .hero-halftone-static {
-    opacity: 1;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-halftone-static,
-    .hero-halftone-canvas {
-      transition: none;
-    }
-  }
-
   /* ===== STAT LEDGER =====
      A grid whose rules follow the grid, not the source order: no stray left
      border where a row wraps, and a rule between wrapped rows. */
@@ -816,8 +705,7 @@ body {
   }
 
   .project-preview:focus-visible,
-  .project-next-link:focus-visible,
-  .pair-ribbon-link:focus-visible {
+  .project-next-link:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 4px;
   }
@@ -1458,463 +1346,55 @@ body {
     pointer-events: none;
   }
 
-  /* The mark is keyed from an edge rather than a band: the bottom edge of the
-     contact close, where it joins the footer. Out of flow and of no height, so
-     the close and the footer still meet on the same line and the page gains
-     nothing to scroll past the signature. `stageFor` draws the mark as this
-     edge rises off the screen. */
-  .ground-mark-edge {
-    position: absolute;
-    inset-inline: 0;
-    top: 100%;
-    height: 0;
-    pointer-events: none;
-  }
-
-  /* ===== THE MARK ON THE GROUND =====
-     The land band is where the field draws Istria, and it puts a red X on
-     Vrsar — the only red on the site, and not a UI colour. VectorGround sets
-     `data-ground-x` on the band the moment the X has converged, and these two
-     phrases are that attribute and nothing else: no per-frame work, and
-     nothing at all where the live ground cannot run, because the attribute is
-     never set. The offsets track the plate: the field scales Istria by 0.38 of
-     the short viewport side, and the X sits at (-0.592, -0.114) in the
-     outline's own space, north up. These two are the plate at rest; the ground
-     overwrites them with the projected point on every resize, so the anchor is
-     exact rather than close. */
-  .ground-band {
-    --x-dx: calc(0.2254 * min(100vw, 100svh));
-    --x-dy: calc(0.065 * min(100vw, 100svh));
-  }
-
-  /* The layer the phrases ride on. The plate is fixed to the screen while the
-     band scrolls past it, so the ground writes the difference between the X's
-     live screen point and the point the band anchors them at, and this one
-     transform carries both phrases with the map. Entrance transforms stay on
-     the elements inside, so the two never fight. */
-  .ground-band-layer {
-    position: absolute;
-    inset: 0;
-    transform: translate3d(var(--ground-travel-x, 0px), var(--ground-travel-y, 0px), 0);
-  }
-
-  .ground-phrase {
-    font-family: var(--font-brand);
-    /* One quiet line beside the mark, near display scale on a wide screen and
-       well under it on a phone. Never a second headline. */
-    font-size: clamp(1.75rem, 3.6vw, 3.4rem);
-    font-weight: 600;
-    line-height: 1.04;
-    letter-spacing: -0.04em;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-
-  /* The window's right edge is the X itself, so the phrase starts hidden under
-     the strokes and slides out to the left; the padding is the gap it keeps
-     from them once it has settled. */
-  .ground-phrase-here {
-    --phrase-gap: 1.4em;
-    position: absolute;
-    top: calc(50% + var(--x-dy));
-    right: calc(50% + var(--x-dx));
-    transform: translateY(-50%);
-    padding-right: var(--phrase-gap);
-    overflow: hidden;
-  }
-
-  .ground-phrase-here > span {
-    display: inline-block;
-    transform: translateX(calc(101% + var(--phrase-gap)));
-  }
-
-  /* The corner phrase rides the plate going up, where it has the whole band
-     to move in, and gives back half the travel going down, where the band's
-     bottom edge and the ink pane under it are close. Never less than half, so
-     it stays part of the same movement. */
-  .ground-band-foot {
-    position: absolute;
-    inset-inline: 0;
-    bottom: clamp(2rem, 6svh, 4rem);
-    text-align: right;
-    transform: translate3d(0, calc(max(var(--ground-travel-y, 0px), 0px) * -0.5), 0);
-  }
-
-  .ground-phrase-world > span {
-    display: inline-block;
-    clip-path: inset(-12% 100% -22% 0);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .ground-band[data-ground-x] .ground-phrase-here > span {
-      animation: ground-phrase-out 420ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
-    }
-
-    .ground-band[data-ground-x] .ground-phrase-world > span {
-      animation: ground-phrase-write 460ms cubic-bezier(0.25, 0.6, 0.3, 1) 560ms both;
-    }
-  }
-
-  /* At phone width the plate fills the band and there is no lateral room, so
-     the phrase sits above the X instead of beside it, on the shell's own
-     margin. */
-  @media (max-width: 639px) {
-    .ground-phrase-here {
-      top: auto;
-      right: auto;
-      left: 1.5rem;
-      bottom: calc(50% - var(--x-dy) + 2rem);
-      transform: none;
-      padding-right: 0.5em;
-      max-width: calc(100% - 3rem);
-    }
-  }
-
-  /* ===== OPEN PANES =====
-     While the live ground runs (`main[data-ground-open]`, set by VectorGround)
-     the paper panes give up their slabs and the copy sits on the ground itself;
-     the shader quiets its lines under every block marked `data-ground-quiet`.
-     Ink panes keep their slab, but it drops beneath the fixed ground
-     (`z-index: -2` in the root stacking context, which is why these panes stop
-     isolating) so the field runs through the ink in paper-coloured lines. The
-     ground's own paper goes with it; the body's paper is the floor. The hero
-     opens too, and the contact form plane and the footer let the field
-     through under their copy. Without the live ground none of this applies
-     and the panes are the solid sheets below. */
+  /* ===== OPEN GROUND =====
+     While the live ground runs (`:root[data-ground-open]`, set by
+     VectorGround) the ground gives up its own paper and the body's paper is
+     the floor. On about, the paper panes give up their slabs too: the copy
+     sits on the ground and the shader quiets its lines under every block
+     marked `data-ground-quiet`. Without the live ground the panes are the
+     solid sheets below. */
   :root[data-ground-open] .ground {
     background: transparent;
   }
 
-  :root[data-ground-open] .home-pane:not(.tone-ink):not(.home-pane-contact)::before,
-  :root[data-ground-open] .home-proof-pane::before,
-  :root[data-ground-open] .pair-ribbon::before {
-    background: transparent;
-  }
-
-  :root[data-ground-open] .home-pane.tone-ink,
-  :root[data-ground-open] .home-pane-contact {
-    isolation: auto;
-    background: transparent;
-  }
-
-  :root[data-ground-open] .home-pane.tone-ink::before,
-  :root[data-ground-open] .home-pane-contact::before,
-  :root[data-ground-open] .home-pane-contact::after {
-    z-index: -3;
-  }
-
+  :root[data-ground-open] .home-pane::before,
   :root[data-ground-open] .hero-sheet::before {
     background: transparent;
   }
 
-  /* Inside the contact close the copy columns lose their own ink (the slab
-     carries it) and the form plane's paper drops under the ground as well, one
-     step above the ink, so the field runs across the whole close. */
-  :root[data-ground-open] .home-contact-copy,
-  :root[data-ground-open] .home-contact-aside {
-    background: transparent;
-  }
-
-  :root[data-ground-open] .home-contact-form-plane {
-    isolation: auto;
-  }
-
-  :root[data-ground-open] .home-contact-form-plane::before {
-    z-index: -2;
-  }
-
-  /* The contact close keeps the unskewed ink its box carried as a background:
-     a full slab under the skewed one, so it still joins the footer and the
-     skew still reads at the top. */
-  :root[data-ground-open] .home-pane-contact::after {
-    content: "";
-    position: absolute;
-    inset-inline: -8vw;
-    inset-block: 0;
-    background: var(--ink);
-    pointer-events: none;
-  }
-
-  /* ===== HOME PANES =====
-     Only decoration crosses the viewport. The outer clip is not a scroll
-     container; Ground is its sibling and stays fixed to the viewport. */
+  /* ===== PANES (about) =====
+     Continuous surfaces whose ends run past the viewport. The `home-` names
+     are older than the grid; the about page is now their only user. The outer
+     clip is not a scroll container, and Ground is its sibling, so the ground
+     stays fixed to the viewport. */
   .home-planes {
     --home-gutter: 1.5rem;
     --home-edge: calc(max(0px, (100vw - 80rem) / 2) + var(--home-gutter));
     --pane-gap: clamp(4rem, 8vw, 9rem);
     overflow-x: clip;
-    padding-block-end: 0;
-  }
-
-  .home-pane,
-  .home-proof-pane,
-  .pair-ribbon {
-    position: relative;
-    isolation: isolate;
   }
 
   .home-pane {
     --pane-color: var(--paper);
     --pane-angle: 0deg;
+    position: relative;
+    isolation: isolate;
     margin-block-start: var(--pane-gap);
   }
 
-  .home-pane.tone-ink {
-    --pane-color: var(--ink);
-    background: transparent;
-  }
-
-  .home-pane::before,
-  .home-proof-pane::before,
-  .pair-ribbon::before {
+  .home-pane::before {
     content: "";
     position: absolute;
     z-index: -1;
     inset-block: 0;
     inset-inline: -8vw;
-    background: var(--pane-color, var(--paper));
-    transform: skewY(var(--pane-angle, 0deg));
+    background: var(--pane-color);
+    transform: skewY(var(--pane-angle));
     pointer-events: none;
   }
 
   .home-pane > .section-shell {
-    /* The angle never cuts into the type, even on very wide monitors. */
     padding-block: max(5rem, 4vw);
-  }
-
-  .pair-ribbon {
-    --pane-angle: -1.2deg;
-    margin-block-start: -1rem;
-    padding-block: 1.5vw;
-  }
-
-  .pair-ribbon-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1.5rem;
-  }
-
-  /* Name first, then the mark. The name never breaks; the only permitted
-     wrap is between name and mark, and only when one link alone is wider
-     than the ribbon (long locales at 390px). */
-  .pair-ribbon-link {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.25rem 0.75rem;
-    min-height: 2.75rem;
-    text-decoration: none;
-    text-underline-offset: 4px;
-  }
-
-  .pair-ribbon-name {
-    white-space: nowrap;
-    color: var(--ink);
-  }
-
-  .pair-ribbon-link:hover {
-    text-decoration: underline;
-  }
-
-  .home-proof-pane {
-    --pane-angle: 0deg;
-    margin-block-start: calc(var(--pane-gap) * 0.65);
-  }
-
-  .home-pane-doctrine {
-    --pane-color: var(--paper-raised);
-    --pane-angle: -1.8deg;
-  }
-
-  .home-doctrine-argument {
-    display: grid;
-    gap: 2.5rem;
-    position: relative;
-  }
-
-  .home-doctrine-clause {
-    position: relative;
-    padding-block-start: 1.5rem;
-    border-top: 1px solid var(--line);
-  }
-
-  .home-doctrine-clause::before,
-  .home-doctrine-clause::after {
-    content: "";
-    position: absolute;
-    top: -1px;
-    width: 0.75rem;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .home-doctrine-clause::before { left: 0; }
-  .home-doctrine-clause::after { right: 0; }
-
-  .home-doctrine-clause .type-body {
-    max-inline-size: 32ch;
-  }
-
-  .home-doctrine-close {
-    max-inline-size: 30ch;
-    border-top: 1px solid var(--line);
-  }
-
-  .home-pane-build {
-    --pane-angle: 0deg;
-  }
-
-  .home-build-layout {
-    display: grid;
-    gap: 3.5rem;
-    align-items: start;
-  }
-
-  .home-build-intro,
-  .home-system-index {
-    min-width: 0;
-  }
-
-  .home-system-row {
-    position: relative;
-    padding-block: 1.5rem;
-    border-top: 1px solid var(--line);
-    scroll-margin-top: 6rem;
-  }
-
-  .home-system-row::before {
-    content: "";
-    position: absolute;
-    inset-block-start: -1px;
-    inset-inline-start: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--accent);
-    transform: scaleX(0.12);
-    transform-origin: left;
-    transition: transform 220ms ease-out;
-  }
-
-  .home-system-row:is(:hover, :focus-within, :target)::before {
-    transform: scaleX(1);
-  }
-
-  .home-system-row:target h3 {
-    color: var(--accent);
-  }
-
-  .home-system-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-underline-offset: 4px;
-  }
-
-  .home-system-link:hover {
-    text-decoration: underline;
-  }
-
-  .home-system-link:focus-visible {
-    outline: 2px solid var(--ink-inverse);
-    outline-offset: 4px;
-  }
-
-  .home-system-pair {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem 0.75rem;
-  }
-
-  .home-pane-business {
-    --pane-angle: 0deg;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .home-system-row::before {
-      transition: none;
-    }
-  }
-
-  .home-live-site {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .live-site-media {
-    margin-inline-start: calc(-1 * var(--home-edge));
-  }
-
-  .live-site-link:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: 4px;
-  }
-
-  /* The contact close joins the footer. Its paper region runs to the right
-     edge on desktop and across the full screen below the copy on mobile. */
-  .home-pane-contact {
-    --pane-color: var(--ink);
-    background: var(--ink);
-  }
-
-  /* No skew here: the paper form plane sits flush with the section top, so a
-     skewed ink layer showed as a thin wedge above it on the right. */
-  .home-pane-contact::before {
-    transform: none;
-  }
-
-  .home-pane-contact > .section-shell {
-    padding-block: 0;
-  }
-
-  /* Copy, form plane, then the supplementary notes. Below `lg` the three
-     stack in DOM order; at `lg` the notes join the copy in the ink column
-     and the paper plane spans both rows. Named areas, not `order`, so the
-     tab sequence and the reading order stay the same. */
-  .home-contact-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "copy"
-      "form"
-      "aside";
-  }
-
-  .home-contact-copy,
-  .home-contact-aside,
-  .home-contact-form-plane {
-    min-width: 0;
-  }
-
-  .home-contact-copy {
-    grid-area: copy;
-    padding-block: 5rem;
-  }
-
-  .home-contact-aside {
-    grid-area: aside;
-    padding-block: 4rem 5rem;
-  }
-
-  .home-contact-form-plane {
-    grid-area: form;
-  }
-
-  .home-contact-form-plane {
-    position: relative;
-    isolation: isolate;
-    color: var(--ink);
-    padding-block: 4rem;
-  }
-
-  .home-contact-form-plane::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset-block: 0;
-    inset-inline: calc(-1 * var(--home-edge));
-    background: var(--paper);
-    pointer-events: none;
   }
 
   @media (min-width: 640px) {
@@ -1925,104 +1405,448 @@ body {
     .home-pane > .section-shell {
       padding-block: max(7rem, 4vw);
     }
-
-    .home-pane-contact > .section-shell {
-      padding-block: 0;
-    }
-
-    .home-contact-copy {
-      padding-block: 7rem;
-    }
-
-    .home-contact-aside {
-      padding-block: 5rem 7rem;
-    }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .home-planes {
       --home-gutter: 2.5rem;
     }
+  }
 
-    .home-live-site {
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    }
+  /* ===== THE INTERFACE GRID (home) =====
+     Eight cells on open ground, edge to edge. The gaps and the strip above
+     the grid are ground: no background, so the field shows through them.
 
-    .home-doctrine-argument {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 2rem;
-      align-items: start;
-    }
+     Composition. Phones: one column, every cell at least 72svh. Tablets: two
+     columns, rows around 50svh, Voyager across both. From 1024px: three rows
+     that fill the viewport together with the mark strip. Voyager is the
+     largest cell there, the two client captures run portrait through two
+     rows, and their width follows the row height (0.9 of it, so a two-row
+     cell is about 0.45 as wide as it is tall) instead of the viewport width.
+     DOM order reads left to right, top to bottom at every breakpoint. */
+  .interface-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    padding: var(--mark-band) var(--grid-gap) var(--grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: max(80svh, 28rem) repeat(7, max(72svh, 26rem));
+    grid-template-areas:
+      "voyager"
+      "velum"
+      "index"
+      "midiflow"
+      "astyle"
+      "patchbay"
+      "polis"
+      "funda";
+  }
 
-    .home-doctrine-argument::before {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .home-doctrine-clause:nth-child(1) {
-      grid-column: 1 / 5;
-    }
-
-    .home-doctrine-clause:nth-child(2) {
-      grid-column: 5 / 10;
-      margin-block-start: 4rem;
-    }
-
-    .home-doctrine-clause:nth-child(3) {
-      grid-column: 10 / -1;
-      margin-block-start: 8rem;
-    }
-
-    .home-build-layout {
-      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-      gap: clamp(3rem, 6vw, 6rem);
-    }
-
-    .home-contact-grid {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      grid-template-rows: auto minmax(0, 1fr);
+  @media (min-width: 640px) {
+    .interface-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows:
+        max(60svh, 24rem)
+        repeat(3, max(50svh, 22rem))
+        max(40svh, 20rem);
       grid-template-areas:
-        "copy form"
-        "aside form";
-      column-gap: 6rem;
-      row-gap: 0;
-    }
-
-    .home-contact-copy {
-      padding-block: max(7rem, 4vw) 0;
-    }
-
-    .home-contact-aside {
-      align-self: start;
-      padding-block: 2rem max(7rem, 4vw);
-    }
-
-    .home-contact-form-plane {
-      padding-block: max(7rem, 4vw);
-    }
-
-    .home-contact-form-plane::before {
-      inset-inline-start: -3rem;
-      inset-inline-end: calc(-1 * var(--home-edge) - 4rem);
-      transform: skewX(-2deg);
+        "voyager voyager"
+        "velum index"
+        "midiflow astyle"
+        "patchbay polis"
+        "funda funda";
     }
   }
 
-  @media (min-width: 1024px) and (min-height: 760px) {
-    /* Pin the structural parent, not a transformed FadeIn child. Short screens
-       get natural flow so the complete intro always remains reachable. */
-    .home-build-intro {
-      position: sticky;
-      top: 7rem;
+  @media (min-width: 1280px) {
+    .interface-grid {
+      /* 58rem is the floor that keeps every row at the height the 1440×900 layout was checked at (about 17rem), so a 720px laptop scrolls a little rather than clipping Polis and Funda. */
+      --grid-row: calc((max(100svh, 58rem) - var(--mark-band) - 3 * var(--grid-gap)) / 3);
+      --grid-portrait: calc(var(--grid-row) * 0.9);
+      --grid-half: calc((var(--grid-portrait) - var(--grid-gap)) / 2);
+      grid-template-columns:
+        minmax(0, 3fr) minmax(0, 2fr) var(--grid-half) var(--grid-half)
+        minmax(0, 3fr) var(--grid-portrait);
+      grid-template-rows: repeat(3, var(--grid-row));
+      grid-template-areas:
+        "voyager voyager velum velum index index"
+        "voyager voyager velum velum midiflow astyle"
+        "patchbay polis polis funda funda astyle";
     }
   }
 
-  @media (max-width: 639px) {
-    .home-pane-doctrine { --pane-angle: -1deg; }
+  /* ===== INTERFACE CELL =====
+     The cell box is the grid item and the size container fragments measure
+     against (`cqw` / `cqh`). It paints nothing; the surface inside it does,
+     and the surface is cut.
+
+     The cut: a quadrilateral whose four edges each lean by `--tilt` (tan 1°).
+     The lean is a share of the cell's own height for the side edges and of
+     its width for the top and bottom, so every edge leans by the same angle
+     whatever the cell's size. Each cell narrows toward one end on each axis:
+     `--xa` 1 narrows it at the top and 0 at the bottom, `--yp` 1 narrows it
+     at the left and 0 at the right. Neighbours take opposite values, so
+     facing edges lean the same way and the gap between them keeps one width
+     along its length. The values are set per breakpoint below, because the
+     neighbours change with the layout. */
+  /* The chrome fragments keep clear of, as two lengths every fragment reads
+     and no other: `--cell-chrome-top`, from the cell's top edge to the foot
+     of the name corner (its offset from the cut, its padding and one line of
+     `.type-meta`); `--cell-chrome-bottom`, from the bottom edge to the top of
+     the foot row, reserved on every pointer whether the row shows or not.
+     The foot row's height is its offset from the cut (0.625rem), its padding
+     (0.5rem) and one line of `.type-caption` (1.3125rem): 2.4375rem. Other
+     values follow below: two rows in narrow cells, touch-height links on a
+     coarse pointer. Both hold `cqw`, which resolves against the cell wherever
+     a fragment reads them. */
+  .interface-cell {
+    --tilt: 0.0175;
+    --xa: 1;
+    --yp: 1;
+    --cell-chrome-top: calc(var(--tilt) * 100cqw + 2.25rem);
+    --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 2.4375rem);
+    position: relative;
+    container-type: size;
+    min-inline-size: 0;
+    min-block-size: 0;
+  }
+
+  .interface-cell__surface {
+    --cut-x: calc(var(--tilt) * 100cqh);
+    --cut-y: calc(var(--tilt) * 100cqw);
+    --cell-surface: var(--paper-raised);
+    --cell-focus: var(--ink);
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--cell-surface);
+    color: var(--ink);
+    clip-path: polygon(
+      calc(var(--cut-x) * var(--xa)) calc(var(--cut-y) * var(--yp)),
+      calc(100% - var(--cut-x) * var(--xa)) calc(var(--cut-y) * (1 - var(--yp))),
+      calc(100% - var(--cut-x) * (1 - var(--xa))) calc(100% - var(--cut-y) * (1 - var(--yp))),
+      calc(var(--cut-x) * (1 - var(--xa))) calc(100% - var(--cut-y) * var(--yp))
+    );
+  }
+
+  .interface-cell__surface.tone-ink {
+    --cell-surface: var(--ink);
+    --cell-focus: var(--ink-inverse);
+    color: var(--ink-inverse);
+  }
+
+  .interface-cell__fragment {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Phones: one column, so only the top and bottom edges meet a neighbour. */
+  .interface-cell:nth-of-type(even) {
+    --yp: 0;
+  }
+
+  /* Tablets: pairs side by side, Voyager and Funda across both columns. */
+  @media (min-width: 640px) {
+    .interface-cell:nth-of-type(n) {
+      --xa: 1;
+      --yp: 1;
+    }
+
+    .interface-cell:is([data-slug="index"], [data-slug="astyleMarine"], [data-slug="polis"]) {
+      --xa: 0;
+    }
+
+    .interface-cell:is(
+        [data-slug="velum"],
+        [data-slug="index"],
+        [data-slug="patchbay"],
+        [data-slug="polis"]
+      ) {
+      --yp: 0;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .interface-cell:is([data-slug="index"], [data-slug="astyleMarine"], [data-slug="polis"]) {
+      --xa: 1;
+    }
+
+    .interface-cell:is(
+        [data-slug="velum"],
+        [data-slug="index"],
+        [data-slug="patchbay"],
+        [data-slug="polis"]
+      ) {
+      --yp: 1;
+    }
+
+    .interface-cell:is([data-slug="velum"], [data-slug="astyleMarine"], [data-slug="polis"]) {
+      --xa: 0;
+    }
+
+    .interface-cell:is(
+        [data-slug="index"],
+        [data-slug="patchbay"],
+        [data-slug="polis"],
+        [data-slug="funda"]
+      ) {
+      --yp: 0;
+    }
+  }
+
+  /* The name, always there, in the top-left corner and clear of the cut.
+     Type is never turned with the edge; only the surface is cut. */
+  .interface-cell__corner {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: calc(var(--cut-y) + 0.625rem);
+    inset-inline-start: calc(var(--cut-x) + 0.75rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.75rem;
+    max-inline-size: calc(100% - 2 * var(--cut-x) - 1.5rem);
+    padding: 0.25rem 0.5rem;
+    background: var(--cell-surface);
+    pointer-events: none;
+  }
+
+  .interface-cell__corner .interface-cell__name {
+    color: inherit;
+  }
+
+  /* Under about 260px a name and its status no longer share a line. */
+  @container (max-width: 260px) {
+    .interface-cell__surface:has(.interface-cell__status) {
+      --cell-chrome-top: calc(var(--tilt) * 100cqw + 3.25rem);
+    }
+  }
+
+  /* The foot row: the line, then Open and Live site, at the cell's foot and
+     clear of the cut, as the corner is at its top, and left-aligned with the
+     corner. It spans the width between the side cuts; its plate is as wide
+     as its content, and a line too long for it ends in an ellipsis. The row
+     takes no pointer events, only its links do, and fragments keep clear of
+     it through `--cell-chrome-bottom`, so it never covers a control. On a
+     fine pointer it shows on hover and on focus anywhere in the cell; on a
+     coarse pointer, which has no hover, it always shows. */
+  .interface-cell__foot {
+    position: absolute;
+    z-index: 2;
+    inset-block-end: calc(var(--cut-y) + 0.625rem);
+    inset-inline-start: calc(var(--cut-x) + 0.75rem);
+    display: flex;
+    align-items: center;
+    gap: 0 1.25rem;
+    max-inline-size: calc(100% - 2 * var(--cut-x) - 1.5rem);
+    padding: 0.25rem 0.5rem;
+    background: var(--cell-surface);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .interface-cell:hover .interface-cell__foot,
+  .interface-cell:focus-within .interface-cell__foot {
+    opacity: 1;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .interface-cell__foot {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .interface-cell__foot {
+      transition: opacity 220ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+  }
+
+  .interface-cell__line {
+    flex: 0 1 auto;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .interface-cell__actions {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0 1.25rem;
+  }
+
+  /* Under about 300px the line and the actions no longer share a row: the
+     line, then the actions under it. The row's height doubles, and the
+     surface carries the larger reservation to the fragment. */
+  @container (max-width: 300px) {
+    .interface-cell__foot:has(.interface-cell__actions) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .interface-cell__surface:has(.interface-cell__actions) {
+      --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 3.75rem);
+    }
+  }
+
+  /* A coarse pointer gets touch-height links (2.75rem), so a row with
+     actions is taller: 0.625rem + 0.5rem + 2.75rem on one row, and one
+     caption line more on two. A row with the line alone keeps its height. */
+  @media (hover: none), (pointer: coarse) {
+    .interface-cell:has(.interface-cell__actions) {
+      --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 3.875rem);
+    }
+
+    @container (max-width: 300px) {
+      .interface-cell__surface:has(.interface-cell__actions) {
+        --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 5.1875rem);
+      }
+    }
+  }
+
+  .interface-cell__open,
+  .interface-cell__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    text-underline-offset: 4px;
+    white-space: nowrap;
+    pointer-events: auto;
+  }
+
+  .interface-cell__open {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .interface-cell__open:hover,
+  .interface-cell__live:hover {
+    text-decoration: underline;
+  }
+
+  .interface-cell__open:focus-visible,
+  .interface-cell__live:focus-visible {
+    outline: 2px solid var(--cell-focus);
+    outline-offset: 4px;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .interface-cell__open,
+    .interface-cell__live {
+      min-block-size: 2.75rem;
+    }
+  }
+
+  /* The expansion. `InterfaceCell` sets `data-expanding` and, in the same
+     frame, one transform that carries the cell onto the viewport; the route
+     changes when it lands. The cell rises over the maker's mark while it
+     grows, and the foot row fades. The scale is uniform, so type keeps its
+     proportions; the cell is centred on the viewport and the overshoot on
+     the longer axis falls outside it. Transform and opacity only. Under reduced
+     motion the script never sets the attribute: the link navigates at once. */
+  .interface-cell[data-expanding] {
+    z-index: 50;
+    transform-origin: 0 0;
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 380ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  .interface-cell[data-expanding] .interface-cell__foot {
+    opacity: 0;
+    transition: opacity 380ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  /* ===== MAKER'S MARK (home) =====
+     The home page has no header. The mark and the word sit fixed in the top
+     left, the locale switcher in the top right, both in the strip of ground
+     the grid leaves above itself. Each carries a paper backing sized to its
+     content, so it stays legible when a cell scrolls under it; on the ground
+     the backing is the same paper and does not show. */
+  .maker-mark,
+  .maker-locale {
+    position: fixed;
+    z-index: 40;
+    inset-block-start: calc((var(--mark-band) - 2.5rem) / 2);
+    display: flex;
+    align-items: center;
+    min-block-size: 2.5rem;
+    padding-inline: 0.5rem;
+    background: var(--paper);
+  }
+
+  .maker-mark {
+    inset-inline-start: calc(var(--grid-gap) + 0.25rem);
+    gap: 0.625rem;
+    color: var(--ink);
+  }
+
+  .maker-mark:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  .maker-mark__word {
+    font-family: var(--font-brand);
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .maker-locale {
+    inset-inline-end: calc(var(--grid-gap) + 0.25rem);
+  }
+
+  /* ===== FOOTER =====
+     One short block over the signature. The footer is at least 55vh tall on
+     every page: on home it carries `data-ground-key="land"`, and at the foot
+     of the page that height puts its centre within a quarter viewport of the
+     viewport's centre, which is where `stageFor` completes the Istria
+     gathering. The space between the block and the signature is where the
+     map shows. */
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-block-size: 55vh;
+  }
+
+  .site-footer__block {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .site-footer__colophon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__block {
+      grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+      grid-template-areas:
+        "about colophon"
+        "contact colophon";
+      row-gap: 1.75rem;
+    }
+
+    .site-footer__about {
+      grid-area: about;
+    }
+
+    .site-footer__contact {
+      grid-area: contact;
+    }
+
+    .site-footer__colophon {
+      grid-area: colophon;
+      justify-self: end;
+    }
   }
 
   /* ===== ABOUT: THE PERSON =====
@@ -2132,43 +1956,8 @@ body {
   border-color: transparent;
 }
 
-/* Home form messages stay on the paper plane. Unlayered to override the shared
-   form's rounded/background/padding utilities without changing other routes. */
-.home-contact-form-plane [role="status"],
-.home-contact-form-plane [role="alert"] {
-  border-radius: 0;
-  border-inline: 0;
-  background: transparent;
-  padding-inline: 0;
-  box-shadow: none;
-}
-
 /* Unlayered on purpose: the footer's paper is a utility class, and only a
    rule outside the layers can lift it while the live ground runs. */
 :root[data-ground-open] .site-footer {
   background: transparent;
-}
-
-/* Unlayered on purpose: the form's fills are utility classes, and only a rule
-   outside the layers can clear them while the live ground runs.
-
-   The close is an ink slab again and the field runs through it in paper lines.
-   The form plane is a paper island inside that slab, so over the plane the
-   lines come back to ink at half strength and run straight through the paper.
-   Nothing in the form may lay a second sheet over them: the controls give up
-   their fills and keep their outlines, and the shader quiets its lines under
-   each control group (`data-ground-quiet` in contact-form.tsx) the way it
-   quiets the copy in What we build, so type inside a control has open paper
-   behind it. The send control is the one filled thing that stays: an ink pill
-   with a white label, because that is where contrast has to be certain. */
-:root[data-ground-open] .home-contact-form-plane input,
-:root[data-ground-open] .home-contact-form-plane textarea,
-:root[data-ground-open] .home-contact-form-plane .artifact-button-secondary,
-:root[data-ground-open] .home-contact-form-plane fieldset label > span {
-  background: transparent;
-}
-
-/* A chosen topic still reads as chosen, in a tint thin enough to see through. */
-:root[data-ground-open] .home-contact-form-plane fieldset input:checked + span {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
 }

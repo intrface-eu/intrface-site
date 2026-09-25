@@ -27,9 +27,9 @@ import { VectorGround } from "@/components/home/vector-ground";
  *
  * With WebGL2 and no reduced-motion preference, `VectorGround` takes over the
  * same fixed box: a line pinned to every vertex of the grid, turned to face the
- * pointer, gathering into the mark and into Istria at the open bands the page
- * leaves for it — two on home, the land band alone on about. The dot layers are
- * hidden while it runs and return the moment it cannot.
+ * pointer, gathering into Istria where the page keys it: the footer on home,
+ * the land band on about. The dot layers are hidden while it runs and return
+ * the moment it cannot.
  */
 export function Ground() {
   return (

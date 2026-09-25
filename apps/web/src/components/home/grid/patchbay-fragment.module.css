@@ -1,0 +1,280 @@
+/* Patchbay: a patch board set as a diagram. Ink rings for jacks, hairline
+   cables, nothing raised. Every colour is currentColor or a token, so the
+   board reads on a paper cell and on a .tone-ink cell alike. */
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  /* Top clears the cell's name corner. The bottom clears the cell's foot
+     row, and leaves more room in tall cells. */
+  padding: var(--cell-chrome-top) clamp(1rem, 6cqw, 2rem)
+    max(var(--cell-chrome-bottom), min(5rem, 16cqh));
+  color: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---- Status and Clear ----
+   A row of their own under the name corner; from about 420px of cell width
+   there is room beside the corner, so they move up to its line, top right. */
+
+.bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.875rem;
+  margin-block-end: 0.5rem;
+}
+
+@container (min-width: 26.25rem) {
+  .bar {
+    position: absolute;
+    /* Level with the name: the corner's text starts 1.375rem above its foot. */
+    inset-block-start: calc(var(--cell-chrome-top) - 1.375rem);
+    inset-inline-end: clamp(1rem, 6cqw, 2rem);
+    justify-content: flex-end;
+    max-inline-size: calc(100% - 17rem);
+    margin: 0;
+  }
+}
+
+.status {
+  min-inline-size: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.status > span {
+  display: inline;
+}
+
+.clear {
+  flex: none;
+  padding: 0.125rem 0;
+  border: 0;
+  border-block-end: 1px solid var(--line-control);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.clear:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.clear:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* ---- Board ---- */
+
+.board {
+  position: relative;
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(2.5rem, 1fr) max-content;
+  grid-template-rows: auto repeat(4, minmax(0, 1fr));
+  column-gap: 0.25rem;
+}
+
+.side {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+}
+
+.side[data-side="o"] {
+  grid-column: 1;
+}
+
+.side[data-side="i"] {
+  grid-column: 3;
+}
+
+.head {
+  align-self: end;
+  padding: 0 0.25rem 0.25rem;
+}
+
+.side[data-side="i"] .head {
+  text-align: end;
+}
+
+/* A jack is the whole row: its name and its ring. Only the jack takes the
+   gesture, so a swipe that starts anywhere else on the board still scrolls. */
+.jack {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  min-block-size: 1.75rem;
+  margin: 0;
+  padding: 0 0.25rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.jack:active {
+  cursor: grabbing;
+}
+
+.side[data-side="i"] .jack {
+  flex-direction: row-reverse;
+}
+
+.jack:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.name {
+  white-space: nowrap;
+}
+
+@media (pointer: coarse) {
+  .jack {
+    min-block-size: 2.75rem;
+  }
+}
+
+/* ---- Ring ---- */
+
+.ring {
+  flex: none;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+}
+
+.ring svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+}
+
+.hole {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.pin {
+  fill: currentColor;
+}
+
+/* Patched: the ring fills with ink. A scale on a solid disc, never a fill
+   transition. */
+.fill {
+  fill: currentColor;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.jack[data-patched] .fill {
+  transform: scale(1);
+}
+
+.jack[data-patched] .pin {
+  opacity: 0;
+}
+
+/* Armed (keyboard or tap) and drop target (drag): one outer hairline ring. */
+.halo {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0;
+  transform: scale(0.8);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 180ms ease-out,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.jack[aria-pressed="true"] .halo,
+.ring[data-target] .halo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (hover: hover) {
+  .jack:hover .halo {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+/* ---- Cables ---- */
+
+.wires {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+
+.wires path {
+  vector-effect: non-scaling-stroke;
+}
+
+.live {
+  opacity: 0;
+}
+
+.live[data-on] {
+  opacity: 0.7;
+}
+
+/* A new cable is drawn along its chord; scaling Y drops the sag into place
+   while both plugged ends stay put. */
+.settle {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: settle 420ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+@keyframes settle {
+  0% {
+    transform: scaleY(0.35);
+  }
+  55% {
+    transform: scaleY(1.12);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settle {
+    animation: none;
+  }
+
+  .fill,
+  .halo {
+    transition: none;
+  }
+}

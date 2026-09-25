@@ -10,21 +10,11 @@
     "skipToContent": "Preskoči na sadržaj"
   },
   "Footer": {
-    "tagline": "Sučelja za svijet. Voyager, Polis, Funda, MidiFlow i Patchbay su naši; klijentske stranice isti su rad pod tuđim imenom.",
-    "location": "Istra, Hrvatska · EU",
-    "work": {
-      "heading": "Radovi",
-      "index": "Svi radovi",
-      "voyager": "Voyager",
-      "polis": "Polis",
-      "funda": "Funda",
-      "velum": "Velum",
-      "astyleMarine": "AstyleMarine"
-    },
-    "company": {
-      "heading": "Tvrtka"
-    },
-    "cta": "Donesite nam svoj najzamršeniji sustav"
+    "location": "Vrsar, Hrvatska",
+    "tagline": "Sučelja za svijet.",
+    "contact": "Kontakt",
+    "github": "GitHub",
+    "imprint": "Impresum"
   },
   "LocaleSwitcher": {
     "label": "Jezik"
@@ -76,43 +66,24 @@
     }
   },
   "HomePage": {
-    "hero": {
-      "eyebrow": "Intrface · Istra, Hrvatska",
-      "title": "Sučelja za svijet.",
-      "lead": "Sučelje je sloj kroz koji čovjek susreće sustav: posjetitelj i mjesto, građanin i institucija, glazbenik i zvuk. Gradimo ljudsku stranu koja nedostaje — za sebe i za tvrtke koje nas angažiraju.",
-      "seeWork": "Pogledajte što gradimo",
-      "talk": "Donesite nam svoj sustav",
-      "proofLabel": "Odabrani radovi",
-      "metaTitle": "Sučelja za svijet."
-    },
-    "doctrine": {
-      "house": "Najbolje sučelje čini sustav iza sebe razumljivim, a da ne morate misliti na sučelje."
-    },
     "products": {
-      "label": "Što gradimo",
-      "title": "Pet vlastitih proizvoda.",
-      "intro": "Naši proizvodi i njihov trenutačni status.",
-      "pairLabel": "Između",
       "voyager": {
         "name": "Voyager",
         "status": "U produkciji",
         "interface": "Sučelje za mjesto.",
-        "pair": "posjetitelj ↔ mjesto",
-        "linkLabel": "Pogledajte projekt"
+        "pair": "posjetitelj ↔ mjesto"
       },
       "polis": {
         "name": "Polis",
         "status": "Uskoro",
         "interface": "Građanska sučelja",
-        "pair": "građanin ↔ institucija",
-        "linkLabel": "Pogledajte projekt"
+        "pair": "građanin ↔ institucija"
       },
       "funda": {
         "name": "Funda",
         "status": "Uskoro",
         "interface": "EU fondovi",
-        "pair": "organizacija ↔ fondovi",
-        "linkLabel": "Pogledajte projekt"
+        "pair": "organizacija ↔ fondovi"
       },
       "midiflow": {
         "name": "MidiFlow",
@@ -126,35 +97,6 @@
         "interface": "Kreativna suradnja",
         "pair": "umjetnik ↔ umjetnik"
       }
-    },
-    "proof": {
-      "title": "Web-stranice za klijente i naš proizvod.",
-      "pair": "kupac ↔ tvrtka"
-    },
-    "ground": {
-      "here": "Odavde",
-      "world": "u svijet"
-    },
-    "contact": {
-      "label": "Kontakt",
-      "title": "Donesite nam svoj najzamršeniji sustav.",
-      "intro": "Recite nam što je teško razumjeti, što usporava rad i kojim brojkama nitko ne vjeruje.",
-      "helpsLabel": "Što pomaže",
-      "helps": [
-        "Što sustav danas radi i tko ga vodi.",
-        "Gdje puca, ili gdje nitko ne vjeruje brojkama.",
-        "Svaki rok koji je već fiksan."
-      ],
-      "reply": "Odgovor u jednom radnom danu.",
-      "phoneNote": "Ako je hitno, nazovite <tel>{phone}</tel>.",
-      "dataNote": "Vašu poruku čuvamo kako bismo na nju odgovorili i ne koristimo je ni za što drugo. Zatražite brisanje i bit će izbrisana.",
-      "mailNote": "Ili pišite izravno na <mail>{email}</mail>.",
-      "topics": [
-        "Poslovni sustav",
-        "Tehnička strategija",
-        "Klijentska stranica",
-        "Javna infrastruktura"
-      ]
     }
   },
   "WorkIndex": {
@@ -199,14 +141,12 @@
     "name": "Polis",
     "domain": "Građanska sučelja",
     "status": "Uskoro",
-    "backToWork": "Natrag na radove",
     "contact": "Javite nam se"
   },
   "WorkFunda": {
     "name": "Funda",
     "domain": "EU fondovi",
     "status": "Uskoro",
-    "backToWork": "Natrag na radove",
     "contact": "Javite nam se"
   },
   "WorkClientSites": {
@@ -378,6 +318,129 @@
       "detailCaption": "Jahta i njezine specifikacije.",
       "mobileAlt": "AstyleMarineova početna stranica za najam jahti na mobitelu.",
       "mobileCaption": "AstyleMarine na mobitelu."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "gridLabel": "Sučelja koja radi INTRFACE",
+      "open": "Otvori",
+      "openName": "Otvori {name}",
+      "live": "U produkciji",
+      "comingSoon": "Uskoro",
+      "liveSite": "Stranica uživo",
+      "makerMark": "INTRFACE početna",
+      "backToGrid": "Natrag na mrežu"
+    },
+    "voyager": {
+      "name": "Voyager",
+      "line": "Sučelje za mjesto.",
+      "hint": "Povucite kartu. Mjesta oko Vrsara.",
+      "chartLabel": "Karta mjesta oko Vrsara",
+      "credit": "Obala © suradnici OpenStreetMapa",
+      "keys": "Strelice pomiču kartu. Enter vodi na sljedeće mjesto.",
+      "places": {
+        "vrsar": "Vrsar",
+        "montraker": "Punta Montraker",
+        "koversada": "Koversada",
+        "dzamonja": "Park skulptura Dušana Džamonje",
+        "kontija": "Šuma Kontija",
+        "lim": "Limski zaljev",
+        "funtana": "Funtana"
+      }
+    },
+    "index": {
+      "name": "Indeks",
+      "line": "Sve što radimo, u jednoj pretrazi.",
+      "placeholder": "Pretraži sučelja",
+      "searchLabel": "Pretraži sve što INTRFACE radi",
+      "empty": "Ništa pod tim imenom.",
+      "products": "Proizvodi",
+      "clientSites": "Klijentske stranice",
+      "pages": "Stranice",
+      "results": "{count, plural, =0 {Nema rezultata} one {# rezultat} few {# rezultata} other {# rezultata}}",
+      "clear": "Očisti pretragu"
+    },
+    "midiflow": {
+      "name": "MidiFlow",
+      "line": "Glazba.",
+      "hint": "Dodirnite korake. Zvuk kreće na vaš dodir.",
+      "gridLabel": "Step sekvencer",
+      "play": "Sviraj",
+      "stop": "Stani",
+      "clear": "Očisti",
+      "tempo": "Tempo",
+      "step": "Korak {step}, {note}",
+      "on": "uključen",
+      "off": "isključen"
+    },
+    "patchbay": {
+      "name": "Patchbay",
+      "line": "Kreativna suradnja.",
+      "hint": "Povucite kabel od jednog priključka do drugog.",
+      "boardLabel": "Patch ploča",
+      "outputs": "Izlaz",
+      "inputs": "Ulaz",
+      "jacks": {
+        "voice": "glas",
+        "keys": "klavijature",
+        "drums": "bubnjevi",
+        "bass": "bas",
+        "mix": "miks",
+        "room": "prostor",
+        "tape": "traka",
+        "stream": "stream"
+      },
+      "connected": "{from} u {to}",
+      "clear": "Odspoji",
+      "jackLabel": "Priključak {name}, {state}",
+      "free": "slobodan",
+      "patched": "spojen"
+    },
+    "polis": {
+      "name": "Polis",
+      "line": "Građanska sučelja.",
+      "hint": "Prijavite nešto. Gledajte kako postaje predmet.",
+      "mapLabel": "Odaberite mjesto",
+      "categoryLabel": "O čemu se radi",
+      "categories": {
+        "road": "Cesta",
+        "light": "Rasvjeta",
+        "waste": "Otpad"
+      },
+      "report": "Prijavi",
+      "caseLabel": "Predmet {id}",
+      "states": {
+        "received": "Zaprimljeno",
+        "assigned": "Dodijeljeno",
+        "resolved": "Riješeno"
+      },
+      "empty": "Još ništa nije prijavljeno."
+    },
+    "funda": {
+      "name": "Funda",
+      "line": "EU fondovi.",
+      "hint": "Odaberite tko ste i što vam treba.",
+      "whoLabel": "Tko ste",
+      "needLabel": "Što vam treba",
+      "who": {
+        "municipality": "Općina",
+        "company": "Tvrtka",
+        "association": "Udruga"
+      },
+      "need": {
+        "energy": "Energija",
+        "digital": "Digitalno",
+        "culture": "Kultura"
+      },
+      "matches": "{count, plural, =0 {Nema podudaranja} one {# podudaranje} few {# podudaranja} other {# podudaranja}}",
+      "pickBoth": "Odaberite po jedno.",
+      "deadline": "Rok",
+      "share": "Udio"
+    },
+    "capture": {
+      "hint": "Listajte stranicu.",
+      "frameLabel": "{name} na telefonu. Listajte da pročitate stranicu.",
+      "desktopLabel": "{name} na zaslonu računala."
     }
   }
 }

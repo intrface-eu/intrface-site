@@ -8,9 +8,9 @@ import FRAG from "./vector-ground.frag.glsl";
 /**
  * The live ground: a field of short lines, one per grid vertex, each pointing
  * at the pointer, so the whole field answers the hand as rays into it.
- * Scrolling moves the field through four states, keyed to the two places the
- * page leaves for it (`data-ground-key`): a band of open paper, and the edge
- * the contact close joins the footer on. The kinds, as the shader names them:
+ * Scrolling moves the field through four states, keyed to the elements a
+ * page marks with `data-ground-key` ("land", and optionally "mark"). The
+ * kinds, as the shader names them:
  *
  *   0  contour — a slow height map read as a topographic chart: each line lies
  *                along its isoline, strong on a contour level and faint
@@ -23,15 +23,12 @@ import FRAG from "./vector-ground.frag.glsl";
  *   3  land    — the last gathering, into the outline of Istria, again with a
  *                share of lines kept behind it
  *
- * The home page runs them in the order contour (hero), land (first band),
- * contour again, mark (the close's edge); `kindFor` in the vertex shader maps
- * the scroll stage to the kind. The flow kind is still in the shader but off
- * the sequence: the field keeps one style and only the two gatherings vary it. The land band stands between the evidence and the
- * products; the mark is keyed from the bottom edge of the contact close
- * instead of a band of its own, so the close shows the contour map the way
- * What we build does and the mark is gathered by the time the footer holds the
- * screen. A page with only the land band, as about has, stops at contour:
- * `stageFor` caps the stage at 2 when there is no second key.
+ * `kindFor` in the vertex shader maps the scroll stage to the kind: contour,
+ * land, contour again, mark. The flow kind is still in the shader but off the
+ * sequence. No page keys the mark today. The home page keys the land from the
+ * footer, so the field is a contour map under the grid and gathers into
+ * Istria as the footer arrives; about keys it from its own band, which comes
+ * first in the document. Without a mark key `stageFor` caps the stage at 2.
  *
  * Everything is one instanced draw: a quad per line, the grid position derived
  * from the instance index, the mark and land targets, a per-line jitter and a
@@ -41,16 +38,14 @@ import FRAG from "./vector-ground.frag.glsl";
  *
  * The land carries one mark: a red X on Vrsar, drawn by a few dozen lines
  * taken from the pool that would otherwise join the coast. They set out late,
- * so the X lands after the coast has settled, and once the X is there the
- * component sets `data-ground-x` on the land band — the two phrases beside it
- * are CSS from that attribute on. The plate is fixed to the screen while the
- * band scrolls past it, so the loop also writes the X's live screen point as
- * one transform on the layer the phrases sit on, and they ride the map instead
- * of the document.
+ * so the X lands after the coast has settled. Once the X is there the
+ * component sets `data-ground-x` on the land element, and the loop writes the
+ * X's live screen point as `--ground-travel-x/y` on it. Nothing reads either
+ * at the moment; they are the hooks for type that rides the map.
  *
  * Where WebGL2 is missing, or the reader prefers reduced motion, the CSS dot
  * ground under this canvas stays as it is and this component never activates:
- * no X, no phrases.
+ * no X.
  */
 
 const CELL = 18;

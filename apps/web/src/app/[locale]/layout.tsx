@@ -5,6 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { HeaderGate } from "@/components/layout/header-gate";
 import { OrganizationJsonLd } from "@/components/site/organization-jsonld";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { SITE_NAME, SITE_URL } from "@/lib/site/config";
@@ -101,7 +102,9 @@ export default async function LocaleLayout({
           <a className="skip-link type-caption" href="#main-content">
             {nav("skipToContent")}
           </a>
-          <Header locale={activeLocale} />
+          <HeaderGate>
+            <Header locale={activeLocale} />
+          </HeaderGate>
           {/* Each page renders its own `<main>`, so the landmark's wrapper is
               what the skip link can name. `tabIndex={-1}` is what makes the
               jump move focus and not just the scroll position; the ring is off

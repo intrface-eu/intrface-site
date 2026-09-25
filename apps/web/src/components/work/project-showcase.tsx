@@ -19,6 +19,7 @@ export async function ProjectShowcase({ locale, projectKey }: {
   projectKey: ProjectKey;
 }) {
   const t = await getTranslations({ locale, namespace: "Projects" });
+  const grid = await getTranslations({ locale, namespace: "HomeGrid.common" });
   const project = PROJECTS[projectKey];
   const nextKey = SELECTED_PROJECTS[(SELECTED_PROJECTS.indexOf(projectKey) + 1) % SELECTED_PROJECTS.length];
   const next = PROJECTS[nextKey];
@@ -26,9 +27,9 @@ export async function ProjectShowcase({ locale, projectKey }: {
   return (
     <main className="bg-paper text-ink">
       <header className="section-shell pb-10 pt-10 sm:pb-12 sm:pt-14">
-        <Link className={textLink} href="/work" locale={locale}>
+        <Link className={textLink} href="/" locale={locale}>
           <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
-          {t("allWork")}
+          {grid("backToGrid")}
         </Link>
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>

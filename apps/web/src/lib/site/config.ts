@@ -21,6 +21,8 @@ export const CONTACT_PHONE_TEL = "+385991905899";
 
 export const AOC_REPO_URL = "https://github.com/basicalex/agent-ops-cockpit";
 
+export const GITHUB_URL = "https://github.com/basicalex";
+
 /** Every locale-prefixed route on the site. Sitemap, hreflang, and nav read from here. */
 export const SITE_PATHS = [
   "/",

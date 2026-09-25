@@ -14,10 +14,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
-  // The home page titles itself off its own headline, so the search result and
-  // the first screen say the same thing.
-  const home = await getTranslations({ locale, namespace: "HomePage" });
-  const title = home("hero.metaTitle");
+  // The home page has no headline of its own; it titles itself with the tagline.
+  const title = t("tagline");
 
   return {
     ...buildPageMetadata({

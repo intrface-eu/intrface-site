@@ -21,10 +21,13 @@ export function MobileNav({ items, menuLabel }: { items: readonly NavItem[]; men
   const close = useCallback(() => setOpen(false), []);
 
   // A route change must not leave a menu open on top of the new page — or, worse,
-  // a locked body with nothing covering it.
-  useEffect(() => {
+  // a locked body with nothing covering it. The reset happens during render,
+  // the way React adjusts state when a prop changes, not in an effect.
+  const [seenPathname, setSeenPathname] = useState(pathname);
+  if (pathname !== seenPathname) {
+    setSeenPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   // The panel is a modal layer: it covers the page, so Escape closes it and Tab
   // stays inside it.

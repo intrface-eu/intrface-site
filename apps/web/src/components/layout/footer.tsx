@@ -5,6 +5,9 @@ import { LocaleSwitcher } from "@/components/site/locale-switcher";
 import type { AppLocale } from "@/i18n/routing";
 import {
   CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  GITHUB_URL,
   SITE_NAME,
 } from "@/lib/site/config";
 
@@ -12,91 +15,70 @@ import {
 const WORDMARK = [..."INTRFACE"];
 
 const linkClass =
-  "text-sm leading-6 text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none";
+  "type-caption text-ink-muted transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none";
 
+/**
+ * The footer: one short block and the signature. Name and place, the tagline,
+ * the two direct channels, GitHub, the imprint, the locale and the year. No
+ * link groups and no form; the header (on every page but home) carries the
+ * navigation, and the grid is the home page's index.
+ *
+ * On the home page the footer is also where the ground draws Istria and puts
+ * the X on Vrsar: `data-ground-key="land"` sits on the footer itself, and the
+ * footer is at least 55vh tall (`.site-footer`), so at the foot of the page
+ * its centre is within a quarter viewport of the viewport's centre and
+ * `stageFor` brings the gathering to completion. On about the page's own land
+ * band comes first in the document, so the ground keys from that instead, and
+ * pages without the ground ignore the attribute.
+ */
 export async function Footer({ locale }: { locale: AppLocale }) {
   const nav = await getTranslations({ locale, namespace: "Nav" });
   const t = await getTranslations({ locale, namespace: "Footer" });
   const year = new Date().getFullYear();
 
-  const internalGroups = [
-    {
-      id: "footer-work",
-      heading: t("work.heading"),
-      links: [
-        { href: "/work", label: t("work.index") },
-        { href: "/work/velum", label: t("work.velum") },
-        { href: "/work/voyager", label: t("work.voyager") },
-        { href: "/work/astyle-marine", label: t("work.astyleMarine") },
-        { href: "/work/polis", label: t("work.polis") },
-        { href: "/work/funda", label: t("work.funda") },
-      ],
-    },
-    {
-      id: "footer-company",
-      heading: t("company.heading"),
-      links: [
-        { href: "/about", label: nav("about") },
-        { href: "/imprint", label: nav("imprint") },
-      ],
-    },
-  ] as const;
-
   return (
-    <footer className="site-footer bg-paper text-ink">
-      {/* No rules anywhere in the footer: the field runs from the contact
-          close straight into the signature. The signature carries the name,
-          so there is no small mark here, and the contact section a screen
-          above carries the call, so only the address remains. */}
-      {/* The footer is where the field is meant to show, so the address, the
-          colophon and the signature carry no quiet at all and the mark draws
-          straight through them. The link lists are the one exception: the mark
-          gathers at the middle of the viewport, and at full strength it took
-          `Velum` and `Imprint` off the page. Each column quiets only its own
-          words — `w-fit` keeps the nav as narrow as its longest link, so the
-          quiet rectangle is the text and not the column, and the mark still
-          runs at full strength through the gap between the two. */}
-      <div className="section-shell grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
-        <div>
-          <p className="type-body-sm max-w-sm">{t("tagline")}</p>
-          <a
-            className="mt-6 block break-words text-sm font-semibold text-accent transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
-            href={`mailto:${CONTACT_EMAIL}`}
-          >
-            {CONTACT_EMAIL}
-          </a>
-        </div>
-
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8">
-          {internalGroups.map((group) => (
-            <nav aria-labelledby={group.id} className="w-fit" data-ground-quiet="" key={group.id}>
-              <h2 className="type-meta text-ink" id={group.id}>
-                {group.heading}
-              </h2>
-              <ul className="mt-5 grid gap-2.5">
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <Link className={linkClass} href={link.href}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
-
-
-        </div>
-      </div>
-
-      <div className="section-shell">
-        <div className="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between">
-          {/* A 38-character sentence, not a label: sentence case keeps the word
-              shapes a reader navigates by. Imprint lives under Company above. */}
-          <p className="type-caption">
-            © {year} {SITE_NAME} · {t("location")}
+    <footer className="site-footer bg-paper text-ink" data-ground-key="land">
+      {/* The ground's lines quiet under the block and stay at full strength
+          everywhere else in the footer, so the map reads through it. */}
+      <div className="section-shell site-footer__block pt-16 sm:pt-20">
+        <div className="site-footer__about" data-ground-quiet="">
+          <p className="type-title">
+            {SITE_NAME} · {t("location")}
           </p>
+          <p className="type-body-sm mt-2">{t("tagline")}</p>
+        </div>
+
+        {/* The target of every "Contact" link on the site (`/#contact`). */}
+        <div className="site-footer__contact" data-ground-quiet="" id="contact">
+          <h2 className="type-meta">{t("contact")}</h2>
+          <ul className="mt-3 grid gap-1">
+            <li>
+              <a
+                className="type-caption font-semibold text-accent transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none"
+                href={`mailto:${CONTACT_EMAIL}`}
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </li>
+            <li>
+              <a className={linkClass} href={`tel:${CONTACT_PHONE_TEL}`}>
+                {CONTACT_PHONE_DISPLAY}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="site-footer__colophon" data-ground-quiet="">
+          <a className={linkClass} href={GITHUB_URL} rel="me noopener noreferrer">
+            {t("github")}
+          </a>
+          <Link className={linkClass} href="/imprint">
+            {t("imprint")}
+          </Link>
           <LocaleSwitcher />
+          <p className="type-caption">
+            © {year} {SITE_NAME}
+          </p>
         </div>
       </div>
 

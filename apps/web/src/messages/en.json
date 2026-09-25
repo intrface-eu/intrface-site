@@ -10,21 +10,11 @@
     "skipToContent": "Skip to content"
   },
   "Footer": {
-    "tagline": "Interfaces for the world. Voyager, Polis, Funda, MidiFlow and Patchbay are our own; client sites are the same work under someone else's name.",
-    "location": "Istria, Croatia · EU",
-    "work": {
-      "heading": "Work",
-      "index": "All work",
-      "voyager": "Voyager",
-      "polis": "Polis",
-      "funda": "Funda",
-      "velum": "Velum",
-      "astyleMarine": "AstyleMarine"
-    },
-    "company": {
-      "heading": "Company"
-    },
-    "cta": "Bring us the messy system"
+    "location": "Vrsar, Croatia",
+    "tagline": "Interfaces for the world.",
+    "contact": "Contact",
+    "github": "GitHub",
+    "imprint": "Imprint"
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -76,43 +66,24 @@
     }
   },
   "HomePage": {
-    "hero": {
-      "eyebrow": "Intrface · Istria, Croatia",
-      "title": "Interfaces for the world.",
-      "lead": "An interface is the layer a person meets a system through: a visitor and a place, a citizen and an institution, a musician and a sound. We build the missing human side, for ourselves and for the businesses that hire us.",
-      "seeWork": "See what we build",
-      "talk": "Bring us yours",
-      "proofLabel": "Selected work",
-      "metaTitle": "Interfaces for the world."
-    },
-    "doctrine": {
-      "house": "The best interface makes the system behind it understandable without making you think about it twice."
-    },
     "products": {
-      "label": "What we build",
-      "title": "Five of our own.",
-      "intro": "Our products, with their current status.",
-      "pairLabel": "Between",
       "voyager": {
         "name": "Voyager",
         "status": "Live",
         "interface": "The interface for a place.",
-        "pair": "visitor ↔ place",
-        "linkLabel": "View project"
+        "pair": "visitor ↔ place"
       },
       "polis": {
         "name": "Polis",
         "status": "Coming soon",
         "interface": "Civic interfaces",
-        "pair": "citizen ↔ institution",
-        "linkLabel": "View project"
+        "pair": "citizen ↔ institution"
       },
       "funda": {
         "name": "Funda",
         "status": "Coming soon",
         "interface": "EU funding",
-        "pair": "organization ↔ funding",
-        "linkLabel": "View project"
+        "pair": "organization ↔ funding"
       },
       "midiflow": {
         "name": "MidiFlow",
@@ -126,35 +97,6 @@
         "interface": "Creative collaboration",
         "pair": "artist ↔ artist"
       }
-    },
-    "proof": {
-      "title": "Client sites and a product of our own.",
-      "pair": "customer ↔ business"
-    },
-    "ground": {
-      "here": "From here",
-      "world": "to the world"
-    },
-    "contact": {
-      "label": "Contact",
-      "title": "Bring us the messy system.",
-      "intro": "Tell us what is hard to understand, slow to operate, or difficult to trust.",
-      "helpsLabel": "What helps",
-      "helps": [
-        "What the system does today, and who operates it.",
-        "Where it breaks, or where nobody trusts the numbers.",
-        "Any date that is already fixed."
-      ],
-      "reply": "An answer within one working day.",
-      "phoneNote": "If it is urgent, call <tel>{phone}</tel>.",
-      "dataNote": "Your message is stored so it can be answered, and used for nothing else. Ask for it to be deleted and it will be.",
-      "mailNote": "Or write straight to <mail>{email}</mail>.",
-      "topics": [
-        "Business system",
-        "Technical strategy",
-        "Client site",
-        "Civic infrastructure"
-      ]
     }
   },
   "WorkIndex": {
@@ -199,14 +141,12 @@
     "name": "Polis",
     "domain": "Civic interfaces",
     "status": "Coming soon",
-    "backToWork": "Back to work",
     "contact": "Contact us"
   },
   "WorkFunda": {
     "name": "Funda",
     "domain": "EU funding",
     "status": "Coming soon",
-    "backToWork": "Back to work",
     "contact": "Contact us"
   },
   "WorkClientSites": {
@@ -378,6 +318,129 @@
       "detailCaption": "The yacht and its specifications.",
       "mobileAlt": "The AstyleMarine yacht charter home page on a phone.",
       "mobileCaption": "AstyleMarine on mobile."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "gridLabel": "Interfaces made by INTRFACE",
+      "open": "Open",
+      "openName": "Open {name}",
+      "live": "Live",
+      "comingSoon": "Coming soon",
+      "liveSite": "Live site",
+      "makerMark": "INTRFACE home",
+      "backToGrid": "Back to the grid"
+    },
+    "voyager": {
+      "name": "Voyager",
+      "line": "The interface for a place.",
+      "hint": "Drag the chart. Places around Vrsar.",
+      "chartLabel": "Chart of places around Vrsar",
+      "credit": "Coastline © OpenStreetMap contributors",
+      "keys": "Arrow keys move the chart. Enter goes to the next place.",
+      "places": {
+        "vrsar": "Vrsar",
+        "montraker": "Punta Montraker",
+        "koversada": "Koversada",
+        "dzamonja": "Dušan Džamonja Sculpture Park",
+        "kontija": "Kontija Forest",
+        "lim": "Lim Bay",
+        "funtana": "Funtana"
+      }
+    },
+    "index": {
+      "name": "Index",
+      "line": "Everything we make, in one search.",
+      "placeholder": "Search interfaces",
+      "searchLabel": "Search everything INTRFACE makes",
+      "empty": "Nothing by that name.",
+      "products": "Products",
+      "clientSites": "Client sites",
+      "pages": "Pages",
+      "results": "{count, plural, =0 {No results} one {# result} other {# results}}",
+      "clear": "Clear search"
+    },
+    "midiflow": {
+      "name": "MidiFlow",
+      "line": "Music.",
+      "hint": "Tap the steps. Sound starts on your touch.",
+      "gridLabel": "Step sequencer",
+      "play": "Play",
+      "stop": "Stop",
+      "clear": "Clear",
+      "tempo": "Tempo",
+      "step": "Step {step}, {note}",
+      "on": "on",
+      "off": "off"
+    },
+    "patchbay": {
+      "name": "Patchbay",
+      "line": "Creative collaboration.",
+      "hint": "Drag a cable from one jack to another.",
+      "boardLabel": "Patch board",
+      "outputs": "Out",
+      "inputs": "In",
+      "jacks": {
+        "voice": "voice",
+        "keys": "keys",
+        "drums": "drums",
+        "bass": "bass",
+        "mix": "mix",
+        "room": "room",
+        "tape": "tape",
+        "stream": "stream"
+      },
+      "connected": "{from} to {to}",
+      "clear": "Clear",
+      "jackLabel": "{name} jack, {state}",
+      "free": "free",
+      "patched": "patched"
+    },
+    "polis": {
+      "name": "Polis",
+      "line": "Civic interfaces.",
+      "hint": "Report something. Watch it become a case.",
+      "mapLabel": "Pick a spot",
+      "categoryLabel": "What is it",
+      "categories": {
+        "road": "Road",
+        "light": "Light",
+        "waste": "Waste"
+      },
+      "report": "Report",
+      "caseLabel": "Case {id}",
+      "states": {
+        "received": "Received",
+        "assigned": "Assigned",
+        "resolved": "Resolved"
+      },
+      "empty": "Nothing reported yet."
+    },
+    "funda": {
+      "name": "Funda",
+      "line": "EU funding.",
+      "hint": "Pick who you are and what you need.",
+      "whoLabel": "Who you are",
+      "needLabel": "What you need",
+      "who": {
+        "municipality": "Municipality",
+        "company": "Company",
+        "association": "Association"
+      },
+      "need": {
+        "energy": "Energy",
+        "digital": "Digital",
+        "culture": "Culture"
+      },
+      "matches": "{count, plural, =0 {No match} one {# match} other {# matches}}",
+      "pickBoth": "Pick one of each.",
+      "deadline": "Deadline",
+      "share": "Share"
+    },
+    "capture": {
+      "hint": "Scroll the page.",
+      "frameLabel": "{name} on a phone. Scroll to read the page.",
+      "desktopLabel": "{name} on a desktop screen."
     }
   }
 }

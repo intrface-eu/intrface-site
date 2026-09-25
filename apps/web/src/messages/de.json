@@ -10,21 +10,11 @@
     "skipToContent": "Zum Inhalt springen"
   },
   "Footer": {
-    "tagline": "Schnittstellen für die Welt. Voyager, Polis, Funda, MidiFlow und Patchbay sind unsere eigenen; Kundenseiten sind dieselbe Arbeit unter fremdem Namen.",
-    "location": "Istrien, Kroatien · EU",
-    "work": {
-      "heading": "Arbeiten",
-      "index": "Alle Arbeiten",
-      "voyager": "Voyager",
-      "polis": "Polis",
-      "funda": "Funda",
-      "velum": "Velum",
-      "astyleMarine": "AstyleMarine"
-    },
-    "company": {
-      "heading": "Unternehmen"
-    },
-    "cta": "Her mit dem chaotischen System"
+    "location": "Vrsar, Kroatien",
+    "tagline": "Schnittstellen für die Welt.",
+    "contact": "Kontakt",
+    "github": "GitHub",
+    "imprint": "Impressum"
   },
   "LocaleSwitcher": {
     "label": "Sprache"
@@ -76,43 +66,24 @@
     }
   },
   "HomePage": {
-    "hero": {
-      "eyebrow": "Intrface · Istrien, Kroatien",
-      "title": "Schnittstellen für die Welt.",
-      "lead": "Eine Schnittstelle ist die Schicht, durch die ein Mensch einem System begegnet: ein Gast und ein Ort, ein Bürger und eine Institution, ein Musiker und ein Klang. Wir bauen die fehlende menschliche Seite — für uns selbst und für die Betriebe, die uns beauftragen.",
-      "seeWork": "Sehen, was wir bauen",
-      "talk": "Her mit Ihrer Schnittstelle",
-      "proofLabel": "Ausgewählte Arbeiten",
-      "metaTitle": "Schnittstellen für die Welt."
-    },
-    "doctrine": {
-      "house": "Die beste Schnittstelle macht das System dahinter verständlich, ohne dass man an die Schnittstelle denkt."
-    },
     "products": {
-      "label": "Was wir bauen",
-      "title": "Fünf eigene.",
-      "intro": "Unsere Produkte mit ihrem aktuellen Stand.",
-      "pairLabel": "Zwischen",
       "voyager": {
         "name": "Voyager",
         "status": "Live",
         "interface": "Die Schnittstelle für einen Ort.",
-        "pair": "Gast ↔ Ort",
-        "linkLabel": "Projekt ansehen"
+        "pair": "Gast ↔ Ort"
       },
       "polis": {
         "name": "Polis",
         "status": "Demnächst",
         "interface": "Bürgerschnittstellen",
-        "pair": "Bürger ↔ Institution",
-        "linkLabel": "Projekt ansehen"
+        "pair": "Bürger ↔ Institution"
       },
       "funda": {
         "name": "Funda",
         "status": "Demnächst",
         "interface": "EU-Förderung",
-        "pair": "Organisation ↔ Förderung",
-        "linkLabel": "Projekt ansehen"
+        "pair": "Organisation ↔ Förderung"
       },
       "midiflow": {
         "name": "MidiFlow",
@@ -126,35 +97,6 @@
         "interface": "Kreative Zusammenarbeit",
         "pair": "Künstler ↔ Künstler"
       }
-    },
-    "proof": {
-      "title": "Kundenwebsites und ein eigenes Produkt.",
-      "pair": "Kunde ↔ Betrieb"
-    },
-    "ground": {
-      "here": "Von hier",
-      "world": "in die Welt"
-    },
-    "contact": {
-      "label": "Kontakt",
-      "title": "Her mit dem chaotischen System.",
-      "intro": "Sagen Sie uns, was schwer zu verstehen ist, was den Betrieb bremst und welchen Zahlen niemand traut.",
-      "helpsLabel": "Was hilft",
-      "helps": [
-        "Was das System heute tut und wer es betreibt.",
-        "Wo es bricht, oder wo niemand den Zahlen traut.",
-        "Jeder Termin, der schon feststeht."
-      ],
-      "reply": "Eine Antwort innerhalb eines Werktags.",
-      "phoneNote": "Wenn es dringend ist, rufen Sie <tel>{phone}</tel> an.",
-      "dataNote": "Ihre Nachricht wird gespeichert, damit wir sie beantworten können, und für nichts anderes verwendet. Bitten Sie um Löschung, und sie wird gelöscht.",
-      "mailNote": "Oder schreiben Sie direkt an <mail>{email}</mail>.",
-      "topics": [
-        "Geschäftssystem",
-        "Technische Strategie",
-        "Kundenwebsite",
-        "Öffentliche Infrastruktur"
-      ]
     }
   },
   "WorkIndex": {
@@ -199,14 +141,12 @@
     "name": "Polis",
     "domain": "Bürgerschnittstellen",
     "status": "Demnächst",
-    "backToWork": "Zurück zu den Arbeiten",
     "contact": "Kontakt aufnehmen"
   },
   "WorkFunda": {
     "name": "Funda",
     "domain": "EU-Förderung",
     "status": "Demnächst",
-    "backToWork": "Zurück zu den Arbeiten",
     "contact": "Kontakt aufnehmen"
   },
   "WorkClientSites": {
@@ -378,6 +318,129 @@
       "detailCaption": "Die Yacht und ihre technischen Daten.",
       "mobileAlt": "AstyleMarines Yachtcharter-Startseite auf einem Smartphone.",
       "mobileCaption": "AstyleMarine auf dem Smartphone."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "gridLabel": "Interfaces von INTRFACE",
+      "open": "Öffnen",
+      "openName": "{name} öffnen",
+      "live": "Live",
+      "comingSoon": "Bald",
+      "liveSite": "Live-Seite",
+      "makerMark": "INTRFACE Startseite",
+      "backToGrid": "Zurück zum Raster"
+    },
+    "voyager": {
+      "name": "Voyager",
+      "line": "Das Interface für einen Ort.",
+      "hint": "Karte ziehen. Orte rund um Vrsar.",
+      "chartLabel": "Karte der Orte rund um Vrsar",
+      "credit": "Küstenlinie © OpenStreetMap-Mitwirkende",
+      "keys": "Pfeiltasten bewegen die Karte. Enter springt zum nächsten Ort.",
+      "places": {
+        "vrsar": "Vrsar",
+        "montraker": "Punta Montraker",
+        "koversada": "Koversada",
+        "dzamonja": "Skulpturenpark Dušan Džamonja",
+        "kontija": "Wald Kontija",
+        "lim": "Lim-Bucht",
+        "funtana": "Funtana"
+      }
+    },
+    "index": {
+      "name": "Index",
+      "line": "Alles, was wir machen, in einer Suche.",
+      "placeholder": "Interfaces suchen",
+      "searchLabel": "Alles durchsuchen, was INTRFACE macht",
+      "empty": "Nichts unter diesem Namen.",
+      "products": "Produkte",
+      "clientSites": "Kundenseiten",
+      "pages": "Seiten",
+      "results": "{count, plural, =0 {Keine Treffer} one {# Treffer} other {# Treffer}}",
+      "clear": "Suche löschen"
+    },
+    "midiflow": {
+      "name": "MidiFlow",
+      "line": "Musik.",
+      "hint": "Schritte antippen. Der Ton beginnt mit deiner Berührung.",
+      "gridLabel": "Step-Sequenzer",
+      "play": "Abspielen",
+      "stop": "Stopp",
+      "clear": "Leeren",
+      "tempo": "Tempo",
+      "step": "Schritt {step}, {note}",
+      "on": "an",
+      "off": "aus"
+    },
+    "patchbay": {
+      "name": "Patchbay",
+      "line": "Kreative Zusammenarbeit.",
+      "hint": "Ein Kabel von einer Buchse zur anderen ziehen.",
+      "boardLabel": "Patchfeld",
+      "outputs": "Aus",
+      "inputs": "Ein",
+      "jacks": {
+        "voice": "Stimme",
+        "keys": "Keys",
+        "drums": "Drums",
+        "bass": "Bass",
+        "mix": "Mix",
+        "room": "Raum",
+        "tape": "Band",
+        "stream": "Stream"
+      },
+      "connected": "{from} nach {to}",
+      "clear": "Lösen",
+      "jackLabel": "Buchse {name}, {state}",
+      "free": "frei",
+      "patched": "belegt"
+    },
+    "polis": {
+      "name": "Polis",
+      "line": "Bürger-Interfaces.",
+      "hint": "Etwas melden. Zusehen, wie daraus ein Fall wird.",
+      "mapLabel": "Stelle wählen",
+      "categoryLabel": "Was ist es",
+      "categories": {
+        "road": "Straße",
+        "light": "Licht",
+        "waste": "Abfall"
+      },
+      "report": "Melden",
+      "caseLabel": "Fall {id}",
+      "states": {
+        "received": "Eingegangen",
+        "assigned": "Zugewiesen",
+        "resolved": "Erledigt"
+      },
+      "empty": "Noch nichts gemeldet."
+    },
+    "funda": {
+      "name": "Funda",
+      "line": "EU-Förderung.",
+      "hint": "Wählen, wer du bist und was du brauchst.",
+      "whoLabel": "Wer du bist",
+      "needLabel": "Was du brauchst",
+      "who": {
+        "municipality": "Gemeinde",
+        "company": "Unternehmen",
+        "association": "Verein"
+      },
+      "need": {
+        "energy": "Energie",
+        "digital": "Digital",
+        "culture": "Kultur"
+      },
+      "matches": "{count, plural, =0 {Kein Treffer} one {# Treffer} other {# Treffer}}",
+      "pickBoth": "Je eins wählen.",
+      "deadline": "Frist",
+      "share": "Anteil"
+    },
+    "capture": {
+      "hint": "Seite scrollen.",
+      "frameLabel": "{name} auf einem Telefon. Scrollen, um die Seite zu lesen.",
+      "desktopLabel": "{name} auf einem Desktop-Bildschirm."
     }
   }
 }
