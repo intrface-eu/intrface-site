@@ -326,6 +326,11 @@
       "gridLabel": "Rad studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Natrag na početnu"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "Sezona maslina u Istri, maslinik po maslinik."
+      }
     }
   }
 }

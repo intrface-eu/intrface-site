@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="239 148 831 831" role="img" aria-labelledby="title desc">
+  <title id="title">PatchBay symbol in fresh paper</title>
+  <desc id="desc">The current PatchBay routing symbol for knockout use on dark or colored grounds.</desc>
+  <path
+    fill="#F7F2E6"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M249 184H463V220C463 278 506 324 561 324H837C960 324 1060 423 1060 554C1060 681 966 784 850 784H561C507 784 463 828 463 881V932H249V821C249 686 359 578 494 578H662C674 578 684 568 684 555C684 543 674 533 662 533H494C359 533 249 425 249 289V184ZM812 488C775 488 745 518 745 555C745 592 775 622 812 622C849 622 879 592 879 555C879 518 849 488 812 488Z"
+  />
+</svg>
+

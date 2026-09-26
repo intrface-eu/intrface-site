@@ -326,6 +326,11 @@
       "gridLabel": "Travail d'INTRFACE",
       "makerMark": "Accueil INTRFACE",
       "backToGrid": "Retour à l'accueil"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "La saison des olives en Istrie, parcelle par parcelle."
+      }
     }
   }
 }

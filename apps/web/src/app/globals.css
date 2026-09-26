@@ -1522,14 +1522,17 @@ body {
   }
 
   /* ===== THE WORK (home) =====
-     A bento of four tiles that fills the screen edge to edge: 100svh tall,
-     sticky at the top of the stage (see the veil above). 2×2 equal cells
-     below 1024px; from 1024px a checkerboard on five columns, wide (3) and
-     narrow (2) cells trading places between the rows. Each tile is one link:
-     the real screenshot covering the cell from the top, a faint paper edge
-     so a dark capture does not melt into the black, and a black caption bar
-     over its bottom. No radius, no shadow, no hover effect; the focus
-     ring, drawn inside the tile so nothing clips it, is the only state. */
+     A bento of six tiles that fills the screen edge to edge: 100svh tall,
+     sticky at the top of the stage (see the veil above). 2×3 equal cells
+     below 1024px; from 1024px two rows of three on twelve columns, spans
+     5 + 4 + 3 then 3 + 5 + 4, so wide and narrow cells trade places. Each
+     open tile is one link: the real screenshot covering the cell from the
+     top, a faint paper edge so a dark capture does not melt into the black,
+     and a black caption bar over its bottom with the project's logo. With a
+     mouse the screenshots rest dimmed and come up to full on hover or focus;
+     on touch they show at full. Patchbay is a plain tile that stays dimmed.
+     No radius, no shadow; the focus ring is drawn inside the tile so nothing
+     clips it. */
   .work-tiles {
     --line: color-mix(in srgb, var(--paper) 16%, transparent);
     position: sticky;
@@ -1542,7 +1545,7 @@ body {
     --bento-gap: min(var(--grid-gap), 10px);
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: var(--bento-gap);
     block-size: 100%;
     padding: var(--bento-gap);
@@ -1550,15 +1553,20 @@ body {
 
   @media (min-width: 1024px) {
     .work-tiles__grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
     }
 
-    .work-tile {
-      grid-column: span 2;
-    }
-
-    .work-tile[data-wide] {
+    .work-tile[data-span="3"] {
       grid-column: span 3;
+    }
+
+    .work-tile[data-span="4"] {
+      grid-column: span 4;
+    }
+
+    .work-tile[data-span="5"] {
+      grid-column: span 5;
     }
   }
 
@@ -1622,8 +1630,35 @@ body {
   }
 
   .work-tile__picture {
+    position: relative;
     display: block;
     block-size: 100%;
+  }
+
+  /* Quiet at rest. With a mouse, each screenshot sits under black at half
+     strength and comes up to full while its tile is hovered or focused.
+     Touch screens have no hover, so there the screenshots show at full and
+     one tap opens the link. Patchbay is not a link and stays quiet. */
+  @media (hover: hover) and (pointer: fine) {
+    .work-tile__picture::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a.work-tile:hover .work-tile__picture::after,
+    a.work-tile:focus-visible .work-tile__picture::after {
+      opacity: 0;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .work-tile__picture::after {
+      transition: opacity 200ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
   }
 
   .work-tile__image {
@@ -1640,9 +1675,17 @@ body {
     object-position: top left;
   }
 
-  /* One line at every width: the name and the arrow keep their room, the
-     role line gives way first and ends in an ellipsis. Below 1024px the
-     line is hidden; the link's accessible name still carries it. */
+  .work-tile[data-anchor="right"] .work-tile__image {
+    object-position: top right;
+  }
+
+  /* One line at every width: the logo, the name and the arrow keep their
+     room, the role line gives way first and ends in an ellipsis. Below
+     1024px the line is hidden; the link's accessible name still carries it.
+     From 1024px the name does not shrink at all: an ellipsis on a
+     one-word name reads as a flaw. On Patchbay the status takes the arrow's
+     place; below 768px, where the cell is too narrow for both, it is read
+     out but not shown, like the other tiles' lines. */
   .work-tile__caption {
     position: absolute;
     z-index: 1;
@@ -1658,8 +1701,17 @@ body {
     white-space: nowrap;
   }
 
+  /* The project's own mark, a little taller than the caption's capitals. */
+  .work-tile__logo {
+    flex: none;
+    block-size: 1.125rem;
+    inline-size: auto;
+    margin-inline-end: -0.25rem;
+  }
+
   .work-tile__name,
-  .work-tile__line {
+  .work-tile__line,
+  .work-tile__status {
     min-inline-size: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1681,6 +1733,10 @@ body {
       padding-inline: 0.875rem;
     }
 
+    .work-tile__name {
+      flex-shrink: 0;
+    }
+
     .work-tile__line {
       display: block;
     }
@@ -1689,6 +1745,22 @@ body {
   .work-tile__arrow {
     flex: none;
     margin-inline-start: auto;
+  }
+
+  .work-tile__status {
+    flex: 0 1000 auto;
+    margin-inline-start: auto;
+    color: var(--ink-inverse-muted);
+  }
+
+  @media (max-width: 767.98px) {
+    .work-tile__status {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
   }
 
   /* ===== FOOTER =====

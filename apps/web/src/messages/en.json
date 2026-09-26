@@ -326,6 +326,11 @@
       "gridLabel": "Work by INTRFACE",
       "makerMark": "INTRFACE home",
       "backToGrid": "Back to home"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "The olive season in Istria, field by field."
+      }
     }
   }
 }

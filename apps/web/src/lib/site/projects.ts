@@ -23,9 +23,9 @@ export const PROJECTS: Record<ProjectKey, Project> = {
     name: "Voyager",
     href: "/work/voyager",
     liveUrl: "https://voyager.intrface.eu",
-    desktop: "/proof/projects/voyager/homepage.webp",
+    desktop: "/proof/projects/voyager/desktop-2026-09-26.webp",
     detail: "/proof/projects/voyager/detail.webp",
-    mobile: "/proof/projects/voyager/mobile.webp",
+    mobile: "/proof/projects/voyager/mobile-2026-09-26.webp",
   },
   astyleMarine: {
     name: "AstyleMarine",

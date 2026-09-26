@@ -326,6 +326,11 @@
       "gridLabel": "Arbeit von INTRFACE",
       "makerMark": "INTRFACE Startseite",
       "backToGrid": "Zurück zur Startseite"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "Die Olivensaison in Istrien, Feld für Feld."
+      }
     }
   }
 }
