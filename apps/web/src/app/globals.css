@@ -1526,20 +1526,24 @@ body {
      bar over its bottom. No radius, no shadow, no hover effect; the focus
      ring, drawn inside the tile so nothing clips it, is the only state. */
   .work-tiles {
-    --bento-gap: min(var(--grid-gap), 10px);
     position: sticky;
     inset-block-start: 0;
+    block-size: 100svh;
+    background: var(--paper);
+  }
+
+  .work-tiles__grid {
+    --bento-gap: min(var(--grid-gap), 10px);
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: var(--bento-gap);
-    block-size: 100svh;
+    block-size: 100%;
     padding: var(--bento-gap);
-    background: var(--paper);
   }
 
   @media (min-width: 1024px) {
-    .work-tiles {
+    .work-tiles__grid {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
@@ -1549,6 +1553,37 @@ body {
 
     .work-tile[data-wide] {
       grid-column: span 3;
+    }
+  }
+
+  /* The rise into place. The grid starts 12svh low and eases up to 0 over
+     the first 100svh of scroll, the same run the veil takes to leave, so it
+     lands as the bento unpins. Transform only, on the grid inside the
+     sticky section; the section's box, the stage and the page height do not
+     change. Without scroll-driven animations, or under reduced motion, the
+     grid sits at 0. A focused tile puts it at 0 too, with the veil gone. */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .work-tiles__grid {
+        animation: work-tiles-rise linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 100svh;
+      }
+
+      .home-stage:has(.work-tile:focus-visible) .work-tiles__grid {
+        animation: none;
+      }
+    }
+  }
+
+  @keyframes work-tiles-rise {
+    from {
+      transform: translate3d(0, 12svh, 0);
+      animation-timing-function: ease-out;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
     }
   }
 

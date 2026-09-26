@@ -41,8 +41,13 @@ header, no `Ground`.
    scroll, and moves up with the page once the veil has left.
 4. **The footer.** Unchanged.
 
-No JavaScript scroll handler and no reduced-motion branch for the scroll:
-it is ordinary sticky scrolling and works the same in every browser.
+No JavaScript scroll handler. The pinning is ordinary sticky scrolling
+and works the same in every browser. On top of it, the grid inside the
+sticky section starts 12svh low and eases up to 0 over the first 100svh
+(CSS scroll-driven animation, transform only, behind `@supports
+(animation-timeline: scroll())` and `prefers-reduced-motion:
+no-preference`), so it lands as the veil leaves; without support, under
+reduced motion, or with a tile focused, it sits at 0.
 
 ## The tiles
 

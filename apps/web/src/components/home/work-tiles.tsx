@@ -74,53 +74,56 @@ export async function WorkTiles({ locale }: { locale: AppLocale }) {
 
   return (
     <section aria-label={t("gridLabel")} className="work-tiles">
-      {tiles.map((tile, index) => {
-        const shared = {
-          alt: tile.name,
-          fetchPriority: index === 0 ? ("high" as const) : undefined,
-          loading: "eager" as const,
-        };
-        const desktopSizes = tile.wide ? WIDE_SIZES : NARROW_SIZES;
-        const {
-          props: { srcSet: desktopSrcSet },
-        } = getImageProps({ ...shared, ...DESKTOP_CAPTURE, sizes: desktopSizes, src: tile.desktop });
-        const { props: mobile } = getImageProps({
-          ...shared,
-          ...MOBILE_CAPTURE,
-          sizes: MOBILE_SIZES,
-          src: tile.mobile,
-        });
+      {/* The grid, not the sticky section, carries the rise into place. */}
+      <div className="work-tiles__grid">
+        {tiles.map((tile, index) => {
+          const shared = {
+            alt: tile.name,
+            fetchPriority: index === 0 ? ("high" as const) : undefined,
+            loading: "eager" as const,
+          };
+          const desktopSizes = tile.wide ? WIDE_SIZES : NARROW_SIZES;
+          const {
+            props: { srcSet: desktopSrcSet },
+          } = getImageProps({ ...shared, ...DESKTOP_CAPTURE, sizes: desktopSizes, src: tile.desktop });
+          const { props: mobile } = getImageProps({
+            ...shared,
+            ...MOBILE_CAPTURE,
+            sizes: MOBILE_SIZES,
+            src: tile.mobile,
+          });
 
-        return (
-          <a
-            aria-label={`${tile.name}: ${tile.line.replace(/\.$/, "")}, ${newTab}`}
-            className="work-tile"
-            data-anchor={tile.anchor}
-            data-wide={tile.wide ? "" : undefined}
-            href={tile.href}
-            key={tile.key}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <picture className="work-tile__picture">
-              <source
-                height={DESKTOP_CAPTURE.height}
-                media="(min-width: 768px)"
-                sizes={desktopSizes}
-                srcSet={desktopSrcSet}
-                width={DESKTOP_CAPTURE.width}
-              />
-              {/* Art direction: the next/image props come from getImageProps. */}
-              <img {...mobile} alt={tile.name} className="work-tile__image" />
-            </picture>
-            <span className="work-tile__caption">
-              <span className="type-caption work-tile__name">{tile.name}</span>
-              <span className="type-caption work-tile__line">{tile.line}</span>
-              <IconArrowUpRight aria-hidden="true" className="work-tile__arrow h-4 w-4" />
-            </span>
-          </a>
-        );
-      })}
+          return (
+            <a
+              aria-label={`${tile.name}: ${tile.line.replace(/\.$/, "")}, ${newTab}`}
+              className="work-tile"
+              data-anchor={tile.anchor}
+              data-wide={tile.wide ? "" : undefined}
+              href={tile.href}
+              key={tile.key}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <picture className="work-tile__picture">
+                <source
+                  height={DESKTOP_CAPTURE.height}
+                  media="(min-width: 768px)"
+                  sizes={desktopSizes}
+                  srcSet={desktopSrcSet}
+                  width={DESKTOP_CAPTURE.width}
+                />
+                {/* Art direction: the next/image props come from getImageProps. */}
+                <img {...mobile} alt={tile.name} className="work-tile__image" />
+              </picture>
+              <span className="work-tile__caption">
+                <span className="type-caption work-tile__name">{tile.name}</span>
+                <span className="type-caption work-tile__line">{tile.line}</span>
+                <IconArrowUpRight aria-hidden="true" className="work-tile__arrow h-4 w-4" />
+              </span>
+            </a>
+          );
+        })}
+      </div>
     </section>
   );
 }
