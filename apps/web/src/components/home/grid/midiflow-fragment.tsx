@@ -19,7 +19,6 @@ import {
   TEMPOS,
   defaultPattern,
 } from "./midiflow-data";
-import { useWorkPieceActive } from "./work-piece-context";
 import styles from "./midiflow-fragment.module.css";
 
 const ROWS = PITCHES.length;
@@ -163,7 +162,6 @@ export function MidiflowFragment({ expanded }: FragmentProps) {
   const t = useTranslations("HomeGrid.midiflow");
   const reduced = useSyncExternalStore(subscribeReduce, readReduce, readReduceServer);
   const wide = useSyncExternalStore(subscribeWide, readWide, readReduceServer);
-  const active = useWorkPieceActive();
   const steps = expanded && wide ? MAX_STEPS : STEPS;
   const [pattern, setPattern] = useState(defaultPattern);
   const [playing, setPlaying] = useState(false);
@@ -184,13 +182,6 @@ export function MidiflowFragment({ expanded }: FragmentProps) {
     // The loop restarts on the new length rather than play past its end.
     if (s.running) s.start();
   }, [steps]);
-
-  // Leaving the work cell: silent at once, before the fade ends.
-  useEffect(() => {
-    if (active) return;
-    seqRef.current?.sleep();
-    setPlaying(false);
-  }, [active]);
 
   useEffect(() => {
     const root = rootRef.current;

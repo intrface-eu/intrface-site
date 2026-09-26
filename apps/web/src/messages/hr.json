@@ -322,6 +322,7 @@
   },
   "HomeGrid": {
     "common": {
+      "claim": "Smanjiti nepotrebno trenje između ljudske namjere, stvarnosti i smislenog djelovanja.",
       "gridLabel": "Sučelja koja radi INTRFACE",
       "open": "Otvori",
       "openName": "Otvori {name}",
@@ -441,10 +442,6 @@
       "pickBoth": "Odaberite po jedno.",
       "deadline": "Rok",
       "share": "Udio"
-    },
-    "work": {
-      "name": "Radovi",
-      "switcherLabel": "Izbor radova"
     },
     "velum": {
       "sectionsLabel": "Rubrike Veluma",

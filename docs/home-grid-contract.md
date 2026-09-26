@@ -1,181 +1,155 @@
-# Home grid contract (2026-09-25)
+# Home contract (2026-09-26, revision 3: the veil and the interfaces)
 
-Owner decision, 2026-09-25: the home page stops being a sales page. The first
-thing a visitor meets is not information about INTRFACE. It is an interface
-made by INTRFACE. Principle, verbatim: **The first thing isn't a header. It
-isn't a menu. It's interaction.**
+Owner decision, 2026-09-26: the home page is one sentence over the
+interfaces. Nothing else. The earlier grid work (2026-09-25/26: sloped
+cuts on the WebGL ground, a corner mark, a rotating work cell) is scrapped as
+UI; what stays of it is the working fragments, the open-in-place behaviour,
+the logo (mark and word), the icon and the type. This file is the build
+contract; the durable rules move into `DESIGN.md` when the build lands.
 
-This file is the build contract for that page. Agents build against it; the
-durable design rules move into `DESIGN.md` when the build lands.
+The sentence, verbatim (the north star from the manifesto):
+
+> Reduce unnecessary friction between human intention, reality, and
+> meaningful action.
 
 ## Page structure
 
-1. **Viewport 1: the grid.** An edge-to-edge Bento composition of four cells,
-   filling about `100svh` from 1280px up. No hero, no claim, no lead, no
-   service list, no CTA bar, no header, no nav. Each cell *is* an interface
-   fragment, not a screenshot in a decorative frame.
-2. **Maker's mark.** The INTRFACE mark and word, small, fixed in the top-left
-   corner, sitting on the ground. It consumes no header band. The locale
-   switcher lives in the footer only.
-3. **Footer.** Restrained. The inked signature wordmark stays. Then, in one
-   short block: `INTRFACE · Vrsar, Croatia`, one sentence (the tagline
-   "Interfaces for the world."), contact (email, phone), GitHub, Imprint
-   (legal/privacy), locale switcher, © year. No link groups, no contact form,
-   no second sentence.
-4. **The ground stays.** The fixed halftone/vector ground runs under the whole
-   page and shows in the grid gaps and under the footer. The footer carries
-   `data-ground-key="land"` on its top region so the field gathers into Istria
-   with the red X on Vrsar as the footer arrives. No `mark` key. The "From
-   here / to the world" phrases are not rendered on this page.
+Top to bottom, on plain paper (`--paper`; no `Ground` on home; about keeps
+it):
 
-## Revision 2026-09-26: four cells, open in place
+1. **The veil.** A layer as tall as the first viewport (`100svh`) lying over
+   the top of the interfaces: `--ink`, fully opaque at the top edge, fading
+   to nothing at the bottom edge (one linear gradient; the agent picks where
+   the fade starts so the sentence sits on solid ink and the lower cells read
+   through). On it, and only on it: the logo (`AnimatedMark` and the word
+   "intrface", inverse paper, top-left, linking home; the `MakerMark` moves
+   in here and stops being fixed) and the sentence, localized, set in the
+   brand face at display size (`.type-display`, `--ink-inverse`), left
+   aligned inside `.section-shell`, in the upper half of the viewport. No
+   button, no arrow, no scroll hint, no status, no second sentence.
+2. **The interfaces.** The eight working fragments, each in its own plain
+   rectangular cell, in a simple grid under the veil. The first row starts
+   where the veil comes to rest after its lift (`65svh`; `92svh` where the
+   lift does not run), so nothing stays under the solid ink for good and the
+   lowest cells read through the fade at rest. Registry order: Voyager, Index, Polis, MidiFlow,
+   Patchbay, Funda, Velum, AstyleMarine. Phone: one column, each cell at
+   least `72svh`. From 768px: two columns, cells `clamp(24rem, 56svh, 42rem)`
+   tall. Gaps of `--grid-gap` show paper. Surfaces are `--paper-raised`, or
+   `--ink` for Index and MidiFlow (`.tone-ink`). No cut, no radius, no
+   border, no shadow, no name at rest.
+3. **The footer.** Unchanged in content (name and place, tagline, email,
+   phone, GitHub, Imprint, locale switcher, © year, the signature wordmark).
+   It loses its `55vh` floor and its `data-ground-key` (the footer never
+   keys the ground now: about keys its own band); it takes its natural
+   height.
 
-The owner restated the brief as the north star (quoted in the section above)
-and decided: Open expands the interface in place instead of leaving for a
-showcase page (D7); four cells instead of eight (D8); at rest a cell is only
-interface, with no name, and the top-right locale switcher goes (D9). This
-section supersedes the old cell table, composition and interaction rules.
+## Scroll
 
-## The four cells
+- The veil leaves upward as the page scrolls; the interfaces stay and become
+  ordinary page content. The parallax the owner asked for ("the interfaces
+  slightly lag, then scroll properly once the gradient is gone") is done by
+  moving the veil faster than the page, never by transforming the grid: the
+  open dialog is `position: fixed` inside a cell, and a transform on any
+  ancestor would break it. Over the first `100svh` of scroll the veil gets
+  an extra `-35svh` of translate (`transform` only), through a CSS
+  scroll-driven animation (`animation-timeline: scroll(root)`,
+  `animation-range: 0 100svh`, `@supports (animation-timeline: scroll())`).
+  Where that is unsupported, and under reduced motion, the veil simply
+  scrolls with the page. No JavaScript scroll handler.
+- The veil takes no pointer events where it has faded: a click, a touch or
+  a wheel there reaches the cell under it. Its solid band and the logo link
+  do take them, so a swipe on the ink scrolls the page instead of panning a
+  hidden map, and nobody hovers or drags a cell they cannot see.
+- Once scrolled past, the veil is gone; nothing fixed remains on the page
+  (no fixed mark). The wordmark in the footer closes the page.
 
-Registry: `apps/web/src/lib/site/interfaces.ts` (`CELLS`, `WORK_PIECES`,
-`FragmentProps`, `WorkFragmentProps`).
+## Interaction model (unchanged in behaviour, simpler in chrome)
 
-| cell | fragment | expanded (`/#hash`) |
-| --- | --- | --- |
-| `voyager` | pannable chart of places around Vrsar, real coastline | `#voyager`; full-viewport chart with the places list |
-| `index` | search over everything the site makes | `#index`; full-viewport search; grid items open in place (`/#slug`) |
-| `polis` | report something on a plan of Vrsar, it becomes a case that moves through states | `#polis` |
-| `work` | rotates through five pieces: `midiflow`, `patchbay`, `funda`, `velum`, `astyleMarine` | the current piece's hash (`#midiflow` … `#astyle-marine`) |
-
-- Voyager is the largest cell and sits top-left. Index and Polis sit under
-  it. Work is the tall cell on the right. Tablet: two columns, Voyager full
-  width, Index and Polis side by side, Work full width. Phone: one column,
-  each cell at least 72svh.
-- From 1280px the grid fills the viewport below the mark band, with a floor
-  so fragments stay usable on short screens.
-- Velum and AstyleMarine are no longer captures. Each becomes a small working
-  piece of its site's own interface, built only from content on the live
-  site or in `public/proof/projects/<slug>/`: no invented items, prices or
-  claims, and no outgoing actions inside the fragment.
-- Polis on a plan of Vrsar is a demonstration. Nothing on the page says or
-  implies that Vrsar uses Polis.
-
-## Interaction model
-
-- **At rest.** The cell shows only its fragment. No name, no status, no hint
-  unless the interaction is not self-evident; such a hint fades after the
-  first interaction. The cell region carries its name as `aria-label`.
-- **Reveal.** On hover or focus-within (fine pointers), or on the first touch
-  inside the cell (coarse pointers; the touch still reaches the fragment, and
-  the cell stays revealed until another cell is touched), the foot row shows
-  the name, the one line and `Open →`. Its height is reserved on every
-  pointer through `--cell-chrome-bottom` so it never covers a control. The row
-  takes no pointer events; its button does, and only while the row shows.
-  Opacity only, 220ms, at once under reduced motion. For the work cell it reads the current piece.
+- **At rest.** A cell shows only its fragment; the region carries its name as
+  `aria-label`.
+- **Reveal.** On hover or focus-within (fine pointers), or on the first
+  touch inside the cell (coarse pointers; the touch still reaches the
+  fragment, and the cell stays revealed until another cell is touched), a
+  plain foot row shows the name, the one line and `Open →`. Its height is
+  reserved on every pointer through `--cell-chrome-bottom`; the row takes no
+  pointer events, its button does, and only while the row shows. Opacity
+  only, 220ms, at once under reduced motion.
 - **Open.** `Open →` (a button, accessible name "Open {name}") expands the
-  cell in place: its surface grows from the grid slot to the full viewport,
-  the fragment re-renders with `expanded` true, the sloped cut becomes the
-  viewport edge. No stretched text: no non-uniform scale, and no uniform scale
-  left on at rest. At most 420ms, house easing; at once under reduced motion.
-  The grid slot keeps its space, so nothing reflows behind.
+  cell in place: the surface grows from its rectangle in the grid to the
+  full viewport as one clip-path animation of the fixed, full-viewport
+  surface (Web Animations API, at most 420ms, house easing, at once under
+  reduced motion; the resting clip is now the cell's plain rectangle). The
+  fragment re-renders with `expanded` true. The grid slot keeps its space.
 - **Expanded.** A dialog (`role="dialog"`, `aria-modal`, labelled by the
-  name). A thin top band inside the surface: name and line; then `Live site ↗`
-  and `The project →` (the showcase route) where they apply, and a close mark.
-  Focus moves in and is trapped; the rest of the page is inert; page scroll is
-  locked without a layout shift. Esc, the close mark and browser Back collapse
-  it the same way it opened, and focus returns to the cell.
-- **URL.** Opening from the grid pushes `#<hash>`; collapsing goes back (or
-  clears the hash with `replaceState` when the page was loaded with it). An
-  in-page `/#slug` link opens in place; while another interface is open it
-  switches at once and replaces the entry, so one Back returns to the grid.
-  `hashchange` and `popstate` open, switch and close. Loading `/#<hash>` opens that interface expanded
-  without animation; a work piece's hash also selects that piece. The
-  pathname never changes, so the home route keeps no header.
-- **Work rotation.** The work cell shows a switcher (the five piece names, a
-  tablist) as part of its interface. It advances on its own every 9s only
-  while the cell is visible, the tab is visible, no pointer or focus is in
-  it, no reduced motion, and the visitor has not yet interacted with it; the
-  first interaction stops it for good. Pieces crossfade (opacity, 200ms);
-  only the current piece is mounted, so MidiFlow's sound stops when it leaves.
-- The showcase pages stay for direct visits and keep "Back to the grid".
+  name) with a thin top band: name and line; `Live site ↗` and `The project
+  →` where they apply; a close mark. `--cell-chrome-top` is the band's
+  height, `--cell-chrome-bottom` is 0. Focus moves in and is trapped, the
+  rest of the page is inert, page scroll is locked without a layout shift.
+  Esc, the close mark and Back collapse it; focus returns to Open.
+- **URL.** Opening pushes `#<hash>`; collapsing goes back (or clears the
+  hash with `replaceState` when the page was loaded with it). An in-page
+  `/#slug` link opens or switches in place and replaces the entry. Loading
+  `/#<hash>` opens that interface at once. The pathname never changes, so
+  `HeaderGate` still renders no header on home.
+- Hashes: `voyager`, `index`, `polis`, `midiflow`, `patchbay`, `funda`,
+  `velum`, `astyle-marine`. Same as before; Index's `/#slug` links keep
+  working.
 - Fragments never navigate on their own. Index results are links by design.
 
-## Fragment contract (for fragment builders)
+## Registry and shell (for the builder)
 
-Files, all under `apps/web/src/components/home/grid/`:
+- `apps/web/src/lib/site/interfaces.ts`: `CELLS` becomes eight entries with
+  `slug`, `tone`, `hash`, `href`, `liveUrl`, `status`, `project` (client
+  sites take name, route and live URL from `PROJECTS`, the line from
+  `Projects.<key>.role`). `WORK_PIECES`, `WorkPieceSlug`, `WorkFragmentProps`,
+  `OpenTarget.piece` and the `area` field go. `targetForHash` and `hashFor`
+  become plain lookups on `CELLS`. `FragmentProps = { expanded: boolean }`
+  stays.
+- `fragment-registry.tsx`: slug → fragment for all eight.
+- `interface-shell.tsx`: drop the work piece state and everything that
+  served it; `restingClip` returns the cell's rectangle. The rest (open,
+  collapse, hash, history depth, popstate, hashchange, in-page links, inert,
+  scroll lock) stays as built.
+- `interface-cell.tsx`: drop the cut geometry; keep the foot row, the
+  dialog, the band, the focus trap.
+- Delete `work-fragment.tsx`, `work-fragment.module.css`,
+  `work-piece-context.ts`; `midiflow-fragment.tsx` drops
+  `useWorkPieceActive` (it is always active now; its offscreen and hidden
+  pauses stay).
+- `interface-grid.tsx` (server): resolves copy for the eight cells and
+  renders the veil and the shell. `home-page.tsx`: `<main>` with the grid
+  section and nothing else; no `Ground`, no `MakerMark`. The `<main>` rules
+  (no stacking context, no transform, no background) can be relaxed now that
+  no ground sits behind it, but keep it plain.
+- `globals.css`: replace the interface-grid, interface-cell cut and
+  maker-mark rules with the veil, the plain grid and the plain cell; remove
+  `--tilt`, `--xa`, `--yp`, `--mark-band`; keep `--grid-gap`,
+  `--cell-chrome-top`, `--cell-chrome-bottom`; drop the footer's `55vh`
+  floor. Fragment module CSS files are not touched except to remove a rule
+  that referenced the cut.
+- Messages: add `HomeGrid.common.claim` in all four files; remove
+  `HomeGrid.work`. Keep `makerMark`, `open`, `openName`, `close`,
+  `liveSite`, `theProject`, `gridLabel`, `backToGrid` (showcase pages use
+  it). The sentence:
+  - en: "Reduce unnecessary friction between human intention, reality, and meaningful action."
+  - de: "Unnötige Reibung zwischen menschlicher Absicht, Wirklichkeit und sinnvollem Handeln abbauen."
+  - fr: "Réduire les frictions inutiles entre l'intention humaine, la réalité et l'action qui a du sens."
+  - hr: "Smanjiti nepotrebno trenje između ljudske namjere, stvarnosti i smislenog djelovanja."
+- `DESIGN.md`: rewrite the home rules (layout, component rules for the
+  veil, the cell, the footer, the ground's "on home" clauses, motion, content
+  design) to this contract. The ground's WebGL rules stay for about.
 
-- `<slug>-fragment.tsx` — `"use client"`, named export `<Slug>Fragment`
-  (`VoyagerFragment`, `IndexFragment`, `PolisFragment`, `WorkFragment`,
-  `MidiflowFragment`, `PatchbayFragment`, `FundaFragment`, `VelumFragment`,
-  `AstyleMarineFragment`). Signature: `(props: FragmentProps)`, except
-  `WorkFragment(props: WorkFragmentProps)`; both types from
-  `@/lib/site/interfaces`. A fragment must work at its cell size on every
-  breakpoint and at full viewport (`expanded`), where it may show more.
-- `<slug>-fragment.module.css` — every non-utility rule the fragment needs.
-  **Fragments never edit `globals.css`.**
-- `<slug>-data.ts` — any static data (coastline points, place coordinates).
+## Fragment contract (unchanged)
 
-Rules:
-
-- Fill the cell: the root element is `h-full w-full` inside a
-  `position: relative` cell with `container-type: size`; use `cqw`/`cqh` for
-  internal sizing where useful.
-- Strings come from `useTranslations("HomeGrid.<slug>")` (next-intl client).
-  The keys are already in all four message files (`en`, `de`, `fr`, `hr`).
-  If a fragment needs a key that is missing, add it under its own
-  `HomeGrid.<slug>` object in all four files with the Edit tool, nothing else
-  in those files.
-- Colour and type only through tokens and classes: `--paper`, `--paper-raised`,
-  `--card`, `--ink`, `--ink-muted`, `--line`, `--accent`, `--font-brand`,
-  `--font-mono`; `.type-meta`, `.type-caption`, `.type-data`, `.type-title`.
-  Never the print red. Never a new radius. Tailwind utilities are fine.
-- Motion: CSS transforms and opacity only; JavaScript touches the DOM only in
-  response to input, via refs and `requestAnimationFrame`, never React state
-  per frame. Any loop (a sequencer playhead, a pan inertia) stops when the
-  cell is offscreen (`IntersectionObserver`), when the tab is hidden, and
-  under `prefers-reduced-motion: reduce` (static state instead).
-- Input: pointer and touch through Pointer Events with `touch-action` set so
-  page scroll still works where the fragment does not consume the gesture;
-  keyboard operable with visible focus (`outline-offset: 4px` ink outline);
-  `aria-label`s from the messages.
-- Audio (MidiFlow): `AudioContext` created on the first user gesture only;
-  suspended when offscreen or hidden; no samples, an oscillator voice is fine.
-- No new dependencies. No network at runtime. No iframes.
-- Budget: a fragment's JS is under 12 KB minified; data files under 30 KB.
-- Disclosure: Polis, Funda, MidiFlow and Patchbay are pre-release. A fragment
-  demonstrates the *pair* (citizen ↔ institution, and so on) as a generic
-  interaction. No feature names, no metrics, no architecture, no domains.
-  Patchbay's domain is never written anywhere.
-- Report: what you built, how it is operated, what you tested (command and
-  result), what is left.
-
-## Shell contract (for the grid builder)
-
-- `apps/web/src/lib/site/interfaces.ts` — the registry: `CELLS` (slug, grid
-  area, tone, hash, href, liveUrl, status), `WORK_PIECES`, the fragment prop
-  types, and `targetForHash` / `hashFor`, which map a URL fragment to a cell
-  (and piece) and back.
-- `apps/web/src/components/home/grid/interface-grid.tsx` (server) — resolves
-  the copy of every cell and work piece and renders `InterfaceShell`.
-- `apps/web/src/components/home/grid/interface-shell.tsx` (client) — owns the
-  open cell, the work cell's current piece and the touch reveal; runs open
-  and collapse (one clip-path animation of the fixed, full-viewport surface
-  through the Web Animations API), the hash, `popstate` / `hashchange`, the
-  in-page `/#slug` link handling, inert and the scroll lock.
-- `apps/web/src/components/home/grid/interface-cell.tsx` (client) — draws a
-  cell: the cut surface, the foot row, and while open the dialog with its
-  top band; traps focus and closes on Esc.
-- `apps/web/src/components/home/grid/fragment-registry.tsx` — cell slug →
-  fragment. Imports the fragment files; do not edit them.
-- `apps/web/src/components/pages/home-page.tsx` — `<main
-  className="ground-main text-ink">`, `<Ground />`, the grid, nothing else.
-  The `<main>` rules from DESIGN.md still hold (no stacking context, no
-  transform, no background).
-- `apps/web/src/components/layout/maker-mark.tsx` — the fixed corner mark,
-  rendered on the home page only.
-- Header: the home route renders no header (`HeaderGate`). Other routes keep
-  it.
-- `globals.css` — grid, cell, reveal, open-in-place and maker-mark rules.
-- Messages: `HomeGrid.common` and `Footer` may be edited; the per-fragment
-  objects are owned by the fragment builders.
+Files under `apps/web/src/components/home/grid/`: `<slug>-fragment.tsx`
+(`"use client"`, named export `<Slug>Fragment(props: FragmentProps)`),
+`<slug>-fragment.module.css`, `<slug>-data.ts`. A fragment fills its cell
+(`h-full w-full` in a `position: relative` size container) and works at
+cell size on every breakpoint and at full viewport (`expanded`). Strings
+from `HomeGrid.<slug>`; colour and type through tokens only; never the
+print red; motion by transform and opacity, loops paused offscreen, hidden
+and under reduced motion; audio on a gesture only; no dependencies, no
+network, no iframes; JS under 12 KB, data under 30 KB. Polis, Funda,
+MidiFlow and Patchbay demonstrate the pair only: no feature names, metrics,
+architecture or domains; Patchbay's domain is never written. Polis on a
+plan of Vrsar does not imply Vrsar uses Polis.

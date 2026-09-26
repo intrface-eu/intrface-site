@@ -2,19 +2,11 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import {
-  WORK_PIECES,
-  hashFor,
-  targetForHash,
-  type CellSlug,
-  type OpenTarget,
-  type Tone,
-  type WorkPieceSlug,
-} from "@/lib/site/interfaces";
+import { hashFor, targetForHash, type CellSlug, type Tone } from "@/lib/site/interfaces";
 import { FRAGMENTS } from "./fragment-registry";
 import { InterfaceCell } from "./interface-cell";
 
-/** A cell's or a work piece's copy, resolved on the server. */
+/** A cell's copy, resolved on the server. */
 export type OpenableCopy = {
   name: string;
   line: string;
@@ -24,8 +16,6 @@ export type OpenableCopy = {
   liveUrl?: string;
 };
 
-export type PieceCopy = OpenableCopy & { tone: Tone };
-
 export type ShellLabels = {
   open: string;
   close: string;
@@ -34,7 +24,7 @@ export type ShellLabels = {
   newTab: string;
 };
 
-type CellEntry = { slug: CellSlug; area: string; tone: Tone; copy: OpenableCopy | null };
+export type CellEntry = { slug: CellSlug; tone: Tone; copy: OpenableCopy };
 
 /** Open and collapse run this long, on the house easing. */
 const DURATION = 420;
@@ -44,26 +34,13 @@ const FULL = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
- * The cell's cut, as it sits in the grid, in viewport pixels: the clip the
- * expanded surface (fixed, full viewport) starts from and collapses to. Same
- * formula as `.interface-cell__surface` in globals.css, read from the cell's
- * own `--tilt`, `--xa` and `--yp`.
+ * The cell's rectangle as it sits in the grid, in viewport pixels: the clip
+ * the expanded surface (fixed, full viewport) starts from and collapses to.
+ * A polygon, like `FULL`, so the two interpolate point by point.
  */
 function restingClip(cell: HTMLElement): string {
-  const rect = cell.getBoundingClientRect();
-  const style = getComputedStyle(cell);
-  const tilt = Number.parseFloat(style.getPropertyValue("--tilt")) || 0;
-  const xa = Number.parseFloat(style.getPropertyValue("--xa")) || 0;
-  const yp = Number.parseFloat(style.getPropertyValue("--yp")) || 0;
-  const cx = tilt * rect.height;
-  const cy = tilt * rect.width;
-  const corners = [
-    [cx * xa, cy * yp],
-    [rect.width - cx * xa, cy * (1 - yp)],
-    [rect.width - cx * (1 - xa), rect.height - cy * (1 - yp)],
-    [cx * (1 - xa), rect.height - cy * yp],
-  ];
-  return `polygon(${corners.map(([x, y]) => `${rect.left + x}px ${rect.top + y}px`).join(", ")})`;
+  const { left, top, right, bottom } = cell.getBoundingClientRect();
+  return `polygon(${left}px ${top}px, ${right}px ${top}px, ${right}px ${bottom}px, ${left}px ${bottom}px)`;
 }
 
 /** The `history.state` key an entry keeps its distance to the grid under. */
@@ -72,12 +49,12 @@ const DEPTH_KEY = "intrfaceGridDepth";
 const samePath = (a: string, b: string) => a.replace(/\/+$/, "") === b.replace(/\/+$/, "");
 
 /**
- * The home grid's client side: which cell is open, the work cell's current
- * piece, and which cell a touch last revealed.
+ * The home grid's client side: which cell is open, and which cell a touch
+ * last revealed.
  *
  * Open in place. The open cell's surface becomes a fixed, full-viewport
  * dialog while the cell keeps its grid slot, so nothing reflows. The move is
- * one clip-path animation of that full-size surface, from the cell's cut to
+ * one clip-path animation of that full-size surface, from the cell's rectangle to
  * the viewport and back; JavaScript measures the cell once and hands both
  * ends to the Web Animations API, so no React state changes per frame, and
  * nothing is scaled. Under reduced motion it opens and closes at once.
@@ -90,21 +67,11 @@ const samePath = (a: string, b: string) => a.replace(/\/+$/, "") === b.replace(/
  * typed hash adds an entry, which is counted. A load with a known hash opens
  * it at once. The pathname never changes, so `HeaderGate` still sees home.
  */
-export function InterfaceShell({
-  cells,
-  pieces,
-  labels,
-}: {
-  cells: CellEntry[];
-  pieces: Record<WorkPieceSlug, PieceCopy>;
-  labels: ShellLabels;
-}) {
+export function InterfaceShell({ cells, labels }: { cells: CellEntry[]; labels: ShellLabels }) {
   const [open, setOpen] = useState<CellSlug | null>(null);
-  const [piece, setPiece] = useState<WorkPieceSlug>(WORK_PIECES[0].slug);
   const [touched, setTouched] = useState<CellSlug | null>(null);
 
   const openRef = useRef<CellSlug | null>(null);
-  const pieceRef = useRef<WorkPieceSlug>(WORK_PIECES[0].slug);
   /**
    * How many history entries the current one sits above the grid's own
    * entry, as far as this session knows; 0 when it does not know (a load
@@ -123,7 +90,6 @@ export function InterfaceShell({
 
   useLayoutEffect(() => {
     openRef.current = open;
-    pieceRef.current = piece;
   });
 
   /** Stops a running open or collapse where it is, without its ending. */
@@ -197,7 +163,7 @@ export function InterfaceShell({
   );
 
   // The open itself: after the surface has become the full-viewport dialog
-  // and before it paints, start it clipped to the cell's cut.
+  // and before it paints, start it clipped to the cell's rectangle.
   useLayoutEffect(() => {
     const from = openFrom.current;
     openFrom.current = null;
@@ -238,37 +204,28 @@ export function InterfaceShell({
     };
   }, [open]);
 
-  // Open the interface the URL names on load, before the first paint.
+  // Open the interface the URL names on load, before the first paint. The
+  // URL is outside React and unknown on the server, so the first render is
+  // always the grid; this corrects it before the first paint.
   useLayoutEffect(() => {
     const target = targetForHash(window.location.hash);
-    if (!target) return;
-    if (target.piece) {
-      pieceRef.current = target.piece;
-      // The URL is outside React and unknown on the server, so the first
-      // render is always the grid; this corrects it before the first paint.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setPiece(target.piece);
-    }
-    expand(target.cell, false);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (target) expand(target, false);
   }, [expand]);
 
-  /** Go to a target the page asked for: open it from the grid, or switch to it. */
+  /** Go to a cell the page asked for: open it from the grid, or switch to it. */
   const goTo = useCallback(
-    (target: OpenTarget) => {
-      if (target.piece) {
-        pieceRef.current = target.piece;
-        setPiece(target.piece);
-      }
-      const hash = `#${hashFor(target.cell, pieceRef.current)}`;
+    (target: CellSlug) => {
+      const hash = `#${hashFor(target)}`;
       const current = openRef.current;
       if (!current) {
         depth.current += 1;
         window.history.pushState({ [DEPTH_KEY]: depth.current }, "", hash);
-        expand(target.cell, true);
+        expand(target, true);
         return;
       }
       window.history.replaceState({ [DEPTH_KEY]: depth.current }, "", hash);
-      if (current !== target.cell) switchTo(target.cell);
+      if (current !== target) switchTo(target);
     },
     [expand, switchTo],
   );
@@ -305,16 +262,12 @@ export function InterfaceShell({
         depth.current = current ? (depth.current > 0 ? depth.current + 1 : 0) : 1;
         window.history.replaceState({ [DEPTH_KEY]: depth.current }, "", window.location.href);
       }
-      if (target.piece) {
-        pieceRef.current = target.piece;
-        setPiece(target.piece);
-      }
-      if (current === target.cell) return;
+      if (current === target) return;
       if (current) {
-        switchTo(target.cell);
+        switchTo(target);
         return;
       }
-      expand(target.cell, true);
+      expand(target, true);
     };
     window.addEventListener("popstate", sync);
     window.addEventListener("hashchange", sync);
@@ -348,29 +301,14 @@ export function InterfaceShell({
   // Unmounting mid-animation (a showcase link) leaves nothing running.
   useEffect(() => stopAnimation, [stopAnimation]);
 
-  const onPieceChange = useCallback((next: WorkPieceSlug) => {
-    pieceRef.current = next;
-    setPiece(next);
-    if (openRef.current === "work") {
-      window.history.replaceState({ [DEPTH_KEY]: depth.current }, "", `#${hashFor("work", next)}`);
-    }
-  }, []);
-
   return (
     <>
-      {cells.map((cell) => {
-        const isWork = cell.slug === "work";
-        const copy = isWork ? pieces[piece] : cell.copy;
-        if (!copy) return null;
-        const tone = isWork ? pieces[piece].tone : cell.tone;
-        const expanded = open === cell.slug;
-        const slug = cell.slug;
-        const WorkFragment = FRAGMENTS.work;
-        const Fragment = isWork ? null : FRAGMENTS[slug as Exclude<CellSlug, "work">];
+      {cells.map(({ slug, tone, copy }) => {
+        const expanded = open === slug;
+        const Fragment = FRAGMENTS[slug];
 
         return (
           <InterfaceCell
-            area={cell.area}
             closeRef={(element) => {
               if (element) closeButtons.current.set(slug, element);
               else closeButtons.current.delete(slug);
@@ -380,7 +318,7 @@ export function InterfaceShell({
             key={slug}
             labels={labels}
             onClose={requestClose}
-            onOpen={() => goTo(isWork ? { cell: "work", piece: pieceRef.current } : { cell: slug })}
+            onOpen={() => goTo(slug)}
             onTouch={() => setTouched(slug)}
             openRef={(element) => {
               if (element) openButtons.current.set(slug, element);
@@ -398,11 +336,7 @@ export function InterfaceShell({
             }}
             tone={tone}
           >
-            {Fragment ? (
-              <Fragment expanded={expanded} />
-            ) : (
-              <WorkFragment expanded={expanded} onPieceChange={onPieceChange} piece={piece} />
-            )}
+            <Fragment expanded={expanded} />
           </InterfaceCell>
         );
       })}

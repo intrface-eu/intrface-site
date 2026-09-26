@@ -13,7 +13,7 @@ import {
 } from "react";
 import { Link, getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
-import { CELLS, WORK_PIECES, type FragmentProps } from "@/lib/site/interfaces";
+import { CELLS, type FragmentProps } from "@/lib/site/interfaces";
 import { PROJECTS } from "@/lib/site/projects";
 import styles from "./index-fragment.module.css";
 
@@ -34,9 +34,9 @@ type Entry = {
 
 const GROUPS: GroupKey[] = ["products", "clientSites", "pages"];
 
-/* The grid's own interfaces, in grid order: the cells, then the work pieces.
-   The index is not an entry: it is the search the reader is in. */
-const OPENABLE = [...CELLS.filter((c) => c.slug !== "index" && c.slug !== "work"), ...WORK_PIECES];
+/* The grid's own interfaces, in grid order. The index is not an entry: it
+   is the search the reader is in. */
+const OPENABLE = CELLS.filter((c) => c.slug !== "index");
 
 const PAGES = [
   { id: "work", key: "work", path: "/work" },

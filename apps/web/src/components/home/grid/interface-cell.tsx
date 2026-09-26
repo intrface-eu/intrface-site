@@ -20,7 +20,6 @@ const FOCUSABLE =
 
 export type InterfaceCellProps = {
   slug: string;
-  area: string;
   tone: Tone;
   copy: OpenableCopy;
   labels: ShellLabels;
@@ -52,7 +51,6 @@ export type InterfaceCellProps = {
  */
 export function InterfaceCell({
   slug,
-  area,
   tone,
   copy,
   labels,
@@ -125,10 +123,9 @@ export function InterfaceCell({
       data-slug={slug}
       onPointerDownCapture={onPointerDown}
       ref={ref}
-      style={{ gridArea: area }}
     >
       {/* The tone goes on the surface, not the cell: `.tone-ink` paints a
-          background, and only the surface is cut. */}
+          background, and the surface is what becomes the dialog. */}
       <div
         aria-labelledby={expanded ? nameId : undefined}
         aria-modal={expanded ? true : undefined}

@@ -322,6 +322,7 @@
   },
   "HomeGrid": {
     "common": {
+      "claim": "Unnötige Reibung zwischen menschlicher Absicht, Wirklichkeit und sinnvollem Handeln abbauen.",
       "gridLabel": "Interfaces von INTRFACE",
       "open": "Öffnen",
       "openName": "{name} öffnen",
@@ -441,10 +442,6 @@
       "pickBoth": "Je eins wählen.",
       "deadline": "Frist",
       "share": "Anteil"
-    },
-    "work": {
-      "name": "Arbeiten",
-      "switcherLabel": "Arbeiten zur Auswahl"
     },
     "velum": {
       "sectionsLabel": "Bereiche von Velum",

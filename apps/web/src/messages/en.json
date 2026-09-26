@@ -322,6 +322,7 @@
   },
   "HomeGrid": {
     "common": {
+      "claim": "Reduce unnecessary friction between human intention, reality, and meaningful action.",
       "gridLabel": "Interfaces made by INTRFACE",
       "open": "Open",
       "openName": "Open {name}",
@@ -441,10 +442,6 @@
       "pickBoth": "Pick one of each.",
       "deadline": "Deadline",
       "share": "Share"
-    },
-    "work": {
-      "name": "Work",
-      "switcherLabel": "Pieces of work"
     },
     "velum": {
       "sectionsLabel": "Velum sections",

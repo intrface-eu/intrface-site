@@ -322,6 +322,7 @@
   },
   "HomeGrid": {
     "common": {
+      "claim": "Réduire les frictions inutiles entre l'intention humaine, la réalité et l'action qui a du sens.",
       "gridLabel": "Interfaces conçues par INTRFACE",
       "open": "Ouvrir",
       "openName": "Ouvrir {name}",
@@ -441,10 +442,6 @@
       "pickBoth": "Choisissez un de chaque.",
       "deadline": "Échéance",
       "share": "Part"
-    },
-    "work": {
-      "name": "Réalisations",
-      "switcherLabel": "Choix de réalisations"
     },
     "velum": {
       "sectionsLabel": "Rubriques de Velum",

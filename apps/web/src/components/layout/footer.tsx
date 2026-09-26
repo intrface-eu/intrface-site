@@ -23,13 +23,9 @@ const linkClass =
  * link groups and no form; the header (on every page but home) carries the
  * navigation, and the grid is the home page's index.
  *
- * On the home page the footer is also where the ground draws Istria and puts
- * the X on Vrsar: `data-ground-key="land"` sits on the footer itself, and the
- * footer is at least 55vh tall (`.site-footer`), so at the foot of the page
- * its centre is within a quarter viewport of the viewport's centre and
- * `stageFor` brings the gathering to completion. On about the page's own land
- * band comes first in the document, so the ground keys from that instead, and
- * pages without the ground ignore the attribute.
+ * It takes its natural height and never keys the ground: about keys its own
+ * land band. Where the ground runs (about), the ground quiets its lines only
+ * under the three text blocks.
  */
 export async function Footer({ locale }: { locale: AppLocale }) {
   const nav = await getTranslations({ locale, namespace: "Nav" });
@@ -37,7 +33,7 @@ export async function Footer({ locale }: { locale: AppLocale }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="site-footer bg-paper text-ink" data-ground-key="land">
+    <footer className="site-footer bg-paper text-ink">
       {/* The ground's lines quiet under the block and stay at full strength
           everywhere else in the footer, so the map reads through it. */}
       <div className="section-shell site-footer__block pt-16 sm:pt-20">

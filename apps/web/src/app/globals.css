@@ -28,10 +28,8 @@
   --font-brand: var(--font-google-sans-flex), "Inter", "Segoe UI", sans-serif;
 
   /* ===== HOME GRID =====
-     The gap between cells, which is open ground, and the strip of ground
-     above the grid that the maker's mark sits in. */
+     The gap between cells, which shows paper. */
   --grid-gap: clamp(8px, 1vw, 14px);
-  --mark-band: 3.5rem;
 
   /* ===== RADIUS SCALE ===== */
   --radius-md: 1rem;
@@ -1413,84 +1411,164 @@ body {
     }
   }
 
-  /* ===== THE INTERFACE GRID (home) =====
-     Four cells on open ground, edge to edge. The gaps and the strip above
-     the grid are ground: no background, so the field shows through them.
+  /* ===== HOME: THE VEIL =====
+     One layer, as tall as the first viewport, over the top of the grid: ink,
+     solid to 55% and then fading to nothing in one linear gradient (the eased
+     stops keep the fade from ending in a visible edge). It carries the maker's
+     mark and the one sentence, both on the solid band, and nothing else.
 
-     Composition. Phones: one column, every cell at least 72svh. Tablets: two
-     columns, Voyager across both, Index and Polis side by side, Work across
-     both. From 1280px: two rows that fill the viewport together with the
-     mark strip. Voyager is the largest cell, across the first two columns;
-     Index and Polis sit under it; Work runs the full height on the right.
-     DOM order reads left to right, top to bottom at every breakpoint. */
-  .interface-grid {
-    display: grid;
-    gap: var(--grid-gap);
-    padding: var(--mark-band) var(--grid-gap) var(--grid-gap);
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: max(80svh, 28rem) repeat(3, max(72svh, 26rem));
-    grid-template-areas:
-      "voyager"
-      "index"
-      "polis"
-      "work";
+     Pointer events. The veil takes none: where it has faded, a click, a
+     touch or a wheel reaches the cell under it. Its solid band (`::before`,
+     transparent) and the mark take them, so nobody drags, hovers or taps an
+     interface they cannot see, and a swipe on the ink scrolls the page.
+
+     Scroll. The veil moves faster than the page and never the grid: an open
+     cell is a `position: fixed` surface inside its slot, and a transform on
+     any ancestor would trap it. Over the first 100svh of scroll a CSS
+     scroll-driven animation gives the veil an extra -35svh of translate.
+     Its resting place is then 65svh down the page, and that is where the
+     grid's first row starts (`--veil-rest`), so the veil clears the cells
+     exactly as the run ends. Without scroll-driven animations, and under
+     reduced motion, the veil scrolls with the page and the grid starts at
+     92svh, where the fade is almost gone. No JavaScript scroll handler. */
+  .home-stage {
+    position: relative;
   }
 
-  @media (min-width: 640px) {
-    .interface-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: max(60svh, 24rem) max(55svh, 24rem) max(64svh, 28rem);
-      grid-template-areas:
-        "voyager voyager"
-        "index polis"
-        "work work";
+  .home-veil {
+    position: absolute;
+    z-index: 10;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 100svh;
+    pointer-events: none;
+    color: var(--ink-inverse);
+    background: linear-gradient(
+      to bottom,
+      var(--ink) 0,
+      var(--ink) 55%,
+      color-mix(in srgb, var(--ink) 93%, transparent) 64%,
+      color-mix(in srgb, var(--ink) 74%, transparent) 73%,
+      color-mix(in srgb, var(--ink) 45%, transparent) 82%,
+      color-mix(in srgb, var(--ink) 22%, transparent) 89%,
+      color-mix(in srgb, var(--ink) 7%, transparent) 95%,
+      transparent 100%
+    );
+  }
+
+  .home-veil::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 55%;
+    pointer-events: auto;
+  }
+
+  .home-veil__shell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block-start: 1.25rem;
+  }
+
+  /* No hyphenation: every word of the sentence fits a phone line whole, in
+     every locale, and a broken word in the one sentence reads as a flaw.
+     `overflow-wrap` from `.type-display` still guards the width. */
+  .home-veil__claim {
+    margin-block-start: clamp(2.5rem, 9svh, 6rem);
+    color: var(--ink-inverse);
+    hyphens: manual;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .home-veil {
+        animation: home-veil-lift linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 100svh;
+      }
     }
   }
 
-  @media (min-width: 1280px) {
+  @keyframes home-veil-lift {
+    to {
+      transform: translate3d(0, -35svh, 0);
+    }
+  }
+
+  /* The maker's mark: the mark and the word in paper, top-left on the veil,
+     linking home. It scrolls away with the veil; nothing on home is fixed. */
+  .maker-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-block-size: 2.5rem;
+    color: var(--paper);
+    pointer-events: auto;
+  }
+
+  .maker-mark:focus-visible {
+    outline: 2px solid var(--paper);
+    outline-offset: 4px;
+  }
+
+  .maker-mark__word {
+    font-family: var(--font-brand);
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  /* ===== THE INTERFACE GRID (home) =====
+     Eight plain cells in registry order, filling the columns left to right.
+     Phones: one column, every cell at least 72svh. From 768px: two columns,
+     cells clamp(24rem, 56svh, 42rem) tall. The gaps show paper. The first
+     row starts where the veil comes to rest (see above). */
+  .interface-grid {
+    --veil-rest: 92svh;
+    display: grid;
+    gap: var(--grid-gap);
+    padding: var(--veil-rest) var(--grid-gap) var(--grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: max(72svh, 26rem);
+  }
+
+  @media (min-width: 768px) {
     .interface-grid {
-      /* The floor keeps the short row near 17rem, the height the old
-         three-row layout was checked at: the rows share what is left after
-         the strip, one gap and the foot padding, 3 : 2. A 720px laptop
-         scrolls a little rather than squeezing Index and Polis. */
-      block-size: max(100svh, 48rem);
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.95fr);
-      grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
-      grid-template-areas:
-        "voyager voyager work"
-        "index polis work";
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: clamp(24rem, 56svh, 42rem);
+    }
+  }
+
+  /* Where the veil lifts, it comes to rest 65svh down the page. */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .interface-grid {
+        --veil-rest: 65svh;
+      }
     }
   }
 
   /* ===== INTERFACE CELL =====
      The cell box is the grid item and holds the slot. It paints nothing; the
-     surface inside it does, the surface is cut, and the surface is the size
-     container fragments measure against (`cqw` / `cqh`), at rest and open.
+     surface inside it does, and the surface is the size container fragments
+     measure against (`cqw` / `cqh`), at rest and open. No radius, no border,
+     no shadow: a plain rectangle of `--paper-raised`, or `--ink` with
+     `.tone-ink`.
 
-     The cut: a quadrilateral whose four edges each lean by `--tilt` (tan 1°).
-     The lean is a share of the cell's own height for the side edges and of
-     its width for the top and bottom, so every edge leans by the same angle
-     whatever the cell's size. Each cell narrows toward one end on each axis:
-     `--xa` 1 narrows it at the top and 0 at the bottom, `--yp` 1 narrows it
-     at the left and 0 at the right. Neighbours take opposite values, so
-     facing edges lean the same way and the gap between them keeps its width.
-     The values are set per breakpoint below, because the neighbours change.
-     `InterfaceShell` reads the same three variables to start the open. */
-  /* The chrome fragments keep clear of, as two lengths every fragment reads
+     The chrome fragments keep clear of, as two lengths every fragment reads
      and no other: `--cell-chrome-top`, 0 at rest (a cell is only its
      interface) and the top band's height when open; `--cell-chrome-bottom`,
      from the bottom edge to the top of the foot row, reserved on every
      pointer whether the row shows or not, and 0 when open. The foot row's
-     height is its offset from the cut (0.625rem), its padding (0.5rem) and
-     one line of `.type-caption` (1.3125rem): 2.4375rem. Narrow cells and a
-     coarse pointer take more, below. The values hold `cqw`, which resolves
-     against the surface wherever a fragment reads them. */
+     height is its offset (0.625rem), its padding (0.5rem) and one line of
+     `.type-caption` (1.3125rem): 2.4375rem. Narrow cells and a coarse
+     pointer take more, below. */
   .interface-cell {
-    --tilt: 0.0175;
-    --xa: 1;
-    --yp: 1;
     --cell-chrome-top: 0px;
-    --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 2.4375rem);
+    --cell-chrome-bottom: 2.4375rem;
     position: relative;
     container-type: size;
     min-inline-size: 0;
@@ -1498,8 +1576,6 @@ body {
   }
 
   .interface-cell__surface {
-    --cut-x: calc(var(--tilt) * 100cqh);
-    --cut-y: calc(var(--tilt) * 100cqw);
     --cell-surface: var(--paper-raised);
     --cell-ink: var(--ink);
     --cell-focus: var(--ink);
@@ -1509,12 +1585,6 @@ body {
     container-type: size;
     background: var(--cell-surface);
     color: var(--cell-ink);
-    clip-path: polygon(
-      calc(var(--cut-x) * var(--xa)) calc(var(--cut-y) * var(--yp)),
-      calc(100% - var(--cut-x) * var(--xa)) calc(var(--cut-y) * (1 - var(--yp))),
-      calc(100% - var(--cut-x) * (1 - var(--xa))) calc(100% - var(--cut-y) * (1 - var(--yp))),
-      calc(var(--cut-x) * (1 - var(--xa))) calc(100% - var(--cut-y) * var(--yp))
-    );
   }
 
   .interface-cell__surface.tone-ink {
@@ -1528,52 +1598,30 @@ body {
     inset: 0;
   }
 
-  /* Phones: one column, so only the top and bottom edges meet a neighbour. */
-  @media (max-width: 639.98px) {
-    .interface-cell:is([data-slug="index"], [data-slug="work"]) {
-      --yp: 0;
-    }
+  /* Velum was built for the old work cell's panel: it queries a container
+     named `work-piece` and leaves the top band to its host. Its wrapper is
+     that container and keeps it clear of the band when open. */
+  .interface-cell[data-slug="velum"] .interface-cell__fragment {
+    container: work-piece / size;
+    padding-block-start: var(--cell-chrome-top);
   }
 
-  /* Tablets: Index and Polis side by side between two full-width cells. */
-  @media (min-width: 640px) and (max-width: 1279.98px) {
-    .interface-cell[data-slug="polis"] {
-      --xa: 0;
-    }
-
-    .interface-cell:is([data-slug="index"], [data-slug="polis"]) {
-      --yp: 0;
-    }
-  }
-
-  /* From 1280px: Voyager beside Work, Index beside Polis beside Work, and
-     Index and Polis under Voyager. */
-  @media (min-width: 1280px) {
-    .interface-cell:is([data-slug="index"], [data-slug="work"]) {
-      --xa: 0;
-    }
-
-    .interface-cell:is([data-slug="index"], [data-slug="polis"]) {
-      --yp: 0;
-    }
-  }
-
-  /* The foot row: name, line, Open, at the cell's foot and clear of the cut.
-     It spans the width between the side cuts; its plate is as wide as its
-     content, and a line too long for it ends in an ellipsis. It shows on
-     hover (fine pointers), on focus anywhere in the cell, and after a touch
-     in the cell until another cell is touched (`data-revealed`). The row
-     takes no pointer events; its button takes them only while the row
-     shows, so a first touch always reaches the fragment. */
+  /* The foot row: name, line, Open, at the cell's foot. Its plate is the
+     cell's surface and as wide as its content; a line too long for it ends
+     in an ellipsis. It shows on hover (fine pointers), on focus anywhere in
+     the cell, and after a touch in the cell until another cell is touched
+     (`data-revealed`). The row takes no pointer events; its button takes
+     them only while the row shows, so a first touch always reaches the
+     fragment. */
   .interface-cell__foot {
     position: absolute;
     z-index: 2;
-    inset-block-end: calc(var(--cut-y) + 0.625rem);
-    inset-inline-start: calc(var(--cut-x) + 0.75rem);
+    inset-block-end: 0.625rem;
+    inset-inline-start: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0 1.25rem;
-    max-inline-size: calc(100% - 2 * var(--cut-x) - 1.5rem);
+    max-inline-size: calc(100% - 1.5rem);
     padding: 0.25rem 0.5rem;
     background: var(--cell-surface);
     opacity: 0;
@@ -1622,7 +1670,7 @@ body {
   }
 
   /* Under about 300px the label and Open no longer share a row: the label,
-     then Open under it, and the reservation doubles. */
+     then Open under it, and the reservation grows by one caption line. */
   @container (max-width: 300px) {
     .interface-cell__foot {
       flex-direction: column;
@@ -1630,7 +1678,7 @@ body {
     }
 
     .interface-cell__surface {
-      --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 3.75rem);
+      --cell-chrome-bottom: 3.75rem;
     }
   }
 
@@ -1638,12 +1686,12 @@ body {
      + 2.75rem on one row, and one caption line more on two. */
   @media (hover: none), (pointer: coarse) {
     .interface-cell {
-      --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 3.875rem);
+      --cell-chrome-bottom: 3.875rem;
     }
 
     @container (max-width: 300px) {
       .interface-cell__surface {
-        --cell-chrome-bottom: calc(var(--tilt) * 100cqw + 5.1875rem);
+        --cell-chrome-bottom: 5.1875rem;
       }
     }
 
@@ -1686,13 +1734,12 @@ body {
 
   /* ===== OPEN IN PLACE =====
      The open cell keeps its slot; its surface becomes a fixed, full-viewport
-     dialog over the page, and the cut gives way to the viewport's edge.
-     `InterfaceShell` runs the move as one clip-path animation from the
-     cell's cut to the full viewport and back, 420ms on the house easing, at
-     once under reduced motion; nothing is scaled. The cell stops being a
-     size container while open, so nothing between it and the viewport
-     contains the fixed surface; its slot has a set size and does not move.
-     The cell rises over the maker's mark and the footer. */
+     dialog over the page. `InterfaceShell` runs the move as one clip-path
+     animation from the cell's rectangle to the full viewport and back, 420ms
+     on the house easing, at once under reduced motion; nothing is scaled.
+     The cell stops being a size container while open, so nothing between it
+     and the viewport contains the fixed surface; its slot has a set size and
+     does not move. The cell rises over the veil. */
   .interface-cell[data-expanded] {
     z-index: 60;
     container-type: normal;
@@ -1703,7 +1750,6 @@ body {
     --cell-chrome-bottom: 0px;
     position: fixed;
     inset: 0;
-    clip-path: none;
   }
 
   .interface-cell[data-expanded] .interface-cell__foot {
@@ -1800,52 +1846,8 @@ body {
     }
   }
 
-  /* ===== MAKER'S MARK (home) =====
-     The home page has no header. The mark and the word sit fixed in the top
-     left, in the strip of ground the grid leaves above itself, on a paper
-     backing sized to their content, so they stay legible when a cell
-     scrolls under them; on the ground the backing is the same paper and
-     does not show. */
-  .maker-mark {
-    position: fixed;
-    z-index: 40;
-    inset-block-start: calc((var(--mark-band) - 2.5rem) / 2);
-    inset-inline-start: calc(var(--grid-gap) + 0.25rem);
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    min-block-size: 2.5rem;
-    padding-inline: 0.5rem;
-    background: var(--paper);
-    color: var(--ink);
-  }
-
-  .maker-mark:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: 4px;
-  }
-
-  .maker-mark__word {
-    font-family: var(--font-brand);
-    font-size: 1.125rem;
-    font-weight: 500;
-    letter-spacing: -0.04em;
-  }
-
   /* ===== FOOTER =====
-     One short block over the signature. The footer is at least 55vh tall on
-     every page: on home it carries `data-ground-key="land"`, and at the foot
-     of the page that height puts its centre within a quarter viewport of the
-     viewport's centre, which is where `stageFor` completes the Istria
-     gathering. The space between the block and the signature is where the
-     map shows. */
-  .site-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-block-size: 55vh;
-  }
-
+     One short block over the signature, at its natural height. */
   .site-footer__block {
     display: grid;
     gap: 2rem;

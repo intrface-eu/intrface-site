@@ -1,65 +1,61 @@
 import { getTranslations } from "next-intl/server";
+import { MakerMark } from "@/components/layout/maker-mark";
 import type { AppLocale } from "@/i18n/routing";
-import { CELLS, WORK_PIECES, type WorkPieceSlug } from "@/lib/site/interfaces";
-import { PROJECTS, type ProjectKey } from "@/lib/site/projects";
-import { InterfaceShell, type OpenableCopy, type PieceCopy } from "./interface-shell";
+import { CELLS } from "@/lib/site/interfaces";
+import { PROJECTS } from "@/lib/site/projects";
+import { InterfaceShell, type CellEntry } from "./interface-shell";
 
 /**
- * The home page's first screen: four interface cells on open ground. Resolves
- * every cell's and every work piece's copy on the server and hands it to the
- * client shell, which owns reveal, open in place and the hash. Layout and the
- * cut geometry live in `globals.css` under `.interface-grid`.
+ * The home page: the veil over the top of the grid, and the grid of eight
+ * working interfaces. Resolves every cell's copy on the server and hands it
+ * to the client shell, which owns reveal, open in place and the hash. The
+ * veil, its scroll-driven lift and the grid live in `globals.css` under
+ * `.home-veil` and `.interface-grid`. See docs/home-grid-contract.md.
  */
 export async function InterfaceGrid({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomeGrid" });
   const projects = await getTranslations({ locale, namespace: "Projects" });
 
-  const copyFor = (
-    slug: string,
-    spec: { href?: string; liveUrl?: string; project?: ProjectKey },
-  ): OpenableCopy => {
-    const name = spec.project ? PROJECTS[spec.project].name : t(`${slug}.name`);
-    const line = spec.project ? projects(`${spec.project}.role`) : t(`${slug}.line`);
+  const cells: CellEntry[] = CELLS.map((cell) => {
+    const name = cell.project ? PROJECTS[cell.project].name : t(`${cell.slug}.name`);
+    const line = cell.project ? projects(`${cell.project}.role`) : t(`${cell.slug}.line`);
     return {
-      name,
-      line,
-      openName: t("common.openName", { name }),
-      href: spec.href,
-      liveUrl: spec.liveUrl,
+      slug: cell.slug,
+      tone: cell.tone,
+      copy: {
+        name,
+        line,
+        openName: t("common.openName", { name }),
+        href: cell.href,
+        liveUrl: cell.liveUrl,
+      },
     };
-  };
-
-  const cells = CELLS.map((cell) => ({
-    slug: cell.slug,
-    area: cell.area,
-    tone: cell.tone,
-    // The work cell reads its copy from the current piece.
-    copy: cell.slug === "work" ? null : copyFor(cell.slug, cell),
-  }));
-
-  const pieces = Object.fromEntries(
-    WORK_PIECES.map((piece) => [piece.slug, { ...copyFor(piece.slug, piece), tone: piece.tone }]),
-  ) as Record<WorkPieceSlug, PieceCopy>;
+  });
 
   return (
-    <section aria-labelledby="interface-grid-title" className="interface-grid">
-      {/* The page's one heading. No claim is set on the page itself: the grid
-          is what the first screen says. */}
-      <h1 className="sr-only" id="interface-grid-title">
-        {t("common.gridLabel")}
-      </h1>
+    <div className="home-stage">
+      {/* The veil: ink over the top of the grid, fading to nothing. It takes
+          no pointer events but on its solid band and the logo, so a click or
+          a wheel where it has faded reaches the cell under it. */}
+      <div className="home-veil">
+        <div className="section-shell home-veil__shell">
+          <MakerMark locale={locale} />
+          <h1 className="type-display home-veil__claim">{t("common.claim")}</h1>
+        </div>
+      </div>
 
-      <InterfaceShell
-        cells={cells}
-        labels={{
-          open: t("common.open"),
-          close: t("common.close"),
-          liveSite: t("common.liveSite"),
-          theProject: t("common.theProject"),
-          newTab: projects("newTab"),
-        }}
-        pieces={pieces}
-      />
-    </section>
+      <section aria-label={t("common.gridLabel")} className="interface-grid">
+        <InterfaceShell
+          cells={cells}
+          labels={{
+            open: t("common.open"),
+            close: t("common.close"),
+            liveSite: t("common.liveSite"),
+            theProject: t("common.theProject"),
+            newTab: projects("newTab"),
+          }}
+        />
+      </section>
+    </div>
   );
 }
