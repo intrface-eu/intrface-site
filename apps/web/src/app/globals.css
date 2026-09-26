@@ -6,6 +6,8 @@
   --paper-raised: #fbf9f4;
   --card: #ffffff;
   --ink: #0f1729;
+  /* True black: home only (the veil and the page under it). */
+  --black: #000;
   --ink-muted: #47536b;
   --line: rgba(15, 23, 41, 0.12);
   /* The boundary of a control the reader has to find and click: inputs, chips,
@@ -1412,28 +1414,31 @@ body {
   }
 
   /* ===== HOME: THE VEIL =====
-     One layer, as tall as the first viewport, over the top of the stage: ink,
-     solid to 55% and then fading to nothing in one linear gradient (the eased
-     stops keep the fade from ending in a visible edge). It carries the maker's
-     mark and the one sentence, both on the solid band, and nothing else.
+     Home is black all the way down to the footer. The veil is one layer over
+     the top of the stage: black and solid through the whole first viewport,
+     then fading to nothing over a further `--veil-fade` (eased stops, so the
+     fade does not end in a visible edge). It carries the maker's mark and
+     the one sentence, both on the solid band, and nothing else.
 
      Pointer events. The veil takes none: where it has faded, a click, a
      touch or a wheel reaches the tile under it. Its solid band (`::before`,
-     transparent) and the mark take them, so nobody hovers or taps a tile
-     they cannot see, and a swipe on the ink scrolls the page.
+     the first 100svh) and the mark take them, so nobody hovers or taps a
+     tile they cannot see, and a swipe on the black scrolls the page.
 
-     Scroll. Plain CSS sticky, no scroll-driven animation and no JavaScript.
-     The stage is 200svh tall; the bento is its only in-flow child, 100svh
-     tall and sticky at the top, so it stays pinned for the first 100svh of
-     scroll. The veil sits over it and scrolls away at page speed; at 100svh
-     it is gone, and only then does the bento move up with the page. It works
-     the same in every browser and needs no reduced-motion branch.
+     Scroll. Plain CSS sticky. The stage is 100svh taller than the veil; the
+     bento is its only in-flow child, 100svh tall and sticky at the top, so
+     it stays pinned for the veil's full height of scroll. The veil sits over
+     it and scrolls away at page speed; once its bottom has left the
+     viewport, and only then, the bento moves up with the page.
 
      Focus. A tile that takes keyboard focus while the veil covers it lifts
      the veil out of the way. */
   .home-stage {
+    --veil-fade: 60svh;
+    --veil-height: calc(100svh + var(--veil-fade));
     position: relative;
-    block-size: 200svh;
+    block-size: calc(100svh + var(--veil-height));
+    background: var(--black);
   }
 
   .home-veil {
@@ -1441,18 +1446,18 @@ body {
     z-index: 10;
     inset-block-start: 0;
     inset-inline: 0;
-    block-size: 100svh;
+    block-size: var(--veil-height);
     pointer-events: none;
     color: var(--ink-inverse);
     background: linear-gradient(
       to bottom,
-      var(--ink) 0,
-      var(--ink) 55%,
-      color-mix(in srgb, var(--ink) 93%, transparent) 64%,
-      color-mix(in srgb, var(--ink) 74%, transparent) 73%,
-      color-mix(in srgb, var(--ink) 45%, transparent) 82%,
-      color-mix(in srgb, var(--ink) 22%, transparent) 89%,
-      color-mix(in srgb, var(--ink) 7%, transparent) 95%,
+      var(--black) 0,
+      var(--black) 100svh,
+      color-mix(in srgb, var(--black) 93%, transparent) calc(100svh + var(--veil-fade) * 0.2),
+      color-mix(in srgb, var(--black) 74%, transparent) calc(100svh + var(--veil-fade) * 0.4),
+      color-mix(in srgb, var(--black) 45%, transparent) calc(100svh + var(--veil-fade) * 0.6),
+      color-mix(in srgb, var(--black) 22%, transparent) calc(100svh + var(--veil-fade) * 0.76),
+      color-mix(in srgb, var(--black) 7%, transparent) calc(100svh + var(--veil-fade) * 0.89),
       transparent 100%
     );
   }
@@ -1472,7 +1477,7 @@ body {
     position: absolute;
     inset-block-start: 0;
     inset-inline: 0;
-    block-size: 55%;
+    block-size: 100svh;
     pointer-events: auto;
   }
 
@@ -1521,15 +1526,16 @@ body {
      sticky at the top of the stage (see the veil above). 2×2 equal cells
      below 1024px; from 1024px a checkerboard on five columns, wide (3) and
      narrow (2) cells trading places between the rows. Each tile is one link:
-     the real screenshot covering the cell from the top, a 1px edge so a
-     paper-coloured capture does not melt into the page, and a paper caption
-     bar over its bottom. No radius, no shadow, no hover effect; the focus
+     the real screenshot covering the cell from the top, a faint paper edge
+     so a dark capture does not melt into the black, and a black caption bar
+     over its bottom. No radius, no shadow, no hover effect; the focus
      ring, drawn inside the tile so nothing clips it, is the only state. */
   .work-tiles {
+    --line: color-mix(in srgb, var(--paper) 16%, transparent);
     position: sticky;
     inset-block-start: 0;
     block-size: 100svh;
-    background: var(--paper);
+    background: var(--black);
   }
 
   .work-tiles__grid {
@@ -1557,8 +1563,8 @@ body {
   }
 
   /* The rise into place. The grid starts 12svh low and eases up to 0 over
-     the first 100svh of scroll, the same run the veil takes to leave, so it
-     lands as the bento unpins. Transform only, on the grid inside the
+     the veil's full height of scroll, so it lands as the veil's bottom
+     leaves the viewport and the bento unpins. Transform only, on the grid inside the
      sticky section; the section's box, the stage and the page height do not
      change. Without scroll-driven animations, or under reduced motion, the
      grid sits at 0. A focused tile puts it at 0 too, with the veil gone. */
@@ -1567,7 +1573,7 @@ body {
       .work-tiles__grid {
         animation: work-tiles-rise linear both;
         animation-timeline: scroll(root);
-        animation-range: 0 100svh;
+        animation-range: 0 var(--veil-height);
       }
 
       .home-stage:has(.work-tile:focus-visible) .work-tiles__grid {
@@ -1594,22 +1600,22 @@ body {
     min-inline-size: 0;
     min-block-size: 0;
     border: 1px solid var(--line);
-    color: var(--ink);
-    background: var(--paper);
+    color: var(--ink-inverse);
+    background: var(--black);
     /* Forced colours paint this; the ring below serves everyone else. */
     outline: 2px solid transparent;
   }
 
-  /* The ring sits inside the tile, over the image and the caption: ink with
-     a paper line inside it, so it reads on dark captures too. */
+  /* The ring sits inside the tile, over the image and the caption: paper
+     with a black line inside it, so it reads on light captures too. */
   .work-tile:focus-visible::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 2;
     box-shadow:
-      inset 0 0 0 2px var(--ink),
-      inset 0 0 0 4px var(--paper);
+      inset 0 0 0 2px var(--paper),
+      inset 0 0 0 4px var(--black);
     pointer-events: none;
   }
 
@@ -1645,7 +1651,8 @@ body {
     gap: 0.75rem;
     padding: 0.375rem 0.625rem;
     border-block-start: 1px solid var(--line);
-    background: var(--paper);
+    background: var(--black);
+    color: var(--ink-inverse);
     white-space: nowrap;
   }
 
@@ -1658,11 +1665,12 @@ body {
 
   .work-tile__name {
     flex: 0 1 auto;
-    color: var(--ink);
+    color: var(--ink-inverse);
   }
 
   .work-tile__line {
     display: none;
+    color: var(--ink-inverse-muted);
     flex: 0 1000 auto;
   }
 
