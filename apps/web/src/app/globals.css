@@ -1585,7 +1585,9 @@ body {
   @keyframes work-tiles-rise {
     from {
       transform: translate3d(0, 12svh, 0);
-      animation-timing-function: ease-out;
+      /* Near linear with a soft end, not ease-out: the grid keeps moving
+         while the fade uncovers it and settles only as the veil clears. */
+      animation-timing-function: cubic-bezier(0.2, 0.3, 0.7, 0.9);
     }
 
     to {
@@ -1725,6 +1727,30 @@ body {
       grid-area: colophon;
       justify-self: end;
     }
+  }
+
+  /* The footer on home: black like the page above it. The footer's classes
+     read the palette tokens, so redefining them here turns every part dark,
+     the signature plate included (its paper mask becomes black, its ink
+     light). The accent is lifted as on `.tone-ink` (9.4:1 on black), and
+     `color-scheme` makes the locale menu's native list dark too. Other pages
+     keep the paper footer. */
+  body:has(.home-stage) .site-footer {
+    --paper: var(--black);
+    /* `--ink-inverse` flattened onto black. It has to be opaque: the
+       signature's ink is a copy laid over a stroked glyph, and a
+       translucent fill lets the stroke's seams through. */
+    --ink: #ebebeb;
+    --ink-muted: var(--ink-inverse-muted);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-control: rgba(255, 255, 255, 0.55);
+    --accent: #7cb8b1;
+    color-scheme: dark;
+  }
+
+  body:has(.home-stage) .site-footer option {
+    background: var(--black);
+    color: var(--ink-inverse);
   }
 
   /* ===== ABOUT: THE PERSON =====

@@ -46,7 +46,10 @@ paper.
    and outer padding of `min(var(--grid-gap), 10px)`. It sits under the
    veil from the first frame, stays pinned for `--veil-height` of scroll,
    and moves up with the page once the veil's bottom has left.
-4. **The footer.** Unchanged, on paper. It has no dark variant.
+4. **The footer.** Black on home only, by CSS alone:
+   `body:has(.home-stage) .site-footer` redefines `--paper` (black),
+   `--ink` (opaque `#ebebeb`), `--ink-muted`, `--line` and `--accent`
+   (`#7cb8b1`) and sets `color-scheme: dark`. Other pages keep paper.
 
 No JavaScript scroll handler. The pinning is ordinary sticky scrolling
 and works the same in every browser. On top of it, the grid inside the
