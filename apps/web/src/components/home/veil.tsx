@@ -5,8 +5,8 @@ import type { AppLocale } from "@/i18n/routing";
 /**
  * The veil over the top of the home page: ink, solid at the top and fading
  * to nothing, carrying the maker's mark and the one sentence (the page's
- * `h1`). Its scroll-driven lift lives in `globals.css` under `.home-veil`.
- * See docs/home-grid-contract.md.
+ * `h1`). It scrolls away at page speed over the pinned bento; see
+ * `.home-veil` in `globals.css` and docs/home-grid-contract.md.
  */
 export async function Veil({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "HomeGrid" });
