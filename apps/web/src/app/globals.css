@@ -27,8 +27,8 @@
   --foreground: var(--ink);
   --font-brand: var(--font-google-sans-flex), "Inter", "Segoe UI", sans-serif;
 
-  /* ===== HOME GRID =====
-     The gap between cells, which shows paper. */
+  /* ===== HOME WORK =====
+     The gap between the home tiles (three times this from 768px). */
   --grid-gap: clamp(8px, 1vw, 14px);
 
   /* ===== RADIUS SCALE ===== */
@@ -1412,25 +1412,24 @@ body {
   }
 
   /* ===== HOME: THE VEIL =====
-     One layer, as tall as the first viewport, over the top of the grid: ink,
+     One layer, as tall as the first viewport, over the top of the work: ink,
      solid to 55% and then fading to nothing in one linear gradient (the eased
      stops keep the fade from ending in a visible edge). It carries the maker's
      mark and the one sentence, both on the solid band, and nothing else.
 
      Pointer events. The veil takes none: where it has faded, a click, a
-     touch or a wheel reaches the cell under it. Its solid band (`::before`,
-     transparent) and the mark take them, so nobody drags, hovers or taps an
-     interface they cannot see, and a swipe on the ink scrolls the page.
+     touch or a wheel reaches the tile under it. Its solid band (`::before`,
+     transparent) and the mark take them, so nobody hovers or taps a tile
+     they cannot see, and a swipe on the ink scrolls the page.
 
-     Scroll. The veil moves faster than the page and never the grid: an open
-     cell is a `position: fixed` surface inside its slot, and a transform on
-     any ancestor would trap it. Over the first 100svh of scroll a CSS
-     scroll-driven animation gives the veil an extra -35svh of translate.
-     Its resting place is then 65svh down the page, and that is where the
-     grid's first row starts (`--veil-rest`), so the veil clears the cells
-     exactly as the run ends. Without scroll-driven animations, and under
-     reduced motion, the veil scrolls with the page and the grid starts at
-     92svh, where the fade is almost gone. No JavaScript scroll handler. */
+     Scroll. The veil moves faster than the page; the tiles never transform.
+     Over the first 100svh of scroll a CSS scroll-driven animation gives the
+     veil an extra -35svh of translate. Its resting place is then 65svh down
+     the page, and that is where the first tile starts (`--veil-rest`), so
+     the veil clears the work exactly as the run ends. Without scroll-driven
+     animations, and under reduced motion, the veil scrolls with the page and
+     the first tile starts at 92svh, where the fade is almost gone. No
+     JavaScript scroll handler. */
   .home-stage {
     position: relative;
   }
@@ -1521,329 +1520,74 @@ body {
     letter-spacing: -0.04em;
   }
 
-  /* ===== THE INTERFACE GRID (home) =====
-     Eight plain cells in registry order, filling the columns left to right.
-     Phones: one column, every cell at least 72svh. From 768px: two columns,
-     cells clamp(24rem, 56svh, 42rem) tall. The gaps show paper. The first
-     row starts where the veil comes to rest (see above). */
-  .interface-grid {
+  /* ===== THE WORK (home) =====
+     Three tiles in one column inside `.section-shell`, so they line up with
+     the sentence and the mark. Each is one link to the live site: the real
+     screenshot, whole, with a 1px edge so a paper-coloured capture does not
+     melt into the page, and a caption row under it (name, line, arrow). No
+     radius, no shadow, no hover effect; the focus ring is the only state.
+     The first tile starts where the veil comes to rest (see above). */
+  .work-tiles {
     --veil-rest: 92svh;
+    --work-gap: var(--grid-gap);
     display: grid;
-    gap: var(--grid-gap);
-    padding: var(--veil-rest) var(--grid-gap) var(--grid-gap);
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: max(72svh, 26rem);
+    gap: var(--work-gap);
+    padding-block: var(--veil-rest) var(--work-gap);
   }
 
   @media (min-width: 768px) {
-    .interface-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: clamp(24rem, 56svh, 42rem);
+    .work-tiles {
+      --work-gap: calc(var(--grid-gap) * 3);
     }
   }
 
   /* Where the veil lifts, it comes to rest 65svh down the page. */
   @supports (animation-timeline: scroll()) {
     @media (prefers-reduced-motion: no-preference) {
-      .interface-grid {
+      .work-tiles {
         --veil-rest: 65svh;
       }
     }
   }
 
-  /* ===== INTERFACE CELL =====
-     The cell box is the grid item and holds the slot. It paints nothing; the
-     surface inside it does, and the surface is the size container fragments
-     measure against (`cqw` / `cqh`), at rest and open. No radius, no border,
-     no shadow: a plain rectangle of `--paper-raised`, or `--ink` with
-     `.tone-ink`.
-
-     The chrome fragments keep clear of, as two lengths every fragment reads
-     and no other: `--cell-chrome-top`, 0 at rest (a cell is only its
-     interface) and the top band's height when open; `--cell-chrome-bottom`,
-     from the bottom edge to the top of the foot row, reserved on every
-     pointer whether the row shows or not, and 0 when open. The foot row's
-     height is its offset (0.625rem), its padding (0.5rem) and one line of
-     `.type-caption` (1.3125rem): 2.4375rem. Narrow cells and a coarse
-     pointer take more, below. */
-  .interface-cell {
-    --cell-chrome-top: 0px;
-    --cell-chrome-bottom: 2.4375rem;
-    position: relative;
-    container-type: size;
-    min-inline-size: 0;
-    min-block-size: 0;
+  .work-tile {
+    display: block;
+    color: var(--ink);
   }
 
-  .interface-cell__surface {
-    --cell-surface: var(--paper-raised);
-    --cell-ink: var(--ink);
-    --cell-focus: var(--ink);
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    container-type: size;
-    background: var(--cell-surface);
-    color: var(--cell-ink);
-  }
-
-  .interface-cell__surface.tone-ink {
-    --cell-surface: var(--ink);
-    --cell-ink: var(--ink-inverse);
-    --cell-focus: var(--ink-inverse);
-  }
-
-  .interface-cell__fragment {
-    position: absolute;
-    inset: 0;
-  }
-
-  /* Velum was built for the old work cell's panel: it queries a container
-     named `work-piece` and leaves the top band to its host. Its wrapper is
-     that container and keeps it clear of the band when open. */
-  .interface-cell[data-slug="velum"] .interface-cell__fragment {
-    container: work-piece / size;
-    padding-block-start: var(--cell-chrome-top);
-  }
-
-  /* The foot row: name, line, Open, at the cell's foot. Its plate is the
-     cell's surface and as wide as its content; a line too long for it ends
-     in an ellipsis. It shows on hover (fine pointers), on focus anywhere in
-     the cell, and after a touch in the cell until another cell is touched
-     (`data-revealed`). The row takes no pointer events; its button takes
-     them only while the row shows, so a first touch always reaches the
-     fragment. */
-  .interface-cell__foot {
-    position: absolute;
-    z-index: 2;
-    inset-block-end: 0.625rem;
-    inset-inline-start: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0 1.25rem;
-    max-inline-size: calc(100% - 1.5rem);
-    padding: 0.25rem 0.5rem;
-    background: var(--cell-surface);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .interface-cell:focus-within .interface-cell__foot,
-  .interface-cell[data-revealed] .interface-cell__foot {
-    opacity: 1;
-  }
-
-  .interface-cell:focus-within .interface-cell__open,
-  .interface-cell[data-revealed] .interface-cell__open {
-    pointer-events: auto;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .interface-cell:hover .interface-cell__foot {
-      opacity: 1;
-    }
-
-    .interface-cell:hover .interface-cell__open {
-      pointer-events: auto;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .interface-cell__foot {
-      transition: opacity 220ms cubic-bezier(0.2, 0.8, 0.3, 1);
-    }
-  }
-
-  .interface-cell__label {
-    flex: 0 1 auto;
-    min-inline-size: 0;
-    max-inline-size: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .interface-cell__name {
-    margin-inline-end: 0.5rem;
-    color: var(--cell-ink);
-    font-weight: 600;
-  }
-
-  /* Under about 300px the label and Open no longer share a row: the label,
-     then Open under it, and the reservation grows by one caption line. */
-  @container (max-width: 300px) {
-    .interface-cell__foot {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .interface-cell__surface {
-      --cell-chrome-bottom: 3.75rem;
-    }
-  }
-
-  /* A coarse pointer gets a touch-height Open (2.75rem): 0.625rem + 0.5rem
-     + 2.75rem on one row, and one caption line more on two. */
-  @media (hover: none), (pointer: coarse) {
-    .interface-cell {
-      --cell-chrome-bottom: 3.875rem;
-    }
-
-    @container (max-width: 300px) {
-      .interface-cell__surface {
-        --cell-chrome-bottom: 5.1875rem;
-      }
-    }
-
-    .interface-cell__open {
-      min-block-size: 2.75rem;
-    }
-  }
-
-  .interface-cell__open,
-  .interface-cell__action {
-    display: inline-flex;
-    flex: none;
-    align-items: center;
-    gap: 0.375rem;
-    text-underline-offset: 4px;
-    white-space: nowrap;
-  }
-
-  .interface-cell__open {
-    color: var(--accent);
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .interface-cell__action {
-    color: var(--cell-ink);
-  }
-
-  .interface-cell__open:hover,
-  .interface-cell__action:hover {
-    text-decoration: underline;
-  }
-
-  .interface-cell__open:focus-visible,
-  .interface-cell__action:focus-visible,
-  .interface-cell__close:focus-visible {
-    outline: 2px solid var(--cell-focus);
+  .work-tile:focus-visible {
+    outline: 2px solid var(--ink);
     outline-offset: 4px;
   }
 
-  /* ===== OPEN IN PLACE =====
-     The open cell keeps its slot; its surface becomes a fixed, full-viewport
-     dialog over the page. `InterfaceShell` runs the move as one clip-path
-     animation from the cell's rectangle to the full viewport and back, 420ms
-     on the house easing, at once under reduced motion; nothing is scaled.
-     The cell stops being a size container while open, so nothing between it
-     and the viewport contains the fixed surface; its slot has a set size and
-     does not move. The cell rises over the veil. */
-  .interface-cell[data-expanded] {
-    z-index: 60;
-    container-type: normal;
+  .work-tile__image {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border: 1px solid var(--line);
   }
 
-  .interface-cell[data-expanded] > .interface-cell__surface {
-    --cell-chrome-top: 3.25rem;
-    --cell-chrome-bottom: 0px;
-    position: fixed;
-    inset: 0;
-  }
-
-  .interface-cell[data-expanded] .interface-cell__foot {
-    display: none;
-  }
-
-  .interface-cell__surface[data-closing] {
-    pointer-events: none;
-  }
-
-  /* The page under an open cell does not scroll. The gutter stays, so the
-     layout does not shift when the scrollbar goes. */
-  html[data-interface-open] {
-    overflow: hidden;
-    scrollbar-gutter: stable;
-  }
-
-  /* The band across the top of an open interface: name and line, then Live
-     site and The project where they apply, then the close mark. On a narrow
-     screen the links take a second row under the name; `InterfaceCell`
-     writes the band's height to `--cell-chrome-top`. */
-  .interface-cell__band {
-    position: absolute;
-    z-index: 3;
-    inset-block-start: 0;
-    inset-inline: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "title close"
-      "actions actions";
-    align-items: center;
-    column-gap: 1.25rem;
-    padding: 0.375rem max(var(--grid-gap), 0.75rem) 0.375rem clamp(1rem, 2vw, 1.75rem);
-    border-block-end: 1px solid var(--line);
-    background: var(--cell-surface);
-  }
-
-  @media (min-width: 640px) {
-    .interface-cell__band {
-      grid-template-columns: minmax(0, 1fr) auto auto;
-      grid-template-areas: "title actions close";
-    }
-  }
-
-  .interface-cell__title {
-    grid-area: title;
+  .work-tile__caption {
     display: flex;
-    align-items: baseline;
-    gap: 0 1rem;
-    min-inline-size: 0;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-block-start: 0.75rem;
   }
 
-  .interface-cell__band-name {
+  .work-tile__name {
     flex: none;
-    color: inherit;
+    color: var(--ink);
   }
 
-  .interface-cell__band-line {
+  .work-tile__line {
     min-inline-size: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
-  .interface-cell__band-actions {
-    grid-area: actions;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0 1.5rem;
-    min-block-size: 2.5rem;
-  }
-
-  .interface-cell__close {
-    grid-area: close;
-    display: inline-grid;
-    place-items: center;
-    inline-size: 2.5rem;
-    block-size: 2.5rem;
-    color: var(--cell-ink);
-    cursor: pointer;
-  }
-
-  @media (hover: none), (pointer: coarse) {
-    .interface-cell__band-actions,
-    .interface-cell__action {
-      min-block-size: 2.75rem;
-    }
-
-    .interface-cell__close {
-      inline-size: 2.75rem;
-      block-size: 2.75rem;
-    }
+  /* One caption line is 1.3125rem; the 1rem arrow sits on its middle. */
+  .work-tile__arrow {
+    flex: none;
+    margin-block-start: 0.15625rem;
+    margin-inline-start: auto;
   }
 
   /* ===== FOOTER =====
