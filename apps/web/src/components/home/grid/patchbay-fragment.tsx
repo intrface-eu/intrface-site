@@ -10,6 +10,7 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
+import type { FragmentProps } from "@/lib/site/interfaces";
 import styles from "./patchbay-fragment.module.css";
 
 /* A patch board: four outputs, four inputs, one cable per jack. Connection
@@ -71,7 +72,7 @@ function hung(a: Pt, b: Pt, h: number) {
   };
 }
 
-export function PatchbayFragment({ slug }: { slug: string }) {
+export function PatchbayFragment({ expanded }: FragmentProps) {
   const t = useTranslations("HomeGrid.patchbay");
   const [links, setLinks] = useState<Link[]>([{ id: 0, o: "voice", i: "tape" }]);
   const [armed, setArmed] = useState<Jack | null>(null);
@@ -309,7 +310,11 @@ export function PatchbayFragment({ slug }: { slug: string }) {
   };
 
   return (
-    <div className={`h-full w-full ${styles.root}`} data-fragment={slug}>
+    <div
+      className={`h-full w-full ${styles.root}`}
+      data-fragment="patchbay"
+      data-expanded={expanded || undefined}
+    >
       <div className={styles.bar}>
         <p className={styles.status} aria-live="polite">
           {last ? (

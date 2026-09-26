@@ -1,36 +1,51 @@
 /* Voyager: a pannable chart of places around Vrsar. See voyager-fragment.tsx.
-   The plane's size follows the cell (cq units, the root is its own size
-   container), so the chart keeps its scale through every breakpoint. Pan is a
-   single translate on the plane, from two unitless custom properties the
-   script writes: --cx and --cy, the view centre as a fraction of the plane. */
+   The stage is the chart's window and its own size container; the plane's
+   size follows it (cq units), so the chart keeps its scale through every
+   breakpoint. Pan is a single translate on the plane, from two unitless
+   custom properties the script writes on the stage: --cx and --cy, the view
+   centre as a fraction of the plane.
+
+   At rest the stage fills the cell. Expanded, it fills the viewport under the
+   dialog band (--cell-chrome-top) beside the list of places: a column on the
+   left in a wide viewport, a band at the foot in a narrow one. */
 
 .root {
   position: relative;
   container-type: size;
   overflow: clip;
-  touch-action: none;
-  /* The cell's own surface, for the pin fill and the type halo. */
-  --vy-surface: var(--paper-raised);
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: grab;
   color: inherit;
-  --vy-w: calc(140cqw + 140cqh);
-  --vy-h: calc(var(--vy-w) / 1.1833);
+  /* The cell's own surface, for the pin fill, the list and the type halo. */
+  --vy-surface: var(--paper-raised);
   --vy-ease: cubic-bezier(0.2, 0.8, 0.3, 1);
+  /* The cut: every edge of the cell leans by tan 1° of its length. */
+  --vy-cut-x: 1.75cqh;
+  --vy-cut-y: 1.75cqw;
 }
 
 :global(.tone-ink) .root {
   --vy-surface: var(--ink);
 }
 
-.root[data-drag] {
+.stage {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  overflow: clip;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  --vy-w: calc(140cqw + 140cqh);
+  --vy-h: calc(var(--vy-w) / 1.1833);
+}
+
+.stage[data-drag] {
   cursor: grabbing;
 }
 
 /* An outward ring is cut off by the cell's clip-path, so the focus ring sits
    inside the chart. */
-.root:focus-visible {
+.stage:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: -6px;
 }
@@ -50,11 +65,11 @@
   will-change: transform;
 }
 
-.root[data-drag] .plane {
+.stage[data-drag] .plane {
   transition: none;
 }
 
-.root[data-fling] .plane {
+.stage[data-fling] .plane {
   transition-duration: 620ms;
 }
 
@@ -74,7 +89,6 @@
 }
 
 .land {
-  fill: url(#vy-stipple);
   stroke: none;
 }
 
@@ -111,11 +125,6 @@
   cursor: pointer;
 }
 
-.pin:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-}
-
 .mark {
   position: absolute;
   left: 50%;
@@ -126,7 +135,7 @@
   border: 1px solid currentColor;
   background: var(--vy-surface);
   transform: rotate(45deg);
-  transition: background-color 220ms var(--vy-ease), transform 220ms var(--vy-ease);
+  transition: transform 220ms var(--vy-ease);
 }
 
 .name {
@@ -148,8 +157,8 @@
 }
 
 .pin:hover .name,
-.pin:focus-visible .name,
-.pin[data-near] .name {
+.pin[data-near] .name,
+.root[data-expanded] .name {
   opacity: 1;
 }
 
@@ -162,14 +171,13 @@
 }
 
 .pin:hover .mark,
-.pin:focus-visible .mark,
 .pin[data-near] .mark {
   background: var(--accent);
   border-color: var(--accent);
   transform: rotate(45deg) scale(1.3);
 }
 
-/* Fixed furniture: centre reticle, readout, scale bar, credit. */
+/* Fixed furniture: centre reticle, readout and scale, credit. */
 .reticle {
   position: absolute;
   left: 50%;
@@ -186,14 +194,12 @@
     linear-gradient(currentColor, currentColor) 50% 100% / 1px 7px no-repeat;
 }
 
-/* The chart's title block, top right, level with the shell's name corner
-   (whose text starts 1.375rem above its foot) and clear of the right cut,
-   which leans by tan 1° of the cell's height. The credit sits bottom right,
-   above the cell's foot row. */
+/* The chart's title block, top right, clear of the top chrome and of the
+   right cut. The credit sits bottom right, clear of the foot row. */
 .legend {
   position: absolute;
-  top: calc(var(--cell-chrome-top) - 1.375rem);
-  right: calc(1.75cqh + 1rem);
+  top: calc(max(var(--cell-chrome-top, 0px), var(--vy-cut-y)) + 0.875rem);
+  right: calc(var(--vy-cut-x) + 1rem);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -211,25 +217,16 @@
     0 0 6px var(--vy-surface);
 }
 
-/* Sentence case and the quietest type in the cell: a credit, not a label.
-   It stands just above the foot row, which spans the cell's width. */
+/* Sentence case at the smallest sentence size DESIGN.md allows, in the muted
+   ink `.type-caption` carries: a credit, not a label. */
 .credit {
   position: absolute;
-  right: calc(1.75cqh + 1rem);
-  bottom: calc(var(--cell-chrome-bottom) + 0.25rem);
+  right: calc(var(--vy-cut-x) + 1rem);
+  bottom: calc(max(var(--cell-chrome-bottom, 0px), var(--vy-cut-y)) + 0.375rem);
   margin: 0;
-  font-size: 0.75rem;
   white-space: nowrap;
   max-inline-size: none;
   pointer-events: none;
-}
-
-.hint {
-  transition: opacity 320ms var(--vy-ease);
-}
-
-.root[data-touched] .hint {
-  opacity: 0;
 }
 
 .scale {
@@ -248,30 +245,165 @@
   opacity: 0.7;
 }
 
-.sr {
+/* ===== Expanded: the chart and the list of places ===== */
+
+.root[data-expanded] {
+  --vy-list-w: clamp(15rem, 24cqw, 20rem);
+  --vy-list-h: min(17.5rem, 38cqh);
+}
+
+/* The page scroll is locked while the dialog is open: the chart takes every
+   gesture. */
+.root[data-expanded] .stage {
+  top: var(--cell-chrome-top, 0px);
+  bottom: var(--vy-list-h);
+  touch-action: none;
+}
+
+.root[data-expanded] .legend {
+  top: 1rem;
+}
+
+.root[data-expanded] .credit {
+  bottom: 0.625rem;
+}
+
+.places {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--vy-list-h);
+  display: flex;
+  flex-direction: column;
+  background: var(--vy-surface);
+  border-top: 1px solid var(--line);
+}
+
+.placesHead {
+  flex: none;
+  margin: 0;
+  /* In line with the row names: the list's 6px ring room plus the row's 1rem. */
+  padding: 0.875rem 1rem 0.5rem calc(6px + 1rem);
+}
+
+.list {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  /* Room for a focused row's 2px ring at 4px offset. */
+  padding: 0 6px 1rem;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-control) transparent;
+  touch-action: pan-y;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.625rem 0.5rem 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+/* The current place: an accent rule at the row's start, never a surface. */
+.item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.625rem;
+  bottom: 0.625rem;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 220ms var(--vy-ease);
+}
+
+.item[aria-current]::before {
+  transform: scaleY(1);
+}
+
+.item:hover .itemName,
+.item[aria-current] .itemName {
+  color: var(--accent);
+}
+
+.item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.itemName {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.itemAt {
   white-space: nowrap;
+  color: var(--ink-muted);
+}
+
+/* Narrow viewports: the list rows drop the coordinates. */
+@container (max-width: 30rem) {
+  .itemAt {
+    display: none;
+  }
+}
+
+/* Wide viewports: the list is a column on the left, under the band. */
+@container (min-width: 48rem) {
+  .root[data-expanded] .stage {
+    top: var(--cell-chrome-top, 0px);
+    bottom: 0;
+    left: var(--vy-list-w);
+  }
+
+  .places {
+    top: var(--cell-chrome-top, 0px);
+    right: auto;
+    width: var(--vy-list-w);
+    height: auto;
+    border-top: 0;
+    border-right: 1px solid var(--line);
+  }
+
+  .placesHead {
+    padding-top: 1.25rem;
+  }
+
+  .item {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.125rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .plane,
   .mark,
   .name,
-  .hint {
+  .item::before {
     transition: none;
   }
 }
 
-/* On touch the chart gives vertical swipes to the page: with pan-y the
-   browser takes a gesture that starts vertically and scrolls, and cancels the
-   pointer; a gesture that starts sideways stays with the chart and pans it in
-   both axes until release. A mouse or pen keeps the whole gesture (none). */
+/* On touch, at rest, the chart gives vertical swipes to the page: with pan-y
+   the browser takes a gesture that starts vertically and scrolls, and
+   cancels the pointer; a gesture that starts sideways stays with the chart
+   and pans it in both axes until release. A mouse or pen keeps the whole
+   gesture (none). */
 @media (pointer: coarse) {
-  .root {
+  .stage {
     cursor: auto;
     touch-action: pan-y;
   }

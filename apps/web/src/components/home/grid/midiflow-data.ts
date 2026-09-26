@@ -1,7 +1,10 @@
 /** Static data for the MidiFlow fragment: a pentatonic voice, a light default
  *  pattern, and three fixed tempos. Rows run top (highest) to bottom. */
 
+/** Steps in one bar. The cell plays one bar; expanded and wide, it plays two. */
 export const STEPS = 16;
+/** Steps the pattern stores: two bars. Row p, step s is `p * MAX_STEPS + s`. */
+export const MAX_STEPS = 32;
 
 export const PITCHES = [
   { name: "A4", hz: 440 },
@@ -21,9 +24,13 @@ const DEFAULT_ON: ReadonlyArray<readonly [number, number]> = [
   [2, 14],
 ];
 
+/** The default bar, set in both bars, so opening the wide grid keeps the tune. */
 export function defaultPattern(): boolean[] {
-  const cells = new Array<boolean>(PITCHES.length * STEPS).fill(false);
-  for (const [p, s] of DEFAULT_ON) cells[p * STEPS + s] = true;
+  const cells = new Array<boolean>(PITCHES.length * MAX_STEPS).fill(false);
+  for (const [p, s] of DEFAULT_ON) {
+    cells[p * MAX_STEPS + s] = true;
+    cells[p * MAX_STEPS + s + STEPS] = true;
+  }
   return cells;
 }
 

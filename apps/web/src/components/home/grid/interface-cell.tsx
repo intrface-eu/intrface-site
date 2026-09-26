@@ -1,167 +1,208 @@
 "use client";
 
-import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
-import { useCallback, useEffect, useId, useRef, type MouseEvent, type ReactNode } from "react";
-import { Link, useRouter } from "@/i18n/navigation";
+import { IconArrowRight, IconArrowUpRight, IconX } from "@tabler/icons-react";
+import {
+  useId,
+  useLayoutEffect,
+  useRef,
+  type KeyboardEvent,
+  type PointerEvent,
+  type ReactNode,
+} from "react";
+import { Link } from "@/i18n/navigation";
+import type { Tone } from "@/lib/site/interfaces";
+import type { OpenableCopy, ShellLabels } from "./interface-shell";
 
-/** The expansion's length; `.interface-cell[data-expanding]` runs the same. */
-const EXPAND_MS = 380;
+type ElementRef<T> = (element: T | null) => void;
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export type InterfaceCellProps = {
   slug: string;
   area: string;
-  tone: "paper" | "ink";
-  name: string;
-  line: string;
-  status?: string;
-  href?: string;
-  liveUrl?: string;
-  labels: {
-    open: string;
-    /** "Open {name}", already formatted: the Open link's accessible name. */
-    openName: string;
-    liveSite: string;
-    newTab: string;
-  };
+  tone: Tone;
+  copy: OpenableCopy;
+  labels: ShellLabels;
+  expanded: boolean;
+  /** A touch inside this cell was the last touch in the grid. */
+  revealed: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  onTouch: () => void;
+  ref: ElementRef<HTMLElement>;
+  surfaceRef: ElementRef<HTMLDivElement>;
+  openRef: ElementRef<HTMLButtonElement>;
+  closeRef: ElementRef<HTMLButtonElement>;
   children: ReactNode;
 };
 
 /**
- * One cell of the home grid: the cut surface, the name in its corner, the
- * foot row (the line, Open and Live site) that shows on hover or focus, and
- * always on a coarse pointer.
+ * One cell of the home grid. At rest it is only its fragment: the region
+ * carries the name for assistive tech, and the foot row (name, line, Open)
+ * shows on hover, on focus inside the cell, or after a touch in it. Its
+ * height is reserved on every pointer as `--cell-chrome-bottom`, and the row
+ * takes no pointer events; only its button does.
  *
- * The fragment is a child and nothing wraps it: its controls stay reachable by
- * pointer and keyboard, and only the Open link navigates.
- *
- * Open runs the expansion. The cell takes one transform that carries it from
- * its grid position onto the viewport, the foot row fades, and the route
- * changes when the transform ends. The scale is uniform, so type never
- * stretches: the cell grows until it covers the viewport on both axes and is
- * centred on it, and the viewport clips the overshoot on the longer axis. JavaScript measures the cell once, on the click,
- * and writes one style; the compositor does the rest. Under reduced motion,
- * or for a click that opens a new tab, the link navigates as any link does.
+ * Expanded, the surface is a modal dialog over the viewport with a thin top
+ * band: the name and line, Live site and The project where they apply, and
+ * the close mark. The band's measured height is `--cell-chrome-top` for the
+ * fragment. The shell (`InterfaceShell`) owns the open state, the motion and
+ * the URL; this component draws the cell and traps focus while open.
  */
 export function InterfaceCell({
   slug,
   area,
   tone,
-  name,
-  line,
-  status,
-  href,
-  liveUrl,
+  copy,
   labels,
+  expanded,
+  revealed,
+  onOpen,
+  onClose,
+  onTouch,
+  ref,
+  surfaceRef,
+  openRef,
+  closeRef,
   children,
 }: InterfaceCellProps) {
-  const router = useRouter();
-  const cellRef = useRef<HTMLElement>(null);
-  const timer = useRef(0);
-  const prefetched = useRef(false);
   const nameId = useId();
+  const surface = useRef<HTMLDivElement | null>(null);
+  const band = useRef<HTMLElement>(null);
 
-  // Put the cell back if the page is left or hidden mid-expansion, so a return
-  // to the grid never finds a cell still covering the viewport.
-  useEffect(() => {
-    const cell = cellRef.current;
+  // The band may wrap to two rows on a narrow screen; the fragment keeps
+  // clear of whatever height it takes.
+  useLayoutEffect(() => {
+    const bandEl = band.current;
+    const surfaceEl = surface.current;
+    if (!expanded || !bandEl || !surfaceEl) return;
+    const write = () =>
+      surfaceEl.style.setProperty("--cell-chrome-top", `${bandEl.getBoundingClientRect().height}px`);
+    write();
+    const observer = new ResizeObserver(write);
+    observer.observe(bandEl);
     return () => {
-      window.clearTimeout(timer.current);
-      if (!cell) return;
-      delete cell.dataset.expanding;
-      cell.style.removeProperty("transform");
+      observer.disconnect();
+      surfaceEl.style.removeProperty("--cell-chrome-top");
     };
-  }, []);
+  }, [expanded]);
 
-  const prefetch = useCallback(() => {
-    if (!href || prefetched.current) return;
-    prefetched.current = true;
-    router.prefetch(href);
-  }, [href, router]);
+  const onPointerDown = (event: PointerEvent) => {
+    if (event.pointerType === "touch") onTouch();
+  };
 
-  const onOpen = useCallback(
-    (event: MouseEvent<HTMLAnchorElement>) => {
-      const cell = cellRef.current;
-      if (!href || !cell) return;
-      if (event.defaultPrevented || event.button !== 0) return;
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!expanded) return;
+    if (event.key === "Escape" && !event.defaultPrevented) {
       event.preventDefault();
-      if (cell.dataset.expanding !== undefined) return;
-
-      const rect = cell.getBoundingClientRect();
-      const width = document.documentElement.clientWidth;
-      const height = window.innerHeight;
-      // Uniform scale that covers the viewport; the translate centres the
-      // scaled cell on it (the origin is the cell's top-left corner).
-      const scale = Math.max(width / rect.width, height / rect.height);
-      const x = (width - rect.width * scale) / 2 - rect.left;
-      const y = (height - rect.height * scale) / 2 - rect.top;
-      cell.dataset.expanding = "";
-      cell.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
-      timer.current = window.setTimeout(() => router.push(href), EXPAND_MS);
-    },
-    [href, router],
-  );
+      onClose();
+      return;
+    }
+    if (event.key !== "Tab" || !surface.current) return;
+    // Wrap focus inside the dialog; the rest of the page is inert as well.
+    const focusable = Array.from(surface.current.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+      (element) => element.getClientRects().length > 0,
+    );
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   return (
-    <article
-      aria-labelledby={nameId}
+    <section
+      aria-label={copy.name}
       className="interface-cell"
+      data-expanded={expanded ? "" : undefined}
+      data-revealed={revealed ? "" : undefined}
       data-slug={slug}
-      data-tone={tone}
-      onPointerEnter={href ? prefetch : undefined}
-      ref={cellRef}
+      onPointerDownCapture={onPointerDown}
+      ref={ref}
       style={{ gridArea: area }}
     >
       {/* The tone goes on the surface, not the cell: `.tone-ink` paints a
           background, and only the surface is cut. */}
-      <div className={`interface-cell__surface${tone === "ink" ? " tone-ink" : ""}`}>
-        <header className="interface-cell__corner">
-          <h2 className="type-meta interface-cell__name" id={nameId}>
-            {name}
-          </h2>
-          {status ? <p className="type-meta interface-cell__status">{status}</p> : null}
-        </header>
+      <div
+        aria-labelledby={expanded ? nameId : undefined}
+        aria-modal={expanded ? true : undefined}
+        className={`interface-cell__surface${tone === "ink" ? " tone-ink" : ""}`}
+        onKeyDown={onKeyDown}
+        ref={(element) => {
+          surface.current = element;
+          surfaceRef(element);
+        }}
+        role={expanded ? "dialog" : undefined}
+      >
+        {expanded ? (
+          <header className="interface-cell__band" ref={band}>
+            <div className="interface-cell__title">
+              <h2 className="type-meta interface-cell__band-name" id={nameId}>
+                {copy.name}
+              </h2>
+              <p className="type-caption interface-cell__band-line">{copy.line}</p>
+            </div>
+            {copy.liveUrl || copy.href ? (
+              <div className="interface-cell__band-actions">
+                {copy.liveUrl ? (
+                  <a
+                    className="type-caption interface-cell__action"
+                    href={copy.liveUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {labels.liveSite}
+                    <span className="sr-only"> ({labels.newTab})</span>
+                    <IconArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                  </a>
+                ) : null}
+                {copy.href ? (
+                  <Link className="type-caption interface-cell__action" href={copy.href}>
+                    {labels.theProject}
+                    <IconArrowRight aria-hidden="true" className="h-4 w-4" />
+                  </Link>
+                ) : null}
+              </div>
+            ) : null}
+            <button
+              aria-label={labels.close}
+              className="interface-cell__close"
+              onClick={onClose}
+              ref={closeRef}
+              type="button"
+            >
+              <IconX aria-hidden="true" className="h-5 w-5" stroke={1.75} />
+            </button>
+          </header>
+        ) : null}
 
         <div className="interface-cell__fragment">{children}</div>
 
-        {/* The foot row: the line, then Open and Live site. The row takes no
-            pointer events; only its links do. A long line ends in an ellipsis
-            on screen and is read whole by assistive tech. */}
+        {/* The foot row: name, line, Open. A long line ends in an ellipsis on
+            screen and is read whole by assistive tech. */}
         <div className="interface-cell__foot">
-          <p className="type-caption interface-cell__line">{line}</p>
-          {href || liveUrl ? (
-            <div className="interface-cell__actions">
-              {href ? (
-                <Link
-                  aria-label={labels.openName}
-                  className="type-caption interface-cell__open"
-                  href={href}
-                  onClick={onOpen}
-                  onFocus={prefetch}
-                  prefetch={false}
-                >
-                  {labels.open}
-                  <IconArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
-              ) : null}
-              {liveUrl ? (
-                <a
-                  className="type-caption interface-cell__live"
-                  href={liveUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {labels.liveSite}
-                  <span className="sr-only"> ({labels.newTab})</span>
-                  <IconArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                </a>
-              ) : null}
-            </div>
-          ) : null}
+          <p className="type-caption interface-cell__label">
+            <span className="interface-cell__name">{copy.name}</span>{" "}
+            <span className="interface-cell__line">{copy.line}</span>
+          </p>
+          <button
+            aria-label={copy.openName}
+            className="type-caption interface-cell__open"
+            onClick={onOpen}
+            ref={openRef}
+            type="button"
+          >
+            {labels.open}
+            <IconArrowRight aria-hidden="true" className="h-4 w-4" />
+          </button>
         </div>
       </div>
-    </article>
+    </section>
   );
 }

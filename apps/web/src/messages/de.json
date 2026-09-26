@@ -329,13 +329,16 @@
       "comingSoon": "Bald",
       "liveSite": "Live-Seite",
       "makerMark": "INTRFACE Startseite",
-      "backToGrid": "Zurück zum Raster"
+      "backToGrid": "Zurück zum Raster",
+      "close": "Schließen",
+      "theProject": "Das Projekt"
     },
     "voyager": {
       "name": "Voyager",
       "line": "Das Interface für einen Ort.",
-      "hint": "Karte ziehen. Orte rund um Vrsar.",
       "chartLabel": "Karte der Orte rund um Vrsar",
+      "chartRole": "Karte",
+      "placesLabel": "Orte",
       "credit": "Küstenlinie © OpenStreetMap-Mitwirkende",
       "keys": "Pfeiltasten bewegen die Karte. Enter springt zum nächsten Ort.",
       "places": {
@@ -399,7 +402,6 @@
     "polis": {
       "name": "Polis",
       "line": "Bürger-Interfaces.",
-      "hint": "Etwas melden. Zusehen, wie daraus ein Fall wird.",
       "mapLabel": "Stelle wählen",
       "categoryLabel": "Was ist es",
       "categories": {
@@ -414,7 +416,10 @@
         "assigned": "Zugewiesen",
         "resolved": "Erledigt"
       },
-      "empty": "Noch nichts gemeldet."
+      "empty": "Noch nichts gemeldet.",
+      "timeline": "Verlauf des Falls",
+      "casesLabel": "Gemeldete Fälle",
+      "credit": "© OpenStreetMap-Mitwirkende"
     },
     "funda": {
       "name": "Funda",
@@ -437,10 +442,18 @@
       "deadline": "Frist",
       "share": "Anteil"
     },
-    "capture": {
-      "hint": "Seite scrollen.",
-      "frameLabel": "{name} auf einem Telefon. Scrollen, um die Seite zu lesen.",
-      "desktopLabel": "{name} auf einem Desktop-Bildschirm."
+    "work": {
+      "name": "Arbeiten",
+      "switcherLabel": "Arbeiten zur Auswahl"
+    },
+    "velum": {
+      "sectionsLabel": "Bereiche von Velum",
+      "language": "Velum auf {language} anzeigen"
+    },
+    "astyleMarine": {
+      "listLabel": "Erlebnisse von AstyleMarine",
+      "routeLabel": "Route: {name}",
+      "routeChoice": "Routenvariante"
     }
   }
 }

@@ -10,13 +10,16 @@ import {
   type KeyboardEvent,
 } from "react";
 import { useTranslations } from "next-intl";
+import type { FragmentProps } from "@/lib/site/interfaces";
 import {
   DEFAULT_TEMPO,
+  MAX_STEPS,
   PITCHES,
   STEPS,
   TEMPOS,
   defaultPattern,
 } from "./midiflow-data";
+import { useWorkPieceActive } from "./work-piece-context";
 import styles from "./midiflow-fragment.module.css";
 
 const ROWS = PITCHES.length;
@@ -32,6 +35,15 @@ const subscribeReduce = (cb: () => void) => {
 };
 const readReduce = () => window.matchMedia(REDUCE).matches;
 const readReduceServer = () => false;
+
+/** Expanded on a screen this wide, the grid shows and plays two bars. */
+const WIDE = "(min-width: 64rem)";
+const subscribeWide = (cb: () => void) => {
+  const mq = window.matchMedia(WIDE);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+};
+const readWide = () => window.matchMedia(WIDE).matches;
 
 /** One note: a triangle oscillator through one gain node shaped as a short pluck. */
 function pluck(ctx: AudioContext, hz: number, at: number) {
@@ -57,6 +69,8 @@ class Sequencer {
   ctx: AudioContext | null = null;
   pattern = defaultPattern();
   tempo: number = DEFAULT_TEMPO;
+  /** Steps in the loop: one bar, or two. */
+  steps: number = STEPS;
   running = false;
   buttons: (HTMLButtonElement | null)[] = [];
   head: HTMLElement | null = null;
@@ -113,11 +127,11 @@ class Sequencer {
     if (!ctx || !this.running) return;
     while (this.next < ctx.currentTime + LOOKAHEAD) {
       for (let p = 0; p < ROWS; p++) {
-        if (this.pattern[p * STEPS + this.step]) pluck(ctx, PITCHES[p].hz, this.next);
+        if (this.pattern[p * MAX_STEPS + this.step]) pluck(ctx, PITCHES[p].hz, this.next);
       }
       this.queue.push({ s: this.step, t: this.next });
       this.next += 15 / this.tempo; // a sixteenth note
-      this.step = (this.step + 1) % STEPS;
+      this.step = (this.step + 1) % this.steps;
     }
     this.timer = window.setTimeout(this.tick, TICK_MS);
   };
@@ -136,27 +150,47 @@ class Sequencer {
   private show(s: number) {
     const b = this.buttons;
     if (this.shown >= 0) {
-      for (let p = 0; p < ROWS; p++) b[p * STEPS + this.shown]?.removeAttribute("data-hit");
+      for (let p = 0; p < ROWS; p++) b[p * MAX_STEPS + this.shown]?.removeAttribute("data-hit");
     }
     this.shown = s;
     if (s < 0) return;
     this.head?.style.setProperty("--step", String(s));
-    for (let p = 0; p < ROWS; p++) b[p * STEPS + s]?.setAttribute("data-hit", "");
+    for (let p = 0; p < ROWS; p++) b[p * MAX_STEPS + s]?.setAttribute("data-hit", "");
   }
 }
 
-export function MidiflowFragment({ slug }: { slug: string }) {
+export function MidiflowFragment({ expanded }: FragmentProps) {
   const t = useTranslations("HomeGrid.midiflow");
   const reduced = useSyncExternalStore(subscribeReduce, readReduce, readReduceServer);
+  const wide = useSyncExternalStore(subscribeWide, readWide, readReduceServer);
+  const active = useWorkPieceActive();
+  const steps = expanded && wide ? MAX_STEPS : STEPS;
   const [pattern, setPattern] = useState(defaultPattern);
   const [playing, setPlaying] = useState(false);
   const [tempo, setTempo] = useState<number>(DEFAULT_TEMPO);
-  const [focusIdx, setFocusIdx] = useState((ROWS - 1) * STEPS);
+  const [focusRaw, setFocusIdx] = useState((ROWS - 1) * MAX_STEPS);
+  // A focus left on the second bar falls back into the first when it closes.
+  const focusIdx = focusRaw % MAX_STEPS < steps ? focusRaw : focusRaw - STEPS;
   const rootRef = useRef<HTMLDivElement>(null);
   const seqRef = useRef<Sequencer | null>(null);
   const hintId = useId();
 
   const seq = () => (seqRef.current ??= new Sequencer());
+
+  useEffect(() => {
+    const s = seqRef.current;
+    if (!s) return;
+    s.steps = steps;
+    // The loop restarts on the new length rather than play past its end.
+    if (s.running) s.start();
+  }, [steps]);
+
+  // Leaving the work cell: silent at once, before the fade ends.
+  useEffect(() => {
+    if (active) return;
+    seqRef.current?.sleep();
+    setPlaying(false);
+  }, [active]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -201,7 +235,7 @@ export function MidiflowFragment({ slug }: { slug: string }) {
     next[i] = !next[i];
     commit(next);
     setFocusIdx(i);
-    if (next[i] && !s.running) s.note(Math.floor(i / STEPS));
+    if (next[i] && !s.running) s.note(Math.floor(i / MAX_STEPS));
   };
 
   const onPlay = () => {
@@ -210,6 +244,7 @@ export function MidiflowFragment({ slug }: { slug: string }) {
       s.halt();
       setPlaying(false);
     } else if (!reduced) {
+      s.steps = steps;
       s.start();
       setPlaying(true);
     }
@@ -221,25 +256,27 @@ export function MidiflowFragment({ slug }: { slug: string }) {
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    let p = Math.floor(focusIdx / STEPS);
-    let s = focusIdx % STEPS;
+    let p = Math.floor(focusIdx / MAX_STEPS);
+    let s = focusIdx % MAX_STEPS;
     switch (e.key) {
-      case "ArrowRight": s = Math.min(STEPS - 1, s + 1); break;
+      case "ArrowRight": s = Math.min(steps - 1, s + 1); break;
       case "ArrowLeft": s = Math.max(0, s - 1); break;
       case "ArrowUp": p = Math.max(0, p - 1); break;
       case "ArrowDown": p = Math.min(ROWS - 1, p + 1); break;
       case "Home": s = 0; break;
-      case "End": s = STEPS - 1; break;
+      case "End": s = steps - 1; break;
       default: return;
     }
     e.preventDefault();
-    const i = p * STEPS + s;
+    const i = p * MAX_STEPS + s;
     setFocusIdx(i);
     seq().buttons[i]?.focus();
   };
 
   return (
-    <div ref={rootRef} className={`${styles.root} h-full w-full`} data-fragment={slug}>
+    <div ref={rootRef} className={`${styles.root} h-full w-full`} data-fragment="midiflow"
+      data-expanded={expanded || undefined}
+    >
       <div className={styles.controls}>
         <button
           type="button"
@@ -250,7 +287,7 @@ export function MidiflowFragment({ slug }: { slug: string }) {
         >
           {playing ? t("stop") : t("play")}
         </button>
-        <button type="button" className={`${styles.control} type-meta`} onClick={() => commit(new Array<boolean>(ROWS * STEPS).fill(false))}>
+        <button type="button" className={`${styles.control} type-meta`} onClick={() => commit(new Array<boolean>(ROWS * MAX_STEPS).fill(false))}>
           {t("clear")}
         </button>
         <div role="group" aria-label={t("tempo")} className={styles.tempo}>
@@ -279,6 +316,7 @@ export function MidiflowFragment({ slug }: { slug: string }) {
         aria-describedby={hintId}
         className={styles.grid}
         data-playing={playing || undefined}
+        data-bars={steps === MAX_STEPS ? 2 : undefined}
         onKeyDown={onKeyDown}
       >
         <span
@@ -303,8 +341,9 @@ export function MidiflowFragment({ slug }: { slug: string }) {
           )),
         )}
         {pattern.map((on, i) => {
-          const p = Math.floor(i / STEPS);
-          const s = i % STEPS;
+          const p = Math.floor(i / MAX_STEPS);
+          const s = i % MAX_STEPS;
+          if (s >= steps) return null;
           const place = {
             "--c16": s + 2,
             "--r16": p + 1,

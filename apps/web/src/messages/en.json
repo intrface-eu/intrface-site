@@ -329,13 +329,16 @@
       "comingSoon": "Coming soon",
       "liveSite": "Live site",
       "makerMark": "INTRFACE home",
-      "backToGrid": "Back to the grid"
+      "backToGrid": "Back to the grid",
+      "close": "Close",
+      "theProject": "The project"
     },
     "voyager": {
       "name": "Voyager",
       "line": "The interface for a place.",
-      "hint": "Drag the chart. Places around Vrsar.",
       "chartLabel": "Chart of places around Vrsar",
+      "chartRole": "map",
+      "placesLabel": "Places",
       "credit": "Coastline © OpenStreetMap contributors",
       "keys": "Arrow keys move the chart. Enter goes to the next place.",
       "places": {
@@ -399,7 +402,6 @@
     "polis": {
       "name": "Polis",
       "line": "Civic interfaces.",
-      "hint": "Report something. Watch it become a case.",
       "mapLabel": "Pick a spot",
       "categoryLabel": "What is it",
       "categories": {
@@ -414,7 +416,10 @@
         "assigned": "Assigned",
         "resolved": "Resolved"
       },
-      "empty": "Nothing reported yet."
+      "empty": "Nothing reported yet.",
+      "timeline": "Case history",
+      "casesLabel": "Reported cases",
+      "credit": "© OpenStreetMap contributors"
     },
     "funda": {
       "name": "Funda",
@@ -437,10 +442,18 @@
       "deadline": "Deadline",
       "share": "Share"
     },
-    "capture": {
-      "hint": "Scroll the page.",
-      "frameLabel": "{name} on a phone. Scroll to read the page.",
-      "desktopLabel": "{name} on a desktop screen."
+    "work": {
+      "name": "Work",
+      "switcherLabel": "Pieces of work"
+    },
+    "velum": {
+      "sectionsLabel": "Velum sections",
+      "language": "Show Velum in {language}"
+    },
+    "astyleMarine": {
+      "listLabel": "AstyleMarine experiences",
+      "routeLabel": "Route of the {name}",
+      "routeChoice": "Route version"
     }
   }
 }

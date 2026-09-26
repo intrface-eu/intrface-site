@@ -1,23 +1,20 @@
 import type { ComponentType } from "react";
-import type { FragmentKey } from "@/lib/site/interfaces";
-import { CaptureFragment } from "./capture-fragment";
-import { FundaFragment } from "./funda-fragment";
+import type { CellSlug, FragmentProps, WorkFragmentProps } from "@/lib/site/interfaces";
 import { IndexFragment } from "./index-fragment";
-import { MidiflowFragment } from "./midiflow-fragment";
-import { PatchbayFragment } from "./patchbay-fragment";
 import { PolisFragment } from "./polis-fragment";
 import { VoyagerFragment } from "./voyager-fragment";
+import { WorkFragment } from "./work-fragment";
 
 /**
- * Fragment key to component. Every fragment takes `{ slug }`; the capture
- * fragment serves both client sites and reads which one from the slug.
+ * Cell slug to fragment. Three cells take `FragmentProps`; the work cell
+ * takes `WorkFragmentProps`, because the shell owns its current piece. The
+ * work fragment imports its own pieces.
  */
-export const FRAGMENTS: Record<FragmentKey, ComponentType<{ slug: string }>> = {
+export const FRAGMENTS: Record<Exclude<CellSlug, "work">, ComponentType<FragmentProps>> & {
+  work: ComponentType<WorkFragmentProps>;
+} = {
   voyager: VoyagerFragment,
   index: IndexFragment,
-  midiflow: MidiflowFragment,
-  patchbay: PatchbayFragment,
   polis: PolisFragment,
-  funda: FundaFragment,
-  capture: CaptureFragment as ComponentType<{ slug: string }>,
+  work: WorkFragment,
 };

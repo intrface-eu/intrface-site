@@ -7,12 +7,32 @@
   flex-direction: column;
   min-height: 0;
   container-type: inline-size;
-  /* Top clears the cell's name corner, the bottom the cell's foot row with
-     a little air, so a result cut off by the list's edge never reads on
-     into the row's line; sides leave room for 4px-offset rings. */
-  padding: var(--cell-chrome-top) clamp(1rem, 4.5%, 1.75rem)
-    calc(var(--cell-chrome-bottom) + 0.5rem);
+  /* Top clears the chrome above (none at rest; the dialog band when open)
+     and the cut, the bottom the cell's foot row with a little air, so a
+     result cut off by the list's edge never reads on into the row's line;
+     sides leave room for 4px-offset rings and clear the side cuts. */
+  padding: calc(max(var(--cell-chrome-top, 0px), 1.75cqw) + 0.75rem)
+    clamp(1rem, 4.5%, 1.75rem) calc(max(var(--cell-chrome-bottom, 0px), 1.75cqw) + 0.5rem);
   color: inherit;
+}
+
+/* The field over the ledger. At rest it is the whole cell; open, it is a
+   reading column centred in the viewport. */
+.column {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+.root[data-expanded] {
+  padding-top: calc(var(--cell-chrome-top, 0px) + clamp(1.25rem, 4cqh, 3rem));
+}
+
+.root[data-expanded] .column {
+  max-inline-size: 60rem;
+  margin-inline: auto;
 }
 
 /* ---- Field ---- */
@@ -31,7 +51,7 @@
 }
 
 .field:has(.input:focus-visible) {
-  outline: 2px solid var(--accent);
+  outline: 2px solid currentColor;
   outline-offset: 4px;
 }
 
@@ -242,6 +262,28 @@
 .empty {
   margin: 0;
   padding-block: 1rem;
+}
+
+/* ---- Open: a bigger field, and every entry with its line ---- */
+
+.root[data-expanded] .field {
+  padding-block: 0.5rem 0.75rem;
+}
+
+.root[data-expanded] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.root[data-expanded] .group + .group {
+  margin-top: 2rem;
+}
+
+@container (min-width: 32rem) {
+  .root[data-expanded] .row {
+    grid-template-columns: 1.75rem minmax(8rem, 12rem) minmax(0, 1fr) auto 1rem;
+    min-height: 3rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

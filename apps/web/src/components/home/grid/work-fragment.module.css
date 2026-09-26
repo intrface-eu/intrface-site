@@ -1,0 +1,179 @@
+/* Work cell: a row of five tabs across the top, the current piece under it.
+   The tabs take the cell's own surface and colour (paper, or ink under
+   .tone-ink); each piece paints its own. */
+
+.root {
+  /* The sloped top edge leans by tan 1° of the width (see .interface-cell). */
+  --w-cut: 1.75cqw;
+  --w-pad: clamp(1rem, 5cqw, 1.75rem);
+
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+  color: inherit;
+}
+
+.bar {
+  flex: none;
+  padding-block-start: calc(var(--cell-chrome-top, 0px) + var(--w-cut) + 0.375rem);
+  padding-inline: var(--w-pad);
+  border-block-end: 1px solid var(--line);
+}
+
+/* One row; where five names do not fit (a narrow phone in a long locale) the
+   row scrolls sideways on its own and the page still scrolls vertically. */
+.tabs {
+  position: relative;
+  display: flex;
+  gap: clamp(0.25rem, 2cqw, 1rem);
+  margin-inline: -0.5rem;
+  padding-inline: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Where the row overflows, the cut-off side fades so a clipped name reads as
+   "more this way", not as a broken label. */
+.tabs[data-more="start"] {
+  mask-image: linear-gradient(to right, transparent, #000 1.5rem);
+}
+
+.tabs[data-more="end"] {
+  mask-image: linear-gradient(to left, transparent, #000 1.5rem);
+}
+
+.tabs[data-more="both"] {
+  mask-image: linear-gradient(to right, transparent, #000 1.5rem, #000 calc(100% - 1.5rem), transparent);
+}
+
+.tab {
+  position: relative;
+  flex: none;
+  min-block-size: 2.5rem;
+  margin: 0;
+  padding: 0 0.5rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  opacity: 0.66;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: opacity 180ms ease-out;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.5rem;
+  inset-block-end: -1px;
+  block-size: 2px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+.tab[aria-selected="true"] {
+  opacity: 1;
+}
+
+.tab[aria-selected="true"]::after {
+  opacity: 0.22;
+}
+
+@media (hover: hover) {
+  .tab:hover {
+    opacity: 1;
+  }
+}
+
+.tab:focus-visible {
+  z-index: 1;
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* How long until the next piece: the active tab's underline fills over the
+   rotation step, and holds while rotation holds. */
+.progress {
+  position: absolute;
+  inset-inline: 0.5rem;
+  inset-block-end: -1px;
+  block-size: 2px;
+  background: currentColor;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  animation: w-progress 9000ms linear forwards paused;
+  pointer-events: none;
+}
+
+.progress[data-running] {
+  animation-play-state: running;
+}
+
+@keyframes w-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (pointer: coarse) {
+  .tab {
+    min-block-size: 2.75rem;
+  }
+}
+
+/* The piece: its own size container, so its queries measure the room it
+   gets. The switcher already clears the top, so pieces see no top chrome. */
+.panel {
+  position: relative;
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+}
+
+/* Named, so a piece can query the room it gets even from inside a nested
+   container of its own. */
+.layer {
+  --cell-chrome-top: 0px;
+  grid-area: 1 / 1;
+  position: relative;
+  min-block-size: 0;
+  min-inline-size: 0;
+  container: work-piece / size;
+  overflow: hidden;
+}
+
+.leave {
+  z-index: 1;
+  pointer-events: none;
+  animation: w-out 200ms ease-out both;
+}
+
+@keyframes w-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tab::after {
+    transition: none;
+  }
+
+  .leave {
+    animation: none;
+  }
+
+  .progress {
+    display: none;
+  }
+}

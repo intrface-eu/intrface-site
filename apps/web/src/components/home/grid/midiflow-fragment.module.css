@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-block: var(--cell-chrome-top) max(var(--cell-chrome-bottom), 1rem);
+  padding-block: calc(var(--cell-chrome-top, 0px) + 0.75rem) max(var(--cell-chrome-bottom), 1rem);
   padding-inline: clamp(1rem, 5cqw, 1.75rem);
 }
 
@@ -260,6 +260,38 @@
     grid-column: var(--c16);
     grid-row: var(--r16);
   }
+}
+
+/* Expanded on a wide screen: two bars in one band, 32 steps across. */
+.grid[data-bars="2"] {
+  --cols: 32;
+  grid-template-columns: auto repeat(32, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(1.5rem, 1fr));
+}
+
+.grid[data-bars="2"] .pitch {
+  grid-row: var(--r16);
+}
+
+.grid[data-bars="2"] .pitch[data-band="1"] {
+  display: none;
+}
+
+.grid[data-bars="2"] .step {
+  grid-column: var(--c16);
+  grid-row: var(--r16);
+}
+
+/* Expanded, the grid keeps rows a hand can read across instead of stretching
+   to the full height of the viewport. */
+.root[data-expanded] {
+  padding-inline: clamp(1rem, 4cqw, 3rem);
+}
+
+.root[data-expanded] .grid {
+  flex: 0 1 auto;
+  block-size: min(100%, 34rem);
+  margin-block: auto;
 }
 
 @media (pointer: coarse) {

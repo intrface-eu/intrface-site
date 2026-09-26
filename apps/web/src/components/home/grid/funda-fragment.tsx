@@ -4,11 +4,12 @@ import { useId, useState, type CSSProperties } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { NEED, PROGRAMMES, WHO, type FundaLocale, type Need, type Who } from "./funda-data";
+import type { FragmentProps } from "@/lib/site/interfaces";
 import styles from "./funda-fragment.module.css";
 
 const LOCALES: FundaLocale[] = ["en", "de", "fr", "hr"];
 
-export function FundaFragment({ slug }: { slug: string }) {
+export function FundaFragment({ expanded }: FragmentProps) {
   const t = useTranslations("HomeGrid.funda");
   const locale = useLocale();
   const uid = useId();
@@ -64,7 +65,11 @@ export function FundaFragment({ slug }: { slug: string }) {
   );
 
   return (
-    <div className={`${styles.root} h-full w-full`} data-fragment={slug}>
+    <div
+      className={`${styles.root} h-full w-full`}
+      data-fragment="funda"
+      data-expanded={expanded || undefined}
+    >
       <div className={styles.picks}>
         {group(
           `${uid}-who`,

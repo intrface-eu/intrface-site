@@ -329,13 +329,16 @@
       "comingSoon": "Bientôt",
       "liveSite": "Site en ligne",
       "makerMark": "Accueil INTRFACE",
-      "backToGrid": "Retour à la grille"
+      "backToGrid": "Retour à la grille",
+      "close": "Fermer",
+      "theProject": "Le projet"
     },
     "voyager": {
       "name": "Voyager",
       "line": "L’interface d’un lieu.",
-      "hint": "Faites glisser la carte. Les lieux autour de Vrsar.",
       "chartLabel": "Carte des lieux autour de Vrsar",
+      "chartRole": "carte",
+      "placesLabel": "Lieux",
       "credit": "Littoral © contributeurs OpenStreetMap",
       "keys": "Les flèches déplacent la carte. Entrée passe au lieu suivant.",
       "places": {
@@ -399,7 +402,6 @@
     "polis": {
       "name": "Polis",
       "line": "Interfaces civiques.",
-      "hint": "Signalez quelque chose. Regardez-le devenir un dossier.",
       "mapLabel": "Choisir un endroit",
       "categoryLabel": "De quoi s’agit-il",
       "categories": {
@@ -414,7 +416,10 @@
         "assigned": "Attribué",
         "resolved": "Résolu"
       },
-      "empty": "Rien de signalé pour l’instant."
+      "empty": "Rien de signalé pour l’instant.",
+      "timeline": "Historique du dossier",
+      "casesLabel": "Dossiers signalés",
+      "credit": "© contributeurs OpenStreetMap"
     },
     "funda": {
       "name": "Funda",
@@ -437,10 +442,18 @@
       "deadline": "Échéance",
       "share": "Part"
     },
-    "capture": {
-      "hint": "Faites défiler la page.",
-      "frameLabel": "{name} sur un téléphone. Faites défiler pour lire la page.",
-      "desktopLabel": "{name} sur un écran d’ordinateur."
+    "work": {
+      "name": "Réalisations",
+      "switcherLabel": "Choix de réalisations"
+    },
+    "velum": {
+      "sectionsLabel": "Rubriques de Velum",
+      "language": "Afficher Velum en {language}"
+    },
+    "astyleMarine": {
+      "listLabel": "Sorties AstyleMarine",
+      "routeLabel": "Itinéraire : {name}",
+      "routeChoice": "Variante d’itinéraire"
     }
   }
 }

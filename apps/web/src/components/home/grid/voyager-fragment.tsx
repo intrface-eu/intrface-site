@@ -2,30 +2,29 @@
 
 import {
   useEffect,
+  useId,
   useRef,
   type CSSProperties,
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
 import { useTranslations } from "next-intl";
+import type { FragmentProps } from "@/lib/site/interfaces";
 import styles from "./voyager-fragment.module.css";
-import {
-  VOYAGER_BOUNDS,
-  VOYAGER_COAST,
-  VOYAGER_ISLETS,
-  VOYAGER_PLACES,
-} from "./voyager-data";
+import { VOYAGER_BOUNDS, VOYAGER_COAST, VOYAGER_ISLETS, VOYAGER_PLACES } from "./voyager-data";
 
 /*
  * Voyager: the interface for a place. A chart of the coast around Vrsar that
- * the visitor drags, with pins for the places a visitor asks about.
+ * the visitor drags, with pins for the places a visitor asks about. Expanded,
+ * the chart fills the viewport beside a list of the places; choosing one pans
+ * the chart to it.
  *
- * The view is two numbers, the centre of the cell as a fraction of the chart
+ * The view is two numbers, the centre of the stage as a fraction of the chart
  * plane (cx, cy). They live in a ref and reach the DOM as the custom
- * properties --cx and --cy on the root; CSS turns them into one translate on
+ * properties --cx and --cy on the stage; CSS turns them into one translate on
  * the plane. No React state changes after mount. Pointer moves are coalesced
  * into one requestAnimationFrame while a drag is live; a fling and a jump to
- * a pin are CSS transitions, so nothing runs when the chart is idle,
+ * a place are CSS transitions, so nothing runs when the chart is idle,
  * offscreen, or under reduced motion (where the transition is off and a
  * release does not fling).
  */
@@ -56,6 +55,8 @@ for (let m = Math.ceil(S * 60); m <= N * 60; m++) GRAT += `M0 ${py(m / 60)}H${MW
 
 const PINS = VOYAGER_PLACES.map(([key, lon, lat]) => ({
   key,
+  lon,
+  lat,
   fx: (lon - W) / (E - W),
   fy: (N - lat) / (N - S),
 }));
@@ -74,74 +75,93 @@ function nearest(cx: number, cy: number) {
   return best;
 }
 
-const readout = (cx: number, cy: number) =>
-  `${(N - cy * (N - S)).toFixed(4)}° N  ${(W + cx * (E - W)).toFixed(4)}° E`;
+const coords = (lat: number, lon: number) => `${lat.toFixed(4)}° N  ${lon.toFixed(4)}° E`;
+const readout = (cx: number, cy: number) => coords(N - cy * (N - S), W + cx * (E - W));
 
-export function VoyagerFragment({ slug }: { slug: string }) {
+const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+type Drag = {
+  id: number;
+  x: number;
+  y: number;
+  cx: number;
+  cy: number;
+  live: boolean;
+  vx: number;
+  vy: number;
+  t: number;
+  lx: number;
+  ly: number;
+  raf: number;
+};
+
+export function VoyagerFragment({ expanded }: FragmentProps) {
   const t = useTranslations("HomeGrid.voyager");
-  const rootRef = useRef<HTMLDivElement>(null);
+  const uid = useId();
+  const stageRef = useRef<HTMLDivElement>(null);
   const planeRef = useRef<HTMLDivElement>(null);
   const readRef = useRef<HTMLSpanElement>(null);
   const liveRef = useRef<HTMLSpanElement>(null);
   const pinRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const view = useRef({ cx: HOME.fx, cy: HOME.fy, near: 0 });
-  const drag = useRef<{
-    id: number;
-    x: number;
-    y: number;
-    cx: number;
-    cy: number;
-    live: boolean;
-    vx: number;
-    vy: number;
-    t: number;
-    lx: number;
-    ly: number;
-    raf: number;
-  } | null>(null);
+  const drag = useRef<Drag | null>(null);
 
-  /* Apply a centre: clamp it so the plane always covers the cell, write the
-     two properties, the readout and the nearest pin. Returns the pin index. */
-  const apply = (cx: number, cy: number, announce = false) => {
-    const root = rootRef.current;
-    const plane = planeRef.current;
-    if (!root || !plane) return;
-    const hx = root.clientWidth / 2 / plane.offsetWidth;
-    const hy = root.clientHeight / 2 / plane.offsetHeight;
-    const v = view.current;
-    v.cx = Math.min(Math.max(cx, hx), 1 - hx);
-    v.cy = Math.min(Math.max(cy, hy), 1 - hy);
-    root.style.setProperty("--cx", v.cx.toFixed(5));
-    root.style.setProperty("--cy", v.cy.toFixed(5));
-    if (readRef.current) {
-      readRef.current.textContent = readout(v.cx, v.cy);
-    }
-    const n = nearest(v.cx, v.cy);
-    if (n !== v.near) {
-      pinRefs.current[v.near]?.removeAttribute("data-near");
-      pinRefs.current[n]?.setAttribute("data-near", "");
-      v.near = n;
-    }
-    if (announce && liveRef.current) {
-      liveRef.current.textContent = t(`places.${PINS[n].key}`);
+  /* Mark place i as the one nearest the centre, on its pin and list row.
+     React never sets these attributes, so a re-render keeps them. */
+  const mark = (i: number, on: boolean) => {
+    const pin = pinRefs.current[i];
+    const item = itemRefs.current[i];
+    if (on) {
+      pin?.setAttribute("data-near", "");
+      item?.setAttribute("aria-current", "location");
+    } else {
+      pin?.removeAttribute("data-near");
+      item?.removeAttribute("aria-current");
     }
   };
 
-  /* Clamp the first view to the measured cell. */
-  useEffect(() => {
+  /* Apply a centre: clamp it so the plane always covers the stage, write the
+     two properties, the readout and the nearest place. */
+  const apply = (cx: number, cy: number, announce = false) => {
+    const stage = stageRef.current;
+    const plane = planeRef.current;
+    if (!stage || !plane) return;
+    const hx = stage.clientWidth / 2 / plane.offsetWidth;
+    const hy = stage.clientHeight / 2 / plane.offsetHeight;
     const v = view.current;
-    apply(v.cx, v.cy);
+    v.cx = Math.min(Math.max(cx, hx), 1 - hx);
+    v.cy = Math.min(Math.max(cy, hy), 1 - hy);
+    stage.style.setProperty("--cx", v.cx.toFixed(5));
+    stage.style.setProperty("--cy", v.cy.toFixed(5));
+    if (readRef.current) readRef.current.textContent = readout(v.cx, v.cy);
+    const n = nearest(v.cx, v.cy);
+    if (n !== v.near) {
+      mark(v.near, false);
+      v.near = n;
+    }
+    mark(n, true);
+    if (announce && liveRef.current) liveRef.current.textContent = t(`places.${PINS[n].key}`);
+  };
+
+  /* Clamp the view to the measured stage, now and whenever it changes size
+     (a breakpoint, or the cell opening to the viewport). */
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const ro = new ResizeObserver(() => {
+      const v = view.current;
+      apply(v.cx, v.cy);
+    });
+    ro.observe(stage);
     return () => {
+      ro.disconnect();
       const d = drag.current;
       if (d) cancelAnimationFrame(d.raf);
     };
     // Mount only: `apply` reads refs, so a fresh closure changes nothing.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const reduced = () =>
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;
@@ -164,16 +184,15 @@ export function VoyagerFragment({ slug }: { slug: string }) {
 
   const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
     const d = drag.current;
-    const root = rootRef.current;
+    const stage = stageRef.current;
     const plane = planeRef.current;
-    if (!d || d.id !== e.pointerId || !root || !plane) return;
+    if (!d || d.id !== e.pointerId || !stage || !plane) return;
     if (!d.live) {
       if (Math.hypot(e.clientX - d.x, e.clientY - d.y) < 5) return;
       d.live = true;
-      root.setPointerCapture(e.pointerId);
-      root.setAttribute("data-drag", "");
-      root.setAttribute("data-touched", "");
-      root.removeAttribute("data-fling");
+      stage.setPointerCapture(e.pointerId);
+      stage.setAttribute("data-drag", "");
+      stage.removeAttribute("data-fling");
     }
     const dt = Math.max(e.timeStamp - d.t, 1);
     const k = 0.8;
@@ -185,46 +204,41 @@ export function VoyagerFragment({ slug }: { slug: string }) {
     if (d.raf) return;
     d.raf = requestAnimationFrame(() => {
       d.raf = 0;
-      apply(
-        d.cx - (d.lx - d.x) / plane.offsetWidth,
-        d.cy - (d.ly - d.y) / plane.offsetHeight,
-      );
+      apply(d.cx - (d.lx - d.x) / plane.offsetWidth, d.cy - (d.ly - d.y) / plane.offsetHeight);
     });
   };
 
   const onPointerEnd = (e: PointerEvent<HTMLDivElement>) => {
     const d = drag.current;
-    const root = rootRef.current;
+    const stage = stageRef.current;
     const plane = planeRef.current;
-    if (!d || d.id !== e.pointerId || !root || !plane) return;
+    if (!d || d.id !== e.pointerId || !stage || !plane) return;
     drag.current = null;
     if (!d.live) return;
     cancelAnimationFrame(d.raf);
-    root.removeAttribute("data-drag");
+    stage.removeAttribute("data-drag");
     let x = d.lx;
     let y = d.ly;
     /* A release still in motion carries on for a short, eased distance. */
     if (e.type === "pointerup" && e.timeStamp - d.t < 80 && !reduced()) {
       x += d.vx * 180;
       y += d.vy * 180;
-      root.setAttribute("data-fling", "");
+      stage.setAttribute("data-fling", "");
     }
     apply(d.cx - (x - d.x) / plane.offsetWidth, d.cy - (y - d.y) / plane.offsetHeight);
   };
 
   const go = (i: number) => {
-    const root = rootRef.current;
-    root?.removeAttribute("data-fling");
-    root?.setAttribute("data-touched", "");
+    stageRef.current?.removeAttribute("data-fling");
     apply(PINS[i].fx, PINS[i].fy, true);
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    const root = rootRef.current;
+    const stage = stageRef.current;
     const plane = planeRef.current;
-    if (!root || !plane || e.target !== root) return;
+    if (!stage || !plane || e.target !== stage) return;
     const v = view.current;
-    const step = (e.shiftKey ? 0.5 : 0.18) * Math.min(root.clientWidth, root.clientHeight);
+    const step = (e.shiftKey ? 0.5 : 0.18) * Math.min(stage.clientWidth, stage.clientHeight);
     const sx = step / plane.offsetWidth;
     const sy = step / plane.offsetHeight;
     let cx = v.cx;
@@ -260,92 +274,123 @@ export function VoyagerFragment({ slug }: { slug: string }) {
         return;
     }
     e.preventDefault();
-    root.removeAttribute("data-fling");
-    root.setAttribute("data-touched", "");
+    stage.removeAttribute("data-fling");
     apply(cx, cy, true);
   };
 
   return (
-    <div
-      ref={rootRef}
-      className={`${styles.root} h-full w-full`}
-      data-fragment={slug}
-      role="application"
-      aria-roledescription="map"
-      aria-label={t("chartLabel")}
-      aria-describedby={`${slug}-vy-keys`}
-      tabIndex={0}
-      style={{ "--cx": HOME.fx.toFixed(5), "--cy": HOME.fy.toFixed(5) } as CSSProperties}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerEnd}
-      onPointerCancel={onPointerEnd}
-      onKeyDown={onKeyDown}
-    >
-      <div ref={planeRef} className={styles.plane}>
-        <svg
-          className={styles.chart}
-          viewBox={`0 0 ${MW} ${MH}`}
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <defs>
-            <pattern
-              id="vy-stipple"
-              width="64"
-              height="64"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(15)"
-            >
-              <circle className={styles.dot} cx="32" cy="32" r="10" />
-            </pattern>
-          </defs>
-          <path className={styles.grat} d={GRAT} />
-          <path className={styles.tint} d={LAND + ISLETS} fillRule="evenodd" />
-          <path className={styles.land} d={LAND + ISLETS} fillRule="evenodd" />
-          <path className={styles.coast} d={COAST + ISLETS} />
-        </svg>
-        {PINS.map((p, i) => (
-          <button
-            key={p.key}
-            ref={(el) => {
-              pinRefs.current[i] = el;
-            }}
-            type="button"
-            tabIndex={-1}
-            className={styles.pin}
-            style={{ left: `${p.fx * 100}%`, top: `${p.fy * 100}%` }}
-            data-near={i === 0 ? "" : undefined}
-            onClick={() => go(i)}
+    <div className={`${styles.root} h-full w-full`} data-expanded={expanded ? "" : undefined}>
+      <div
+        ref={stageRef}
+        className={styles.stage}
+        role="application"
+        aria-roledescription={t("chartRole")}
+        aria-label={t("chartLabel")}
+        aria-describedby={`${uid}-keys`}
+        tabIndex={0}
+        style={{ "--cx": HOME.fx.toFixed(5), "--cy": HOME.fy.toFixed(5) } as CSSProperties}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+        onKeyDown={onKeyDown}
+      >
+        <div ref={planeRef} className={styles.plane}>
+          <svg
+            className={styles.chart}
+            viewBox={`0 0 ${MW} ${MH}`}
+            preserveAspectRatio="none"
+            aria-hidden="true"
+            focusable="false"
           >
-            <span className={styles.mark} aria-hidden="true" />
-            <span className={`${styles.name} type-caption`}>{t(`places.${p.key}`)}</span>
-          </button>
-        ))}
+            <defs>
+              <pattern
+                id={`${uid}-stipple`}
+                width="64"
+                height="64"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(15)"
+              >
+                <circle className={styles.dot} cx="32" cy="32" r="10" />
+              </pattern>
+            </defs>
+            <path className={styles.grat} d={GRAT} />
+            <path className={styles.tint} d={LAND + ISLETS} fillRule="evenodd" />
+            <path
+              className={styles.land}
+              d={LAND + ISLETS}
+              fill={`url(#${uid}-stipple)`}
+              fillRule="evenodd"
+            />
+            <path className={styles.coast} d={COAST + ISLETS} />
+          </svg>
+          {PINS.map((p, i) => (
+            <button
+              key={p.key}
+              ref={(el) => {
+                pinRefs.current[i] = el;
+                if (el && i === view.current.near) mark(i, true);
+              }}
+              type="button"
+              tabIndex={-1}
+              aria-hidden="true"
+              className={styles.pin}
+              style={{ left: `${p.fx * 100}%`, top: `${p.fy * 100}%` }}
+              onClick={() => go(i)}
+            >
+              <span className={styles.mark} />
+              <span className={`${styles.name} type-caption`}>{t(`places.${p.key}`)}</span>
+            </button>
+          ))}
+        </div>
+
+        <span className={styles.reticle} aria-hidden="true" />
+
+        <div className={styles.legend} aria-hidden="true">
+          <span ref={readRef} className="type-meta type-data whitespace-pre">
+            {readout(HOME.fx, HOME.fy)}
+          </span>
+          <span className={styles.scale}>
+            <span className="type-meta type-data normal-case">1 km</span>
+            <span className={styles.bar} />
+          </span>
+        </div>
+
+        <p className={`${styles.credit} type-caption`}>{t("credit")}</p>
       </div>
 
-      <span className={styles.reticle} aria-hidden="true" />
+      {expanded ? (
+        <nav className={styles.places} aria-label={t("placesLabel")}>
+          <p className={`${styles.placesHead} type-meta`} aria-hidden="true">
+            {t("placesLabel")}
+          </p>
+          <ul className={styles.list}>
+            {PINS.map((p, i) => (
+              <li key={p.key}>
+                <button
+                  ref={(el) => {
+                    itemRefs.current[i] = el;
+                    if (el && i === view.current.near) mark(i, true);
+                  }}
+                  type="button"
+                  className={styles.item}
+                  onClick={() => go(i)}
+                >
+                  <span className={`${styles.itemName} type-title`}>{t(`places.${p.key}`)}</span>
+                  <span className={`${styles.itemAt} type-meta type-data normal-case`}>
+                    {coords(p.lat, p.lon)}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
 
-      <div className={styles.legend}>
-        <span ref={readRef} className="type-meta type-data whitespace-pre" aria-hidden="true">
-          {readout(HOME.fx, HOME.fy)}
-        </span>
-        <span className={styles.scale} aria-hidden="true">
-          <span className="type-meta type-data normal-case">1 km</span>
-          <span className={styles.bar} />
-        </span>
-        <span className={`${styles.hint} type-caption`} aria-hidden="true">
-          {t("hint")}
-        </span>
-      </div>
-
-      <p className={`${styles.credit} type-caption`}>{t("credit")}</p>
-
-      <span id={`${slug}-vy-keys`} className={styles.sr}>
-        {t("hint")} {t("keys")}
+      <span id={`${uid}-keys`} className="sr-only">
+        {t("keys")}
       </span>
-      <span ref={liveRef} className={styles.sr} aria-live="polite" />
+      <span ref={liveRef} className="sr-only" aria-live="polite" />
     </div>
   );
 }

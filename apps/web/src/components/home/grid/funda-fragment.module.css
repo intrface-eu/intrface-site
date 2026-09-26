@@ -15,7 +15,8 @@
   row-gap: 0.625rem;
   box-sizing: border-box;
   min-height: 0;
-  padding: var(--cell-chrome-top) var(--f-pad) max(var(--cell-chrome-bottom), var(--f-pad));
+  padding: calc(var(--cell-chrome-top, 0px) + 0.75rem) var(--f-pad)
+    max(var(--cell-chrome-bottom), var(--f-pad));
   color: var(--f-fg);
 }
 
@@ -194,6 +195,13 @@
   .group {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* Expanded: picks and matches side by side at a reading width, centred,
+   instead of two columns spread across the whole viewport. */
+.root[data-expanded] {
+  --f-pad: clamp(1rem, 4cqw, 3rem);
+  padding-inline: max(var(--f-pad), calc((100% - 60rem) / 2));
 }
 
 @media (prefers-reduced-motion: reduce) {

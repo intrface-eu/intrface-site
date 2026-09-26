@@ -329,13 +329,16 @@
       "comingSoon": "Uskoro",
       "liveSite": "Stranica uživo",
       "makerMark": "INTRFACE početna",
-      "backToGrid": "Natrag na mrežu"
+      "backToGrid": "Natrag na mrežu",
+      "close": "Zatvori",
+      "theProject": "Projekt"
     },
     "voyager": {
       "name": "Voyager",
       "line": "Sučelje za mjesto.",
-      "hint": "Povucite kartu. Mjesta oko Vrsara.",
       "chartLabel": "Karta mjesta oko Vrsara",
+      "chartRole": "karta",
+      "placesLabel": "Mjesta",
       "credit": "Obala © suradnici OpenStreetMapa",
       "keys": "Strelice pomiču kartu. Enter vodi na sljedeće mjesto.",
       "places": {
@@ -399,7 +402,6 @@
     "polis": {
       "name": "Polis",
       "line": "Građanska sučelja.",
-      "hint": "Prijavite nešto. Gledajte kako postaje predmet.",
       "mapLabel": "Odaberite mjesto",
       "categoryLabel": "O čemu se radi",
       "categories": {
@@ -414,7 +416,10 @@
         "assigned": "Dodijeljeno",
         "resolved": "Riješeno"
       },
-      "empty": "Još ništa nije prijavljeno."
+      "empty": "Još ništa nije prijavljeno.",
+      "timeline": "Tijek predmeta",
+      "casesLabel": "Prijavljeni predmeti",
+      "credit": "© suradnici OpenStreetMapa"
     },
     "funda": {
       "name": "Funda",
@@ -437,10 +442,18 @@
       "deadline": "Rok",
       "share": "Udio"
     },
-    "capture": {
-      "hint": "Listajte stranicu.",
-      "frameLabel": "{name} na telefonu. Listajte da pročitate stranicu.",
-      "desktopLabel": "{name} na zaslonu računala."
+    "work": {
+      "name": "Radovi",
+      "switcherLabel": "Izbor radova"
+    },
+    "velum": {
+      "sectionsLabel": "Rubrike Veluma",
+      "language": "Prikaži Velum na jeziku: {language}"
+    },
+    "astyleMarine": {
+      "listLabel": "AstyleMarine doživljaji",
+      "routeLabel": "Ruta: {name}",
+      "routeChoice": "Inačica rute"
     }
   }
 }
