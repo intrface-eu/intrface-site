@@ -1493,9 +1493,117 @@ body {
      every locale, and a broken word in the one sentence reads as a flaw.
      `overflow-wrap` from `.type-display` still guards the width. */
   .home-veil__claim {
-    margin-block-start: clamp(2.5rem, 9svh, 6rem);
+    display: grid;
     color: var(--ink-inverse);
     hyphens: manual;
+  }
+
+  /* The sentence in four languages, one at a time (`ClaimCycle`). Every line
+     and every link sits in one grid cell, so the block keeps the height of
+     its tallest line at every width and nothing below it moves. A line that
+     has just left rises out; the next rises in, starting a little later so
+     the two never read as one smear. Opacity and transform only. The block
+     takes pointer events, so hovering it pauses the cycle and the link can
+     be clicked. */
+  .home-veil__claim-block {
+    --claim-fade: 700ms;
+    --claim-ease: cubic-bezier(0.33, 0, 0.2, 1);
+    margin-block-start: clamp(2.5rem, 9svh, 6rem);
+    pointer-events: auto;
+  }
+
+  .home-veil__line,
+  .home-veil__switch-link {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translate3d(0, 0.35rem, 0);
+  }
+
+  .home-veil__line[data-state="past"],
+  .home-veil__switch-link[data-state="past"] {
+    transform: translate3d(0, -0.35rem, 0);
+  }
+
+  .home-veil__line[data-state="shown"],
+  .home-veil__switch-link[data-state="shown"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .home-veil__line:not([data-state="shown"]) {
+    user-select: none;
+  }
+
+  /* The link in the language of the line above it. The slot holds its
+     height when the page's own line shows and no link does. */
+  .home-veil__switch {
+    display: grid;
+    justify-items: start;
+    margin-block-start: 0.75rem;
+  }
+
+  .home-veil__switch-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    visibility: hidden;
+    color: var(--ink-inverse-muted);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+    text-underline-offset: 0.3em;
+  }
+
+  .home-veil__switch-link[data-state="shown"] {
+    visibility: visible;
+  }
+
+  .home-veil__switch-link:hover {
+    color: var(--ink-inverse);
+    text-decoration-color: currentColor;
+  }
+
+  .home-veil__switch-link:focus-visible {
+    outline: 2px solid var(--ink-inverse);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .home-veil__line,
+    .home-veil__switch-link {
+      transition:
+        opacity calc(var(--claim-fade) * 0.6) var(--claim-ease),
+        transform var(--claim-fade) var(--claim-ease),
+        visibility 0s linear var(--claim-fade),
+        color 200ms ease-out,
+        text-decoration-color 200ms ease-out;
+    }
+
+    .home-veil__line[data-state="shown"],
+    .home-veil__switch-link[data-state="shown"] {
+      transition:
+        opacity calc(var(--claim-fade) * 0.75) var(--claim-ease) calc(var(--claim-fade) * 0.25),
+        transform var(--claim-fade) var(--claim-ease),
+        visibility 0s,
+        color 200ms ease-out,
+        text-decoration-color 200ms ease-out;
+    }
+  }
+
+  /* Reduced motion: no cycle. The page's own line stays, and the links to
+     the other three languages sit in one quiet row, all visible. */
+  @media (prefers-reduced-motion: reduce) {
+    .home-veil__switch {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1.5rem;
+    }
+
+    .home-veil__switch-link[data-state] {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+    }
   }
 
   /* The maker's mark: the mark and the word in paper, top-left on the veil,

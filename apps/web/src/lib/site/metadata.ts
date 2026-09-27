@@ -2,13 +2,24 @@ import type { Metadata } from "next";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { SITE_NAME } from "@/lib/site/config";
 
-/** OpenGraph locale codes for the four site languages. */
+/**
+ * OpenGraph locale codes for the four site languages. The two Istrian
+ * dialects have no OpenGraph code of their own: Chakavian shares Croatia's,
+ * and Istroveneto takes Italian, the nearest standard with a code.
+ */
 const OG_LOCALES: Record<AppLocale, string> = {
   en: "en_GB",
-  de: "de_DE",
-  fr: "fr_FR",
   hr: "hr_HR",
+  vec: "it_IT",
+  ckm: "hr_HR",
 };
+
+/**
+ * The locales named in hreflang alternates. Google reads only ISO 639-1
+ * language codes there and flags `vec` and `ckm` (ISO 639-3), so the dialect
+ * pages keep their own canonical but are left out of the alternates.
+ */
+export const HREFLANG_LOCALES = ["en", "hr"] as const satisfies readonly AppLocale[];
 
 /**
  * The generated share card, `app/[locale]/opengraph-image.tsx`. Declared here
@@ -32,7 +43,7 @@ export function localePath(locale: AppLocale, path: string): string {
 function languageAlternates(path: string): Record<string, string> {
   const languages: Record<string, string> = {};
 
-  for (const locale of routing.locales) {
+  for (const locale of HREFLANG_LOCALES) {
     languages[locale] = localePath(locale, path);
   }
 
@@ -51,7 +62,8 @@ export type PageMetadataInput = {
 };
 
 /**
- * Per-page metadata with canonical URL and hreflang alternates for all locales.
+ * Per-page metadata with canonical URL and hreflang alternates (English and
+ * Croatian, see `HREFLANG_LOCALES`).
  * Resolution against the site origin comes from `metadataBase` in the root layout.
  */
 export function buildPageMetadata({ locale, path, title, description }: PageMetadataInput): Metadata {
@@ -72,7 +84,9 @@ export function buildPageMetadata({ locale, path, title, description }: PageMeta
       url,
       images: shareCard(locale),
       locale: OG_LOCALES[locale],
-      alternateLocale: routing.locales.filter((value) => value !== locale).map((value) => OG_LOCALES[value]),
+      alternateLocale: Array.from(new Set(routing.locales.map((value) => OG_LOCALES[value]))).filter(
+        (value) => value !== OG_LOCALES[locale],
+      ),
     },
   };
 }

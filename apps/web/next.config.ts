@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       "*.glsl": { loaders: ["./tools/glsl-loader.cjs"], as: "*.js" },
     },
   },
+  // German and French were retired on 2026-09-27. Their old addresses move
+  // to the same page in English for good. Config redirects run before the
+  // proxy, so next-intl never sees these paths.
+  async redirects() {
+    return [
+      { source: "/:retired(de|fr)", destination: "/en", permanent: true },
+      { source: "/:retired(de|fr)/:path*", destination: "/en/:path*", permanent: true },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

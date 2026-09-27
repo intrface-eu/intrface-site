@@ -322,7 +322,8 @@
   },
   "HomeGrid": {
     "common": {
-      "claim": "Reduce unnecessary friction between human intention, reality, and meaningful action.",
+      "claim": "Reducing needless friction between intention, reality, and meaningful action.",
+      "switchLocale": "Continue in English",
       "gridLabel": "Work by INTRFACE",
       "makerMark": "INTRFACE home",
       "backToGrid": "Back to home"

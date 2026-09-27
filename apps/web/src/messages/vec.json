@@ -1,0 +1,337 @@
+{
+  "Nav": {
+    "work": "Lavori",
+    "about": "Chi semo",
+    "imprint": "Dati legali",
+    "contact": "Contati",
+    "home": "Intrface, prima pagina",
+    "menu": "Menù",
+    "logoAlt": "Icona de Intrface",
+    "skipToContent": "Va dreto al contenuto"
+  },
+  "Footer": {
+    "location": "Vrsar, Croazia",
+    "tagline": "Interfacie per el mondo.",
+    "contact": "Contati",
+    "github": "GitHub",
+    "imprint": "Dati legali"
+  },
+  "LocaleSwitcher": {
+    "label": "Lingua"
+  },
+  "Common": {
+    "honestStatus": "Come che la xe",
+    "whyItMatters": "Perché xe importante",
+    "open": "Verzi",
+    "screenshotPending": "Screenshot in arivo"
+  },
+  "Metadata": {
+    "tagline": "Interfacie per el mondo.",
+    "description": "INTRFACE fa interfacie per el mondo de Vrsar, in Istria: Voyager, Polis, Funda, MidiFlow e Patchbay nostri, e siti per le dite de tuta l’UE.",
+    "work": {
+      "title": "Lavori",
+      "description": "Varda Velum, Voyager e AstyleMarine sui sui siti e nele schede dei progeti. E anca Polis, Funda, MidiFlow e Patchbay, con a che punto che i xe."
+    },
+    "voyager": {
+      "title": "Voyager",
+      "description": "Una mapa publica per scovrir i posti atorno Vrsar."
+    },
+    "polis": {
+      "title": "Polis",
+      "description": "Interfacie civiche. In arivo."
+    },
+    "funda": {
+      "title": "Funda",
+      "description": "Fondi UE. In arivo."
+    },
+    "clientSites": {
+      "title": "Siti per le dite.",
+      "description": "Velum e AstyleMarine: siti online per un cafè e wine bar sula riva e per un charter de yacht in Istria."
+    },
+    "about": {
+      "title": "Chi semo",
+      "description": "Alex Bašić ga fondà INTRFACE a Vrsar, in Istria. El lavor xe più che altro giustar quel toco de sistema che da ani no ga senso."
+    },
+    "imprint": {
+      "title": "Dati legali",
+      "description": "Chi che gestissi intrface.eu: dati de la dita, responsabilità pel contenuto, diriti d’autor e cosa che fa el modulo de contato col tuo messagio."
+    },
+    "velum": {
+      "title": "Velum",
+      "description": "Un cafè e wine bar sula riva, in croato e inglese."
+    },
+    "astyleMarine": {
+      "title": "AstyleMarine",
+      "description": "Giri privati in yacht de Poreč longo la costa istriana."
+    }
+  },
+  "HomePage": {
+    "products": {
+      "voyager": {
+        "name": "Voyager",
+        "status": "Online",
+        "interface": "L’interfacia de un posto.",
+        "pair": "foresto ↔ posto"
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "In arivo",
+        "interface": "Interfacie civiche",
+        "pair": "citadin ↔ istituzion"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "In arivo",
+        "interface": "Fondi UE",
+        "pair": "organizazion ↔ fondi"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "In arivo",
+        "interface": "Musica",
+        "pair": "sonador ↔ son"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "In arivo",
+        "interface": "Colaborazion creativa",
+        "pair": "artista ↔ artista"
+      }
+    }
+  },
+  "WorkIndex": {
+    "title": "Lavori che ti pol verzer.",
+    "lead": "Velum, Voyager e AstyleMarine xe online. Varda i progeti e va a vardar i siti.",
+    "entries": {
+      "polis": {
+        "name": "Polis",
+        "status": "In arivo",
+        "interface": "Interfacie civiche",
+        "pair": "citadin ↔ istituzion"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "In arivo",
+        "interface": "Fondi UE",
+        "pair": "organizazion ↔ fondi"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "In arivo",
+        "interface": "Musica",
+        "pair": "sonador ↔ son"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "In arivo",
+        "interface": "Colaborazion creativa",
+        "pair": "artista ↔ artista"
+      }
+    },
+    "pairLabel": "Tra",
+    "selectedWork": "Lavori scelti",
+    "otherProducts": "Altri prodoti nostri"
+  },
+  "CaseNav": {
+    "label": "Navigazion tra i progeti",
+    "index": "Tuti i lavori",
+    "next": "Prossimo progeto"
+  },
+  "WorkPolis": {
+    "name": "Polis",
+    "domain": "Interfacie civiche",
+    "status": "In arivo",
+    "contact": "Scrivine"
+  },
+  "WorkFunda": {
+    "name": "Funda",
+    "domain": "Fondi UE",
+    "status": "In arivo",
+    "contact": "Scrivine"
+  },
+  "WorkClientSites": {
+    "title": "Siti per le dite.",
+    "lead": "Velum sula riva de Vrsar. AstyleMarine sula costa istriana.",
+    "allWork": "Tuti i lavori",
+    "contactTitle": "Ti ga un progeto in testa?",
+    "contact": "Contine"
+  },
+  "About": {
+    "hero": {
+      "label": "Chi semo",
+      "title": "Intrface vol dir far le interfacie più umane per i problemi che val più la pena risolver.",
+      "lead": "Semo a Vrsar, in Istria. Lavoremo in tuta l’UE."
+    },
+    "person": {
+      "label": "Fondator",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, fondator de Intrface.",
+      "body": [
+        "Go fato un saco de robe, e quasi sempre la iera la stessa: giustar quel toco de sistema che da ani no gaveva senso.",
+        "Qualchedun una volta ghe ga girà atorno, dopo lo ga fato tuti, e el giro xe deventà la procedura.",
+        "Me piasi trovar quel toco e cavarlo.",
+        "Per quel el studio fa interfacie — xe su l’interfacia che un sistema o el ga senso o no.",
+        "Lavoro de Vrsar, sula costa de l’Istria."
+      ]
+    },
+    "close": {
+      "title": "Se qualcossa nel tuo sistema no ga più senso, contine.",
+      "work": "Varda i lavori",
+      "contact": "Portine el tuo"
+    }
+  },
+  "Imprint": {
+    "label": "Dati legali",
+    "title": "Chi che gestissi sto sito.",
+    "lead": "{siteName} publica e gestissi {host}.",
+    "operatorLabel": "Titolar",
+    "operator": {
+      "operator": {
+        "term": "Titolar",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "location": {
+        "term": "Posto",
+        "value": "Vrsar, Istria, Croazia (Union Europea)"
+      },
+      "address": {
+        "term": "Sede legal",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "director": {
+        "term": "Diretor",
+        "value": "Alex Bašić"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "mbs": {
+        "term": "MBS",
+        "value": "130172611"
+      },
+      "court": {
+        "term": "Registro del tribunal",
+        "value": "Trgovački sud u Pazinu"
+      },
+      "activity": {
+        "term": "Atività registrada",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": {
+        "term": "IVA",
+        "value": "No registrada per l’IVA (nije u sustavu PDV-a)"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefono"
+      },
+      "website": {
+        "term": "Sito"
+      }
+    },
+    "sections": {
+      "content": {
+        "title": "Responsabilità pel contenuto",
+        "body": "{siteName} xe responsabile del contenuto publicà su {host}. Lo scrivemo noi e lo tegnimo agiornà per quel che savemo. Le descrizion del nostro software dise cosa xe online, cosa xe una dimostrazion e cosa no xe ancora fato."
+      },
+      "links": {
+        "title": "Link esterni",
+        "body": "Sto sito ga link a pagine gestide de altra gente — repository, siti de clienti, servizi de terzi. De quel che xe su quele pagine xe responsabili i sui gestori. Controlemo un link quando lo zontemo; no podemo controlarlo de continuo. Scrivine a <mail>{email}</mail> se un link no va o xe sbaglià, e lo cavemo o lo giustemo."
+      },
+      "copyright": {
+        "title": "Diriti d’autor",
+        "body": "Testi, imagini e codice publicai su sto sito xe de {siteName}, se no xe indicà un altro proprietario. Citine con un link a la fonte. Domandine prima de copiar una pagina intiera."
+      },
+      "form": {
+        "title": "El modulo de contato",
+        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo."
+      }
+    }
+  },
+  "ContactForm": {
+    "submitLabel": "Manda el messagio",
+    "sending": "Drio mandar",
+    "nameLabel": "Nome",
+    "emailLabel": "Email",
+    "companyLabel": "Dita",
+    "companyOptional": "(se ti vol)",
+    "topicLabel": "Argomento",
+    "messageLabel": "Cosa xe dificile de capir, lento de doprar o dificile de fidarse?",
+    "honeypotLabel": "Lassa sto campo vodo",
+    "sentLabel": "Messagio rivà",
+    "sentBody": "El xe rivà da noi. La risposta vien de {email}, entro un giorno de lavor.",
+    "writeAnother": "Scrivi un altro messagio",
+    "fallbackFailed": "Desso no gavemo podù salvar el messagio.",
+    "fallbackMailClient": "Sto modulo passa el messagio a la tua app de posta.",
+    "fallbackTail": "La tua app de posta dovessi esserse verta con tuto za compilà. Se no, mandilo a <mail>{email}</mail>.",
+    "mailNote": "O scrivine a <mail>{email}</mail>.",
+    "errorName": "Dine chi che ti xe.",
+    "errorEmail": "Ne servi un indirizo per risponderte.",
+    "errorMessage": "Basta una frase o do sul sistema.",
+    "subjectWithTopic": "{topic} — richiesta de {name}",
+    "subjectFallback": "Richiesta dal sito",
+    "mailtoName": "Nome",
+    "mailtoEmail": "Email",
+    "mailtoCompany": "Dita",
+    "mailtoTopic": "Argomento",
+    "mailtoWebsite": "el sito"
+  },
+  "Projects": {
+    "viewProject": "Varda el progeto",
+    "visitSite": "Va sul sito",
+    "newTab": "se verzi in una scheda nova",
+    "allWork": "Tuti i lavori",
+    "overview": "El progeto",
+    "nextProject": "Prossimo progeto",
+    "projectNavigation": "Navigazion tra i progeti",
+    "contactTitle": "Ti ga un progeto in testa?",
+    "contact": "Contine",
+    "velum": {
+      "role": "Un cafè e wine bar sula riva, in croato e inglese.",
+      "overview": "Colazion, torte e vin istrian sula riva de Vrsar. El sito de Velum mete insieme el menù, l’atmosfera e quel che serve saver per vignir.",
+      "desktopAlt": "Sito de Velum con foto del cafè e el titolo “By the sea, in no hurry.”",
+      "desktopCaption": "La prima pagina de Velum, sula riva de Vrsar.",
+      "detailAlt": "Sito de Velum col menù de la colazion.",
+      "detailCaption": "El menù de la colazion.",
+      "mobileAlt": "La prima pagina de Velum sul telefonin.",
+      "mobileCaption": "El stesso posto, su un schermo più picio."
+    },
+    "voyager": {
+      "role": "Una mapa publica per scovrir i posti atorno Vrsar.",
+      "overview": "Voyager Atlas mete sula mapa i posti atorno Vrsar: de Punta Montraker e Koversada fin al Parco de sculture Dušan Džamonja e al bosco de Kontija. L’Atlas publico se pol esplorar senza far el login.",
+      "desktopAlt": "Prima pagina de Voyager col titolo “Discover the culture of a place your way.”",
+      "desktopCaption": "La prima pagina publica de Voyager.",
+      "detailAlt": "Voyager Atlas con la scheda del Parco de sculture Dušan Džamonja verta a fianco de la mapa.",
+      "detailCaption": "Parco de sculture Dušan Džamonja: descrizion, posizion e indirizo.",
+      "mobileAlt": "La mapa publica de Vrsar de Voyager Atlas su tuto el schermo del telefonin.",
+      "mobileCaption": "La mapa publica de Vrsar sul telefonin."
+    },
+    "astyleMarine": {
+      "role": "Giri privati in yacht de Poreč longo la costa istriana.",
+      "overview": "El sito de AstyleMarine mete insieme el yacht, i giri longo la costa e una galeria. I visitadori pol sceglier un giro e mandar una richiesta su WhatsApp.",
+      "desktopAlt": "Sito de AstyleMarine per el charter de yacht col titolo “Luxury in full speed”.",
+      "desktopCaption": "La prima pagina de AstyleMarine, per i giri in yacht de Poreč.",
+      "detailAlt": "El sito de AstyleMarine che presenta el yacht e i sui dati tecnici.",
+      "detailCaption": "El yacht e i sui dati tecnici.",
+      "mobileAlt": "La prima pagina de AstyleMarine per el charter de yacht sul telefonin.",
+      "mobileCaption": "AstyleMarine sul telefonin."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "claim": "Meno fadiga tra quel che ti vol, quel che xe e quel che val la pena far.",
+      "switchLocale": "Va vanti in istroveneto",
+      "gridLabel": "Lavori de INTRFACE",
+      "makerMark": "INTRFACE, prima pagina",
+      "backToGrid": "Torna a la prima pagina"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "La stagion de le olive in Istria, campo per campo."
+      }
+    }
+  }
+}

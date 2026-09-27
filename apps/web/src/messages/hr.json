@@ -322,7 +322,8 @@
   },
   "HomeGrid": {
     "common": {
-      "claim": "Smanjiti nepotrebno trenje između ljudske namjere, stvarnosti i smislenog djelovanja.",
+      "claim": "Manje trenja između onoga što hoćeš, onoga što jest i onoga što vrijedi napraviti.",
+      "switchLocale": "Nastavi na hrvatskom",
       "gridLabel": "Rad studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Natrag na početnu"

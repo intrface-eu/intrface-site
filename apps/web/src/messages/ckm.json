@@ -1,0 +1,337 @@
+{
+  "Nav": {
+    "work": "Delo",
+    "about": "O nami",
+    "imprint": "Impresum",
+    "contact": "Kontakt",
+    "home": "Intrface početna",
+    "menu": "Meni",
+    "logoAlt": "Intrface ikona",
+    "skipToContent": "Skoči na sadržaj"
+  },
+  "Footer": {
+    "location": "Vrsar, Hrvatska",
+    "tagline": "Sučelja za svet.",
+    "contact": "Kontakt",
+    "github": "GitHub",
+    "imprint": "Impresum"
+  },
+  "LocaleSwitcher": {
+    "label": "Jazik"
+  },
+  "Common": {
+    "honestStatus": "Pošten status",
+    "whyItMatters": "Zač je to važno",
+    "open": "Otpri",
+    "screenshotPending": "Slika ekrana brzo pride"
+  },
+  "Metadata": {
+    "tagline": "Sučelja za svet.",
+    "description": "INTRFACE dela sučelja za svet iz Vrsara, u Istri: naše Voyager, Polis, Funda, MidiFlow i Patchbay, pa stranice za firme po celoj EU.",
+    "work": {
+      "title": "Delo",
+      "description": "Pogledajte Velum, Voyager i AstyleMarine na njihovin javnin stranican i u prikazu svakega projekta. Uz to Polis, Funda, MidiFlow i Patchbay, i kako sad stoje."
+    },
+    "voyager": {
+      "title": "Voyager",
+      "description": "Javna karta za otkrit mesta okolo Vrsara."
+    },
+    "polis": {
+      "title": "Polis",
+      "description": "Sučelja za građane. Brzo pride."
+    },
+    "funda": {
+      "title": "Funda",
+      "description": "EU fondi. Brzo pride."
+    },
+    "clientSites": {
+      "title": "Web-stranice za firme.",
+      "description": "Velum i AstyleMarine: javne web-stranice za kafić i vinski bar na rivi i za najam jahti u Istri."
+    },
+    "about": {
+      "title": "O nami",
+      "description": "Alex Bašić je otprl INTRFACE u Vrsaru, u Istri. Posal je najviše popravit oni del sistema ki već let nima smisla."
+    },
+    "imprint": {
+      "title": "Impresum",
+      "description": "Ki vodi intrface.eu: podaci o firmi, ki odgovara za sadržaj, autorska prava i ča kontakt formular dela s vašon porukon."
+    },
+    "velum": {
+      "title": "Velum",
+      "description": "Kafić i vinski bar na rivi, po hrvatski i po engleski."
+    },
+    "astyleMarine": {
+      "title": "AstyleMarine",
+      "description": "Privatni izleti s jahton iz Poreča po istarskoj obali."
+    }
+  },
+  "HomePage": {
+    "products": {
+      "voyager": {
+        "name": "Voyager",
+        "status": "Već dela",
+        "interface": "Sučelje za mesto.",
+        "pair": "gost ↔ mesto"
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Brzo pride",
+        "interface": "Sučelja za građane",
+        "pair": "građanin ↔ institucija"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Brzo pride",
+        "interface": "EU fondi",
+        "pair": "organizacija ↔ fondi"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Brzo pride",
+        "interface": "Muzika",
+        "pair": "muzikant ↔ zvuk"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Brzo pride",
+        "interface": "Kreativno delo skupa",
+        "pair": "umetnik ↔ umetnik"
+      }
+    }
+  },
+  "WorkIndex": {
+    "title": "Delo ko morete otprt.",
+    "lead": "Velum, Voyager i AstyleMarine već delaju. Pogledajte projekte i otprite njihove stranice.",
+    "entries": {
+      "polis": {
+        "name": "Polis",
+        "status": "Brzo pride",
+        "interface": "Sučelja za građane",
+        "pair": "građanin ↔ institucija"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Brzo pride",
+        "interface": "EU fondi",
+        "pair": "organizacija ↔ fondi"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Brzo pride",
+        "interface": "Muzika",
+        "pair": "muzikant ↔ zvuk"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Brzo pride",
+        "interface": "Kreativno delo skupa",
+        "pair": "umetnik ↔ umetnik"
+      }
+    },
+    "pairLabel": "Med",
+    "selectedWork": "Izabrano delo",
+    "otherProducts": "Ča još delamo"
+  },
+  "CaseNav": {
+    "label": "Navigacija po projektin",
+    "index": "Sve delo",
+    "next": "Idući projekt"
+  },
+  "WorkPolis": {
+    "name": "Polis",
+    "domain": "Sučelja za građane",
+    "status": "Brzo pride",
+    "contact": "Javite nan se"
+  },
+  "WorkFunda": {
+    "name": "Funda",
+    "domain": "EU fondi",
+    "status": "Brzo pride",
+    "contact": "Javite nan se"
+  },
+  "WorkClientSites": {
+    "title": "Web-stranice za firme.",
+    "lead": "Velum na vrsarskoj rivi. AstyleMarine po istarskoj obali.",
+    "allWork": "Sve delo",
+    "contactTitle": "Imate kakov projekt u glavi?",
+    "contact": "Javite nan se"
+  },
+  "About": {
+    "hero": {
+      "label": "O nami",
+      "title": "Intrface dela sučelja po meri čovika za probleme ke najviše vridi rišit.",
+      "lead": "U Vrsaru, u Istri. Delamo po celoj EU."
+    },
+    "person": {
+      "label": "Osnivač",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, osnivač Intrfacea.",
+      "body": [
+        "Delal san svašta, a skoro sve se je svelo na isto: popravit oni del sistema ki već let ni imel smisla.",
+        "Neki ga je jedanput obašal, onda su ga svi, i taj obilaz je postal način dela.",
+        "Volin najt taj del i hitit ga van.",
+        "Zato studio dela sučelja — na sučelju sistem ili ima smisla ili nima.",
+        "Delan iz Vrsara, s istarske obale."
+      ]
+    },
+    "close": {
+      "title": "Ako neč u vašen sistemu više nima smisla, recite nan.",
+      "work": "Pogledajte delo",
+      "contact": "Donesite nan svoj sistem"
+    }
+  },
+  "Imprint": {
+    "label": "Impresum",
+    "title": "Ki vodi ovu stranicu.",
+    "lead": "{siteName} objavljuje i vodi {host}.",
+    "operatorLabel": "Nositelj",
+    "operator": {
+      "operator": {
+        "term": "Nositelj",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "location": {
+        "term": "Lokacija",
+        "value": "Vrsar, Istra, Hrvatska (Europska unija)"
+      },
+      "address": {
+        "term": "Adresa sjedišta",
+        "value": "Dalmatinska 34, 52450 Vrsar, Hrvatska"
+      },
+      "director": {
+        "term": "Uprava",
+        "value": "Alex Bašić"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "mbs": {
+        "term": "MBS",
+        "value": "130172611"
+      },
+      "court": {
+        "term": "Sudski registar",
+        "value": "Trgovački sud u Pazinu"
+      },
+      "activity": {
+        "term": "Registrirana djelatnost",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": {
+        "term": "PDV",
+        "value": "Ni u sustavu PDV-a"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefon"
+      },
+      "website": {
+        "term": "Web"
+      }
+    },
+    "sections": {
+      "content": {
+        "title": "Ki odgovara za sadržaj",
+        "body": "{siteName} odgovara za sadržaj ki je objavljen na {host}. Pišemo ga sami i koliko znamo držimo ga aktualnin. Opisi našega softvera kažu ča već dela, ča je demonstracija i ča još ni storeno."
+      },
+      "links": {
+        "title": "Vanjski linki",
+        "body": "Ova stranica vodi na stranice ke vode drugi — repozitoriji, klijentske stranice, usluge drugih firmi. Za ono ča je na njima odgovaraju oni ki ih vode. Link pogledamo kad ga stavimo; ne moremo ga gledat stalno. Recite nan na <mail>{email}</mail> ako neki ne dela ili je kriv i maknut ćemo ga ili popravit."
+      },
+      "copyright": {
+        "title": "Autorska prava",
+        "body": "Teksti, slike i kod objavljeni na ovoj stranici pripadaju {siteName}, osim ako je napisan drugi vlasnik. Citirajte nas s linkon na izvor. Pitajte prvo nego ča prenesete celu stranicu."
+      },
+      "form": {
+        "title": "Kontakt formular",
+        "body": "Formular u našen <link>kontakt delu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je del, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
+      }
+    }
+  },
+  "ContactForm": {
+    "submitLabel": "Pošljite poruku",
+    "sending": "Šaljen",
+    "nameLabel": "Ime",
+    "emailLabel": "Email",
+    "companyLabel": "Firma",
+    "companyOptional": "(ni obavezno)",
+    "topicLabel": "Tema",
+    "messageLabel": "Ča je teško razumit, ča koči delo ili čemu nišće ne veruje?",
+    "honeypotLabel": "Ovo polje pustite prazno",
+    "sentLabel": "Poruka je rivala",
+    "sentBody": "Rivala je do nas. Odgovor pride s adrese {email}, za jedan radni dan.",
+    "writeAnother": "Napišite još jednu poruku",
+    "fallbackFailed": "Poruku sad nismo mogli spravit.",
+    "fallbackMailClient": "Ovi formular preda poruku vašoj aplikaciji za email.",
+    "fallbackTail": "Vaša aplikacija za email bi se morala otprt sa svin već ispunjenin. Ako ni, pošljite ju na <mail>{email}</mail>.",
+    "mailNote": "Ili pišite na <mail>{email}</mail>.",
+    "errorName": "Recite nan ki ste.",
+    "errorEmail": "Rabi nan adresa na ku van moremo odgovorit.",
+    "errorMessage": "Dosta je rečenica-dvi o sistemu.",
+    "subjectWithTopic": "{topic} — upit od {name}",
+    "subjectFallback": "Upit s web stranice",
+    "mailtoName": "Ime",
+    "mailtoEmail": "Email",
+    "mailtoCompany": "Firma",
+    "mailtoTopic": "Tema",
+    "mailtoWebsite": "web stranice"
+  },
+  "Projects": {
+    "viewProject": "Pogledajte projekt",
+    "visitSite": "Otprite stranicu",
+    "newTab": "otpre se u novoj kartici",
+    "allWork": "Sve delo",
+    "overview": "O projektu",
+    "nextProject": "Idući projekt",
+    "projectNavigation": "Navigacija po projektin",
+    "contactTitle": "Imate kakov projekt u glavi?",
+    "contact": "Javite nan se",
+    "velum": {
+      "role": "Kafić i vinski bar na rivi, po hrvatski i po engleski.",
+      "overview": "Doručak, kolači i istarsko vino na vrsarskoj rivi. Velumova stranica skupi jelovnik, ambijent lokala i ča rabi znat za prit.",
+      "desktopAlt": "Velumova web-stranica s fotografijami kafića i naslovon „By the sea, in no hurry.”",
+      "desktopCaption": "Velumova početna stranica, s vrsarske rive.",
+      "detailAlt": "Velumova web-stranica s jelovnikon za doručak.",
+      "detailCaption": "Jelovnik za doručak.",
+      "mobileAlt": "Velumova početna stranica na telefoninu.",
+      "mobileCaption": "Isti lokal na manjen ekranu."
+    },
+    "voyager": {
+      "role": "Javna karta za otkrit mesta okolo Vrsara.",
+      "overview": "Voyager Atlas pokaže na karti mesta okolo Vrsara: od Punte Montraker i Koversade do Parka skulptura Dušana Džamonje i šume Kontija. Po javnen Atlasu morete hodit brez prijave.",
+      "desktopAlt": "Voyagerova početna stranica s naslovon „Discover the culture of a place your way.”",
+      "desktopCaption": "Voyagerova javna početna stranica.",
+      "detailAlt": "Voyager Atlas s otprtin prikazon Parka skulptura Dušana Džamonje kraj karte.",
+      "detailCaption": "Park skulptura Dušana Džamonje: opis, lokacija i adresa.",
+      "mobileAlt": "Javna karta Vrsara u Voyager Atlasu preko celega ekrana telefonina.",
+      "mobileCaption": "Javna karta Vrsara na telefoninu."
+    },
+    "astyleMarine": {
+      "role": "Privatni izleti s jahton iz Poreča po istarskoj obali.",
+      "overview": "AstyleMarineova stranica skupi jahtu, itinerare po obali i galeriju. Na njoj se more izabrat izlet i poslat upit na WhatsApp.",
+      "desktopAlt": "AstyleMarineova stranica za najam jahti s naslovon „Luxury in full speed”.",
+      "desktopCaption": "AstyleMarineova početna stranica za izlete s jahton iz Poreča.",
+      "detailAlt": "AstyleMarineova web-stranica ka kaže jahtu i njene specifikacije.",
+      "detailCaption": "Jahta i njene specifikacije.",
+      "mobileAlt": "AstyleMarineova početna stranica za najam jahti na telefoninu.",
+      "mobileCaption": "AstyleMarine na telefoninu."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "claim": "Manje fadige brez potribe med onin ča čovik hoće, onin ča je i onin ča vaja storit.",
+      "switchLocale": "Nastavi po čakavski",
+      "gridLabel": "Delo studija INTRFACE",
+      "makerMark": "INTRFACE početna",
+      "backToGrid": "Nazad na početnu"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "Sezona maslin u Istri, maslinik po maslinik."
+      }
+    }
+  }
+}

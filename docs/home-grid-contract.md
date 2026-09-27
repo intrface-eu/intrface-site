@@ -1,4 +1,4 @@
-# Home contract (2026-09-26, revision 6: six quiet tiles under the veil)
+# Home contract (2026-09-27, revision 7: the sentence in four languages)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -20,10 +20,60 @@ projects, AgroPulse and Patchbay (still in development). The bento now
 holds six tiles in two rows of three, screenshots rest dimmed under a
 mouse, and each caption starts with the project's own mark.
 
-The sentence, verbatim, is `HomeGrid.common.claim`:
+Revision 7, 2026-09-27: the site dropped German and French and runs in
+four locales, in this order: English (`en`), Croatian (`hr`), Istroveneto
+(`vec`, ISO 639-3 for Venetian) and Istrian Chakavian (`ckm`, ISO 639-3).
+`/de/...` and `/fr/...` redirect permanently (308) to the same path under
+`/en` (`redirects()` in `next.config.ts`, which runs before the proxy). The
+home sentence now cycles through the four languages, and a link under it
+switches the site to the language shown.
 
-> Reduce unnecessary friction between human intention, reality, and
-> meaningful action.
+## The sentence
+
+`HomeGrid.common.claim` in each locale. English, verbatim:
+
+> Reducing needless friction between intention, reality, and meaningful
+> action.
+
+Croatian: "Manje trenja između onoga što hoćeš, onoga što jest i onoga što
+vrijedi napraviti." Istroveneto and Chakavian carry their own lines in
+`vec.json` and `ckm.json`.
+
+`Veil` (server) loads `claim` and `switchLocale` from all four locales with
+`getTranslations({ locale, namespace: "HomeGrid.common" })` and hands them,
+page locale first, to `ClaimCycle` (client,
+`components/home/claim-cycle.tsx`).
+
+- **Order.** Fixed: en, hr, vec, ckm, en..., starting from the page's own
+  locale (on `/hr`: hr, vec, ckm, en). The server renders the page
+  locale's line visible, so first paint has no flash and no shift.
+- **One cell.** The `h1` is a grid; the four lines (`.home-veil__line`, each
+  with its `lang`) sit in one cell, so the block has the height of the
+  tallest line at every width and nothing below it moves. Assistive tech
+  reads the page locale's line only: the other three are `aria-hidden`.
+- **Motion.** Each line holds 5s, then a 700ms cross-fade (opacity and a
+  0.35rem rise, `cubic-bezier(0.33, 0, 0.2, 1)`): the old line rises out
+  over the first 60%, the new one rises in over the last 75%. Opacity and
+  transform only. The cycle pauses while the pointer (not touch) is over
+  the sentence or link, while focus is inside, while the tab is hidden and
+  while the block is off screen (IntersectionObserver). Each pause restarts
+  the hold.
+- **The link.** Under the sentence, `.home-veil__switch`: for each other
+  locale a next-intl `Link` (`href="/"`, `locale`, `lang`, `hrefLang`) with
+  that locale's `HomeGrid.common.switchLocale` ("Continue in English",
+  "Nastavi na hrvatskom"; a locale without the key falls back to its
+  endonym). All three sit in one grid cell; only the one for the line
+  shown is visible and focusable, and it fades with its line. The others
+  are `aria-hidden`, `tabIndex={-1}` and `visibility: hidden`. While the
+  page's own line shows, the slot is empty but keeps its height. Focusing
+  the link pauses the cycle, so it never fades under focus. Style:
+  `.type-caption` in `--ink-inverse-muted`, a 1px underline at half
+  strength, `--ink-inverse` on hover, a 2px `--ink-inverse` focus ring at
+  4px offset, 44px tall.
+- **Reduced motion.** No cycle: the page's line stays, and the links to the
+  other three languages sit in one row under it (wrapping on a phone), all
+  visible and focusable. CSS lays this out from first paint; the client
+  clears `aria-hidden` and `tabIndex` once it hydrates.
 
 ## Page structure
 
@@ -40,8 +90,10 @@ paper.
    nothing over `--veil-fade` with eased stops. At scroll 0 the screen is
    black with only the logo and the sentence. On it the logo (`MakerMark`) and the sentence
    (`.type-display`, `--ink-inverse`, the page's `h1`, in
-   `.section-shell`). It scrolls away at page speed. Its solid band
-   (`::before`, the first `100svh`) takes pointer events, the faded part does not. When a tile
+   `.section-shell`, cycling through the four languages with its link
+   under it; see The sentence). It scrolls away at page speed. Its solid
+   band (`::before`, the first `100svh`), the mark and the sentence block
+   take pointer events, the faded part does not. When a tile
    gets keyboard focus, the veil moves up out of the way
    (`.home-stage:has(.work-tile:focus-visible) .home-veil`,
    `translateY(-100%)`, a 240ms transition only under
@@ -143,6 +195,17 @@ scroll = veil height and negative after; the veil's bottom is ≤ 0 at the
 veil height; the rise runs from 12svh to 0 over the same run; the mobile capture
 below 768px, the desktop capture from 768px; Tab to the first tile at
 scroll 0 moves the veil away; screenshots at 0, 50, 100 and 150svh, looked
-at. `/de`, `/fr`, `/hr` show their sentence; `/en/about` and
-`/en/work/polis` return 200. `grep -rn "veil-rest\|home-veil-lift"
-apps/web/src` returns nothing.
+at. `/en`, `/hr`, `/vec`, `/ckm` return 200 with their `html lang` and
+start with their own line; `/de`, `/de/about` and `/fr/work` redirect to
+the `/en` equivalents; `/en/about` and `/en/work/polis` return 200.
+`grep -rn "veil-rest\|home-veil-lift" apps/web/src` returns nothing.
+
+The sentence (revision 7), at 1440×900 and 390×844: the server-rendered
+line (JavaScript off) is the page locale's, at the same block height as
+after hydration; the lines advance in the fixed order with the matching
+link visible and focusable and the others hidden; the block height does
+not change across the cycle; hover, a focused link, a hidden tab and
+scrolling the block off screen each hold the line; clicking the link while
+the Istroveneto line shows lands on `/vec`; with reduced motion emulated
+the line does not change and three links show. Screenshots of each line at
+both widths, looked at.

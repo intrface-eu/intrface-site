@@ -4,6 +4,7 @@ import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
+import { LOCALE_ENDONYMS } from "@/lib/site/locale-names";
 
 export function LocaleSwitcher() {
   const t = useTranslations("LocaleSwitcher");
@@ -33,8 +34,8 @@ export function LocaleSwitcher() {
         className="rounded-full border border-rule bg-transparent px-3 py-1.5 text-sm pointer-coarse:min-h-11 pointer-coarse:px-4 font-medium text-ink-muted transition-colors hover:border-ink/25 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink disabled:cursor-wait disabled:opacity-70"
       >
         {routing.locales.map((value) => (
-          <option key={value} value={value}>
-            {value.toUpperCase()}
+          <option key={value} value={value} lang={value}>
+            {LOCALE_ENDONYMS[value]}
           </option>
         ))}
       </select>

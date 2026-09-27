@@ -37,7 +37,7 @@ import { CONTACT_EMAIL } from "@/lib/site/config";
  *
  * The order also decides how the row wraps. A long label next to a short one
  * lands two chips per row at 390px in all four locales; the two long labels
- * adjacent pushes German, French and Croatian into three ragged rows.
+ * adjacent pushes the longer languages into three ragged rows.
  */
 export const CONTACT_TOPIC_KEYS = [
   "business-system",
