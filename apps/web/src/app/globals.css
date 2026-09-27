@@ -1498,9 +1498,10 @@ body {
     hyphens: manual;
   }
 
-  /* The sentence in four languages, one at a time (`ClaimCycle`). Every line
-     and every link sits in one grid cell, so the block keeps the height of
-     its tallest line at every width and nothing below it moves. A line that
+  /* The sentence in four languages, or five on /it, one at a time
+     (`ClaimCycle`). Every line and every link sits in one grid cell, so the
+     block keeps the height of its tallest line at every width and nothing
+     below it moves. A line that
      has just left rises out; the next rises in, starting a little later so
      the two never read as one smear. Opacity and transform only. The block
      takes pointer events, so hovering it pauses the cycle and the link can
@@ -1591,7 +1592,8 @@ body {
   }
 
   /* Reduced motion: no cycle. The page's own line stays, and the links to
-     the other three languages sit in one quiet row, all visible. */
+     the other languages of its cycle (three, or four on /it) sit in one
+     quiet row, all visible. */
   @media (prefers-reduced-motion: reduce) {
     .home-veil__switch {
       display: flex;

@@ -36,15 +36,16 @@ function lineState(index: number, shown: number, count: number): "shown" | "past
 }
 
 /**
- * The home sentence in the four site languages, one at a time. `lines[0]` is
- * the page's own locale: it is what the server renders visible, and the only
+ * The home sentence in several site languages, one at a time, in the order
+ * `Veil` gives (four lines on most pages, five on `/it`). `lines[0]` is the
+ * page's own locale: it is what the server renders visible, and the only
  * line assistive tech reads (the `h1`). The others are stacked in the same
  * grid cell, so the block always has the height of the tallest line.
  *
  * Under each line from another locale, a link in that language switches the
  * site to it. The cycle pauses under the pointer, with focus inside, in a
  * hidden tab and with the block off screen. Under reduced motion it does not
- * run: the page's line stays and the three links sit in a row.
+ * run: the page's line stays and the other lines' links sit in a row.
  */
 export function ClaimCycle({ lines }: { lines: ClaimLine[] }) {
   const reducedMotion = useSyncExternalStore(

@@ -1,7 +1,7 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ["en", "hr", "vec", "ckm"],
+  locales: ["en", "hr", "it", "vec", "ckm"],
   defaultLocale: "en",
   localePrefix: "always",
   // No hreflang `Link` header from the proxy: it would name every locale,

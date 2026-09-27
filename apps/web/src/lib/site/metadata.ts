@@ -3,13 +3,15 @@ import { routing, type AppLocale } from "@/i18n/routing";
 import { SITE_NAME } from "@/lib/site/config";
 
 /**
- * OpenGraph locale codes for the four site languages. The two Istrian
+ * OpenGraph locale codes for the five site languages. The two Istrian
  * dialects have no OpenGraph code of their own: Chakavian shares Croatia's,
- * and Istroveneto takes Italian, the nearest standard with a code.
+ * and Istroveneto shares Italy's, the nearest standard with a code. The
+ * alternates below drop the duplicates.
  */
 const OG_LOCALES: Record<AppLocale, string> = {
   en: "en_GB",
   hr: "hr_HR",
+  it: "it_IT",
   vec: "it_IT",
   ckm: "hr_HR",
 };
@@ -19,7 +21,7 @@ const OG_LOCALES: Record<AppLocale, string> = {
  * language codes there and flags `vec` and `ckm` (ISO 639-3), so the dialect
  * pages keep their own canonical but are left out of the alternates.
  */
-export const HREFLANG_LOCALES = ["en", "hr"] as const satisfies readonly AppLocale[];
+export const HREFLANG_LOCALES = ["en", "hr", "it"] as const satisfies readonly AppLocale[];
 
 /**
  * The generated share card, `app/[locale]/opengraph-image.tsx`. Declared here
@@ -62,8 +64,8 @@ export type PageMetadataInput = {
 };
 
 /**
- * Per-page metadata with canonical URL and hreflang alternates (English and
- * Croatian, see `HREFLANG_LOCALES`).
+ * Per-page metadata with canonical URL and hreflang alternates (English,
+ * Croatian and Italian, see `HREFLANG_LOCALES`).
  * Resolution against the site origin comes from `metadataBase` in the root layout.
  */
 export function buildPageMetadata({ locale, path, title, description }: PageMetadataInput): Metadata {

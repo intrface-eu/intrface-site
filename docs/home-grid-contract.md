@@ -1,4 +1,4 @@
-# Home contract (2026-09-27, revision 7: the sentence in four languages)
+# Home contract (2026-09-27, revision 8: Italian as a fifth locale)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -28,6 +28,15 @@ four locales, in this order: English (`en`), Croatian (`hr`), Istroveneto
 home sentence now cycles through the four languages, and a link under it
 switches the site to the language shown.
 
+Revision 8, 2026-09-27: the owner added standard Italian (`it`, formal
+register) as a fifth locale for business clients in Italy. The routing
+order is en, hr, it, vec, ckm; an Italian browser reaches `/it` through
+next-intl's Accept-Language detection. Italian stays out of the owner's
+rotation (en, hr, vec, ckm), which is unchanged on those four pages; on
+`/it` the Italian line comes first, then the rotation. `it` is ISO 639-1,
+so it joins the hreflang alternates (en, hr, it, x-default); its
+OpenGraph locale is `it_IT`, shared with `vec`.
+
 ## The sentence
 
 `HomeGrid.common.claim` in each locale. English, verbatim:
@@ -36,21 +45,25 @@ switches the site to the language shown.
 > action.
 
 Croatian: "Manje trenja između onoga što hoćeš, onoga što jest i onoga što
-vrijedi napraviti." Istroveneto and Chakavian carry their own lines in
-`vec.json` and `ckm.json`.
+vrijedi napraviti." Italian, Istroveneto and Chakavian carry their own
+lines in `it.json`, `vec.json` and `ckm.json`.
 
-`Veil` (server) loads `claim` and `switchLocale` from all four locales with
-`getTranslations({ locale, namespace: "HomeGrid.common" })` and hands them,
-page locale first, to `ClaimCycle` (client,
+`Veil` (server) loads `claim` and `switchLocale` for each locale in the
+page's cycle with `getTranslations({ locale, namespace: "HomeGrid.common" })`
+and hands them, page locale first, to `ClaimCycle` (client,
 `components/home/claim-cycle.tsx`).
 
-- **Order.** Fixed: en, hr, vec, ckm, en..., starting from the page's own
-  locale (on `/hr`: hr, vec, ckm, en). The server renders the page
+- **Order.** The rotation is fixed: en, hr, vec, ckm, en..., starting from
+  the page's own locale (on `/hr`: hr, vec, ckm, en). Italian is not in
+  it: on `/it` the cycle is it, en, hr, vec, ckm, then it again (five
+  lines); no other page shows the Italian line. `cycleOrder` in
+  `components/home/veil.tsx` holds both rules. The server renders the page
   locale's line visible, so first paint has no flash and no shift.
-- **One cell.** The `h1` is a grid; the four lines (`.home-veil__line`, each
-  with its `lang`) sit in one cell, so the block has the height of the
-  tallest line at every width and nothing below it moves. Assistive tech
-  reads the page locale's line only: the other three are `aria-hidden`.
+- **One cell.** The `h1` is a grid; the page's lines (`.home-veil__line`,
+  each with its `lang`; four, or five on `/it`) sit in one cell, so the
+  block has the height of the tallest line in that page's cycle at every
+  width and nothing below it moves. Assistive tech reads the page locale's
+  line only: the others are `aria-hidden`.
 - **Motion.** Each line holds 5s, then a 700ms cross-fade (opacity and a
   0.35rem rise, `cubic-bezier(0.33, 0, 0.2, 1)`): the old line rises out
   over the first 60%, the new one rises in over the last 75%. Opacity and
@@ -62,7 +75,7 @@ page locale first, to `ClaimCycle` (client,
   locale a next-intl `Link` (`href="/"`, `locale`, `lang`, `hrefLang`) with
   that locale's `HomeGrid.common.switchLocale` ("Continue in English",
   "Nastavi na hrvatskom"; a locale without the key falls back to its
-  endonym). All three sit in one grid cell; only the one for the line
+  endonym). All of them sit in one grid cell; only the one for the line
   shown is visible and focusable, and it fades with its line. The others
   are `aria-hidden`, `tabIndex={-1}` and `visibility: hidden`. While the
   page's own line shows, the slot is empty but keeps its height. Focusing
@@ -71,7 +84,7 @@ page locale first, to `ClaimCycle` (client,
   strength, `--ink-inverse` on hover, a 2px `--ink-inverse` focus ring at
   4px offset, 44px tall.
 - **Reduced motion.** No cycle: the page's line stays, and the links to the
-  other three languages sit in one row under it (wrapping on a phone), all
+  other languages of its cycle (three; four on `/it`) sit in one row under it (wrapping on a phone), all
   visible and focusable. CSS lays this out from first paint; the client
   clears `aria-hidden` and `tabIndex` once it hydrates.
 
@@ -195,9 +208,11 @@ scroll = veil height and negative after; the veil's bottom is ≤ 0 at the
 veil height; the rise runs from 12svh to 0 over the same run; the mobile capture
 below 768px, the desktop capture from 768px; Tab to the first tile at
 scroll 0 moves the veil away; screenshots at 0, 50, 100 and 150svh, looked
-at. `/en`, `/hr`, `/vec`, `/ckm` return 200 with their `html lang` and
+at. `/en`, `/hr`, `/it`, `/vec`, `/ckm` return 200 with their `html lang` and
 start with their own line; `/de`, `/de/about` and `/fr/work` redirect to
-the `/en` equivalents; `/en/about` and `/en/work/polis` return 200.
+the `/en` equivalents; `/` with `Accept-Language: it` redirects to `/it`;
+`/en/about` and `/en/work/polis` return 200; hreflang on `/en/about` lists
+en, hr, it and x-default, not vec or ckm; the sitemap lists the `/it` URLs.
 `grep -rn "veil-rest\|home-veil-lift" apps/web/src` returns nothing.
 
 The sentence (revision 7), at 1440×900 and 390×844: the server-rendered
@@ -207,5 +222,6 @@ link visible and focusable and the others hidden; the block height does
 not change across the cycle; hover, a focused link, a hidden tab and
 scrolling the block off screen each hold the line; clicking the link while
 the Istroveneto line shows lands on `/vec`; with reduced motion emulated
-the line does not change and three links show. Screenshots of each line at
-both widths, looked at.
+the line does not change and three links show (four on `/it`). On `/it`
+the cycle runs it, en, hr, vec, ckm; on `/en` it runs en, hr, vec, ckm with
+no Italian line. Screenshots of each line at both widths, looked at.

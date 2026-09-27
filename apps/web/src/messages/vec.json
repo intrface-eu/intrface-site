@@ -10,7 +10,7 @@
     "skipToContent": "Va dreto al contenuto"
   },
   "Footer": {
-    "location": "Vrsar, Croazia",
+    "location": "Orsera, Croazia",
     "tagline": "Interfacie per el mondo.",
     "contact": "Contati",
     "github": "GitHub",
@@ -27,14 +27,14 @@
   },
   "Metadata": {
     "tagline": "Interfacie per el mondo.",
-    "description": "INTRFACE fa interfacie per el mondo de Vrsar, in Istria: Voyager, Polis, Funda, MidiFlow e Patchbay nostri, e siti per le dite de tuta l’UE.",
+    "description": "INTRFACE fa interfacie per el mondo de Orsera, in Istria: Voyager, Polis, Funda, MidiFlow e Patchbay nostri, e siti per le dite de tuta l’UE.",
     "work": {
       "title": "Lavori",
       "description": "Varda Velum, Voyager e AstyleMarine sui sui siti e nele schede dei progeti. E anca Polis, Funda, MidiFlow e Patchbay, con a che punto che i xe."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Una mapa publica per scovrir i posti atorno Vrsar."
+      "description": "Una mapa publica per scovrir i posti atorno Orsera."
     },
     "polis": {
       "title": "Polis",
@@ -50,7 +50,7 @@
     },
     "about": {
       "title": "Chi semo",
-      "description": "Alex Bašić ga fondà INTRFACE a Vrsar, in Istria. El lavor xe più che altro giustar quel toco de sistema che da ani no ga senso."
+      "description": "Alex Bašić ga fondà INTRFACE a Orsera, in Istria. El lavor xe più che altro giustar quel toco de sistema che da ani no ga senso."
     },
     "imprint": {
       "title": "Dati legali",
@@ -62,7 +62,7 @@
     },
     "astyleMarine": {
       "title": "AstyleMarine",
-      "description": "Giri privati in yacht de Poreč longo la costa istriana."
+      "description": "Giri privati in yacht de Parenzo longo la costa istriana."
     }
   },
   "HomePage": {
@@ -151,7 +151,7 @@
   },
   "WorkClientSites": {
     "title": "Siti per le dite.",
-    "lead": "Velum sula riva de Vrsar. AstyleMarine sula costa istriana.",
+    "lead": "Velum sula riva de Orsera. AstyleMarine sula costa istriana.",
     "allWork": "Tuti i lavori",
     "contactTitle": "Ti ga un progeto in testa?",
     "contact": "Contine"
@@ -160,7 +160,7 @@
     "hero": {
       "label": "Chi semo",
       "title": "Intrface vol dir far le interfacie più umane per i problemi che val più la pena risolver.",
-      "lead": "Semo a Vrsar, in Istria. Lavoremo in tuta l’UE."
+      "lead": "Semo a Orsera, in Istria. Lavoremo in tuta l’UE."
     },
     "person": {
       "label": "Fondator",
@@ -171,7 +171,7 @@
         "Qualchedun una volta ghe ga girà atorno, dopo lo ga fato tuti, e el giro xe deventà la procedura.",
         "Me piasi trovar quel toco e cavarlo.",
         "Per quel el studio fa interfacie — xe su l’interfacia che un sistema o el ga senso o no.",
-        "Lavoro de Vrsar, sula costa de l’Istria."
+        "Lavoro de Orsera, sula costa de l’Istria."
       ]
     },
     "close": {
@@ -192,7 +192,7 @@
       },
       "location": {
         "term": "Posto",
-        "value": "Vrsar, Istria, Croazia (Union Europea)"
+        "value": "Orsera, Istria, Croazia (Union Europea)"
       },
       "address": {
         "term": "Sede legal",
@@ -291,29 +291,29 @@
     "contact": "Contine",
     "velum": {
       "role": "Un cafè e wine bar sula riva, in croato e inglese.",
-      "overview": "Colazion, torte e vin istrian sula riva de Vrsar. El sito de Velum mete insieme el menù, l’atmosfera e quel che serve saver per vignir.",
+      "overview": "Colazion, torte e vin istrian sula riva de Orsera. El sito de Velum mete insieme el menù, l’atmosfera e quel che serve saver per vignir.",
       "desktopAlt": "Sito de Velum con foto del cafè e el titolo “By the sea, in no hurry.”",
-      "desktopCaption": "La prima pagina de Velum, sula riva de Vrsar.",
+      "desktopCaption": "La prima pagina de Velum, sula riva de Orsera.",
       "detailAlt": "Sito de Velum col menù de la colazion.",
       "detailCaption": "El menù de la colazion.",
       "mobileAlt": "La prima pagina de Velum sul telefonin.",
       "mobileCaption": "El stesso posto, su un schermo più picio."
     },
     "voyager": {
-      "role": "Una mapa publica per scovrir i posti atorno Vrsar.",
-      "overview": "Voyager Atlas mete sula mapa i posti atorno Vrsar: de Punta Montraker e Koversada fin al Parco de sculture Dušan Džamonja e al bosco de Kontija. L’Atlas publico se pol esplorar senza far el login.",
+      "role": "Una mapa publica per scovrir i posti atorno Orsera.",
+      "overview": "Voyager Atlas mete sula mapa i posti atorno Orsera: de Punta Montraker e Koversada fin al Parco de sculture Dušan Džamonja e al bosco de Kontija. L’Atlas publico se pol esplorar senza far el login.",
       "desktopAlt": "Prima pagina de Voyager col titolo “Discover the culture of a place your way.”",
       "desktopCaption": "La prima pagina publica de Voyager.",
       "detailAlt": "Voyager Atlas con la scheda del Parco de sculture Dušan Džamonja verta a fianco de la mapa.",
       "detailCaption": "Parco de sculture Dušan Džamonja: descrizion, posizion e indirizo.",
-      "mobileAlt": "La mapa publica de Vrsar de Voyager Atlas su tuto el schermo del telefonin.",
-      "mobileCaption": "La mapa publica de Vrsar sul telefonin."
+      "mobileAlt": "La mapa publica de Orsera de Voyager Atlas su tuto el schermo del telefonin.",
+      "mobileCaption": "La mapa publica de Orsera sul telefonin."
     },
     "astyleMarine": {
-      "role": "Giri privati in yacht de Poreč longo la costa istriana.",
+      "role": "Giri privati in yacht de Parenzo longo la costa istriana.",
       "overview": "El sito de AstyleMarine mete insieme el yacht, i giri longo la costa e una galeria. I visitadori pol sceglier un giro e mandar una richiesta su WhatsApp.",
       "desktopAlt": "Sito de AstyleMarine per el charter de yacht col titolo “Luxury in full speed”.",
-      "desktopCaption": "La prima pagina de AstyleMarine, per i giri in yacht de Poreč.",
+      "desktopCaption": "La prima pagina de AstyleMarine, per i giri in yacht de Parenzo.",
       "detailAlt": "El sito de AstyleMarine che presenta el yacht e i sui dati tecnici.",
       "detailCaption": "El yacht e i sui dati tecnici.",
       "mobileAlt": "La prima pagina de AstyleMarine per el charter de yacht sul telefonin.",
@@ -323,7 +323,7 @@
   "HomeGrid": {
     "common": {
       "claim": "Meno fadiga tra quel che ti vol, quel che xe e quel che val la pena far.",
-      "switchLocale": "Va vanti in istroveneto",
+      "switchLocale": "Continua in dialeto",
       "gridLabel": "Lavori de INTRFACE",
       "makerMark": "INTRFACE, prima pagina",
       "backToGrid": "Torna a la prima pagina"

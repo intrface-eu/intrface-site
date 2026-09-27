@@ -7,6 +7,7 @@ import type { AppLocale } from "@/i18n/routing";
 export const LOCALE_ENDONYMS: Record<AppLocale, string> = {
   en: "English",
   hr: "Hrvatski",
+  it: "Italiano",
   vec: "Istrovèneto",
   ckm: "Čakavski",
 };

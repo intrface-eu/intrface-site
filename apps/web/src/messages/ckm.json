@@ -11,7 +11,7 @@
   },
   "Footer": {
     "location": "Vrsar, Hrvatska",
-    "tagline": "Sučelja za svet.",
+    "tagline": "Sučelja za svit.",
     "contact": "Kontakt",
     "github": "GitHub",
     "imprint": "Impresum"
@@ -26,15 +26,15 @@
     "screenshotPending": "Slika ekrana brzo pride"
   },
   "Metadata": {
-    "tagline": "Sučelja za svet.",
-    "description": "INTRFACE dela sučelja za svet iz Vrsara, u Istri: naše Voyager, Polis, Funda, MidiFlow i Patchbay, pa stranice za firme po celoj EU.",
+    "tagline": "Sučelja za svit.",
+    "description": "INTRFACE dela sučelja za svit iz Vrsara, u Istri: naše Voyager, Polis, Funda, MidiFlow i Patchbay, pa stranice za firme po ciloj EU.",
     "work": {
       "title": "Delo",
       "description": "Pogledajte Velum, Voyager i AstyleMarine na njihovin javnin stranican i u prikazu svakega projekta. Uz to Polis, Funda, MidiFlow i Patchbay, i kako sad stoje."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Javna karta za otkrit mesta okolo Vrsara."
+      "description": "Javna karta za otkrit mista okolo Vrsara."
     },
     "polis": {
       "title": "Polis",
@@ -50,7 +50,7 @@
     },
     "about": {
       "title": "O nami",
-      "description": "Alex Bašić je otprl INTRFACE u Vrsaru, u Istri. Posal je najviše popravit oni del sistema ki već let nima smisla."
+      "description": "Alex Bašić je otprl INTRFACE u Vrsaru, u Istri. Posal je najviše popravit oni dil sistema ki već lit nima smisla."
     },
     "imprint": {
       "title": "Impresum",
@@ -70,8 +70,8 @@
       "voyager": {
         "name": "Voyager",
         "status": "Već dela",
-        "interface": "Sučelje za mesto.",
-        "pair": "gost ↔ mesto"
+        "interface": "Sučelje za misto.",
+        "pair": "gost ↔ misto"
       },
       "polis": {
         "name": "Polis",
@@ -95,7 +95,7 @@
         "name": "Patchbay",
         "status": "Brzo pride",
         "interface": "Kreativno delo skupa",
-        "pair": "umetnik ↔ umetnik"
+        "pair": "umitnik ↔ umitnik"
       }
     }
   },
@@ -125,7 +125,7 @@
         "name": "Patchbay",
         "status": "Brzo pride",
         "interface": "Kreativno delo skupa",
-        "pair": "umetnik ↔ umetnik"
+        "pair": "umitnik ↔ umitnik"
       }
     },
     "pairLabel": "Med",
@@ -159,17 +159,17 @@
   "About": {
     "hero": {
       "label": "O nami",
-      "title": "Intrface dela sučelja po meri čovika za probleme ke najviše vridi rišit.",
-      "lead": "U Vrsaru, u Istri. Delamo po celoj EU."
+      "title": "Intrface dela sučelja po miri čovika za probleme ke najviše vridi rišit.",
+      "lead": "U Vrsaru, u Istri. Delamo po ciloj EU."
     },
     "person": {
       "label": "Osnivač",
       "name": "Alex Bašić",
       "portraitAlt": "Alex Bašić, osnivač Intrfacea.",
       "body": [
-        "Delal san svašta, a skoro sve se je svelo na isto: popravit oni del sistema ki već let ni imel smisla.",
+        "Delal san svašta, a skoro sve se je svelo na isto: popravit oni dil sistema ki već lit ni imil smisla.",
         "Neki ga je jedanput obašal, onda su ga svi, i taj obilaz je postal način dela.",
-        "Volin najt taj del i hitit ga van.",
+        "Volin najt taj dil i hitit ga van.",
         "Zato studio dela sučelja — na sučelju sistem ili ima smisla ili nima.",
         "Delan iz Vrsara, s istarske obale."
       ]
@@ -243,11 +243,11 @@
       },
       "copyright": {
         "title": "Autorska prava",
-        "body": "Teksti, slike i kod objavljeni na ovoj stranici pripadaju {siteName}, osim ako je napisan drugi vlasnik. Citirajte nas s linkon na izvor. Pitajte prvo nego ča prenesete celu stranicu."
+        "body": "Teksti, slike i kod objavljeni na ovoj stranici pripadaju {siteName}, osim ako je napisan drugi vlasnik. Citirajte nas s linkon na izvor. Pitajte prvo nego ča prinesete cilu stranicu."
       },
       "form": {
         "title": "Kontakt formular",
-        "body": "Formular u našen <link>kontakt delu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je del, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
+        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
       }
     }
   },
@@ -259,13 +259,13 @@
     "companyLabel": "Firma",
     "companyOptional": "(ni obavezno)",
     "topicLabel": "Tema",
-    "messageLabel": "Ča je teško razumit, ča koči delo ili čemu nišće ne veruje?",
+    "messageLabel": "Ča je teško razumit, ča koči delo ili čemu nišće ne viruje?",
     "honeypotLabel": "Ovo polje pustite prazno",
     "sentLabel": "Poruka je rivala",
     "sentBody": "Rivala je do nas. Odgovor pride s adrese {email}, za jedan radni dan.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku sad nismo mogli spravit.",
-    "fallbackMailClient": "Ovi formular preda poruku vašoj aplikaciji za email.",
+    "fallbackMailClient": "Ovi formular prida poruku vašoj aplikaciji za email.",
     "fallbackTail": "Vaša aplikacija za email bi se morala otprt sa svin već ispunjenin. Ako ni, pošljite ju na <mail>{email}</mail>.",
     "mailNote": "Ili pišite na <mail>{email}</mail>.",
     "errorName": "Recite nan ki ste.",
@@ -300,13 +300,13 @@
       "mobileCaption": "Isti lokal na manjen ekranu."
     },
     "voyager": {
-      "role": "Javna karta za otkrit mesta okolo Vrsara.",
-      "overview": "Voyager Atlas pokaže na karti mesta okolo Vrsara: od Punte Montraker i Koversade do Parka skulptura Dušana Džamonje i šume Kontija. Po javnen Atlasu morete hodit brez prijave.",
+      "role": "Javna karta za otkrit mista okolo Vrsara.",
+      "overview": "Voyager Atlas pokaže na karti mista okolo Vrsara: od Punte Montraker i Koversade do Parka skulptura Dušana Džamonje i šume Kontija. Po javnen Atlasu morete hodit brez prijave.",
       "desktopAlt": "Voyagerova početna stranica s naslovon „Discover the culture of a place your way.”",
       "desktopCaption": "Voyagerova javna početna stranica.",
       "detailAlt": "Voyager Atlas s otprtin prikazon Parka skulptura Dušana Džamonje kraj karte.",
       "detailCaption": "Park skulptura Dušana Džamonje: opis, lokacija i adresa.",
-      "mobileAlt": "Javna karta Vrsara u Voyager Atlasu preko celega ekrana telefonina.",
+      "mobileAlt": "Javna karta Vrsara u Voyager Atlasu priko cilega ekrana telefonina.",
       "mobileCaption": "Javna karta Vrsara na telefoninu."
     },
     "astyleMarine": {
@@ -323,7 +323,7 @@
   "HomeGrid": {
     "common": {
       "claim": "Manje fadige brez potribe med onin ča čovik hoće, onin ča je i onin ča vaja storit.",
-      "switchLocale": "Nastavi po čakavski",
+      "switchLocale": "Ajmo dalje po naše",
       "gridLabel": "Delo studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Nazad na početnu"

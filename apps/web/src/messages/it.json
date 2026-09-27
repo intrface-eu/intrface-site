@@ -1,0 +1,337 @@
+{
+  "Nav": {
+    "work": "Lavori",
+    "about": "Chi siamo",
+    "imprint": "Note legali",
+    "contact": "Contatti",
+    "home": "Intrface, pagina iniziale",
+    "menu": "Menu",
+    "logoAlt": "Icona di Intrface",
+    "skipToContent": "Vai al contenuto"
+  },
+  "Footer": {
+    "location": "Orsera, Croazia",
+    "tagline": "Interfacce per il mondo.",
+    "contact": "Contatti",
+    "github": "GitHub",
+    "imprint": "Note legali"
+  },
+  "LocaleSwitcher": {
+    "label": "Lingua"
+  },
+  "Common": {
+    "honestStatus": "Stato effettivo",
+    "whyItMatters": "Perché è importante",
+    "open": "Apri",
+    "screenshotPending": "Screenshot in arrivo"
+  },
+  "Metadata": {
+    "tagline": "Interfacce per il mondo.",
+    "description": "INTRFACE realizza interfacce per il mondo da Orsera, in Istria: i propri prodotti Voyager, Polis, Funda, MidiFlow e Patchbay, e siti web per aziende in tutta l’UE.",
+    "work": {
+      "title": "Lavori",
+      "description": "Velum, Voyager e AstyleMarine, con i siti online e le schede dei progetti. Inoltre Polis, Funda, MidiFlow e Patchbay, con il loro stato attuale."
+    },
+    "voyager": {
+      "title": "Voyager",
+      "description": "Una mappa pubblica per scoprire i luoghi intorno a Orsera."
+    },
+    "polis": {
+      "title": "Polis",
+      "description": "Interfacce civiche. Prossimamente."
+    },
+    "funda": {
+      "title": "Funda",
+      "description": "Fondi UE. Prossimamente."
+    },
+    "clientSites": {
+      "title": "Siti per le aziende.",
+      "description": "Velum e AstyleMarine: siti web online per un caffè e wine bar sul lungomare e per un charter di yacht in Istria."
+    },
+    "about": {
+      "title": "Chi siamo",
+      "description": "Alex Bašić ha fondato INTRFACE a Orsera, in Istria. Il lavoro consiste soprattutto nel correggere la parte di un sistema che da anni non ha senso."
+    },
+    "imprint": {
+      "title": "Note legali",
+      "description": "Chi gestisce intrface.eu: dati societari, responsabilità dei contenuti, diritto d’autore e uso dei messaggi inviati con il modulo di contatto."
+    },
+    "velum": {
+      "title": "Velum",
+      "description": "Un caffè e wine bar sul lungomare, in croato e in inglese."
+    },
+    "astyleMarine": {
+      "title": "AstyleMarine",
+      "description": "Esperienze private in yacht da Parenzo lungo la costa istriana."
+    }
+  },
+  "HomePage": {
+    "products": {
+      "voyager": {
+        "name": "Voyager",
+        "status": "Online",
+        "interface": "L’interfaccia di un luogo.",
+        "pair": "visitatore ↔ luogo"
+      },
+      "polis": {
+        "name": "Polis",
+        "status": "Prossimamente",
+        "interface": "Interfacce civiche",
+        "pair": "cittadino ↔ istituzione"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Prossimamente",
+        "interface": "Fondi UE",
+        "pair": "organizzazione ↔ finanziamenti"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Prossimamente",
+        "interface": "Musica",
+        "pair": "musicista ↔ suono"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Prossimamente",
+        "interface": "Collaborazione creativa",
+        "pair": "artista ↔ artista"
+      }
+    }
+  },
+  "WorkIndex": {
+    "title": "Lavori che si possono aprire.",
+    "lead": "Velum, Voyager e AstyleMarine sono online. Scopra i progetti e visiti i siti.",
+    "entries": {
+      "polis": {
+        "name": "Polis",
+        "status": "Prossimamente",
+        "interface": "Interfacce civiche",
+        "pair": "cittadino ↔ istituzione"
+      },
+      "funda": {
+        "name": "Funda",
+        "status": "Prossimamente",
+        "interface": "Fondi UE",
+        "pair": "organizzazione ↔ finanziamenti"
+      },
+      "midiflow": {
+        "name": "MidiFlow",
+        "status": "Prossimamente",
+        "interface": "Musica",
+        "pair": "musicista ↔ suono"
+      },
+      "patchbay": {
+        "name": "Patchbay",
+        "status": "Prossimamente",
+        "interface": "Collaborazione creativa",
+        "pair": "artista ↔ artista"
+      }
+    },
+    "pairLabel": "Tra",
+    "selectedWork": "Lavori selezionati",
+    "otherProducts": "Altri nostri prodotti"
+  },
+  "CaseNav": {
+    "label": "Navigazione tra i progetti",
+    "index": "Tutti i lavori",
+    "next": "Progetto successivo"
+  },
+  "WorkPolis": {
+    "name": "Polis",
+    "domain": "Interfacce civiche",
+    "status": "Prossimamente",
+    "contact": "Ci scriva"
+  },
+  "WorkFunda": {
+    "name": "Funda",
+    "domain": "Fondi UE",
+    "status": "Prossimamente",
+    "contact": "Ci scriva"
+  },
+  "WorkClientSites": {
+    "title": "Siti per le aziende.",
+    "lead": "Velum sul lungomare di Orsera. AstyleMarine sulla costa istriana.",
+    "allWork": "Tutti i lavori",
+    "contactTitle": "Ha un progetto in mente?",
+    "contact": "Ce ne parli"
+  },
+  "About": {
+    "hero": {
+      "label": "Chi siamo",
+      "title": "Intrface realizza le interfacce più umane per i problemi che più vale la pena risolvere.",
+      "lead": "Con sede a Orsera, in Istria. Operiamo in tutta l’UE."
+    },
+    "person": {
+      "label": "Fondatore",
+      "name": "Alex Bašić",
+      "portraitAlt": "Alex Bašić, fondatore di Intrface.",
+      "body": [
+        "Mi sono occupato di moltissime cose, e quasi tutte si riducevano alla stessa: correggere la parte di un sistema che da anni non aveva senso.",
+        "Qualcuno l’aveva aggirata una volta, poi lo hanno fatto tutti, e l’espediente è diventato la procedura.",
+        "Mi piace trovare quella parte ed eliminarla.",
+        "Per questo lo studio realizza interfacce — è nell’interfaccia che un sistema ha senso oppure no.",
+        "Lavoro da Orsera, sulla costa istriana."
+      ]
+    },
+    "close": {
+      "title": "Se qualcosa nel Suo sistema ha smesso di avere senso, ce ne parli.",
+      "work": "I nostri lavori",
+      "contact": "Ci presenti il Suo caso"
+    }
+  },
+  "Imprint": {
+    "label": "Note legali",
+    "title": "Chi gestisce questo sito.",
+    "lead": "{siteName} pubblica e gestisce {host}.",
+    "operatorLabel": "Titolare",
+    "operator": {
+      "operator": {
+        "term": "Titolare",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "location": {
+        "term": "Località",
+        "value": "Orsera, Istria, Croazia (Unione europea)"
+      },
+      "address": {
+        "term": "Sede legale",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "director": {
+        "term": "Amministratore",
+        "value": "Alex Bašić"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "mbs": {
+        "term": "MBS",
+        "value": "130172611"
+      },
+      "court": {
+        "term": "Registro delle imprese",
+        "value": "Trgovački sud u Pazinu"
+      },
+      "activity": {
+        "term": "Attività registrata",
+        "value": "K62109 — Ostalo računalno programiranje"
+      },
+      "vat": {
+        "term": "IVA",
+        "value": "Non registrato ai fini IVA (nije u sustavu PDV-a)"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefono"
+      },
+      "website": {
+        "term": "Sito web"
+      }
+    },
+    "sections": {
+      "content": {
+        "title": "Responsabilità dei contenuti",
+        "body": "{siteName} è responsabile dei contenuti pubblicati su {host}. Li redigiamo direttamente e li manteniamo aggiornati per quanto ci è noto. Le descrizioni del nostro software indicano che cosa è online, che cosa è una dimostrazione e che cosa non è ancora stato realizzato."
+      },
+      "links": {
+        "title": "Link esterni",
+        "body": "Questo sito rimanda a pagine gestite da terzi: repository, siti di clienti, servizi esterni. Dei loro contenuti rispondono i rispettivi gestori. Verifichiamo un link quando lo inseriamo; non possiamo verificarlo in modo continuativo. Se un link non funziona o è errato, ce lo segnali a <mail>{email}</mail>: lo rimuoveremo o lo correggeremo."
+      },
+      "copyright": {
+        "title": "Diritto d’autore",
+        "body": "Testi, immagini e codice pubblicati su questo sito appartengono a {siteName}, salvo che sia indicato un altro titolare. In caso di citazione, indichi il link alla fonte. Prima di riprodurre una pagina per intero, ce lo chieda."
+      },
+      "form": {
+        "title": "Il modulo di contatto",
+        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che Lei inserisce. Conserviamo l’invio e lo inoltriamo a noi stessi via email per poterLe rispondere: la risposta è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su Sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend recapita l’email e Google Workspace ospita la nostra casella di posta. Conserviamo un messaggio per la durata della conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altri scopi e non lo vendiamo. Per chiedere la cancellazione del Suo messaggio, scriva a hello@intrface.eu: provvederemo."
+      }
+    }
+  },
+  "ContactForm": {
+    "submitLabel": "Invia il messaggio",
+    "sending": "Invio in corso",
+    "nameLabel": "Nome",
+    "emailLabel": "Email",
+    "companyLabel": "Azienda",
+    "companyOptional": "(facoltativo)",
+    "topicLabel": "Argomento",
+    "messageLabel": "Che cosa è difficile da capire, lento da usare o poco affidabile?",
+    "honeypotLabel": "Lasciare vuoto questo campo",
+    "sentLabel": "Messaggio ricevuto",
+    "sentBody": "Il messaggio ci è arrivato. Riceverà risposta da {email} entro un giorno lavorativo.",
+    "writeAnother": "Nuovo messaggio",
+    "fallbackFailed": "Al momento non è stato possibile salvare il messaggio.",
+    "fallbackMailClient": "Questo modulo passa il messaggio alla Sua app di posta.",
+    "fallbackTail": "L’app di posta dovrebbe essersi aperta con tutti i campi compilati. In caso contrario, invii il messaggio a <mail>{email}</mail>.",
+    "mailNote": "Oppure ci scriva a <mail>{email}</mail>.",
+    "errorName": "Ci indichi il Suo nome.",
+    "errorEmail": "Ci serve un indirizzo a cui rispondere.",
+    "errorMessage": "Bastano una o due frasi sul sistema.",
+    "subjectWithTopic": "{topic} — richiesta di {name}",
+    "subjectFallback": "Richiesta dal sito web",
+    "mailtoName": "Nome",
+    "mailtoEmail": "Email",
+    "mailtoCompany": "Azienda",
+    "mailtoTopic": "Argomento",
+    "mailtoWebsite": "un visitatore del sito"
+  },
+  "Projects": {
+    "viewProject": "Vedi il progetto",
+    "visitSite": "Visita il sito",
+    "newTab": "si apre in una nuova scheda",
+    "allWork": "Tutti i lavori",
+    "overview": "Il progetto",
+    "nextProject": "Progetto successivo",
+    "projectNavigation": "Navigazione tra i progetti",
+    "contactTitle": "Ha un progetto in mente?",
+    "contact": "Ce ne parli",
+    "velum": {
+      "role": "Un caffè e wine bar sul lungomare, in croato e in inglese.",
+      "overview": "Colazioni, dolci e vini istriani sul lungomare di Orsera. Il sito di Velum riunisce in un unico luogo il menu, l’atmosfera e le informazioni utili per la visita.",
+      "desktopAlt": "Sito web di Velum con fotografie del caffè e il titolo “By the sea, in no hurry.”",
+      "desktopCaption": "La pagina iniziale di Velum, sul lungomare di Orsera.",
+      "detailAlt": "Sito web di Velum con il menu della colazione.",
+      "detailCaption": "Il menu della colazione.",
+      "mobileAlt": "La pagina iniziale di Velum su uno smartphone.",
+      "mobileCaption": "Lo stesso luogo, su uno schermo più piccolo."
+    },
+    "voyager": {
+      "role": "Una mappa pubblica per scoprire i luoghi intorno a Orsera.",
+      "overview": "Voyager Atlas riporta su una mappa i luoghi intorno a Orsera: da Punta Montraker e Koversada al Parco delle sculture Dušan Džamonja e al bosco di Kontija. L’Atlas pubblico si può esplorare senza effettuare l’accesso.",
+      "desktopAlt": "Pagina iniziale di Voyager con il titolo “Discover the culture of a place your way.”",
+      "desktopCaption": "La pagina iniziale pubblica di Voyager.",
+      "detailAlt": "Voyager Atlas con la scheda del Parco delle sculture Dušan Džamonja aperta accanto alla mappa.",
+      "detailCaption": "Parco delle sculture Dušan Džamonja: descrizione, posizione e indirizzo.",
+      "mobileAlt": "La mappa pubblica di Orsera di Voyager Atlas a tutto schermo su uno smartphone.",
+      "mobileCaption": "La mappa pubblica di Orsera su smartphone."
+    },
+    "astyleMarine": {
+      "role": "Esperienze private in yacht da Parenzo lungo la costa istriana.",
+      "overview": "Il sito di AstyleMarine riunisce lo yacht, gli itinerari costieri e una galleria. I visitatori possono scegliere un’esperienza e inviare una richiesta tramite WhatsApp.",
+      "desktopAlt": "Sito web di AstyleMarine per il charter di yacht, con il titolo “Luxury in full speed”.",
+      "desktopCaption": "La pagina iniziale di AstyleMarine, per esperienze in yacht da Parenzo.",
+      "detailAlt": "Il sito web di AstyleMarine che presenta lo yacht e le sue caratteristiche tecniche.",
+      "detailCaption": "Lo yacht e le sue caratteristiche tecniche.",
+      "mobileAlt": "La pagina iniziale di AstyleMarine per il charter di yacht su uno smartphone.",
+      "mobileCaption": "AstyleMarine su smartphone."
+    }
+  },
+  "HomeGrid": {
+    "common": {
+      "claim": "Ridurre l’attrito inutile tra intenzione, realtà e azione significativa.",
+      "switchLocale": "Continui in italiano",
+      "gridLabel": "Lavori di INTRFACE",
+      "makerMark": "INTRFACE, pagina iniziale",
+      "backToGrid": "Torna alla pagina iniziale"
+    },
+    "projects": {
+      "agropulse": {
+        "line": "La stagione delle olive in Istria, campo per campo."
+      }
+    }
+  }
+}
