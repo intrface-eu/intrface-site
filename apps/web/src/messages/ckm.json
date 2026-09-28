@@ -324,6 +324,8 @@
     "common": {
       "claim": "Manje fadige brez potribe med onin ča čovik hoće, onin ča je i onin ča vaja storit.",
       "switchLocale": "Ajmo dalje po naše",
+      "prevLanguage": "Prošli jazik",
+      "nextLanguage": "Idući jazik",
       "gridLabel": "Delo studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Nazad na početnu"

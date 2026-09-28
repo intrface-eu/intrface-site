@@ -1,4 +1,4 @@
-# Home contract (2026-09-27, revision 8: Italian as a fifth locale)
+# Home contract (2026-09-28, revision 9: the letter switch)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -37,6 +37,14 @@ rotation (en, hr, vec, ckm), which is unchanged on those four pages; on
 so it joins the hreflang alternates (en, hr, it, x-default); its
 OpenGraph locale is `it_IT`, shared with `vec`.
 
+Revision 9, 2026-09-28: the owner asked for "an animated text where each
+letter animates the switch", shorter holds, a pause on the line shown while
+hovered, carousel arrows left and right of the sentence that switch on
+command, and a swipe on phones. The 700ms cross-fade is gone: the sentence
+is split into letters that leave and arrive with a stagger on the Web
+Animations API (anime.js `waapi`), each line holds 3s, and arrows, the Left
+and Right keys and a horizontal swipe move through the lines by hand.
+
 ## The sentence
 
 `HomeGrid.common.claim` in each locale. English, verbatim:
@@ -62,21 +70,85 @@ and hands them, page locale first, to `ClaimCycle` (client,
 - **One cell.** The `h1` is a grid; the page's lines (`.home-veil__line`,
   each with its `lang`; four, or five on `/it`) sit in one cell, so the
   block has the height of the tallest line in that page's cycle at every
-  width and nothing below it moves. Assistive tech reads the page locale's
-  line only: the others are `aria-hidden`.
-- **Motion.** Each line holds 5s, then a 700ms cross-fade (opacity and a
-  0.35rem rise, `cubic-bezier(0.33, 0, 0.2, 1)`): the old line rises out
-  over the first 60%, the new one rises in over the last 75%. Opacity and
-  transform only. The cycle pauses while the pointer (not touch) is over
-  the sentence or link, while focus is inside, while the tab is hidden and
-  while the block is off screen (IntersectionObserver). Each pause restarts
-  the hold.
+  width and nothing below it moves. A line shows while it carries
+  `data-live`; the server sets it on the page locale's line, so first paint
+  is the settled page line with no flash and no shift. Assistive tech reads
+  the page locale's line only, from a visually hidden copy (`.sr-only`) at
+  the head of the `h1`; every line of letters is `aria-hidden` and the
+  animation never touches the copy.
+- **Letters.** Each line is words (`.home-veil__word`, inline-block,
+  `white-space: nowrap`, joined by ordinary spaces) of letters
+  (`.home-veil__char`, inline-block), so lines wrap at word boundaries as
+  the plain text does and a word never breaks. A letter in its own
+  inline-block loses the font's kerning with its neighbour (`font-kerning`
+  cannot reach across the boundary: the split text set 0.4 to 0.8% wider,
+  the period drifting off "far." and "fare."). `KERNING` in
+  `claim-cycle.tsx` puts it back: the pairs in the five lines that Google
+  Sans Flex 600 kerns by 0.004em or more ("r." −0.096em, "y," −0.064em,
+  "’è" −0.063em, "xe", "av", "ov", "vo", "fa", "Re" and others), measured in
+  Chromium and applied as `margin-inline-end` in em on the first letter,
+  server-rendered. The split then sets within about 1px of the plain text
+  per line. A pair missing from the table sets unkerned; if a line
+  changes, measure its new pairs. Wrapping (`text-wrap: balance`) matches
+  the plain text at every width from 320 to 1440px except English between
+  360 and 392px, where the balance picks "Reducing needless / friction
+  between" over "Reducing / needless friction / between intention,"; five
+  rows either way, same height.
+- **Motion.** A switch moves the letters, opacity and transform only
+  (`waapi.animate`, one Web Animation per letter and property, `stagger`
+  for the delays; no filter, no blur). Forward, the old line's letters
+  leave up and to the left (`translate3d(-0.08em, -0.3em, 0)`), first to
+  last over a 240ms spread, each fading in 260ms
+  (`cubic-bezier(0.4, 0, 0.6, 1)`) and moving in 380ms
+  (`cubic-bezier(0.5, 0, 0.75, 0)`, accelerating away). The new line's
+  letters start 360ms in, over the same spread, from below and to the
+  right, each fading up in 420ms and settling in 560ms
+  (`cubic-bezier(0.22, 1, 0.36, 1)`, no overshoot). Back, the offsets flip
+  and the spread runs last to first. The two waves overlap in time but a
+  place is clear before its new letter arrives. The switch takes 1.16s;
+  then the line holds 3s. A switch asked for mid-flight stops every letter
+  where it is and retargets from there: every other line still showing
+  leaves, the target arrives, so rapid clicks never stack and end on the
+  right line with no letter left half-shown.
+- **Pauses.** The cycle pauses while a mouse (not touch) is over the
+  sentence block, on the line shown; a switch already in flight lands
+  first. It pauses with keyboard focus inside (a button focused by a mouse
+  click does not count, so leaving resumes), while the tab is hidden and
+  while the block is off screen (IntersectionObserver). Leaving, a swipe, a
+  click or a key starts a full switch-and-hold again.
+- **Arrows.** Two `<button>`s, previous and next
+  (`HomeGrid.common.prevLanguage` / `nextLanguage` in the page's language:
+  "Previous language" / "Next language", "Prethodni jezik" / "Sljedeći
+  jezik", "Lingua precedente" / "Lingua successiva", "Lingua de prima" /
+  "Prossima lingua", "Prošli jazik" / "Idući jazik"), 44px circles with
+  `IconArrowLeft` / `IconArrowRight`. They switch in their direction,
+  wrapping round the cycle. They fade in (240ms) under a mouse over the
+  block (`(hover: hover) and (pointer: fine)`) or with keyboard focus inside
+  (`:has(:focus-visible)`), vertically centred on the sentence. From
+  1400px they flank it: the shell's gutter there is at least 100px, so the
+  previous arrow sits in it, 24px from the text. From 640 to 1399px the
+  gutter is 40px or less, so both sit together 24px right of the `h1`
+  (which is 20ch wide, leaving room at every width). Below 640px (a mouse
+  on a narrow window, a keyboard on a phone) they sit at the end of the
+  link row. With a mouse they take the pointer even while faded, and the
+  space between them and the text is part of the block, so reaching for
+  them keeps the hover. Touch screens show none.
+- **Keys and swipe.** With focus inside the block, Left and Right switch
+  back and forward. On touch, the block has `touch-action: pan-y`: a
+  horizontal swipe of 40px or more that is more horizontal than vertical
+  switches (left: forward, right: back); vertical movement scrolls the
+  page. A swipe ending on the link does not follow it; a tap does.
+- **Announcements.** The automatic cycle is silent. A switch made by hand
+  puts the new line, with its `lang`, in a visually hidden
+  `aria-live="polite"` paragraph.
 - **The link.** Under the sentence, `.home-veil__switch`: for each other
   locale a next-intl `Link` (`href="/"`, `locale`, `lang`, `hrefLang`) with
   that locale's `HomeGrid.common.switchLocale` ("Continue in English",
   "Nastavi na hrvatskom"; a locale without the key falls back to its
   endonym). All of them sit in one grid cell; only the one for the line
-  shown is visible and focusable, and it fades with its line. The others
+  shown is visible and focusable, and it fades with its line: out over
+  400ms as the old letters leave, in over 640ms from 360ms, as the new
+  letters arrive (CSS transitions on `data-state`). The others
   are `aria-hidden`, `tabIndex={-1}` and `visibility: hidden`. While the
   page's own line shows, the slot is empty but keeps its height. Focusing
   the link pauses the cycle, so it never fades under focus. Style:
@@ -86,7 +158,8 @@ and hands them, page locale first, to `ClaimCycle` (client,
 - **Reduced motion.** No cycle: the page's line stays, and the links to the
   other languages of its cycle (three; four on `/it`) sit in one row under it (wrapping on a phone), all
   visible and focusable. CSS lays this out from first paint; the client
-  clears `aria-hidden` and `tabIndex` once it hydrates.
+  clears `aria-hidden` and `tabIndex` once it hydrates. No letter motion, no
+  arrows (`display: none`), and the keys and swipe do nothing.
 
 ## Page structure
 
@@ -225,3 +298,18 @@ the Istroveneto line shows lands on `/vec`; with reduced motion emulated
 the line does not change and three links show (four on `/it`). On `/it`
 the cycle runs it, en, hr, vec, ckm; on `/en` it runs en, hr, vec, ckm with
 no Italian line. Screenshots of each line at both widths, looked at.
+
+The letter switch (revision 9), on a production build at 1440×900,
+1024×768 and 390×844 (touch emulated): the lines advance in order, each
+settled about 4.2s after the last (1.16s switch, 3s hold); hovering holds
+the line shown and fades the arrows in; next and previous switch in their
+direction and wrap; five rapid clicks end on the right line, one line
+live and no letter mid-way or left styled; Left and Right switch with
+focus inside, and keyboard focus holds the line; leaving resumes after a
+full switch and hold; at 390 a 150px swipe left or right switches, a
+25px one does not, a vertical drag scrolls the page, and a tap on the link
+while the Istroveneto line shows lands on `/vec`; arrows sit clear of the
+text at 1440 (flanking), 1280, 1024, 800 and 600; `h1` height constant
+through every switch; no long task over 50ms; no console errors; no
+horizontal overflow. Mid-switch frames forward and back, settled lines at
+each width, and the arrows, looked at.

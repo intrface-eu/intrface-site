@@ -1499,40 +1499,150 @@ body {
   }
 
   /* The sentence in four languages, or five on /it, one at a time
-     (`ClaimCycle`). Every line and every link sits in one grid cell, so the
-     block keeps the height of its tallest line at every width and nothing
-     below it moves. A line that
-     has just left rises out; the next rises in, starting a little later so
-     the two never read as one smear. Opacity and transform only. The block
-     takes pointer events, so hovering it pauses the cycle and the link can
-     be clicked. */
+     (`ClaimCycle`). Every line sits in one grid cell, so the block keeps the
+     height of its tallest line at every width and nothing below it moves.
+     Each line is words (never broken, so lines wrap where the plain text
+     does) of letters; the letter switch moves the letters with the Web
+     Animations API, opacity and transform only. A line shows while it
+     carries `data-live`; the server sets it on the page's own line. The
+     block takes pointer events, so hovering it pauses the cycle and the link
+     can be clicked, and leaves vertical panning to the page so a horizontal
+     swipe can switch the line. */
   .home-veil__claim-block {
-    --claim-fade: 700ms;
-    --claim-ease: cubic-bezier(0.33, 0, 0.2, 1);
+    position: relative;
     margin-block-start: clamp(2.5rem, 9svh, 6rem);
+    pointer-events: auto;
+    touch-action: pan-y;
+  }
+
+  .home-veil__stage {
+    position: relative;
+    inline-size: fit-content;
+    max-inline-size: 100%;
+  }
+
+  .home-veil__line {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    user-select: none;
+  }
+
+  .home-veil__line[data-live] {
+    visibility: visible;
+  }
+
+  .home-veil__word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .home-veil__char {
+    display: inline-block;
+  }
+
+  /* The arrows: on hover with a mouse, or with keyboard focus inside, a
+     previous and a next button fade in. Between 640 and 1399px they sit
+     together to the right of the sentence, vertically centred on it; from
+     1400px, where the shell's gutter holds a button with room to spare,
+     they flank it, the previous one in the gutter. Below 640px (a mouse on a
+     narrow window, or a keyboard on a phone) they sit at the end of the link
+     row. With a mouse they take the pointer even while faded, so moving
+     toward them brings them up, and the padding between them and the text
+     keeps the hover. Touch screens show none: a swipe switches there. */
+  .home-veil__arrows {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline-start: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .home-veil__claim-block:has(:focus-visible) .home-veil__arrows {
+    opacity: 1;
     pointer-events: auto;
   }
 
-  .home-veil__line,
-  .home-veil__switch-link {
-    grid-area: 1 / 1;
-    opacity: 0;
-    transform: translate3d(0, 0.35rem, 0);
+  @media (hover: hover) and (pointer: fine) {
+    .home-veil__arrows {
+      pointer-events: auto;
+    }
+
+    .home-veil__claim-block:hover .home-veil__arrows {
+      opacity: 1;
+    }
   }
 
-  .home-veil__line[data-state="past"],
-  .home-veil__switch-link[data-state="past"] {
-    transform: translate3d(0, -0.35rem, 0);
+  .home-veil__arrow {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border: 1px solid color-mix(in srgb, var(--ink-inverse) 28%, transparent);
+    border-radius: 999px;
+    color: var(--ink-inverse-muted);
+    background: transparent;
+    cursor: pointer;
   }
 
-  .home-veil__line[data-state="shown"],
-  .home-veil__switch-link[data-state="shown"] {
-    opacity: 1;
-    transform: none;
+  .home-veil__arrow:hover {
+    border-color: color-mix(in srgb, var(--ink-inverse) 64%, transparent);
+    color: var(--ink-inverse);
   }
 
-  .home-veil__line:not([data-state="shown"]) {
-    user-select: none;
+  .home-veil__arrow:focus-visible {
+    outline: 2px solid var(--ink-inverse);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 639.98px) {
+    .home-veil__stage {
+      position: static;
+    }
+
+    .home-veil__claim-block {
+      min-inline-size: 100%;
+    }
+
+    .home-veil__arrows {
+      inset-block: auto 0;
+      inset-inline: auto 0;
+      block-size: 2.75rem;
+      padding-inline-start: 0;
+    }
+  }
+
+  /* Flanking: the stage reaches 4.25rem into the gutter and past the text's
+     end (its padding keeps the hover between text and arrow), and the
+     arrows sit at its two edges. */
+  @media (min-width: 1400px) {
+    .home-veil__stage {
+      max-inline-size: calc(100% + 8.5rem);
+      margin-inline: -4.25rem;
+      padding-inline: 4.25rem;
+    }
+
+    .home-veil__arrows,
+    .home-veil__claim-block:has(:focus-visible) .home-veil__arrows {
+      inset: 0;
+      justify-content: space-between;
+      padding-inline-start: 0;
+      pointer-events: none;
+    }
+
+    .home-veil__claim-block:has(:focus-visible) .home-veil__arrow {
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 1400px) and (hover: hover) and (pointer: fine) {
+    .home-veil__arrow {
+      pointer-events: auto;
+    }
   }
 
   /* The link in the language of the line above it. The slot holds its
@@ -1544,10 +1654,13 @@ body {
   }
 
   .home-veil__switch-link {
+    grid-area: 1 / 1;
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
     visibility: hidden;
+    opacity: 0;
+    transform: translate3d(0, 0.35rem, 0);
     color: var(--ink-inverse-muted);
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -1555,8 +1668,14 @@ body {
     text-underline-offset: 0.3em;
   }
 
+  .home-veil__switch-link[data-state="past"] {
+    transform: translate3d(0, -0.35rem, 0);
+  }
+
   .home-veil__switch-link[data-state="shown"] {
     visibility: visible;
+    opacity: 1;
+    transform: none;
   }
 
   .home-veil__switch-link:hover {
@@ -1569,32 +1688,46 @@ body {
     outline-offset: 4px;
   }
 
+  /* The link leaves with the old line's letters and arrives with the new
+     line's (see the timings in `ClaimCycle`); the arrows fade in 240ms. */
   @media (prefers-reduced-motion: no-preference) {
-    .home-veil__line,
     .home-veil__switch-link {
       transition:
-        opacity calc(var(--claim-fade) * 0.6) var(--claim-ease),
-        transform var(--claim-fade) var(--claim-ease),
-        visibility 0s linear var(--claim-fade),
+        opacity 400ms cubic-bezier(0.5, 0, 0.75, 0),
+        transform 700ms cubic-bezier(0.33, 0, 0.2, 1),
+        visibility 0s linear 700ms,
         color 200ms ease-out,
         text-decoration-color 200ms ease-out;
     }
 
-    .home-veil__line[data-state="shown"],
     .home-veil__switch-link[data-state="shown"] {
       transition:
-        opacity calc(var(--claim-fade) * 0.75) var(--claim-ease) calc(var(--claim-fade) * 0.25),
-        transform var(--claim-fade) var(--claim-ease),
+        opacity 640ms cubic-bezier(0.22, 1, 0.36, 1) 360ms,
+        transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 260ms,
         visibility 0s,
         color 200ms ease-out,
         text-decoration-color 200ms ease-out;
     }
+
+    .home-veil__arrows {
+      transition: opacity 240ms ease-out;
+    }
+
+    .home-veil__arrow {
+      transition:
+        color 200ms ease-out,
+        border-color 200ms ease-out;
+    }
   }
 
-  /* Reduced motion: no cycle. The page's own line stays, and the links to
-     the other languages of its cycle (three, or four on /it) sit in one
-     quiet row, all visible. */
+  /* Reduced motion: no cycle and no arrows. The page's own line stays, and
+     the links to the other languages of its cycle (three, or four on /it)
+     sit in one quiet row, all visible. */
   @media (prefers-reduced-motion: reduce) {
+    .home-veil__arrows {
+      display: none;
+    }
+
     .home-veil__switch {
       display: flex;
       flex-wrap: wrap;

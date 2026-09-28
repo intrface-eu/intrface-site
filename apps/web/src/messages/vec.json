@@ -324,6 +324,8 @@
     "common": {
       "claim": "Meno fadiga tra quel che ti vol, quel che xe e quel che val la pena far.",
       "switchLocale": "Continua in dialeto",
+      "prevLanguage": "Lingua de prima",
+      "nextLanguage": "Prossima lingua",
       "gridLabel": "Lavori de INTRFACE",
       "makerMark": "INTRFACE, prima pagina",
       "backToGrid": "Torna a la prima pagina"

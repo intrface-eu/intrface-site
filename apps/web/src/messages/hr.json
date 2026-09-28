@@ -324,6 +324,8 @@
     "common": {
       "claim": "Manje trenja između onoga što hoćeš, onoga što jest i onoga što vrijedi napraviti.",
       "switchLocale": "Nastavi na hrvatskom",
+      "prevLanguage": "Prethodni jezik",
+      "nextLanguage": "Sljedeći jezik",
       "gridLabel": "Rad studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Natrag na početnu"

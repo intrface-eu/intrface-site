@@ -31,6 +31,8 @@ function cycleOrder(locale: AppLocale): AppLocale[] {
  */
 export async function Veil({ locale }: { locale: AppLocale }) {
   const order = cycleOrder(locale);
+  const t = await getTranslations({ locale, namespace: "HomeGrid.common" });
+  const labels = { prev: t("prevLanguage"), next: t("nextLanguage") };
 
   const lines: ClaimLine[] = await Promise.all(
     order.map(async (lineLocale) => {
@@ -52,7 +54,7 @@ export async function Veil({ locale }: { locale: AppLocale }) {
     <div className="home-veil">
       <div className="section-shell home-veil__shell">
         <MakerMark locale={locale} />
-        <ClaimCycle lines={lines} />
+        <ClaimCycle lines={lines} labels={labels} />
       </div>
     </div>
   );
