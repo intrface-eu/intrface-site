@@ -33,9 +33,9 @@ type Tile = {
   lead?: true;
   /** Where a cell narrower than the capture keeps it: the side the page's
       headline sits on. The captures are the About pages the tiles open
-      (Patchbay: its landing). Voyager centres its hero, Index centres its
-      column, Patchbay centres its intro; Polis and AgroPulse set their
-      headline on the left. */
+      (Patchbay: its landing). Voyager centres its hero, Patchbay centres
+      its intro; Index, Polis and AgroPulse set their headline on the
+      left. */
   anchor: "center" | "left" | "right";
 };
 
@@ -109,8 +109,8 @@ export async function WorkTiles({ locale }: { locale: AppLocale }) {
       name: polis("name"),
       line: polis("domain"),
       href: PRODUCT_ROOTS.polis,
-      desktop: "/proof/projects/polis/about-desktop-2026-09-29.webp",
-      mobile: "/proof/projects/polis/about-mobile-2026-09-29.webp",
+      desktop: "/proof/projects/polis/about-desktop-2026-09-29b.webp",
+      mobile: "/proof/projects/polis/about-mobile-2026-09-29b.webp",
       logo: "/proof/projects/polis/logo.svg",
       logoWidth: LOGO_HEIGHT,
       span: 4,
@@ -121,9 +121,9 @@ export async function WorkTiles({ locale }: { locale: AppLocale }) {
       name: "AgroPulse",
       line: t("projects.agropulse.line"),
       href: PRODUCT_ROOTS.agropulse,
-      desktop: "/proof/projects/agropulse/about-desktop-2026-09-29.webp",
-      mobile: "/proof/projects/agropulse/about-mobile-2026-09-29.webp",
-      logo: "/proof/projects/agropulse/logo.svg",
+      desktop: "/proof/projects/agropulse/about-desktop-2026-09-29b.webp",
+      mobile: "/proof/projects/agropulse/about-mobile-2026-09-29b.webp",
+      logo: "/proof/projects/agropulse/logo-2026-09-29.svg",
       logoWidth: LOGO_HEIGHT,
       span: 4,
       anchor: "left",

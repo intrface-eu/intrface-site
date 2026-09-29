@@ -286,15 +286,20 @@ the grid; `PROJECTS` keeps them for `/work`.
   fit side by side in the half-width cell, the status takes a second line
   (at 390px: Patchbay in en, it and ckm, Index in it; one line otherwise).
   From 1024px the name never shrinks; the line gives way first.
-- **Logos** (`public/proof/projects/<key>/logo.svg`), each the product's
+- **Logos** (`public/proof/projects/<key>/logo.svg`; AgroPulse's
+  `logo-2026-09-29.svg`), each the product's
   own mark in its own light or dark-scheme colours, geometry untouched:
   Voyager `apps/web/public/logo-icon-light.svg`; Index
   `apps/web/public/index-mark.svg` from the Index repo with its dark-scheme
   ink (`--ink`, `oklch(0.93 0.006 80)`, `#eae7e3`) as the fill and the
   viewBox cropped to the shapes, as its own `Mark` component does
   (`40.5 9.5 48 177.5`); Polis `apps/web/public/brand/polis-app-icon.svg`;
-  AgroPulse the `Mark` component (`apps/web/src/features/pulse/ui/Icons.tsx`)
-  with its dark tokens; Patchbay
+  AgroPulse the Field Signal symbol (AgroPulse commit fc89afd),
+  `assets/brand/field-signal/svg/agropulse-symbol-reversed.svg`, the ivory
+  variant with the lime dot that AgroPulse uses on dark grounds, with the
+  viewBox cropped square around the symbol (`-0.5 0 118 118`), written as
+  `agropulse/logo-2026-09-29.svg` so no cache serves the old leaf-and-pulse
+  mark, which stays in `agropulse/logo.svg` unused; Patchbay
   `brand/assets/logo/patchbay-symbol-paper.svg`, viewBox cropped square
   around the symbol. (Velum and AstyleMarine keep theirs under
   `proof/projects/` for other pages.)
@@ -307,10 +312,13 @@ the grid; `PROJECTS` keeps them for `/work`.
   image cache serves the old capture); Index from its page here,
   `/en/index` on a production build, 2026-09-29, viewport only
   (`index/desktop.webp`, `index/mobile.webp`: the headline and "Coming
-  soon", no sign-in); Polis (recaptured after its About page changed) and
-  AgroPulse from their About pages, 2026-09-29
-  (`polis/about-desktop-2026-09-29.webp` and `about-mobile-2026-09-29.webp`,
-  the same names under `agropulse/`); Patchbay from `/` of a local run of a
+  soon", no sign-in); Polis and AgroPulse from their live About pages
+  (`https://polis.intrface.eu/about`, `https://agropulse.intrface.eu/about`)
+  after their new heroes went live, 2026-09-29, viewport only, 1× density,
+  no banner dismissed (`polis/about-desktop-2026-09-29b.webp` and
+  `about-mobile-2026-09-29b.webp`, the same names under `agropulse/`; the
+  earlier `about-*-2026-09-29.webp`, already deployed, stay unused);
+  Patchbay from `/` of a local run of a
   copy of its working tree (the intro at the top of the landing). The
   earlier Polis and AgroPulse captures (`polis/landing-*.webp`,
   `agropulse/desktop.webp`, `agropulse/mobile.webp`) stay in the tree
