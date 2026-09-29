@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40.5 9.5 48 177.5" role="img" aria-labelledby="title">
+  <title id="title">Index mark</title>
+  <g fill="#eae7e3">
+    <circle cx="64.5" cy="33.5" r="24"/>
+    <path d="M41 72.5H60.5C76.1 72.5 88 84.5 88 100V153.5C88 160.9 84.1 166 77 169.7L41 187V72.5Z"/>
+  </g>
+</svg>

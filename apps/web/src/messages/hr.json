@@ -27,7 +27,7 @@
   },
   "Metadata": {
     "tagline": "Sučelja za svijet.",
-    "description": "INTRFACE gradi sučelja za svijet iz Vrsara, u Istri: vlastiti Voyager, Polis, Funda, MidiFlow i Patchbay te stranice za tvrtke diljem EU-a.",
+    "description": "INTRFACE gradi sučelja za svijet iz Vrsara, u Istri: vlastiti Voyager, AgroPulse, Polis, Index i Patchbay te stranice za tvrtke diljem EU-a.",
     "work": {
       "title": "Radovi",
       "description": "Istražite Velum, Voyager i AstyleMarine kroz njihove javne stranice i prikaze projekata. Uz Polis, Fundu, MidiFlow i Patchbay s trenutačnim statusima."
@@ -333,6 +333,10 @@
     "projects": {
       "agropulse": {
         "line": "Sezona maslina u Istri, maslinik po maslinik."
+      },
+      "index": {
+        "line": "Stvari koje spremate, pročitane, razvrstane i povezane.",
+        "status": "Uskoro"
       }
     }
   }

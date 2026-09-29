@@ -8,7 +8,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://intrface.e
 export const SITE_TAGLINE = "Interfaces for the world.";
 
 export const SITE_DESCRIPTION =
-  "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, Polis, Funda, MidiFlow and Patchbay of our own, and sites for businesses across the EU.";
+  "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, AgroPulse, Polis, Index and Patchbay of our own, and sites for businesses across the EU.";
 
 export const CONTACT_EMAIL = "basic@intrface.eu";
 

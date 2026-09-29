@@ -1,4 +1,4 @@
-# Home contract (2026-09-28, revision 9: the letter switch)
+# Home contract (2026-09-29, revision 10: our own products)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -44,6 +44,27 @@ command, and a swipe on phones. The 700ms cross-fade is gone: the sentence
 is split into letters that leave and arrive with a stagger on the Web
 Animations API (anime.js `waapi`), each line holds 3s, and arrows, the Left
 and Right keys and a horizontal swipe move through the lines by hand.
+
+Revision 10, 2026-09-29: the owner made the grid a way into our own
+products. It holds five tiles, in this order: Voyager, Index, Polis,
+AgroPulse, Patchbay. Velum and AstyleMarine left the grid only; their
+pages under `/work` stay, as does every entry in `PROJECTS`. Each product
+keeps its About page itself and its root redirects there, so a tile opens
+the product root in the same tab: entering the interface, not leaving the
+site. The new-tab arrow and "opens in a new tab" are gone from the tiles.
+Patchbay became a link to a minimal About page on this site,
+`/<locale>/patchbay`, and keeps "Coming soon" in its caption. Short routes
+`/<locale>/voyager`, `/<locale>/polis` and `/<locale>/agropulse` redirect
+(307) to the product roots. Later the same day the owner ruled Index a
+coming-soon product: nothing links to its own address. Its About page,
+"What is Index?", is hosted here at `/<locale>/index` until it ships, and
+its tile opens that page and says "Coming soon", like Patchbay's. On
+phones the coming-soon tiles drop the arrow and show the status, on a
+second caption line when it does not fit beside the name. Last, the owner
+made both pages English only: the other locales are for INTRFACE's own
+pages. `/<hr|it|vec|ckm>/index` and `/…/patchbay` redirect (307) to
+`/en/index` and `/en/patchbay`; tiles in every locale link straight to the
+English pages; their captions stay translated.
 
 ## The sentence
 
@@ -205,77 +226,186 @@ reduced motion, or with a tile focused, it sits at 0.
 
 ## The tiles
 
-Six, in DOM order: Voyager, AgroPulse, Velum, Polis, AstyleMarine, Patchbay.
+Five, one per product of our own, in DOM order: Voyager, Index, Polis,
+AgroPulse, Patchbay. Velum and AstyleMarine are client work and are not on
+the grid; `PROJECTS` keeps them for `/work`.
 
-- **Grid.** From 1024px two equal rows on twelve columns, wide and narrow
-  cells trading places: Voyager 5, AgroPulse 4, Velum 3, then Polis 3,
-  AstyleMarine 5, Patchbay 4 (`data-span`). Below 1024px, 2 columns by 3
-  rows of equal cells.
-- **Links.** Five tiles are one `<a>` each (`target="_blank"`,
-  `rel="noopener noreferrer"`), named "{name}: {line}, {Projects.newTab}".
-  Voyager, Velum and AstyleMarine come from `PROJECTS` (live URL, captures,
-  `Projects.<key>.role`). Polis and AgroPulse are defined in
-  `work-tiles.tsx` only (other pages iterate `PROJECTS`). Polis links its
-  public source, `https://github.com/basicalex/polis`, with `WorkPolis.name`
-  and `WorkPolis.domain`. AgroPulse links `https://agropulse.intrface.eu`
-  with `HomeGrid.projects.agropulse.line` ("The olive season in Istria,
-  field by field.").
-- **Patchbay is not a link.** It is not public yet: a plain `<div>` with
-  its name and "Coming soon" (`WorkIndex.entries.patchbay.name` and
-  `.status`) as text, no arrow, no hover, no description. Its address
-  appears nowhere: not in code, text, alt, comments or commits. The status
-  takes the arrow's place; below 768px it is read out but not shown. Its
-  image has empty `alt`, since the caption names it.
+- **Grid.** From 1024px two equal rows on twelve columns: Voyager 7 and
+  Index 5, then Polis, AgroPulse and Patchbay 4 each (`data-span`), so the
+  seams of the two rows never meet. Below 1024px, 2 columns by 3 equal
+  rows: Voyager (`data-lead`) takes the whole top row, the other four sit
+  two by two under it. Voyager is the largest cell at every width. A tall
+  Voyager cell on a phone was tried and dropped: filled by height, it cut
+  both ends off the capture's centred headline.
+- **Links.** Every tile is one link, in the same tab (no `target`, no
+  `rel`), named "{name}: {line}", with ", {status}" after it on a
+  coming-soon tile ("{name}: {status}" for Patchbay, which has no line).
+  The open products' roots live in `PRODUCT_ROOTS`
+  (`lib/site/product-roots.ts`), which the short routes read too: Voyager
+  `https://voyager.intrface.eu/` with `Projects.voyager.role` and the
+  captures from `PROJECTS.voyager`; Polis `https://polis.intrface.eu/`
+  with `WorkPolis.name` and `WorkPolis.domain`; AgroPulse
+  `https://agropulse.intrface.eu/` with `HomeGrid.projects.agropulse.line`.
+  Each root opens the product's own About page. The two products not open
+  yet (`data-soon`) are next-intl `Link`s to their English page on this
+  site, in every locale (`locale` and `hrefLang` from
+  `PRODUCT_PAGE_LOCALE`, so no redirect hop): Index to `/en/index` (see The
+  Index page) with `HomeGrid.projects.index.line` ("The things you save,
+  read, filed and connected.") and `HomeGrid.projects.index.status`;
+  Patchbay to `/en/patchbay` (see The Patchbay page) with
+  `WorkIndex.entries.patchbay.name` and `.status`. These caption strings
+  are translated in all five locales.
+- **Addresses of products not open yet.** Patchbay's appears nowhere: not
+  in code, text, alt, comments or commits. Index's own address is linked
+  from no page or tile.
 - **Image.** `<picture>` with `next/image` props from `getImageProps`: the
   desktop capture (1440×1000) from 768px, the mobile capture (390×844)
   below. `object-fit: cover`, anchored to the top and to the side the
-  site's headline sits on (`data-anchor`): Voyager and Patchbay centre,
-  AgroPulse keeps its right-hand panel, the others their left edge.
-  `sizes` follows the cell per span (the cell's vw where it fills by width,
-  72vh from 1024px or 48vh below where it fills by height, 50vw for the
-  mobile capture). All six load eagerly; Voyager alone gets
+  page's headline sits on (`data-anchor`): Voyager and Patchbay
+  centre, Index, Polis and AgroPulse keep their left edge.
+  `sizes` follows the cell: from 1024px a span of n columns is n/12 of the
+  viewport wide where it fills by width (from an aspect ratio of 8.64/n:
+  59vw, 42vw, 34vw) and 72vh where it fills by height; from 768 to 1023px
+  Voyager is 100vw from 12/25 and the others 50vw from 24/25, else 48vh;
+  below 768px the mobile capture always fills by width, 100vw for Voyager
+  and 50vw for the rest. All five load eagerly; Voyager alone gets
   `fetchPriority="high"`. `alt` is the name.
 - **Quiet at rest.** Under `(hover: hover) and (pointer: fine)` a black
-  layer at 50% sits over each screenshot (`.work-tile__picture::after`); a
-  link tile's layer goes to 0 on hover or `:focus-visible`, over 200ms, with
-  no transition under reduced motion. Patchbay stays dimmed. On touch
-  screens there is no layer: full brightness, one tap opens the link.
+  layer at 50% sits over each screenshot (`.work-tile__picture::after`); it
+  goes to 0 on hover or `:focus-visible`, over 200ms, with no transition
+  under reduced motion. On touch screens there is no layer: full
+  brightness, one tap opens the link.
 - **Caption.** A black bar pinned over the bottom of the tile, one line:
-  the project's logo (18px tall, `alt=""`), the name (`.type-caption`,
+  the product's logo (18px tall, `alt=""`), the name (`.type-caption`,
   `--ink-inverse`), the line (`--ink-inverse-muted`, from 1024px only,
-  ending in an ellipsis when it does not fit) and `IconArrowUpRight`. From
-  1024px the name never shrinks; the line gives way first.
-- **Logos** (`public/proof/projects/<key>/logo.svg`), each the project's
+  ending in an ellipsis when it does not fit) and `IconArrowRight` at the
+  end: enter, not leave. A coming-soon tile shows "Coming soon"
+  (`.work-tile__status`, `--ink-inverse-muted`, never cut) at every width,
+  after the line where the line shows. Below 768px those tiles drop the
+  arrow and their caption may wrap: where the name and the status do not
+  fit side by side in the half-width cell, the status takes a second line
+  (at 390px: Patchbay in en, it and ckm, Index in it; one line otherwise).
+  From 1024px the name never shrinks; the line gives way first.
+- **Logos** (`public/proof/projects/<key>/logo.svg`), each the product's
   own mark in its own light or dark-scheme colours, geometry untouched:
-  Voyager `apps/web/public/logo-icon-light.svg`; Velum the boat group
-  (`.velum-mark`) of `videos/velum-opening-hours/assets/velum-logo-dark.svg`,
-  viewBox cropped to it; AstyleMarine `public/favicon.svg` with its
-  dark-scheme fills made the default; Polis
-  `apps/web/public/brand/polis-app-icon.svg`; AgroPulse the `Mark`
-  component (`apps/web/src/features/pulse/ui/Icons.tsx`) with its dark
-  tokens; Patchbay `brand/assets/logo/patchbay-symbol-paper.svg`, viewBox
-  cropped square around the symbol.
+  Voyager `apps/web/public/logo-icon-light.svg`; Index
+  `apps/web/public/index-mark.svg` from the Index repo with its dark-scheme
+  ink (`--ink`, `oklch(0.93 0.006 80)`, `#eae7e3`) as the fill and the
+  viewBox cropped to the shapes, as its own `Mark` component does
+  (`40.5 9.5 48 177.5`); Polis `apps/web/public/brand/polis-app-icon.svg`;
+  AgroPulse the `Mark` component (`apps/web/src/features/pulse/ui/Icons.tsx`)
+  with its dark tokens; Patchbay
+  `brand/assets/logo/patchbay-symbol-paper.svg`, viewBox cropped square
+  around the symbol. (Velum and AstyleMarine keep theirs under
+  `proof/projects/` for other pages.)
 - **Captures** (1440×1000 and 390×844, DPR 1, top of the page, webp at
-  `cwebp -q 80 -m 6`, 2026-09-26): Voyager from its production root, with
+  `cwebp -q 80 -m 6`). Each tile shows the product's About page, the page
+  the tile opens; Patchbay, whose tile opens its page here, shows its
+  landing. Voyager from its production root, which is its About page, with
   the analytics banner declined (`voyager/desktop-2026-09-26.webp` and
   `mobile-2026-09-26.webp`, shared with the showcase; dated names so no
-  image cache serves the old capture); AgroPulse from its production root after the
-  map settled; Polis from `/` of a local run of the repo (the place map,
-  Croatian, Astro's dev toolbar hidden); Patchbay from `/` of a local run
-  of a copy of its working tree (the intro at the top of the landing).
+  image cache serves the old capture); Index from its page here,
+  `/en/index` on a production build, 2026-09-29, viewport only
+  (`index/desktop.webp`, `index/mobile.webp`: the headline and "Coming
+  soon", no sign-in); Polis (recaptured after its About page changed) and
+  AgroPulse from their About pages, 2026-09-29
+  (`polis/about-desktop-2026-09-29.webp` and `about-mobile-2026-09-29.webp`,
+  the same names under `agropulse/`); Patchbay from `/` of a local run of a
+  copy of its working tree (the intro at the top of the landing). The
+  earlier Polis and AgroPulse captures (`polis/landing-*.webp`,
+  `agropulse/desktop.webp`, `agropulse/mobile.webp`) stay in the tree
+  unused by the grid. Use dated names when replacing a file.
 - **Edge and state.** 1px border in paper at 16% (the bento sets
   `--line`); no radius or shadow. The focus ring is drawn inside the tile
   (paper with a black line inside it) so the grid does not clip it.
 
+## Short routes
+
+`/<locale>/voyager`, `/<locale>/polis` and `/<locale>/agropulse`, in every
+locale, redirect with 307 to the product root in `PRODUCT_ROOTS`. They are
+config redirects (`redirects()` in `next.config.ts`, built from
+`PRODUCT_ROOTS` and `routing.locales`), which run before the proxy and
+need no route file. Without a locale, `/voyager` goes first to
+`/en/voyager` (the proxy's 308), then on. They are not in `SITE_PATHS`, so
+not in the sitemap. Temporary, since a product may later get a page here.
+`/en/index` is not a redirect but the hosted Index page; when Index ships,
+add it to `PRODUCT_ROOTS` and remove the page.
+
+## English-only product pages
+
+The pages of products not open yet, `/index` and `/patchbay`
+(`PRODUCT_PAGES` in `lib/site/product-roots.ts`), exist in English only
+(`PRODUCT_PAGE_LOCALE`); hr, it, vec and ckm are for INTRFACE's own pages.
+`next.config.ts` redirects `/<hr|it|vec|ckm>/index` and `/…/patchbay` to
+the English page with 307 (temporary, since they may be translated
+later). Each page's `generateStaticParams` returns `en` alone and
+`dynamicParams` is false, so the build prerenders only `en/index.html` and
+`en/patchbay.html`. Metadata comes from `buildPageMetadata` with
+`translated: false`: canonical `/en/...`, no hreflang alternates, no
+alternate OpenGraph locales. They are not in `SITE_PATHS`; the sitemap
+adds one English entry each, with no alternates. "Back to home" goes to
+`/en`.
+
+## The Index page
+
+`/en/index` (`app/[locale]/index/page.tsx`,
+`components/pages/index-about-page.tsx`, messages in `IndexAbout`, in
+`en.json` only): "What is Index?", Index's About page hosted here until it
+ships. Next handles a folder named `index` under `[locale]` without
+trouble: the build prerenders `en/index.html` beside `en.html`. On paper with the site header and footer, in the
+site's type, following the section rhythm of the About page in the Index
+repo:
+
+1. Head: "Back to home"; Index's mark on an ink plate beside the label
+   "What is Index?"; the `h1` "The things you save, read, filed and
+   connected."; the lede; the "Coming soon" pill.
+2. The catalogue drawing.
+3. What you can do: a claim, a lede, the worlds drawing beside seven
+   features (worlds, links, map, search, Telegram, the YouTube queue,
+   collections).
+4. How it works: three steps (you send, Index reads, you find), then the
+   film drawing.
+5. Why it holds: three reasons (it shows its reasons, you settle its
+   guesses, your library stays yours).
+6. The close: "Index is coming soon." and the scope, adapted: "When it
+   opens: invite-only at first, in English, on the web and on Telegram.",
+   then "Back to home" again.
+
+The three ink drawings are copied from the Index repo
+(`public/about/{catalogue,worlds,video}.webp` to
+`proof/projects/index/about-*.webp`), not redrawn. No link to the product,
+no sign-in, no request for access, no source, no "open source", no
+numbers or users, no privacy-policy link (that page lives in the
+product). Metadata: title "What is Index?", description the lede and the
+status (see English-only product pages).
+
+## The Patchbay page
+
+`/en/patchbay` (`app/[locale]/patchbay/page.tsx`,
+`components/pages/patchbay-page.tsx`), on paper like the other pages, with
+the site header and footer. It shows, and only shows: "Back to home"
+(`HomeGrid.common.backToGrid`) to `/en`; Patchbay's mark on an ink plate
+(the mark is drawn in paper for dark grounds); the name
+(`WorkIndex.entries.patchbay.name`, the `h1`); its line
+(`WorkIndex.entries.patchbay.interface`, "Creative collaboration"); the
+status pill ("Coming soon", `.status`); and the existing captures, desktop
+and mobile, side by side from 1024px as on the showcases (`alt` is the
+name; the mobile one's is empty). No address, no features, no
+collaborators, no source link, no contact button. Metadata through
+`buildPageMetadata`: title the name, description "{interface}.
+{status}.", the shape Polis and Funda use; no new message keys. English
+only (see English-only product pages).
+
 ## Verification
 
 Typecheck, `bunx eslint src`, `bunx next build`; headless QA on a
-production build (port 3031) at 1440×900, 1024×768, 800×1000 and 390×844:
-no console or page errors, no horizontal overflow, no `<header>`; five
-tile links with the right href, target and rel, and no `<a>` in the
-Patchbay tile; every caption on one line with no name cut, every logo
-loaded; at 1440 the hovered Voyager tile's layer goes to 0 and Patchbay's
-stays at 0.5; with touch emulation at 390 there is no layer; the bento box equals the
+production build (an isolated port) at 1440×900, 1024×768, 768×1024 and
+390×844: no console or page errors, no horizontal overflow, no `<header>`;
+five tile links with the right href and no `target`, Index's and
+Patchbay's to `/en/index` and `/en/patchbay` in every locale; every caption on one line with no name cut, every
+logo loaded; at 1440 the hovered Voyager tile's layer goes to 0 and the
+others stay at 0.5; with touch emulation at 390 there is no layer; the
+bento box equals the
 viewport at scroll 0; no tile pixel shows at scroll 0; its top is 0 until
 scroll = veil height and negative after; the veil's bottom is ≤ 0 at the
 veil height; the rise runs from 12svh to 0 over the same run; the mobile capture
@@ -284,7 +414,12 @@ scroll 0 moves the veil away; screenshots at 0, 50, 100 and 150svh, looked
 at. `/en`, `/hr`, `/it`, `/vec`, `/ckm` return 200 with their `html lang` and
 start with their own line; `/de`, `/de/about` and `/fr/work` redirect to
 the `/en` equivalents; `/` with `Accept-Language: it` redirects to `/it`;
-`/en/about` and `/en/work/polis` return 200; hreflang on `/en/about` lists
+`/en/about`, `/en/index`, `/en/patchbay` and every `/<locale>/work/*`
+page return 200; `/<hr|it|vec|ckm>/index` and `/…/patchbay` return 307 to
+the English page; the sitemap lists `/en/index` and `/en/patchbay` once
+each, with no other locale; their pages carry a canonical and no hreflang; `/en/voyager`, `/en/polis` and
+`/en/agropulse` return 307 to their product roots; no page links Index's
+own address; hreflang on `/en/about` lists
 en, hr, it and x-default, not vec or ckm; the sitemap lists the `/it` URLs.
 `grep -rn "veil-rest\|home-veil-lift" apps/web/src` returns nothing.
 
@@ -313,3 +448,12 @@ text at 1440 (flanking), 1280, 1024, 800 and 600; `h1` height constant
 through every switch; no long task over 50ms; no console errors; no
 horizontal overflow. Mid-switch frames forward and back, settled lines at
 each width, and the arrows, looked at.
+
+## Open
+
+- None on the captures. The Index tile's first capture (Index's own About
+  page, with "Sign in", "Ask for access" and "Live · Invite-only") was
+  replaced on 2026-09-29 by a capture of `/en/index`, which says "Coming
+  soon". The Index and Polis files were overwritten in place (never
+  deployed); clear `.next/cache/images` before serving a build that has
+  them.

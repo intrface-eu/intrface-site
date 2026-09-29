@@ -27,7 +27,7 @@
   },
   "Metadata": {
     "tagline": "Interfaces for the world.",
-    "description": "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, Polis, Funda, MidiFlow and Patchbay of our own, and sites for businesses across the EU.",
+    "description": "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, AgroPulse, Polis, Index and Patchbay of our own, and sites for businesses across the EU.",
     "work": {
       "title": "Work",
       "description": "Explore Velum, Voyager and AstyleMarine through their live sites and project showcases. Plus Polis, Funda, MidiFlow and Patchbay, with current statuses."
@@ -333,7 +333,96 @@
     "projects": {
       "agropulse": {
         "line": "The olive season in Istria, field by field."
+      },
+      "index": {
+        "line": "The things you save, read, filed and connected.",
+        "status": "Coming soon"
       }
+    }
+  },
+  "IndexAbout": {
+    "eyebrow": "What is Index?",
+    "title": "The things you save, read, filed and connected.",
+    "lede": "Send Index links, videos, repositories, posts and screenshots. It reads each one, files it with the others on the same subject and shows you what links to what.",
+    "status": "Coming soon",
+    "catalogueAlt": "Ink drawing of an open card-catalogue drawer. A photograph, a strip of film, a newspaper clipping, a handwritten note and a phone screenshot are being filed into it.",
+    "can": {
+      "label": "What you can do",
+      "title": "Save it once. Find it by subject, by source or by what it links to.",
+      "lede": "Index keeps each thing with the others on the same subject, even when you saved them months apart and from different places.",
+      "worldsAlt": "Ink drawing of a long table with five trays of index cards, each holding one object: a record sleeve, a whisk, a dumbbell, a ribbon cable and an architectural drawing. A magnifying glass rests on a card in front.",
+      "features": {
+        "worlds": {
+          "title": "A world for each interest",
+          "copy": "Every item lands in a world: software, music, cooking, research. Make your own for what the starters miss."
+        },
+        "links": {
+          "title": "Links between items",
+          "copy": "Items link when they share a topic, a creator, a company or a mention, inside one world or across two."
+        },
+        "map": {
+          "title": "A map of your interests",
+          "copy": "See every world side by side, which worlds share items, and what connected this week."
+        },
+        "search": {
+          "title": "Search by word or by idea",
+          "copy": "Search reads what is inside each item, so a video turns up for what was said in it."
+        },
+        "telegram": {
+          "title": "Capture from Telegram",
+          "copy": "Send the Index bot a link, a note, a photo, a voice note or a file. It files it for you."
+        },
+        "sort": {
+          "title": "A queue to sort YouTube",
+          "copy": "Liked videos and playlist songs wait in Sort. Keep or drop each one; anything dropped can come back."
+        },
+        "collections": {
+          "title": "Collections",
+          "copy": "GitHub stars and YouTube playlists arrive as collections and stay in sync. Make your own as well."
+        }
+      }
+    },
+    "how": {
+      "label": "How it works",
+      "title": "You send it. Index reads it. You find it.",
+      "step": "Step {n}",
+      "videoAlt": "Ink drawing of a strip of film running into a box of index cards held by a paper band, with an hourglass beside it.",
+      "steps": {
+        "send": {
+          "title": "Send it",
+          "copy": "Forward it to the Telegram bot or paste it into the web app. Connect GitHub or YouTube and those saves come in on their own."
+        },
+        "read": {
+          "title": "Index reads it",
+          "copy": "It reads the page or the README, gets the transcript of a video and pulls the text out of a screenshot. Then it files the item into a world."
+        },
+        "find": {
+          "title": "Find it again",
+          "copy": "Search for it, open the map, or start from one item and follow what it links to."
+        }
+      }
+    },
+    "why": {
+      "label": "Why it holds",
+      "title": "You can see why each item sits where it does.",
+      "reasons": {
+        "reasons": {
+          "title": "It shows its reasons",
+          "copy": "Each link between two items names what they share: a topic, a creator, a company or a mention."
+        },
+        "unsure": {
+          "title": "You settle what it is unsure of",
+          "copy": "When Index is not sure where something belongs, the item waits for you under Check guesses. Your answer decides where it goes."
+        },
+        "yours": {
+          "title": "Your library stays yours",
+          "copy": "No analytics, no ads, no trackers. Delete your account in Settings and every item goes with it."
+        }
+      }
+    },
+    "close": {
+      "title": "Index is coming soon.",
+      "scope": "When it opens: invite-only at first, in English, on the web and on Telegram."
     }
   }
 }

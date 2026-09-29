@@ -27,7 +27,7 @@
   },
   "Metadata": {
     "tagline": "Interfacce per il mondo.",
-    "description": "INTRFACE fa interfacce per il mondo da Orsera, in Istria: i nostri Voyager, Polis, Funda, MidiFlow e Patchbay, e siti web per aziende in tutta l’UE.",
+    "description": "INTRFACE fa interfacce per il mondo da Orsera, in Istria: i nostri Voyager, AgroPulse, Polis, Index e Patchbay, e siti web per aziende in tutta l’UE.",
     "work": {
       "title": "Lavori",
       "description": "Velum, Voyager e AstyleMarine: i siti online e le schede dei progetti. E poi Polis, Funda, MidiFlow e Patchbay, e a che punto sono."
@@ -333,6 +333,10 @@
     "projects": {
       "agropulse": {
         "line": "La stagione delle olive in Istria, campo per campo."
+      },
+      "index": {
+        "line": "Le cose che si salvano, lette, archiviate e collegate.",
+        "status": "Prossimamente"
       }
     }
   }

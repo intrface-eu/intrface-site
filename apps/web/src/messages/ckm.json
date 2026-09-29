@@ -27,7 +27,7 @@
   },
   "Metadata": {
     "tagline": "Sučelja za svit.",
-    "description": "INTRFACE dela sučelja za svit iz Vrsara, u Istri: naše Voyager, Polis, Funda, MidiFlow i Patchbay, pa stranice za firme po ciloj EU.",
+    "description": "INTRFACE dela sučelja za svit iz Vrsara, u Istri: naše Voyager, AgroPulse, Polis, Index i Patchbay, pa stranice za firme po ciloj EU.",
     "work": {
       "title": "Delo",
       "description": "Pogledajte Velum, Voyager i AstyleMarine na njihovin javnin stranican i u prikazu svakega projekta. Uz to Polis, Funda, MidiFlow i Patchbay, i kako sad stoje."
@@ -333,6 +333,10 @@
     "projects": {
       "agropulse": {
         "line": "Sezona maslin u Istri, maslinik po maslinik."
+      },
+      "index": {
+        "line": "Stvari ča ih spremite, pročitane, složene i povezane.",
+        "status": "Brzo pride"
       }
     }
   }

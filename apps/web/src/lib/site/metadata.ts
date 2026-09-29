@@ -61,6 +61,12 @@ export type PageMetadataInput = {
   /** Page title without the site suffix — the root template appends it. */
   title: string;
   description: string;
+  /**
+   * False for a page that exists in one locale only (the English pages of
+   * products not open yet): canonical alone, no hreflang alternates and no
+   * alternate OpenGraph locales.
+   */
+  translated?: boolean;
 };
 
 /**
@@ -68,16 +74,19 @@ export type PageMetadataInput = {
  * Croatian and Italian, see `HREFLANG_LOCALES`).
  * Resolution against the site origin comes from `metadataBase` in the root layout.
  */
-export function buildPageMetadata({ locale, path, title, description }: PageMetadataInput): Metadata {
+export function buildPageMetadata({
+  locale,
+  path,
+  title,
+  description,
+  translated = true,
+}: PageMetadataInput): Metadata {
   const url = localePath(locale, path);
 
   return {
     title,
     description,
-    alternates: {
-      canonical: url,
-      languages: languageAlternates(path),
-    },
+    alternates: translated ? { canonical: url, languages: languageAlternates(path) } : { canonical: url },
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
@@ -86,9 +95,11 @@ export function buildPageMetadata({ locale, path, title, description }: PageMeta
       url,
       images: shareCard(locale),
       locale: OG_LOCALES[locale],
-      alternateLocale: Array.from(new Set(routing.locales.map((value) => OG_LOCALES[value]))).filter(
-        (value) => value !== OG_LOCALES[locale],
-      ),
+      alternateLocale: translated
+        ? Array.from(new Set(routing.locales.map((value) => OG_LOCALES[value]))).filter(
+            (value) => value !== OG_LOCALES[locale],
+          )
+        : undefined,
     },
   };
 }

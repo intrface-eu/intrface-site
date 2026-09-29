@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { SITE_PATHS, SITE_URL } from "@/lib/site/config";
 import { HREFLANG_LOCALES, localePath } from "@/lib/site/metadata";
+import { PRODUCT_PAGE_LOCALE, PRODUCT_PAGES } from "@/lib/site/product-roots";
 
 function priorityFor(path: string): number {
   if (path === "/") return 1;
@@ -13,7 +14,7 @@ function priorityFor(path: string): number {
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return SITE_PATHS.flatMap((path) => {
+  const sitePages = SITE_PATHS.flatMap((path) => {
     // Every locale gets its own entry; the alternates name only the locales
     // Google accepts in hreflang (see `HREFLANG_LOCALES`), as the pages do.
     const languages: Record<string, string> = {};
@@ -32,4 +33,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages },
     }));
   });
+
+  // The pages of products not open yet exist in English only, so they get
+  // one entry each and no alternates.
+  const productPages = PRODUCT_PAGES.map((path) => ({
+    url: `${SITE_URL}${localePath(PRODUCT_PAGE_LOCALE, path)}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: priorityFor(path),
+  }));
+
+  return [...sitePages, ...productPages];
 }
