@@ -13,7 +13,6 @@ export interface CommandBindings {
 
 const DESIGN_MODES = ["critique", "spec", "diff", "handoff", "tokens", "brand", "motion", "premium", "funnel", "dashboard"] as const;
 const MOTION_SUBMODES = ["plan", "timeline", "scroll", "svg", "text", "react", "audit"] as const;
-const HYPERFRAMES_MODES = ["compose", "site", "cli", "review"] as const;
 
 function notify(ctx: ExtensionContext, message: string, level: "info" | "success" | "warning" = "info") {
   ctx.ui?.notify?.(message, level);
@@ -115,10 +114,6 @@ function validMode(mode: string): mode is (typeof DESIGN_MODES)[number] {
 
 function validMotionSubmode(mode: string): mode is (typeof MOTION_SUBMODES)[number] {
   return (MOTION_SUBMODES as readonly string[]).includes(mode);
-}
-
-function validHyperFramesMode(mode: string): mode is (typeof HYPERFRAMES_MODES)[number] {
-  return (HYPERFRAMES_MODES as readonly string[]).includes(mode);
 }
 
 function showSkills(ctx: ExtensionContext, state: PresetRuntimeState) {
@@ -546,22 +541,4 @@ export function registerPresetCommands(pi: ExtensionAPI, bindings: CommandBindin
     },
   });
 
-  pi.registerCommand("hyperframes-director", {
-    description: "Activate or switch the HyperFrames preset mode",
-    handler: async (args, ctx) => {
-      const requested = String(args || "").trim().toLowerCase() || "compose";
-      if (!validHyperFramesMode(requested)) {
-        notify(ctx, `Unknown HyperFrames mode '${requested}'. Valid: ${HYPERFRAMES_MODES.join(", ")}`, "warning");
-        return;
-      }
-      await activatePreset(pi, ctx, bindings, "hyperframes", requested, undefined, "command");
-    },
-  });
-
-  pi.registerCommand("hyperframes-off", {
-    description: "Disable the active HyperFrames preset",
-    handler: async (_args, ctx) => {
-      await disablePreset(pi, ctx, bindings);
-    },
-  });
 }

@@ -314,7 +314,6 @@ Dark bands (ink background): body text `rgba(255,255,255,.78)` minimum, labels `
 
 Subsystem-specific design files may extend this document, but should not contradict it.
 
-- HyperFrames/media: `hyperframes/docs/DESIGN.md`
 - Web/app-specific extensions: `apps/web/src/app/globals.css` is the token implementation
 - Docs/marketing-specific extensions:
 

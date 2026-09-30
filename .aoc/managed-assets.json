@@ -10,15 +10,6 @@
       "source": "../.config/aoc/presets/design",
       "status": "current"
     },
-    ".aoc/presets/hyperframes": {
-      "asset": "preset/hyperframes",
-      "assetVersion": 4,
-      "expectedSha256": "e35aa4706b8911d231f4a16628796639729c5705b9b7dfd8e3acb803d907df85",
-      "marker": ".aoc/presets/hyperframes/.aoc-managed",
-      "sha256": "e35aa4706b8911d231f4a16628796639729c5705b9b7dfd8e3acb803d907df85",
-      "source": "../.config/aoc/presets/hyperframes",
-      "status": "current"
-    },
     ".aoc/presets/ops": {
       "asset": "preset/ops",
       "assetVersion": 4,
@@ -81,15 +72,6 @@
       "sha256": "dd8d449df3381de886bfda9e87823c673cdb8adfee7ea9911a78ae774d03f031",
       "source": "../.config/aoc/omp/skills",
       "status": "current"
-    },
-    ".omp/skills/aoc-hyperframes": {
-      "asset": "skill/aoc-hyperframes",
-      "assetVersion": 3,
-      "expectedSha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
-      "marker": ".omp/skills/aoc-hyperframes/.aoc-managed",
-      "sha256": "530dd9970ba93b03822bf3a2948c03615227843efd96e87100341d29acd473ff",
-      "source": "../.config/aoc/pi/skills/aoc-hyperframes",
-      "status": "dirty"
     },
     ".omp/skills/aoc-init-ops": {
       "asset": "skill/aoc-init-ops",
@@ -352,15 +334,6 @@
       "source": "../.config/aoc/pi/skills/aoc-gaps",
       "status": "current"
     },
-    ".pi/skills/aoc-hyperframes": {
-      "asset": "skill/aoc-hyperframes",
-      "assetVersion": 3,
-      "expectedSha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
-      "marker": ".pi/skills/aoc-hyperframes/.aoc-managed",
-      "sha256": "69c2d4c7005c50d8218dd27e48d4ddc6689174d55672408cb0c8e1db6a5b65ca",
-      "source": "../.config/aoc/pi/skills/aoc-hyperframes",
-      "status": "current"
-    },
     ".pi/skills/aoc-init-ops": {
       "asset": "skill/aoc-init-ops",
       "assetVersion": 3,
@@ -505,33 +478,6 @@
       "source": "../.config/aoc/pi/skills/funnel-design",
       "status": "current"
     },
-    ".pi/skills/gsap": {
-      "asset": "skill/gsap",
-      "assetVersion": 3,
-      "expectedSha256": "2b6adb7823c5107c9924f0abe6dd552b19c5a4bd74c7bd37dc52dfd393ca032e",
-      "marker": ".pi/skills/gsap/.aoc-managed",
-      "sha256": "2b6adb7823c5107c9924f0abe6dd552b19c5a4bd74c7bd37dc52dfd393ca032e",
-      "source": "../.config/aoc/pi/skills/gsap",
-      "status": "current"
-    },
-    ".pi/skills/hyperframes": {
-      "asset": "skill/hyperframes",
-      "assetVersion": 3,
-      "expectedSha256": "2102a1c4fca81ae8b1d3d7ff81139e405ad08823e1b2fddf6bcbbb783e1e6710",
-      "marker": ".pi/skills/hyperframes/.aoc-managed",
-      "sha256": "2102a1c4fca81ae8b1d3d7ff81139e405ad08823e1b2fddf6bcbbb783e1e6710",
-      "source": "../.config/aoc/pi/skills/hyperframes",
-      "status": "current"
-    },
-    ".pi/skills/hyperframes-cli": {
-      "asset": "skill/hyperframes-cli",
-      "assetVersion": 3,
-      "expectedSha256": "487e73c5b6c9c2e9667b6629aa4ed54abd2589bd4748957bc6feb5b2377f9367",
-      "marker": ".pi/skills/hyperframes-cli/.aoc-managed",
-      "sha256": "487e73c5b6c9c2e9667b6629aa4ed54abd2589bd4748957bc6feb5b2377f9367",
-      "source": "../.config/aoc/pi/skills/hyperframes-cli",
-      "status": "current"
-    },
     ".pi/skills/motion-director": {
       "asset": "skill/motion-director",
       "assetVersion": 3,
@@ -613,15 +559,6 @@
       "source": "../.config/aoc/pi/skills/web-research",
       "status": "current"
     },
-    ".pi/skills/website-to-hyperframes": {
-      "asset": "skill/website-to-hyperframes",
-      "assetVersion": 3,
-      "expectedSha256": "222510aacd7e34d3fccad52066c112ac0d417b2367b449347694c6c6f4839273",
-      "marker": ".pi/skills/website-to-hyperframes/.aoc-managed",
-      "sha256": "222510aacd7e34d3fccad52066c112ac0d417b2367b449347694c6c6f4839273",
-      "source": "../.config/aoc/pi/skills/website-to-hyperframes",
-      "status": "current"
-    },
     ".pi/skills/zellij-theme-ops": {
       "asset": "skill/zellij-theme-ops",
       "assetVersion": 3,
@@ -633,8 +570,8 @@
     }
   },
   "counts": {
-    "current": 65,
-    "dirty": 5,
+    "current": 59,
+    "dirty": 4,
     "stale": 0,
     "unknown": 0
   },

@@ -137,7 +137,7 @@ function renderOperationalCapsule(meta: {
 - Memory: use \`aoc-mem read\`, \`aoc-mem search\`, and \`aoc-mem add\`; do not read \`.aoc/memory.md\` directly.
 - STM: use \`aoc-stm status\`, \`/handoff <focus>\`, and \`/rresume [archive]\`; STM is directed handoff-only, not durable memory or a mailbox.
 - Protected direct reads: do not read \`.aoc/stm/current.md\`, \`.aoc/memory.md\`, or \`.taskmaster/tasks/tasks.json\` directly.
-- Product/UI/design-facing work: ${meta.hasDesign ? "read root `DESIGN.md` before changing UI, docs-site, marketing, HyperFrames, or other product-facing surfaces." : "no root `DESIGN.md` detected at compaction time."}
+- Product/UI/design-facing work: ${meta.hasDesign ? "read root `DESIGN.md` before changing UI, docs-site, marketing, or other product-facing surfaces." : "no root `DESIGN.md` detected at compaction time."}
 - Native Pi compaction remains \`/compact [focus]\`; this AOC extension only makes the compaction summary preserve AOC operating knowledge.
 - Do not inject broad memory, latest STM, full specs, or raw large diffs during compaction unless explicitly requested later.
 ${meta.warnings.length ? `\nWarnings:\n${meta.warnings.map((w) => `- ${w}`).join("\n")}` : ""}

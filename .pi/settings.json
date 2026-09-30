@@ -28,12 +28,7 @@
     "!skills/enforce-dashboard-ux-guardrails",
     "!skills/frontend-design",
     "!skills/funnel-design",
-    "!skills/safe-gamification",
-    "!skills/aoc-hyperframes",
-    "!skills/hyperframes",
-    "!skills/hyperframes-cli",
-    "!skills/website-to-hyperframes",
-    "!skills/gsap"
+    "!skills/safe-gamification"
   ],
   "packages": [
     "./packages/pi-multi-auth-aoc"
