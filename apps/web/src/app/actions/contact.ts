@@ -4,6 +4,7 @@ import { ConvexHttpClient } from "convex/browser";
 import { makeFunctionReference } from "convex/server";
 import { getTranslations } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
+import { alertDeliveryFailure, sendContactMail } from "@/lib/site/contact-delivery";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 
 /**
@@ -14,8 +15,10 @@ import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-
  *
  * Convex takes priority when `NEXT_PUBLIC_CONVEX_URL` (or `CONVEX_URL`) is set.
  * Otherwise, Resend uses `RESEND_API_KEY`, `CONTACT_EMAIL_TO`, and
- * `CONTACT_EMAIL_FROM`. When neither transport is configured, the action returns
- * `unconfigured` and the form falls back to `mailto:`.
+ * `CONTACT_EMAIL_FROM`; a Resend failure retries, then alerts the operator
+ * through Prism (see `contact-delivery.ts`). When neither transport is
+ * configured, the action returns `unconfigured` and the form falls back to
+ * `mailto:`.
  */
 
 export type { ContactFieldName };
@@ -129,31 +132,20 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     .filter((line) => line !== null)
     .join("\n");
 
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resend.apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: resend.from,
-        to: [resend.to],
-        reply_to: email,
-        subject,
-        text,
-      }),
-      signal: AbortSignal.timeout(10_000),
-    });
+  const result = await sendContactMail({
+    apiKey: resend.apiKey,
+    from: resend.from,
+    to: resend.to,
+    replyTo: email,
+    subject,
+    text,
+  });
 
-    if (!response.ok) {
-      console.error("[contact] Resend submission failed", response.status, await response.text());
-      return { status: "failed" };
-    }
-
-    return { status: "sent" };
-  } catch (error) {
-    console.error("[contact] Resend submission failed", error);
+  if (!result.ok) {
+    console.error("[contact] Resend submission failed", result.error);
+    await alertDeliveryFailure({ name, email, topic, company, locale: resolvedLocale, message }, result.error);
     return { status: "failed" };
   }
+
+  return { status: "sent" };
 }
