@@ -174,6 +174,38 @@
         "Lavoro da Orsera, sulla costa istriana."
       ]
     },
+    "manifesto": {
+      "title": "Manifesto di Intrface",
+      "open": [
+        "Non facciamo siti web che le persone devono capire prima di poterli usare.",
+        "Facciamo interfacce con il mondo."
+      ],
+      "first": "Prima viene l’interfaccia. L’account è facoltativo. La spiegazione arriva con l’uso.",
+      "arrive": "Una persona deve arrivare a ciò per cui è venuta: la mappa, il luogo, il servizio, la segnalazione, la rete, la pratica, l’azione. Non una pagina iniziale che spiega il prodotto. Non un funnel. Non una cerimonia di onboarding.",
+      "formula": "Contesto → intenzione → interfaccia.",
+      "questions": [
+        "Dove sono?",
+        "Che cosa sto cercando di fare?",
+        "Mostrami quello che cerco."
+      ],
+      "identity": "L’identità deve comparire solo quando crea valore: per salvare, contribuire, sincronizzare, autorizzare o assumersi una responsabilità. Un account è una comodità, non un biglietto d’ingresso.",
+      "public": "Il lato pubblico non deve costare fatica. La complessità sta dietro l’interfaccia, presso le istituzioni e i sistemi responsabili del suo funzionamento.",
+      "adapt": "Non chiediamo alle persone di adattarsi al software. È il software che deve adattarsi alla situazione in cui si trovano già.",
+      "examples": [
+        "Un codice QR deve aprire il luogo.",
+        "Una segnalazione civica deve diventare una pratica permanente.",
+        "Una rete deve mostrare le persone che ne fanno parte.",
+        "Un servizio pubblico deve partire dal bisogno, non dalla burocrazia."
+      ],
+      "layers": [
+        "Intrface non serve ad aggiungere un altro strato tra le persone e il mondo.",
+        "Serve a togliere gli strati che ci sono già."
+      ],
+      "close": [
+        "L’interfaccia è il prodotto.",
+        "Il mondo è ciò con cui si interfaccia."
+      ]
+    },
     "close": {
       "title": "Se qualcosa nel suo sistema non ha più senso, ce ne parli.",
       "work": "I nostri lavori",

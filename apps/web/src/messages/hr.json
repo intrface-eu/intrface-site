@@ -174,6 +174,38 @@
         "Radim iz Vrsara, s istarske obale."
       ]
     },
+    "manifesto": {
+      "title": "Manifest Intrfacea",
+      "open": [
+        "Ne radimo web-stranice koje ljudi moraju razumjeti prije nego što ih mogu koristiti.",
+        "Gradimo sučelja prema svijetu."
+      ],
+      "first": "Sučelje dolazi prvo. Korisnički račun nije obavezan. Objašnjenje dolazi kroz korištenje.",
+      "arrive": "Čovjek treba stići do onoga po što je došao: do karte, mjesta, usluge, prijave, mreže, predmeta, radnje. Ne do početne stranice koja objašnjava proizvod. Ne do prodajnog lijevka. Ne do ceremonije uvođenja.",
+      "formula": "Kontekst → namjera → sučelje.",
+      "questions": [
+        "Gdje sam?",
+        "Što pokušavam napraviti?",
+        "Pokaži mi to."
+      ],
+      "identity": "Identitet se treba pojaviti samo kad stvara vrijednost: pri spremanju, doprinosu, sinkronizaciji, odobravanju ili preuzimanju odgovornosti. Korisnički račun je pogodnost, a ne ulaznina.",
+      "public": "Javna strana treba biti bez napora. Složenost pripada iza sučelja, kod institucija i sustava odgovornih za njegov rad.",
+      "adapt": "Ne tražimo od ljudi da se prilagode softveru. Softver se treba prilagoditi situaciji u kojoj se već nalaze.",
+      "examples": [
+        "QR kod treba otvoriti mjesto.",
+        "Građanska prijava treba postati trajan predmet.",
+        "Mreža treba pokazati ljude u njoj.",
+        "Javna usluga treba početi od potrebe, a ne od birokracije."
+      ],
+      "layers": [
+        "Intrface nije tu da doda još jedan sloj između ljudi i svijeta.",
+        "Tu je da ukloni slojeve koji već postoje."
+      ],
+      "close": [
+        "Sučelje je proizvod.",
+        "Svijet je ono s čime nas povezuje."
+      ]
+    },
     "close": {
       "title": "Ako nešto u vašem sustavu više nema smisla, javite nam.",
       "work": "Pogledajte radove",

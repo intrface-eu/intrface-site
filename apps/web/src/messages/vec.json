@@ -174,6 +174,38 @@
         "Lavoro de Orsera, sula costa de l’Istria."
       ]
     },
+    "manifesto": {
+      "title": "Manifesto de Intrface",
+      "open": [
+        "No femo siti che la gente ga de capir prima de poderli doprar.",
+        "Femo interfacie col mondo."
+      ],
+      "first": "Prima vien l’interfacia. L’account no xe obligatorio. La spiegazion vien col uso.",
+      "arrive": "Una persona ga de rivar a quel per cui la xe vignuda: la mapa, el posto, el servizio, la segnalazion, la rete, la pratica, l’azion. No una prima pagina che spiega el prodoto. No un imbuto per vender. No una cerimonia per scominciar.",
+      "formula": "Contesto → intenzion → interfacia.",
+      "questions": [
+        "Dove son?",
+        "Cossa provo a far?",
+        "Fame veder quel che cerco."
+      ],
+      "identity": "L’identità la ga de vignir fora solo quando la porta qualcossa: salvar, contribuir, sincronizar, autorizar o ciapar una responsabilità. L’account xe una comodità, no un bilieto de entrada.",
+      "public": "La parte publica no ga de costar fadiga. La complessità sta drio l’interfacia, con le istituzion e i sistemi che xe responsabili de farla andar.",
+      "adapt": "No domandemo a la gente de adatarse al software. Xe el software che ga de adatarse a la situazion dove che i xe za.",
+      "examples": [
+        "Un codice QR ga de verzer el posto.",
+        "Una segnalazion civica ga de deventar una pratica che resta.",
+        "Una rete ga de mostrar la gente che ghe xe drento.",
+        "Un servizio publico ga de scominciar col bisogno, no co la burocrazia."
+      ],
+      "layers": [
+        "Intrface no xe per meter un altro strato tra la gente e el mondo.",
+        "Xe per cavar i strati che ghe xe za."
+      ],
+      "close": [
+        "L’interfacia xe el prodoto.",
+        "El mondo xe quel con cui la se interfacia."
+      ]
+    },
     "close": {
       "title": "Se qualcossa nel tuo sistema no ga più senso, contine.",
       "work": "Varda i lavori",

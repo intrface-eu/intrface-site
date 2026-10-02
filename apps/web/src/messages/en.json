@@ -174,6 +174,38 @@
         "I work from Vrsar, on the coast of Istria."
       ]
     },
+    "manifesto": {
+      "title": "Intrface Manifesto",
+      "open": [
+        "We do not build websites people have to understand before they can use them.",
+        "We build interfaces to the world."
+      ],
+      "first": "The interface comes first. The account is optional. The explanation comes through use.",
+      "arrive": "A person should arrive at the thing they came for: the map, the place, the service, the report, the network, the case, the action. Not a homepage explaining the product. Not a funnel. Not an onboarding ceremony.",
+      "formula": "Context → intent → interface.",
+      "questions": [
+        "Where am I?",
+        "What am I trying to do?",
+        "Show me the thing."
+      ],
+      "identity": "Identity should appear only when it creates value: saving, contributing, synchronizing, authorizing or taking responsibility. An account is a convenience, not an entrance fee.",
+      "public": "The public side should be effortless. Complexity belongs behind the interface, with the institutions and systems responsible for operating it.",
+      "adapt": "We do not ask people to adapt to software. Software should adapt to the situation they are already in.",
+      "examples": [
+        "A QR code should open the place.",
+        "A civic report should become a permanent case.",
+        "A network should reveal the people within it.",
+        "A public service should begin with the need, not the bureaucracy."
+      ],
+      "layers": [
+        "Intrface is not about putting another layer between people and the world.",
+        "It is about removing the layers already there."
+      ],
+      "close": [
+        "The interface is the product.",
+        "The world is what it interfaces with."
+      ]
+    },
     "close": {
       "title": "If something in your system stopped making sense, tell us about it.",
       "work": "See the work",

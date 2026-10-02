@@ -174,6 +174,38 @@
         "Delan iz Vrsara, s istarske obale."
       ]
     },
+    "manifesto": {
+      "title": "Manifest Intrfacea",
+      "open": [
+        "Ne delamo stranice ke judi moraju kapit prvo nego ča ih moru rabit.",
+        "Delamo sučelja prema svitu."
+      ],
+      "first": "Sučelje gre prvo. Račun ni obavezan. Kako dela, se vidi kad ga rabiš.",
+      "arrive": "Čovik triba prit do tega po ča je prišal: do karte, mista, usluge, prijave, mreže, predmeta, akcije. Ne do početne stranice ka tumači proizvod. Ne do prodajnega livka. Ne do ceremonije za početak.",
+      "formula": "Kontekst → namira → sučelje.",
+      "questions": [
+        "Kadi san?",
+        "Ča probavan storit?",
+        "Pokaži mi to."
+      ],
+      "identity": "Identitet se triba pokazat samo kad neč vridi: kad se neč spravi, prinese, sinkronizira, odobri ili kad ki zame odgovornost na sebe. Račun je za komoditet, a ne ulaznica.",
+      "public": "Javni dil triba bit brez fadige. Komplikacije spadaju iza sučelja, kod institucij i sistemov ki odgovaraju za to da dela.",
+      "adapt": "Ne pitamo judi da se prilagode softveru. Softver se triba prilagodit situaciji u koj su već.",
+      "examples": [
+        "QR kod triba otprt misto.",
+        "Prijava od građana triba postat trajni predmet.",
+        "Mreža triba pokazat judi ki su u njoj.",
+        "Javna usluga triba počet od potribe, a ne od birokracije."
+      ],
+      "layers": [
+        "Intrface ni tu da stavi još jedan sloj med judima i sviton.",
+        "Tu je da hiti van sloje ki su već tu."
+      ],
+      "close": [
+        "Sučelje je proizvod.",
+        "Svit je ono s čin nas veže."
+      ]
+    },
     "close": {
       "title": "Ako neč u vašen sistemu više nima smisla, recite nan.",
       "work": "Pogledajte delo",

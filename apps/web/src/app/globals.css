@@ -2107,6 +2107,96 @@ body {
     min-width: 0;
   }
 
+  /* ===== ABOUT: THE MANIFESTO =====
+     The owner's text as a statement, not a card and not a list. The title is
+     the kicker and the opening pair is the lead, at heading size. The body
+     steps in to an offset column from `lg`, so the open ground to its left
+     carries the pause between the claim and the argument. Stanzas keep the
+     owner's line breaks and sit in ink; the owner's bold lines are the
+     heaviest type in the section. Measure stays on the roles. */
+  .about-manifesto {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .about-manifesto__head,
+  .about-manifesto__body {
+    min-width: 0;
+  }
+
+  .about-manifesto__open {
+    display: grid;
+    gap: 0.4em;
+    margin-block-start: 1rem;
+  }
+
+  .about-manifesto__open .type-heading {
+    max-inline-size: 26ch;
+  }
+
+  /* The owner's sentences are short words; a broken "peo-ple" at 390px reads
+     as damage in a statement. `overflow-wrap` from `.type-heading` still
+     guards the width. */
+  .about-manifesto .type-heading {
+    hyphens: manual;
+  }
+
+  .about-manifesto__body {
+    --manifesto-gap: clamp(1.5rem, 2.4vw, 1.875rem);
+    display: grid;
+    gap: var(--manifesto-gap);
+  }
+
+  .about-manifesto__pair {
+    display: grid;
+    gap: var(--manifesto-gap);
+  }
+
+  .about-manifesto__stanza {
+    color: var(--ink);
+  }
+
+  .about-manifesto__stanza > span,
+  .about-manifesto__close span {
+    display: block;
+  }
+
+  /* A verse line that wraps on a phone hangs its run-on, so the owner's line
+     breaks still read as breaks. */
+  .about-manifesto__stanza > span {
+    padding-inline-start: 1em;
+    text-indent: -1em;
+  }
+
+  .about-manifesto__bold {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .about-manifesto__bold strong {
+    font-weight: inherit;
+  }
+
+  .about-manifesto__close {
+    max-inline-size: 24em;
+    margin-block-start: clamp(0.5rem, 2.5vw, 2rem);
+  }
+
+  @media (min-width: 1024px) {
+    .about-manifesto {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .about-manifesto__head {
+      grid-column: 1 / span 9;
+    }
+
+    .about-manifesto__body {
+      grid-column: 5 / -1;
+    }
+  }
+
   /* A step of tone under the close, for the fallback ground where the panes
      still paint their slabs. With the live ground running it is transparent
      like every other paper pane. */

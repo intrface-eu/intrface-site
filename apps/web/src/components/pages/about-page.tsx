@@ -8,17 +8,25 @@ import { getPathname } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 
 /**
- * About is four moves on the same ground the home page runs: the claim, the
- * person, the place, and the way out.
+ * About is five moves on the same ground the home page runs: the claim, the
+ * person, the manifesto, the place, and the way out.
  *
  * The page carries no studio blurb, no product list and no second contact
  * form — the home page argues the work and the footer carries the channels.
- * What it has instead is a name, a face, and the map gathering on Vrsar.
+ * What it has instead is a name, a face, the stance in the owner's words, and
+ * the map gathering on Vrsar.
  */
 export async function AboutPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "About" });
   const path = (href: string) => getPathname({ href, locale });
   const body = t.raw("person.body") as string[];
+  const manifesto = {
+    open: t.raw("manifesto.open") as string[],
+    questions: t.raw("manifesto.questions") as string[],
+    examples: t.raw("manifesto.examples") as string[],
+    layers: t.raw("manifesto.layers") as string[],
+    close: t.raw("manifesto.close") as string[],
+  };
 
   return (
     /* Same two prohibitions as the home page: this element must not create a
@@ -93,12 +101,90 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
-        {/* 3 — THE PLACE. One viewport of open paper: the field gathers into
+        {/* 3 — THE MANIFESTO. The owner's text, set as a statement and not a
+            list: the title as the kicker, the opening pair as the lead, the
+            body in an offset column with its stanzas kept as broken lines,
+            and the owner's bold lines set heaviest. It comes after the
+            person and before the land band because its last line hands over
+            to the world, and the map is the next thing the reader sees. */}
+        <section aria-labelledby="manifesto-title" className="home-pane about-manifesto-pane">
+          <div className="section-shell about-manifesto">
+            <div className="about-manifesto__head" data-ground-quiet="">
+              <FadeIn>
+                <h2 className="type-section-label" id="manifesto-title">
+                  {t("manifesto.title")}
+                </h2>
+              </FadeIn>
+              <FadeIn className="about-manifesto__open" delay={80}>
+                {manifesto.open.map((line) => (
+                  <p className="type-heading" key={line}>
+                    {line}
+                  </p>
+                ))}
+              </FadeIn>
+            </div>
+
+            <div className="about-manifesto__body" data-ground-quiet="">
+              <FadeIn>
+                <p className="type-body-lg">{t("manifesto.first")}</p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg">{t("manifesto.arrive")}</p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-subheading about-manifesto__bold">
+                  <strong>{t("manifesto.formula")}</strong>
+                </p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg about-manifesto__stanza">
+                  {manifesto.questions.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg">{t("manifesto.identity")}</p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg">{t("manifesto.public")}</p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg">{t("manifesto.adapt")}</p>
+              </FadeIn>
+              <FadeIn>
+                <p className="type-body-lg about-manifesto__stanza">
+                  {manifesto.examples.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </p>
+              </FadeIn>
+              <FadeIn className="about-manifesto__pair">
+                {manifesto.layers.map((line) => (
+                  <p className="type-body-lg" key={line}>
+                    {line}
+                  </p>
+                ))}
+              </FadeIn>
+              <FadeIn>
+                <p className="type-heading about-manifesto__bold about-manifesto__close">
+                  <strong>
+                    {manifesto.close.map((line) => (
+                      <span key={line}>{line}</span>
+                    ))}
+                  </strong>
+                </p>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+
+        {/* 4 — THE PLACE. One viewport of open paper: the field gathers into
             Istria and marks Vrsar. No caption and no label — the map is the
             section. The two phrases stay a home-only moment. */}
         <div className="ground-band" data-ground-key="land" aria-hidden="true" />
 
-        {/* 4 — THE WAY OUT. One sentence and two doors. The footer already
+        {/* 5 — THE WAY OUT. One sentence and two doors. The footer already
             carries the email and the phone. */}
         <section className="home-pane about-close-pane">
           <div className="section-shell">
