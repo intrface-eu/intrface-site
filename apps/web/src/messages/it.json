@@ -279,7 +279,7 @@
       },
       "form": {
         "title": "Il modulo di contatto",
-        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che lei scrive. Salviamo l’invio e lo inoltriamo a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a basic@intrface.eu: ci pensiamo noi."
+        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che lei scrive. Salviamo l’invio e lo inoltriamo a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a hello@intrface.eu: ci pensiamo noi."
       }
     }
   },

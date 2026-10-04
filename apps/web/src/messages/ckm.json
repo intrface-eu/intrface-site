@@ -279,7 +279,7 @@
       },
       "form": {
         "title": "Kontakt formular",
-        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na basic@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
+        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
       }
     }
   },

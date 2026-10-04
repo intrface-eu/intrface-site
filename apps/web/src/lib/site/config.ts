@@ -10,7 +10,7 @@ export const SITE_TAGLINE = "Interfaces for the world.";
 export const SITE_DESCRIPTION =
   "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, AgroPulse, Polis, Index and Patchbay of our own, and sites for businesses across the EU.";
 
-export const CONTACT_EMAIL = "basic@intrface.eu";
+export const CONTACT_EMAIL = "hello@intrface.eu";
 
 // Two forms of one number: the spaced form is what a reader sees, the compact
 // E.164 form is what a `tel:` href needs. Every surface reads from these — no

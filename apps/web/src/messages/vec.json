@@ -279,7 +279,7 @@
       },
       "form": {
         "title": "El modulo de contato",
-        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a basic@intrface.eu e lo faremo."
+        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo."
       }
     }
   },
