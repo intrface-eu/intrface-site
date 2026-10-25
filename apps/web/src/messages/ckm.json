@@ -14,7 +14,9 @@
     "tagline": "Sučelja za svit.",
     "contact": "Kontakt",
     "github": "GitHub",
-    "imprint": "Impresum"
+    "imprint": "Impresum",
+    "privacy": "Privatnost",
+    "terms": "Uvjeti"
   },
   "LocaleSwitcher": {
     "label": "Jazik"
@@ -55,6 +57,14 @@
     "imprint": {
       "title": "Impresum",
       "description": "Ki vodi intrface.eu: podaci o firmi, ki odgovara za sadržaj, autorska prava i ča kontakt formular dela s vašon porukon."
+    },
+    "privacy": {
+      "title": "Pravila privatnosti",
+      "description": "Kako INTRFACE dela s osobnimi podacima na intrface.eu, u kontakt formularu i u objavah na društvenih mrežah preko Mete, i kako pitat da se podaci obrišu."
+    },
+    "terms": {
+      "title": "Uvjeti koriščenja",
+      "description": "Uvjeti za koriščenje intrface.eu i javnih računi INTRFACE-a na društvenih mrežah: sadržaj, kontakt formular, odgovornost, hrvatsko pravo i sud u Pazinu."
     },
     "velum": {
       "title": "Velum",
@@ -279,7 +289,228 @@
       },
       "form": {
         "title": "Kontakt formular",
-        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju."
+        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju. Sve pojedinosti su u <privacy>pravilima privatnosti</privacy>."
+      }
+    }
+  },
+  "Privacy": {
+    "label": "Privatnost",
+    "title": "Ča delamo s vašimi podacima.",
+    "lead": "{siteName} vodi {host} i nekoliko javnih računi na društvenih mrežah. Ova stranica piše ke osobne podatke oni pobiraju, zač, ki ih obrađuje i kako pitat da ih obrišemo.",
+    "updatedLabel": "Zadnja izmjena:",
+    "updated": "25. listopada 2026.",
+    "factsLabel": "Voditelj obrade",
+    "facts": {
+      "controller": {
+        "term": "Voditelj obrade",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Adresa sjedišta",
+        "value": "Dalmatinska 34, 52450 Vrsar, Hrvatska"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "director": {
+        "term": "Uprava",
+        "value": "Alex Bašić"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefon"
+      },
+      "authority": {
+        "term": "Nadzorno tijelo",
+        "value": "<azop>Agencija za zaštitu osobnih podataka (AZOP)</azop>, Selska cesta 136, 10000 Zagreb"
+      }
+    },
+    "sections": {
+      "scope": {
+        "title": "Na ča se ova pravila odnose",
+        "body": [
+          "Odnose se na {host} i na objave ke delamo na naših Facebook stranicah i Instagram računih: Voyager, PatchBay, Polis i Intrface.",
+          "Naši proizvodi — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse i Index — delaju s podacima svojih korisnikov po svojih uvjetih i obavijestih o privatnosti, kade ih pobiraju. Ova stranica ih ne pokriva."
+        ]
+      },
+      "visiting": {
+        "title": "Kad dojdete na ovu stranicu",
+        "body": [
+          "Ova stranica ne rabi analitiku, reklame ni kolačiće za praćenje. Ne učitava skripte drugih firmi, a fonti dohajaju s naše domene.",
+          "Stranica postavi samo jedan kolačić, NEXT_LOCALE, da zapamti na ken jeziku ju štete. U njemu je samo oznaka jezika i zgine kad zaprete preglednik.",
+          "Stranicu drži Vercel. Kako svaki web server, za svaki zahtjev zapiše tehničke podatke — IP adresu, preglednik, stranicu i vrime — i čuva ih kratko, da stranica dela i da ju zaštiti od zlouporabe. Pravna osnova: naš legitimni interes da stranica dela dobro i sigurno (GDPR čl. 6(1)(f))."
+        ]
+      },
+      "form": {
+        "title": "Kontakt formular",
+        "body": [
+          "Formular u našen <contact>kontakt dilu</contact> nan pošlje ono ča napišete:",
+          "Rabimo ih samo da van moremo odgovorit. Pravna osnova: koraci ke ste od nas pitali pred sklapanjen ugovora (GDPR čl. 6(1)(b)).",
+          "Vercel pokreće formular, Resend nan dostavi poruku po emailu, a Google Workspace čuva naš inbox. Ako se email ne more poslat, formular preda poruku našen internen sustavu, ki je na Railwayu, da van ipak moremo odgovorit.",
+          "Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju."
+        ],
+        "items": [
+          "ime",
+          "email adresu",
+          "firmu (ni obavezno)",
+          "temu (ni obavezno)",
+          "poruku",
+          "jezik stranice s ke pišete"
+        ]
+      },
+      "social": {
+        "title": "Naši računi na društvenih mrežah i Meta aplikacija",
+        "body": [
+          "Na naše Facebook stranice i Instagram račune — Voyager, PatchBay, Polis i Intrface — objavljujemo s Postizon, alaton za objave ki vodimo na našen serveru kod Railwaya. Postiz se s Meton spaja preko naše Meta aplikacije „Voyager Publishing”. Aplikacija rabi Metina dopuštenja samo da:",
+          "Kad komentirate našu objavu, Meta nan da vaše javno ime ili korisničko ime i komentar, kako i svakemu ki ima stranicu. Rabimo ih da čitamo komentare na naših objavah i da na njih odgovorimo. Pravna osnova: naš legitimni interes da vodimo naše račune (GDPR čl. 6(1)(f)). Uvidi nan dohajaju kao zbirni broji i ne kažu ki ste.",
+          "O drugih korisnikih Facebooka i Instagrama ne pobiramo niš drugo. Te podatke ne prodajemo i ne rabimo ih za ciljanje reklam.",
+          "Metini pristupni tokeni za naše račune su spravljeni na ten serveru. Kad račun odspojimo, njegov token se makne.",
+          "Za uvide Facebook stranic Meta i mi smo zajednički voditelji obrade po Metinen dodatku o uvidih stranic (Page Insights Addendum), a glavnu odgovornost za tu obradu ima Meta. Za sve drugo ča se dogodi na Facebooku i Instagramu vrijede Metina pravila o privatnosti."
+        ],
+        "items": [
+          "objavi i zakaže objave na računih ke vodimo",
+          "čita komentare na tih objavah",
+          "čita osnovne uvide (insights) za te račune, kako doseg i interakcije"
+        ]
+      },
+      "transfers": {
+        "title": "Ki još dela s podacima",
+        "body": [
+          "Vercel (hosting i formular), Resend (dostava emaila), Google (naš Workspace inbox), Railway (naši serveri) i Meta (Facebook i Instagram) obrađuju podatke za svrhe ke su gori napisane. S svakon firmon ka dela za nas imamo ugovor o obradi podataka.",
+          "Neke od njih su u SAD-u, pa podaci moru izać iz EU-a. Ti prijenosi se temelje na Okviru za privatnost podataka između EU-a i SAD-a (EU–US Data Privacy Framework) ili na standardnih ugovornih klauzulah Europske komisije."
+        ]
+      },
+      "rights": {
+        "title": "Vaša prava",
+        "body": [
+          "Po GDPR-u morete od nas pitat da:",
+          "Pišite na <mail>{email}</mail>. Odgovorimo unutar miseca dan. Moremo van pitat da potvrdite da su podaci vaši.",
+          "Pritužbu morete dat i Agenciji za zaštitu osobnih podataka, <azop>AZOP</azop> (Selska cesta 136, 10000 Zagreb), ili nadzornen tijelu u državi kade živite ili delate."
+        ],
+        "items": [
+          "van pokažemo osobne podatke ke o vami imamo i damo van kopiju",
+          "ih popravimo",
+          "ih obrišemo",
+          "ograničimo kako ih rabimo, ili prestanemo ako se protivite",
+          "van ih damo u obliku ki se more prenest"
+        ]
+      },
+      "deletion": {
+        "title": "Brisanje podataka",
+        "body": [
+          "Svaki more pitat da obrišemo osobne podatke ke o njemu imamo, i podatke ke je naša Meta aplikacija dobila s Facebooka ili Instagrama.",
+          "Svoj komentar na našoj objavi morete i sami obrisat na Facebooku ili Instagramu kad god ćete.",
+          "Naša Meta aplikacija spaja samo naše račune. Ne čuva vašu prijavu ni vaš token, pa u postavkah Facebooka ili Instagrama nimate ča maknut."
+        ],
+        "items": [
+          "Pošljite email na <mail>{email}</mail> s naslovon „Brisanje podataka” (ili „Data deletion”).",
+          "Napišite ča treba obrisat: email adresu s ke ste pisali, ili vaše ime na Facebooku ili Instagramu i objavu ku ste komentirali.",
+          "Podatke obrišemo unutar 30 dan i to van potvrdimo po emailu."
+        ]
+      },
+      "changes": {
+        "title": "Izmjene",
+        "body": [
+          "Kad se naši alati ili usluge promijene, ažuriramo ovu stranicu i datum na vrhu. Kako se rabi stranica, pišu naši <terms>uvjeti koriščenja</terms>. Pitanja pošljite na <mail>{email}</mail>."
+        ]
+      }
+    }
+  },
+  "Terms": {
+    "label": "Uvjeti",
+    "title": "Pravila za ovu stranicu.",
+    "lead": "Ovi uvjeti vrijede za {host} i naše javne račune na društvenih mrežah. Ako ih rabite, prihvaćate ove uvjete.",
+    "updatedLabel": "Zadnja izmjena:",
+    "updated": "25. listopada 2026.",
+    "factsLabel": "Nositelj",
+    "facts": {
+      "operator": {
+        "term": "Nositelj",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Adresa sjedišta",
+        "value": "Dalmatinska 34, 52450 Vrsar, Hrvatska"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "law": {
+        "term": "Mjerodavno pravo",
+        "value": "Hrvatsko pravo"
+      },
+      "court": {
+        "term": "Nadležni sud",
+        "value": "Stvarno nadležni sud u Pazinu"
+      }
+    },
+    "sections": {
+      "who": {
+        "title": "Ki smo",
+        "body": [
+          "{siteName} j.d.o.o. vodi {host} i Facebook stranice i Instagram račune za Voyager, PatchBay, Polis i Intrface. Cili podaci o firmi su u <imprint>impresumu</imprint>.",
+          "Ovi uvjeti ne pokrivaju koriščenje naših proizvodov (Voyager, Polis, PatchBay, AgroPulse i Index)."
+        ]
+      },
+      "content": {
+        "title": "Sadržaj",
+        "body": [
+          "Teksti, slike i kod na ovoj stranici i na naših računih na društvenih mrežah su © {siteName}, osim ako je napisan drugi vlasnik. Morete ih citirat s linkon na izvor. Pitajte prvo nego ča prinesete cilu stranicu ili objavu.",
+          "Komentari ke objavite na naših računih ostaju vaši, a za njih vrijede uvjeti platforme. Komentare ki su protuzakoniti, uvredljivi ili spam moremo sakrit ili obrisat."
+        ]
+      },
+      "form": {
+        "title": "Kontakt formular",
+        "body": [
+          "Formular rabite za prave upite i posal. Ne pošljajte:",
+          "Poruke ke ne poštuju ova pravila moremo ignorirat ili obrisat. Kako delamo s onin ča pošljete, piše u <privacy>pravilima privatnosti</privacy>."
+        ],
+        "items": [
+          "spam, reklame ni automatski poslane poruke",
+          "protuzakonit, uvredljiv ni prijeteći sadržaj",
+          "zlonamjerni kod ni linke",
+          "tuđe osobne podatke brez dopuštenja te osobe"
+        ]
+      },
+      "warranty": {
+        "title": "Samo informacije",
+        "body": [
+          "Sadržaj ove stranice i naših računi na društvenih mrežah je opća informacija o našen delu i proizvodih. Ni stručni savjet. Držimo ga točnin i aktualnin koliko znamo, ali ne jamčimo da je cili, točan ni uvik dostupan, i moremo ga promijenit kad god ćemo."
+        ]
+      },
+      "liability": {
+        "title": "Odgovornost",
+        "body": [
+          "Odgovaramo za štetu ku napravimo namjerno ili krajnjon nepažnjon i uvik kad hrvatsko pravo ne dopušta da se odgovornost ograniči.",
+          "Inače, koliko hrvatsko pravo dopušta, ne odgovaramo za štetu ka dojde od koriščenja ove stranice, naših računi na društvenih mrežah ili informacij na njima, ni zato ča nisu dostupni.",
+          "Ako ste potrošač, niš u ovih uvjetih ne ograničava prava ke van daju prisilni propisi."
+        ]
+      },
+      "clients": {
+        "title": "Delo za klijente",
+        "body": [
+          "Delo za klijente — web stranice, softver, savjetovanje — uređuje poseban pisani ugovor ili prihvaćena ponuda. Kade se razlikuju od ovih uvjeti, vrijedi ugovor ili ponuda. Niš na ovoj stranici ni obvezujuća ponuda."
+        ]
+      },
+      "law": {
+        "title": "Pravo i sud",
+        "body": [
+          "Na ove uvjete se primjenjuje hrvatsko pravo, brez njegovih kolizijskih pravil. Sporove rješava stvarno nadležni sud u Pazinu.",
+          "Ako ste potrošač u EU-u, ostaje van zaštita prisilnih propisi države kade živite i tamo morete pokrenut postupak."
+        ]
+      },
+      "changes": {
+        "title": "Izmjene uvjeti",
+        "body": [
+          "Ove uvjete moremo promijenit. Datum na vrhu kaže zadnju izmjenu; od tega datuma vrijedi verzija ka je tu objavljena. Pitanja pošljite na <mail>{email}</mail>."
+        ]
       }
     }
   },

@@ -113,6 +113,11 @@ export async function ImprintPage({ locale }: { locale: AppLocale }) {
                 {chunks}
               </Link>
             ),
+            privacy: (chunks) => (
+              <Link className="font-semibold text-accent hover:underline" href="/privacy">
+                {chunks}
+              </Link>
+            ),
           })}
         </p>
       ),

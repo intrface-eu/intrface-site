@@ -35,6 +35,8 @@ export const SITE_PATHS = [
   "/work/client-sites",
   "/about",
   "/imprint",
+  "/privacy",
+  "/terms",
 ] as const;
 
 export type SitePath = (typeof SITE_PATHS)[number];

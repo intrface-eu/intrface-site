@@ -14,7 +14,9 @@
     "tagline": "Interfacie per el mondo.",
     "contact": "Contati",
     "github": "GitHub",
-    "imprint": "Dati legali"
+    "imprint": "Dati legali",
+    "privacy": "Privacy",
+    "terms": "Termini"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -55,6 +57,14 @@
     "imprint": {
       "title": "Dati legali",
       "description": "Chi che gestissi intrface.eu: dati de la dita, responsabilità pel contenuto, diriti d’autor e cosa che fa el modulo de contato col tuo messagio."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Come che INTRFACE trata i dati personali su intrface.eu, nel modulo de contato e ne la publicazion sui social trameso Meta, e come domandar de scancelarli."
+    },
+    "terms": {
+      "title": "Termini de uso",
+      "description": "I termini per doprar intrface.eu e i account social publici de INTRFACE: contenuti, modulo de contato, responsabilità, diritto croato e foro de Pazin."
     },
     "velum": {
       "title": "Velum",
@@ -279,7 +289,228 @@
       },
       "form": {
         "title": "El modulo de contato",
-        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo."
+        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo. Tuti i detagli xe ne la <privacy>informativa privacy</privacy>."
+      }
+    }
+  },
+  "Privacy": {
+    "label": "Privacy",
+    "title": "Cosa che femo coi tui dati.",
+    "lead": "{siteName} gestissi {host} e qualche account social publico. Sta pagina dise che dati personali i ciapa, perché, chi che li trata e come domandar de scancelarli.",
+    "updatedLabel": "Ultimo agiornamento:",
+    "updated": "25 otobre 2026",
+    "factsLabel": "Titolar del tratamento",
+    "facts": {
+      "controller": {
+        "term": "Titolar",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Sede legal",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "director": {
+        "term": "Diretor",
+        "value": "Alex Bašić"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefono"
+      },
+      "authority": {
+        "term": "Autorità de controlo",
+        "value": "<azop>Agencija za zaštitu osobnih podataka (AZOP)</azop>, Selska cesta 136, 10000 Zagabria, Croazia"
+      }
+    },
+    "sections": {
+      "scope": {
+        "title": "Cosa che la riguarda",
+        "body": [
+          "La riguarda {host} e i post che publichemo sule nostre pagine Facebook e sui nostri account Instagram: Voyager, PatchBay, Polis e Intrface.",
+          "I nostri prodoti — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse e Index — trata i dati dei sui utenti con le sue condizion e informative, là dove che i li ciapa. Sta pagina no li riguarda."
+        ]
+      },
+      "visiting": {
+        "title": "Visitar sto sito",
+        "body": [
+          "Sto sito no dopra analitica, publicità o cookie per tracciar. No’l carga script de terzi, e i font vien del nostro dominio.",
+          "El sito meti un solo cookie, NEXT_LOCALE, per ricordarse in che lingua che ti lo lezi. Drento ghe xe solo el codice de la lingua, e el va via quando che ti seri el browser.",
+          "El sito xe ospità de Vercel. Come ogni server web, per ogni richiesta el registra dati tecnici — indirizo IP, browser, pagina e ora — e li tien per poco tempo, per servir el sito e protegerlo dei abusi. Base legal: el nostro interesse legitimo a far andar el sito ben e sicuro (GDPR art. 6(1)(f))."
+        ]
+      },
+      "form": {
+        "title": "El modulo de contato",
+        "body": [
+          "El modulo ne la nostra <contact>sezion contati</contact> ne manda quel che ti scrivi:",
+          "Li dopremo solo per risponderte. Base legal: passi che ti ne ga domandà prima de un contrato (GDPR art. 6(1)(b)).",
+          "Vercel fa andar el modulo, Resend ne consegna el messagio per email, e Google Workspace tien la nostra posta. Se l’email no parti, el modulo passa el messagio a un nostro sistema interno, ospità de Railway, cussì podemo risponderte istesso.",
+          "Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo."
+        ],
+        "items": [
+          "nome",
+          "indirizo email",
+          "dita (no obligatoria)",
+          "argomento (no obligatorio)",
+          "messagio",
+          "la lingua de la pagina de dove che ti scrivi"
+        ]
+      },
+      "social": {
+        "title": "I nostri account social e l’app Meta",
+        "body": [
+          "Publichemo sule nostre pagine Facebook e sui nostri account Instagram — Voyager, PatchBay, Polis e Intrface — con Postiz, un strumento de publicazion che gestimo su un nostro server ospità de Railway. Postiz se taca a Meta trameso la nostra app Meta “Voyager Publishing”. L’app dopra i permessi de Meta solo per:",
+          "Quando che ti comenti un nostro post, Meta ne passa el tuo nome publico o nome utente e el comento, come a ogni titolar de una pagina. Li dopremo per leger i comenti sui nostri post e risponder. Base legal: el nostro interesse legitimo a gestir i nostri account (GDPR art. 6(1)(f)). I insight ne riva come totali e no i dise chi che ti xe.",
+          "No ciapemo altro su altri utenti de Facebook o Instagram. No vendemo sti dati e no li dopremo per publicità mirada.",
+          "I token de acesso de Meta per i nostri account xe salvai su quel server. Quando che destachemo un account, el suo token vien cavà.",
+          "Per i insight de le pagine Facebook, Meta e noi semo contitolari del tratamento secondo l’addendum de Meta sui insight de le pagine (Page Insights Addendum), e la responsabilità principal de quel tratamento xe de Meta. Per tuto el resto che sucedi su Facebook e Instagram vale l’informativa privacy de Meta."
+        ],
+        "items": [
+          "publicar e programar post sui account che gestimo",
+          "leger i comenti a quei post",
+          "leger i insight de base de quei account, come portata e interazioni"
+        ]
+      },
+      "transfers": {
+        "title": "Chi altro che trata i dati",
+        "body": [
+          "Vercel (hosting e modulo), Resend (consegna de le email), Google (la nostra posta Workspace), Railway (i nostri server) e Meta (Facebook e Instagram) trata dati per i scopi scriti qua sora. Con ogni fornitor che lavora per noi gavemo un contrato sul tratamento dei dati.",
+          "Qualchedun de lori ga sede ne i Stati Uniti, quindi i dati pol ussir de l’UE. Sti trasferimenti se basa sul EU–US Data Privacy Framework o sule clausole contratuali tipo de la Comission europea."
+        ]
+      },
+      "rights": {
+        "title": "I tui diriti",
+        "body": [
+          "Col GDPR ti pol domandarne de:",
+          "Scrivine a <mail>{email}</mail>. Rispondemo entro un mese. Podemo domandarte de confermar che i dati xe tui.",
+          "Ti pol anche far reclamo a l’autorità croata per la protezion dei dati, <azop>AZOP</azop> (Selska cesta 136, 10000 Zagabria), o a l’autorità del paese dove che ti vivi o ti lavori."
+        ],
+        "items": [
+          "mostrarte i dati personali che gavemo su de ti e darte una copia",
+          "corezerli",
+          "scancelarli",
+          "limitar come che li dopremo, o fermarse se ti te oponi",
+          "darteli in un formato portabile"
+        ]
+      },
+      "deletion": {
+        "title": "Scancelar i dati",
+        "body": [
+          "Chiunque pol domandarne de scancelar i dati personali che gavemo su de lui, anche i dati che la nostra app Meta ga ricevù de Facebook o Instagram.",
+          "Ti pol anche scancelar de solo, quando che ti vol, el tuo comento a un nostro post su Facebook o Instagram.",
+          "La nostra app Meta taca solo i nostri account. No la tien el tuo login né un tuo token, quindi ne le impostazioni de Facebook o Instagram no ghe xe gnente de cavar."
+        ],
+        "items": [
+          "Scrivine a <mail>{email}</mail> con ogeto “Scancelar dati” (o “Data deletion”).",
+          "Disine cosa scancelar: l’indirizo email de dove che ti ne ga scrito, o el tuo nome su Facebook o Instagram e el post che ti ga comentà.",
+          "Scancelemo i dati entro 30 giorni e te lo confermemo per email."
+        ]
+      },
+      "changes": {
+        "title": "Modifiche",
+        "body": [
+          "Quando che i nostri strumenti o servizi cambia, agiornemo sta pagina e la data in alto. L’uso del sito xe regolà dei nostri <terms>termini de uso</terms>. Per domande scrivine a <mail>{email}</mail>."
+        ]
+      }
+    }
+  },
+  "Terms": {
+    "label": "Termini",
+    "title": "Le regole per doprar sto sito.",
+    "lead": "Sti termini vale per {host} e per i nostri account social publici. Se ti li dopri, ti azeti sti termini.",
+    "updatedLabel": "Ultimo agiornamento:",
+    "updated": "25 otobre 2026",
+    "factsLabel": "Titolar",
+    "facts": {
+      "operator": {
+        "term": "Titolar",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Sede legal",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "law": {
+        "term": "Lege aplicabile",
+        "value": "Diritto croato"
+      },
+      "court": {
+        "term": "Foro",
+        "value": "El tribunal competente de Pazin (Pisin), Croazia"
+      }
+    },
+    "sections": {
+      "who": {
+        "title": "Chi che semo",
+        "body": [
+          "{siteName} j.d.o.o. gestissi {host} e le pagine Facebook e i account Instagram de Voyager, PatchBay, Polis e Intrface. I dati completi de la dita xe nei <imprint>dati legali</imprint>.",
+          "Sti termini no riguarda l’uso dei nostri prodoti (Voyager, Polis, PatchBay, AgroPulse e Index)."
+        ]
+      },
+      "content": {
+        "title": "Contenuti",
+        "body": [
+          "Testi, imagini e codice su sto sito e sui nostri account social xe © {siteName}, se no xe indicà un altro proprietario. Ti pol citarli con un link a la fonte. Domandine prima de copiar intiera una pagina o un post.",
+          "I comenti che ti publichi sui nostri account resta tui, e per lori vale le condizion de la piataforma. Podemo sconder o scancelar comenti ilegali, ofensivi o spam."
+        ]
+      },
+      "form": {
+        "title": "El modulo de contato",
+        "body": [
+          "Dopra el modulo per scriverne de lavori e domande vere. No sta mandar:",
+          "Podemo ignorar o scancelar i messagi che no rispeta ste regole. La <privacy>informativa privacy</privacy> dise come che tratemo quel che ti ne mandi."
+        ],
+        "items": [
+          "spam, publicità o invii automatici",
+          "contenuti ilegali, ofensivi o de minacia",
+          "codice o link danosi",
+          "dati personali de altra gente senza el suo permesso"
+        ]
+      },
+      "warranty": {
+        "title": "Solo informazion",
+        "body": [
+          "I contenuti de sto sito e dei nostri account social xe informazion generali sul nostro lavor e sui nostri prodoti. No i xe consulenza profesional. Li tegnimo giusti e agiornai per quel che savemo, ma no garantimo che i sia completi, esati o sempre disponibili, e podemo cambiarli quando che volemo."
+        ]
+      },
+      "liability": {
+        "title": "Responsabilità",
+        "body": [
+          "Rispondemo dei dani che fazemo apposta o per colpa grave, e in ogni caso dove che el diritto croato no permeti de limitar la responsabilità.",
+          "Nei altri casi, fin dove che el diritto croato lo permeti, no rispondemo de perdite che vien de l’uso de sto sito, dei nostri account social o de le informazion che xe sora, né del fato che i no sia disponibili.",
+          "Se ti xe un consumator, gnente in sti termini limita i diriti che te dà la lege imperativa."
+        ]
+      },
+      "clients": {
+        "title": "Lavori per i clienti",
+        "body": [
+          "I lavori che femo per i clienti — siti web, software, consulenza — xe regolai de un contrato scrito a parte o de un preventivo azetà. Dove che i xe diversi de sti termini, vale el contrato o el preventivo. Gnente su sto sito xe una oferta che obliga."
+        ]
+      },
+      "law": {
+        "title": "Lege e foro",
+        "body": [
+          "Sti termini xe regolai del diritto croato, senza le sue regole de conflito. Le controversie le decidi el tribunal competente de Pazin (Pisin), in Croazia.",
+          "Se ti xe un consumator ne l’UE, ti tien la protezion de la lege imperativa del paese dove che ti vivi e ti pol far causa anche là."
+        ]
+      },
+      "changes": {
+        "title": "Modifiche ai termini",
+        "body": [
+          "Podemo cambiar sti termini. La data in alto mostra l’ultima modifica; de quela data vale la version publicada qua. Per domande scrivine a <mail>{email}</mail>."
+        ]
       }
     }
   },

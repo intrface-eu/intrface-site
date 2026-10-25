@@ -19,9 +19,9 @@ const linkClass =
 
 /**
  * The footer: one short block and the signature. Name and place, the tagline,
- * the two direct channels, GitHub, the imprint, the locale and the year. No
- * link groups and no form; the header (on every page but home) carries the
- * navigation, and the grid is the home page's index.
+ * the two direct channels, GitHub, the imprint, privacy and terms, the locale
+ * and the year. No link groups and no form; the header (on every page but
+ * home) carries the navigation, and the grid is the home page's index.
  *
  * It takes its natural height and never keys the ground: about keys its own
  * land band. Where the ground runs (about), the ground quiets its lines only
@@ -70,6 +70,12 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           </a>
           <Link className={linkClass} href="/imprint">
             {t("imprint")}
+          </Link>
+          <Link className={linkClass} href="/privacy">
+            {t("privacy")}
+          </Link>
+          <Link className={linkClass} href="/terms">
+            {t("terms")}
           </Link>
           <LocaleSwitcher />
           <p className="type-caption">

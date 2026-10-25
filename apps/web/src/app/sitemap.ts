@@ -7,7 +7,7 @@ import { PRODUCT_PAGE_LOCALE, PRODUCT_PAGES } from "@/lib/site/product-roots";
 function priorityFor(path: string): number {
   if (path === "/") return 1;
   if (path === "/work") return 0.9;
-  if (path === "/imprint") return 0.2;
+  if (path === "/imprint" || path === "/privacy" || path === "/terms") return 0.2;
   return 0.7;
 }
 

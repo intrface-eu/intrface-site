@@ -14,7 +14,9 @@
     "tagline": "Interfaces for the world.",
     "contact": "Contact",
     "github": "GitHub",
-    "imprint": "Imprint"
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -55,6 +57,14 @@
     "imprint": {
       "title": "Imprint",
       "description": "Who operates intrface.eu: company details, responsibility for content, copyright, and what the contact form does with your message."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "How INTRFACE handles personal data on intrface.eu, in the contact form and in our social publishing through Meta, and how to have your data deleted."
+    },
+    "terms": {
+      "title": "Terms of use",
+      "description": "The terms for using intrface.eu and INTRFACE’s public social accounts: content, the contact form, liability, Croatian law and the court in Pazin."
     },
     "velum": {
       "title": "Velum",
@@ -279,7 +289,228 @@
       },
       "form": {
         "title": "The contact form",
-        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you — answering you is the whole legal basis (GDPR Art. 6(1)(b): steps you asked us to take before a contract). Three services carry it: Vercel serves this site and runs the form, Resend delivers the email, and Google Workspace holds our inbox. We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it. Ask us to delete your message at hello@intrface.eu and we will."
+        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you — answering you is the whole legal basis (GDPR Art. 6(1)(b): steps you asked us to take before a contract). Three services carry it: Vercel serves this site and runs the form, Resend delivers the email, and Google Workspace holds our inbox. We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it. Ask us to delete your message at hello@intrface.eu and we will. Our <privacy>privacy policy</privacy> has the full details."
+      }
+    }
+  },
+  "Privacy": {
+    "label": "Privacy",
+    "title": "What we do with your data.",
+    "lead": "{siteName} runs {host} and a few public social accounts. This page says what personal data they collect, why, who handles it, and how to have it deleted.",
+    "updatedLabel": "Last updated:",
+    "updated": "25 October 2026",
+    "factsLabel": "Controller",
+    "facts": {
+      "controller": {
+        "term": "Controller",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Registered address",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croatia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "director": {
+        "term": "Director",
+        "value": "Alex Bašić"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Phone"
+      },
+      "authority": {
+        "term": "Supervisory authority",
+        "value": "<azop>Agencija za zaštitu osobnih podataka (AZOP)</azop>, Selska cesta 136, 10000 Zagreb, Croatia"
+      }
+    },
+    "sections": {
+      "scope": {
+        "title": "What this policy covers",
+        "body": [
+          "It covers {host} and the posts we publish to our own Facebook Pages and Instagram accounts: Voyager, PatchBay, Polis and Intrface.",
+          "Our products — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse and Index — handle their users’ data under their own terms and privacy notices where they collect it. This page does not cover them."
+        ]
+      },
+      "visiting": {
+        "title": "Visiting this site",
+        "body": [
+          "This site uses no analytics, no advertising and no tracking cookies. It loads no third-party scripts, and our fonts come from our own domain.",
+          "The site sets one cookie, NEXT_LOCALE, to remember which language you read it in. It holds only the language code and expires when you close the browser.",
+          "Vercel hosts the site. Like any web server, it records technical data for each request — IP address, browser, page and time — and keeps it for a short time to deliver the site and protect it from abuse. Legal basis: our legitimate interest in running a working, secure site (GDPR Art. 6(1)(f))."
+        ]
+      },
+      "form": {
+        "title": "The contact form",
+        "body": [
+          "The form in our <contact>contact section</contact> sends us what you type:",
+          "We use it only to answer you. Legal basis: steps you asked us to take before a contract (GDPR Art. 6(1)(b)).",
+          "Vercel runs the form, Resend delivers the message to us by email, and Google Workspace holds our inbox. If the email cannot be sent, the form hands the message to our own internal system, hosted by Railway, so we can still reply.",
+          "We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it."
+        ],
+        "items": [
+          "name",
+          "email address",
+          "company (optional)",
+          "topic (optional)",
+          "message",
+          "the language of the page you write from"
+        ]
+      },
+      "social": {
+        "title": "Our social accounts and the Meta app",
+        "body": [
+          "We publish to our own Facebook Pages and Instagram accounts — Voyager, PatchBay, Polis and Intrface — with Postiz, a publishing tool we run on our own server hosted by Railway. Postiz connects to Meta through our Meta app, “Voyager Publishing”. The app uses Meta’s permissions only to:",
+          "When you comment on one of our posts, Meta passes us your public name or username and the comment, as it does for any Page owner. We use them to read and answer comments on our own posts. Legal basis: our legitimate interest in running our accounts (GDPR Art. 6(1)(f)). Insights reach us as totals and do not identify you.",
+          "We collect nothing else about other Facebook or Instagram users. We do not sell this data and we do not use it to target ads.",
+          "Meta’s access tokens for our accounts are stored on that server. When we disconnect an account, its token is removed.",
+          "For Facebook Page insights, Meta and we are joint controllers under Meta’s Page Insights Addendum, and Meta takes primary responsibility for that processing. Meta’s own privacy policy covers everything else that happens on Facebook and Instagram."
+        ],
+        "items": [
+          "publish and schedule posts on the accounts we manage",
+          "read comments on those posts",
+          "read basic insights for those accounts, such as reach and engagement"
+        ]
+      },
+      "transfers": {
+        "title": "Who else handles the data",
+        "body": [
+          "Vercel (hosting and the form), Resend (email delivery), Google (our Workspace inbox), Railway (our own servers) and Meta (Facebook and Instagram) process data for the purposes above. We have data processing terms with each provider that works for us.",
+          "Some of them are based in the United States, so data may leave the EU. Those transfers rely on the EU–US Data Privacy Framework or on the European Commission’s Standard Contractual Clauses."
+        ]
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": [
+          "Under the GDPR you can ask us to:",
+          "Write to <mail>{email}</mail>. We answer within one month. We may ask you to confirm that the data is yours.",
+          "You can also complain to the Croatian data protection authority, <azop>AZOP</azop> (Selska cesta 136, 10000 Zagreb), or to the authority where you live or work."
+        ],
+        "items": [
+          "show you the personal data we hold about you and give you a copy",
+          "correct it",
+          "delete it",
+          "restrict how we use it, or stop using it if you object",
+          "hand it to you in a portable format"
+        ]
+      },
+      "deletion": {
+        "title": "Data deletion",
+        "body": [
+          "Anyone can ask us to delete the personal data we hold about them, including data our Meta app received from Facebook or Instagram.",
+          "You can also delete your own comment on one of our posts on Facebook or Instagram at any time.",
+          "Our Meta app connects only our own accounts. It holds no login or access token of yours, so there is nothing to remove in your Facebook or Instagram settings."
+        ],
+        "items": [
+          "Email <mail>{email}</mail> with the subject “Data deletion”.",
+          "Say what to delete: the email address you wrote from, or your Facebook or Instagram name and the post you commented on.",
+          "We delete the data within 30 days and confirm by email."
+        ]
+      },
+      "changes": {
+        "title": "Changes",
+        "body": [
+          "When our tools or services change, we update this page and the date at the top. Our <terms>terms of use</terms> cover the use of this site. Send questions to <mail>{email}</mail>."
+        ]
+      }
+    }
+  },
+  "Terms": {
+    "label": "Terms",
+    "title": "The rules for using this site.",
+    "lead": "These terms cover {host} and our public social accounts. By using them, you accept these terms.",
+    "updatedLabel": "Last updated:",
+    "updated": "25 October 2026",
+    "factsLabel": "Operator",
+    "facts": {
+      "operator": {
+        "term": "Operator",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Registered address",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croatia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "law": {
+        "term": "Governing law",
+        "value": "Croatian law"
+      },
+      "court": {
+        "term": "Court",
+        "value": "The competent court in Pazin, Croatia"
+      }
+    },
+    "sections": {
+      "who": {
+        "title": "Who we are",
+        "body": [
+          "{siteName} j.d.o.o. runs {host} and the Facebook Pages and Instagram accounts of Voyager, PatchBay, Polis and Intrface. Full company details are in the <imprint>imprint</imprint>.",
+          "These terms do not cover the use of our products (Voyager, Polis, PatchBay, AgroPulse and Index)."
+        ]
+      },
+      "content": {
+        "title": "Content",
+        "body": [
+          "Text, images and code on this site and on our social accounts are © {siteName}, unless another owner is named. You may quote them with a link to the source. Ask us before reproducing a page or a post in full.",
+          "Comments you post on our social accounts stay yours, and the platform’s terms apply to them. We may hide or delete comments that are unlawful, abusive or spam."
+        ]
+      },
+      "form": {
+        "title": "The contact form",
+        "body": [
+          "Use the form to reach us about real work and real questions. Do not send:",
+          "We may ignore or delete messages that break these rules. Our <privacy>privacy policy</privacy> says how we handle what you send."
+        ],
+        "items": [
+          "spam, advertising or automated submissions",
+          "unlawful, abusive or threatening content",
+          "malicious code or links",
+          "other people’s personal data without their permission"
+        ]
+      },
+      "warranty": {
+        "title": "Information only",
+        "body": [
+          "The content on this site and on our social accounts is general information about our work and our products. It is not professional advice. We keep it accurate and current to the best of our knowledge, but we do not warrant that it is complete, correct or always available, and we may change it at any time."
+        ]
+      },
+      "liability": {
+        "title": "Liability",
+        "body": [
+          "We are liable for damage we cause on purpose or through gross negligence, and wherever Croatian law does not allow liability to be limited.",
+          "Otherwise, as far as Croatian law allows, we are not liable for loss that arises from using this site, our social accounts or the information on them, or from their being unavailable.",
+          "If you are a consumer, nothing in these terms limits the rights that mandatory law gives you."
+        ]
+      },
+      "clients": {
+        "title": "Client work",
+        "body": [
+          "Work we do for clients — websites, software, consulting — is governed by a separate written contract or an accepted quote. Where it differs from these terms, the contract or quote prevails. Nothing on this site is a binding offer."
+        ]
+      },
+      "law": {
+        "title": "Governing law and court",
+        "body": [
+          "Croatian law governs these terms, without its conflict-of-laws rules. The competent court in Pazin, Croatia, decides disputes.",
+          "If you are a consumer in the EU, you keep the protection of the mandatory law of the country where you live, and you may also bring a claim there."
+        ]
+      },
+      "changes": {
+        "title": "Changes to these terms",
+        "body": [
+          "We may change these terms. The date at the top shows the last change; the version published here applies from that date. Send questions to <mail>{email}</mail>."
+        ]
       }
     }
   },

@@ -14,7 +14,9 @@
     "tagline": "Interfacce per il mondo.",
     "contact": "Contatti",
     "github": "GitHub",
-    "imprint": "Note legali"
+    "imprint": "Note legali",
+    "privacy": "Privacy",
+    "terms": "Termini"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -55,6 +57,14 @@
     "imprint": {
       "title": "Note legali",
       "description": "Chi gestisce intrface.eu: dati della società, responsabilità dei contenuti, diritto d’autore e cosa facciamo con i messaggi del modulo di contatto."
+    },
+    "privacy": {
+      "title": "Informativa sulla privacy",
+      "description": "Come INTRFACE tratta i dati personali su intrface.eu, nel modulo di contatto e nella pubblicazione sui social tramite Meta, e come chiederne la cancellazione."
+    },
+    "terms": {
+      "title": "Termini d’uso",
+      "description": "I termini per usare intrface.eu e gli account social pubblici di INTRFACE: contenuti, modulo di contatto, responsabilità, diritto croato e foro di Pazin."
     },
     "velum": {
       "title": "Velum",
@@ -279,7 +289,228 @@
       },
       "form": {
         "title": "Il modulo di contatto",
-        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che lei scrive. Salviamo l’invio e lo inoltriamo a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a hello@intrface.eu: ci pensiamo noi."
+        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che lei scrive. Salviamo l’invio e lo inoltriamo a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a hello@intrface.eu: ci pensiamo noi. Tutti i dettagli sono nell’<privacy>informativa sulla privacy</privacy>."
+      }
+    }
+  },
+  "Privacy": {
+    "label": "Privacy",
+    "title": "Cosa facciamo con i suoi dati.",
+    "lead": "{siteName} gestisce {host} e alcuni account social pubblici. Questa pagina spiega quali dati personali raccolgono, perché, chi li tratta e come chiederne la cancellazione.",
+    "updatedLabel": "Ultimo aggiornamento:",
+    "updated": "25 ottobre 2026",
+    "factsLabel": "Titolare del trattamento",
+    "facts": {
+      "controller": {
+        "term": "Titolare",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Sede legale",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "director": {
+        "term": "Amministratore",
+        "value": "Alex Bašić"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "phone": {
+        "term": "Telefono"
+      },
+      "authority": {
+        "term": "Autorità di controllo",
+        "value": "<azop>Agencija za zaštitu osobnih podataka (AZOP)</azop>, Selska cesta 136, 10000 Zagabria, Croazia"
+      }
+    },
+    "sections": {
+      "scope": {
+        "title": "A cosa si applica",
+        "body": [
+          "Si applica a {host} e ai post che pubblichiamo sulle nostre pagine Facebook e sui nostri account Instagram: Voyager, PatchBay, Polis e Intrface.",
+          "I nostri prodotti — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse e Index — trattano i dati dei loro utenti secondo le proprie condizioni e informative, là dove li raccolgono. Questa pagina non li riguarda."
+        ]
+      },
+      "visiting": {
+        "title": "Visitare questo sito",
+        "body": [
+          "Questo sito non usa strumenti di analisi, pubblicità né cookie di tracciamento. Non carica script di terze parti e i caratteri arrivano dal nostro dominio.",
+          "Il sito imposta un solo cookie, NEXT_LOCALE, per ricordare in quale lingua lo sta leggendo. Contiene soltanto il codice della lingua e scade quando lei chiude il browser.",
+          "Il sito è ospitato da Vercel. Come ogni server web, per ogni richiesta registra dati tecnici — indirizzo IP, browser, pagina e ora — e li conserva per poco tempo, per servire il sito e proteggerlo dagli abusi. Base giuridica: il nostro legittimo interesse a far funzionare il sito in modo corretto e sicuro (GDPR, art. 6, par. 1, lett. f)."
+        ]
+      },
+      "form": {
+        "title": "Il modulo di contatto",
+        "body": [
+          "Il modulo nella nostra <contact>sezione contatti</contact> ci invia ciò che lei scrive:",
+          "Li usiamo solo per risponderle. Base giuridica: misure precontrattuali adottate su sua richiesta (GDPR, art. 6, par. 1, lett. b).",
+          "Vercel gestisce il modulo, Resend ci consegna il messaggio via email e Google Workspace ospita la nostra casella di posta. Se l’email non parte, il modulo passa il messaggio a un nostro sistema interno, ospitato da Railway, così possiamo comunque risponderle.",
+          "Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo."
+        ],
+        "items": [
+          "nome",
+          "indirizzo email",
+          "azienda (facoltativa)",
+          "argomento (facoltativo)",
+          "messaggio",
+          "la lingua della pagina da cui scrive"
+        ]
+      },
+      "social": {
+        "title": "I nostri account social e l’app Meta",
+        "body": [
+          "Pubblichiamo sulle nostre pagine Facebook e sui nostri account Instagram — Voyager, PatchBay, Polis e Intrface — con Postiz, uno strumento di pubblicazione che gestiamo su un nostro server ospitato da Railway. Postiz si collega a Meta tramite la nostra app Meta “Voyager Publishing”. L’app usa le autorizzazioni di Meta solo per:",
+          "Quando lei commenta un nostro post, Meta ci trasmette il suo nome pubblico o nome utente e il commento, come a qualsiasi titolare di una pagina. Li usiamo per leggere i commenti ai nostri post e rispondere. Base giuridica: il nostro legittimo interesse a gestire i nostri account (GDPR, art. 6, par. 1, lett. f). Gli insight ci arrivano come totali e non la identificano.",
+          "Non raccogliamo nient’altro su altri utenti di Facebook o Instagram. Non vendiamo questi dati e non li usiamo per indirizzare pubblicità.",
+          "I token di accesso di Meta per i nostri account sono salvati su quel server. Quando scolleghiamo un account, il suo token viene rimosso.",
+          "Per gli insight delle pagine Facebook, Meta e noi siamo contitolari del trattamento secondo l’addendum di Meta sugli insight delle pagine (Page Insights Addendum), e la responsabilità principale di quel trattamento è di Meta. Per tutto il resto che accade su Facebook e Instagram vale l’informativa sulla privacy di Meta."
+        ],
+        "items": [
+          "pubblicare e programmare post sugli account che gestiamo",
+          "leggere i commenti a quei post",
+          "leggere gli insight di base di quegli account, come copertura e interazioni"
+        ]
+      },
+      "transfers": {
+        "title": "Chi altro tratta i dati",
+        "body": [
+          "Vercel (hosting e modulo), Resend (consegna delle email), Google (la nostra casella Workspace), Railway (i nostri server) e Meta (Facebook e Instagram) trattano dati per gli scopi descritti sopra. Con ogni fornitore che lavora per nostro conto abbiamo un accordo sul trattamento dei dati.",
+          "Alcuni hanno sede negli Stati Uniti, quindi i dati possono uscire dall’UE. Questi trasferimenti si basano sul quadro UE–USA per la protezione dei dati (EU–US Data Privacy Framework) o sulle clausole contrattuali tipo della Commissione europea."
+        ]
+      },
+      "rights": {
+        "title": "I suoi diritti",
+        "body": [
+          "In base al GDPR può chiederci di:",
+          "Scriva a <mail>{email}</mail>. Rispondiamo entro un mese. Potremmo chiederle di confermare che i dati sono suoi.",
+          "Può anche presentare reclamo all’autorità croata per la protezione dei dati, <azop>AZOP</azop> (Selska cesta 136, 10000 Zagabria), o all’autorità del paese in cui vive o lavora."
+        ],
+        "items": [
+          "mostrarle i dati personali che abbiamo su di lei e dargliene una copia",
+          "correggerli",
+          "cancellarli",
+          "limitarne il trattamento, o interromperlo se lei si oppone",
+          "consegnarglieli in un formato portabile"
+        ]
+      },
+      "deletion": {
+        "title": "Cancellazione dei dati",
+        "body": [
+          "Chiunque può chiederci di cancellare i dati personali che abbiamo su di sé, compresi i dati che la nostra app Meta ha ricevuto da Facebook o Instagram.",
+          "Può anche cancellare in qualsiasi momento il suo commento a un nostro post, direttamente su Facebook o Instagram.",
+          "La nostra app Meta collega solo i nostri account. Non conserva il suo accesso né un suo token, quindi nelle impostazioni di Facebook o Instagram non c’è nulla da rimuovere."
+        ],
+        "items": [
+          "Scriva a <mail>{email}</mail> con oggetto “Cancellazione dati” (o “Data deletion”).",
+          "Indichi cosa cancellare: l’indirizzo email da cui ha scritto, oppure il suo nome su Facebook o Instagram e il post che ha commentato.",
+          "Cancelliamo i dati entro 30 giorni e glielo confermiamo via email."
+        ]
+      },
+      "changes": {
+        "title": "Modifiche",
+        "body": [
+          "Quando i nostri strumenti o servizi cambiano, aggiorniamo questa pagina e la data in alto. L’uso del sito è regolato dai nostri <terms>termini d’uso</terms>. Per domande scriva a <mail>{email}</mail>."
+        ]
+      }
+    }
+  },
+  "Terms": {
+    "label": "Termini",
+    "title": "Le regole per usare questo sito.",
+    "lead": "Questi termini valgono per {host} e per i nostri account social pubblici. Usandoli, lei li accetta.",
+    "updatedLabel": "Ultimo aggiornamento:",
+    "updated": "25 ottobre 2026",
+    "factsLabel": "Titolare",
+    "facts": {
+      "operator": {
+        "term": "Titolare",
+        "value": "INTRFACE j.d.o.o. — jednostavno društvo s ograničenom odgovornošću za računalno programiranje i razvoj digitalnih rješenja"
+      },
+      "address": {
+        "term": "Sede legale",
+        "value": "Dalmatinska 34, 52450 Vrsar, Croazia"
+      },
+      "oib": {
+        "term": "OIB",
+        "value": "34363240459"
+      },
+      "email": {
+        "term": "Email"
+      },
+      "law": {
+        "term": "Legge applicabile",
+        "value": "Diritto croato"
+      },
+      "court": {
+        "term": "Foro competente",
+        "value": "Il tribunale competente di Pazin (Pisino), Croazia"
+      }
+    },
+    "sections": {
+      "who": {
+        "title": "Chi siamo",
+        "body": [
+          "{siteName} j.d.o.o. gestisce {host} e le pagine Facebook e gli account Instagram di Voyager, PatchBay, Polis e Intrface. I dati completi della società sono nelle <imprint>note legali</imprint>.",
+          "Questi termini non riguardano l’uso dei nostri prodotti (Voyager, Polis, PatchBay, AgroPulse e Index)."
+        ]
+      },
+      "content": {
+        "title": "Contenuti",
+        "body": [
+          "Testi, immagini e codice su questo sito e sui nostri account social sono © {siteName}, salvo che sia indicato un altro titolare. Può citarli con un link alla fonte. Prima di riprodurre per intero una pagina o un post, ce lo chieda.",
+          "I commenti che pubblica sui nostri account restano suoi e per essi valgono le condizioni della piattaforma. Possiamo nascondere o cancellare commenti illeciti, offensivi o spam."
+        ]
+      },
+      "form": {
+        "title": "Il modulo di contatto",
+        "body": [
+          "Usi il modulo per contattarci per lavori e domande reali. Non invii:",
+          "Possiamo ignorare o cancellare i messaggi che violano queste regole. L’<privacy>informativa sulla privacy</privacy> spiega come trattiamo ciò che lei invia."
+        ],
+        "items": [
+          "spam, pubblicità o invii automatici",
+          "contenuti illeciti, offensivi o minacciosi",
+          "codice o link dannosi",
+          "dati personali di altre persone senza il loro permesso"
+        ]
+      },
+      "warranty": {
+        "title": "Solo informazioni",
+        "body": [
+          "I contenuti di questo sito e dei nostri account social sono informazioni generali sul nostro lavoro e sui nostri prodotti. Non sono una consulenza professionale. Li teniamo corretti e aggiornati per quanto ne sappiamo, ma non garantiamo che siano completi, esatti o sempre disponibili, e possiamo modificarli in qualsiasi momento."
+        ]
+      },
+      "liability": {
+        "title": "Responsabilità",
+        "body": [
+          "Rispondiamo dei danni causati con dolo o colpa grave e in ogni caso in cui il diritto croato non consente di limitare la responsabilità.",
+          "Negli altri casi, nella misura consentita dal diritto croato, non rispondiamo di perdite derivanti dall’uso di questo sito, dei nostri account social o delle informazioni che contengono, né dalla loro indisponibilità.",
+          "Se lei è un consumatore, nulla in questi termini limita i diritti che le riconosce la legge imperativa."
+        ]
+      },
+      "clients": {
+        "title": "Lavori per i clienti",
+        "body": [
+          "I lavori che svolgiamo per i clienti — siti web, software, consulenza — sono regolati da un contratto scritto separato o da un preventivo accettato. Dove differiscono da questi termini, prevalgono il contratto o il preventivo. Nulla su questo sito è un’offerta vincolante."
+        ]
+      },
+      "law": {
+        "title": "Legge applicabile e foro",
+        "body": [
+          "Questi termini sono regolati dal diritto croato, escluse le sue norme di conflitto. Le controversie sono decise dal tribunale competente di Pazin (Pisino), in Croazia.",
+          "Se lei è un consumatore nell’UE, conserva la tutela della legge imperativa del paese in cui vive e può agire anche lì."
+        ]
+      },
+      "changes": {
+        "title": "Modifiche ai termini",
+        "body": [
+          "Possiamo modificare questi termini. La data in alto indica l’ultima modifica; da quella data vale la versione pubblicata qui. Per domande scriva a <mail>{email}</mail>."
+        ]
       }
     }
   },
