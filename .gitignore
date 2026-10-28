@@ -51,8 +51,6 @@ next-env.d.ts
 # AOC tracking policy (managed by aoc-init)
 !/.aoc/
 !/.aoc/**
-!/.taskmaster/
-!/.taskmaster/**
 !/.pi/
 !/.pi/**
 

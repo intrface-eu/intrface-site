@@ -1,8 +1,8 @@
 # Project Context Snapshot
 
 ## Repository
-- Name: .
-- Root: .
+- Name: intrface-site
+- Root: ~/dev/intrface-site
 - VCS: git
 - Git branch: main
 
@@ -40,7 +40,6 @@
 ./.impeccable
 ./.impeccable/critique
 ./.omp
-./.omp/.aoc-backups
 ./.omp/agents
 ./.omp/extensions
 ./.omp/manifest.toml
@@ -53,6 +52,7 @@
 ./.pi/prompts
 ./.pi/prompts-optional
 ./.pi/settings.json
+./.pi/skills
 ... [tree truncated to 40 lines]
 ```
 

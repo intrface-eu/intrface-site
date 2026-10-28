@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
-  "projectAocVersion": 4,
+  "projectAocVersion": 5,
   "previousProjectAocVersion": 4,
-  "lastInitializedAt": "2026-09-12T08:01:03.667273Z",
+  "lastInitializedAt": "2026-10-28T14:54:14.798021Z",
   "lastInitScriptDir": "/Users/basicalex/.local/bin",
   "runtime": {
     "canonical": "omp"
   },
-  "migrationsApplied": []
+  "migrationsApplied": [
+    "v5-retired-tool-cleanup"
+  ]
 }

@@ -1,11 +1,9 @@
 extensions = [
-  "aoc-codegraph.ts",
   "aoc-commit.ts",
   "aoc-state.ts",
   "aoc-dox.ts",
   "aoc-dox-command.ts",
   "aoc-master.ts",
-  "aoc-web-search.ts",
   "aoc-style.ts",
   "aoc-profile.ts",
 ]
@@ -18,15 +16,6 @@ agents = [
 ]
 
 skills = [
-  "animejs-core-api",
-  "animejs-performance-a11y",
-  "animejs-react-integration",
-  "animejs-reviewer",
-  "animejs-scene-planner",
-  "animejs-scroll-interaction",
-  "animejs-svg-motion",
-  "animejs-text-splitting",
-  "animejs-timelines",
   "aoc-dox-cartography",
   "herdr-agent-observation",
   "aoc-gaps",
@@ -34,22 +23,7 @@ skills = [
   "aoc-map",
   "aoc-understand",
   "aoc-update",
-  "architecture-design",
-  "design-diff",
-  "design-director",
-  "design-handoff",
-  "design-premium-ui",
-  "design-redesign",
-  "design-review",
-  "design-spec",
-  "design-tokens",
-  "enforce-dashboard-ux-guardrails",
-  "frontend-design",
-  "funnel-design",
-  "motion-director",
-  "omarchy-theme-ops",
   "rlm-analysis",
-  "safe-gamification",
   "ponytail-workflows",
 ]
 
@@ -61,7 +35,6 @@ description = "Lean default AOC OMP surface for code understanding and Ponytail 
 risk = "low"
 extensions = [
   "aoc-profile.ts",
-  "aoc-codegraph.ts",
   "aoc-dox.ts",
   "aoc-style.ts",
 ]
@@ -79,33 +52,6 @@ skills = [
 ]
 agents = []
 
-[profiles.design-product]
-description = "Product design, funnel, and ethical gameful UX routing."
-risk = "medium"
-extensions = []
-skills = [
-  "frontend-design",
-  "funnel-design",
-  "safe-gamification",
-]
-agents = []
-
-[profiles.motion]
-description = "Product motion routing and Anime.js API help."
-risk = "medium"
-extensions = []
-skills = [
-  "motion-director",
-  "animejs-core-api",
-]
-agents = []
-
-[profiles.desktop]
-description = "Omarchy theme maintenance helpers."
-risk = "medium"
-extensions = []
-skills = ["omarchy-theme-ops"]
-agents = []
 
 [profiles.review]
 description = "Ponytail review, audit, and debt workflows."
@@ -137,39 +83,19 @@ agents = [
   "dox-writer.md",
 ]
 
-[profiles.research]
-description = "Local web-search fallback for package, docs, GitHub, and error lookup."
-risk = "network"
-extensions = ["aoc-web-search.ts"]
-skills = []
-agents = []
-
-
-
 [profiles.full]
 description = "Full compatibility surface matching the previous always-installed AOC OMP inventory."
 risk = "high"
 extensions = [
-  "aoc-codegraph.ts",
   "aoc-commit.ts",
   "aoc-state.ts",
   "aoc-dox.ts",
   "aoc-dox-command.ts",
   "aoc-master.ts",
-  "aoc-web-search.ts",
   "aoc-style.ts",
   "aoc-profile.ts",
 ]
 skills = [
-  "animejs-core-api",
-  "animejs-performance-a11y",
-  "animejs-react-integration",
-  "animejs-reviewer",
-  "animejs-scene-planner",
-  "animejs-scroll-interaction",
-  "animejs-svg-motion",
-  "animejs-text-splitting",
-  "animejs-timelines",
   "aoc-dox-cartography",
   "herdr-agent-observation",
   "aoc-gaps",
@@ -177,22 +103,7 @@ skills = [
   "aoc-map",
   "aoc-understand",
   "aoc-update",
-  "architecture-design",
-  "design-diff",
-  "design-director",
-  "design-handoff",
-  "design-premium-ui",
-  "design-redesign",
-  "design-review",
-  "design-spec",
-  "design-tokens",
-  "enforce-dashboard-ux-guardrails",
-  "frontend-design",
-  "funnel-design",
-  "motion-director",
-  "omarchy-theme-ops",
   "rlm-analysis",
-  "safe-gamification",
   "ponytail-workflows",
 ]
 agents = [

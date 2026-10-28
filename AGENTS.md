@@ -1,3 +1,4 @@
+<!-- aoc:managed:start -->
 # AOC Architecture & Agent Guidelines
 
 This file defines the always-on rules for agents in this repo. Procedural playbooks live in AOC skills.
@@ -9,7 +10,6 @@ This file defines the always-on rules for agents in this repo. Procedural playbo
 ## Low-Token Default Mode
 - Keep responses concise by default; do not print full files or raw logs unless explicitly requested.
 - Start with the smallest viable step; use narrow, path-scoped searches before broad scans.
-- When `.codegraph/` exists and the OMP `aoc_codegraph` tool is available, use it before broad text/file scans for code discovery, call-flow mapping, impact probes, and affected-test selection.
 - Read files in bounded chunks and avoid rereading unchanged large files.
 - Summarize command/tool output with actionable lines only (key errors, next actions).
 - Run targeted checks/tests first; run full-suite commands only when required.
@@ -38,4 +38,4 @@ These commands are in PATH and work without loading any skill:
 
 ## Skills (load when needed)
 Load a skill only when its description matches the user request. Keep always-on guidance here minimal; procedural playbooks belong in skill files.
-
+<!-- aoc:managed:end -->
