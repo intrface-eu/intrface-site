@@ -5,7 +5,7 @@ import { consultingOffers, consultingOutcomes } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Consulting",
-  description: "Use AOC as a basis for team enablement, local-first workflow strategy, and structured agentic coding adoption.",
+  description: "Use AOC as a basis for team setup, agent rules, and the planner-and-workers coding flow.",
 };
 
 export default function ConsultingPage() {
@@ -14,7 +14,7 @@ export default function ConsultingPage() {
       <SectionCard
         eyebrow="Consulting"
         title="Use AOC as the basis for team enablement and workflow design."
-        body="Intrface can use AOC as a concrete operating model for teams that want more disciplined, local-first, and continuity-aware agentic coding practices."
+        body="Intrface can use AOC as a concrete operating model for teams that want more disciplined agentic coding, with rules and memory that carry over between sessions."
       >
         <div className="grid gap-4 lg:grid-cols-2">
           {consultingOffers.map((item) => (

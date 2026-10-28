@@ -5,7 +5,7 @@ import { philosophyPoints, philosophyPrinciples } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Philosophy",
-  description: "The worldview behind AOC: structured, terminal-native, local-first compatible human-machine coding.",
+  description: "The worldview behind AOC: structured, terminal-native human-machine coding with rules and memory kept as files.",
 };
 
 export default function PhilosophyPage() {

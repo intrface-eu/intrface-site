@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { SectionCard } from "@/components/site-shell";
-import { installNotes, installSteps } from "@/lib/site-content";
+import { installNotes, installSteps, repositoryUrl } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Install",
-  description: "Install AOC, verify the environment, and begin from a serious terminal-native cockpit.",
+  description: "Install AOC, check the machine with aoc-doctor, and open a project workspace.",
 };
 
 export default function InstallPage() {
@@ -12,8 +12,8 @@ export default function InstallPage() {
     <main className="flex flex-col gap-8">
       <SectionCard
         eyebrow="Install"
-        title="Start AOC, verify the environment, and begin from the cockpit."
-        body="AOC is designed to get serious coding underway quickly, whether you are operating with a local model setup or another supported runtime path."
+        title="Install AOC, check the machine, open the workspace."
+        body="Four commands take a machine from nothing to a project workspace."
       >
         <div className="grid gap-4">
           {installSteps.map((item, index) => (
@@ -24,10 +24,10 @@ export default function InstallPage() {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <a className="rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-black" href="https://github.com/intrface-eu/agent-ops-cockpit#installation">
+          <a className="rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-black" href={`${repositoryUrl}#install`}>
             Read install docs
           </a>
-          <a className="rounded-full border border-[var(--panel-border)] px-5 py-3 text-sm font-medium text-white" href="https://github.com/intrface-eu/agent-ops-cockpit">
+          <a className="rounded-full border border-[var(--panel-border)] px-5 py-3 text-sm font-medium text-white" href={repositoryUrl}>
             View repository
           </a>
         </div>
@@ -35,8 +35,8 @@ export default function InstallPage() {
 
       <SectionCard
         eyebrow="Practical notes"
-        title="The installation path is part of the product philosophy."
-        body="AOC is meant to reduce friction into serious work, not replace it with another onboarding maze."
+        title="What the installer needs and what it touches."
+        body="Read this before you run it."
       >
         <div className="grid gap-4 lg:grid-cols-3">
           {installNotes.map((item) => (

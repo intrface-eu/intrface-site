@@ -7,46 +7,48 @@ export const navItems = [
   { label: "Install", href: "/install" },
 ] as const;
 
+export const repositoryUrl = "https://github.com/basicalex/agent-ops-cockpit";
+
 export const homepage = {
   highlights: [
-    "Terminal-first AI workspace",
-    "Local-model friendly and low-overhead",
-    "Structured, strategic agentic coding",
-    "Built from lived daily development practice",
+    "aoc-init writes the agent rules into the repo's AGENTS.md",
+    "aoc opens the project's Herdr workspace",
+    "aoc-omp starts omp with the project's context attached",
+    "aoc-memory-link gives each repo one memory folder",
   ],
   pillars: [
     {
-      title: "No messy GUIs",
-      body: "AOC stays close to the terminal and the project itself, so the interface supports work instead of interrupting it.",
+      title: "Rules live in the repo",
+      body: "aoc-init keeps a managed block in AGENTS.md and leaves your own lines under \"## Project rules\".",
     },
     {
-      title: "No online requirement",
-      body: "AOC is compatible with local-first setups and can work with local models, giving developers more control over where and how they operate.",
+      title: "Workers never commit",
+      body: "The planning session reviews each worker's diff, runs the tests and makes the commit itself.",
     },
     {
-      title: "No subscription logic",
-      body: "The value is in the workflow, continuity, and operator discipline—not in locking serious coding behind cloud product mechanics.",
+      title: "One contract for every agent",
+      body: "aoc-contract-install puts one communication contract in ~/.config/aoc: plain words, facts once, no filler.",
     },
   ],
   proof: [
-    "Persistent project context, memory, and task state stored in-repo",
-    "Zellij-based cockpit layout with Yazi, PI runtime, Pulse, and Taskmaster",
-    "Built from real daily use as the development environment behind Intrface work",
+    "The Claude policy and herdr-orchestrate skill in the repo are the ones Intrface runs on its own machines.",
+    "aoc-dispatch takes GitHub issues labeled agent-ready one at a time, runs each in a Herdr pane, and labels the result for review.",
+    "aoc-init deletes files left behind by tools AOC no longer ships.",
   ],
   audience: [
     {
       title: "Developers",
-      body: "For people who want agentic coding to feel strategic, structured, and grounded in the machine they actually control.",
+      body: "For people who want coding agents in the terminal, with rules and memory they can read as plain files.",
       cta: "/install",
     },
     {
       title: "Learners",
-      body: "For people who want to learn modern human-machine coding interaction through serious tooling rather than prompt theater.",
+      body: "For people learning to split work between a planning model and the agents that write the code.",
       cta: "/learn",
     },
     {
       title: "Teams",
-      body: "For organizations exploring continuity, memory, operator control, and local-first adoption paths for coding agents.",
+      body: "For teams that want written agent rules, reviewed diffs and one owner for every commit.",
       cta: "/consulting",
     },
   ],
@@ -55,19 +57,19 @@ export const homepage = {
 export const philosophyPoints = [
   {
     title: "Structure over prompt improvisation",
-    body: "AOC starts from the belief that coding with machines should be a workflow, not a string of disconnected requests. The system is designed so context, decisions, and active work survive beyond one interaction.",
+    body: "Coding with machines should be a workflow, not a string of disconnected requests. Rules, decisions and open work should outlast any one conversation.",
   },
   {
-    title: "Continuity as infrastructure",
-    body: "Context, memory, and tasks are not side notes. They are core operating layers that keep the machine aligned with the project as work evolves.",
+    title: "Context and memory are files",
+    body: "Project rules live in AGENTS.md. Agent memory lives in ~/.aoc/memory/<repo>/. You can read, diff and edit both.",
   },
   {
-    title: "Terminal-native seriousness",
-    body: "The terminal remains the strongest environment for disciplined development. AOC treats it as a control surface rather than something to be abstracted away behind a glossy GUI.",
+    title: "The terminal is the control surface",
+    body: "Herdr gives each agent its own pane and shows whether it is working or idle. Nothing hides behind a browser layer.",
   },
   {
-    title: "Local-first compatibility",
-    body: "Developers need freedom to work with local models, constrained hardware, and offline-friendly workflows. AOC is shaped to respect those realities instead of assuming cloud dependence.",
+    title: "Plan with one model, build with another",
+    body: "The main Claude session plans, splits and reviews the work. omp workers write the code, so the strongest model spends its time on judgment.",
   },
 ] as const;
 
@@ -79,65 +81,73 @@ export const philosophyPrinciples = [
 
 export const productSections = [
   {
-    title: "Context",
-    body: "AOC keeps reactive project facts and structure available through .aoc/context.md so the workspace remains project-aware.",
+    title: "Project rules",
+    body: "aoc-init writes a managed block into AGENTS.md, keeps your lines under \"## Project rules\", and installs the omp extensions, skills and agents the repo's manifest selects.",
+  },
+  {
+    title: "Workspace",
+    body: "aoc opens or focuses the project's Herdr workspace. Herdr owns the tabs, panes and agent status. aoc services opens a second workspace for long-lived shells.",
+  },
+  {
+    title: "Agents",
+    body: "aoc-omp starts omp with a short context capsule from aoc-handshake. Inside an AOC project, plain omp does the same.",
+  },
+  {
+    title: "Orchestration",
+    body: "From Claude Code, the herdr-orchestrate skill sends written packets to omp workers in their own tabs. Inside omp, /master on runs the same idea with gated tools.",
   },
   {
     title: "Memory",
-    body: "Architectural decisions and durable project knowledge live in .aoc/memory.md instead of disappearing between sessions.",
+    body: "aoc-memory-link moves Claude Code's memory for a repo into ~/.aoc/memory/<repo>/ and links it back. Rerun it after moving the repo and it relinks.",
   },
   {
-    title: "Tasks",
-    body: "Taskmaster gives AOC a native work-tracking surface inside the same cockpit as coding and file navigation.",
-  },
-  {
-    title: "Runtime",
-    body: "PI runs as the coding runtime inside a Zellij-based workspace alongside Yazi, Pulse, and operator controls.",
+    title: "Harness setup",
+    body: "aoc-claude-install writes the agent policy for Claude Code, the machine-wide ~/AGENTS.md, and a Codex config if none exists.",
   },
 ] as const;
 
 export const productFlow = [
-  "Enter a project and launch AOC inside the repo itself.",
-  "Navigate files in Yazi while the PI runtime stays project-aware in parallel.",
-  "Track work through Taskmaster without losing the coding surface.",
-  "Retain continuity through context and memory artifacts that live with the project.",
+  "Run aoc-init in the repo to write the agent rules and install omp's tools.",
+  "Run aoc to open the project's Herdr workspace.",
+  "Plan in Claude Code; herdr-orchestrate hands each slice to an omp worker in its own tab.",
+  "Review each diff, run the tests and commit from the planning session.",
 ] as const;
 
 export const learnTracks = [
-  "Learn the terminal-first / local-first thesis behind serious agentic coding",
-  "Understand how context, memory, and tasks create continuity",
+  "How a planning session splits work into packets with separate file scopes",
+  "How AGENTS.md and a shared memory folder carry context between sessions",
   "Move from ad hoc prompting toward structured development workflows",
   "Adopt AOC as a practical learning environment rather than just a repo to skim",
 ] as const;
 
 export const learnAudience = [
   "Solo developers moving beyond browser-chat coding",
-  "Technical operators exploring local-first AI workflows",
+  "Developers running Claude Code, omp or Codex side by side",
   "Teams who need a teachable model for agentic development practice",
 ] as const;
 
 export const consultingOffers = [
   "Agentic coding workflow design",
-  "AOC-guided team enablement",
-  "Local-first AI development setup strategy",
-  "Operator training for structured human-machine collaboration",
+  "Setting up Herdr, omp and Claude Code on a team's machines",
+  "Writing agent rules and packet templates for your repos",
+  "Training on the planner-and-workers flow",
 ] as const;
 
 export const consultingOutcomes = [
   "A clearer operating model for how teams should work with coding agents",
-  "Practical local-first and low-overhead adoption paths",
-  "A stronger continuity layer around context, memory, and work tracking",
+  "Agent rules that live in your repos, not in someone's chat history",
+  "Memory and context that carry over between sessions and machines",
 ] as const;
 
 export const installSteps = [
-  "Run the bootstrap installer or use a local clone workflow from the AOC repository.",
-  "Verify the environment with aoc-doctor.",
-  "Start AOC inside a project and operate through Yazi, PI, and Taskmaster.",
-  "Use Alt+C to configure optional integrations and operator controls.",
+  "Run the bootstrap script, or ./install.sh from a local clone.",
+  "Run aoc-doctor and fix anything it marks required.",
+  "In your project, run aoc-init.",
+  "Run aoc to open the workspace, then code in the omp pane.",
 ] as const;
 
 export const installNotes = [
-  "AOC is designed to work from normal machines, not only from premium cloud setups.",
-  "The workflow remains useful whether you operate with local models or other supported runtime paths.",
-  "The point is to begin serious coding quickly, with structure already in place.",
+  "AOC runs on Linux, macOS or WSL and needs Herdr, omp, Git and Bun.",
+  "install.sh also copies the Claude policy and skills into ~/.claude; set AOC_CLAUDE_DIR to put them elsewhere.",
+  "aoc-init adds project files without overwriting work already there.",
 ] as const;

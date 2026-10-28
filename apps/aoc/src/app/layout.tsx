@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     template: "%s | AOC",
   },
   description:
-    "AOC is the terminal-first AI workspace by Intrface for structured, local-first agentic coding.",
+    "AOC by Intrface sets up Herdr, omp and Claude Code so one planning session can hand coding work to agents.",
   openGraph: {
     title: "AOC",
     description:
-      "AOC is the terminal-first AI workspace by Intrface for structured, local-first agentic coding.",
+      "AOC by Intrface sets up Herdr, omp and Claude Code so one planning session can hand coding work to agents.",
     url: "https://aoc.intrface.eu",
     siteName: "AOC",
     type: "website",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AOC",
     description:
-      "AOC is the terminal-first AI workspace by Intrface for structured, local-first agentic coding.",
+      "AOC by Intrface sets up Herdr, omp and Claude Code so one planning session can hand coding work to agents.",
   },
   icons: {
     icon: [

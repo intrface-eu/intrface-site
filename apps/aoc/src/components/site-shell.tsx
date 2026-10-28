@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navItems } from "@/lib/site-content";
+import { navItems, repositoryUrl } from "@/lib/site-content";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
@@ -12,10 +12,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <span className="status-pill rounded-full px-3 py-1 font-medium">workspace live</span>
               <span className="rounded-full border border-[var(--panel-border)] px-3 py-1">aoc.intrface.eu</span>
               <span className="rounded-full border border-[var(--panel-border)] px-3 py-1">terminal-first</span>
-              <span className="rounded-full border border-[var(--panel-border)] px-3 py-1">local-first compatible</span>
+              <span className="rounded-full border border-[var(--panel-border)] px-3 py-1">herdr + omp + claude code</span>
             </div>
             <div className="flex items-center gap-3 text-xs text-[var(--muted)]">
-              <span>context / memory / tasks</span>
+              <span>rules / memory / workers</span>
               <span className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)]" />
             </div>
           </div>
@@ -56,15 +56,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <div className="flex flex-wrap gap-2 text-sm">
                 <a
                   className="inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-4 py-2 font-medium text-black transition-opacity hover:opacity-90"
-                  href="https://github.com/intrface-eu/agent-ops-cockpit"
+                  href={repositoryUrl}
                 >
                   Repository
                 </a>
                 <a
                   className="inline-flex items-center justify-center rounded-md border border-[var(--panel-border)] bg-transparent px-4 py-2 text-white transition-colors hover:border-[var(--accent-secondary)] hover:text-[var(--accent-secondary)]"
-                  href="https://intrface.eu/en/aoc"
+                  href="https://intrface.eu"
                 >
-                  Intrface preview
+                  Intrface
                 </a>
                 <a
                   className="inline-flex items-center justify-center rounded-md border border-[var(--panel-border)] bg-transparent px-4 py-2 text-white transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
@@ -86,8 +86,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <p className="mt-1 text-xs uppercase tracking-[0.24em] text-[var(--muted)]">operator workflow / lived system / no GUI clutter</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <a className="rounded-full border border-[var(--panel-border)] px-3 py-2" href="https://github.com/intrface-eu/agent-ops-cockpit">Repository</a>
-              <a className="rounded-full border border-[var(--panel-border)] px-3 py-2" href="https://intrface.eu/en/aoc">Intrface preview</a>
+              <a className="rounded-full border border-[var(--panel-border)] px-3 py-2" href={repositoryUrl}>Repository</a>
+              <a className="rounded-full border border-[var(--panel-border)] px-3 py-2" href="https://intrface.eu">Intrface</a>
               <a className="rounded-full border border-[var(--panel-border)] px-3 py-2" href="mailto:hello@intrface.eu?subject=AOC">Contact</a>
             </div>
           </div>

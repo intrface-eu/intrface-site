@@ -5,7 +5,7 @@ import { learnAudience, learnTracks } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Learn",
-  description: "Learn serious agentic coding through AOC as a terminal-first, continuity-aware development environment.",
+  description: "Learn agentic coding through AOC: a planning session, worker agents, and rules kept in the repo.",
 };
 
 export default function LearnPage() {

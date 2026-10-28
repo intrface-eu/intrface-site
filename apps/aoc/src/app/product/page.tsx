@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionCard } from "@/components/site-shell";
-import { productFlow, productSections } from "@/lib/site-content";
+import { productFlow, productSections, repositoryUrl } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Product",
-  description: "How AOC works: context, memory, tasks, runtime, and the cockpit that keeps them together.",
+  description: "How AOC works: project rules, the Herdr workspace, omp agents, orchestration, memory and harness setup.",
 };
 
 export default function ProductPage() {
@@ -13,8 +13,8 @@ export default function ProductPage() {
     <main className="flex flex-col gap-8">
       <SectionCard
         eyebrow="Product overview"
-        title="AOC combines context, memory, tasks, and runtime into one cockpit."
-        body="The public explanation should stay readable, but the underlying system is real: the workspace is organized around persistent project continuity and terminal-native operation."
+        title="AOC sets up the rules, workspace and agents for each project."
+        body="Each part below is a command or file that ships in the repository."
       >
         <div className="grid gap-4 lg:grid-cols-2">
           {productSections.map((section) => (
@@ -29,8 +29,8 @@ export default function ProductPage() {
 
       <SectionCard
         eyebrow="Workflow"
-        title="The system is designed to keep the operator in one serious surface."
-        body="AOC is easiest to understand as a loop: enter the project, operate inside the cockpit, retain continuity, and keep work moving without scattering state across tools."
+        title="One project, one planner, several workers."
+        body="Set the project up once, open the workspace, plan, hand off, review."
       >
         <div className="grid gap-4 lg:grid-cols-4">
           {productFlow.map((item, index) => (
@@ -44,7 +44,7 @@ export default function ProductPage() {
           <Link className="rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-black" href="/install">
             Start with install
           </Link>
-          <a className="rounded-full border border-[var(--panel-border)] px-5 py-3 text-sm font-medium text-white" href="https://github.com/intrface-eu/agent-ops-cockpit">
+          <a className="rounded-full border border-[var(--panel-border)] px-5 py-3 text-sm font-medium text-white" href={repositoryUrl}>
             Read the repository
           </a>
         </div>
