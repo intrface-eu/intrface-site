@@ -1413,72 +1413,23 @@ body {
     }
   }
 
-  /* ===== HOME: THE VEIL =====
-     Home is black all the way down to the footer. The veil is one layer over
-     the top of the stage: black and solid through the whole first viewport,
-     then fading to nothing over a further `--veil-fade` (eased stops, so the
-     fade does not end in a visible edge). It carries the maker's mark and
-     the one sentence, both on the solid band, and nothing else.
-
-     Pointer events. The veil takes none: where it has faded, a click, a
-     touch or a wheel reaches the tile under it. Its solid band (`::before`,
-     the first 100svh) and the mark take them, so nobody hovers or taps a
-     tile they cannot see, and a swipe on the black scrolls the page.
-
-     Scroll. Plain CSS sticky. The stage is 100svh taller than the veil; the
-     bento is its only in-flow child, 100svh tall and sticky at the top, so
-     it stays pinned for the veil's full height of scroll. The veil sits over
-     it and scrolls away at page speed; once its bottom has left the
-     viewport, and only then, the bento moves up with the page.
-
-     Focus. A tile that takes keyboard focus while the veil covers it lifts
-     the veil out of the way. */
-  .home-stage {
-    --veil-fade: 60svh;
-    --veil-height: calc(100svh + var(--veil-fade));
-    position: relative;
-    block-size: calc(100svh + var(--veil-height));
-    background: var(--black);
+  /* ===== HOME: THE OPENING =====
+     The first screen of home: black, the maker's mark and the one sentence,
+     nothing else. It is at least 100svh tall and scrolls away with the page.
+     The interfaces start under it (`.ifaces--home`): the first screen rises
+     `--iface-peek` into its bottom edge, so there is a reason to scroll, and
+     the black gives way to paper behind it. The shell's bottom padding keeps
+     the sentence clear of that screen. */
+  .home {
+    --iface-peek: clamp(4.5rem, 15svh, 9rem);
+    background: var(--paper);
   }
 
   .home-veil {
-    position: absolute;
-    z-index: 10;
-    inset-block-start: 0;
-    inset-inline: 0;
-    block-size: var(--veil-height);
-    pointer-events: none;
+    position: relative;
+    min-block-size: 100svh;
     color: var(--ink-inverse);
-    background: linear-gradient(
-      to bottom,
-      var(--black) 0,
-      var(--black) 100svh,
-      color-mix(in srgb, var(--black) 93%, transparent) calc(100svh + var(--veil-fade) * 0.2),
-      color-mix(in srgb, var(--black) 74%, transparent) calc(100svh + var(--veil-fade) * 0.4),
-      color-mix(in srgb, var(--black) 45%, transparent) calc(100svh + var(--veil-fade) * 0.6),
-      color-mix(in srgb, var(--black) 22%, transparent) calc(100svh + var(--veil-fade) * 0.76),
-      color-mix(in srgb, var(--black) 7%, transparent) calc(100svh + var(--veil-fade) * 0.89),
-      transparent 100%
-    );
-  }
-
-  .home-stage:has(.work-tile:focus-visible) .home-veil {
-    transform: translate3d(0, -100%, 0);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .home-veil {
-      transition: transform 240ms cubic-bezier(0.2, 0.8, 0.3, 1);
-    }
-  }
-
-  .home-veil::before {
-    content: "";
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline: 0;
-    block-size: 100svh;
-    pointer-events: auto;
+    background: var(--black);
   }
 
   .home-veil__shell {
@@ -1486,7 +1437,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-block-start: 1.25rem;
+    padding-block: 1.25rem calc(var(--iface-peek) + 3rem);
   }
 
   /* No hyphenation: every word of the sentence fits a phone line whole, in
@@ -1501,24 +1452,15 @@ body {
   /* The sentence in four languages, or five on /it, one at a time
      (`ClaimCycle`). Every line sits in one grid cell, so the block keeps the
      height of its tallest line at every width and nothing below it moves.
-     Each line is words (never broken, so lines wrap where the plain text
-     does) of letters; the letter switch moves the letters with the Web
-     Animations API, opacity and transform only. A line shows while it
-     carries `data-live`; the server sets it on the page's own line. The
-     block takes pointer events, so hovering it pauses the cycle and the link
-     can be clicked, and leaves vertical panning to the page so a horizontal
-     swipe can switch the line. */
+     Each line is words, and each word is a mask its text rises into (see
+     `.home-veil__word`). A line shows while it carries `data-live`; the
+     server sets it on the page's own line. The block takes pointer events,
+     so hovering it pauses the cycle, and leaves vertical panning to the page
+     so a horizontal swipe can switch the line. */
   .home-veil__claim-block {
     position: relative;
-    margin-block-start: clamp(2.5rem, 9svh, 6rem);
-    pointer-events: auto;
+    margin-block-start: clamp(4rem, 20svh, 12rem);
     touch-action: pan-y;
-  }
-
-  .home-veil__stage {
-    position: relative;
-    inline-size: fit-content;
-    max-inline-size: 100%;
   }
 
   .home-veil__line {
@@ -1531,117 +1473,110 @@ body {
     visibility: visible;
   }
 
+  /* A word is a mask: its text rises into it from below and leaves through
+     its top. The padding gives descenders and accents room inside the clip;
+     the negative margin takes that room back from the line, so the leading
+     is the plain text's. */
   .home-veil__word {
     display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-block: 0.1em 0.16em;
+    margin-block: -0.1em -0.16em;
     white-space: nowrap;
   }
 
-  .home-veil__char {
+  .home-veil__word-in {
     display: inline-block;
   }
 
-  /* The arrows: on hover with a mouse, or with keyboard focus inside, a
-     previous and a next button fade in. Between 640 and 1399px they sit
-     together to the right of the sentence, vertically centred on it; from
-     1400px, where the shell's gutter holds a button with room to spare,
-     they flank it, the previous one in the gutter. Below 640px (a mouse on a
-     narrow window, or a keyboard on a phone) they sit at the end of the link
-     row. With a mouse they take the pointer even while faded, so moving
-     toward them brings them up, and the padding between them and the text
-     keeps the hover. Touch screens show none: a swipe switches there. */
-  .home-veil__arrows {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: 100%;
+  /* The load: the page's own line rises into place word by word. CSS, so it
+     runs before hydration and the sentence is never drawn twice. The first
+     switch removes `data-intro`; see `ClaimCycle`. */
+  @media (prefers-reduced-motion: no-preference) {
+    .home-veil__line[data-intro] .home-veil__word-in {
+      animation: claim-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(160ms + var(--w, 0) * 42ms);
+    }
+  }
+
+  @keyframes claim-rise {
+    from {
+      transform: translate3d(0, 110%, 0);
+    }
+  }
+
+  /* The languages of the sentence, by code, under it: the one shown in
+     full paper with a hairline that fills over its hold, the others dimmed.
+     Each is a button that shows its line. The hairline is a transform; while
+     the cycle is paused (`data-held`) it stands full, and it starts over when
+     the cycle does. Hidden under reduced motion, where nothing cycles. */
+  .home-veil__codes {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-inline-start: 1.5rem;
-    opacity: 0;
-    pointer-events: none;
+    flex-wrap: wrap;
+    margin-block-start: clamp(1.5rem, 4svh, 2.5rem);
+    margin-inline-start: -0.625rem;
   }
 
-  .home-veil__claim-block:has(:focus-visible) .home-veil__arrows {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .home-veil__arrows {
-      pointer-events: auto;
-    }
-
-    .home-veil__claim-block:hover .home-veil__arrows {
-      opacity: 1;
-    }
-  }
-
-  .home-veil__arrow {
-    display: grid;
-    flex: none;
-    place-items: center;
-    inline-size: 2.75rem;
-    block-size: 2.75rem;
-    border: 1px solid color-mix(in srgb, var(--ink-inverse) 28%, transparent);
-    border-radius: 999px;
-    color: var(--ink-inverse-muted);
-    background: transparent;
+  .home-veil__code {
+    position: relative;
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+    padding-inline: 0.625rem;
+    border: 0;
+    font-family: var(--font-brand);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink-inverse-label);
+    background: none;
     cursor: pointer;
   }
 
-  .home-veil__arrow:hover {
-    border-color: color-mix(in srgb, var(--ink-inverse) 64%, transparent);
+  .home-veil__code:hover,
+  .home-veil__code[aria-pressed="true"] {
     color: var(--ink-inverse);
   }
 
-  .home-veil__arrow:focus-visible {
+  .home-veil__code::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0.625rem;
+    inset-block-end: 0.5rem;
+    block-size: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .home-veil__code[aria-pressed="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .home-veil__code:focus-visible {
     outline: 2px solid var(--ink-inverse);
-    outline-offset: 4px;
+    outline-offset: -2px;
   }
 
-  @media (max-width: 639.98px) {
-    .home-veil__stage {
-      position: static;
+  @media (prefers-reduced-motion: no-preference) {
+    .home-veil__code {
+      transition: color 200ms ease-out;
     }
 
-    .home-veil__claim-block {
-      min-inline-size: 100%;
-    }
-
-    .home-veil__arrows {
-      inset-block: auto 0;
-      inset-inline: auto 0;
-      block-size: 2.75rem;
-      padding-inline-start: 0;
+    .home-veil__code[aria-pressed="true"]:not([data-held])::after {
+      animation: claim-hold var(--hold, 4s) linear both;
     }
   }
 
-  /* Flanking: the stage reaches 4.25rem into the gutter and past the text's
-     end (its padding keeps the hover between text and arrow), and the
-     arrows sit at its two edges. */
-  @media (min-width: 1400px) {
-    .home-veil__stage {
-      max-inline-size: calc(100% + 8.5rem);
-      margin-inline: -4.25rem;
-      padding-inline: 4.25rem;
-    }
-
-    .home-veil__arrows,
-    .home-veil__claim-block:has(:focus-visible) .home-veil__arrows {
-      inset: 0;
-      justify-content: space-between;
-      padding-inline-start: 0;
-      pointer-events: none;
-    }
-
-    .home-veil__claim-block:has(:focus-visible) .home-veil__arrow {
-      pointer-events: auto;
+  @keyframes claim-hold {
+    from {
+      transform: scaleX(0);
     }
   }
 
-  @media (min-width: 1400px) and (hover: hover) and (pointer: fine) {
-    .home-veil__arrow {
-      pointer-events: auto;
+  @media (prefers-reduced-motion: reduce) {
+    .home-veil__codes {
+      display: none;
     }
   }
 
@@ -1688,8 +1623,8 @@ body {
     outline-offset: 4px;
   }
 
-  /* The link leaves with the old line's letters and arrives with the new
-     line's (see the timings in `ClaimCycle`); the arrows fade in 240ms. */
+  /* The link leaves with the old line's words and arrives with the new
+     line's (see the timings in `ClaimCycle`). */
   @media (prefers-reduced-motion: no-preference) {
     .home-veil__switch-link {
       transition:
@@ -1708,26 +1643,12 @@ body {
         color 200ms ease-out,
         text-decoration-color 200ms ease-out;
     }
-
-    .home-veil__arrows {
-      transition: opacity 240ms ease-out;
-    }
-
-    .home-veil__arrow {
-      transition:
-        color 200ms ease-out,
-        border-color 200ms ease-out;
-    }
   }
 
-  /* Reduced motion: no cycle and no arrows. The page's own line stays, and
-     the links to the other languages of its cycle (three, or four on /it)
-     sit in one quiet row, all visible. */
+  /* Reduced motion: no cycle. The page's own line stays, and the links to
+     the other languages of its cycle (three, or four on /it) sit in one
+     quiet row, all visible. */
   @media (prefers-reduced-motion: reduce) {
-    .home-veil__arrows {
-      display: none;
-    }
-
     .home-veil__switch {
       display: flex;
       flex-wrap: wrap;
@@ -1741,8 +1662,8 @@ body {
     }
   }
 
-  /* The maker's mark: the mark and the word in paper, top-left on the veil,
-     linking home. It scrolls away with the veil; nothing on home is fixed. */
+  /* The maker's mark: the mark and the word in paper, top-left on the first
+     screen, linking home. It scrolls away with it; nothing on home is fixed. */
   .maker-mark {
     display: inline-flex;
     align-items: center;
@@ -1764,255 +1685,802 @@ body {
     letter-spacing: -0.04em;
   }
 
-  /* ===== THE WORK (home) =====
-     A bento of five tiles, one per product of our own, that fills the screen
-     edge to edge: 100svh tall, sticky at the top of the stage (see the veil
-     above). Two columns by three rows below 1024px, the lead tile (Voyager)
-     taking the whole top row; from 1024px two rows on twelve columns, spans
-     7 + 5 then 4 + 4 + 4. Each tile is one link into its product: the real screenshot
-     covering the cell from the top, a faint paper edge so a dark capture
-     does not melt into the black, and a black caption bar over its bottom
-     with the product's logo. With a mouse the screenshots rest dimmed and
-     come up to full on hover or focus; on touch they show at full. No
-     radius, no shadow; the focus ring is drawn inside the tile so nothing
-     clips it. */
-  .work-tiles {
-    --line: color-mix(in srgb, var(--paper) 16%, transparent);
-    position: sticky;
-    inset-block-start: 0;
-    block-size: 100svh;
-    background: var(--black);
+  /* ===== INTERFACES =====
+     Our interfaces, large, on open paper: the body of home and of /services.
+     A row is a desktop screen with a phone over its near corner, running
+     off the page edge on its side (`data-side`), and a narrow column beside
+     it with the name, the status, one line and the way in. The lead row sets
+     the screens across the width with the text under them. Below 1024px
+     every row stacks, screens first. The section clips the bleed, so the
+     page never scrolls sideways.
+
+     `--edge` is the shell's own margin (80rem, 2.5rem padding) measured from
+     the section's edge, so text columns line up with the header and footer.
+
+     The screens are real captures (`public/proof/projects`). A desktop
+     screen is a white plate with a hairline and a long, soft drop; the phone
+     is the capture in a thin ink body, so it reads as a device without
+     drawing one. */
+  .ifaces,
+  .svc-hero {
+    --edge: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem));
+    --row-gap: clamp(7rem, 15vw, 12.5rem);
+    --phone-w: clamp(7.5rem, 15vw, 14rem);
+    --phone-drop: clamp(2rem, 5vw, 4.5rem);
   }
 
-  .work-tiles__grid {
-    --bento-gap: min(var(--grid-gap), 10px);
+  .ifaces {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(3, minmax(0, 1fr));
-    gap: var(--bento-gap);
-    block-size: 100%;
-    padding: var(--bento-gap);
+    row-gap: var(--row-gap);
+    padding-block: var(--row-gap);
+    overflow-x: clip;
+    background: var(--paper);
   }
 
-  /* Below 1024px the lead takes the whole top row, the others two by two
-     below it. A tall lead cell on a phone would crop the sides of its
-     capture's centred headline; a wide one keeps the headline whole. */
-  .work-tile[data-lead] {
-    grid-column: span 2;
+  @media (min-width: 640px) {
+    .ifaces,
+    .svc-hero {
+      --edge: max(2rem, calc((100% - 80rem) / 2 + 2rem));
+    }
   }
 
   @media (min-width: 1024px) {
-    .work-tiles__grid {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-    }
-
-    .work-tile[data-span="4"] {
-      grid-column: span 4;
-    }
-
-    .work-tile[data-span="5"] {
-      grid-column: span 5;
-    }
-
-    .work-tile[data-span="7"] {
-      grid-column: span 7;
+    .ifaces,
+    .svc-hero {
+      --edge: max(2.5rem, calc((100% - 80rem) / 2 + 2.5rem));
     }
   }
 
-  /* The rise into place. The grid starts 12svh low and eases up to 0 over
-     the veil's full height of scroll, so it lands as the veil's bottom
-     leaves the viewport and the bento unpins. Transform only, on the grid inside the
-     sticky section; the section's box, the stage and the page height do not
-     change. Without scroll-driven animations, or under reduced motion, the
-     grid sits at 0. A focused tile puts it at 0 too, with the veil gone. */
-  @supports (animation-timeline: scroll()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .work-tiles__grid {
-        animation: work-tiles-rise linear both;
-        animation-timeline: scroll(root);
-        animation-range: 0 var(--veil-height);
-      }
-
-      .home-stage:has(.work-tile:focus-visible) .work-tiles__grid {
-        animation: none;
-      }
-    }
+  .iface-row {
+    display: grid;
+    row-gap: calc(var(--phone-drop) + 2.5rem);
+    padding-inline: var(--edge);
   }
 
-  @keyframes work-tiles-rise {
-    from {
-      transform: translate3d(0, 12svh, 0);
-      /* Near linear with a soft end, not ease-out: the grid keeps moving
-         while the fade uncovers it and settles only as the veil clears. */
-      animation-timing-function: cubic-bezier(0.2, 0.3, 0.7, 0.9);
-    }
-
-    to {
-      transform: translate3d(0, 0, 0);
-    }
+  /* Below 1024px the screens bleed past the far edge by a fifth of their
+     width, and the phone sits over the near corner. */
+  .iface-row__figure {
+    margin-inline-end: calc(-1 * var(--edge) - 20%);
   }
 
-  .work-tile {
+  .iface-row[data-side="start"] .iface-row__figure {
+    margin-inline: calc(-1 * var(--edge) - 20%) 0;
+  }
+
+  /* Two sites side by side need their whole width below 1024px. */
+  .iface-row .iface-row__figure:has(> .iface-duo) {
+    margin-inline: 0;
+  }
+
+  .iface-figure {
     position: relative;
+  }
+
+  .iface-screen {
     display: block;
     overflow: hidden;
-    min-inline-size: 0;
-    min-block-size: 0;
-    border: 1px solid var(--line);
-    color: var(--ink-inverse);
-    background: var(--black);
-    /* Forced colours paint this; the ring below serves everyone else. */
-    outline: 2px solid transparent;
-  }
-
-  /* The ring sits inside the tile, over the image and the caption: paper
-     with a black line inside it, so it reads on light captures too. */
-  .work-tile:focus-visible::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+    border-radius: clamp(0.5rem, 0.9vw, 0.875rem);
+    background: var(--card);
     box-shadow:
-      inset 0 0 0 2px var(--paper),
-      inset 0 0 0 4px var(--black);
-    pointer-events: none;
+      0 0 0 1px rgba(15, 23, 41, 0.08),
+      0 2px 4px -1px rgba(15, 23, 41, 0.06),
+      0 32px 80px -28px rgba(15, 23, 41, 0.34);
   }
 
-  .work-tile__picture {
-    position: relative;
-    display: block;
-    block-size: 100%;
-  }
-
-  /* Quiet at rest. With a mouse, each screenshot sits under black at half
-     strength and comes up to full while its tile is hovered or focused.
-     Touch screens have no hover, so there the screenshots show at full and
-     one tap opens the link. */
-  @media (hover: hover) and (pointer: fine) {
-    .work-tile__picture::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: var(--black);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .work-tile:hover .work-tile__picture::after,
-    .work-tile:focus-visible .work-tile__picture::after {
-      opacity: 0;
-    }
-  }
-
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .work-tile__picture::after {
-      transition: opacity 200ms cubic-bezier(0.2, 0.8, 0.3, 1);
-    }
-  }
-
-  .work-tile__image {
+  .iface-screen__image,
+  .iface-phone__image {
     display: block;
     inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
-    object-position: top center;
+    block-size: auto;
   }
 
-  /* A cell narrower than the capture's shape crops its sides. Most sites
-     set their headline on the left, so those tiles keep the left edge. */
-  .work-tile[data-anchor="left"] .work-tile__image {
-    object-position: top left;
-  }
-
-  .work-tile[data-anchor="right"] .work-tile__image {
-    object-position: top right;
-  }
-
-  /* One line at every width: the logo, the name and the arrow keep their
-     room, the role line gives way first and ends in an ellipsis. Below
-     1024px the line is hidden; the link's accessible name still carries it.
-     From 1024px the name does not shrink at all: an ellipsis on a
-     one-word name reads as a flaw. A product not open yet (Index, Patchbay,
-     `data-soon`) shows "Coming soon" after the line at every width and never
-     cuts it. Below 768px those tiles drop the arrow and the caption may
-     wrap: when the name and the status do not fit side by side (Patchbay in
-     a half-width cell), the status takes a second line. The arrow says the
-     tile opens the product, here, in the same tab. */
-  .work-tile__caption {
+  .iface-phone {
+    --phone-pad: clamp(0.22rem, 0.42vw, 0.4rem);
+    --phone-radius: clamp(1.1rem, 2.1vw, 2.1rem);
     position: absolute;
-    z-index: 1;
-    inset-inline: 0;
-    inset-block-end: 0;
+    inset-block-end: calc(-1 * var(--phone-drop));
+    inset-inline-start: clamp(0.75rem, 3vw, 2rem);
+    inline-size: var(--phone-w);
+    padding: var(--phone-pad);
+    border-radius: var(--phone-radius);
+    background: var(--ink);
+    box-shadow:
+      0 2px 4px rgba(15, 23, 41, 0.12),
+      0 36px 70px -22px rgba(15, 23, 41, 0.5);
+  }
+
+  .iface-phone__image {
+    border-radius: calc(var(--phone-radius) - var(--phone-pad));
+  }
+
+  .iface-row[data-side="start"] .iface-phone {
+    inset-inline: auto clamp(0.75rem, 3vw, 2rem);
+  }
+
+  /* The lead's screen steps in so its phone stands mostly beside it, over
+     the screen's margin and not its copy. */
+  .iface-row[data-lead] .iface-row__figure {
+    margin-inline-start: calc(var(--phone-w) * 0.8);
+  }
+
+  .iface-row[data-lead] .iface-phone {
+    inset-inline-start: calc(var(--phone-w) * -0.8);
+  }
+
+  .iface-row__text {
+    display: grid;
+    row-gap: 1rem;
+  }
+
+  .iface-row__title {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.375rem 0.625rem;
-    border-block-start: 1px solid var(--line);
-    background: var(--black);
-    color: var(--ink-inverse);
-    white-space: nowrap;
+    gap: 0.75rem 1.25rem;
   }
 
-  /* The project's own mark, a little taller than the caption's capitals. */
-  .work-tile__logo {
-    flex: none;
-    block-size: 1.125rem;
-    inline-size: auto;
-    margin-inline-end: -0.25rem;
+  .iface-name {
+    font-family: var(--font-brand);
+    font-size: clamp(2.1rem, 3.8vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+    color: var(--ink);
   }
 
-  .work-tile__name,
-  .work-tile__line,
-  .work-tile__status {
-    min-inline-size: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .iface-row__line {
+    color: var(--ink-muted);
+    text-wrap: pretty;
   }
 
-  .work-tile__name {
-    flex: 0 1 auto;
-    color: var(--ink-inverse);
+  .iface-row__note {
+    display: block;
+    margin-block-start: 0.75rem;
+    font-size: 0.9375rem;
   }
 
-  .work-tile__line {
-    display: none;
-    color: var(--ink-inverse-muted);
-    flex: 0 1000 auto;
+  .iface-row__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.75rem;
+    margin-block-start: 1rem;
   }
 
   @media (min-width: 1024px) {
-    .work-tile__caption {
-      padding-inline: 0.875rem;
+    .iface-row {
+      grid-template-columns: minmax(16rem, 24rem) minmax(0, 1fr);
+      column-gap: clamp(4rem, 8vw, 8rem);
+      align-items: center;
     }
 
-    .work-tile__name {
-      flex-shrink: 0;
+    .iface-row[data-side="start"] {
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
     }
 
-    .work-tile__line {
+    .iface-row[data-side="end"] .iface-row__text {
+      grid-area: 1 / 1;
+    }
+
+    .iface-row[data-side="end"] .iface-row__figure {
+      grid-area: 1 / 2;
+      margin-inline-end: calc(-1 * var(--edge) - 7vw);
+    }
+
+    .iface-row[data-side="start"] .iface-row__figure {
+      grid-area: 1 / 1;
+      margin-inline: calc(-1 * var(--edge) - 7vw) 0;
+    }
+
+    .iface-row[data-side="start"] .iface-row__text {
+      grid-area: 1 / 2;
+    }
+
+    /* The phone hangs over the gap toward the text. */
+    .iface-row[data-side="end"] .iface-phone {
+      inset-inline-start: calc(-1 * clamp(2rem, 4.5vw, 4.5rem));
+    }
+
+    .iface-row[data-side="start"] .iface-phone {
+      inset-inline: auto calc(-1 * clamp(2rem, 4.5vw, 4.5rem));
+    }
+
+    /* The lead: screens across the width from a fifth in, text under them
+       in two columns, the name on the left and the line on the right. */
+    .iface-row[data-lead] {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      row-gap: calc(var(--phone-drop) + 3.5rem);
+      align-items: end;
+    }
+
+    .iface-row[data-lead] .iface-row__figure {
+      grid-area: 1 / 1 / 2 / 3;
+      margin-inline: clamp(5rem, 16vw, 16rem) calc(-1 * var(--edge) - 4vw);
+    }
+
+    .iface-row[data-lead] .iface-row__text {
+      display: contents;
+    }
+
+    .iface-row[data-lead] .iface-row__title {
+      grid-area: 2 / 1;
+      align-self: start;
+    }
+
+    .iface-row[data-lead] .iface-row__body {
+      grid-area: 2 / 2;
+    }
+
+    .iface-row[data-lead] .iface-name {
+      font-size: clamp(2.75rem, 5vw, 4.5rem);
+    }
+
+    /* The lead phone stands mostly beside its screen, so it covers the
+       screen's margin and not the page's copy. */
+    .iface-row[data-lead] .iface-phone {
+      inline-size: calc(var(--phone-w) * 1.15);
+      inset-inline-start: calc(var(--phone-w) * -0.85);
+    }
+  }
+
+  /* The status beside a name: a dot and a word. Live is the accent dot;
+     a public test is the accent ring; coming soon is a muted ring. */
+  .iface-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-brand);
+    font-size: 0.78rem;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .iface-status__dot {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .iface-status[data-tone="test"] .iface-status__dot {
+    background: none;
+    box-shadow: inset 0 0 0 1.5px var(--accent);
+  }
+
+  .iface-status[data-tone="soon"] .iface-status__dot {
+    background: none;
+    box-shadow: inset 0 0 0 1.5px var(--ink-muted);
+  }
+
+  .iface-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-block-size: 2.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.3em;
+  }
+
+  .iface-link--quiet {
+    color: var(--ink-muted);
+  }
+
+  .iface-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .iface-link:focus-visible,
+  .iface-card:focus-visible,
+  .iface-duo__shot:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* Products not open yet: two quieter cards side by side from 768px. */
+  .iface-pair {
+    display: grid;
+    gap: 4rem clamp(2rem, 4vw, 3.5rem);
+    padding-inline: var(--edge);
+  }
+
+  @media (min-width: 768px) {
+    .iface-pair {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .iface-card {
+    display: grid;
+    align-content: start;
+    gap: 1.25rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .iface-card__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-block-start: 0.75rem;
+  }
+
+  .iface-card__name {
+    font-family: var(--font-brand);
+    font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+
+  .iface-card__line {
+    margin-block-start: -0.5rem;
+  }
+
+  /* The door to client work: the heading, one line and the button, beside
+     two client sites, the second lower and over the first. */
+  .iface-door {
+    display: grid;
+    gap: 4rem;
+    padding-inline: var(--edge);
+  }
+
+  .iface-door__text .type-body-lg {
+    margin-block-start: 1.25rem;
+    color: var(--ink-muted);
+  }
+
+  /* Two live sites: side by side below 1024px; from there the second sits
+     lower and over the first. */
+  .iface-duo {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .iface-door {
+      grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
+      column-gap: clamp(4rem, 8vw, 8rem);
+      align-items: center;
+    }
+
+    .iface-duo {
       display: block;
+      block-size: clamp(18rem, 30vw, 26rem);
+    }
+
+    .iface-door__shots {
+      margin-inline-end: calc(-1 * var(--edge) - 4vw);
+    }
+
+    .iface-duo__shot {
+      position: absolute;
+      inline-size: 62%;
+    }
+
+    .iface-duo__shot:first-child {
+      inset: 0 auto auto 0;
+    }
+
+    .iface-duo__shot:last-child {
+      inset: auto 0 0 auto;
     }
   }
 
-  .work-tile__arrow {
-    flex: none;
-    margin-inline-start: auto;
-  }
-
-  .work-tile__status {
-    flex: none;
-    color: var(--ink-inverse-muted);
-  }
-
-  @media (max-width: 767.98px) {
-    .work-tile[data-soon] .work-tile__caption {
-      flex-wrap: wrap;
-      row-gap: 0.125rem;
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .iface-card .iface-screen,
+    .iface-duo__shot {
+      transition:
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .work-tile[data-soon] .work-tile__arrow {
-      display: none;
+    .iface-card:hover .iface-screen,
+    .iface-duo__shot:hover {
+      transform: translate3d(0, -0.375rem, 0);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 41, 0.08),
+        0 2px 4px -1px rgba(15, 23, 41, 0.06),
+        0 44px 90px -28px rgba(15, 23, 41, 0.4);
+    }
+  }
+
+  /* The one scroll moment: as a row comes into view its desktop screen
+     settles from a little below and the phone from further, so the phone
+     arrives last and lands on the screen. Both are drawn from the start;
+     only their place moves, on the compositor. Browsers without scroll
+     timelines show them in place. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .iface-row .iface-screen {
+        animation: iface-settle linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+      }
+
+      .iface-row .iface-phone {
+        animation: iface-settle-far linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+      }
+    }
+  }
+
+  @keyframes iface-settle {
+    from {
+      transform: translate3d(0, 3rem, 0);
+    }
+  }
+
+  @keyframes iface-settle-far {
+    from {
+      transform: translate3d(0, 7rem, 0);
+    }
+  }
+
+  /* Home: the first row's screens rise `--iface-peek` into the black first
+     screen, and the black gives way to paper behind them in eased steps, so
+     the fade has no visible edge. */
+  .ifaces--home {
+    /* The fade's length follows the width, so on a phone it ends above the
+       first row's text, which must sit on paper. */
+    --fade: clamp(9rem, 40vw, 36rem);
+    padding-block-start: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--black) 0,
+      color-mix(in srgb, var(--black) 88%, var(--paper)) calc(var(--fade) * 0.12),
+      color-mix(in srgb, var(--black) 60%, var(--paper)) calc(var(--fade) * 0.35),
+      color-mix(in srgb, var(--black) 28%, var(--paper)) calc(var(--fade) * 0.6),
+      color-mix(in srgb, var(--black) 8%, var(--paper)) calc(var(--fade) * 0.82),
+      var(--paper) var(--fade)
+    );
+  }
+
+  .ifaces--home > .iface-row:first-child {
+    position: relative;
+    z-index: 1;
+    margin-block-start: calc(-1 * var(--iface-peek));
+  }
+
+  .ifaces--home > .iface-row:first-child .iface-screen {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 40px 120px -30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ===== SERVICES =====
+     /services: the offer and the five projects on the first screen, the
+     services as interface rows, the intake (`#start`) and four answers. The
+     rows, the screens and the phone are the INTERFACES block above; this
+     block adds the first screen, the intake and the answers. */
+  .iface-name--service {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    letter-spacing: -0.035em;
+  }
+
+  .svc-intro {
+    max-inline-size: 46rem;
+    padding-inline: var(--edge);
+    box-sizing: content-box;
+  }
+
+  /* The first screen. Below 1024px: the offer, the screens, the list. From
+     1024px the offer and the list share the left column and the screens take
+     the right, running off the page. */
+  .svc-hero {
+    display: grid;
+    row-gap: clamp(3rem, 8vw, 4.5rem);
+    padding: clamp(3rem, 8vw, 5.5rem) var(--edge) clamp(4rem, 8vw, 6rem);
+    overflow-x: clip;
+  }
+
+  .svc-hero__title {
+    max-inline-size: 15em;
+    font-family: var(--font-brand);
+    font-size: clamp(2.4rem, 5vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 600;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .svc-hero__body {
+    max-inline-size: 32rem;
+    margin-block-start: 1.5rem;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+  }
+
+  .svc-stage {
+    display: contents;
+  }
+
+  .svc-stage__screens {
+    display: grid;
+  }
+
+  /* Here the phone stands on the screen's far visible corner, where the
+     captured pages keep their pictures, so it never covers their copy. */
+  .svc-stage .iface-phone {
+    inset-inline: auto clamp(0.75rem, 3vw, 2rem);
+  }
+
+  .svc-stage__frame {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 360ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 360ms;
+  }
+
+  .svc-stage__frame[data-active] {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .svc-stage__pick {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    margin-block-start: var(--phone-drop);
+  }
+
+  .svc-stage__list {
+    inline-size: 100%;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .svc-stage__item {
+    display: grid;
+    grid-template-areas:
+      "name status"
+      "line line";
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    inline-size: 100%;
+    min-block-size: 2.75rem;
+    padding-block: 0.875rem;
+    border-block-end: 1px solid var(--line);
+    color: var(--ink-muted);
+    text-align: start;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+
+  .svc-stage__name {
+    grid-area: name;
+    justify-self: start;
+    font-family: var(--font-brand);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .svc-stage__line {
+    grid-area: line;
+    font-size: 0.9375rem;
+  }
+
+  .svc-stage__item .iface-status {
+    grid-area: status;
+  }
+
+  .svc-stage__item:hover {
+    color: var(--ink);
+  }
+
+  .svc-stage__item[aria-pressed="true"] .svc-stage__name {
+    box-shadow: inset 0 -2px 0 var(--accent);
+  }
+
+  .svc-stage__item:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 640px) {
+    .svc-stage__item {
+      grid-template-areas: "name line status";
+      grid-template-columns: 8.5rem minmax(0, 1fr) auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .svc-hero {
+      grid-template-columns: minmax(20rem, 31rem) minmax(0, 1fr);
+      grid-template-areas:
+        "text screens"
+        "pick screens";
+      grid-template-rows: auto 1fr;
+      column-gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+      min-block-size: calc(100svh - 4rem);
+    }
+
+    .svc-hero__text {
+      grid-area: text;
+    }
+
+    .svc-stage__screens {
+      --bleed: calc(var(--edge) + 10vw);
+      grid-area: screens;
+      align-self: start;
+      margin-block-start: 0.5rem;
+      margin-inline-end: calc(-1 * var(--bleed));
+    }
+
+    .svc-stage__pick {
+      grid-area: pick;
+      align-self: end;
+      margin-block-start: 0;
+    }
+
+    .svc-stage .iface-phone {
+      inset-inline: auto calc(var(--bleed) + clamp(1rem, 2.5vw, 2.5rem));
+    }
+  }
+
+  /* The intake: the form on a card, and what comes back beside it. */
+  .svc-start {
+    padding-block: clamp(5rem, 10vw, 8rem);
+    border-block-start: 1px solid var(--line);
+    scroll-margin-block-start: 4rem;
+  }
+
+  .svc-start__body {
+    margin-block-start: 1rem;
+    color: var(--ink-muted);
+  }
+
+  .intake {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .intake__form {
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow:
+      0 2px 4px -1px rgba(15, 23, 41, 0.05),
+      0 28px 64px -36px rgba(15, 23, 41, 0.3);
+  }
+
+  .intake-select {
+    appearance: none;
+    padding-inline-end: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%235b6475' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  .intake__back-title {
+    font-family: var(--font-brand);
+    font-size: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .intake__steps {
+    margin-block-start: 1.5rem;
+    counter-reset: step;
+  }
+
+  .intake__steps > li {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    padding-block: 1.125rem;
+    border-block-start: 1px solid var(--line);
+    counter-increment: step;
+  }
+
+  .intake__steps > li::before {
+    content: counter(step, decimal-leading-zero);
+    grid-row: 1 / span 3;
+    padding-block-start: 0.15rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .intake__steps > li > * {
+    grid-column: 2;
+  }
+
+  .intake__steps strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .intake__steps > li > span {
+    margin-block-start: 0.25rem;
+    color: var(--ink-muted);
+  }
+
+  .intake__asks {
+    display: grid;
+    gap: 0.5rem;
+    margin-block-start: 0.875rem;
+    font-size: 0.9375rem;
+    color: var(--ink);
+  }
+
+  .intake__asks li {
+    padding-inline-start: 0.75rem;
+    border-inline-start: 2px solid var(--accent);
+  }
+
+  @media (min-width: 1024px) {
+    .intake {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 25rem);
+      column-gap: clamp(3rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .intake__back {
+      position: sticky;
+      inset-block-start: 6rem;
+      padding-block-start: 0.5rem;
+    }
+  }
+
+  /* Four answers, the question in ink and the answer in the muted body. */
+  .svc-faq {
+    padding-block: clamp(4rem, 8vw, 6rem) clamp(5rem, 10vw, 8rem);
+    border-block-start: 1px solid var(--line);
+  }
+
+  .svc-faq__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .svc-faq__item {
+    padding-block: 1.5rem;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .svc-faq__item:first-child {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .svc-faq__q {
+    font-family: var(--font-brand);
+    font-size: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .svc-faq__a {
+    max-inline-size: 40rem;
+    margin-block-start: 0.5rem;
+    color: var(--ink-muted);
+  }
+
+  @media (min-width: 1024px) {
+    .svc-faq__grid {
+      grid-template-columns: minmax(16rem, 24rem) minmax(0, 1fr);
+      column-gap: clamp(4rem, 8vw, 8rem);
     }
   }
 
@@ -2052,30 +2520,6 @@ body {
       grid-area: colophon;
       justify-self: end;
     }
-  }
-
-  /* The footer on home: black like the page above it. The footer's classes
-     read the palette tokens, so redefining them here turns every part dark,
-     the signature plate included (its paper mask becomes black, its ink
-     light). The accent is lifted as on `.tone-ink` (9.4:1 on black), and
-     `color-scheme` makes the locale menu's native list dark too. Other pages
-     keep the paper footer. */
-  body:has(.home-stage) .site-footer {
-    --paper: var(--black);
-    /* `--ink-inverse` flattened onto black. It has to be opaque: the
-       signature's ink is a copy laid over a stroked glyph, and a
-       translucent fill lets the stroke's seams through. */
-    --ink: #ebebeb;
-    --ink-muted: var(--ink-inverse-muted);
-    --line: rgba(255, 255, 255, 0.14);
-    --line-control: rgba(255, 255, 255, 0.55);
-    --accent: #7cb8b1;
-    color-scheme: dark;
-  }
-
-  body:has(.home-stage) .site-footer option {
-    background: var(--black);
-    color: var(--ink-inverse);
   }
 
   /* ===== ABOUT: THE PERSON =====

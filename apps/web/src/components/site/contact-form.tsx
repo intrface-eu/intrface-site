@@ -14,8 +14,16 @@ import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { submitContactForm } from "@/app/actions/contact";
+import { onNeedRequest } from "@/components/services/need-request";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 import { CONTACT_EMAIL } from "@/lib/site/config";
+import {
+  INTAKE_BUDGETS,
+  INTAKE_NEEDS,
+  INTAKE_TIMINGS,
+  isIntakeNeed,
+  type IntakeNeed,
+} from "@/lib/site/intake";
 
 /*
  * Submitting posts to the `submitContactForm` server action, which stores the
@@ -29,30 +37,9 @@ import { CONTACT_EMAIL } from "@/lib/site/config";
  * browser's locale, not the page's — a Croatian page would throw English.
  */
 
-/**
- * Stable identities for the topic chips, in the order the `topics` prop carries
- * them. Labels are translated and cannot be matched on; `?topic=` matches these.
- * Changing the order here means changing the `topics` arrays in every message
- * file to match.
- *
- * The order also decides how the row wraps. A long label next to a short one
- * lands two chips per row at 390px in all four locales; the two long labels
- * adjacent pushes the longer languages into three ragged rows.
- */
-export const CONTACT_TOPIC_KEYS = [
-  "business-system",
-  "technical-strategy",
-  "client-site",
-  "civic-infrastructure",
-] as const;
-
-export type ContactTopicKey = (typeof CONTACT_TOPIC_KEYS)[number];
-
 export type ContactFormProps = {
   /** Where the mailto lands. */
   email?: string;
-  /** Selectable topic chips, already translated, ordered by `CONTACT_TOPIC_KEYS`. */
-  topics: readonly string[];
   /** Label on the submit button. Defaults to the translated label. */
   submitLabel?: string;
   /** Stored with the submission so replies go out in the reader's language. */
@@ -73,15 +60,15 @@ const errorTextClasses = "text-sm font-medium leading-6 text-danger";
 const noSubscribe = () => () => {};
 
 /**
- * The chip `?topic=` asks for, or none.
+ * The need `?need=` asks for, or none.
  *
- * The client-sites page sends people here with a topic already implied. Matched
- * against the stable key so it works in every locale, and read through
+ * Project pages send people here with a need already implied. Matched against
+ * the stable key so it works in every locale, and read through
  * `useSyncExternalStore` rather than `useSearchParams` so the page hosting this
- * form is not pulled out of static rendering — the server snapshot is empty and
+ * form is not pulled out of static rendering: the server snapshot is empty and
  * the client fills it in on hydration.
  */
-function useRequestedTopic(): ContactTopicKey | "" {
+function useRequestedNeed(): IntakeNeed | "" {
   const search = useSyncExternalStore(
     noSubscribe,
     () => window.location.search,
@@ -89,14 +76,13 @@ function useRequestedTopic(): ContactTopicKey | "" {
   );
 
   return useMemo(() => {
-    const requested = new URLSearchParams(search).get("topic");
-    return CONTACT_TOPIC_KEYS.find((key) => key === requested) ?? "";
+    const requested = new URLSearchParams(search).get("need");
+    return isIntakeNeed(requested) ? requested : "";
   }, [search]);
 }
 
 export function ContactForm({
   email = CONTACT_EMAIL,
-  topics,
   submitLabel,
   locale,
   className = "",
@@ -106,21 +92,39 @@ export function ContactForm({
   const [name, setName] = useState("");
   const [replyTo, setReplyTo] = useState("");
   const [company, setCompany] = useState("");
-  // No chip is selected unless the URL asks for one. A filled pill sitting
-  // under three empty fields reads as the submit control, and the topic is not
-  // a required answer. `null` means "the reader has not chosen yet", so the
-  // `?topic=` value still stands.
-  const requestedTopic = useRequestedTopic();
-  const [chosenTopic, setChosenTopic] = useState<ContactTopicKey | null>(null);
-  const topicKey = chosenTopic ?? requestedTopic;
+  // No need is marked unless the URL or a "Start with this" asks for one. A
+  // filled chip sitting under empty fields reads as the submit control, and
+  // the need is not a required answer. `null` means "the reader has not
+  // chosen yet", so the `?need=` value still stands.
+  const requestedNeed = useRequestedNeed();
+  const [chosenNeeds, setChosenNeeds] = useState<readonly IntakeNeed[] | null>(null);
+  const needs = useMemo(
+    () => chosenNeeds ?? (requestedNeed ? [requestedNeed] : []),
+    [chosenNeeds, requestedNeed],
+  );
+  const [timing, setTiming] = useState("");
+  const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
 
-  const chips = useMemo(
-    () => topics.map((label, index) => ({ key: CONTACT_TOPIC_KEYS[index], label })),
-    [topics],
+  // "Start with this" adds its need to whatever is marked already.
+  useEffect(
+    () =>
+      onNeedRequest((need) =>
+        setChosenNeeds((current) => {
+          const base = current ?? (requestedNeed ? [requestedNeed] : []);
+          return base.includes(need) ? base : INTAKE_NEEDS.filter((key) => key === need || base.includes(key));
+        }),
+      ),
+    [requestedNeed],
   );
 
-  const topic = chips.find((chip) => chip.key === topicKey)?.label ?? "";
+  function toggleNeed(need: IntakeNeed) {
+    setChosenNeeds(
+      needs.includes(need) ? needs.filter((key) => key !== need) : INTAKE_NEEDS.filter((key) => key === need || needs.includes(key)),
+    );
+  }
+
+  const needLabels = useMemo(() => needs.map((key) => t(`needs.${key}`)), [needs, t]);
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sent, setSent] = useState(false);
@@ -134,6 +138,7 @@ export function ContactForm({
   const fallbackRef = useRef<HTMLDivElement>(null);
 
   const mailtoHref = useMemo(() => {
+    const topic = needLabels.join(", ");
     const subject = topic
       ? t("subjectWithTopic", { topic, name: name || t("mailtoWebsite") })
       : t("subjectFallback");
@@ -142,6 +147,8 @@ export function ContactForm({
       `${t("mailtoEmail")}: ${replyTo}`,
       company ? `${t("mailtoCompany")}: ${company}` : null,
       topic ? `${t("mailtoTopic")}: ${topic}` : null,
+      timing ? `${t("timingLabel")}: ${t(`timings.${timing}`)}` : null,
+      budget ? `${t("budgetLabel")}: ${t(`budgets.${budget}`)}` : null,
       "",
       message,
     ]
@@ -149,7 +156,7 @@ export function ContactForm({
       .join("\n");
 
     return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [company, email, message, name, replyTo, t, topic]);
+  }, [budget, company, email, message, name, needLabels, replyTo, t, timing]);
 
   useEffect(() => {
     if (sent) sentRef.current?.focus();
@@ -160,9 +167,10 @@ export function ContactForm({
   }, [fallback]);
 
   function focusFirstError(next: FieldErrors) {
-    if (next.name) nameRef.current?.focus();
+    // In the order the fields appear: the message comes before name and email.
+    if (next.message) messageRef.current?.focus();
+    else if (next.name) nameRef.current?.focus();
     else if (next.email) emailRef.current?.focus();
-    else if (next.message) messageRef.current?.focus();
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -195,6 +203,9 @@ export function ContactForm({
         setName("");
         setReplyTo("");
         setCompany("");
+        setChosenNeeds([]);
+        setTiming("");
+        setBudget("");
         setMessage("");
         return;
       }
@@ -217,33 +228,31 @@ export function ContactForm({
     });
   }
 
-  if (sent) {
-    return (
-      <div className={`grid gap-4 ${className}`}>
-        <div
-          className="rounded-[var(--radius-lg)] border border-rule bg-card p-6"
-          ref={sentRef}
-          role="status"
-          tabIndex={-1}
-        >
-          <p className="type-section-label">{t("sentLabel")}</p>
-          <p className="type-body mt-3 text-ink">{t("sentBody", { email })}</p>
-        </div>
-        <div>
-          <button
-            className={tactileButtonClasses("secondary")}
-            onClick={() => setSent(false)}
-            type="button"
-          >
-            <span>{t("writeAnother")}</span>
-          </button>
-        </div>
+  const sentBlock = (
+    <div className="grid gap-4">
+      <div
+        className="rounded-[var(--radius-lg)] border border-rule bg-card p-6"
+        ref={sentRef}
+        role="status"
+        tabIndex={-1}
+      >
+        <p className="type-section-label">{t("sentLabel")}</p>
+        <p className="type-body mt-3 text-ink">{t("sentBody", { email })}</p>
       </div>
-    );
-  }
+      <div>
+        <button
+          className={tactileButtonClasses("secondary")}
+          onClick={() => setSent(false)}
+          type="button"
+        >
+          <span>{t("writeAnother")}</span>
+        </button>
+      </div>
+    </div>
+  );
 
-  return (
-    <form className={`grid gap-6 ${className}`} noValidate onSubmit={handleSubmit}>
+  const form = (
+    <form className="grid gap-7" noValidate onSubmit={handleSubmit}>
       {locale ? <input name="locale" type="hidden" value={locale} /> : null}
 
       {/* Honeypot. Off-screen, skipped by keyboard, hidden from assistive tech. */}
@@ -258,16 +267,97 @@ export function ContactForm({
         />
       </div>
 
-      {/*
-        * `data-ground-quiet` on each control group, not on the form as a whole.
-        * On the home page the form sits on a paper island inside the contact
-        * close, and the live ground draws its field straight through that
-        * island. These marks are what the shader reads to fade the field under
-        * a group the way it fades it under the copy in What we build, so a
-        * field with no fill of its own still has open paper behind its type.
-        * The attribute does nothing on routes without the ground.
-        */}
-      <div className="grid gap-6 sm:grid-cols-2" data-ground-quiet="">
+      <fieldset className="grid gap-3">
+        <legend className={`${labelClasses} mb-3`}>{t("needLabel")}</legend>
+        <div className="flex flex-wrap gap-2">
+          {INTAKE_NEEDS.map((key) => (
+            <label className="cursor-pointer" key={key}>
+              <input
+                checked={needs.includes(key)}
+                className="peer sr-only"
+                name="need"
+                onChange={() => toggleNeed(key)}
+                type="checkbox"
+                value={key}
+              />
+              {/*
+               * Selected reads as a marked chip, not a button: the accent
+               * border and tint stay in the chip family instead of borrowing
+               * the ink fill the submit control owns.
+               */}
+              <span className="block rounded-full border border-rule-control bg-white/70 px-3.5 py-2 text-sm font-medium text-ink-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
+                {t(`needs.${key}`)}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-2">
+          <label className={labelClasses} htmlFor="contact-timing">
+            {t("timingLabel")} <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
+          </label>
+          <select
+            className={`${fieldClasses} intake-select`}
+            id="contact-timing"
+            name="timing"
+            onChange={(event) => setTiming(event.target.value)}
+            value={timing}
+          >
+            <option value="">{t("choose")}</option>
+            {INTAKE_TIMINGS.map((key) => (
+              <option key={key} value={key}>
+                {t(`timings.${key}`)}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="grid gap-2">
+          <label className={labelClasses} htmlFor="contact-budget">
+            {t("budgetLabel")} <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
+          </label>
+          <select
+            className={`${fieldClasses} intake-select`}
+            id="contact-budget"
+            name="budget"
+            onChange={(event) => setBudget(event.target.value)}
+            value={budget}
+          >
+            <option value="">{t("choose")}</option>
+            {INTAKE_BUDGETS.map((key) => (
+              <option key={key} value={key}>
+                {t(`budgets.${key}`)}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="grid gap-2">
+        <label className={labelClasses} htmlFor="contact-message">
+          {t("messageLabel")}
+        </label>
+        <textarea
+          aria-describedby={errors.message ? "contact-message-error" : undefined}
+          aria-invalid={errors.message ? true : undefined}
+          className={`${fieldClasses} min-h-36 resize-y leading-7`}
+          id="contact-message"
+          name="message"
+          onChange={(event) => setMessage(event.target.value)}
+          ref={messageRef}
+          required
+          value={message}
+        />
+        {errors.message ? (
+          <p className={errorTextClasses} id="contact-message-error">
+            {errors.message}
+          </p>
+        ) : null}
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
         <div className="grid gap-2">
           <label className={labelClasses} htmlFor="contact-name">
             {t("nameLabel")}
@@ -317,7 +407,7 @@ export function ContactForm({
         </div>
       </div>
 
-      <div className="grid gap-2" data-ground-quiet="">
+      <div className="grid gap-2">
         <label className={labelClasses} htmlFor="contact-company">
           {t("companyLabel")}{" "}
           <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
@@ -331,54 +421,6 @@ export function ContactForm({
           type="text"
           value={company}
         />
-      </div>
-
-      <fieldset className="grid gap-3" data-ground-quiet="">
-        <legend className={labelClasses}>{t("topicLabel")}</legend>
-        <div className="flex flex-wrap gap-2">
-          {chips.map(({ key, label }) => (
-            <label className="cursor-pointer" key={key}>
-              <input
-                checked={topicKey === key}
-                className="peer sr-only"
-                name="topic"
-                onChange={() => setChosenTopic(key)}
-                type="radio"
-                value={label}
-              />
-              {/*
-               * Selected reads as a marked chip, not a button: the accent
-               * border and tint stay in the chip family instead of borrowing
-               * the ink fill the submit control owns.
-               */}
-              <span className="block rounded-full border border-rule-control bg-white/70 px-3.5 py-2 text-sm font-medium text-ink-muted transition-colors peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-accent peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
-                {label}
-              </span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
-      <div className="grid gap-2" data-ground-quiet="">
-        <label className={labelClasses} htmlFor="contact-message">
-          {t("messageLabel")}
-        </label>
-        <textarea
-          aria-describedby={errors.message ? "contact-message-error" : undefined}
-          aria-invalid={errors.message ? true : undefined}
-          className={`${fieldClasses} min-h-40 resize-y leading-7`}
-          id="contact-message"
-          name="message"
-          onChange={(event) => setMessage(event.target.value)}
-          ref={messageRef}
-          required
-          value={message}
-        />
-        {errors.message ? (
-          <p className={errorTextClasses} id="contact-message-error">
-            {errors.message}
-          </p>
-        ) : null}
       </div>
 
       {fallback ? (
@@ -402,7 +444,7 @@ export function ContactForm({
         </div>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3" data-ground-quiet="soft">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
         {/*
          * The same treatment every other primary action gets. `TactileButton`
          * itself renders an anchor, and this one has to submit a form, so the
@@ -437,5 +479,39 @@ export function ContactForm({
         </p>
       </div>
     </form>
+  );
+
+  // What the reader gets back, beside the form. The first step names what the
+  // reply will ask about for each need marked, so the panel answers the choice.
+  return (
+    <div className={`intake ${className}`}>
+      <div className="intake__form">{sent ? sentBlock : form}</div>
+      <aside aria-labelledby="intake-back-title" className="intake__back">
+        <h3 className="intake__back-title" id="intake-back-title">
+          {t("back.title")}
+        </h3>
+        <ol className="intake__steps">
+          <li>
+            <strong>{t("back.replyTitle")}</strong>
+            <span>{t("back.replyBody")}</span>
+            {needs.length > 0 ? (
+              <ul aria-live="polite" className="intake__asks">
+                {needs.map((key) => (
+                  <li key={key}>{t(`asks.${key}`)}</li>
+                ))}
+              </ul>
+            ) : null}
+          </li>
+          <li>
+            <strong>{t("back.quoteTitle")}</strong>
+            <span>{t("back.quoteBody")}</span>
+          </li>
+          <li>
+            <strong>{t("back.decideTitle")}</strong>
+            <span>{t("back.decideBody")}</span>
+          </li>
+        </ol>
+      </aside>
+    </div>
   );
 }

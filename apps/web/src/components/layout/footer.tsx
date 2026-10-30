@@ -65,6 +65,9 @@ export async function Footer({ locale }: { locale: AppLocale }) {
         </div>
 
         <div className="site-footer__colophon" data-ground-quiet="">
+          <Link className={linkClass} href="/services">
+            {t("services")}
+          </Link>
           <a className={linkClass} href={GITHUB_URL} rel="me noopener noreferrer">
             {t("github")}
           </a>

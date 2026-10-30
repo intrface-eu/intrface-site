@@ -1,4 +1,4 @@
-# Home contract (2026-09-29, revision 10: our own products)
+# Home contract (2026-10-30, revision 11: interfaces on paper)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -66,6 +66,21 @@ pages. `/<hr|it|vec|ckm>/index` and `/…/patchbay` redirect (307) to
 `/en/index` and `/en/patchbay`; tiles in every locale link straight to the
 English pages; their captions stay translated.
 
+Revision 11, 2026-10-30: the owner called the bento "just ugly" and asked
+for white space and our interfaces as the main thing, with the sentence
+animated better but kept as neat as it is. The bento and its sticky stage
+are gone. The first screen is still black with the sentence; the first
+interface peeks into its bottom edge, and the black gives way to paper
+behind it. Below, one product per row on paper (Voyager, AgroPulse,
+Polis), each a desktop capture with a phone over its near corner, the
+phone showing the product in use (the Voyager atlas, the AgroPulse grove,
+the Polis report). Index and Patchbay share one quieter "Coming soon" row,
+and the last block, "We build these for clients too.", shows Velum and
+AstyleMarine small and links to `/services`. The sentence now rises word
+by word behind a mask, and the arrows gave way to the language codes
+(EN, HR, VEC, CKM) with a hairline that runs out the hold. The footer is
+paper on home too. Revisions 5 to 10 below the structure are history.
+
 ## The sentence
 
 `HomeGrid.common.claim` in each locale. English, verbatim:
@@ -97,63 +112,34 @@ and hands them, page locale first, to `ClaimCycle` (client,
   the page locale's line only, from a visually hidden copy (`.sr-only`) at
   the head of the `h1`; every line of letters is `aria-hidden` and the
   animation never touches the copy.
-- **Letters.** Each line is words (`.home-veil__word`, inline-block,
-  `white-space: nowrap`, joined by ordinary spaces) of letters
-  (`.home-veil__char`, inline-block), so lines wrap at word boundaries as
-  the plain text does and a word never breaks. A letter in its own
-  inline-block loses the font's kerning with its neighbour (`font-kerning`
-  cannot reach across the boundary: the split text set 0.4 to 0.8% wider,
-  the period drifting off "far." and "fare."). `KERNING` in
-  `claim-cycle.tsx` puts it back: the pairs in the five lines that Google
-  Sans Flex 600 kerns by 0.004em or more ("r." −0.096em, "y," −0.064em,
-  "’è" −0.063em, "xe", "av", "ov", "vo", "fa", "Re" and others), measured in
-  Chromium and applied as `margin-inline-end` in em on the first letter,
-  server-rendered. The split then sets within about 1px of the plain text
-  per line. A pair missing from the table sets unkerned; if a line
-  changes, measure its new pairs. Wrapping (`text-wrap: balance`) matches
-  the plain text at every width from 320 to 1440px except English between
-  360 and 392px, where the balance picks "Reducing needless / friction
-  between" over "Reducing / needless friction / between intention,"; five
-  rows either way, same height.
-- **Motion.** A switch moves the letters, opacity and transform only
-  (`waapi.animate`, one Web Animation per letter and property, `stagger`
-  for the delays; no filter, no blur). Forward, the old line's letters
-  leave up and to the left (`translate3d(-0.08em, -0.3em, 0)`), first to
-  last over a 240ms spread, each fading in 260ms
-  (`cubic-bezier(0.4, 0, 0.6, 1)`) and moving in 380ms
-  (`cubic-bezier(0.5, 0, 0.75, 0)`, accelerating away). The new line's
-  letters start 360ms in, over the same spread, from below and to the
-  right, each fading up in 420ms and settling in 560ms
-  (`cubic-bezier(0.22, 1, 0.36, 1)`, no overshoot). Back, the offsets flip
-  and the spread runs last to first. The two waves overlap in time but a
-  place is clear before its new letter arrives. The switch takes 1.16s;
-  then the line holds 3s. A switch asked for mid-flight stops every letter
-  where it is and retargets from there: every other line still showing
-  leaves, the target arrives, so rapid clicks never stack and end on the
-  right line with no letter left half-shown.
+- **Words.** Each line is words (`.home-veil__word`, inline-block,
+  `overflow: hidden`, a little padding above and below with matching
+  negative margins, so descenders and accents are not clipped) holding one
+  `.home-veil__word-in` each, with its index in `--w`. Words keep the
+  font's kerning, so the per-letter `KERNING` table is gone.
+- **Motion.** On first paint the page's line rises word by word inside the
+  masks (`data-intro`, CSS `claim-rise`: from `translate3d(0, 110%, 0)`,
+  1000ms, `cubic-bezier(0.16, 1, 0.3, 1)`, each word 42ms after the last
+  from 160ms). A switch moves the words, transform only (`waapi.animate`,
+  `stagger`): the old line's words leave upward out of their masks
+  (`EASE_AWAY`, 460ms each, 18ms apart), the new line's words rise in from
+  below starting 240ms in (`EASE_LAND`, 950ms each, 42ms apart); back, the
+  directions flip. Then the line holds 3.4s. A switch asked for mid-flight
+  retargets from where the words are.
 - **Pauses.** The cycle pauses while a mouse (not touch) is over the
   sentence block, on the line shown; a switch already in flight lands
   first. It pauses with keyboard focus inside (a button focused by a mouse
   click does not count, so leaving resumes), while the tab is hidden and
   while the block is off screen (IntersectionObserver). Leaving, a swipe, a
   click or a key starts a full switch-and-hold again.
-- **Arrows.** Two `<button>`s, previous and next
-  (`HomeGrid.common.prevLanguage` / `nextLanguage` in the page's language:
-  "Previous language" / "Next language", "Prethodni jezik" / "Sljedeći
-  jezik", "Lingua precedente" / "Lingua successiva", "Lingua de prima" /
-  "Prossima lingua", "Prošli jazik" / "Idući jazik"), 44px circles with
-  `IconArrowLeft` / `IconArrowRight`. They switch in their direction,
-  wrapping round the cycle. They fade in (240ms) under a mouse over the
-  block (`(hover: hover) and (pointer: fine)`) or with keyboard focus inside
-  (`:has(:focus-visible)`), vertically centred on the sentence. From
-  1400px they flank it: the shell's gutter there is at least 100px, so the
-  previous arrow sits in it, 24px from the text. From 640 to 1399px the
-  gutter is 40px or less, so both sit together 24px right of the `h1`
-  (which is 20ch wide, leaving room at every width). Below 640px (a mouse
-  on a narrow window, a keyboard on a phone) they sit at the end of the
-  link row. With a mouse they take the pointer even while faded, and the
-  space between them and the text is part of the block, so reaching for
-  them keeps the hover. Touch screens show none.
+- **Codes.** Under the sentence, `.home-veil__codes` (a group labelled
+  `Showcase.languages`, "Language of the sentence") holds one button per
+  line with its code in capitals and its endonym as the name;
+  `aria-pressed` marks the line shown. A click switches straight to that
+  line. Under the pressed code a hairline (`::after`, `claim-hold`) runs
+  from nothing to full over the switch and the hold, so it shows when the
+  next line comes; while the cycle is paused it stands full (`data-held`).
+  Under reduced motion the hairline does not run.
 - **Keys and swipe.** With focus inside the block, Left and Right switch
   back and forward. On touch, the block has `touch-action: pan-y`: a
   horizontal swipe of 40px or more that is more horizontal than vertical
@@ -179,153 +165,63 @@ and hands them, page locale first, to `ClaimCycle` (client,
 - **Reduced motion.** No cycle: the page's line stays, and the links to the
   other languages of its cycle (three; four on `/it`) sit in one row under it (wrapping on a phone), all
   visible and focusable. CSS lays this out from first paint; the client
-  clears `aria-hidden` and `tabIndex` once it hydrates. No letter motion, no
-  arrows (`display: none`), and the keys and swipe do nothing.
+  clears `aria-hidden` and `tabIndex` once it hydrates. No word motion, no
+  running hairline, and the keys and swipe do nothing.
 
 ## Page structure
 
-`HomePage`: `<main className="text-ink">` holding `.home-stage` (the veil
-and the bento), then the footer from the layout. No header, no `Ground`.
-The stage is `--black` (`#000`, a home-only token); other pages keep
-paper.
+`HomePage`: `<main className="home text-ink">` holding `Veil` and
+`HomeInterfaces`, then the footer from the layout. No header, no `Ground`.
 
-1. **The stage.** `.home-stage` is `position: relative` and
-   `100svh + --veil-height` tall. The bento is its only in-flow child.
-2. **The veil.** `Veil`, `.home-veil`: absolute at the top of the stage,
-   `--veil-height` tall (`100svh` + `--veil-fade`, 60svh), `z-index` above
-   the bento, `--black` solid through the first `100svh`, then fading to
-   nothing over `--veil-fade` with eased stops. At scroll 0 the screen is
-   black with only the logo and the sentence. On it the logo (`MakerMark`) and the sentence
-   (`.type-display`, `--ink-inverse`, the page's `h1`, in
-   `.section-shell`, cycling through the four languages with its link
-   under it; see The sentence). It scrolls away at page speed. Its solid
-   band (`::before`, the first `100svh`), the mark and the sentence block
-   take pointer events, the faded part does not. When a tile
-   gets keyboard focus, the veil moves up out of the way
-   (`.home-stage:has(.work-tile:focus-visible) .home-veil`,
-   `translateY(-100%)`, a 240ms transition only under
-   `prefers-reduced-motion: no-preference`).
-3. **The bento.** `WorkTiles`, `.work-tiles`, a `<section>` labelled
-   `HomeGrid.common.gridLabel`: `position: sticky; top: 0`, full viewport
-   width (not in `.section-shell`), `100svh` tall, on `--black` with a gap
-   and outer padding of `min(var(--grid-gap), 10px)`. It sits under the
-   veil from the first frame, stays pinned for `--veil-height` of scroll,
-   and moves up with the page once the veil's bottom has left.
-4. **The footer.** Black on home only, by CSS alone:
-   `body:has(.home-stage) .site-footer` redefines `--paper` (black),
-   `--ink` (opaque `#ebebeb`), `--ink-muted`, `--line` and `--accent`
-   (`#7cb8b1`) and sets `color-scheme: dark`. Other pages keep paper.
+1. **The first screen.** `Veil`, `.home-veil`: at least `100svh` on
+   `--black`, the logo and the sentence (see The sentence). Its bottom
+   padding leaves `--iface-peek` (`clamp(4.5rem, 15svh, 9rem)`) free, and
+   the first interface rises into that band.
+2. **The interfaces.** `HomeInterfaces`, `.ifaces.ifaces--home`, a
+   `<section>` labelled `HomeGrid.common.gridLabel`. Its background runs
+   from `--black` to `--paper` in eased stops over `--fade`
+   (`clamp(9rem, 40vw, 36rem)`), so on a phone the first row's text already
+   sits on paper. The first row is pulled up by `--iface-peek` above the
+   black. See The interfaces.
+3. **The footer.** Paper, as on every page.
 
-No JavaScript scroll handler. The pinning is ordinary sticky scrolling
-and works the same in every browser. On top of it, the grid inside the
-sticky section starts 12svh low and eases up to 0 over `--veil-height` of
-scroll (CSS scroll-driven animation, transform only, behind `@supports
-(animation-timeline: scroll())` and `prefers-reduced-motion:
-no-preference`), so it lands as the veil leaves; without support, under
-reduced motion, or with a tile focused, it sits at 0.
+## The interfaces
 
-## The tiles
+Rows are `InterfaceRow` (`components/showcase/interface-row.tsx`), shared
+with `/services`. A row is a desktop capture (1440×900 at 2x, a white plate
+with a hairline and a long offset shadow) with a phone (390×844 at 2x, the
+capture in a thin ink body) over its near corner, and a narrow text column:
+the name, the status, one line and the way in. From 1024px the screens take
+the wide column and run off the page edge on their side (`data-side`); the
+phone hangs into the gap toward the text. Below 1024px a row stacks,
+screens first, bleeding a fifth past the far edge. The lead row
+(`data-lead`, Voyager) sets the screens across the width from a fifth in,
+with the phone standing mostly beside the screen so it covers the page's
+margin and not its copy, and the name and the line under it in two
+columns. The section clips the bleed (`overflow-x: clip`).
 
-Five, one per product of our own, in DOM order: Voyager, Index, Polis,
-AgroPulse, Patchbay. Velum and AstyleMarine are client work and are not on
-the grid; `PROJECTS` keeps them for `/work`.
+In order:
 
-- **Grid.** From 1024px two equal rows on twelve columns: Voyager 7 and
-  Index 5, then Polis, AgroPulse and Patchbay 4 each (`data-span`), so the
-  seams of the two rows never meet. Below 1024px, 2 columns by 3 equal
-  rows: Voyager (`data-lead`) takes the whole top row, the other four sit
-  two by two under it. Voyager is the largest cell at every width. A tall
-  Voyager cell on a phone was tried and dropped: filled by height, it cut
-  both ends off the capture's centred headline.
-- **Links.** Every tile is one link, in the same tab (no `target`, no
-  `rel`), named "{name}: {line}", with ", {status}" after it on a
-  coming-soon tile ("{name}: {status}" for Patchbay, which has no line).
-  The open products' roots live in `PRODUCT_ROOTS`
-  (`lib/site/product-roots.ts`), which the short routes read too: Voyager
-  `https://voyager.intrface.eu/` with `Projects.voyager.role` and the
-  captures from `PROJECTS.voyager`; Polis `https://polis.intrface.eu/`
-  with `WorkPolis.name` and `WorkPolis.domain`; AgroPulse
-  `https://agropulse.intrface.eu/` with `HomeGrid.projects.agropulse.line`.
-  Each root opens the product's own About page. The two products not open
-  yet (`data-soon`) are next-intl `Link`s to their English page on this
-  site, in every locale (`locale` and `hrefLang` from
-  `PRODUCT_PAGE_LOCALE`, so no redirect hop): Index to `/en/index` (see The
-  Index page) with `HomeGrid.projects.index.line` ("The things you save,
-  read, filed and connected.") and `HomeGrid.projects.index.status`;
-  Patchbay to `/en/patchbay` (see The Patchbay page) with
-  `WorkIndex.entries.patchbay.name` and `.status`. These caption strings
-  are translated in all five locales.
-- **Addresses of products not open yet.** Patchbay's appears nowhere: not
-  in code, text, alt, comments or commits. Index's own address is linked
-  from no page or tile.
-- **Image.** `<picture>` with `next/image` props from `getImageProps`: the
-  desktop capture (1440×1000) from 768px, the mobile capture (390×844)
-  below. `object-fit: cover`, anchored to the top and to the side the
-  page's headline sits on (`data-anchor`): Voyager and Patchbay
-  centre, Index, Polis and AgroPulse keep their left edge.
-  `sizes` follows the cell: from 1024px a span of n columns is n/12 of the
-  viewport wide where it fills by width (from an aspect ratio of 8.64/n:
-  59vw, 42vw, 34vw) and 72vh where it fills by height; from 768 to 1023px
-  Voyager is 100vw from 12/25 and the others 50vw from 24/25, else 48vh;
-  below 768px the mobile capture always fills by width, 100vw for Voyager
-  and 50vw for the rest. All five load eagerly; Voyager alone gets
-  `fetchPriority="high"`. `alt` is the name.
-- **Quiet at rest.** Under `(hover: hover) and (pointer: fine)` a black
-  layer at 50% sits over each screenshot (`.work-tile__picture::after`); it
-  goes to 0 on hover or `:focus-visible`, over 200ms, with no transition
-  under reduced motion. On touch screens there is no layer: full
-  brightness, one tap opens the link.
-- **Caption.** A black bar pinned over the bottom of the tile, one line:
-  the product's logo (18px tall, `alt=""`), the name (`.type-caption`,
-  `--ink-inverse`), the line (`--ink-inverse-muted`, from 1024px only,
-  ending in an ellipsis when it does not fit) and `IconArrowRight` at the
-  end: enter, not leave. A coming-soon tile shows "Coming soon"
-  (`.work-tile__status`, `--ink-inverse-muted`, never cut) at every width,
-  after the line where the line shows. Below 768px those tiles drop the
-  arrow and their caption may wrap: where the name and the status do not
-  fit side by side in the half-width cell, the status takes a second line
-  (at 390px: Patchbay in en, it and ckm, Index in it; one line otherwise).
-  From 1024px the name never shrinks; the line gives way first.
-- **Logos** (`public/proof/projects/<key>/logo.svg`; AgroPulse's
-  `logo-2026-09-29.svg`), each the product's
-  own mark in its own light or dark-scheme colours, geometry untouched:
-  Voyager `apps/web/public/logo-icon-light.svg`; Index
-  `apps/web/public/index-mark.svg` from the Index repo with its dark-scheme
-  ink (`--ink`, `oklch(0.93 0.006 80)`, `#eae7e3`) as the fill and the
-  viewBox cropped to the shapes, as its own `Mark` component does
-  (`40.5 9.5 48 177.5`); Polis `apps/web/public/brand/polis-app-icon.svg`;
-  AgroPulse the Field Signal symbol (AgroPulse commit fc89afd),
-  `assets/brand/field-signal/svg/agropulse-symbol-reversed.svg`, the ivory
-  variant with the lime dot that AgroPulse uses on dark grounds, with the
-  viewBox cropped square around the symbol (`-0.5 0 118 118`), written as
-  `agropulse/logo-2026-09-29.svg` so no cache serves the old leaf-and-pulse
-  mark, which stays in `agropulse/logo.svg` unused; Patchbay
-  `brand/assets/logo/patchbay-symbol-paper.svg`, viewBox cropped square
-  around the symbol. (Velum and AstyleMarine keep theirs under
-  `proof/projects/` for other pages.)
-- **Captures** (1440×1000 and 390×844, DPR 1, top of the page, webp at
-  `cwebp -q 80 -m 6`). Each tile shows the product's About page, the page
-  the tile opens; Patchbay, whose tile opens its page here, shows its
-  landing. Voyager from its production root, which is its About page, with
-  the analytics banner declined (`voyager/desktop-2026-09-26.webp` and
-  `mobile-2026-09-26.webp`, shared with the showcase; dated names so no
-  image cache serves the old capture); Index from its page here,
-  `/en/index` on a production build, 2026-09-29, viewport only
-  (`index/desktop.webp`, `index/mobile.webp`: the headline and "Coming
-  soon", no sign-in); Polis and AgroPulse from their live About pages
-  (`https://polis.intrface.eu/about`, `https://agropulse.intrface.eu/about`)
-  after their new heroes went live, 2026-09-29, viewport only, 1× density,
-  no banner dismissed (`polis/about-desktop-2026-09-29b.webp` and
-  `about-mobile-2026-09-29b.webp`, the same names under `agropulse/`; the
-  earlier `about-*-2026-09-29.webp`, already deployed, stay unused);
-  Patchbay from `/` of a local run of a
-  copy of its working tree (the intro at the top of the landing). The
-  earlier Polis and AgroPulse captures (`polis/landing-*.webp`,
-  `agropulse/desktop.webp`, `agropulse/mobile.webp`) stay in the tree
-  unused by the grid. Use dated names when replacing a file.
-- **Edge and state.** 1px border in paper at 16% (the bento sets
-  `--line`); no radius or shadow. The focus ring is drawn inside the tile
-  (paper with a black line inside it) so the grid does not clip it.
+- **Voyager**, lead, "Live": desktop the Voyager home page, phone the Vrsar
+  atlas. "Open Voyager" goes to `PRODUCT_ROOTS.voyager`; a quieter "Open
+  the Vrsar atlas" goes to `https://voyager.intrface.eu/en/vrsar`.
+- **AgroPulse**, screens on the start side, "Live": the app on a 5.5 ha
+  grove near Vrsar, desktop and phone. "Open AgroPulse".
+- **Polis**, "Public test": desktop the root's map of Croatia ("Where are
+  you?"), phone the report form. Its line is followed by "A public test
+  with synthetic data. No municipality uses Polis yet." "Open Polis".
+- **Coming soon**, `.iface-pair`: Index and Patchbay as two quieter cards
+  linking to `/en/index` and `/en/patchbay` (see English-only product
+  pages), with their status.
+- **The door**, `.iface-door`: "We build these for clients too.", one line
+  naming Velum and AstyleMarine, a primary button to `/services`, and the
+  two sites (`InterfaceDuo`), each screen linking to the live site.
+
+Captures live in `public/proof/projects/<project>/*-2026-10-30.webp`.
+Alt text is in `Showcase.alt`. The one motion: as a row comes into view its
+screen settles from 3rem below and the phone from 7rem (scroll-driven,
+transform only, behind `@supports (animation-timeline: view())` and
+`prefers-reduced-motion: no-preference`).
 
 ## Short routes
 
@@ -405,6 +301,13 @@ collaborators, no source link, no contact button. Metadata through
 only (see English-only product pages).
 
 ## Verification
+
+Revision 11 (2026-10-30): `bun run check-types`, eslint on the changed
+files, `bun run build`; a production build on an isolated port, looked at
+at 1440×900 and 390×844, from the top and as full pages with reduced motion
+emulated (a full-page capture stretches the viewport and moves every
+`view()` timeline, so it shows the settle half-run otherwise). The checks
+below describe the old bento and stay as history.
 
 Typecheck, `bunx eslint src`, `bunx next build`; headless QA on a
 production build (an isolated port) at 1440×900, 1024×768, 768×1024 and

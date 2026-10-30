@@ -7,7 +7,8 @@
     "home": "Intrface, prima pagina",
     "menu": "Menù",
     "logoAlt": "Icona de Intrface",
-    "skipToContent": "Va dreto al contenuto"
+    "skipToContent": "Va dreto al contenuto",
+    "services": "Servizi"
   },
   "Footer": {
     "location": "Orsera, Croazia",
@@ -16,7 +17,8 @@
     "github": "GitHub",
     "imprint": "Dati legali",
     "privacy": "Privacy",
-    "terms": "Termini"
+    "terms": "Termini",
+    "services": "Servizi"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -73,6 +75,10 @@
     "astyleMarine": {
       "title": "AstyleMarine",
       "description": "Giri privati in yacht de Parenzo longo la costa istriana."
+    },
+    "services": {
+      "title": "Servizi",
+      "description": "Siti, web app e carte de Orsera, in Istria, per dite e enti publici. Un preventivo scrito prima de scominziar."
     }
   },
   "HomePage": {
@@ -521,8 +527,7 @@
     "emailLabel": "Email",
     "companyLabel": "Dita",
     "companyOptional": "(se ti vol)",
-    "topicLabel": "Argomento",
-    "messageLabel": "Cosa xe dificile de capir, lento de doprar o dificile de fidarse?",
+    "messageLabel": "Cossa el gavessi de far?",
     "honeypotLabel": "Lassa sto campo vodo",
     "sentLabel": "Messagio rivà",
     "sentBody": "El xe rivà da noi. La risposta vien de {email}, entro un giorno de lavor.",
@@ -533,14 +538,56 @@
     "mailNote": "O scrivine a <mail>{email}</mail>.",
     "errorName": "Dine chi che ti xe.",
     "errorEmail": "Ne servi un indirizo per risponderte.",
-    "errorMessage": "Basta una frase o do sul sistema.",
+    "errorMessage": "Basta una frase o do.",
     "subjectWithTopic": "{topic} — richiesta de {name}",
     "subjectFallback": "Richiesta dal sito",
     "mailtoName": "Nome",
     "mailtoEmail": "Email",
     "mailtoCompany": "Dita",
-    "mailtoTopic": "Argomento",
-    "mailtoWebsite": "el sito"
+    "mailtoTopic": "Bisogno",
+    "mailtoWebsite": "el sito",
+    "needLabel": "Cossa te servi?",
+    "needs": {
+      "business-site": "Un sito per la mia dita",
+      "place-app": "Una carta o una app per un logo",
+      "web-app": "Una web app o un sistema",
+      "public-service": "Un servizio publico",
+      "care": "Hosting e manutenzion",
+      "review": "Una ociada a quel che go"
+    },
+    "timingLabel": "Quando?",
+    "timings": {
+      "soon": "Prima che se pol",
+      "quarter": "Nei prossimi tre mesi",
+      "year": "Più avanti sto ano",
+      "unsure": "No so ancora"
+    },
+    "budgetLabel": "Budget",
+    "budgets": {
+      "under-5k": "Meno de 5.000 €",
+      "5k-15k": "5.000–15.000 €",
+      "15k-50k": "15.000–50.000 €",
+      "over-50k": "Più de 50.000 €",
+      "unsure": "No so ancora"
+    },
+    "choose": "Sielgi",
+    "back": {
+      "title": "Cossa te ricevi",
+      "replyTitle": "Una risposta entro un giorno de lavor",
+      "replyBody": "Una prima letura de quel che ti ne ga mandà, un’idea de come far e le domande che ne servi.",
+      "quoteTitle": "Un preventivo scrito",
+      "quoteBody": "Cossa, quanto e quando, fissà prima de scominziar.",
+      "decideTitle": "Ti te decidi",
+      "decideBody": "No se scominzia gnente fin che no ti acceti el preventivo."
+    },
+    "asks": {
+      "business-site": "Per un sito: che lingue, che pagine e cossa ti vol cambiar de solo.",
+      "place-app": "Per una carta o una app: la zona, i loghi e chi li zonta.",
+      "web-app": "Per una web app: i dati che ti ga za e chi verzi quel schermo ogni giorno.",
+      "public-service": "Per un servizio publico: chi ricevi le segnalazioni e cossa vedi la gente.",
+      "care": "Per hosting e manutenzion: cossa gira desso, dove e chi ga l’acesso.",
+      "review": "Per una ociada: l’indirizo o l’acesso, e cossa no te piasi."
+    }
   },
   "Projects": {
     "viewProject": "Varda el progeto",
@@ -587,8 +634,6 @@
     "common": {
       "claim": "Meno fadiga tra quel che ti vol, quel che xe e quel che val la pena far.",
       "switchLocale": "Continua in dialeto",
-      "prevLanguage": "Lingua de prima",
-      "nextLanguage": "Prossima lingua",
       "gridLabel": "Lavori de INTRFACE",
       "makerMark": "INTRFACE, prima pagina",
       "backToGrid": "Torna a la prima pagina"
@@ -600,6 +645,86 @@
       "index": {
         "line": "Le robe che ti salvi, lete, messe in ordine e ligade.",
         "status": "In arivo"
+      }
+    }
+  },
+  "Showcase": {
+    "live": "Ativo",
+    "publicTest": "Prova publica",
+    "open": "Verzi {name}",
+    "openAtlas": "Verzi la mapa de Orsera",
+    "polisLine": "Segnala un problema dove che ti sta, dopo varda chi lo ga ciapà, cossa xe sta prometù e cossa xe cambià.",
+    "polisNote": "Una prova publica con dati sintetici. Nissun comun dopera ancora Polis.",
+    "clientsHeading": "Le femo anche per i clienti.",
+    "clientsBody": "Velum, cafè e bar del vin a Orsera. AstyleMarine, noleggio de yacht a Parenzo.",
+    "clientsLink": "Varda cossa che femo",
+    "languages": "Lingua de la frase",
+    "alt": {
+      "voyagerDesktop": "La prima pagina de Voyager: “Discover the culture of a place your way.”",
+      "voyagerPhone": "La mapa de Voyager de Orsera sul telefonin, coi posti segnai longo la costa.",
+      "agropulseDesktop": "AgroPulse: un oliver de 5,5 ettari vicin Orsera segnà su la mapa, co la fase de cressita e i avisi dei prossimi 16 giorni.",
+      "agropulsePhone": "AgroPulse sul telefonin: l’oliver su la mapa e la so fase de cressita, el cambio de color.",
+      "polisDesktop": "Polis se verzi su la carta de la Croazia: “Where are you?”",
+      "polisPhone": "Polis sul telefonin: el modulo per segnalar, co la mapa, una foto e un campo per scriver cossa xe sucesso.",
+      "index": "La pagina de Index su sto sito.",
+      "patchbay": "La pagina de Patchbay su sto sito.",
+      "velum": "La prima pagina de Velum: “By the sea, in no hurry.”",
+      "astyle": "La prima pagina de AstyleMarine: “Luxury in full speed.”",
+      "voyagerAtlas": "L’atlante de Orsera de Voyager su un schermo grando: la costa coi loghi segnai.",
+      "polisReport": "Polis su un schermo grando: el modulo per segnalar a Orsera, con una carta e do modi de zontar una foto."
+    }
+  },
+  "Services": {
+    "title": "Siti e app de l’Istria. Verzi quei che za va.",
+    "body": "Disegnemo, fabrichemo e tegnimo in pie siti, web app e carte per dite e enti publici.",
+    "cta": "Conta el tuo progeto",
+    "listLabel": "Progeti de vardar",
+    "items": {
+      "voyager": "Loghi, gente e storie de Orsera",
+      "agropulse": "La stagion de le olive in Istria",
+      "polis": "Segnala un problema dove che ti sta",
+      "velum": "Cafè e bar del vin, Orsera",
+      "astyle": "Noleggio de yacht, Parenzo"
+    },
+    "buildTitle": "Ogni servizio ga arente qualcossa che gavemo fato noi. Ti pol verzerli tuti.",
+    "rows": {
+      "places": {
+        "title": "Carte e app per i loghi",
+        "line": "Una carta interativa de un paese o de una zona, coi sui loghi, la gente e le storie, che va sul telefonin per strada."
+      },
+      "data": {
+        "title": "Web app sui tui dati",
+        "line": "Strumenti che i dati che ti ga za, come campi, tempo o prenotazioni, li fa diventar un schermo che la gente varda ogni giorno."
+      },
+      "public": {
+        "title": "Servizi publici",
+        "line": "Segnala un problema dove che ti sta, dopo varda chi lo ga ciapà, cossa xe sta prometù e cossa xe cambià. Senza account."
+      },
+      "sites": {
+        "title": "Siti per le dite",
+        "line": "Un sito ne le lingue dei tui ospiti, svelto sul telefonin, col tuo menù, le barche o le camere."
+      }
+    },
+    "startWith": "Scominzia de qua",
+    "startTitle": "Conta el tuo progeto",
+    "startBody": "Basta qualche frase. Iuta un link a quel che ti ga desso.",
+    "faqTitle": "Domande",
+    "faq": {
+      "price": {
+        "q": "Come se fa el prezzo?",
+        "a": "Ogni progeto ga un preventivo scrito, con cossa, quanto e quando fissà prima de scominziar. No se scominzia gnente fin che no ti lo acceti. La domanda sul budget nel modulo ne iuta solo a proponer una strada che te va ben."
+      },
+      "after": {
+        "q": "Chi lo tien drio quando el xe online?",
+        "a": "De solito lo tegnimo noi e lo curemo. Se ti preferissi tegnirlo ti, lo passemo a ti o al tuo grupo."
+      },
+      "size": {
+        "q": "Un picio studio de Orsera pol far più de un sito?",
+        "a": "Voyager, AgroPulse e Polis xe web app che gavemo fato e che tegnimo in pie noi. Ti pol verzerle tute de sta pagina."
+      },
+      "start": {
+        "q": "Cossa te servi de mi per scominziar?",
+        "a": "Qualche frase su quel che te servi, col modulo o per email. Iuta un link a quel che ti ga desso."
       }
     }
   }

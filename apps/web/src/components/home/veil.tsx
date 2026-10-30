@@ -22,17 +22,15 @@ function cycleOrder(locale: AppLocale): AppLocale[] {
 }
 
 /**
- * The veil over the top of the home page: black, solid at the top and fading
- * to nothing, carrying the maker's mark and the one sentence (the page's
- * `h1`). The sentence cycles through the rotation's languages, starting from
- * the page's own (see `cycleOrder` and `ClaimCycle`). The veil scrolls away
- * at page speed over the pinned bento; see `.home-veil` in `globals.css` and
- * docs/home-grid-contract.md.
+ * The first screen of the home page: black, carrying the maker's mark and the
+ * one sentence (the page's `h1`). The sentence cycles through the rotation's
+ * languages, starting from the page's own (see `cycleOrder` and
+ * `ClaimCycle`). It scrolls away with the page into the interfaces; see
+ * `.home-veil` in `globals.css` and docs/home-grid-contract.md.
  */
 export async function Veil({ locale }: { locale: AppLocale }) {
   const order = cycleOrder(locale);
-  const t = await getTranslations({ locale, namespace: "HomeGrid.common" });
-  const labels = { prev: t("prevLanguage"), next: t("nextLanguage") };
+  const t = await getTranslations({ locale, namespace: "Showcase" });
 
   const lines: ClaimLine[] = await Promise.all(
     order.map(async (lineLocale) => {
@@ -40,6 +38,7 @@ export async function Veil({ locale }: { locale: AppLocale }) {
 
       return {
         locale: lineLocale,
+        name: LOCALE_ENDONYMS[lineLocale],
         claim: t("claim"),
         // A locale still waiting for its translation falls back to its own name.
         switchLocale: t.has("switchLocale") ? t("switchLocale") : LOCALE_ENDONYMS[lineLocale],
@@ -48,13 +47,10 @@ export async function Veil({ locale }: { locale: AppLocale }) {
   );
 
   return (
-    /* The veil: black over the top of the work, fading to nothing. It takes
-       no pointer events but on its solid band, the logo and the sentence, so
-       a click or a wheel where it has faded reaches the tile under it. */
     <div className="home-veil">
       <div className="section-shell home-veil__shell">
         <MakerMark locale={locale} />
-        <ClaimCycle lines={lines} labels={labels} />
+        <ClaimCycle lines={lines} label={t("languages")} />
       </div>
     </div>
   );

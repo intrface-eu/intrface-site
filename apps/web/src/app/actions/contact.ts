@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { alertDeliveryFailure, sendContactMail } from "@/lib/site/contact-delivery";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
+import { INTAKE_NEEDS, isIntakeBudget, isIntakeTiming } from "@/lib/site/intake";
 
 /**
  * Contact form transport.
@@ -78,11 +79,26 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   const email = field(formData, "email", LIMITS.email);
   const message = field(formData, "message", LIMITS.message);
   const company = field(formData, "company", LIMITS.company);
-  const topic = field(formData, "topic", LIMITS.subject);
   const locale = field(formData, "locale", LIMITS.locale);
 
   const resolvedLocale = resolveLocale(locale);
   const t = await getTranslations({ locale: resolvedLocale, namespace: "ContactForm" });
+
+  // Only known keys pass, in the form's own order, so a forged value never
+  // reaches the mail. The labels are in the reader's language, as on the form.
+  const posted = formData.getAll("need");
+  const topic = INTAKE_NEEDS.filter((key) => posted.includes(key))
+    .map((key) => t(`needs.${key}`))
+    .join(", ");
+  const timing = field(formData, "timing", 20);
+  const budget = field(formData, "budget", 20);
+  const details = [
+    isIntakeTiming(timing) ? `${t("timingLabel")}: ${t(`timings.${timing}`)}` : null,
+    isIntakeBudget(budget) ? `${t("budgetLabel")}: ${t(`budgets.${budget}`)}` : null,
+  ].filter((line) => line !== null);
+  // Timing and budget ride at the top of the message for the stores that have
+  // no field for them (Convex, the Prism alert).
+  const fullMessage = details.length > 0 ? [...details, "", message].join("\n") : message;
 
   const errors: Partial<Record<ContactFieldName, string>> = {};
   for (const failed of failingContactFields({ name, email, message })) {
@@ -103,7 +119,7 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
         name,
         email,
         subject,
-        message,
+        message: fullMessage,
         company: company || undefined,
         locale: locale || undefined,
       });
@@ -124,7 +140,8 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     `Name: ${name}`,
     `Email: ${email}`,
     company ? `Company: ${company}` : null,
-    topic ? `Topic: ${topic}` : null,
+    topic ? `Need: ${topic}` : null,
+    ...details,
     `Locale: ${resolvedLocale}`,
     "",
     message,
@@ -143,7 +160,10 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
 
   if (!result.ok) {
     console.error("[contact] Resend submission failed", result.error);
-    await alertDeliveryFailure({ name, email, topic, company, locale: resolvedLocale, message }, result.error);
+    await alertDeliveryFailure(
+      { name, email, topic, company, locale: resolvedLocale, message: fullMessage },
+      result.error,
+    );
     return { status: "failed" };
   }
 

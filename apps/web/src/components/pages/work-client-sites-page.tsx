@@ -23,7 +23,7 @@ export async function WorkClientSitesPage({ locale }: { locale: AppLocale }) {
       <section className="border-t border-rule">
         <div className="section-shell flex flex-wrap items-center justify-between gap-6 py-12 sm:py-16">
           <h2 className="type-heading">{t("contactTitle")}</h2>
-          <Link className={tactileButtonClasses("primary")} href="/about?topic=client-site#contact" locale={locale}>
+          <Link className={tactileButtonClasses("primary")} href="/services?need=business-site#start" locale={locale}>
             {t("contact")}<IconArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>

@@ -7,7 +7,8 @@
     "home": "Intrface početna",
     "menu": "Izbornik",
     "logoAlt": "Intrface ikona",
-    "skipToContent": "Preskoči na sadržaj"
+    "skipToContent": "Preskoči na sadržaj",
+    "services": "Usluge"
   },
   "Footer": {
     "location": "Vrsar, Hrvatska",
@@ -16,7 +17,8 @@
     "github": "GitHub",
     "imprint": "Impresum",
     "privacy": "Privatnost",
-    "terms": "Uvjeti"
+    "terms": "Uvjeti",
+    "services": "Usluge"
   },
   "LocaleSwitcher": {
     "label": "Jezik"
@@ -73,6 +75,10 @@
     "astyleMarine": {
       "title": "AstyleMarine",
       "description": "Privatni izleti jahtom iz Poreča duž istarske obale."
+    },
+    "services": {
+      "title": "Usluge",
+      "description": "Web stranice, web aplikacije i karte iz Vrsara, za tvrtke i javne ustanove. Pisana ponuda prije početka rada."
     }
   },
   "HomePage": {
@@ -521,8 +527,7 @@
     "emailLabel": "E-pošta",
     "companyLabel": "Tvrtka",
     "companyOptional": "(neobavezno)",
-    "topicLabel": "Tema",
-    "messageLabel": "Što je teško razumjeti, što usporava rad ili čemu nitko ne vjeruje?",
+    "messageLabel": "Što bi trebalo raditi?",
     "honeypotLabel": "Ostavite ovo polje prazno",
     "sentLabel": "Poruka je stigla",
     "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}, u jednom radnom danu.",
@@ -533,14 +538,56 @@
     "mailNote": "Ili pišite na <mail>{email}</mail>.",
     "errorName": "Recite nam tko ste.",
     "errorEmail": "Trebamo adresu na koju možemo odgovoriti.",
-    "errorMessage": "Dovoljna je rečenica-dvije o sustavu.",
+    "errorMessage": "Dovoljna je rečenica-dvije.",
     "subjectWithTopic": "{topic} — upit od {name}",
     "subjectFallback": "Upit s web stranice",
     "mailtoName": "Ime",
     "mailtoEmail": "E-pošta",
     "mailtoCompany": "Tvrtka",
-    "mailtoTopic": "Tema",
-    "mailtoWebsite": "web stranice"
+    "mailtoTopic": "Potreba",
+    "mailtoWebsite": "web stranice",
+    "needLabel": "Što vam treba?",
+    "needs": {
+      "business-site": "Stranica za moju tvrtku",
+      "place-app": "Karta ili aplikacija za mjesto",
+      "web-app": "Web aplikacija ili sustav",
+      "public-service": "Javna usluga",
+      "care": "Hosting i održavanje",
+      "review": "Pregled onoga što imam"
+    },
+    "timingLabel": "Kada?",
+    "timings": {
+      "soon": "Što prije",
+      "quarter": "U sljedeća tri mjeseca",
+      "year": "Kasnije ove godine",
+      "unsure": "Još ne znam"
+    },
+    "budgetLabel": "Budžet",
+    "budgets": {
+      "under-5k": "Do 5.000 €",
+      "5k-15k": "5.000–15.000 €",
+      "15k-50k": "15.000–50.000 €",
+      "over-50k": "Više od 50.000 €",
+      "unsure": "Još ne znam"
+    },
+    "choose": "Odaberite",
+    "back": {
+      "title": "Što dobivate",
+      "replyTitle": "Odgovor u jednom radnom danu",
+      "replyBody": "Prvo čitanje onoga što ste poslali, okvirni pristup i pitanja na koja trebamo odgovor.",
+      "quoteTitle": "Pisana ponuda",
+      "quoteBody": "Opseg, cijena i rok, utvrđeni prije početka rada.",
+      "decideTitle": "Vi odlučujete",
+      "decideBody": "Ništa ne počinje dok ne prihvatite ponudu."
+    },
+    "asks": {
+      "business-site": "Za stranicu: koji jezici, koje stranice i što želite sami mijenjati.",
+      "place-app": "Za kartu ili aplikaciju za mjesto: koje područje, koja mjesta i tko ih dodaje.",
+      "web-app": "Za web aplikaciju: koje podatke imate i tko svaki dan otvara taj ekran.",
+      "public-service": "Za javnu uslugu: tko prima prijave i što javnost vidi.",
+      "care": "Za hosting i održavanje: što sada radi, gdje i tko ima pristup.",
+      "review": "Za pregled: adresa ili pristup i što vam smeta."
+    }
   },
   "Projects": {
     "viewProject": "Pogledajte projekt",
@@ -587,8 +634,6 @@
     "common": {
       "claim": "Manje trenja između onoga što hoćeš, onoga što jest i onoga što vrijedi napraviti.",
       "switchLocale": "Nastavi na hrvatskom",
-      "prevLanguage": "Prethodni jezik",
-      "nextLanguage": "Sljedeći jezik",
       "gridLabel": "Rad studija INTRFACE",
       "makerMark": "INTRFACE početna",
       "backToGrid": "Natrag na početnu"
@@ -600,6 +645,86 @@
       "index": {
         "line": "Stvari koje spremate, pročitane, razvrstane i povezane.",
         "status": "Uskoro"
+      }
+    }
+  },
+  "Showcase": {
+    "live": "Radi",
+    "publicTest": "Javni test",
+    "open": "Otvorite {name}",
+    "openAtlas": "Otvorite kartu Vrsara",
+    "polisLine": "Prijavite problem u svom mjestu, pa pratite tko ga je preuzeo, što je obećano i što se promijenilo.",
+    "polisNote": "Javni test sa sintetičkim podacima. Nijedna općina još ne koristi Polis.",
+    "clientsHeading": "Ovakvo gradimo i za klijente.",
+    "clientsBody": "Velum, kafić i vinski bar u Vrsaru. AstyleMarine, najam jahte u Poreču.",
+    "clientsLink": "Pogledajte što gradimo",
+    "languages": "Jezik rečenice",
+    "alt": {
+      "voyagerDesktop": "Početna stranica Voyagera: “Discover the culture of a place your way.”",
+      "voyagerPhone": "Voyagerova karta Vrsara na mobitelu, s mjestima označenima uz obalu.",
+      "agropulseDesktop": "AgroPulse: maslinik od 5,5 ha kraj Vrsara ucrtan na karti, s fazom rasta i upozorenjima za idućih 16 dana.",
+      "agropulsePhone": "AgroPulse na mobitelu: maslinik na karti i njegova faza rasta, promjena boje.",
+      "polisDesktop": "Polis se otvara na karti Hrvatske: “Where are you?”",
+      "polisPhone": "Polis na mobitelu: obrazac za prijavu, s kartom, fotografijom i poljem za opis.",
+      "index": "Stranica Indexa na ovom webu.",
+      "patchbay": "Stranica Patchbaya na ovom webu.",
+      "velum": "Početna stranica Veluma: “By the sea, in no hurry.”",
+      "astyle": "Početna stranica AstyleMarinea: “Luxury in full speed.”",
+      "voyagerAtlas": "Voyagerov atlas Vrsara na velikom ekranu: obala s označenim mjestima.",
+      "polisReport": "Polis na velikom ekranu: obrazac za prijavu u Vrsaru, s kartom i dva načina za dodati fotografiju."
+    }
+  },
+  "Services": {
+    "title": "Web stranice i aplikacije iz Istre. Otvorite one koje već rade.",
+    "body": "Dizajniramo, gradimo i vodimo web stranice, web aplikacije i karte za tvrtke i javne ustanove.",
+    "cta": "Opišite projekt",
+    "listLabel": "Projekti koje možete pogledati",
+    "items": {
+      "voyager": "Mjesta, ljudi i priče Vrsara",
+      "agropulse": "Sezona maslina u Istri",
+      "polis": "Prijavite problem u svom mjestu",
+      "velum": "Kafić i vinski bar, Vrsar",
+      "astyle": "Najam jahte, Poreč"
+    },
+    "buildTitle": "Uz svaku uslugu ide nešto što smo za nju izgradili. Svako možete otvoriti.",
+    "rows": {
+      "places": {
+        "title": "Karte i aplikacije za mjesta",
+        "line": "Interaktivna karta grada ili kraja, s mjestima, ljudima i pričama, koja radi na mobitelu na ulici."
+      },
+      "data": {
+        "title": "Web aplikacije na vašim podacima",
+        "line": "Alati koji podatke koje već imate, poput polja, vremena ili rezervacija, pretvaraju u ekran koji ljudi gledaju svaki dan."
+      },
+      "public": {
+        "title": "Javne usluge",
+        "line": "Prijavite problem u svom mjestu, pa pratite tko ga je preuzeo, što je obećano i što se promijenilo. Bez korisničkog računa."
+      },
+      "sites": {
+        "title": "Stranice za tvrtke",
+        "line": "Stranica na jezicima kojima govore vaši gosti, brza na mobitelu, s vašim jelovnikom, brodovima ili sobama."
+      }
+    },
+    "startWith": "Krenite s ovim",
+    "startTitle": "Opišite projekt",
+    "startBody": "Dovoljno je nekoliko rečenica. Pomaže i poveznica na ono što sada imate.",
+    "faqTitle": "Pitanja",
+    "faq": {
+      "price": {
+        "q": "Kako se određuje cijena?",
+        "a": "Za svaki projekt dobivate pisanu ponudu s opsegom, cijenom i rokom, utvrđenima prije početka rada. Ništa ne počinje dok je ne prihvatite. Pitanje o budžetu u obrascu samo nam pomaže predložiti pristup koji vam odgovara."
+      },
+      "after": {
+        "q": "Tko se brine o svemu kad krene?",
+        "a": "Uobičajeno ga mi hostamo i održavamo. Ako ga radije želite voditi sami, predajemo ga vama ili vašem timu."
+      },
+      "size": {
+        "q": "Može li mali studio iz Vrsara izgraditi više od web stranice?",
+        "a": "Voyager, AgroPulse i Polis web su aplikacije koje smo sami izgradili i vodimo. Svaku možete otvoriti na ovoj stranici."
+      },
+      "start": {
+        "q": "Što vam treba od mene za početak?",
+        "a": "Nekoliko rečenica o tome što vam treba, kroz obrazac ili e-poštom. Pomaže i poveznica na ono što sada imate."
       }
     }
   }

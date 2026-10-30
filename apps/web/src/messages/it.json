@@ -7,7 +7,8 @@
     "home": "Intrface, pagina iniziale",
     "menu": "Menu",
     "logoAlt": "Icona di Intrface",
-    "skipToContent": "Vai al contenuto"
+    "skipToContent": "Vai al contenuto",
+    "services": "Servizi"
   },
   "Footer": {
     "location": "Orsera, Croazia",
@@ -16,7 +17,8 @@
     "github": "GitHub",
     "imprint": "Note legali",
     "privacy": "Privacy",
-    "terms": "Termini"
+    "terms": "Termini",
+    "services": "Servizi"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -73,6 +75,10 @@
     "astyleMarine": {
       "title": "AstyleMarine",
       "description": "Esperienze private in yacht da Parenzo lungo la costa istriana."
+    },
+    "services": {
+      "title": "Servizi",
+      "description": "Siti web, web app e mappe da Orsera, in Istria, per aziende ed enti pubblici. Un preventivo scritto prima di iniziare."
     }
   },
   "HomePage": {
@@ -521,8 +527,7 @@
     "emailLabel": "Email",
     "companyLabel": "Azienda",
     "companyOptional": "(facoltativo)",
-    "topicLabel": "Argomento",
-    "messageLabel": "Cos’è difficile da capire, lento da usare o poco affidabile?",
+    "messageLabel": "Cosa dovrebbe fare?",
     "honeypotLabel": "Lasci vuoto questo campo",
     "sentLabel": "Messaggio ricevuto",
     "sentBody": "Il messaggio ci è arrivato. Le rispondiamo da {email} entro un giorno lavorativo.",
@@ -533,14 +538,56 @@
     "mailNote": "Oppure ci scriva a <mail>{email}</mail>.",
     "errorName": "Ci dica il suo nome.",
     "errorEmail": "Ci serve un indirizzo a cui risponderle.",
-    "errorMessage": "Bastano una o due frasi sul sistema.",
+    "errorMessage": "Bastano una o due frasi.",
     "subjectWithTopic": "{topic} — richiesta di {name}",
     "subjectFallback": "Richiesta dal sito web",
     "mailtoName": "Nome",
     "mailtoEmail": "Email",
     "mailtoCompany": "Azienda",
-    "mailtoTopic": "Argomento",
-    "mailtoWebsite": "un visitatore del sito"
+    "mailtoTopic": "Esigenza",
+    "mailtoWebsite": "un visitatore del sito",
+    "needLabel": "Di cosa ha bisogno?",
+    "needs": {
+      "business-site": "Un sito per la mia attività",
+      "place-app": "Una mappa o un’app per un luogo",
+      "web-app": "Una web app o un sistema",
+      "public-service": "Un servizio pubblico",
+      "care": "Hosting e manutenzione",
+      "review": "Una revisione di ciò che ho"
+    },
+    "timingLabel": "Quando?",
+    "timings": {
+      "soon": "Il prima possibile",
+      "quarter": "Nei prossimi tre mesi",
+      "year": "Più avanti quest’anno",
+      "unsure": "Non lo so ancora"
+    },
+    "budgetLabel": "Budget",
+    "budgets": {
+      "under-5k": "Meno di 5.000 €",
+      "5k-15k": "5.000–15.000 €",
+      "15k-50k": "15.000–50.000 €",
+      "over-50k": "Più di 50.000 €",
+      "unsure": "Non lo so ancora"
+    },
+    "choose": "Scelga",
+    "back": {
+      "title": "Cosa riceve",
+      "replyTitle": "Una risposta entro un giorno lavorativo",
+      "replyBody": "Una prima lettura di ciò che ci ha inviato, un approccio di massima e le domande a cui ci serve risposta.",
+      "quoteTitle": "Un preventivo scritto",
+      "quoteBody": "Ambito, prezzo e tempi, fissati prima di iniziare.",
+      "decideTitle": "Decide Lei",
+      "decideBody": "Non si parte finché non accetta il preventivo."
+    },
+    "asks": {
+      "business-site": "Per un sito: quali lingue, quali pagine e cosa vuole modificare da sé.",
+      "place-app": "Per una mappa o un’app: l’area, i luoghi e chi li aggiunge.",
+      "web-app": "Per una web app: i dati che ha già e chi apre quella schermata ogni giorno.",
+      "public-service": "Per un servizio pubblico: chi riceve le segnalazioni e cosa vede il pubblico.",
+      "care": "Per hosting e manutenzione: cosa gira ora, dove e chi vi ha accesso.",
+      "review": "Per una revisione: l’indirizzo o l’accesso, e cosa non La convince."
+    }
   },
   "Projects": {
     "viewProject": "Vedi il progetto",
@@ -587,8 +634,6 @@
     "common": {
       "claim": "Meno attrito tra quello che si vuole, quello che c’è e quello che vale la pena fare.",
       "switchLocale": "Continui in italiano",
-      "prevLanguage": "Lingua precedente",
-      "nextLanguage": "Lingua successiva",
       "gridLabel": "Lavori di INTRFACE",
       "makerMark": "INTRFACE, pagina iniziale",
       "backToGrid": "Torna alla pagina iniziale"
@@ -600,6 +645,86 @@
       "index": {
         "line": "Le cose che si salvano, lette, archiviate e collegate.",
         "status": "Prossimamente"
+      }
+    }
+  },
+  "Showcase": {
+    "live": "Attivo",
+    "publicTest": "Test pubblico",
+    "open": "Apra {name}",
+    "openAtlas": "Apra l’atlante di Orsera",
+    "polisLine": "Si segnala un problema dove si vive, poi si vede chi l’ha preso in carico, cosa è stato promesso e cosa è cambiato.",
+    "polisNote": "Un test pubblico con dati sintetici. Nessun comune usa ancora Polis.",
+    "clientsHeading": "Le costruiamo anche per i clienti.",
+    "clientsBody": "Velum, caffè e wine bar a Orsera. AstyleMarine, noleggio di yacht a Parenzo.",
+    "clientsLink": "Veda cosa costruiamo",
+    "languages": "Lingua della frase",
+    "alt": {
+      "voyagerDesktop": "La pagina iniziale di Voyager: “Discover the culture of a place your way.”",
+      "voyagerPhone": "L’atlante di Voyager per Orsera su un telefono, con i posti segnati lungo la costa.",
+      "agropulseDesktop": "AgroPulse: un oliveto di 5,5 ettari vicino a Orsera tracciato sulla mappa, con la fase di crescita e gli avvisi dei prossimi 16 giorni.",
+      "agropulsePhone": "AgroPulse su un telefono: l’oliveto sulla mappa e la sua fase di crescita, l’invaiatura.",
+      "polisDesktop": "Polis si apre su una mappa della Croazia: “Where are you?”",
+      "polisPhone": "Polis su un telefono: il modulo di segnalazione, con mappa, foto e un campo per descrivere cosa è successo.",
+      "index": "La pagina di Index su questo sito.",
+      "patchbay": "La pagina di Patchbay su questo sito.",
+      "velum": "La pagina iniziale di Velum: “By the sea, in no hurry.”",
+      "astyle": "La pagina iniziale di AstyleMarine: “Luxury in full speed.”",
+      "voyagerAtlas": "L’atlante di Orsera di Voyager su uno schermo grande: la costa con i luoghi segnati.",
+      "polisReport": "Polis su uno schermo grande: il modulo di segnalazione per Orsera, con una mappa e due modi per aggiungere una foto."
+    }
+  },
+  "Services": {
+    "title": "Siti e app dall’Istria. Apra quelli già in funzione.",
+    "body": "Progettiamo, sviluppiamo e gestiamo siti web, web app e mappe per aziende ed enti pubblici.",
+    "cta": "Descriva il progetto",
+    "listLabel": "Progetti da vedere",
+    "items": {
+      "voyager": "Luoghi, persone e storie di Orsera",
+      "agropulse": "La stagione delle olive in Istria",
+      "polis": "Segnalare un problema dove si vive",
+      "velum": "Caffè e wine bar, Orsera",
+      "astyle": "Noleggio di yacht, Parenzo"
+    },
+    "buildTitle": "Ogni servizio ha accanto qualcosa che abbiamo costruito. Può aprirli tutti.",
+    "rows": {
+      "places": {
+        "title": "Mappe e app per luoghi",
+        "line": "Una mappa interattiva di un paese o di una zona, con i suoi luoghi, le persone e le storie, che funziona sul telefono per strada."
+      },
+      "data": {
+        "title": "Web app sui Suoi dati",
+        "line": "Strumenti che trasformano dati che ha già, come campi, meteo o prenotazioni, in una schermata che si guarda ogni giorno."
+      },
+      "public": {
+        "title": "Servizi pubblici",
+        "line": "Si segnala un problema dove si vive, poi si vede chi l’ha preso in carico, cosa è stato promesso e cosa è cambiato. Senza account."
+      },
+      "sites": {
+        "title": "Siti per le attività",
+        "line": "Un sito nelle lingue dei Suoi ospiti, veloce sul telefono, con il Suo menu, le barche o le camere."
+      }
+    },
+    "startWith": "Inizi da qui",
+    "startTitle": "Descriva il progetto",
+    "startBody": "Bastano poche frasi. Aiuta un link a ciò che ha ora.",
+    "faqTitle": "Domande",
+    "faq": {
+      "price": {
+        "q": "Come si stabilisce il prezzo?",
+        "a": "Ogni progetto riceve un preventivo scritto con ambito, prezzo e tempi fissati prima di iniziare. Non si parte finché non lo accetta. La domanda sul budget nel modulo ci aiuta solo a proporre un approccio adatto."
+      },
+      "after": {
+        "q": "Chi se ne occupa una volta online?",
+        "a": "Di norma lo ospitiamo e lo curiamo noi. Se preferisce gestirlo da sé, lo consegniamo a Lei o al Suo team."
+      },
+      "size": {
+        "q": "Un piccolo studio di Orsera può costruire più di un sito?",
+        "a": "Voyager, AgroPulse e Polis sono web app che abbiamo costruito e che gestiamo noi. Può aprirle tutte da questa pagina."
+      },
+      "start": {
+        "q": "Cosa Le serve da me per iniziare?",
+        "a": "Qualche frase su ciò di cui ha bisogno, tramite il modulo o per email. Aiuta un link a ciò che ha ora."
       }
     }
   }

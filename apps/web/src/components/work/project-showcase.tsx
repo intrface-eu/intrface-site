@@ -91,7 +91,7 @@ export async function ProjectShowcase({ locale, projectKey }: {
           <h2 className="type-heading">{t("contactTitle")}</h2>
           <Link
             className={tactileButtonClasses("primary")}
-            href={projectKey === "voyager" ? "/about#contact" : "/about?topic=client-site#contact"}
+            href={projectKey === "voyager" ? "/services?need=place-app#start" : "/services?need=business-site#start"}
             locale={locale}
           >
             {t("contact")}

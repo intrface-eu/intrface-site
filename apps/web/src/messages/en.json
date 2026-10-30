@@ -7,7 +7,8 @@
     "home": "Intrface home",
     "menu": "Menu",
     "logoAlt": "Intrface icon",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "services": "Services"
   },
   "Footer": {
     "location": "Vrsar, Croatia",
@@ -16,7 +17,8 @@
     "github": "GitHub",
     "imprint": "Imprint",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "services": "Services"
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -73,6 +75,10 @@
     "astyleMarine": {
       "title": "AstyleMarine",
       "description": "Private yacht experiences from Poreč along the Istrian coast."
+    },
+    "services": {
+      "title": "Services",
+      "description": "Websites, web apps and maps from Vrsar, Istria, for businesses and public bodies. A written quote before any work starts."
     }
   },
   "HomePage": {
@@ -521,8 +527,7 @@
     "emailLabel": "Email",
     "companyLabel": "Company",
     "companyOptional": "(optional)",
-    "topicLabel": "Topic",
-    "messageLabel": "What is hard to understand, slow to operate, or difficult to trust?",
+    "messageLabel": "What should it do?",
     "honeypotLabel": "Leave this field empty",
     "sentLabel": "Message received",
     "sentBody": "It landed with us. The reply comes from {email}, within one working day.",
@@ -533,14 +538,56 @@
     "mailNote": "Or write to <mail>{email}</mail>.",
     "errorName": "Tell us who you are.",
     "errorEmail": "We need an address we can reply to.",
-    "errorMessage": "A sentence or two about the system is enough.",
+    "errorMessage": "A sentence or two is enough.",
     "subjectWithTopic": "{topic} — enquiry from {name}",
     "subjectFallback": "Website enquiry",
     "mailtoName": "Name",
     "mailtoEmail": "Email",
     "mailtoCompany": "Company",
-    "mailtoTopic": "Topic",
-    "mailtoWebsite": "the website"
+    "mailtoTopic": "Need",
+    "mailtoWebsite": "the website",
+    "needLabel": "What do you need?",
+    "needs": {
+      "business-site": "A site for my business",
+      "place-app": "A map or place app",
+      "web-app": "A web app or system",
+      "public-service": "A public service",
+      "care": "Hosting and care",
+      "review": "A review of what I have"
+    },
+    "timingLabel": "When?",
+    "timings": {
+      "soon": "As soon as possible",
+      "quarter": "In the next three months",
+      "year": "Later this year",
+      "unsure": "Not sure yet"
+    },
+    "budgetLabel": "Budget",
+    "budgets": {
+      "under-5k": "Under €5,000",
+      "5k-15k": "€5,000–15,000",
+      "15k-50k": "€15,000–50,000",
+      "over-50k": "Over €50,000",
+      "unsure": "Not sure yet"
+    },
+    "choose": "Choose",
+    "back": {
+      "title": "What you get back",
+      "replyTitle": "A reply within one working day",
+      "replyBody": "A first read of what you sent, a rough approach, and the questions we need answered.",
+      "quoteTitle": "A written quote",
+      "quoteBody": "Scope, price and timing, fixed before any work starts.",
+      "decideTitle": "You decide",
+      "decideBody": "Nothing starts until you accept the quote."
+    },
+    "asks": {
+      "business-site": "For a site: which languages, which pages, and what you want to change yourself.",
+      "place-app": "For a map or place app: the area, the places, and who adds them.",
+      "web-app": "For a web app: the data you have now, and who opens the screen each day.",
+      "public-service": "For a public service: who receives reports, and what the public sees.",
+      "care": "For hosting and care: what runs now, where, and who has access.",
+      "review": "For a review: the address or access, and what bothers you about it."
+    }
   },
   "Projects": {
     "viewProject": "View project",
@@ -587,8 +634,6 @@
     "common": {
       "claim": "Reducing needless friction between intention, reality, and meaningful action.",
       "switchLocale": "Continue in English",
-      "prevLanguage": "Previous language",
-      "nextLanguage": "Next language",
       "gridLabel": "Work by INTRFACE",
       "makerMark": "INTRFACE home",
       "backToGrid": "Back to home"
@@ -686,6 +731,86 @@
     "close": {
       "title": "Index is coming soon.",
       "scope": "When it opens: invite-only at first, in English, on the web and on Telegram."
+    }
+  },
+  "Showcase": {
+    "live": "Live",
+    "publicTest": "Public test",
+    "open": "Open {name}",
+    "openAtlas": "Open the Vrsar atlas",
+    "polisLine": "Report a problem where you live, then see who took it, what was promised and what changed.",
+    "polisNote": "A public test with synthetic data. No municipality uses Polis yet.",
+    "clientsHeading": "We build these for clients too.",
+    "clientsBody": "Velum, a café and wine bar in Vrsar. AstyleMarine, a yacht charter in Poreč.",
+    "clientsLink": "See what we build",
+    "languages": "Language of the sentence",
+    "alt": {
+      "voyagerDesktop": "Voyager’s home page: “Discover the culture of a place your way.”",
+      "voyagerPhone": "The Voyager atlas of Vrsar on a phone, with places pinned along the coast.",
+      "agropulseDesktop": "AgroPulse: a 5.5 ha olive grove near Vrsar outlined on the map, with its growth stage and the alerts for the next 16 days.",
+      "agropulsePhone": "AgroPulse on a phone: the grove on the map and its growth stage, colour change.",
+      "polisDesktop": "Polis opening on a map of Croatia: “Where are you?”",
+      "polisPhone": "Polis on a phone: the report form, with a map, a photo and a field for what happened.",
+      "index": "The Index page on this site.",
+      "patchbay": "The Patchbay page on this site.",
+      "velum": "Velum’s home page: “By the sea, in no hurry.”",
+      "astyle": "AstyleMarine’s home page: “Luxury in full speed.”",
+      "voyagerAtlas": "The Voyager atlas of Vrsar on a desktop screen: the coast with its places pinned.",
+      "polisReport": "Polis on a desktop screen: the report form for Vrsar, with a map and two ways to add a photo."
+    }
+  },
+  "Services": {
+    "title": "Websites and apps from Istria. Open the ones already running.",
+    "body": "We design, build and run websites, web apps and maps for businesses and public bodies.",
+    "cta": "Describe your project",
+    "listLabel": "Projects to look at",
+    "items": {
+      "voyager": "Places, people and stories of Vrsar",
+      "agropulse": "The olive season in Istria",
+      "polis": "Report a problem where you live",
+      "velum": "Café and wine bar, Vrsar",
+      "astyle": "Yacht charter, Poreč"
+    },
+    "buildTitle": "Each service comes with something we built for it. You can open every one.",
+    "rows": {
+      "places": {
+        "title": "Maps and place apps",
+        "line": "An interactive map of a town or a region, with its places, people and stories, that works on a phone in the street."
+      },
+      "data": {
+        "title": "Web apps on your own data",
+        "line": "Tools that turn data you already have, such as fields, weather or bookings, into a screen people check every day."
+      },
+      "public": {
+        "title": "Public services",
+        "line": "Report a problem where you live, then see who took it, what was promised and what changed. No account needed."
+      },
+      "sites": {
+        "title": "Sites for businesses",
+        "line": "A site in the languages your guests speak, quick to load on a phone, showing your menu, boats or rooms."
+      }
+    },
+    "startWith": "Start with this",
+    "startTitle": "Describe your project",
+    "startBody": "A few sentences are enough. A link to what you have now helps.",
+    "faqTitle": "Questions",
+    "faq": {
+      "price": {
+        "q": "How does pricing work?",
+        "a": "Every project gets a written quote with scope, price and timing fixed before work starts. Nothing starts until you accept it. The budget question in the form only helps us suggest an approach that fits."
+      },
+      "after": {
+        "q": "Who looks after it once it is live?",
+        "a": "We host it and look after it by default. If you would rather run it yourself, we hand it to you or your team."
+      },
+      "size": {
+        "q": "Can a small studio in Vrsar build more than a website?",
+        "a": "Voyager, AgroPulse and Polis are web apps we built and run ourselves. You can open each of them on this page."
+      },
+      "start": {
+        "q": "What do you need from me to start?",
+        "a": "A few sentences on what you need, through the form or by email. A link to what you have now helps."
+      }
     }
   }
 }

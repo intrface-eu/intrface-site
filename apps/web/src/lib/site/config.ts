@@ -33,6 +33,7 @@ export const SITE_PATHS = [
   "/work/polis",
   "/work/funda",
   "/work/client-sites",
+  "/services",
   "/about",
   "/imprint",
   "/privacy",

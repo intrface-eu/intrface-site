@@ -1,6 +1,5 @@
 "use client";
 
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { stagger } from "animejs/utils";
 import { waapi, type WAAPIAnimation } from "animejs/waapi";
 import {
@@ -11,6 +10,7 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  type CSSProperties,
   type FocusEvent,
   type KeyboardEvent,
   type MouseEvent,
@@ -21,42 +21,36 @@ import type { AppLocale } from "@/i18n/routing";
 
 export type ClaimLine = {
   locale: AppLocale;
+  /** The language by its own name, for the code button's accessible name. */
+  name: string;
   claim: string;
   /** "Continue in English" and its kin, in the line's own language. */
   switchLocale: string;
 };
 
-/** The arrow buttons' names, in the page's language. */
-export type ClaimCycleLabels = {
-  prev: string;
-  next: string;
-};
-
 /**
- * The letter switch (see docs/home-grid-contract.md). The outgoing line's
- * letters start leaving one after another over `SPREAD`: each fades in
- * `OUT_FADE_MS` and moves off in `OUT_MS`. The incoming line's letters start
- * `IN_DELAY` in, over the same spread: each fades up in `IN_FADE_MS` and
- * settles in `IN_MS`. The two waves overlap in time, but a letter's place is
- * clear before the new letter there arrives, so the lines never read as one
- * smear. The whole switch takes `SWITCH_MS`; a line then holds `HOLD_MS`.
+ * The word switch (see docs/home-grid-contract.md). Every word is a mask.
+ * The outgoing line's words leave through the top of their masks one after
+ * another, `OUT_STEP` apart, each in `OUT_MS`; the incoming line's words
+ * rise in from below, `IN_STEP` apart, each in `IN_MS`, starting `IN_DELAY`
+ * in. A line then holds `HOLD_MS`. Whole words move, so the font's own
+ * kerning stays intact.
  */
-const SPREAD = 240;
-const OUT_FADE_MS = 260;
-const OUT_MS = 380;
-const IN_DELAY = 360;
-const IN_FADE_MS = 420;
-const IN_MS = 560;
-const SWITCH_MS = IN_DELAY + SPREAD + IN_MS;
-const HOLD_MS = 3000;
+const OUT_STEP = 18;
+const OUT_MS = 460;
+const IN_DELAY = 240;
+const IN_STEP = 42;
+const IN_MS = 950;
+/** The switch, for a line of about fourteen words. */
+const SWITCH_MS = IN_DELAY + 14 * IN_STEP + IN_MS;
+const HOLD_MS = 3400;
 
 /** Leaving accelerates away; arriving lands slowly, with no overshoot. */
-const EASE_AWAY = "cubic-bezier(0.5, 0, 0.75, 0)";
-const EASE_LAND = "cubic-bezier(0.22, 1, 0.36, 1)";
-const EASE_FADE = "cubic-bezier(0.4, 0, 0.6, 1)";
+const EASE_AWAY = "cubic-bezier(0.7, 0, 0.84, 0)";
+const EASE_LAND = "cubic-bezier(0.16, 1, 0.3, 1)";
 
-/** Forward, letters leave up and left and arrive from below and right; back, the reverse. */
-const offset = (sign: number) => `translate3d(${sign * 0.08}em, ${sign * 0.3}em, 0)`;
+/** Forward, words leave upward and arrive from below; back, the reverse. */
+const offset = (sign: number) => `translate3d(0, ${sign * 110}%, 0)`;
 const REST = "translate3d(0, 0, 0)";
 
 /** A horizontal swipe of at least this many pixels switches the line. */
@@ -84,86 +78,36 @@ function lineState(index: number, shown: number, count: number): "shown" | "past
   return "next";
 }
 
-/**
- * Kerning lost to the split. A letter in its own inline-block is shaped
- * alone, so the font's kerning with its neighbour is gone; `font-kerning`
- * cannot reach across the boundary. These are the pairs in the five lines
- * that Google Sans Flex (600) kerns by 0.004em or more, measured in Chromium
- * at the display size's two ends (38.4 and 57.6px) and averaged, applied as
- * a margin after the first letter so the split text sets as the plain text
- * does. A pair missing here simply sets unkerned; add it if a line changes.
- */
-const KERNING: Record<string, number> = {
-  "r.": -0.096,
-  "y,": -0.064,
-  "’è": -0.063,
-  xe: -0.03,
-  av: -0.028,
-  ov: -0.026,
-  vo: -0.026,
-  fa: -0.025,
-  Re: -0.022,
-  va: -0.02,
-  re: -0.019,
-  nj: -0.018,
-  ra: -0.017,
-  we: -0.017,
-  at: -0.015,
-  fu: -0.005,
-  te: -0.005,
-  to: -0.005,
-  tt: -0.005,
-  "c’": 0.007,
-  ij: 0.012,
-};
-
-function kerningAfter(letters: string[], index: number) {
-  const pair = letters[index] + (letters[index + 1] ?? "");
-  const value = KERNING[pair];
-  return value ? { marginInlineEnd: `${value}em` } : undefined;
+function wordsOf(line: HTMLElement): HTMLElement[] {
+  return Array.from(line.querySelectorAll<HTMLElement>(".home-veil__word-in"));
 }
 
-/** Words, each a list of letters. The lines hold no combining marks, so code points are letters. */
-function splitLine(text: string): string[][] {
-  return text.split(" ").map((word) => Array.from(word));
-}
-
-function lettersOf(line: HTMLElement): HTMLElement[] {
-  return Array.from(line.querySelectorAll<HTMLElement>(".home-veil__char"));
-}
-
-function clearLetters(letters: HTMLElement[]) {
-  for (const letter of letters) {
-    letter.style.removeProperty("opacity");
-    letter.style.removeProperty("transform");
-  }
-}
-
-/** Spreads `spread` ms of delay across `count` letters, first to last or last to first. */
-function spreadDelay(spread: number, count: number, direction: Direction, start = 0) {
-  return stagger(spread / Math.max(1, count - 1), { start, from: direction > 0 ? "first" : "last" });
+function clearWords(words: HTMLElement[]) {
+  for (const word of words) word.style.removeProperty("transform");
 }
 
 /**
  * The home sentence in several site languages, one at a time, in the order
  * `Veil` gives (four lines on most pages, five on `/it`). `lines[0]` is the
  * page's own locale: it is what the server renders visible, and what
- * assistive tech reads (a visually hidden copy in the `h1`; the letters are
+ * assistive tech reads (a visually hidden copy in the `h1`; the words are
  * `aria-hidden`). All lines are stacked in the same grid cell, so the block
  * always has the height of the tallest line.
  *
- * Each line is split into words (which never break) and letters. A switch
- * moves the letters out and in with a stagger on the Web Animations API
- * (anime.js `waapi`), opacity and transform only. Under each line from
- * another locale, a link in that language switches the site to it.
+ * On load the page's line rises into place word by word (a CSS animation,
+ * so it runs before hydration). A switch then moves the words out and in on
+ * the Web Animations API (anime.js `waapi`), transform only. Under the
+ * sentence, one button per language shows which line is up, with a hairline
+ * that fills over its hold; pressing one shows its line. Under each line
+ * from another locale, a link in that language switches the site to it.
  *
  * The cycle pauses under the pointer, with focus inside, in a hidden tab and
- * with the block off screen. Arrow buttons (on hover or keyboard focus), the
- * Left and Right keys and a horizontal swipe move through the lines by hand.
- * Under reduced motion none of this runs: the page's line stays and the
- * other lines' links sit in a row.
+ * with the block off screen. The language buttons, the Left and Right keys
+ * and a horizontal swipe move through the lines by hand. Under reduced
+ * motion none of this runs: the page's line stays and the other lines'
+ * links sit in a row.
  */
-export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: ClaimCycleLabels }) {
+export function ClaimCycle({ lines, label }: { lines: ClaimLine[]; label: string }) {
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     () => window.matchMedia(REDUCED_MOTION).matches,
@@ -187,7 +131,7 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
   const swipedAt = useRef(0);
 
   const count = lines.length;
-  const words = useMemo(() => lines.map((line) => splitLine(line.claim)), [lines]);
+  const words = useMemo(() => lines.map((line) => line.claim.split(" ")), [lines]);
 
   useEffect(() => {
     const block = blockRef.current;
@@ -198,7 +142,7 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
     return () => observer.disconnect();
   }, []);
 
-  /** Stops whatever is moving, leaving each letter where it is. */
+  /** Stops whatever is moving, leaving each word where it is. */
   const stopAll = useCallback(() => {
     for (const animation of running.current) {
       if (!animation.completed) animation.cancel();
@@ -208,24 +152,29 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
 
   /**
    * Moves to line `target`. Every other line still on screen, whole or half
-   * gone, sends its letters out from wherever they are; the target's letters
-   * come in, from their offset if the line was hidden, or from wherever they
-   * are if it was mid-flight. A second call mid-switch simply retargets.
+   * gone, sends its words out from wherever they are; the target's words
+   * come in, from below their masks if the line was hidden, or from wherever
+   * they are if it was mid-flight. A second call mid-switch simply retargets.
    */
   const animateTo = useCallback(
     (target: number, direction: Direction) => {
       stopAll();
 
+      lineRefs.current.forEach((line) => {
+        // The load rise is done once anything switches; a finished CSS
+        // animation would otherwise hold its words in place over the WAAPI.
+        line?.removeAttribute("data-intro");
+      });
+
       lineRefs.current.forEach((line, i) => {
         if (!line || i === target || !line.hasAttribute("data-live")) return;
-        const letters = lettersOf(line);
-        const animation = waapi.animate(letters, {
-          opacity: { to: 0, duration: OUT_FADE_MS, ease: EASE_FADE },
+        const out = wordsOf(line);
+        const animation = waapi.animate(out, {
           transform: { to: offset(-direction), duration: OUT_MS, ease: EASE_AWAY },
-          delay: spreadDelay(SPREAD, letters.length, direction),
+          delay: stagger(OUT_STEP, { from: direction > 0 ? "first" : "last" }),
           onComplete: () => {
             line.removeAttribute("data-live");
-            clearLetters(letters);
+            clearWords(out);
           },
         });
         running.current.push(animation);
@@ -233,29 +182,24 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
 
       const line = lineRefs.current[target];
       if (!line) return;
-      const letters = lettersOf(line);
+      const incoming = wordsOf(line);
       if (!line.hasAttribute("data-live")) {
-        for (const letter of letters) {
-          letter.style.opacity = "0";
-          letter.style.transform = offset(direction);
-        }
+        for (const word of incoming) word.style.transform = offset(direction);
         line.setAttribute("data-live", "");
       }
-      const animation = waapi.animate(letters, {
-        opacity: { to: 1, duration: IN_FADE_MS, ease: EASE_FADE },
+      const animation = waapi.animate(incoming, {
         transform: { to: REST, duration: IN_MS, ease: EASE_LAND },
-        delay: spreadDelay(SPREAD, letters.length, direction, IN_DELAY),
-        onComplete: () => clearLetters(letters),
+        delay: stagger(IN_STEP, { start: IN_DELAY, from: direction > 0 ? "first" : "last" }),
+        onComplete: () => clearWords(incoming),
       });
       running.current.push(animation);
     },
     [stopAll],
   );
 
-  const go = useCallback(
-    (direction: Direction, byHand: boolean) => {
-      if (count < 2 || window.matchMedia(REDUCED_MOTION).matches) return;
-      const target = (shownRef.current + direction + count) % count;
+  const show = useCallback(
+    (target: number, direction: Direction, byHand: boolean) => {
+      if (count < 2 || target === shownRef.current || window.matchMedia(REDUCED_MOTION).matches) return;
       shownRef.current = target;
       animateTo(target, direction);
       setIndex(target);
@@ -264,13 +208,19 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
     [animateTo, count, lines],
   );
 
+  const step = useCallback(
+    (direction: Direction, byHand: boolean) =>
+      show((shownRef.current + direction + count) % count, direction, byHand),
+    [count, show],
+  );
+
   // Reduced motion switched on mid-visit: back to the page's line, still.
   useEffect(() => {
     if (!reducedMotion) return;
     stopAll();
     lineRefs.current.forEach((line, i) => {
       if (!line) return;
-      clearLetters(lettersOf(line));
+      clearWords(wordsOf(line));
       if (i === 0) line.setAttribute("data-live", "");
       else line.removeAttribute("data-live");
     });
@@ -286,9 +236,10 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
 
     // Restarted on every change of line or pause, so a line always gets its
     // full hold once the reader lets go, counted from the end of its switch.
-    const timer = window.setTimeout(() => go(1, false), SWITCH_MS + HOLD_MS);
+    // The hairline under the language restarts with it (see `data-held`).
+    const timer = window.setTimeout(() => step(1, false), SWITCH_MS + HOLD_MS);
     return () => window.clearTimeout(timer);
-  }, [paused, index, count, go]);
+  }, [paused, index, count, step]);
 
   const shown = reducedMotion ? 0 : index;
 
@@ -308,7 +259,7 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     event.preventDefault();
     setFocused(true);
-    go(event.key === "ArrowRight" ? 1 : -1, true);
+    step(event.key === "ArrowRight" ? 1 : -1, true);
   };
 
   // Touch: a horizontal swipe switches; `touch-action: pan-y` on the block
@@ -324,7 +275,7 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
     const dy = event.clientY - start.y;
     if (Math.abs(dx) < SWIPE_PX || Math.abs(dx) <= Math.abs(dy)) return;
     swipedAt.current = event.timeStamp;
-    go(dx < 0 ? 1 : -1, true);
+    step(dx < 0 ? 1 : -1, true);
   };
   // A swipe that ends on the link does not also follow it.
   const onClickCapture = (event: MouseEvent<HTMLDivElement>) => {
@@ -349,58 +300,35 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
       onBlur={onBlur}
       onKeyDown={onKeyDown}
     >
-      <div className="home-veil__stage">
-        <h1 className="type-display home-veil__claim">
-          <span className="sr-only">{lines[0].claim}</span>
-          {lines.map((line, i) => (
-            <span
-              key={line.locale}
-              ref={(node) => {
-                lineRefs.current[i] = node;
-              }}
-              lang={line.locale}
-              className="home-veil__line"
-              // Set once by the server for the page's line; the letter switch
-              // moves it from then on, and React never changes it.
-              data-live={i === 0 ? "" : undefined}
-              aria-hidden="true"
-            >
-              {words[i].map((letters, w) => (
-                <Fragment key={w}>
-                  {w > 0 ? " " : null}
-                  <span className="home-veil__word">
-                    {letters.map((letter, l) => (
-                      <span key={l} className="home-veil__char" style={kerningAfter(letters, l)}>
-                        {letter}
-                      </span>
-                    ))}
+      <h1 className="type-display home-veil__claim">
+        <span className="sr-only">{lines[0].claim}</span>
+        {lines.map((line, i) => (
+          <span
+            key={line.locale}
+            ref={(node) => {
+              lineRefs.current[i] = node;
+            }}
+            lang={line.locale}
+            className="home-veil__line"
+            // Set once by the server on the page's line; the word switch
+            // moves them from then on, and React never changes them.
+            data-intro={i === 0 ? "" : undefined}
+            data-live={i === 0 ? "" : undefined}
+            aria-hidden="true"
+          >
+            {words[i].map((word, w) => (
+              <Fragment key={w}>
+                {w > 0 ? " " : null}
+                <span className="home-veil__word">
+                  <span className="home-veil__word-in" style={{ "--w": w } as CSSProperties}>
+                    {word}
                   </span>
-                </Fragment>
-              ))}
-            </span>
-          ))}
-        </h1>
-        {count > 1 ? (
-          <div className="home-veil__arrows">
-            <button
-              type="button"
-              className="home-veil__arrow"
-              aria-label={labels.prev}
-              onClick={() => go(-1, true)}
-            >
-              <IconArrowLeft aria-hidden="true" size={20} stroke={1.5} />
-            </button>
-            <button
-              type="button"
-              className="home-veil__arrow home-veil__arrow--next"
-              aria-label={labels.next}
-              onClick={() => go(1, true)}
-            >
-              <IconArrowRight aria-hidden="true" size={20} stroke={1.5} />
-            </button>
-          </div>
-        ) : null}
-      </div>
+                </span>
+              </Fragment>
+            ))}
+          </span>
+        ))}
+      </h1>
       <div className="home-veil__switch">
         {lines.map((line, i) => {
           // The page's own locale has no link: the slot stays empty, at height.
@@ -424,6 +352,24 @@ export function ClaimCycle({ lines, labels }: { lines: ClaimLine[]; labels: Clai
           );
         })}
       </div>
+      {count > 1 ? (
+        <div className="home-veil__codes" role="group" aria-label={label}>
+          {lines.map((line, i) => (
+            <button
+              key={line.locale}
+              type="button"
+              className="home-veil__code"
+              aria-label={line.name}
+              aria-pressed={i === shown}
+              data-held={i === shown && paused ? "" : undefined}
+              style={{ "--hold": `${SWITCH_MS + HOLD_MS}ms` } as CSSProperties}
+              onClick={() => show(i, i > shownRef.current ? 1 : -1, true)}
+            >
+              {line.locale.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      ) : null}
       {/* Only a switch made by hand is read out, quietly; the cycle is not. */}
       <p className="sr-only" aria-live="polite" lang={announced?.locale}>
         {announced?.claim}
