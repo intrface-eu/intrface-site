@@ -18,7 +18,8 @@
     "imprint": "Impresum",
     "privacy": "Privatnost",
     "terms": "Uvjeti",
-    "services": "Usluge"
+    "services": "Usluge",
+    "whatsapp": "WhatsApp"
   },
   "LocaleSwitcher": {
     "label": "Jazik"
@@ -146,7 +147,9 @@
     },
     "pairLabel": "Med",
     "selectedWork": "Izabrano delo",
-    "otherProducts": "Ča još delamo"
+    "otherProducts": "Ča još delamo",
+    "contactTitle": "Imate kakov projekt u glavi?",
+    "contact": "Javite nan se"
   },
   "CaseNav": {
     "label": "Navigacija po projektin",
@@ -587,6 +590,11 @@
       "public-service": "Za javnu uslugu: ki prima prijave i ča ljudi vide.",
       "care": "Za hosting i održavanje: ča sad dela, kade i ki ima pristup.",
       "review": "Za pregled: adresa ili pristup i ča van smeta."
+    },
+    "talk": {
+      "title": "Rajše biste razgovarali?",
+      "call": "Zovite {phone}",
+      "whatsapp": "Pišite na WhatsApp"
     }
   },
   "Projects": {
@@ -711,12 +719,30 @@
     "faqTitle": "Pitanja",
     "faq": {
       "price": {
-        "q": "Kako se dela cijena?",
-        "a": "Za svaki projekt dobijete pisanu ponudu s opsegon, cijenon i rokon, dogovorenimi prvo nego ča delo počne. Ništa ne počne dokle je ne prihvatite. Pitanje o budžetu u obrascu samo njin pomore predložit pristup ki van paše."
+        "q": "Koliko košta?",
+        "a": "Za svaki projekt dobijete pisanu ponudu s fiksnon cijenon prvo nego ča delo počne. Polovicu platite kad je prihvatite, a polovicu kad se pokrene. Veći del projekti stane u ove raspone:",
+        "ranges": {
+          "site": {
+            "label": "Stranica za vašu firmu",
+            "value": "800–3.000 €"
+          },
+          "app": {
+            "label": "Web aplikacija, karta ili javna usluga",
+            "value": "5.000–20.000 €"
+          },
+          "hour": {
+            "label": "Promjene van ponude",
+            "value": "40 € na uru"
+          }
+        }
+      },
+      "process": {
+        "q": "Kako gre projekt?",
+        "a": "Opseg dogovorimo s vami po telefonu ili e-poštun, pa van pošljemo pisanu ponudu. Kad je prihvatite, prvo delamo dizajn, a gradimo tek kad ga odobrite. Onda ga pokrenemo i održavamo."
       },
       "after": {
         "q": "Ki se brine kad sve krene?",
-        "a": "Obično ga mi hostamo i održavamo. Ako ga rajše ćete vodit sami, predamo ga vami ili vašen timu."
+        "a": "Obično ga mi hostamo i održavamo. Hosting male stranice ne košta ništa; aplikacija na serveru ima misečnu naknadu, dogovorenu u ponudi. Ako ga rajše ćete vodit sami, predamo ga vami ili vašen timu."
       },
       "size": {
         "q": "More li mali studio iz Vrsara napravit više od web stranice?",

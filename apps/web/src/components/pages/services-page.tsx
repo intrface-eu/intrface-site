@@ -11,11 +11,13 @@ import { PROJECTS } from "@/lib/site/projects";
 
 const SHOTS = "/proof/projects";
 const ATLAS_URL = "https://voyager.intrface.eu/en/vrsar";
-const FAQ = ["price", "after", "size", "start"] as const;
+const FAQ = ["price", "process", "after", "size", "start"] as const;
+const PRICE_RANGES = ["site", "app", "hour"] as const;
 
 /**
  * /services: what a business or a public body can hire us for, each with the
- * interface we built for it, then the intake form (`#start`) and four answers.
+ * interface we built for it, then the intake form (`#start`) and five answers,
+ * the first with our price ranges.
  * The first screen states the offer with one action and the five projects
  * beside it.
  */
@@ -81,13 +83,26 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
     },
   ];
 
+  const prices = PRICE_RANGES.map((key) => ({
+    key,
+    label: t(`faq.price.ranges.${key}.label`),
+    value: t(`faq.price.ranges.${key}.value`),
+  }));
+
+  // The price answer's text in the schema carries the ranges too, so the
+  // answer a search engine shows is the whole answer.
+  const answerText = (key: (typeof FAQ)[number]) =>
+    key === "price"
+      ? [t("faq.price.a"), ...prices.map((p) => `${p.label}: ${p.value}.`)].join(" ")
+      : t(`faq.${key}.a`);
+
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: FAQ.map((key) => ({
       "@type": "Question",
       name: t(`faq.${key}.q`),
-      acceptedAnswer: { "@type": "Answer", text: t(`faq.${key}.a`) },
+      acceptedAnswer: { "@type": "Answer", text: answerText(key) },
     })),
   };
 
@@ -211,6 +226,16 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
               <div className="svc-faq__item" key={key}>
                 <h3 className="svc-faq__q">{t(`faq.${key}.q`)}</h3>
                 <p className="type-body svc-faq__a">{t(`faq.${key}.a`)}</p>
+                {key === "price" ? (
+                  <dl className="svc-prices">
+                    {prices.map((p) => (
+                      <div className="svc-prices__row" key={p.key}>
+                        <dt>{p.label}</dt>
+                        <dd>{p.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
               </div>
             ))}
           </div>

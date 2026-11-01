@@ -19,6 +19,9 @@ export const CONTACT_PHONE_DISPLAY = "+385 99 190 5899";
 
 export const CONTACT_PHONE_TEL = "+385991905899";
 
+/** A WhatsApp chat with the same number; wa.me takes the digits without the plus. */
+export const CONTACT_WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_TEL.slice(1)}`;
+
 export const AOC_REPO_URL = "https://github.com/basicalex/agent-ops-cockpit";
 
 export const GITHUB_URL = "https://github.com/basicalex";

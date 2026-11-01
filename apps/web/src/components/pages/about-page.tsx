@@ -184,8 +184,8 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
             section. The two phrases stay a home-only moment. */}
         <div className="ground-band" data-ground-key="land" aria-hidden="true" />
 
-        {/* 5 — THE WAY OUT. One sentence and two doors. The footer already
-            carries the email and the phone. */}
+        {/* 5 — THE WAY OUT. One sentence and two doors: the work, and the
+            project form on /services. The footer carries the direct channels. */}
         <section className="home-pane about-close-pane">
           <div className="section-shell">
             <div data-ground-quiet="">
@@ -203,7 +203,7 @@ export async function AboutPage({ locale }: { locale: AppLocale }) {
                   </TactileButton>
                   <TactileButton
                     className="text-base"
-                    href={`${path("/")}#contact`}
+                    href={`${path("/services")}#start`}
                     variant="secondary"
                   >
                     {t("close.contact")}

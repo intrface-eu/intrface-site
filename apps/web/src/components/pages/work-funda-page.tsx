@@ -17,7 +17,7 @@ export async function WorkFundaPage({ locale }: { locale: AppLocale }) {
           <IconArrowLeft aria-hidden="true" className="h-4 w-4" />
           {grid("backToGrid")}
         </Link>
-        <Link className={tactileButtonClasses("primary")} href="/about#contact">
+        <Link className={tactileButtonClasses("primary")} href="/services#start">
           {t("contact")}
           <IconArrowRight aria-hidden="true" className="h-4 w-4" />
         </Link>

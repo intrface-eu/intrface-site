@@ -18,7 +18,8 @@
     "imprint": "Dati legali",
     "privacy": "Privacy",
     "terms": "Termini",
-    "services": "Servizi"
+    "services": "Servizi",
+    "whatsapp": "WhatsApp"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -146,7 +147,9 @@
     },
     "pairLabel": "Tra",
     "selectedWork": "Lavori scelti",
-    "otherProducts": "Altri prodoti nostri"
+    "otherProducts": "Altri prodoti nostri",
+    "contactTitle": "Ti ga un progeto in testa?",
+    "contact": "Contine"
   },
   "CaseNav": {
     "label": "Navigazion tra i progeti",
@@ -587,6 +590,11 @@
       "public-service": "Per un servizio publico: chi ricevi le segnalazioni e cossa vedi la gente.",
       "care": "Per hosting e manutenzion: cossa gira desso, dove e chi ga l’acesso.",
       "review": "Per una ociada: l’indirizo o l’acesso, e cossa no te piasi."
+    },
+    "talk": {
+      "title": "Ti preferissi parlar?",
+      "call": "Ciamine al {phone}",
+      "whatsapp": "Scrivine su WhatsApp"
     }
   },
   "Projects": {
@@ -711,12 +719,30 @@
     "faqTitle": "Domande",
     "faq": {
       "price": {
-        "q": "Come se fa el prezzo?",
-        "a": "Ogni progeto ga un preventivo scrito, con cossa, quanto e quando fissà prima de scominziar. No se scominzia gnente fin che no ti lo acceti. La domanda sul budget nel modulo ne iuta solo a proponer una strada che te va ben."
+        "q": "Quanto costa?",
+        "a": "Ogni progeto ga un preventivo scrito con un prezzo fisso prima de scominziar. Ti paghi metà quando ti lo acceti e metà quando el va online. La più parte dei progeti sta in ste fasce:",
+        "ranges": {
+          "site": {
+            "label": "Un sito per la tua atività",
+            "value": "800–3.000 €"
+          },
+          "app": {
+            "label": "Una web app, una mapa o un servizio publico",
+            "value": "5.000–20.000 €"
+          },
+          "hour": {
+            "label": "Cambi fora del preventivo",
+            "value": "40 € al'ora"
+          }
+        }
+      },
+      "process": {
+        "q": "Come va avanti un progeto?",
+        "a": "Fissemo con ti cossa far, per telefono o per email, e dopo te mandemo un preventivo scrito. Quando ti lo acceti, prima fazemo el design, e lo fabrichemo solo dopo che ti lo ga aprovà. Dopo lo metemo online e lo tegnimo drio."
       },
       "after": {
         "q": "Chi lo tien drio quando el xe online?",
-        "a": "De solito lo tegnimo noi e lo curemo. Se ti preferissi tegnirlo ti, lo passemo a ti o al tuo grupo."
+        "a": "De solito lo tegnimo noi e lo curemo. Tegnir online un sito picio no costa gnente; una app sul server ga un canon mensile, fissà nel preventivo. Se ti preferissi tegnirlo ti, lo passemo a ti o al tuo grupo."
       },
       "size": {
         "q": "Un picio studio de Orsera pol far più de un sito?",

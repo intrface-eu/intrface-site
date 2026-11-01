@@ -9,14 +9,19 @@ import {
   useTransition,
   type FormEvent,
 } from "react";
-import { IconArrowRight, IconLoader2 } from "@tabler/icons-react";
+import { IconArrowRight, IconBrandWhatsapp, IconLoader2, IconPhone } from "@tabler/icons-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { submitContactForm } from "@/app/actions/contact";
 import { onNeedRequest } from "@/components/services/need-request";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
-import { CONTACT_EMAIL } from "@/lib/site/config";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  CONTACT_WHATSAPP_URL,
+} from "@/lib/site/config";
 import {
   INTAKE_BUDGETS,
   INTAKE_NEEDS,
@@ -268,7 +273,9 @@ export function ContactForm({
       </div>
 
       <fieldset className="grid gap-3">
-        <legend className={`${labelClasses} mb-3`}>{t("needLabel")}</legend>
+        <legend className={`${labelClasses} mb-3`}>
+          {t("needLabel")} <span className="font-normal text-ink-muted">{t("companyOptional")}</span>
+        </legend>
         <div className="flex flex-wrap gap-2">
           {INTAKE_NEEDS.map((key) => (
             <label className="cursor-pointer" key={key}>
@@ -511,6 +518,24 @@ export function ContactForm({
             <span>{t("back.decideBody")}</span>
           </li>
         </ol>
+        {/* For anyone who would rather not write: the same number by call or WhatsApp. */}
+        <div className="intake__talk">
+          <p className="intake__talk-title">{t("talk.title")}</p>
+          <ul>
+            <li>
+              <a className="iface-link" href={`tel:${CONTACT_PHONE_TEL}`}>
+                <IconPhone aria-hidden="true" className="h-4 w-4" />
+                {t("talk.call", { phone: CONTACT_PHONE_DISPLAY })}
+              </a>
+            </li>
+            <li>
+              <a className="iface-link" href={CONTACT_WHATSAPP_URL} rel="noopener noreferrer" target="_blank">
+                <IconBrandWhatsapp aria-hidden="true" className="h-4 w-4" />
+                {t("talk.whatsapp")}
+              </a>
+            </li>
+          </ul>
+        </div>
       </aside>
     </div>
   );

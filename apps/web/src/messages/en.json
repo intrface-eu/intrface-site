@@ -18,7 +18,8 @@
     "imprint": "Imprint",
     "privacy": "Privacy",
     "terms": "Terms",
-    "services": "Services"
+    "services": "Services",
+    "whatsapp": "WhatsApp"
   },
   "LocaleSwitcher": {
     "label": "Language"
@@ -146,7 +147,9 @@
     },
     "pairLabel": "Between",
     "selectedWork": "Selected work",
-    "otherProducts": "Other products of our own"
+    "otherProducts": "Other products of our own",
+    "contactTitle": "A project in mind?",
+    "contact": "Tell us about it"
   },
   "CaseNav": {
     "label": "Project navigation",
@@ -587,6 +590,11 @@
       "public-service": "For a public service: who receives reports, and what the public sees.",
       "care": "For hosting and care: what runs now, where, and who has access.",
       "review": "For a review: the address or access, and what bothers you about it."
+    },
+    "talk": {
+      "title": "Rather talk?",
+      "call": "Call {phone}",
+      "whatsapp": "Write on WhatsApp"
     }
   },
   "Projects": {
@@ -796,12 +804,30 @@
     "faqTitle": "Questions",
     "faq": {
       "price": {
-        "q": "How does pricing work?",
-        "a": "Every project gets a written quote with scope, price and timing fixed before work starts. Nothing starts until you accept it. The budget question in the form only helps us suggest an approach that fits."
+        "q": "What does it cost?",
+        "a": "Every project gets a written quote with a fixed price before work starts. You pay half when you accept it and half at launch. Most projects fall in these ranges:",
+        "ranges": {
+          "site": {
+            "label": "A site for a business",
+            "value": "€800–3,000"
+          },
+          "app": {
+            "label": "A web app, map or public service",
+            "value": "€5,000–20,000"
+          },
+          "hour": {
+            "label": "Changes outside a quote",
+            "value": "€40 an hour"
+          }
+        }
+      },
+      "process": {
+        "q": "How does a project run?",
+        "a": "We settle the scope with you by call or email, then send a written quote. Once you accept it, we design first and build only after you approve the design. Then we launch it and look after it."
       },
       "after": {
         "q": "Who looks after it once it is live?",
-        "a": "We host it and look after it by default. If you would rather run it yourself, we hand it to you or your team."
+        "a": "We host it and look after it by default. A small site costs nothing to host; an app on a server has a monthly fee, set in the quote. If you would rather run it yourself, we hand it to you or your team."
       },
       "size": {
         "q": "Can a small studio in Vrsar build more than a website?",

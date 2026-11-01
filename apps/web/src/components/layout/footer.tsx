@@ -7,6 +7,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_TEL,
+  CONTACT_WHATSAPP_URL,
   GITHUB_URL,
   SITE_NAME,
 } from "@/lib/site/config";
@@ -19,7 +20,7 @@ const linkClass =
 
 /**
  * The footer: one short block and the signature. Name and place, the tagline,
- * the two direct channels, GitHub, the imprint, privacy and terms, the locale
+ * the direct channels (email, phone, WhatsApp), GitHub, the imprint, privacy and terms, the locale
  * and the year. No link groups and no form; the header (on every page but
  * home) carries the navigation, and the grid is the home page's index.
  *
@@ -59,6 +60,11 @@ export async function Footer({ locale }: { locale: AppLocale }) {
             <li>
               <a className={linkClass} href={`tel:${CONTACT_PHONE_TEL}`}>
                 {CONTACT_PHONE_DISPLAY}
+              </a>
+            </li>
+            <li>
+              <a className={linkClass} href={CONTACT_WHATSAPP_URL} rel="noopener noreferrer" target="_blank">
+                {t("whatsapp")}
               </a>
             </li>
           </ul>

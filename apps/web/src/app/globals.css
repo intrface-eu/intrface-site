@@ -2441,7 +2441,7 @@ body {
     }
   }
 
-  /* Four answers, the question in ink and the answer in the muted body. */
+  /* Five answers, the question in ink and the answer in the muted body. */
   .svc-faq {
     padding-block: clamp(4rem, 8vw, 6rem) clamp(5rem, 10vw, 8rem);
     border-block-start: 1px solid var(--line);
@@ -2475,6 +2475,54 @@ body {
     max-inline-size: 40rem;
     margin-block-start: 0.5rem;
     color: var(--ink-muted);
+  }
+
+  /* The price ranges under the price answer: what in the body face, the
+     figure in ink and tabular, one ruled row each. */
+  .svc-prices {
+    max-inline-size: 40rem;
+    margin-block-start: 1.25rem;
+  }
+
+  .svc-prices__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1.5rem;
+    padding-block: 0.75rem;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .svc-prices__row:last-child {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .svc-prices dt {
+    color: var(--ink-muted);
+  }
+
+  .svc-prices dd {
+    margin-inline-start: auto;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  /* "Rather talk?" under the steps beside the form: the two direct lines. */
+  .intake__talk {
+    margin-block-start: 1.5rem;
+    padding-block-start: 1.25rem;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .intake__talk-title {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .intake__talk ul {
+    display: grid;
+    margin-block-start: 0.25rem;
   }
 
   @media (min-width: 1024px) {

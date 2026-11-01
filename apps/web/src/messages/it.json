@@ -18,7 +18,8 @@
     "imprint": "Note legali",
     "privacy": "Privacy",
     "terms": "Termini",
-    "services": "Servizi"
+    "services": "Servizi",
+    "whatsapp": "WhatsApp"
   },
   "LocaleSwitcher": {
     "label": "Lingua"
@@ -146,7 +147,9 @@
     },
     "pairLabel": "Tra",
     "selectedWork": "Lavori selezionati",
-    "otherProducts": "Altri prodotti nostri"
+    "otherProducts": "Altri prodotti nostri",
+    "contactTitle": "Ha un progetto in mente?",
+    "contact": "Ce ne parli"
   },
   "CaseNav": {
     "label": "Navigazione tra i progetti",
@@ -587,6 +590,11 @@
       "public-service": "Per un servizio pubblico: chi riceve le segnalazioni e cosa vede il pubblico.",
       "care": "Per hosting e manutenzione: cosa gira ora, dove e chi vi ha accesso.",
       "review": "Per una revisione: l’indirizzo o l’accesso, e cosa non La convince."
+    },
+    "talk": {
+      "title": "Preferisce parlarne?",
+      "call": "Chiami il {phone}",
+      "whatsapp": "Ci scriva su WhatsApp"
     }
   },
   "Projects": {
@@ -711,12 +719,30 @@
     "faqTitle": "Domande",
     "faq": {
       "price": {
-        "q": "Come si stabilisce il prezzo?",
-        "a": "Ogni progetto riceve un preventivo scritto con ambito, prezzo e tempi fissati prima di iniziare. Non si parte finché non lo accetta. La domanda sul budget nel modulo ci aiuta solo a proporre un approccio adatto."
+        "q": "Quanto costa?",
+        "a": "Ogni progetto riceve un preventivo scritto con un prezzo fisso prima di iniziare. Paga metà quando lo accetta e metà al lancio. La maggior parte dei progetti rientra in queste fasce:",
+        "ranges": {
+          "site": {
+            "label": "Un sito per un'attività",
+            "value": "800–3.000 €"
+          },
+          "app": {
+            "label": "Una web app, una mappa o un servizio pubblico",
+            "value": "5.000–20.000 €"
+          },
+          "hour": {
+            "label": "Modifiche fuori preventivo",
+            "value": "40 € l'ora"
+          }
+        }
+      },
+      "process": {
+        "q": "Come si svolge un progetto?",
+        "a": "Definiamo l'ambito con Lei per telefono o email, poi inviamo un preventivo scritto. Una volta accettato, partiamo dal design e costruiamo solo dopo la Sua approvazione. Poi lo mettiamo online e ce ne occupiamo."
       },
       "after": {
         "q": "Chi se ne occupa una volta online?",
-        "a": "Di norma lo ospitiamo e lo curiamo noi. Se preferisce gestirlo da sé, lo consegniamo a Lei o al Suo team."
+        "a": "Di norma lo ospitiamo e lo curiamo noi. Ospitare un piccolo sito non costa nulla; un'app su server ha un canone mensile, fissato nel preventivo. Se preferisce gestirlo da sé, lo consegniamo a Lei o al Suo team."
       },
       "size": {
         "q": "Un piccolo studio di Orsera può costruire più di un sito?",

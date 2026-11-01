@@ -1,4 +1,7 @@
+import { IconArrowRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import type { AppLocale } from "@/i18n/routing";
 import { ProjectPreviews } from "@/components/home/hero-proof";
 import { PortfolioLedger, type LedgerEntry } from "@/components/work/index/portfolio-ledger";
@@ -33,6 +36,16 @@ export async function WorkIndexPage({ locale }: { locale: AppLocale }) {
         <div className="section-shell py-16 sm:py-20">
           <h2 className="type-heading mb-8 sm:mb-10">{t("otherProducts")}</h2>
           <PortfolioLedger entries={entries} pairLabel={t("pairLabel")} />
+        </div>
+      </section>
+      {/* The same way out as every project page: the form on /services. */}
+      <section className="border-t border-rule">
+        <div className="section-shell flex flex-wrap items-center justify-between gap-6 py-12 sm:py-16">
+          <h2 className="type-heading">{t("contactTitle")}</h2>
+          <Link className={tactileButtonClasses("primary")} href="/services#start" locale={locale}>
+            {t("contact")}
+            <IconArrowRight aria-hidden="true" className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </main>
