@@ -640,7 +640,7 @@
   },
   "HomeGrid": {
     "common": {
-      "claim": "Damo tehnologiji smisal.",
+      "claim": "Damo <tech>tehnologiji</tech> <meaning>smisal</meaning>.",
       "switchLocale": "Ajmo dalje po naše",
       "gridLabel": "Delo studija INTRFACE",
       "makerMark": "INTRFACE početna",

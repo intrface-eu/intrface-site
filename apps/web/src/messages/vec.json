@@ -640,7 +640,7 @@
   },
   "HomeGrid": {
     "common": {
-      "claim": "Demo senso a la tecnologia.",
+      "claim": "Demo <meaning>senso</meaning> a la <tech>tecnologia</tech>.",
       "switchLocale": "Continua in dialeto",
       "gridLabel": "Lavori de INTRFACE",
       "makerMark": "INTRFACE, prima pagina",
