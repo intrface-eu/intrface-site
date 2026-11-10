@@ -85,12 +85,13 @@ paper on home too. Revisions 5 to 10 below the structure are history.
 
 `HomeGrid.common.claim` in each locale. English, verbatim:
 
-> Reducing needless friction between intention, reality, and meaningful
-> action.
+> Giving technology meaning.
 
-Croatian: "Manje trenja između onoga što hoćeš, onoga što jest i onoga što
-vrijedi napraviti." Italian, Istroveneto and Chakavian carry their own
-lines in `it.json`, `vec.json` and `ckm.json`.
+Croatian: "Dajemo tehnologiji smisao." Istroveneto: "Demo senso a la
+tecnologia." Chakavian: "Damo tehnologiji smisal." Italian: "Diamo senso
+alla tecnologia." The owner set this sentence on 2026-11-10; it replaced
+"Reducing needless friction between intention, reality, and meaningful
+action."
 
 `Veil` (server) loads `claim` and `switchLocale` for each locale in the
 page's cycle with `getTranslations({ locale, namespace: "HomeGrid.common" })`
