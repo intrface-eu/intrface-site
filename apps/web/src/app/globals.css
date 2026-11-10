@@ -1486,23 +1486,63 @@ body {
     white-space: nowrap;
   }
 
-  .home-veil__word-in {
+  .home-veil__word-in,
+  .home-veil__char {
     display: inline-block;
   }
 
-  /* The load: the page's own line rises into place word by word. CSS, so it
-     runs before hydration and the sentence is never drawn twice. The first
-     switch removes `data-intro`; see `ClaimCycle`. */
+  /* The load: the page's own line arrives as `plan` in `ClaimCycle` times it,
+     each part's start in `--d`. Plain words rise into their masks. The
+     letters of the word for technology mesh into theirs, even ones from
+     below and odd ones from above (`--s`), and stand dimmed; the word for
+     meaning rises whole, slower, fading up; then light passes into the
+     technology letters (`--l`). CSS, so it runs before hydration and the
+     sentence is never drawn twice. The first switch removes `data-intro`. */
   @media (prefers-reduced-motion: no-preference) {
     .home-veil__line[data-intro] .home-veil__word-in {
       animation: claim-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-delay: calc(160ms + var(--w, 0) * 42ms);
+      animation-delay: var(--d, 160ms);
+    }
+
+    .home-veil__line[data-intro] [data-role="meaning"] .home-veil__word-in {
+      animation-name: claim-meaning;
+      animation-duration: 1300ms;
+    }
+
+    .home-veil__line[data-intro] [data-role="tech"] .home-veil__word-in {
+      animation: none;
+    }
+
+    .home-veil__line[data-intro] .home-veil__char {
+      animation:
+        claim-mesh 820ms cubic-bezier(0.16, 1, 0.3, 1) both,
+        claim-light 600ms cubic-bezier(0.33, 1, 0.68, 1) both;
+      animation-delay: var(--d, 160ms), var(--l, 1000ms);
     }
   }
 
   @keyframes claim-rise {
     from {
       transform: translate3d(0, 110%, 0);
+    }
+  }
+
+  @keyframes claim-meaning {
+    from {
+      transform: translate3d(0, 110%, 0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes claim-mesh {
+    from {
+      transform: translate3d(0, calc(var(--s, 1) * 130%), 0);
+    }
+  }
+
+  @keyframes claim-light {
+    from {
+      opacity: 0.38;
     }
   }
 

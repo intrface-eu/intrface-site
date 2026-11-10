@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { ClaimCycle, type ClaimLine } from "@/components/home/claim-cycle";
+import { ClaimCycle, type ClaimLine, type ClaimWord } from "@/components/home/claim-cycle";
 import { MakerMark } from "@/components/layout/maker-mark";
 import type { AppLocale } from "@/i18n/routing";
 import { LOCALE_ENDONYMS } from "@/lib/site/locale-names";
@@ -21,6 +21,23 @@ function cycleOrder(locale: AppLocale): AppLocale[] {
   return [...ROTATION.slice(start), ...ROTATION.slice(0, start)];
 }
 
+const ROLE_TAG = /^(.*?)<(tech|meaning)>(.*?)<\/\2>(.*)$/;
+
+/**
+ * The sentence as words. In the message, `<tech>` and `<meaning>` mark the
+ * word for technology and the word for meaning in each language, so the
+ * motion can treat them apart (see `ClaimCycle`); the tags never reach the
+ * text.
+ */
+function claimWords(raw: string): ClaimWord[] {
+  return raw.split(" ").map((token) => {
+    const match = ROLE_TAG.exec(token);
+    if (!match) return { text: token };
+    const [, before, role, inner, after] = match;
+    return { text: before + inner + after, role: role as ClaimWord["role"] };
+  });
+}
+
 /**
  * The first screen of the home page: black, carrying the maker's mark and the
  * one sentence (the page's `h1`). The sentence cycles through the rotation's
@@ -36,10 +53,13 @@ export async function Veil({ locale }: { locale: AppLocale }) {
     order.map(async (lineLocale) => {
       const t = await getTranslations({ locale: lineLocale, namespace: "HomeGrid.common" });
 
+      const words = claimWords(t.raw("claim") as string);
+
       return {
         locale: lineLocale,
         name: LOCALE_ENDONYMS[lineLocale],
-        claim: t("claim"),
+        claim: words.map((word) => word.text).join(" "),
+        words,
         // A locale still waiting for its translation falls back to its own name.
         switchLocale: t.has("switchLocale") ? t("switchLocale") : LOCALE_ENDONYMS[lineLocale],
       };

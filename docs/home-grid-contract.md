@@ -93,6 +93,12 @@ alla tecnologia." The owner set this sentence on 2026-11-10; it replaced
 "Reducing needless friction between intention, reality, and meaningful
 action."
 
+In each message, `<tech>` and `<meaning>` mark the word for technology
+and the word for meaning (`Giving <tech>technology</tech>
+<meaning>meaning</meaning>.`). `Veil` reads the message with `t.raw`,
+strips the tags into a role per word, and joins the plain text for the
+`h1`; a translation must keep both tags around its own two words.
+
 `Veil` (server) loads `claim` and `switchLocale` for each locale in the
 page's cycle with `getTranslations({ locale, namespace: "HomeGrid.common" })`
 and hands them, page locale first, to `ClaimCycle` (client,
@@ -116,17 +122,27 @@ and hands them, page locale first, to `ClaimCycle` (client,
 - **Words.** Each line is words (`.home-veil__word`, inline-block,
   `overflow: hidden`, a little padding above and below with matching
   negative margins, so descenders and accents are not clipped) holding one
-  `.home-veil__word-in` each, with its index in `--w`. Words keep the
-  font's kerning, so the per-letter `KERNING` table is gone.
-- **Motion.** On first paint the page's line rises word by word inside the
-  masks (`data-intro`, CSS `claim-rise`: from `translate3d(0, 110%, 0)`,
-  1000ms, `cubic-bezier(0.16, 1, 0.3, 1)`, each word 42ms after the last
-  from 160ms). A switch moves the words, transform only (`waapi.animate`,
-  `stagger`): the old line's words leave upward out of their masks
-  (`EASE_AWAY`, 460ms each, 18ms apart), the new line's words rise in from
-  below starting 240ms in (`EASE_LAND`, 950ms each, 42ms apart); back, the
-  directions flip. Then the line holds 3.4s. A switch asked for mid-flight
-  retargets from where the words are.
+  `.home-veil__word-in` each. Words keep the font's kerning. Only the word
+  for technology is split further, into letters (`.home-veil__char`,
+  inline-block); at display size its lowercase pairs show no lost kerning.
+- **Motion.** One plan (`plan` in `claim-cycle.tsx`) times the load (CSS
+  animations on `data-intro`, delays in `--d`, `--l`, side in `--s`) and
+  every switch (Web Animations, the same plan). Words start 120ms apart.
+  A plain word rises into its mask from `translate3d(0, 110%, 0)` in
+  1000ms (`EASE_LAND`). The letters of the word for technology mesh into
+  theirs, even letters from below and odd ones from above (130%, so no
+  descender shows in the mask), 26ms apart, 820ms each, and stand at 38%
+  opacity. The word for meaning starts 180ms late and rises whole in
+  1300ms, fading up as it comes. Once it is nearly in (700ms), light passes
+  from it into the technology word: each letter goes to full opacity in
+  600ms, 34ms apart, starting from the side the word for meaning is on (in
+  English from the y back to the t; in Istroveneto and Italian from the
+  t on). A line lands in about 2.2s, then holds 3.4s; the code hairline
+  and the timer use each line's own landing time. The old line's words
+  leave upward out of their masks (`EASE_AWAY`, 460ms each, 18ms apart);
+  back, the order and directions flip. A switch asked for mid-flight, or
+  mid-load, freezes everything where it stands (`commitStyles`) and goes
+  on from there. Transform and opacity only.
 - **Pauses.** The cycle pauses while a mouse (not touch) is over the
   sentence block, on the line shown; a switch already in flight lands
   first. It pauses with keyboard focus inside (a button focused by a mouse

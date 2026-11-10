@@ -640,7 +640,7 @@
   },
   "HomeGrid": {
     "common": {
-      "claim": "Giving technology meaning.",
+      "claim": "Giving <tech>technology</tech> <meaning>meaning</meaning>.",
       "switchLocale": "Continue in English",
       "gridLabel": "Work by INTRFACE",
       "makerMark": "INTRFACE home",
