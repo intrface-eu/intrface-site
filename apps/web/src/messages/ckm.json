@@ -32,18 +32,18 @@
   },
   "Metadata": {
     "tagline": "Sučelja za svit.",
-    "description": "INTRFACE dela sučelja za svit iz Vrsara, u Istri: naše Voyager, AgroPulse, Polis, Index i Patchbay, pa stranice za firme po ciloj EU.",
+    "description": "INTRFACE iz Vrsara, u Istri, dela svoje proizvode, Voyager, AgroPulse, Radio, PatchBay, Polis i midiflow, pa stranice za firme po ciloj EU.",
     "work": {
       "title": "Delo",
-      "description": "Pogledajte Velum, Voyager i AstyleMarine na njihovin javnin stranican i u prikazu svakega projekta. Uz to Polis, Funda, MidiFlow i Patchbay, i kako sad stoje."
+      "description": "Naši proizvodi, Voyager, AgroPulse, Radio, PatchBay, Polis i midiflow, i kako koji stoji, pa stranice ke smo naredili za Velum i AstyleMarine."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Javna karta za otkrit mista okolo Vrsara."
+      "description": "Baština, staze i domaća kultura Vrsara na jednoj karti."
     },
     "polis": {
       "title": "Polis",
-      "description": "Sučelja za građane. Brzo pride."
+      "description": "Sučelja za građane. Javni test."
     },
     "funda": {
       "title": "Funda",
@@ -82,72 +82,12 @@
       "description": "Web stranice, web aplikacije i karte iz Vrsara, za firme i javne ustanove. Pisana ponuda prvo nego ča delo počne."
     }
   },
-  "HomePage": {
-    "products": {
-      "voyager": {
-        "name": "Voyager",
-        "status": "Već dela",
-        "interface": "Sučelje za misto.",
-        "pair": "gost ↔ misto"
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Brzo pride",
-        "interface": "Sučelja za građane",
-        "pair": "građanin ↔ institucija"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Brzo pride",
-        "interface": "EU fondi",
-        "pair": "organizacija ↔ fondi"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Brzo pride",
-        "interface": "Muzika",
-        "pair": "muzikant ↔ zvuk"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Brzo pride",
-        "interface": "Kreativno delo skupa",
-        "pair": "umitnik ↔ umitnik"
-      }
-    }
-  },
   "WorkIndex": {
-    "title": "Delo ko morete otprt.",
-    "lead": "Velum, Voyager i AstyleMarine već delaju. Pogledajte projekte i otprite njihove stranice.",
-    "entries": {
-      "polis": {
-        "name": "Polis",
-        "status": "Brzo pride",
-        "interface": "Sučelja za građane",
-        "pair": "građanin ↔ institucija"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Brzo pride",
-        "interface": "EU fondi",
-        "pair": "organizacija ↔ fondi"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Brzo pride",
-        "interface": "Muzika",
-        "pair": "muzikant ↔ zvuk"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Brzo pride",
-        "interface": "Kreativno delo skupa",
-        "pair": "umitnik ↔ umitnik"
-      }
-    },
-    "pairLabel": "Med",
-    "selectedWork": "Izabrano delo",
-    "otherProducts": "Ča još delamo",
+    "title": "Sve ča delamo.",
+    "lead": "Naši proizvodi i kako koji stoji, pa stranice ke smo naredili za klijente.",
+    "productsTitle": "Naši proizvodi",
+    "clientsTitle": "Stranice za klijente",
+    "more": "Više o proizvodu {name}",
     "contactTitle": "Imate kakov projekt u glavi?",
     "contact": "Javite nan se"
   },
@@ -159,7 +99,7 @@
   "WorkPolis": {
     "name": "Polis",
     "domain": "Sučelja za građane",
-    "status": "Brzo pride",
+    "status": "Javni test",
     "contact": "Javite nan se"
   },
   "WorkFunda": {
@@ -342,7 +282,7 @@
         "title": "Na ča se ova pravila odnose",
         "body": [
           "Odnose se na {host} i na objave ke delamo na naših Facebook stranicah i Instagram računih: Voyager, PatchBay, Polis i Intrface.",
-          "Naši proizvodi — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse i Index — delaju s podacima svojih korisnikov po svojih uvjetih i obavijestih o privatnosti, kade ih pobiraju. Ova stranica ih ne pokriva."
+          "Naši proizvodi — Voyager (voyager.intrface.eu), AgroPulse, Radio, PatchBay, Polis, midiflow i Index — delaju s podacima svojih korisnikov po svojih uvjetih i obavijestih o privatnosti, kade ih pobiraju. Ova stranica ih ne pokriva."
         ]
       },
       "visiting": {
@@ -465,7 +405,7 @@
         "title": "Ki smo",
         "body": [
           "{siteName} j.d.o.o. vodi {host} i Facebook stranice i Instagram račune za Voyager, PatchBay, Polis i Intrface. Cili podaci o firmi su u <imprint>impresumu</imprint>.",
-          "Ovi uvjeti ne pokrivaju koriščenje naših proizvodov (Voyager, Polis, PatchBay, AgroPulse i Index)."
+          "Ovi uvjeti ne pokrivaju koriščenje naših proizvodov (Voyager, AgroPulse, Radio, PatchBay, Polis, midiflow i Index)."
         ]
       },
       "content": {
@@ -618,7 +558,7 @@
       "mobileCaption": "Isti lokal na manjen ekranu."
     },
     "voyager": {
-      "role": "Javna karta za otkrit mista okolo Vrsara.",
+      "role": "Baština, staze i domaća kultura Vrsara na jednoj karti.",
       "overview": "Voyager Atlas pokaže na karti mista okolo Vrsara: od Punte Montraker i Koversade do Parka skulptura Dušana Džamonje i šume Kontija. Po javnen Atlasu morete hodit brez prijave.",
       "desktopAlt": "Voyagerova početna stranica s naslovon „Discover the culture of a place your way.”",
       "desktopCaption": "Voyagerova javna početna stranica.",
@@ -648,11 +588,20 @@
     },
     "projects": {
       "agropulse": {
-        "line": "Sezona maslin u Istri, maslinik po maslinik."
+        "line": "Besplatni pogled na vaš maslinik, od cvatnje do branja."
       },
       "index": {
         "line": "Stvari ča ih spremite, pročitane, složene i povezane.",
         "status": "Brzo pride"
+      },
+      "radio": {
+        "line": "Recite ili napišite kako ste i radio će najt stanicu uživo ka van paše. Besplatno, bez računa."
+      },
+      "patchbay": {
+        "line": "Muzičari u Luzernu najdu svirače, prostore i lekcije na jednoj karti, bez provizije."
+      },
+      "midiflow": {
+        "line": "Vaš mobitel postane instrument ki sona pakete zvukov ke delaju umjetniki."
       }
     }
   },
@@ -670,16 +619,20 @@
     "alt": {
       "voyagerDesktop": "Početna stranica Voyagera: “Discover the culture of a place your way.”",
       "voyagerPhone": "Voyagerova karta Vrsara na mobitelu, z misti označenimi kraj mora.",
-      "agropulseDesktop": "AgroPulse: maslinik od 5,5 ha kraj Vrsara nacrtan na karti, z fazon rasta i upozorenji za idućih 16 dan.",
-      "agropulsePhone": "AgroPulse na mobitelu: maslinik na karti i njegova faza rasta, prominjanje boje.",
+      "agropulseDesktop": "Pogled AgroPulsea na ogledni maslinik kraj Vrsara.",
+      "agropulsePhone": "AgroPulse na mobitelu, na isten oglednen masliniku.",
       "polisDesktop": "Polis se otpira na karti Hrvatske: “Where are you?”",
       "polisPhone": "Polis na mobitelu: obrazac za prijavu, s kartun, fotografijun i poljen za opis.",
-      "index": "Stranica Indexa na ovin webu.",
-      "patchbay": "Stranica Patchbaya na ovin webu.",
       "velum": "Početna stranica Veluma: “By the sea, in no hurry.”",
       "astyle": "Početna stranica AstyleMarinea: “Luxury in full speed.”",
       "voyagerAtlas": "Voyagerov atlas Vrsara na velikon ekranu: kraj mora s označenimi misti.",
-      "polisReport": "Polis na velikon ekranu: obrazac za prijavu u Vrsaru, s kartun i dva načina da dodate fotografiju."
+      "polisReport": "Polis na velikon ekranu: obrazac za prijavu u Vrsaru, s kartun i dva načina da dodate fotografiju.",
+      "radioDesktop": "INTRFACE Radio: radio od orihovine sona stanicu, s pjesmun na staklu.",
+      "radioPhone": "INTRFACE Radio na mobitelu, dok sona stanicu.",
+      "patchbayDesktop": "PatchBay: tamna karta Luzerna, s označenimi mjesti za muzičare i krem karticon za izabrat ulogu i opremu.",
+      "patchbayPhone": "PatchBay na mobitelu: karta Luzerna s označenimi mjesti za muzičare.",
+      "midiflowDesktop": "Početna stranica midiflowa, s padi ke morete sonat.",
+      "midiflowPhone": "midiflow na mobitelu, dok sona paket zvukov."
     }
   },
   "Services": {

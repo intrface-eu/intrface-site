@@ -41,27 +41,37 @@ list.
 
 ### Canonical product lines — character-for-character everywhere they appear
 
-| Product | The interface … | Pair | Status label (exact) | Claim line (exact) |
-|---|---|---|---|---|
-| Voyager | for a place | visitor ↔ place | Live | A public map for discovering places around Vrsar. |
-| Polis | Civic interfaces | citizen ↔ institution | Coming soon | — |
-| Funda | EU funding | organization ↔ funding | Coming soon | — |
-| MidiFlow | Music | musician ↔ sound | Coming soon | — |
-| Patchbay | Creative collaboration | artist ↔ artist | Coming soon | — |
-| Client sites | between a business and its customers | customer ↔ business | Live | Velum and AstyleMarine: public sites for a waterfront café and wine bar and a yacht charter in Istria. |
+Updated 2026-11-12 from the owner's decisions of 2026-11-11 (audited the
+same day). Home and `/work` show the products in this order and with these
+lines. The status labels are `Showcase.live`, `Showcase.publicTest` and the
+translated "Coming soon".
 
-The pair may be rendered with the ↔ glyph or as two words on a rule; whichever, the
-same treatment on every row. Use "Polis", "Funda", "MidiFlow", and "Patchbay" everywhere,
-including footer and metadata. For these four unreleased products, the table gives
-the entire public description: name, translated "Coming soon", and at most one
-short domain. Minimal identity pairs may stay; do not add a second claim line.
+| Product | Spelling | Status | Opens | Line (exact) |
+|---|---|---|---|---|
+| Voyager | Voyager | Live | https://voyager.intrface.eu/ | Vrsar’s heritage, trails and local culture on one map. |
+| AgroPulse | AgroPulse | Live | https://agropulse.intrface.eu/ | A free lens into your olive grove, from bloom to harvest. |
+| Radio | "Radio" as a row name; "INTRFACE Radio" where a full name reads better (alt text, metadata) | Live | https://radio.intrface.eu/ | Say or type a mood, and the radio tunes to a live station that fits. Free, no account. |
+| PatchBay | PatchBay (never "Patchbay") | Live | https://patchbay.city/ | Musicians in Lucerne find players, rooms and lessons on one map, commission-free. |
+| Polis | Polis | Public test | https://polis.intrface.eu/ | Report a problem where you live, then see who took it, what was promised and what changed. Note: A public test with synthetic data. No municipality uses Polis yet. |
+| midiflow | midiflow, lowercase (never "MidiFlow") | Live | https://midiflow.app/ | Your phone becomes an instrument that plays sound packs made by artists. |
+| Index | Index | Coming soon | `/en/index` (never index.intrface.eu) | The things you save, read, filed and connected. |
+| Funda | Funda | Coming soon | `/work/funda` | EU funding |
+| Client sites | Velum, AstyleMarine | Live | their sites and `/work/velum`, `/work/astyle-marine` | Velum and AstyleMarine: public sites for a waterfront café and wine bar and a yacht charter in Istria. |
+
+Never add user numbers, adoption, partners, prices, latency figures or
+other claims to these lines. AgroPulse is olive only (no vineyards or
+orchards). Radio: no phone remote, venues or businesses, station names,
+supporters or payments. midiflow: no MIDI-to-DAW claim, latency, price or
+Android/iOS claims. Polis: no open-source claim, no repository link. The
+client roster is Velum and AstyleMarine only.
 
 ### Tagline and metadata
 
 - Tagline, exact: **Interfaces for the world.** It is the home H1, the `Metadata.tagline`,
   the OG-image tagline and the first sentence of the footer tagline.
-- `Metadata.description` names the six interfaces in one sentence and the place (Vrsar,
-  Istria). No "IT consulting" in the description; the registered activity lives in the
+- `Metadata.description` (and `SITE_DESCRIPTION`, character for character) names the
+  six open products, Voyager, AgroPulse, Radio, PatchBay, Polis and midiflow, and the
+  place (Vrsar, Istria). No "IT consulting" in the description; the registered activity lives in the
   `/about` facts ledger and the imprint only.
 
 ### Home page order
@@ -90,9 +100,9 @@ These are the habits that made the copy read machine-written. They recur; watch 
    it in variants reads as a machine generating variants. Each fact gets ONE canonical
    sentence, reused character-for-character (the Voyager QR line, the contract-files line,
    each honest-status label). Never paraphrase to avoid repetition.
-2. **Status labels stay consistent.** Voyager and client sites say "Live"; Polis,
-   Funda, MidiFlow, and Patchbay say "Coming soon". Translate these labels in
-   German, French, and Croatian.
+2. **Status labels stay consistent.** Voyager, AgroPulse, Radio, PatchBay, midiflow
+   and client sites say "Live"; Polis says "Public test"; Index and Funda say
+   "Coming soon". Translate these labels in every locale.
 3. **Sentence-shape templates.** "N X, one Y." and "X is not A. It is B." are the house
    voice in small doses. Rule: no antithesis in a section intro, never two in consecutive
    sentences, and no more than three per page. Never run the same construction three
@@ -182,9 +192,11 @@ unreleased-product status copy; remove those details from public translations.
 - Voyager is now in production (owner confirmation, 2026-09-07). Do not infer
   real users or adoption from launch. NO Arabic/RTL, language-count, test-coverage,
   repository-metric, or unverified outcome claims in the public showcase.
-- Polis, Funda, MidiFlow, and Patchbay: no public features, architecture, licences,
-  metrics, repository promotion, source links, screenshots, or technical status.
-  A repository being reachable does not authorize promotion before release.
+- Funda and Index: no public features, architecture, licences, metrics, repository
+  promotion, source links or technical status (Index keeps its hosted About page).
+  Polis, Radio, PatchBay and midiflow are open now (2026-11-12): their captures and
+  the lines in the product table are approved, nothing more. A repository being
+  reachable does not authorize promotion before release.
 - Prism: do not present as a working outreach engine. Leave it off the site.
 - herdr, omp, HyperFrames: third-party tools we operate, not our inventions. Claim
   integration and operating discipline, never authorship.
@@ -214,11 +226,12 @@ Show production captures at `apps/web/public/proof/projects/voyager/` using
 establish user numbers, adoption, or outcomes. Retire the engineering/stat/pilot
 showcase; describe only the visible public work.
 
-**Unreleased products — public scope (owner update, 2026-09-07):**
-- **Polis**: Civic interfaces. Coming soon.
+**Unreleased products — public scope (owner update, 2026-09-07; revised 2026-11-12):**
 - **Funda**: EU funding. Coming soon.
-- **MidiFlow**: Music. Coming soon.
-- **Patchbay**: Creative collaboration. Coming soon.
+- **Index**: Coming soon, with its About page at `/en/index`.
+
+Polis (public test), PatchBay and midiflow (live) left this list on 2026-11-12;
+see the product table.
 
 Translate the domain and status in en/de/fr/hr. Keep canonical names. These lines
 replace all previous approval for features, architecture, metrics, licences,
@@ -249,18 +262,18 @@ All routes under `apps/web/src/app/[locale]/`:
 | Route | Page component (owner file) | Content |
 |---|---|---|
 | `/` | `components/pages/home-page.tsx` | See "Home page order" under Positioning |
-| `/work` | `components/pages/work-index-page.tsx` | Velum, Voyager and AstyleMarine previews, then minimal coming-soon entries; Polis/Funda may link to their notices, MidiFlow/Patchbay have no routes |
+| `/work` | `components/pages/work-index-page.tsx` | Everything we make: the six products with a small capture, status, line and link to the root; Index and Funda as coming soon; then Velum and AstyleMarine; then contact |
 | `/work/voyager` | `components/pages/work-voyager-page.tsx` | Screenshot-first production showcase |
 | `/work/velum`, `/work/astyle-marine` | `components/work/project-showcase.tsx` | Separate screenshot-first client showcases |
-| `/work/polis` | `components/pages/work-polis-page.tsx` | Minimal coming-soon page: name, short domain, status, back-to-work and contact links |
+| `/work/polis` | `components/pages/work-polis-page.tsx` | Minimal page: name, short domain, "Public test" and the synthetic-data note, back and contact links |
 | `/work/funda` | `components/pages/work-funda-page.tsx` | Minimal coming-soon page: name, short domain, status, back-to-work and contact links |
 | `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Concise client index linking separate Velum and AstyleMarine showcases; no process copy |
-| `/about` | `components/pages/about-page.tsx` | The doctrine and the admission test, who/where/how we engage, own products incl. MidiFlow and Patchbay, contact form |
+| `/about` | `components/pages/about-page.tsx` | The doctrine and the admission test, who/where/how we engage, the person, the stance and the place (no product list) |
 | `/imprint` | `components/pages/imprint-page.tsx` | Legal/imprint basics for an .eu company |
 
 Polis and Funda keep their routes, not their former case studies. Remove retired
 case-study and diagram copy from all four locale files, not just from rendered
-components: translations serialize publicly. Do not create MidiFlow/Patchbay routes.
+components: translations serialize publicly. Do not create pages here for PatchBay or midiflow: their short routes redirect to their own sites.
 The three production showcases
 use a name, one-sentence role, live-site link, desktop/detail/mobile screens, brief
 overview, project navigation, and contact CTA. No process or metrics.

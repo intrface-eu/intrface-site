@@ -34,8 +34,8 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
       tone: "live",
       href: PRODUCT_ROOTS.voyager,
       open: show("open", { name: "Voyager" }),
-      desktop: { src: `${SHOTS}/voyager/about-desktop-2026-10-30.webp`, alt: show("alt.voyagerDesktop") },
-      phone: { src: `${SHOTS}/voyager/atlas-mobile-2026-10-30.webp`, alt: show("alt.voyagerPhone") },
+      desktop: { src: `${SHOTS}/voyager/about-desktop-2026-11-12.webp`, alt: show("alt.voyagerDesktop") },
+      phone: { src: `${SHOTS}/voyager/atlas-mobile-2026-11-12.webp`, alt: show("alt.voyagerPhone") },
     },
     {
       key: "agropulse",
@@ -45,8 +45,8 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
       tone: "live",
       href: PRODUCT_ROOTS.agropulse,
       open: show("open", { name: "AgroPulse" }),
-      desktop: { src: `${SHOTS}/agropulse/app-desktop-2026-10-30.webp`, alt: show("alt.agropulseDesktop") },
-      phone: { src: `${SHOTS}/agropulse/app-mobile-2026-10-30.webp`, alt: show("alt.agropulsePhone") },
+      desktop: { src: `${SHOTS}/agropulse/lens-desktop-2026-11-12.webp`, alt: show("alt.agropulseDesktop") },
+      phone: { src: `${SHOTS}/agropulse/lens-mobile-2026-11-12.webp`, alt: show("alt.agropulsePhone") },
     },
     {
       key: "polis",
@@ -142,8 +142,8 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
               {openLink("Voyager", ATLAS_URL)}
             </>
           }
-          desktop={{ src: `${SHOTS}/voyager/atlas-desktop-2026-10-30.webp`, alt: show("alt.voyagerAtlas") }}
-          phone={{ src: `${SHOTS}/voyager/atlas-mobile-2026-10-30.webp`, alt: show("alt.voyagerPhone") }}
+          desktop={{ src: `${SHOTS}/voyager/atlas-desktop-2026-11-12.webp`, alt: show("alt.voyagerAtlas") }}
+          phone={{ src: `${SHOTS}/voyager/atlas-mobile-2026-11-12.webp`, alt: show("alt.voyagerPhone") }}
         />
 
         <InterfaceRow
@@ -157,8 +157,8 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
               {openLink("AgroPulse", PRODUCT_ROOTS.agropulse)}
             </>
           }
-          desktop={{ src: `${SHOTS}/agropulse/app-desktop-2026-10-30.webp`, alt: show("alt.agropulseDesktop") }}
-          phone={{ src: `${SHOTS}/agropulse/app-mobile-2026-10-30.webp`, alt: show("alt.agropulsePhone") }}
+          desktop={{ src: `${SHOTS}/agropulse/lens-desktop-2026-11-12.webp`, alt: show("alt.agropulseDesktop") }}
+          phone={{ src: `${SHOTS}/agropulse/lens-mobile-2026-11-12.webp`, alt: show("alt.agropulsePhone") }}
         />
 
         <InterfaceRow

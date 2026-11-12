@@ -1,61 +1,28 @@
-import Image from "next/image";
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import { InterfaceDuo, InterfaceRow, InterfaceStatus } from "@/components/showcase/interface-row";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
-import { PRODUCT_PAGE_LOCALE, PRODUCT_ROOTS } from "@/lib/site/product-roots";
+import { PRODUCT_ROOTS } from "@/lib/site/product-roots";
 import { PROJECTS } from "@/lib/site/projects";
 
 const SHOTS = "/proof/projects";
 const ATLAS_URL = "https://voyager.intrface.eu/en/vrsar";
 
-/** A product not open yet: its screen, its name and "Coming soon", one link to its page here. */
-function SoonCard({ href, name, line, status, src, alt }: {
-  href: string;
-  name: string;
-  line?: string;
-  status: string;
-  src: string;
-  alt: string;
-}) {
-  return (
-    // English only, so every locale links straight to /en/<page>.
-    <Link className="iface-card" href={href} hrefLang={PRODUCT_PAGE_LOCALE} locale={PRODUCT_PAGE_LOCALE}>
-      <span className="iface-screen">
-        <Image
-          alt={alt}
-          className="iface-screen__image"
-          height={1000}
-          sizes="(min-width: 768px) 40vw, 100vw"
-          src={src}
-          width={1440}
-        />
-      </span>
-      <span className="iface-card__title">
-        <span className="iface-card__name">{name}</span>
-        <InterfaceStatus tone="soon">{status}</InterfaceStatus>
-      </span>
-      {line ? <span className="type-body iface-card__line">{line}</span> : null}
-    </Link>
-  );
-}
-
 /**
- * Home below the first screen: our own interfaces, one per screen height.
- * Voyager, AgroPulse and Polis each get a row (the phone shows the
- * product in use); Index and Patchbay, not
- * open yet, share one quieter row; the last block is the one door from home
- * to the client work on /services. Each row opens its product the way the
- * home tiles did: Voyager, AgroPulse and Polis at their root, Index and
- * Patchbay at their page here.
+ * Home below the first screen: our own products that open without signing
+ * in, one row each, in this order: Voyager (the lead, a screen tall),
+ * AgroPulse, Radio, PatchBay, Polis and midiflow (shorter rows, about two to
+ * a screen; see `.ifaces--home` in globals.css). The screens alternate
+ * sides; the phone shows the product in use. Each row opens its product at
+ * its root, in the same tab. The last block is the one door from home to
+ * the client work on /services. Index and Funda, not open yet, are on /work.
  */
 export async function HomeInterfaces({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "Showcase" });
   const home = await getTranslations({ locale, namespace: "HomeGrid" });
   const projects = await getTranslations({ locale, namespace: "Projects" });
-  const entries = await getTranslations({ locale, namespace: "WorkIndex.entries" });
 
   const open = (name: string, href: string) => (
     <a className="iface-link" href={href}>
@@ -64,13 +31,15 @@ export async function HomeInterfaces({ locale }: { locale: AppLocale }) {
     </a>
   );
 
+  const live = <InterfaceStatus>{t("live")}</InterfaceStatus>;
+
   return (
     <section aria-label={home("common.gridLabel")} className="ifaces ifaces--home">
       <InterfaceRow
         lead
         priority
         heading={<h2 className="iface-name">Voyager</h2>}
-        status={<InterfaceStatus>{t("live")}</InterfaceStatus>}
+        status={live}
         line={projects("voyager.role")}
         actions={
           <>
@@ -81,18 +50,37 @@ export async function HomeInterfaces({ locale }: { locale: AppLocale }) {
             </a>
           </>
         }
-        desktop={{ src: `${SHOTS}/voyager/about-desktop-2026-10-30.webp`, alt: t("alt.voyagerDesktop") }}
-        phone={{ src: `${SHOTS}/voyager/atlas-mobile-2026-10-30.webp`, alt: t("alt.voyagerPhone") }}
+        desktop={{ src: `${SHOTS}/voyager/about-desktop-2026-11-12.webp`, alt: t("alt.voyagerDesktop") }}
+        phone={{ src: `${SHOTS}/voyager/atlas-mobile-2026-11-12.webp`, alt: t("alt.voyagerPhone") }}
       />
 
       <InterfaceRow
         side="start"
         heading={<h2 className="iface-name">AgroPulse</h2>}
-        status={<InterfaceStatus>{t("live")}</InterfaceStatus>}
+        status={live}
         line={home("projects.agropulse.line")}
         actions={open("AgroPulse", PRODUCT_ROOTS.agropulse)}
-        desktop={{ src: `${SHOTS}/agropulse/app-desktop-2026-10-30.webp`, alt: t("alt.agropulseDesktop") }}
-        phone={{ src: `${SHOTS}/agropulse/app-mobile-2026-10-30.webp`, alt: t("alt.agropulsePhone") }}
+        desktop={{ src: `${SHOTS}/agropulse/lens-desktop-2026-11-12.webp`, alt: t("alt.agropulseDesktop") }}
+        phone={{ src: `${SHOTS}/agropulse/lens-mobile-2026-11-12.webp`, alt: t("alt.agropulsePhone") }}
+      />
+
+      <InterfaceRow
+        heading={<h2 className="iface-name">Radio</h2>}
+        status={live}
+        line={home("projects.radio.line")}
+        actions={open("Radio", PRODUCT_ROOTS.radio)}
+        desktop={{ src: `${SHOTS}/radio/app-desktop-2026-11-12.webp`, alt: t("alt.radioDesktop") }}
+        phone={{ src: `${SHOTS}/radio/app-mobile-2026-11-12.webp`, alt: t("alt.radioPhone") }}
+      />
+
+      <InterfaceRow
+        side="start"
+        heading={<h2 className="iface-name">PatchBay</h2>}
+        status={live}
+        line={home("projects.patchbay.line")}
+        actions={open("PatchBay", PRODUCT_ROOTS.patchbay)}
+        desktop={{ src: `${SHOTS}/patchbay/map-desktop-2026-11-12.webp`, alt: t("alt.patchbayDesktop") }}
+        phone={{ src: `${SHOTS}/patchbay/map-mobile-2026-11-12.webp`, alt: t("alt.patchbayPhone") }}
       />
 
       <InterfaceRow
@@ -108,23 +96,15 @@ export async function HomeInterfaces({ locale }: { locale: AppLocale }) {
         phone={{ src: `${SHOTS}/polis/report-mobile-2026-10-30.webp`, alt: t("alt.polisPhone") }}
       />
 
-      <div className="iface-pair">
-        <SoonCard
-          alt={t("alt.index")}
-          href="/index"
-          line={home("projects.index.line")}
-          name="Index"
-          src={`${SHOTS}/index/desktop.webp`}
-          status={home("projects.index.status")}
-        />
-        <SoonCard
-          alt={t("alt.patchbay")}
-          href="/patchbay"
-          name={entries("patchbay.name")}
-          src={`${SHOTS}/patchbay/desktop.webp`}
-          status={entries("patchbay.status")}
-        />
-      </div>
+      <InterfaceRow
+        side="start"
+        heading={<h2 className="iface-name">midiflow</h2>}
+        status={live}
+        line={home("projects.midiflow.line")}
+        actions={open("midiflow", PRODUCT_ROOTS.midiflow)}
+        desktop={{ src: `${SHOTS}/midiflow/site-desktop-2026-11-12.webp`, alt: t("alt.midiflowDesktop") }}
+        phone={{ src: `${SHOTS}/midiflow/play-mobile-2026-11-12.webp`, alt: t("alt.midiflowPhone") }}
+      />
 
       <div className="iface-door">
         <div className="iface-door__text">

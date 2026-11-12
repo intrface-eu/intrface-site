@@ -437,38 +437,6 @@ body {
     letter-spacing: -0.01em;
   }
 
-  /* ===== PAIR MARK =====
-     The two sides a product sits between, drawn rather than punctuated: two
-     words on a hairline with a solid accent node at the midpoint. It is the
-     site's illustration language (nodes, hairline connectors) at label scale,
-     and it inherits the band — on `.tone-ink` both tokens are already relit. */
-  .pair-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .pair-mark__link {
-    position: relative;
-    flex: none;
-    display: inline-block;
-    inline-size: 2rem;
-    block-size: 1px;
-    background: var(--line);
-  }
-
-  .pair-mark__link::after {
-    content: "";
-    position: absolute;
-    inset-inline-start: 50%;
-    inset-block-start: 50%;
-    inline-size: 5px;
-    block-size: 5px;
-    border-radius: 999px;
-    background: var(--accent);
-    transform: translate(-50%, -50%);
-  }
-
   .section-shell {
     width: min(100%, 80rem);
     margin-inline: auto;
@@ -2016,51 +1984,9 @@ body {
   }
 
   .iface-link:focus-visible,
-  .iface-card:focus-visible,
   .iface-duo__shot:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 4px;
-  }
-
-  /* Products not open yet: two quieter cards side by side from 768px. */
-  .iface-pair {
-    display: grid;
-    gap: 4rem clamp(2rem, 4vw, 3.5rem);
-    padding-inline: var(--edge);
-  }
-
-  @media (min-width: 768px) {
-    .iface-pair {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  .iface-card {
-    display: grid;
-    align-content: start;
-    gap: 1.25rem;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .iface-card__title {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1rem;
-    margin-block-start: 0.75rem;
-  }
-
-  .iface-card__name {
-    font-family: var(--font-brand);
-    font-size: clamp(1.5rem, 2.2vw, 1.875rem);
-    line-height: 1.1;
-    letter-spacing: -0.035em;
-    font-weight: 600;
-  }
-
-  .iface-card__line {
-    margin-block-start: -0.5rem;
   }
 
   /* The door to client work: the heading, one line and the button, beside
@@ -2116,14 +2042,12 @@ body {
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .iface-card .iface-screen,
     .iface-duo__shot {
       transition:
         transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
         box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .iface-card:hover .iface-screen,
     .iface-duo__shot:hover {
       transform: translate3d(0, -0.375rem, 0);
       box-shadow:
@@ -2195,6 +2119,119 @@ body {
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.06),
       0 40px 120px -30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Home holds six products (revision 12), so from 1024px the rows after
+     the lead are about half a screen tall, two to a 1440×900 screen: a
+     shorter gap, a wider text column so the screens take less width, the
+     desktop capture shown from its top at 2:1, and a smaller phone. The
+     lead keeps its size and its gap below. */
+  @media (min-width: 1024px) {
+    .ifaces--home {
+      --row-gap: clamp(4.5rem, 6.5vw, 6rem);
+    }
+
+    .ifaces--home > .iface-row[data-lead] {
+      margin-block-end: clamp(2rem, 7vw, 6rem);
+    }
+
+    .ifaces--home > .iface-row:not([data-lead]) {
+      --phone-w: clamp(6.5rem, 10vw, 9.5rem);
+      --phone-drop: clamp(1.5rem, 3vw, 2.75rem);
+      grid-template-columns: clamp(22rem, 34vw, 30rem) minmax(0, 1fr);
+    }
+
+    .ifaces--home > .iface-row[data-side="start"]:not([data-lead]) {
+      grid-template-columns: minmax(0, 1fr) clamp(22rem, 34vw, 30rem);
+    }
+
+    .ifaces--home > .iface-row:not([data-lead]) .iface-screen {
+      aspect-ratio: 2 / 1;
+    }
+
+    .ifaces--home > .iface-row:not([data-lead]) .iface-screen__image {
+      block-size: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .ifaces--home > .iface-row:not([data-lead]) .iface-name {
+      font-size: clamp(2.1rem, 3vw, 2.75rem);
+    }
+  }
+
+  /* ===== WORK =====
+     /work: everything we make. Our products as a quiet list on hairlines, a
+     small desktop capture beside the name, the status, one line and the way
+     in; then the products not open yet, text only, side by side from 768px.
+     The screens are the INTERFACES plate with a shorter shadow, and no
+     phone, bleed or motion. */
+  .work-list {
+    display: grid;
+    margin-block-start: 2rem;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .work-item {
+    display: grid;
+    gap: 1.5rem;
+    padding-block: 2rem;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .work-item__shot {
+    max-inline-size: 28rem;
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 41, 0.08),
+      0 14px 34px -20px rgba(15, 23, 41, 0.32);
+  }
+
+  .work-item__text,
+  .work-soon__item {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: 0.75rem;
+  }
+
+  .work-item__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+  }
+
+  .work-item__name {
+    font-family: var(--font-brand);
+    font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .work-item__line {
+    max-inline-size: 52ch;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+  }
+
+  .work-soon {
+    display: grid;
+    gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
+    padding-block-start: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .work-item {
+      grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr);
+      column-gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+
+    .work-soon {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   /* ===== SERVICES =====

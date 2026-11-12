@@ -1,4 +1,4 @@
-# Home contract (2026-10-30, revision 11: interfaces on paper)
+# Home contract (2026-11-12, revision 12: six products)
 
 Owner decision, 2026-09-26 (late evening): "I want the apps to be a full
 bento grid that covers the screen, include polis, and make it so the
@@ -79,7 +79,23 @@ and the last block, "We build these for clients too.", shows Velum and
 AstyleMarine small and links to `/services`. The sentence now rises word
 by word behind a mask, and the arrows gave way to the language codes
 (EN, HR, VEC, CKM) with a hairline that runs out the hold. The footer is
-paper on home too. Revisions 5 to 10 below the structure are history.
+paper on home too.
+
+Revision 12, 2026-11-12, from decisions the owner approved on 2026-11-11:
+home shows the products that open without signing in, one row each, in
+this order: Voyager (lead), AgroPulse, Radio, PatchBay, Polis, midiflow.
+Radio, PatchBay and midiflow are live now, and six rows a screen tall
+each made the page too long, so from 1024px the rows after the lead are
+about half a screen tall, two to a 1440×900 screen (see The interfaces).
+The Index and Patchbay "Coming soon" pair left home: Index lives on
+`/work`, and PatchBay (the product's own spelling) has its own site at
+`https://patchbay.city/`, so its page here (`/en/patchbay`) is gone and
+`/<locale>/patchbay` redirects there. midiflow is written lowercase, as
+the product renamed itself in October. New short routes `/<locale>/radio`,
+`/<locale>/patchbay` and `/<locale>/midiflow`. `/work` became the full
+list of what we make, with an honest status each, and `/work/polis` says
+"Public test" instead of "Coming soon". Revisions 5 to 10 below the
+structure are history.
 
 ## The sentence
 
@@ -221,20 +237,47 @@ In order:
 
 - **Voyager**, lead, "Live": desktop the Voyager home page, phone the Vrsar
   atlas. "Open Voyager" goes to `PRODUCT_ROOTS.voyager`; a quieter "Open
-  the Vrsar atlas" goes to `https://voyager.intrface.eu/en/vrsar`.
-- **AgroPulse**, screens on the start side, "Live": the app on a 5.5 ha
-  grove near Vrsar, desktop and phone. "Open AgroPulse".
+  the Vrsar atlas" goes to `https://voyager.intrface.eu/en/vrsar`. Line
+  `Projects.voyager.role`: "Vrsar’s heritage, trails and local culture on
+  one map."
+- **AgroPulse**, screens on the start side, "Live": the lens over an
+  example olive grove near Vrsar, desktop and phone. Line "A free lens into
+  your olive grove, from bloom to harvest." Olive only.
+- **Radio**, "Live": the walnut radio playing a station. Line "Say or type
+  a mood, and the radio tunes to a live station that fits. Free, no
+  account." No phone remote, venues, station names, supporters or
+  payments. "INTRFACE Radio" where a full name reads better (alt text).
+- **PatchBay**, start side, "Live": the dark map of Lucerne. Line
+  "Musicians in Lucerne find players, rooms and lessons on one map,
+  commission-free." Opens `https://patchbay.city/`.
 - **Polis**, "Public test": desktop the root's map of Croatia ("Where are
   you?"), phone the report form. Its line is followed by "A public test
   with synthetic data. No municipality uses Polis yet." "Open Polis".
-- **Coming soon**, `.iface-pair`: Index and Patchbay as two quieter cards
-  linking to `/en/index` and `/en/patchbay` (see English-only product
-  pages), with their status.
+- **midiflow**, start side, "Live": desktop its home page with the pads,
+  phone the app playing a pack. Line "Your phone becomes an instrument
+  that plays sound packs made by artists." No MIDI, DAW, latency, price or
+  platform claims. Opens `https://midiflow.app/`.
 - **The door**, `.iface-door`: "We build these for clients too.", one line
   naming Velum and AstyleMarine, a primary button to `/services`, and the
   two sites (`InterfaceDuo`), each screen linking to the live site.
 
-Captures live in `public/proof/projects/<project>/*-2026-10-30.webp`.
+Lines for AgroPulse, Radio, PatchBay and midiflow are in
+`HomeGrid.projects.<key>.line`; `/work` reads the same keys.
+
+Row sizing (revision 12, `.ifaces--home` in globals.css, from 1024px only;
+below 1024px rows stack as before). The lead keeps its size, and
+`margin-block-end: clamp(2rem, 7vw, 6rem)` keeps its gap below about where
+it was. The other rows: `--row-gap: clamp(4.5rem, 6.5vw, 6rem)` (was
+`clamp(7rem, 15vw, 12.5rem)`); the text column `clamp(22rem, 34vw, 30rem)`
+(was at most 24rem), so the screens take less width; the desktop capture
+framed at `aspect-ratio: 2 / 1` from its top (`object-fit: cover`,
+`object-position: top`), so the bottom fifth of the capture is cut; the
+phone `--phone-w: clamp(6.5rem, 10vw, 9.5rem)` and `--phone-drop:
+clamp(1.5rem, 3vw, 2.75rem)`; the name `clamp(2.1rem, 3vw, 2.75rem)`. At
+1440×900 a row is 373px tall on a 466px pitch, about two to a screen.
+
+Captures live in `public/proof/projects/<project>/*-2026-11-12.webp`
+(Polis and the client sites still `*-2026-10-30.webp`).
 Alt text is in `Showcase.alt`. The one motion: as a row comes into view its
 screen settles from 3rem below and the phone from 7rem (scroll-driven,
 transform only, behind `@supports (animation-timeline: view())` and
@@ -242,30 +285,33 @@ transform only, behind `@supports (animation-timeline: view())` and
 
 ## Short routes
 
-`/<locale>/voyager`, `/<locale>/polis` and `/<locale>/agropulse`, in every
-locale, redirect with 307 to the product root in `PRODUCT_ROOTS`. They are
-config redirects (`redirects()` in `next.config.ts`, built from
-`PRODUCT_ROOTS` and `routing.locales`), which run before the proxy and
-need no route file. Without a locale, `/voyager` goes first to
-`/en/voyager` (the proxy's 308), then on. They are not in `SITE_PATHS`, so
-not in the sitemap. Temporary, since a product may later get a page here.
-`/en/index` is not a redirect but the hosted Index page; when Index ships,
-add it to `PRODUCT_ROOTS` and remove the page.
+`/<locale>/voyager`, `/agropulse`, `/radio`, `/patchbay`, `/polis` and
+`/midiflow`, in every locale, redirect with 307 to the product root in
+`PRODUCT_ROOTS` (PatchBay's is `https://patchbay.city/`, midiflow's
+`https://midiflow.app/`). They are config redirects (`redirects()` in
+`next.config.ts`, built from `PRODUCT_ROOTS` and `routing.locales`), which
+run before the proxy and need no route file. Without a locale,
+`/voyager` goes first to `/en/voyager` (the proxy's 308), then on. They
+are not in `SITE_PATHS`, so not in the sitemap. Temporary, since a
+product may later get a page here. A key in `PRODUCT_ROOTS` must not also
+be in `PRODUCT_PAGES`, or the two redirects compete. `/en/index` is not a
+redirect but the hosted Index page; when Index ships, add it to
+`PRODUCT_ROOTS` and remove the page.
 
 ## English-only product pages
 
-The pages of products not open yet, `/index` and `/patchbay`
-(`PRODUCT_PAGES` in `lib/site/product-roots.ts`), exist in English only
+The page of a product not open yet, `/index` (`PRODUCT_PAGES` in
+`lib/site/product-roots.ts`), exists in English only
 (`PRODUCT_PAGE_LOCALE`); hr, it, vec and ckm are for INTRFACE's own pages.
-`next.config.ts` redirects `/<hr|it|vec|ckm>/index` and `/…/patchbay` to
-the English page with 307 (temporary, since they may be translated
-later). Each page's `generateStaticParams` returns `en` alone and
-`dynamicParams` is false, so the build prerenders only `en/index.html` and
-`en/patchbay.html`. Metadata comes from `buildPageMetadata` with
-`translated: false`: canonical `/en/...`, no hreflang alternates, no
-alternate OpenGraph locales. They are not in `SITE_PATHS`; the sitemap
-adds one English entry each, with no alternates. "Back to home" goes to
-`/en`.
+`next.config.ts` redirects `/<hr|it|vec|ckm>/index` to the English page
+with 307 (temporary, since it may be translated later). The page's
+`generateStaticParams` returns `en` alone and `dynamicParams` is false, so
+the build prerenders only `en/index.html`. Metadata comes from
+`buildPageMetadata` with `translated: false`: canonical `/en/index`, no
+hreflang alternates, no alternate OpenGraph locales. It is not in
+`SITE_PATHS`; the sitemap adds one English entry, with no alternates.
+"Back to home" goes to `/en`. `/patchbay` was the second such page until
+revision 12.
 
 ## The Index page
 
@@ -300,24 +346,24 @@ numbers or users, no privacy-policy link (that page lives in the
 product). Metadata: title "What is Index?", description the lede and the
 status (see English-only product pages).
 
-## The Patchbay page
+## The PatchBay page (removed)
 
-`/en/patchbay` (`app/[locale]/patchbay/page.tsx`,
-`components/pages/patchbay-page.tsx`), on paper like the other pages, with
-the site header and footer. It shows, and only shows: "Back to home"
-(`HomeGrid.common.backToGrid`) to `/en`; Patchbay's mark on an ink plate
-(the mark is drawn in paper for dark grounds); the name
-(`WorkIndex.entries.patchbay.name`, the `h1`); its line
-(`WorkIndex.entries.patchbay.interface`, "Creative collaboration"); the
-status pill ("Coming soon", `.status`); and the existing captures, desktop
-and mobile, side by side from 1024px as on the showcases (`alt` is the
-name; the mobile one's is empty). No address, no features, no
-collaborators, no source link, no contact button. Metadata through
-`buildPageMetadata`: title the name, description "{interface}.
-{status}.", the shape Polis and Funda use; no new message keys. English
-only (see English-only product pages).
+Revisions 10 and 11 hosted a minimal Patchbay page at `/en/patchbay`. Since
+revision 12 PatchBay has its own site: the route, `patchbay-page.tsx` and
+the `WorkIndex.entries` messages it read are gone, and every
+`/<locale>/patchbay` redirects (307) to `https://patchbay.city/`.
 
 ## Verification
+
+Revision 12 (2026-11-12): `bun run check-types`, eslint on the changed
+files, `bun run build`, then `next start` on port 3107. `/en`, `/hr`,
+`/it`, `/vec`, `/ckm`, `/en/work`, `/hr/work`, `/en/services`,
+`/en/work/polis` and `/en/index` return 200; `/en/radio`, `/en/patchbay`,
+`/hr/patchbay`, `/vec/patchbay` and `/en/midiflow` return 307 to their
+roots; `/hr/index` still goes to `/en/index`; the sitemap lists
+`/en/index` and no `patchbay`. No page renders "Patchbay" or "MidiFlow".
+Full-page screenshots of `/en` and `/en/work` at 1440×900 and 390×844
+with reduced motion, looked at: no horizontal overflow at either width.
 
 Revision 11 (2026-10-30): `bun run check-types`, eslint on the changed
 files, `bun run build`; a production build on an isolated port, looked at

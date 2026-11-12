@@ -36,7 +36,6 @@ export { MobileShot } from "./src/components/work/voyager/mobile-shot";
 export { OperatingRule } from "./src/components/method/operating-rule";
 export { PilotSeed } from "./src/components/work/voyager/pilot-seed";
 export { PipelineSteps } from "./src/components/work/client-sites/pipeline-steps";
-export { PortfolioLedger } from "./src/components/work/index/portfolio-ledger";
 export { ProcessSteps } from "./src/components/site/process-steps";
 export { RepoCard } from "./src/components/method/repo-card";
 export { SiteNav } from "./src/components/site/site-nav";

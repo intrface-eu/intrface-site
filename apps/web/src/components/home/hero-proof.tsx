@@ -15,10 +15,13 @@ export async function ProjectPreviews({
   locale,
   projects = SELECTED_PROJECTS,
   priority = false,
+  headingLevel: Heading = "h2",
 }: {
   locale: AppLocale;
   projects?: readonly ProjectKey[];
   priority?: boolean;
+  /** `h3` when the previews sit under a section heading of their own. */
+  headingLevel?: "h2" | "h3";
 }) {
   const t = await getTranslations({ locale, namespace: "Projects" });
 
@@ -38,7 +41,7 @@ export async function ProjectPreviews({
             />
             <div className="project-preview-caption" data-ground-quiet="">
               <div>
-                <h2 className="type-subheading text-ink">{project.name}</h2>
+                <Heading className="type-subheading text-ink">{project.name}</Heading>
                 <p className="type-body-sm mt-2">{t(`${key}.role`)}</p>
               </div>
               <span className="type-caption project-preview-action">

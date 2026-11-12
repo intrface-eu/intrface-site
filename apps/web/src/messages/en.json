@@ -32,18 +32,18 @@
   },
   "Metadata": {
     "tagline": "Interfaces for the world.",
-    "description": "INTRFACE builds interfaces for the world from Vrsar, Istria: Voyager, AgroPulse, Polis, Index and Patchbay of our own, and sites for businesses across the EU.",
+    "description": "INTRFACE builds interfaces for the world from Vrsar, Istria: our own products Voyager, AgroPulse, Radio, PatchBay, Polis and midiflow, and sites for businesses across the EU.",
     "work": {
       "title": "Work",
-      "description": "Explore Velum, Voyager and AstyleMarine through their live sites and project showcases. Plus Polis, Funda, MidiFlow and Patchbay, with current statuses."
+      "description": "Our products, Voyager, AgroPulse, Radio, PatchBay, Polis and midiflow, each with where it stands, and the sites we built for Velum and AstyleMarine."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "A public map for discovering places around Vrsar."
+      "description": "Vrsar’s heritage, trails and local culture on one map."
     },
     "polis": {
       "title": "Polis",
-      "description": "Civic interfaces. Coming soon."
+      "description": "Civic interfaces. Public test."
     },
     "funda": {
       "title": "Funda",
@@ -82,72 +82,12 @@
       "description": "Websites, web apps and maps from Vrsar, Istria, for businesses and public bodies. A written quote before any work starts."
     }
   },
-  "HomePage": {
-    "products": {
-      "voyager": {
-        "name": "Voyager",
-        "status": "Live",
-        "interface": "The interface for a place.",
-        "pair": "visitor ↔ place"
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "Coming soon",
-        "interface": "Civic interfaces",
-        "pair": "citizen ↔ institution"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Coming soon",
-        "interface": "EU funding",
-        "pair": "organization ↔ funding"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Coming soon",
-        "interface": "Music",
-        "pair": "musician ↔ sound"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Coming soon",
-        "interface": "Creative collaboration",
-        "pair": "artist ↔ artist"
-      }
-    }
-  },
   "WorkIndex": {
-    "title": "Work you can open.",
-    "lead": "Velum, Voyager and AstyleMarine are live. Explore the projects and visit the sites.",
-    "entries": {
-      "polis": {
-        "name": "Polis",
-        "status": "Coming soon",
-        "interface": "Civic interfaces",
-        "pair": "citizen ↔ institution"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "Coming soon",
-        "interface": "EU funding",
-        "pair": "organization ↔ funding"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "Coming soon",
-        "interface": "Music",
-        "pair": "musician ↔ sound"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "Coming soon",
-        "interface": "Creative collaboration",
-        "pair": "artist ↔ artist"
-      }
-    },
-    "pairLabel": "Between",
-    "selectedWork": "Selected work",
-    "otherProducts": "Other products of our own",
+    "title": "Everything we make.",
+    "lead": "Our own products, each with where it stands, then the sites we built for clients.",
+    "productsTitle": "Our products",
+    "clientsTitle": "Sites for clients",
+    "more": "More about {name}",
     "contactTitle": "A project in mind?",
     "contact": "Tell us about it"
   },
@@ -159,7 +99,7 @@
   "WorkPolis": {
     "name": "Polis",
     "domain": "Civic interfaces",
-    "status": "Coming soon",
+    "status": "Public test",
     "contact": "Contact us"
   },
   "WorkFunda": {
@@ -342,7 +282,7 @@
         "title": "What this policy covers",
         "body": [
           "It covers {host} and the posts we publish to our own Facebook Pages and Instagram accounts: Voyager, PatchBay, Polis and Intrface.",
-          "Our products — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse and Index — handle their users’ data under their own terms and privacy notices where they collect it. This page does not cover them."
+          "Our products — Voyager (voyager.intrface.eu), AgroPulse, Radio, PatchBay, Polis, midiflow and Index — handle their users’ data under their own terms and privacy notices where they collect it. This page does not cover them."
         ]
       },
       "visiting": {
@@ -465,7 +405,7 @@
         "title": "Who we are",
         "body": [
           "{siteName} j.d.o.o. runs {host} and the Facebook Pages and Instagram accounts of Voyager, PatchBay, Polis and Intrface. Full company details are in the <imprint>imprint</imprint>.",
-          "These terms do not cover the use of our products (Voyager, Polis, PatchBay, AgroPulse and Index)."
+          "These terms do not cover the use of our products (Voyager, AgroPulse, Radio, PatchBay, Polis, midiflow and Index)."
         ]
       },
       "content": {
@@ -618,7 +558,7 @@
       "mobileCaption": "The same place, on a smaller screen."
     },
     "voyager": {
-      "role": "A public map for discovering places around Vrsar.",
+      "role": "Vrsar’s heritage, trails and local culture on one map.",
       "overview": "Voyager Atlas puts places around Vrsar on a map: from Punta Montraker and Koversada to the Dušan Džamonja Sculpture Park and Kontija Forest. The public Atlas is open to explore without signing in.",
       "desktopAlt": "Voyager home page with the headline “Discover the culture of a place your way.”",
       "desktopCaption": "Voyager’s public home page.",
@@ -648,11 +588,20 @@
     },
     "projects": {
       "agropulse": {
-        "line": "The olive season in Istria, field by field."
+        "line": "A free lens into your olive grove, from bloom to harvest."
       },
       "index": {
         "line": "The things you save, read, filed and connected.",
         "status": "Coming soon"
+      },
+      "radio": {
+        "line": "Say or type a mood, and the radio tunes to a live station that fits. Free, no account."
+      },
+      "patchbay": {
+        "line": "Musicians in Lucerne find players, rooms and lessons on one map, commission-free."
+      },
+      "midiflow": {
+        "line": "Your phone becomes an instrument that plays sound packs made by artists."
       }
     }
   },
@@ -755,16 +704,20 @@
     "alt": {
       "voyagerDesktop": "Voyager’s home page: “Discover the culture of a place your way.”",
       "voyagerPhone": "The Voyager atlas of Vrsar on a phone, with places pinned along the coast.",
-      "agropulseDesktop": "AgroPulse: a 5.5 ha olive grove near Vrsar outlined on the map, with its growth stage and the alerts for the next 16 days.",
-      "agropulsePhone": "AgroPulse on a phone: the grove on the map and its growth stage, colour change.",
+      "agropulseDesktop": "The AgroPulse lens over an example olive grove near Vrsar.",
+      "agropulsePhone": "The AgroPulse lens on a phone, over the same example grove.",
       "polisDesktop": "Polis opening on a map of Croatia: “Where are you?”",
       "polisPhone": "Polis on a phone: the report form, with a map, a photo and a field for what happened.",
-      "index": "The Index page on this site.",
-      "patchbay": "The Patchbay page on this site.",
       "velum": "Velum’s home page: “By the sea, in no hurry.”",
       "astyle": "AstyleMarine’s home page: “Luxury in full speed.”",
       "voyagerAtlas": "The Voyager atlas of Vrsar on a desktop screen: the coast with its places pinned.",
-      "polisReport": "Polis on a desktop screen: the report form for Vrsar, with a map and two ways to add a photo."
+      "polisReport": "Polis on a desktop screen: the report form for Vrsar, with a map and two ways to add a photo.",
+      "radioDesktop": "INTRFACE Radio: the walnut radio playing a station, the track on its glass.",
+      "radioPhone": "INTRFACE Radio on a phone, playing a station.",
+      "patchbayDesktop": "PatchBay: a dark map of Lucerne with places for musicians marked and a cream card to filter by role and gear.",
+      "patchbayPhone": "PatchBay on a phone: the map of Lucerne with places for musicians marked.",
+      "midiflowDesktop": "The midiflow home page, with a surface of pads you can play.",
+      "midiflowPhone": "midiflow on a phone, playing a pack."
     }
   },
   "Services": {

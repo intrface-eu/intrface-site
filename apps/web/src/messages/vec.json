@@ -32,18 +32,18 @@
   },
   "Metadata": {
     "tagline": "Interfacie per el mondo.",
-    "description": "INTRFACE fa interfacie per el mondo de Orsera, in Istria: Voyager, AgroPulse, Polis, Index e Patchbay nostri, e siti per le dite de tuta l’UE.",
+    "description": "INTRFACE, de Orsera, in Istria, fa i sui prodoti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, e siti per le dite de tuta l’UE.",
     "work": {
       "title": "Lavori",
-      "description": "Varda Velum, Voyager e AstyleMarine sui sui siti e nele schede dei progeti. E anca Polis, Funda, MidiFlow e Patchbay, con a che punto che i xe."
+      "description": "I nostri prodoti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, ognidun con a che punto che el xe, e i siti che gavemo fato per Velum e AstyleMarine."
     },
     "voyager": {
       "title": "Voyager",
-      "description": "Una mapa publica per scovrir i posti atorno Orsera."
+      "description": "El patrimonio, i sentieri e la cultura de Orsera su una mapa sola."
     },
     "polis": {
       "title": "Polis",
-      "description": "Interfacie civiche. In arivo."
+      "description": "Interfacie civiche. Prova publica."
     },
     "funda": {
       "title": "Funda",
@@ -82,72 +82,12 @@
       "description": "Siti, web app e carte de Orsera, in Istria, per dite e enti publici. Un preventivo scrito prima de scominziar."
     }
   },
-  "HomePage": {
-    "products": {
-      "voyager": {
-        "name": "Voyager",
-        "status": "Online",
-        "interface": "L’interfacia de un posto.",
-        "pair": "foresto ↔ posto"
-      },
-      "polis": {
-        "name": "Polis",
-        "status": "In arivo",
-        "interface": "Interfacie civiche",
-        "pair": "citadin ↔ istituzion"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "In arivo",
-        "interface": "Fondi UE",
-        "pair": "organizazion ↔ fondi"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "In arivo",
-        "interface": "Musica",
-        "pair": "sonador ↔ son"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "In arivo",
-        "interface": "Colaborazion creativa",
-        "pair": "artista ↔ artista"
-      }
-    }
-  },
   "WorkIndex": {
-    "title": "Lavori che ti pol verzer.",
-    "lead": "Velum, Voyager e AstyleMarine xe online. Varda i progeti e va a vardar i siti.",
-    "entries": {
-      "polis": {
-        "name": "Polis",
-        "status": "In arivo",
-        "interface": "Interfacie civiche",
-        "pair": "citadin ↔ istituzion"
-      },
-      "funda": {
-        "name": "Funda",
-        "status": "In arivo",
-        "interface": "Fondi UE",
-        "pair": "organizazion ↔ fondi"
-      },
-      "midiflow": {
-        "name": "MidiFlow",
-        "status": "In arivo",
-        "interface": "Musica",
-        "pair": "sonador ↔ son"
-      },
-      "patchbay": {
-        "name": "Patchbay",
-        "status": "In arivo",
-        "interface": "Colaborazion creativa",
-        "pair": "artista ↔ artista"
-      }
-    },
-    "pairLabel": "Tra",
-    "selectedWork": "Lavori scelti",
-    "otherProducts": "Altri prodoti nostri",
+    "title": "Tuto quel che femo.",
+    "lead": "I nostri prodoti, ognidun con a che punto che el xe, e dopo i siti che gavemo fato per i clienti.",
+    "productsTitle": "I nostri prodoti",
+    "clientsTitle": "Siti per i clienti",
+    "more": "De più su {name}",
     "contactTitle": "Ti ga un progeto in testa?",
     "contact": "Contine"
   },
@@ -159,7 +99,7 @@
   "WorkPolis": {
     "name": "Polis",
     "domain": "Interfacie civiche",
-    "status": "In arivo",
+    "status": "Prova publica",
     "contact": "Scrivine"
   },
   "WorkFunda": {
@@ -342,7 +282,7 @@
         "title": "Cosa che la riguarda",
         "body": [
           "La riguarda {host} e i post che publichemo sule nostre pagine Facebook e sui nostri account Instagram: Voyager, PatchBay, Polis e Intrface.",
-          "I nostri prodoti — Voyager (voyager.intrface.eu), Polis, PatchBay, AgroPulse e Index — trata i dati dei sui utenti con le sue condizion e informative, là dove che i li ciapa. Sta pagina no li riguarda."
+          "I nostri prodoti — Voyager (voyager.intrface.eu), AgroPulse, Radio, PatchBay, Polis, midiflow e Index — trata i dati dei sui utenti con le sue condizion e informative, là dove che i li ciapa. Sta pagina no li riguarda."
         ]
       },
       "visiting": {
@@ -465,7 +405,7 @@
         "title": "Chi che semo",
         "body": [
           "{siteName} j.d.o.o. gestissi {host} e le pagine Facebook e i account Instagram de Voyager, PatchBay, Polis e Intrface. I dati completi de la dita xe nei <imprint>dati legali</imprint>.",
-          "Sti termini no riguarda l’uso dei nostri prodoti (Voyager, Polis, PatchBay, AgroPulse e Index)."
+          "Sti termini no riguarda l’uso dei nostri prodoti (Voyager, AgroPulse, Radio, PatchBay, Polis, midiflow e Index)."
         ]
       },
       "content": {
@@ -618,7 +558,7 @@
       "mobileCaption": "El stesso posto, su un schermo più picio."
     },
     "voyager": {
-      "role": "Una mapa publica per scovrir i posti atorno Orsera.",
+      "role": "El patrimonio, i sentieri e la cultura de Orsera su una mapa sola.",
       "overview": "Voyager Atlas mete sula mapa i posti atorno Orsera: de Punta Montraker e Koversada fin al Parco de sculture Dušan Džamonja e al bosco de Kontija. L’Atlas publico se pol esplorar senza far el login.",
       "desktopAlt": "Prima pagina de Voyager col titolo “Discover the culture of a place your way.”",
       "desktopCaption": "La prima pagina publica de Voyager.",
@@ -648,11 +588,20 @@
     },
     "projects": {
       "agropulse": {
-        "line": "La stagion de le olive in Istria, campo per campo."
+        "line": "Un sguardo gratis sul tuo oliver, de la fioridura a la racolta."
       },
       "index": {
         "line": "Le robe che ti salvi, lete, messe in ordine e ligade.",
         "status": "In arivo"
+      },
+      "radio": {
+        "line": "Disi o scrivi come che ti te senti, e la radio ciapa una stazion in direta che ghe va ben. Gratis, senza account."
+      },
+      "patchbay": {
+        "line": "A Lucerna i musicisti trova altri musicisti, sale e lezioni su una mapa sola, senza commission."
+      },
+      "midiflow": {
+        "line": "El tuo telefonin diventa un strumento che sona pacheti de soni fati da artisti."
       }
     }
   },
@@ -670,16 +619,20 @@
     "alt": {
       "voyagerDesktop": "La prima pagina de Voyager: “Discover the culture of a place your way.”",
       "voyagerPhone": "La mapa de Voyager de Orsera sul telefonin, coi posti segnai longo la costa.",
-      "agropulseDesktop": "AgroPulse: un oliver de 5,5 ettari vicin Orsera segnà su la mapa, co la fase de cressita e i avisi dei prossimi 16 giorni.",
-      "agropulsePhone": "AgroPulse sul telefonin: l’oliver su la mapa e la so fase de cressita, el cambio de color.",
+      "agropulseDesktop": "La lente de AgroPulse sora un oliver de esempio vicin Orsera.",
+      "agropulsePhone": "La lente de AgroPulse sul telefonin, sora el stesso oliver de esempio.",
       "polisDesktop": "Polis se verzi su la carta de la Croazia: “Where are you?”",
       "polisPhone": "Polis sul telefonin: el modulo per segnalar, co la mapa, una foto e un campo per scriver cossa xe sucesso.",
-      "index": "La pagina de Index su sto sito.",
-      "patchbay": "La pagina de Patchbay su sto sito.",
       "velum": "La prima pagina de Velum: “By the sea, in no hurry.”",
       "astyle": "La prima pagina de AstyleMarine: “Luxury in full speed.”",
       "voyagerAtlas": "L’atlante de Orsera de Voyager su un schermo grando: la costa coi loghi segnai.",
-      "polisReport": "Polis su un schermo grando: el modulo per segnalar a Orsera, con una carta e do modi de zontar una foto."
+      "polisReport": "Polis su un schermo grando: el modulo per segnalar a Orsera, con una carta e do modi de zontar una foto.",
+      "radioDesktop": "INTRFACE Radio: la radio de noghera che sona una stazion, co la canzon sul vetro.",
+      "radioPhone": "INTRFACE Radio sul telefonin, che sona una stazion.",
+      "patchbayDesktop": "PatchBay: una mapa scura de Lucerna, coi posti par i musicisti segnai e una scheda color crema par sielzer ruolo e strumenti.",
+      "patchbayPhone": "PatchBay sul telefonin: la mapa de Lucerna coi posti par i musicisti segnai.",
+      "midiflowDesktop": "La prima pagina de midiflow, con una superficie de pad che se pol sonar.",
+      "midiflowPhone": "midiflow sul telefonin, che sona un pacheto de soni."
     }
   },
   "Services": {
