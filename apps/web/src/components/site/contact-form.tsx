@@ -16,6 +16,7 @@ import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { submitContactForm } from "@/app/actions/contact";
 import { onNeedRequest } from "@/components/services/need-request";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
+import { submissionIdFor } from "@/lib/site/inquiry-identity";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -32,9 +33,12 @@ import {
 
 /*
  * Submitting posts to the `submitContactForm` server action, which stores the
- * message in Convex. When no Convex deployment is configured — or the write
- * fails — the form falls back to the visitor's mail client with the message
- * pre-filled, so the page works with no backend and no env var.
+ * inquiry in Prism and emails it to us (see `app/actions/contact.ts`). With no
+ * transport configured the form hands the message to the visitor's mail
+ * client, pre-filled, so the page works with no backend and no env var. A
+ * failed or throttled send stays on the page with the entry intact, so the
+ * visitor can retry; the retry carries the same submission id, so it is never
+ * stored or emailed twice.
  *
  * The form carries `noValidate`: the fields keep `required` for assistive tech,
  * but the browser's own bubble is suppressed so the designed, translated error
@@ -133,8 +137,12 @@ export function ContactForm({
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sent, setSent] = useState(false);
-  const [fallback, setFallback] = useState<"mail-client" | "failed" | null>(null);
+  const [fallback, setFallback] = useState<
+    { kind: "mail-client" } | { kind: "failed" } | { kind: "throttled"; minutes: number } | null
+  >(null);
   const [pending, startTransition] = useTransition();
+  // The id of the submission being sent, kept while the entry is unchanged.
+  const submissionRef = useRef<{ id: string; fingerprint: string } | null>(null);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -200,10 +208,19 @@ export function ContactForm({
       return;
     }
 
+    const submission = submissionIdFor(
+      submissionRef.current,
+      JSON.stringify([name, replyTo, company, needs, timing, budget, message, locale ?? ""]),
+    );
+    submissionRef.current = submission;
+    data.set("submissionId", submission.id);
+    data.set("sourcePath", `${window.location.pathname}${window.location.search}`);
+
     startTransition(async () => {
       const result = await submitContactForm(data);
 
       if (result.status === "sent") {
+        submissionRef.current = null;
         setSent(true);
         setName("");
         setReplyTo("");
@@ -224,12 +241,17 @@ export function ContactForm({
       // Only an unconfigured deployment hands the message to the mail client.
       // A transport failure remains on the page so the reader can see the error.
       if (result.status === "unconfigured") {
-        setFallback("mail-client");
+        setFallback({ kind: "mail-client" });
         window.location.href = href;
         return;
       }
 
-      setFallback("failed");
+      if (result.status === "throttled") {
+        setFallback({ kind: "throttled", minutes: Math.max(1, Math.ceil(result.retryAfterSeconds / 60)) });
+        return;
+      }
+
+      setFallback({ kind: "failed" });
     });
   }
 
@@ -438,8 +460,12 @@ export function ContactForm({
           tabIndex={-1}
         >
           <p className="type-body text-ink">
-            {fallback === "failed" ? t("fallbackFailed") : t("fallbackMailClient")}{" "}
-            {t.rich("fallbackTail", {
+            {fallback.kind === "failed"
+              ? t("fallbackFailed")
+              : fallback.kind === "throttled"
+                ? t("fallbackThrottled", { minutes: fallback.minutes })
+                : t("fallbackMailClient")}{" "}
+            {t.rich(fallback.kind === "mail-client" ? "fallbackTail" : "fallbackRetryTail", {
               email,
               mail: (chunks) => (
                 <a className="font-semibold text-accent hover:underline" href={mailtoHref}>

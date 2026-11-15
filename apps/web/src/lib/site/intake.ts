@@ -5,12 +5,15 @@
  * these keys, so a forged value never reaches the mail.
  *
  * `?need=<key>` on /services preselects a need, and each service row's
- * "Start with this" does the same without leaving the page.
+ * "Start with this" does the same without leaving the page. The keys are also
+ * the offer intent Prism stores (`PRISM_INQUIRY_URL`), so renaming one breaks
+ * that contract.
  */
 export const INTAKE_NEEDS = [
   "business-site",
   "place-app",
   "web-app",
+  "workflow-discovery",
   "public-service",
   "care",
   "review",

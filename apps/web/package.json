@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "check-types": "node ../../node_modules/ts7/bin/tsc --noEmit",
-    "clean": "rm -rf .turbo .next node_modules"
+    "clean": "rm -rf .turbo .next node_modules",
+    "test": "bun test src"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.41.1",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bun": "1.2.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
