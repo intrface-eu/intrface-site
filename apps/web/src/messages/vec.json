@@ -478,6 +478,7 @@
     "sentBody": "El xe rivà da noi. La risposta vien de {email}, entro un giorno de lavor.",
     "writeAnother": "Scrivi un altro messagio",
     "fallbackFailed": "Desso no gavemo podù salvar el messagio.",
+    "fallbackUncertain": "No podemo confermar che el messagio xe rivà da noi. Pol darse che sì.",
     "fallbackMailClient": "Sto modulo passa el messagio a la tua app de posta.",
     "fallbackThrottled": "De qua xe rivà massa messagi un atimo fa. Prova de novo tra {minutes} min.",
     "fallbackTail": "La tua app de posta dovessi esserse verta con tuto za compilà. Se no, mandilo a <mail>{email}</mail>.",

@@ -478,6 +478,7 @@
     "sentBody": "Il messaggio ci è arrivato. Le rispondiamo da {email} entro un giorno lavorativo.",
     "writeAnother": "Nuovo messaggio",
     "fallbackFailed": "Al momento non siamo riusciti a salvare il messaggio.",
+    "fallbackUncertain": "Non abbiamo potuto confermare che il messaggio ci sia arrivato. Potrebbe esserlo.",
     "fallbackMailClient": "Questo modulo passa il messaggio alla sua app di posta.",
     "fallbackThrottled": "Da qui sono arrivati troppi messaggi poco fa. Riprovi tra {minutes} min.",
     "fallbackTail": "L’app di posta dovrebbe essersi aperta con tutto già compilato. Se non è così, invii il messaggio a <mail>{email}</mail>.",

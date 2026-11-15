@@ -17,6 +17,7 @@ import { submitContactForm } from "@/app/actions/contact";
 import { onNeedRequest } from "@/components/services/need-request";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 import { submissionIdFor } from "@/lib/site/inquiry-identity";
+import { settleSubmission } from "@/lib/site/settle-submission";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -138,7 +139,11 @@ export function ContactForm({
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sent, setSent] = useState(false);
   const [fallback, setFallback] = useState<
-    { kind: "mail-client" } | { kind: "failed" } | { kind: "throttled"; minutes: number } | null
+    | { kind: "mail-client" }
+    | { kind: "failed" }
+    | { kind: "uncertain" }
+    | { kind: "throttled"; minutes: number }
+    | null
   >(null);
   const [pending, startTransition] = useTransition();
   // The id of the submission being sent, kept while the entry is unchanged.
@@ -217,7 +222,14 @@ export function ContactForm({
     data.set("sourcePath", `${window.location.pathname}${window.location.search}`);
 
     startTransition(async () => {
-      const result = await submitContactForm(data);
+      // Never throws: a rejected call comes back as `uncertain`, so the entry
+      // and its submission id stay for the retry.
+      const result = await settleSubmission(() => submitContactForm(data));
+
+      if (result.status === "uncertain") {
+        setFallback({ kind: "uncertain" });
+        return;
+      }
 
       if (result.status === "sent") {
         submissionRef.current = null;
@@ -462,9 +474,11 @@ export function ContactForm({
           <p className="type-body text-ink">
             {fallback.kind === "failed"
               ? t("fallbackFailed")
-              : fallback.kind === "throttled"
-                ? t("fallbackThrottled", { minutes: fallback.minutes })
-                : t("fallbackMailClient")}{" "}
+              : fallback.kind === "uncertain"
+                ? t("fallbackUncertain")
+                : fallback.kind === "throttled"
+                  ? t("fallbackThrottled", { minutes: fallback.minutes })
+                  : t("fallbackMailClient")}{" "}
             {t.rich(fallback.kind === "mail-client" ? "fallbackTail" : "fallbackRetryTail", {
               email,
               mail: (chunks) => (

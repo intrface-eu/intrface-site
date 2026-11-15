@@ -478,6 +478,7 @@
     "sentBody": "Rivala je do nas. Odgovor pride s adrese {email}, za jedan radni dan.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku sad nismo mogli spravit.",
+    "fallbackUncertain": "Nismo mogli potvrdit je li poruka rivala do nas. Moguće je da je.",
     "fallbackMailClient": "Ovi formular preda poruku vašoj aplikaciji za email.",
     "fallbackThrottled": "Odavle je baš sad rivalo previše poruk. Probajte opet za {minutes} min.",
     "fallbackTail": "Vaša aplikacija za email bi se morala otprt sa svin već ispunjenin. Ako ni, pošljite ju na <mail>{email}</mail>.",

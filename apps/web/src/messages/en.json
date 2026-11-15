@@ -478,6 +478,7 @@
     "sentBody": "It landed with us. The reply comes from {email}, within one working day.",
     "writeAnother": "Write another message",
     "fallbackFailed": "We could not store the message just now.",
+    "fallbackUncertain": "We could not confirm that your message reached us. It may have.",
     "fallbackMailClient": "This form hands the message to your mail app.",
     "fallbackThrottled": "Too many messages came from here just now. Try again in {minutes} min.",
     "fallbackTail": "Your mail app should have opened with everything filled in. If it did not, send it to <mail>{email}</mail>.",

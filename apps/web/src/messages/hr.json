@@ -478,6 +478,7 @@
     "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}, u jednom radnom danu.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku trenutačno nismo mogli spremiti.",
+    "fallbackUncertain": "Nismo mogli potvrditi je li poruka stigla do nas. Možda jest.",
     "fallbackMailClient": "Ovaj obrazac poruku predaje vašoj aplikaciji za e-poštu.",
     "fallbackThrottled": "Odavde je upravo stiglo previše poruka. Pokušajte ponovno za {minutes} min.",
     "fallbackTail": "Vaša aplikacija za e-poštu trebala se otvoriti sa svime ispunjenim. Ako nije, pošaljite je na <mail>{email}</mail>.",
