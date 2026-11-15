@@ -22,7 +22,10 @@ import { INTAKE_NEEDS, isIntakeBudget, isIntakeTiming } from "@/lib/site/intake"
  * `mailto:`.
  */
 
-export type { ContactFieldName };
+// No `export type { ... }` here: Next's server-action transform treats a
+// re-export in a "use server" file as a value, and the module then throws
+// "ContactFieldName is not defined" on every submit. Import it from
+// `lib/site/contact-rules` instead.
 
 export type ContactActionResult =
   /** Stored. */
