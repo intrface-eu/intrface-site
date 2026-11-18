@@ -673,7 +673,7 @@
     "faq": {
       "price": {
         "q": "Quanto costa?",
-        "a": "Ogni progetto riceve un preventivo scritto con un prezzo fisso prima di iniziare. Paga metà quando lo accetta e metà al lancio. La maggior parte dei progetti rientra in queste fasce:",
+        "a": "Ogni progetto riceve un preventivo scritto con un prezzo fisso prima di iniziare. Paga metà quando lo accetta e metà al lancio. Le fasce indicate servono a stimare il costo del progetto.",
         "ranges": {
           "site": {
             "label": "Un sito per un'attività",
@@ -695,7 +695,7 @@
       },
       "after": {
         "q": "Chi se ne occupa una volta online?",
-        "a": "Di norma lo ospitiamo e lo curiamo noi. Ospitare un piccolo sito non costa nulla; un'app su server ha un canone mensile, fissato nel preventivo. Se preferisce gestirlo da sé, lo consegniamo a Lei o al Suo team."
+        "a": "Per un piccolo sito offriamo l’hosting senza costi. Per un’app che richiede un server, il preventivo indica il canone mensile di hosting. Concordiamo con Lei gli interventi di manutenzione e il loro costo. Può anche gestire il sito o l’app in autonomia."
       },
       "size": {
         "q": "Un piccolo studio di Orsera può costruire più di un sito?",

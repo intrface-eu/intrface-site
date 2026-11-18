@@ -673,7 +673,7 @@
     "faq": {
       "price": {
         "q": "Quanto costa?",
-        "a": "Ogni progeto ga un preventivo scrito con un prezzo fisso prima de scominziar. Ti paghi metà quando ti lo acceti e metà quando el va online. La più parte dei progeti sta in ste fasce:",
+        "a": "Ogni progeto ga un preventivo scrito con un prezzo fisso prima de scominziar. Ti paghi metà quando ti lo acceti e metà quando el va online. Ste fasce te dà una idea de quanto pol costar el progeto.",
         "ranges": {
           "site": {
             "label": "Un sito per la tua atività",
@@ -695,7 +695,7 @@
       },
       "after": {
         "q": "Chi lo tien drio quando el xe online?",
-        "a": "De solito lo tegnimo noi e lo curemo. Tegnir online un sito picio no costa gnente; una app sul server ga un canon mensile, fissà nel preventivo. Se ti preferissi tegnirlo ti, lo passemo a ti o al tuo grupo."
+        "a": "Per un sito picio no te femo pagar el hosting. Per una app che ga bisogno de un server, el preventivo indica el canon mensile de hosting. Se metemo de acordo con ti su la manutenzion e su quanto la costa. Ti pol anca gestir el sito o la app par conto tuo."
       },
       "size": {
         "q": "Un picio studio de Orsera pol far più de un sito?",

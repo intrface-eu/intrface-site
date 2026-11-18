@@ -673,7 +673,7 @@
     "faq": {
       "price": {
         "q": "Koliko košta?",
-        "a": "Za svaki projekt dobivate pisanu ponudu s fiksnom cijenom prije početka rada. Polovicu plaćate kad je prihvatite, a polovicu pri pokretanju. Većina projekata stane u ove raspone:",
+        "a": "Za svaki projekt dobivate pisanu ponudu s fiksnom cijenom prije početka rada. Polovicu plaćate kad je prihvatite, a polovicu pri pokretanju. Navedeni rasponi služe za okvirno planiranje troška projekta.",
         "ranges": {
           "site": {
             "label": "Web stranica za tvrtku",
@@ -695,7 +695,7 @@
       },
       "after": {
         "q": "Tko se brine o svemu kad krene?",
-        "a": "Uobičajeno ga mi hostamo i održavamo. Hosting male stranice ne naplaćujemo; aplikacija na poslužitelju ima mjesečnu naknadu, utvrđenu u ponudi. Ako ga radije želite voditi sami, predajemo ga vama ili vašem timu."
+        "a": "Hosting male stranice ne naplaćujemo. Za aplikaciju kojoj treba poslužitelj u ponudi navodimo mjesečnu cijenu hostinga. Opseg i cijenu održavanja dogovaramo s vama. Stranicu ili aplikaciju možete voditi i sami."
       },
       "size": {
         "q": "Može li mali studio iz Vrsara izgraditi više od web stranice?",

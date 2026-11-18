@@ -758,7 +758,7 @@
     "faq": {
       "price": {
         "q": "What does it cost?",
-        "a": "Every project gets a written quote with a fixed price before work starts. You pay half when you accept it and half at launch. Most projects fall in these ranges:",
+        "a": "Every project gets a written quote with a fixed price before work starts. You pay half when you accept it and half at launch. The ranges below are estimates for planning your project.",
         "ranges": {
           "site": {
             "label": "A site for a business",
@@ -780,7 +780,7 @@
       },
       "after": {
         "q": "Who looks after it once it is live?",
-        "a": "We host it and look after it by default. A small site costs nothing to host; an app on a server has a monthly fee, set in the quote. If you would rather run it yourself, we hand it to you or your team."
+        "a": "For a small site, we provide the hosting at no charge. For an app that needs a server, the quote sets out the monthly hosting fee. We agree with you what maintenance covers and what it costs. You can also choose to run the site or app yourself."
       },
       "size": {
         "q": "Can a small studio in Vrsar build more than a website?",
