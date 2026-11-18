@@ -15,10 +15,11 @@ const FAQ = ["price", "process", "after", "size", "start"] as const;
 const PRICE_RANGES = ["site", "app", "hour"] as const;
 
 /**
+ * Original launch brief (the stage now follows the active portfolio):
  * /services: what a business or a public body can hire us for, each with the
  * interface we built for it, then the intake form (`#start`) and five answers,
  * the first with our price ranges.
- * The first screen states the offer with one action and the projects
+ * The first screen states the offer with one action and the five projects
  * beside it.
  */
 export async function ServicesPage({ locale }: { locale: AppLocale }) {
