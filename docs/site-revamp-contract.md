@@ -56,14 +56,14 @@ translated "Coming soon".
 | midiflow | midiflow, lowercase (never "MidiFlow") | Live | https://midiflow.app/ | Your phone becomes an instrument that plays sound packs made by artists. |
 | Index | Index | Coming soon | `/en/index` (never index.intrface.eu) | The things you save, read, filed and connected. |
 | Funda | Funda | Coming soon | `/work/funda` | EU funding |
-| Client sites | Velum, AstyleMarine | Live | their sites and `/work/velum`, `/work/astyle-marine` | Velum and AstyleMarine: public sites for a waterfront café and wine bar and a yacht charter in Istria. |
+| Client site | Velum | Live | https://velum-winebar.com and `/work/velum` | A waterfront café and wine bar, in Croatian and English. |
 
 Never add user numbers, adoption, partners, prices, latency figures or
 other claims to these lines. AgroPulse is olive only (no vineyards or
 orchards). Radio: no phone remote, venues or businesses, station names,
 supporters or payments. midiflow: no MIDI-to-DAW claim, latency, price or
 Android/iOS claims. Polis: no open-source claim, no repository link. The
-client roster is Velum and AstyleMarine only.
+public client roster is Velum only.
 
 ### Tagline and metadata
 
@@ -76,11 +76,10 @@ client roster is Velum and AstyleMarine only.
 
 ### Home page order
 
-Experience mode (owner update, 2026-09-07): work leads; the interface recedes.
-Hero and pair ribbon → selected project previews (Velum, Voyager, AstyleMarine;
-`#for-businesses` remains here) → compact five-product index → short house thesis
-→ contact. Each preview links to its own showcase. Show finished public work,
-not production process, engineering metrics, pilot disclosures, or delivery claims.
+The current sequence is in [the home grid contract](home-grid-contract.md).
+In the September 2026 layout, the hero and pair ribbon led to selected
+project previews for Velum, Voyager and AstyleMarine, then a compact
+five-product index, a short house thesis and contact.
 
 ## Voice rules (from the house prose style — binding)
 
@@ -112,7 +111,7 @@ These are the habits that made the copy read machine-written. They recur; watch 
 5. **Abstraction where evidence exists.** If a number from Approved facts fits, use the
    number. Unfalsifiable principles ("clarity before spectacle") do not earn their space.
 6. **Say only what is true of today's status.** We do not "operate" pre-launch platforms;
-   Voyager is live; the approved public client roster is Velum and AstyleMarine.
+   Voyager is live. Velum is the public client example.
 
 ### Lexicon budget (added 2026-07-28)
 
@@ -206,14 +205,15 @@ unreleased-product status copy; remove those details from public translations.
 
 ## Approved facts and numbers
 
-**Client sites — the approved public roster is Velum and AstyleMarine.**
+**Client site — Velum.**
 
-Owner approval (2026-09-07) permits both names, production links, and fresh captures:
 - https://velum-winebar.com — café and wine bar, Vrsar waterfront. HR/EN.
-- https://www.astylemarine.com — private yacht experiences from Poreč along the
-  Istrian coast. The public site presents itineraries, the yacht, and enquiries.
-- Captures: `apps/web/public/proof/projects/{velum,astyle-marine}/` with
-  `desktop.webp`, `detail.webp`, and `mobile.webp` for each project.
+- Captures: `apps/web/public/proof/projects/velum/` with
+  `desktop.webp`, `detail.webp`, and `mobile.webp`.
+
+AstyleMarine was part of the September 2026 portfolio. Its showcase, live link
+and public captures have been retired. The former `/work/astyle-marine` route
+returns 404.
 
 **Still private — do not name, link, screenshot, or count publicly:** cannaclean,
 vrsar-boat-tours. Their exclusions remain unchanged. Do not publish unnamed
@@ -238,8 +238,8 @@ replace all previous approval for features, architecture, metrics, licences,
 source/repository links, device tests, private-domain status, and case-study detail.
 The restriction covers Home, Work, About product entries, metadata, footer
 promotion, and serialized translations. Do not restore retired details before
-owner approval to publish them. Preserve the live Voyager, Velum, and
-AstyleMarine showcases and their assets.
+owner approval to publish them. Preserve the live Voyager and Velum showcases
+and their assets.
 
 **Delivery system / method:**
 - AOC is public: github.com/basicalex/agent-ops-cockpit — Apache-2.0, 403 commits,
@@ -262,12 +262,12 @@ All routes under `apps/web/src/app/[locale]/`:
 | Route | Page component (owner file) | Content |
 |---|---|---|
 | `/` | `components/pages/home-page.tsx` | See "Home page order" under Positioning |
-| `/work` | `components/pages/work-index-page.tsx` | Everything we make: the six products with a small capture, status, line and link to the root; Index and Funda as coming soon; then Velum and AstyleMarine; then contact |
+| `/work` | `components/pages/work-index-page.tsx` | Six open products, Index and Funda as coming soon, the Velum showcase, and contact |
 | `/work/voyager` | `components/pages/work-voyager-page.tsx` | Screenshot-first production showcase |
-| `/work/velum`, `/work/astyle-marine` | `components/work/project-showcase.tsx` | Separate screenshot-first client showcases |
+| `/work/velum` | `components/work/project-showcase.tsx` | Screenshot-first client showcase |
 | `/work/polis` | `components/pages/work-polis-page.tsx` | Minimal page: name, short domain, "Public test" and the synthetic-data note, back and contact links |
 | `/work/funda` | `components/pages/work-funda-page.tsx` | Minimal coming-soon page: name, short domain, status, back-to-work and contact links |
-| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Concise client index linking separate Velum and AstyleMarine showcases; no process copy |
+| `/work/client-sites` | `components/pages/work-client-sites-page.tsx` | Concise client index linking to the Velum showcase |
 | `/about` | `components/pages/about-page.tsx` | The doctrine and the admission test, who/where/how we engage, the person, the stance and the place (no product list) |
 | `/imprint` | `components/pages/imprint-page.tsx` | Legal/imprint basics for an .eu company |
 

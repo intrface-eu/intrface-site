@@ -7,7 +7,6 @@ import { Link } from "@/i18n/navigation";
 const ORDER = [
   { key: "velum", href: "/work/velum", name: "Velum" },
   { key: "voyager", href: "/work/voyager", name: "Voyager" },
-  { key: "astyleMarine", href: "/work/astyle-marine", name: "AstyleMarine" },
   { key: "polis", href: "/work/polis", name: "Polis" },
   { key: "funda", href: "/work/funda", name: "Funda" },
 ] as const;

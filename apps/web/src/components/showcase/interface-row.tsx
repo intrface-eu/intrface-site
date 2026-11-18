@@ -70,8 +70,7 @@ export function InterfaceFigure({
  * and run off the page edge on their side; the name, the status, one line
  * and the way in sit in a narrow column beside them. `side` is where the
  * screens go. `lead` sets the screens across the full width with the text
- * under them, for the first row on a page. `figure` replaces the desktop and
- * phone pair when a row shows something else, such as two client sites.
+ * under them, for the first row on a page.
  */
 export function InterfaceRow({
   heading,
@@ -80,7 +79,6 @@ export function InterfaceRow({
   actions,
   desktop,
   phone,
-  figure,
   side = "end",
   lead = false,
   priority = false,
@@ -93,7 +91,6 @@ export function InterfaceRow({
   actions?: ReactNode;
   desktop?: Screen;
   phone?: Screen;
-  figure?: ReactNode;
   side?: "start" | "end";
   lead?: boolean;
   priority?: boolean;
@@ -103,15 +100,14 @@ export function InterfaceRow({
   return (
     <article className="iface-row" data-lead={lead ? "" : undefined} data-side={side} id={id} style={style}>
       <div className="iface-row__figure">
-        {figure ??
-          (desktop ? (
-            <InterfaceFigure
-              desktop={desktop}
-              phone={phone}
-              priority={priority}
-              sizes={lead ? "(min-width: 1024px) 84vw, 100vw" : undefined}
-            />
-          ) : null)}
+        {desktop ? (
+          <InterfaceFigure
+            desktop={desktop}
+            phone={phone}
+            priority={priority}
+            sizes={lead ? "(min-width: 1024px) 84vw, 100vw" : undefined}
+          />
+        ) : null}
       </div>
       <div className="iface-row__text">
         <div className="iface-row__title">
@@ -124,33 +120,5 @@ export function InterfaceRow({
         </div>
       </div>
     </article>
-  );
-}
-
-/**
- * Two live sites, the second lower and over the first from 1024px; side by
- * side below. Each screen links to its site.
- */
-export function InterfaceDuo({
-  shots,
-  className = "",
-}: {
-  shots: readonly (Screen & { href: string })[];
-  className?: string;
-}) {
-  return (
-    <div className={`iface-duo ${className}`}>
-      {shots.map(({ href, src, alt }) => (
-        <a className="iface-screen iface-duo__shot" href={href} key={href}>
-          <Image
-            {...DESKTOP}
-            alt={alt}
-            className="iface-screen__image"
-            sizes="(min-width: 1024px) 34vw, 50vw"
-            src={src}
-          />
-        </a>
-      ))}
-    </div>
   );
 }

@@ -32,7 +32,6 @@ export const SITE_PATHS = [
   "/work",
   "/work/velum",
   "/work/voyager",
-  "/work/astyle-marine",
   "/work/polis",
   "/work/funda",
   "/work/client-sites",

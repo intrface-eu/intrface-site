@@ -19,8 +19,8 @@ export type StageItem = {
 
 /**
  * The /services first screen's proof: the screens of one project, and the list
- * of the five beside it. Choosing a name in the list puts its screens up. All
- * five pairs are drawn from the start and cross-fade, so a choice never waits
+ * beside it. Choosing a name in the list puts its screens up. All screen
+ * pairs are drawn from the start and cross-fade, so a choice never waits
  * on the network. The wrapper is `display: contents`, so the screens and the
  * list take their own places in the hero's grid.
  */

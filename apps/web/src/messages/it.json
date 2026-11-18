@@ -35,7 +35,7 @@
     "description": "INTRFACE, a Orsera, in Istria, crea prodotti propri, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, e realizza siti per aziende in tutta l’UE.",
     "work": {
       "title": "Lavori",
-      "description": "I nostri prodotti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, ciascuno con il suo stato, e i siti realizzati per Velum e AstyleMarine."
+      "description": "I nostri prodotti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, ciascuno con il suo stato, e il sito realizzato per Velum."
     },
     "voyager": {
       "title": "Voyager",
@@ -51,7 +51,7 @@
     },
     "clientSites": {
       "title": "Siti per le aziende.",
-      "description": "Velum e AstyleMarine: i siti, già online, di un caffè e wine bar sul lungomare e di un charter di yacht in Istria."
+      "description": "Il sito che abbiamo realizzato per Velum, un caffè e wine bar sul lungomare di Orsera."
     },
     "about": {
       "title": "Chi siamo",
@@ -72,10 +72,6 @@
     "velum": {
       "title": "Velum",
       "description": "Un caffè e wine bar sul lungomare, in croato e in inglese."
-    },
-    "astyleMarine": {
-      "title": "AstyleMarine",
-      "description": "Esperienze private in yacht da Parenzo lungo la costa istriana."
     },
     "services": {
       "title": "Servizi",
@@ -110,7 +106,7 @@
   },
   "WorkClientSites": {
     "title": "Siti per le aziende.",
-    "lead": "Velum sul lungomare di Orsera. AstyleMarine sulla costa istriana.",
+    "lead": "Velum sul lungomare di Orsera.",
     "allWork": "Tutti i lavori",
     "contactTitle": "Ha un progetto in mente?",
     "contact": "Ce ne parli"
@@ -566,16 +562,6 @@
       "detailCaption": "Parco delle sculture Dušan Džamonja: descrizione, posizione e indirizzo.",
       "mobileAlt": "La mappa pubblica di Orsera di Voyager Atlas a tutto schermo su uno smartphone.",
       "mobileCaption": "La mappa pubblica di Orsera su smartphone."
-    },
-    "astyleMarine": {
-      "role": "Esperienze private in yacht da Parenzo lungo la costa istriana.",
-      "overview": "Il sito di AstyleMarine mette insieme lo yacht, gli itinerari lungo la costa e una galleria. Si sceglie un’esperienza e si manda una richiesta su WhatsApp.",
-      "desktopAlt": "Sito web di AstyleMarine per il charter di yacht, con il titolo “Luxury in full speed”.",
-      "desktopCaption": "La pagina iniziale di AstyleMarine, per esperienze in yacht da Parenzo.",
-      "detailAlt": "Il sito web di AstyleMarine con lo yacht e i suoi dati tecnici.",
-      "detailCaption": "Lo yacht e i suoi dati tecnici.",
-      "mobileAlt": "La pagina iniziale di AstyleMarine per il charter di yacht su uno smartphone.",
-      "mobileCaption": "AstyleMarine su smartphone."
     }
   },
   "HomeGrid": {
@@ -613,7 +599,7 @@
     "polisLine": "Si segnala un problema dove si vive, poi si vede chi l’ha preso in carico, cosa è stato promesso e cosa è cambiato.",
     "polisNote": "Un test pubblico con dati sintetici. Nessun comune usa ancora Polis.",
     "clientsHeading": "Le costruiamo anche per i clienti.",
-    "clientsBody": "Velum, caffè e wine bar a Orsera. AstyleMarine, noleggio di yacht a Parenzo.",
+    "clientsBody": "Velum, caffè e wine bar a Orsera.",
     "clientsLink": "Veda cosa costruiamo",
     "languages": "Lingua della frase",
     "alt": {
@@ -624,7 +610,6 @@
       "polisDesktop": "Polis si apre su una mappa della Croazia: “Where are you?”",
       "polisPhone": "Polis su un telefono: il modulo di segnalazione, con mappa, foto e un campo per descrivere cosa è successo.",
       "velum": "La pagina iniziale di Velum: “By the sea, in no hurry.”",
-      "astyle": "La pagina iniziale di AstyleMarine: “Luxury in full speed.”",
       "voyagerAtlas": "L’atlante di Orsera di Voyager su uno schermo grande: la costa con i luoghi segnati.",
       "polisReport": "Polis su uno schermo grande: il modulo di segnalazione per Orsera, con una mappa e due modi per aggiungere una foto.",
       "radioDesktop": "INTRFACE Radio: la radio in noce che suona una stazione, con il brano sul vetro.",
@@ -644,8 +629,7 @@
       "voyager": "Luoghi, persone e storie di Orsera",
       "agropulse": "La stagione delle olive in Istria",
       "polis": "Segnalare un problema dove si vive",
-      "velum": "Caffè e wine bar, Orsera",
-      "astyle": "Noleggio di yacht, Parenzo"
+      "velum": "Caffè e wine bar, Orsera"
     },
     "buildTitle": "Ogni servizio ha accanto qualcosa che abbiamo costruito. Può aprirli tutti.",
     "rows": {
