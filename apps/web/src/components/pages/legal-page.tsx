@@ -91,7 +91,7 @@ const richTags = {
     </Link>
   ),
   contact: (chunks: ReactNode) => (
-    <Link className={linkClass} href="/about#contact">
+    <Link className={linkClass} href="/services#start">
       {chunks}
     </Link>
   ),
