@@ -35,7 +35,7 @@
     "description": "INTRFACE, de Orsera, in Istria, fa i sui prodoti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, e siti per le dite de tuta l’UE.",
     "work": {
       "title": "Lavori",
-      "description": "I nostri prodoti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, ognidun con a che punto che el xe, e i siti che gavemo fato per Velum e AstyleMarine."
+      "description": "I nostri prodoti, Voyager, AgroPulse, Radio, PatchBay, Polis e midiflow, ognidun con a che punto che el xe, e el sito che gavemo fato per Velum."
     },
     "voyager": {
       "title": "Voyager",
@@ -51,7 +51,7 @@
     },
     "clientSites": {
       "title": "Siti per le dite.",
-      "description": "Velum e AstyleMarine: siti online per un cafè e wine bar sula riva e per un charter de yacht in Istria."
+      "description": "El sito che gavemo fato per Velum, un cafè e bar del vin sula riva de Orsera."
     },
     "about": {
       "title": "Chi semo",
@@ -72,10 +72,6 @@
     "velum": {
       "title": "Velum",
       "description": "Un cafè e wine bar sula riva, in croato e inglese."
-    },
-    "astyleMarine": {
-      "title": "AstyleMarine",
-      "description": "Giri privati in yacht de Parenzo longo la costa istriana."
     },
     "services": {
       "title": "Servizi",
@@ -110,7 +106,7 @@
   },
   "WorkClientSites": {
     "title": "Siti per le dite.",
-    "lead": "Velum sula riva de Orsera. AstyleMarine sula costa istriana.",
+    "lead": "Velum sula riva de Orsera.",
     "allWork": "Tuti i lavori",
     "contactTitle": "Ti ga un progeto in testa?",
     "contact": "Contine"
@@ -566,16 +562,6 @@
       "detailCaption": "Parco de sculture Dušan Džamonja: descrizion, posizion e indirizo.",
       "mobileAlt": "La mapa publica de Orsera de Voyager Atlas su tuto el schermo del telefonin.",
       "mobileCaption": "La mapa publica de Orsera sul telefonin."
-    },
-    "astyleMarine": {
-      "role": "Giri privati in yacht de Parenzo longo la costa istriana.",
-      "overview": "El sito de AstyleMarine mete insieme el yacht, i giri longo la costa e una galeria. I visitadori pol sceglier un giro e mandar una richiesta su WhatsApp.",
-      "desktopAlt": "Sito de AstyleMarine per el charter de yacht col titolo “Luxury in full speed”.",
-      "desktopCaption": "La prima pagina de AstyleMarine, per i giri in yacht de Parenzo.",
-      "detailAlt": "El sito de AstyleMarine che presenta el yacht e i sui dati tecnici.",
-      "detailCaption": "El yacht e i sui dati tecnici.",
-      "mobileAlt": "La prima pagina de AstyleMarine per el charter de yacht sul telefonin.",
-      "mobileCaption": "AstyleMarine sul telefonin."
     }
   },
   "HomeGrid": {
@@ -613,7 +599,7 @@
     "polisLine": "Segnala un problema dove che ti sta, dopo varda chi lo ga ciapà, cossa xe sta prometù e cossa xe cambià.",
     "polisNote": "Una prova publica con dati sintetici. Nissun comun dopera ancora Polis.",
     "clientsHeading": "Le femo anche per i clienti.",
-    "clientsBody": "Velum, cafè e bar del vin a Orsera. AstyleMarine, noleggio de yacht a Parenzo.",
+    "clientsBody": "Velum, cafè e bar del vin a Orsera.",
     "clientsLink": "Varda cossa che femo",
     "languages": "Lingua de la frase",
     "alt": {
@@ -624,7 +610,6 @@
       "polisDesktop": "Polis se verzi su la carta de la Croazia: “Where are you?”",
       "polisPhone": "Polis sul telefonin: el modulo per segnalar, co la mapa, una foto e un campo per scriver cossa xe sucesso.",
       "velum": "La prima pagina de Velum: “By the sea, in no hurry.”",
-      "astyle": "La prima pagina de AstyleMarine: “Luxury in full speed.”",
       "voyagerAtlas": "L’atlante de Orsera de Voyager su un schermo grando: la costa coi loghi segnai.",
       "polisReport": "Polis su un schermo grando: el modulo per segnalar a Orsera, con una carta e do modi de zontar una foto.",
       "radioDesktop": "INTRFACE Radio: la radio de noghera che sona una stazion, co la canzon sul vetro.",
@@ -644,8 +629,7 @@
       "voyager": "Loghi, gente e storie de Orsera",
       "agropulse": "La stagion de le olive in Istria",
       "polis": "Segnala un problema dove che ti sta",
-      "velum": "Cafè e bar del vin, Orsera",
-      "astyle": "Noleggio de yacht, Parenzo"
+      "velum": "Cafè e bar del vin, Orsera"
     },
     "buildTitle": "Ogni servizio ga arente qualcossa che gavemo fato noi. Ti pol verzerli tuti.",
     "rows": {
@@ -673,7 +657,7 @@
     "faq": {
       "price": {
         "q": "Quanto costa?",
-        "a": "Ogni progeto ga un preventivo scrito con un prezzo fisso prima de scominziar. Ti paghi metà quando ti lo acceti e metà quando el va online. La più parte dei progeti sta in ste fasce:",
+        "a": "Ogni progeto ga un preventivo scrito con un prezzo fisso prima de scominziar. Ti paghi metà quando ti lo acceti e metà quando el va online. Ste fasce te dà una idea de quanto pol costar el progeto.",
         "ranges": {
           "site": {
             "label": "Un sito per la tua atività",
@@ -695,7 +679,7 @@
       },
       "after": {
         "q": "Chi lo tien drio quando el xe online?",
-        "a": "De solito lo tegnimo noi e lo curemo. Tegnir online un sito picio no costa gnente; una app sul server ga un canon mensile, fissà nel preventivo. Se ti preferissi tegnirlo ti, lo passemo a ti o al tuo grupo."
+        "a": "Per un sito picio no te femo pagar el hosting. Per una app che ga bisogno de un server, el preventivo indica el canon mensile de hosting. Se metemo de acordo con ti su la manutenzion e su quanto la costa. Ti pol anca gestir el sito o la app par conto tuo."
       },
       "size": {
         "q": "Un picio studio de Orsera pol far più de un sito?",

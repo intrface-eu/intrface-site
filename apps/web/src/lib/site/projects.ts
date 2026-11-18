@@ -1,4 +1,4 @@
-export type ProjectKey = "velum" | "voyager" | "astyleMarine";
+export type ProjectKey = "velum" | "voyager";
 
 type Project = {
   name: string;
@@ -27,17 +27,9 @@ export const PROJECTS: Record<ProjectKey, Project> = {
     detail: "/proof/projects/voyager/detail.webp",
     mobile: "/proof/projects/voyager/mobile-2026-09-26.webp",
   },
-  astyleMarine: {
-    name: "AstyleMarine",
-    href: "/work/astyle-marine",
-    liveUrl: "https://www.astylemarine.com",
-    desktop: "/proof/projects/astyle-marine/desktop.webp",
-    detail: "/proof/projects/astyle-marine/detail.webp",
-    mobile: "/proof/projects/astyle-marine/mobile.webp",
-  },
 };
 
-export const SELECTED_PROJECTS = ["velum", "voyager", "astyleMarine"] as const;
-export const CLIENT_PROJECTS = ["velum", "astyleMarine"] as const;
+export const SELECTED_PROJECTS = ["velum", "voyager"] as const;
+export const CLIENT_PROJECTS = ["velum"] as const;
 export const DESKTOP_CAPTURE = { width: 1440, height: 1000 };
 export const MOBILE_CAPTURE = { width: 390, height: 844 };

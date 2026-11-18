@@ -25,7 +25,6 @@
     "PilotSeed": "src/components/work/voyager/pilot-seed.tsx",
     "PipelineSteps": "src/components/work/client-sites/pipeline-steps.tsx",
     "ProcessSteps": "src/components/site/process-steps.tsx",
-    "RepoCard": "src/components/method/repo-card.tsx",
     "SiteNav": "src/components/site/site-nav.tsx",
     "StatBand": "src/components/case/stat-band.tsx",
     "SystemLedger": "src/components/home/system-ledger.tsx",

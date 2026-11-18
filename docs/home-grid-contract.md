@@ -47,8 +47,8 @@ and Right keys and a horizontal swipe move through the lines by hand.
 
 Revision 10, 2026-09-29: the owner made the grid a way into our own
 products. It holds five tiles, in this order: Voyager, Index, Polis,
-AgroPulse, Patchbay. Velum and AstyleMarine left the grid only; their
-pages under `/work` stay, as does every entry in `PROJECTS`. Each product
+AgroPulse, Patchbay. Velum and AstyleMarine left the grid in that revision.
+Both still had `/work` pages and entries in `PROJECTS` at the time. Each product
 keeps its About page itself and its root redirects there, so a tile opens
 the product root in the same tab: entering the interface, not leaving the
 site. The new-tab arrow and "opens in a new tab" are gone from the tiles.
@@ -258,8 +258,8 @@ In order:
   that plays sound packs made by artists." No MIDI, DAW, latency, price or
   platform claims. Opens `https://midiflow.app/`.
 - **The door**, `.iface-door`: "We build these for clients too.", one line
-  naming Velum and AstyleMarine, a primary button to `/services`, and the
-  two sites (`InterfaceDuo`), each screen linking to the live site.
+  naming Velum, a primary button to `/services`, and a desktop capture
+  linking to Velum’s live site.
 
 Lines for AgroPulse, Radio, PatchBay and midiflow are in
 `HomeGrid.projects.<key>.line`; `/work` reads the same keys.
@@ -277,7 +277,7 @@ clamp(1.5rem, 3vw, 2.75rem)`; the name `clamp(2.1rem, 3vw, 2.75rem)`. At
 1440×900 a row is 373px tall on a 466px pitch, about two to a screen.
 
 Captures live in `public/proof/projects/<project>/*-2026-11-12.webp`
-(Polis and the client sites still `*-2026-10-30.webp`).
+(Polis and Velum still use `*-2026-10-30.webp`).
 Alt text is in `Showcase.alt`. The one motion: as a row comes into view its
 screen settles from 3rem below and the phone from 7rem (scroll-driven,
 transform only, behind `@supports (animation-timeline: view())` and

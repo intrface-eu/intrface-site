@@ -2,7 +2,7 @@ import { IconArrowDown, IconArrowUpRight } from "@tabler/icons-react";
 import { getTranslations } from "next-intl/server";
 import { ServicesStage, type StageItem } from "@/components/services/services-stage";
 import { StartWith } from "@/components/services/start-with";
-import { InterfaceDuo, InterfaceRow, InterfaceStatus } from "@/components/showcase/interface-row";
+import { InterfaceRow, InterfaceStatus } from "@/components/showcase/interface-row";
 import { ContactForm } from "@/components/site/contact-form";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import type { AppLocale } from "@/i18n/routing";
@@ -15,6 +15,7 @@ const FAQ = ["price", "process", "after", "size", "start"] as const;
 const PRICE_RANGES = ["site", "app", "hour"] as const;
 
 /**
+ * Original launch brief (the stage now follows the active portfolio):
  * /services: what a business or a public body can hire us for, each with the
  * interface we built for it, then the intake form (`#start`) and five answers,
  * the first with our price ranges.
@@ -24,6 +25,9 @@ const PRICE_RANGES = ["site", "app", "hour"] as const;
 export async function ServicesPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "Services" });
   const show = await getTranslations({ locale, namespace: "Showcase" });
+  const projects = await getTranslations({ locale, namespace: "Projects" });
+  const velumDesktop = { src: `${SHOTS}/velum/desktop-2026-10-30.webp`, alt: show("alt.velum") };
+  const velumPhone = { src: `${SHOTS}/velum/mobile-2026-10-30.webp`, alt: projects("velum.mobileAlt") };
 
   const stage: StageItem[] = [
     {
@@ -67,19 +71,8 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
       tone: "live",
       href: PROJECTS.velum.liveUrl,
       open: show("open", { name: "Velum" }),
-      desktop: { src: `${SHOTS}/velum/desktop-2026-10-30.webp`, alt: show("alt.velum") },
-      phone: { src: `${SHOTS}/velum/mobile-2026-10-30.webp`, alt: show("alt.velum") },
-    },
-    {
-      key: "astyle",
-      name: "AstyleMarine",
-      line: t("items.astyle"),
-      status: show("live"),
-      tone: "live",
-      href: PROJECTS.astyleMarine.liveUrl,
-      open: show("open", { name: "AstyleMarine" }),
-      desktop: { src: `${SHOTS}/astyle-marine/desktop-2026-10-30.webp`, alt: show("alt.astyle") },
-      phone: { src: `${SHOTS}/astyle-marine/mobile-2026-10-30.webp`, alt: show("alt.astyle") },
+      desktop: velumDesktop,
+      phone: velumPhone,
     },
   ];
 
@@ -182,27 +175,16 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
         <InterfaceRow
           side="start"
           heading={<h3 className="iface-name iface-name--service">{t("rows.sites.title")}</h3>}
-          status={<InterfaceStatus>Velum · AstyleMarine</InterfaceStatus>}
+          status={<InterfaceStatus>Velum</InterfaceStatus>}
           line={t("rows.sites.line")}
           actions={
             <>
               <StartWith need="business-site">{t("startWith")}</StartWith>
               {openLink("Velum", PROJECTS.velum.liveUrl)}
-              {openLink("AstyleMarine", PROJECTS.astyleMarine.liveUrl)}
             </>
           }
-          figure={
-            <InterfaceDuo
-              shots={[
-                { href: PROJECTS.velum.liveUrl, src: `${SHOTS}/velum/desktop-2026-10-30.webp`, alt: show("alt.velum") },
-                {
-                  href: PROJECTS.astyleMarine.liveUrl,
-                  src: `${SHOTS}/astyle-marine/desktop-2026-10-30.webp`,
-                  alt: show("alt.astyle"),
-                },
-              ]}
-            />
-          }
+          desktop={velumDesktop}
+          phone={velumPhone}
         />
       </section>
 

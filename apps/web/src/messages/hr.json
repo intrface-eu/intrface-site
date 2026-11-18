@@ -35,7 +35,7 @@
     "description": "INTRFACE iz Vrsara, u Istri, radi vlastite proizvode, Voyager, AgroPulse, Radio, PatchBay, Polis i midiflow, te gradi stranice za tvrtke diljem EU-a.",
     "work": {
       "title": "Radovi",
-      "description": "Naši proizvodi, Voyager, AgroPulse, Radio, PatchBay, Polis i midiflow, i dokle je koji stigao, te stranice koje smo izradili za Velum i AstyleMarine."
+      "description": "Naši proizvodi, Voyager, AgroPulse, Radio, PatchBay, Polis i midiflow, i dokle je koji stigao, te stranicu koju smo izradili za Velum."
     },
     "voyager": {
       "title": "Voyager",
@@ -51,7 +51,7 @@
     },
     "clientSites": {
       "title": "Web-stranice za poduzeća.",
-      "description": "Velum i AstyleMarine: javne web-stranice za kafić i vinski bar na rivi te najam jahti u Istri."
+      "description": "Web-stranica koju smo izradili za Velum, kafić i vinski bar na vrsarskoj rivi."
     },
     "about": {
       "title": "O nama",
@@ -72,10 +72,6 @@
     "velum": {
       "title": "Velum",
       "description": "Kafić i vinski bar na rivi, na hrvatskom i engleskom."
-    },
-    "astyleMarine": {
-      "title": "AstyleMarine",
-      "description": "Privatni izleti jahtom iz Poreča duž istarske obale."
     },
     "services": {
       "title": "Usluge",
@@ -110,7 +106,7 @@
   },
   "WorkClientSites": {
     "title": "Web-stranice za poduzeća.",
-    "lead": "Velum na vrsarskoj rivi. AstyleMarine na istarskoj obali.",
+    "lead": "Velum na vrsarskoj rivi.",
     "allWork": "Svi radovi",
     "contactTitle": "Imate projekt na umu?",
     "contact": "Javite nam se"
@@ -566,16 +562,6 @@
       "detailCaption": "Park skulptura Dušana Džamonje: opis, lokacija i adresa.",
       "mobileAlt": "Javna karta Vrsara u Voyager Atlasu preko cijelog zaslona mobitela.",
       "mobileCaption": "Javna karta Vrsara na mobitelu."
-    },
-    "astyleMarine": {
-      "role": "Privatni izleti jahtom iz Poreča duž istarske obale.",
-      "overview": "AstyleMarineova stranica okuplja jahtu, obalne itinerare i galeriju. Posjetitelji mogu odabrati izlet i poslati upit putem WhatsAppa.",
-      "desktopAlt": "AstyleMarineova stranica za najam jahti s naslovom „Luxury in full speed”.",
-      "desktopCaption": "AstyleMarineova početna stranica za izlete jahtom iz Poreča.",
-      "detailAlt": "AstyleMarineova web-stranica s prikazom jahte i njezinih specifikacija.",
-      "detailCaption": "Jahta i njezine specifikacije.",
-      "mobileAlt": "AstyleMarineova početna stranica za najam jahti na mobitelu.",
-      "mobileCaption": "AstyleMarine na mobitelu."
     }
   },
   "HomeGrid": {
@@ -613,7 +599,7 @@
     "polisLine": "Prijavite problem u svom mjestu, pa pratite tko ga je preuzeo, što je obećano i što se promijenilo.",
     "polisNote": "Javni test sa sintetičkim podacima. Nijedna općina još ne koristi Polis.",
     "clientsHeading": "Ovakvo gradimo i za klijente.",
-    "clientsBody": "Velum, kafić i vinski bar u Vrsaru. AstyleMarine, najam jahte u Poreču.",
+    "clientsBody": "Velum, kafić i vinski bar u Vrsaru.",
     "clientsLink": "Pogledajte što gradimo",
     "languages": "Jezik rečenice",
     "alt": {
@@ -624,7 +610,6 @@
       "polisDesktop": "Polis se otvara na karti Hrvatske: “Where are you?”",
       "polisPhone": "Polis na mobitelu: obrazac za prijavu, s kartom, fotografijom i poljem za opis.",
       "velum": "Početna stranica Veluma: “By the sea, in no hurry.”",
-      "astyle": "Početna stranica AstyleMarinea: “Luxury in full speed.”",
       "voyagerAtlas": "Voyagerov atlas Vrsara na velikom ekranu: obala s označenim mjestima.",
       "polisReport": "Polis na velikom ekranu: obrazac za prijavu u Vrsaru, s kartom i dva načina za dodati fotografiju.",
       "radioDesktop": "INTRFACE Radio: radio od orahovine svira postaju, s pjesmom na staklu.",
@@ -644,8 +629,7 @@
       "voyager": "Mjesta, ljudi i priče Vrsara",
       "agropulse": "Sezona maslina u Istri",
       "polis": "Prijavite problem u svom mjestu",
-      "velum": "Kafić i vinski bar, Vrsar",
-      "astyle": "Najam jahte, Poreč"
+      "velum": "Kafić i vinski bar, Vrsar"
     },
     "buildTitle": "Uz svaku uslugu ide nešto što smo za nju izgradili. Svako možete otvoriti.",
     "rows": {
@@ -673,7 +657,7 @@
     "faq": {
       "price": {
         "q": "Koliko košta?",
-        "a": "Za svaki projekt dobivate pisanu ponudu s fiksnom cijenom prije početka rada. Polovicu plaćate kad je prihvatite, a polovicu pri pokretanju. Većina projekata stane u ove raspone:",
+        "a": "Za svaki projekt dobivate pisanu ponudu s fiksnom cijenom prije početka rada. Polovicu plaćate kad je prihvatite, a polovicu pri pokretanju. Navedeni rasponi služe za okvirno planiranje troška projekta.",
         "ranges": {
           "site": {
             "label": "Web stranica za tvrtku",
@@ -695,7 +679,7 @@
       },
       "after": {
         "q": "Tko se brine o svemu kad krene?",
-        "a": "Uobičajeno ga mi hostamo i održavamo. Hosting male stranice ne naplaćujemo; aplikacija na poslužitelju ima mjesečnu naknadu, utvrđenu u ponudi. Ako ga radije želite voditi sami, predajemo ga vama ili vašem timu."
+        "a": "Hosting male stranice ne naplaćujemo. Za aplikaciju kojoj treba poslužitelj u ponudi navodimo mjesečnu cijenu hostinga. Opseg i cijenu održavanja dogovaramo s vama. Stranicu ili aplikaciju možete voditi i sami."
       },
       "size": {
         "q": "Može li mali studio iz Vrsara izgraditi više od web stranice?",

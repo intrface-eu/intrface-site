@@ -109,7 +109,7 @@ export async function ImprintPage({ locale }: { locale: AppLocale }) {
         <p className="type-body">
           {t.rich("sections.form.body", {
             link: (chunks) => (
-              <Link className="font-semibold text-accent hover:underline" href="/about#contact">
+              <Link className="font-semibold text-accent hover:underline" href="/services#start">
                 {chunks}
               </Link>
             ),

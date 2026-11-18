@@ -1,6 +1,7 @@
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { InterfaceDuo, InterfaceRow, InterfaceStatus } from "@/components/showcase/interface-row";
+import { InterfaceRow, InterfaceStatus } from "@/components/showcase/interface-row";
 import { tactileButtonClasses } from "@/components/site/tactile-button-classes";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
@@ -115,17 +116,16 @@ export async function HomeInterfaces({ locale }: { locale: AppLocale }) {
             <IconArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>
-        <InterfaceDuo
-          className="iface-door__shots"
-          shots={[
-            { href: PROJECTS.velum.liveUrl, src: `${SHOTS}/velum/desktop-2026-10-30.webp`, alt: t("alt.velum") },
-            {
-              href: PROJECTS.astyleMarine.liveUrl,
-              src: `${SHOTS}/astyle-marine/desktop-2026-10-30.webp`,
-              alt: t("alt.astyle"),
-            },
-          ]}
-        />
+        <a className="iface-screen iface-door__shot" href={PROJECTS.velum.liveUrl}>
+          <Image
+            alt={t("alt.velum")}
+            className="iface-screen__image"
+            height={900}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            src={`${SHOTS}/velum/desktop-2026-10-30.webp`}
+            width={1440}
+          />
+        </a>
       </div>
     </section>
   );
