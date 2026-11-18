@@ -234,7 +234,7 @@
       },
       "form": {
         "title": "Kontakt obrazac",
-        "body": "Obrazac u našem <link>kontakt dijelu</link> šalje ime, adresu e-pošte, tvrtku, temu i poruku koju upišete. Tu prijavu spremamo i šaljemo si je e-poštom kako bismo vam mogli odgovoriti — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci koje ste od nas zatražili prije sklapanja ugovora). Obrađuju je tri usluge: Vercel poslužuje ovu stranicu i pokreće obrazac, Resend dostavlja e-poštu, a Google Workspace čuva naš sandučić. Poruku čuvamo koliko i razgovor kojem pripada, a zatim je brišemo. Ne koristimo je ni za što drugo i ne prodajemo je. Zatražite na hello@intrface.eu brisanje svoje poruke i obrisat ćemo je. Sve pojedinosti nalaze se u <privacy>pravilima privatnosti</privacy>."
+        "body": "Obrazac u našem <link>kontakt dijelu</link> šalje ime, adresu e-pošte, tvrtku, temu, rok, budžet i poruku koju upišete te stranicu s koje je šaljete. Tu prijavu šaljemo si e-poštom kako bismo vam mogli odgovoriti — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci koje ste od nas zatražili prije sklapanja ugovora). Obrađuju je tri usluge: Vercel poslužuje ovu stranicu i pokreće obrazac, Resend dostavlja e-poštu, a Google Workspace čuva naš sandučić. Poruku čuvamo koliko i razgovor kojem pripada, a zatim je brišemo. Ne koristimo je ni za što drugo i ne prodajemo je. Zatražite na hello@intrface.eu brisanje svoje poruke i obrisat ćemo je. Sve pojedinosti nalaze se u <privacy>pravilima privatnosti</privacy>."
       }
     }
   },
@@ -243,7 +243,7 @@
     "title": "Što radimo s Vašim podacima.",
     "lead": "{siteName} vodi {host} i nekoliko javnih računa na društvenim mrežama. Ova stranica navodi koje osobne podatke oni prikupljaju, zašto, tko ih obrađuje i kako zatražiti njihovo brisanje.",
     "updatedLabel": "Zadnja izmjena:",
-    "updated": "25. listopada 2026.",
+    "updated": "15. studenoga 2026.",
     "factsLabel": "Voditelj obrade",
     "facts": {
       "controller": {
@@ -295,6 +295,7 @@
           "Obrazac u našem <contact>kontakt dijelu</contact> šalje nam ono što upišete:",
           "Koristimo ih samo kako bismo Vam odgovorili. Pravna osnova: koraci koje ste od nas zatražili prije sklapanja ugovora (čl. 6(1)(b) GDPR-a).",
           "Vercel pokreće obrazac, Resend nam dostavlja poruku e-poštom, a Google Workspace čuva naš sandučić. Ako se e-pošta ne može poslati, obrazac predaje poruku našem vlastitom internom sustavu, koji poslužuje Railway, kako bismo Vam ipak mogli odgovoriti.",
+          "Da spriječimo poplavu poruka, obrazac deset minuta broji koliko ih stiže s pojedine veze. Taj broj drži samo u memoriji, pod jednosmjernim kodom izvedenim iz vaše IP adrese, i ne sprema ni jedno ni drugo.",
           "Poruku čuvamo koliko i razgovor kojem pripada, a zatim je brišemo. Ne koristimo je ni za što drugo i ne prodajemo je."
         ],
         "items": [
@@ -302,8 +303,9 @@
           "adresu e-pošte",
           "tvrtku (neobavezno)",
           "temu (neobavezno)",
+          "kada vam treba i budžet (neobavezno)",
           "poruku",
-          "jezik stranice s koje pišete"
+          "stranicu s koje pišete i njezin jezik"
         ]
       },
       "social": {
@@ -472,8 +474,11 @@
     "sentBody": "Stigla je do nas. Odgovor dolazi s adrese {email}, u jednom radnom danu.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku trenutačno nismo mogli spremiti.",
+    "fallbackUncertain": "Nismo mogli potvrditi je li poruka stigla do nas. Možda jest.",
     "fallbackMailClient": "Ovaj obrazac poruku predaje vašoj aplikaciji za e-poštu.",
+    "fallbackThrottled": "Odavde je upravo stiglo previše poruka. Pokušajte ponovno za {minutes} min.",
     "fallbackTail": "Vaša aplikacija za e-poštu trebala se otvoriti sa svime ispunjenim. Ako nije, pošaljite je na <mail>{email}</mail>.",
+    "fallbackRetryTail": "Ono što ste napisali i dalje je ovdje: pošaljite ponovno ili pišite na <mail>{email}</mail>, sve je već upisano.",
     "mailNote": "Ili pišite na <mail>{email}</mail>.",
     "errorName": "Recite nam tko ste.",
     "errorEmail": "Trebamo adresu na koju možemo odgovoriti.",
@@ -490,6 +495,7 @@
       "business-site": "Stranica za moju tvrtku",
       "place-app": "Karta ili aplikacija za mjesto",
       "web-app": "Web aplikacija ili sustav",
+      "workflow-discovery": "Posao koji ponavljam ručno",
       "public-service": "Javna usluga",
       "care": "Hosting i održavanje",
       "review": "Pregled onoga što imam"
@@ -523,6 +529,7 @@
       "business-site": "Za stranicu: koji jezici, koje stranice i što želite sami mijenjati.",
       "place-app": "Za kartu ili aplikaciju za mjesto: koje područje, koja mjesta i tko ih dodaje.",
       "web-app": "Za web aplikaciju: koje podatke imate i tko svaki dan otvara taj ekran.",
+      "workflow-discovery": "Za posao koji se ponavlja: što dolazi, što netko s tim radi i koliko često.",
       "public-service": "Za javnu uslugu: tko prima prijave i što javnost vidi.",
       "care": "Za hosting i održavanje: što sada radi, gdje i tko ima pristup.",
       "review": "Za pregled: adresa ili pristup i što vam smeta."
@@ -651,6 +658,29 @@
       }
     },
     "startWith": "Krenite s ovim",
+    "workflow": {
+      "title": "Posao koji ponavljate ručno",
+      "body": "Prepisivanje iz sustava u sustav, ponovno upisivanje narudžbi, odgovaranje na ista pitanja. Ako bi to mogao preuzeti alat ili AI, prvo provjerimo isplati li se.",
+      "cta": "Opišite posao",
+      "steps": {
+        "describe": {
+          "title": "Opišete posao",
+          "body": "Jedan zadatak koji se ponavlja: što dolazi, što netko s tim radi i koliko često. Dovoljno je nekoliko rečenica."
+        },
+        "fit": {
+          "title": "Kažemo odgovara li",
+          "body": "Pisani odgovor u jednom radnom danu: možemo li pomoći i što bismo trebali pogledati. Ako ne odgovara, reći ćemo vam."
+        },
+        "discovery": {
+          "title": "Plaćena analiza, ako odgovara",
+          "body": "S vama i ljudima koji taj posao rade pogledamo kako teče, pa zapišemo što promijeniti i što bi za to trebalo. Opseg i cijenu analize prvo dobivate u pisanoj ponudi."
+        },
+        "build": {
+          "title": "Zatim odlučujete o izradi",
+          "body": "Izrada ima svoju ponudu. Možete stati nakon analize."
+        }
+      }
+    },
     "startTitle": "Opišite projekt",
     "startBody": "Dovoljno je nekoliko rečenica. Pomaže i poveznica na ono što sada imate.",
     "faqTitle": "Pitanja",

@@ -234,7 +234,7 @@
       },
       "form": {
         "title": "Il modulo di contatto",
-        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento e il messaggio che lei scrive. Salviamo l’invio e lo inoltriamo a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a hello@intrface.eu: ci pensiamo noi. Tutti i dettagli sono nell’<privacy>informativa sulla privacy</privacy>."
+        "body": "Il modulo nella nostra <link>sezione contatti</link> invia il nome, l’indirizzo email, l’azienda, l’argomento, i tempi, il budget e il messaggio che lei scrive, e la pagina da cui lo invia. Inoltriamo l’invio a noi stessi via email per poterle rispondere: rispondere è l’unica base giuridica del trattamento (GDPR, art. 6, par. 1, lett. b: misure precontrattuali adottate su sua richiesta). Il messaggio passa per tre servizi: Vercel ospita questo sito e gestisce il modulo, Resend consegna l’email e Google Workspace ospita la nostra casella di posta. Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo. Se vuole che cancelliamo il suo messaggio, scriva a hello@intrface.eu: ci pensiamo noi. Tutti i dettagli sono nell’<privacy>informativa sulla privacy</privacy>."
       }
     }
   },
@@ -243,7 +243,7 @@
     "title": "Cosa facciamo con i suoi dati.",
     "lead": "{siteName} gestisce {host} e alcuni account social pubblici. Questa pagina spiega quali dati personali raccolgono, perché, chi li tratta e come chiederne la cancellazione.",
     "updatedLabel": "Ultimo aggiornamento:",
-    "updated": "25 ottobre 2026",
+    "updated": "15 novembre 2026",
     "factsLabel": "Titolare del trattamento",
     "facts": {
       "controller": {
@@ -295,6 +295,7 @@
           "Il modulo nella nostra <contact>sezione contatti</contact> ci invia ciò che lei scrive:",
           "Li usiamo solo per risponderle. Base giuridica: misure precontrattuali adottate su sua richiesta (GDPR, art. 6, par. 1, lett. b).",
           "Vercel gestisce il modulo, Resend ci consegna il messaggio via email e Google Workspace ospita la nostra casella di posta. Se l’email non parte, il modulo passa il messaggio a un nostro sistema interno, ospitato da Railway, così possiamo comunque risponderle.",
+          "Per fermare le raffiche di messaggi, il modulo conta per dieci minuti quanti ne arrivano da ogni connessione. Tiene quel conteggio solo in memoria, sotto un codice non reversibile ricavato dal Suo indirizzo IP, e non salva né l’uno né l’altro.",
           "Teniamo un messaggio finché dura la conversazione a cui appartiene, poi lo cancelliamo. Non lo usiamo per altro e non lo vendiamo."
         ],
         "items": [
@@ -302,8 +303,9 @@
           "indirizzo email",
           "azienda (facoltativa)",
           "argomento (facoltativo)",
+          "quando Le serve e il budget (facoltativi)",
           "messaggio",
-          "la lingua della pagina da cui scrive"
+          "la pagina da cui scrive e la sua lingua"
         ]
       },
       "social": {
@@ -472,8 +474,11 @@
     "sentBody": "Il messaggio ci è arrivato. Le rispondiamo da {email} entro un giorno lavorativo.",
     "writeAnother": "Nuovo messaggio",
     "fallbackFailed": "Al momento non siamo riusciti a salvare il messaggio.",
+    "fallbackUncertain": "Non abbiamo potuto confermare che il messaggio ci sia arrivato. Potrebbe esserlo.",
     "fallbackMailClient": "Questo modulo passa il messaggio alla sua app di posta.",
+    "fallbackThrottled": "Da qui sono arrivati troppi messaggi poco fa. Riprovi tra {minutes} min.",
     "fallbackTail": "L’app di posta dovrebbe essersi aperta con tutto già compilato. Se non è così, invii il messaggio a <mail>{email}</mail>.",
+    "fallbackRetryTail": "Quello che ha scritto è ancora qui: lo invii di nuovo, oppure scriva a <mail>{email}</mail> con tutto già compilato.",
     "mailNote": "Oppure ci scriva a <mail>{email}</mail>.",
     "errorName": "Ci dica il suo nome.",
     "errorEmail": "Ci serve un indirizzo a cui risponderle.",
@@ -490,6 +495,7 @@
       "business-site": "Un sito per la mia attività",
       "place-app": "Una mappa o un’app per un luogo",
       "web-app": "Una web app o un sistema",
+      "workflow-discovery": "Lavoro che ripeto a mano",
       "public-service": "Un servizio pubblico",
       "care": "Hosting e manutenzione",
       "review": "Una revisione di ciò che ho"
@@ -523,6 +529,7 @@
       "business-site": "Per un sito: quali lingue, quali pagine e cosa vuole modificare da sé.",
       "place-app": "Per una mappa o un’app: l’area, i luoghi e chi li aggiunge.",
       "web-app": "Per una web app: i dati che ha già e chi apre quella schermata ogni giorno.",
+      "workflow-discovery": "Per un lavoro ripetuto: cosa arriva, cosa ci fa qualcuno e quanto spesso.",
       "public-service": "Per un servizio pubblico: chi riceve le segnalazioni e cosa vede il pubblico.",
       "care": "Per hosting e manutenzione: cosa gira ora, dove e chi vi ha accesso.",
       "review": "Per una revisione: l’indirizzo o l’accesso, e cosa non La convince."
@@ -651,6 +658,29 @@
       }
     },
     "startWith": "Inizi da qui",
+    "workflow": {
+      "title": "Lavoro che ripete a mano",
+      "body": "Copiare dati da un sistema all’altro, ribattere ordini, rispondere alle stesse domande. Se uno strumento o l’AI potesse occuparsene, partiamo dal capire se ne vale la pena.",
+      "cta": "Descriva il lavoro",
+      "steps": {
+        "describe": {
+          "title": "Descrive il lavoro",
+          "body": "Un compito che si ripete: cosa arriva, cosa ci fa qualcuno e quanto spesso. Bastano poche frasi."
+        },
+        "fit": {
+          "title": "Le diciamo se fa per noi",
+          "body": "Una risposta scritta entro un giorno lavorativo: se possiamo aiutarLa e cosa dovremmo vedere. Se non fa per noi, glielo diciamo."
+        },
+        "discovery": {
+          "title": "Un’analisi a pagamento, se fa per noi",
+          "body": "Guardiamo il lavoro con Lei e con chi lo svolge, poi mettiamo per iscritto cosa cambiare e cosa servirebbe. Ambito e prezzo dell’analisi arrivano prima, in un preventivo scritto."
+        },
+        "build": {
+          "title": "Poi decide sulla realizzazione",
+          "body": "La realizzazione ha un suo preventivo. Può fermarsi dopo l’analisi."
+        }
+      }
+    },
     "startTitle": "Descriva il progetto",
     "startBody": "Bastano poche frasi. Aiuta un link a ciò che ha ora.",
     "faqTitle": "Domande",

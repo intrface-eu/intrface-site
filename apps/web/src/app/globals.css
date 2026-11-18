@@ -2375,6 +2375,48 @@ body {
     }
   }
 
+  /* Work you repeat by hand: the offer on the left, its four steps on the
+     right in the intake's numbered-step style. */
+  .svc-flow {
+    padding-block: clamp(4rem, 8vw, 6rem);
+    border-block-start: 1px solid var(--line);
+    scroll-margin-block-start: 4rem;
+  }
+
+  .svc-flow__grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .svc-flow__body {
+    margin-block-start: 1rem;
+    color: var(--ink-muted);
+  }
+
+  .svc-flow__action {
+    margin-block-start: 1.5rem;
+  }
+
+  .intake__steps.svc-flow__steps {
+    margin-block-start: 0;
+  }
+
+  .svc-flow__steps > li:last-child {
+    border-block-end: 1px solid var(--line);
+  }
+
+  #sites {
+    scroll-margin-block-start: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .svc-flow__grid {
+      grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
+      column-gap: clamp(4rem, 8vw, 8rem);
+      align-items: start;
+    }
+  }
+
   /* The intake: the form on a card, and what comes back beside it. */
   .svc-start {
     padding-block: clamp(5rem, 10vw, 8rem);

@@ -234,7 +234,7 @@
       },
       "form": {
         "title": "The contact form",
-        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, and message you type. We store that submission and send it to ourselves by email so we can answer you — answering you is the whole legal basis (GDPR Art. 6(1)(b): steps you asked us to take before a contract). Three services carry it: Vercel serves this site and runs the form, Resend delivers the email, and Google Workspace holds our inbox. We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it. Ask us to delete your message at hello@intrface.eu and we will. Our <privacy>privacy policy</privacy> has the full details."
+        "body": "The form on our <link>contact section</link> submits the name, email address, company, topic, timing, budget and message you type, and the page you send it from. We send it to ourselves by email so we can answer you — answering you is the whole legal basis (GDPR Art. 6(1)(b): steps you asked us to take before a contract). Three services carry it: Vercel serves this site and runs the form, Resend delivers the email, and Google Workspace holds our inbox. We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it. Ask us to delete your message at hello@intrface.eu and we will. Our <privacy>privacy policy</privacy> has the full details."
       }
     }
   },
@@ -243,7 +243,7 @@
     "title": "What we do with your data.",
     "lead": "{siteName} runs {host} and a few public social accounts. This page says what personal data they collect, why, who handles it, and how to have it deleted.",
     "updatedLabel": "Last updated:",
-    "updated": "25 October 2026",
+    "updated": "15 November 2026",
     "factsLabel": "Controller",
     "facts": {
       "controller": {
@@ -295,6 +295,7 @@
           "The form in our <contact>contact section</contact> sends us what you type:",
           "We use it only to answer you. Legal basis: steps you asked us to take before a contract (GDPR Art. 6(1)(b)).",
           "Vercel runs the form, Resend delivers the message to us by email, and Google Workspace holds our inbox. If the email cannot be sent, the form hands the message to our own internal system, hosted by Railway, so we can still reply.",
+          "To stop floods of messages, the form counts how many arrive from each connection over ten minutes. It keeps that count in memory under a one-way code made from your IP address, and stores neither.",
           "We keep a message as long as the conversation it belongs to, then delete it. We do not use it for anything else and we do not sell it."
         ],
         "items": [
@@ -302,8 +303,9 @@
           "email address",
           "company (optional)",
           "topic (optional)",
+          "when you need it and your budget (optional)",
           "message",
-          "the language of the page you write from"
+          "the page you write from and its language"
         ]
       },
       "social": {
@@ -472,8 +474,11 @@
     "sentBody": "It landed with us. The reply comes from {email}, within one working day.",
     "writeAnother": "Write another message",
     "fallbackFailed": "We could not store the message just now.",
+    "fallbackUncertain": "We could not confirm that your message reached us. It may have.",
     "fallbackMailClient": "This form hands the message to your mail app.",
+    "fallbackThrottled": "Too many messages came from here just now. Try again in {minutes} min.",
     "fallbackTail": "Your mail app should have opened with everything filled in. If it did not, send it to <mail>{email}</mail>.",
+    "fallbackRetryTail": "What you wrote is still here: send it again, or write to <mail>{email}</mail> with it filled in.",
     "mailNote": "Or write to <mail>{email}</mail>.",
     "errorName": "Tell us who you are.",
     "errorEmail": "We need an address we can reply to.",
@@ -490,6 +495,7 @@
       "business-site": "A site for my business",
       "place-app": "A map or place app",
       "web-app": "A web app or system",
+      "workflow-discovery": "Work I repeat by hand",
       "public-service": "A public service",
       "care": "Hosting and care",
       "review": "A review of what I have"
@@ -523,6 +529,7 @@
       "business-site": "For a site: which languages, which pages, and what you want to change yourself.",
       "place-app": "For a map or place app: the area, the places, and who adds them.",
       "web-app": "For a web app: the data you have now, and who opens the screen each day.",
+      "workflow-discovery": "For repeated work: what comes in, what someone does with it, and how often.",
       "public-service": "For a public service: who receives reports, and what the public sees.",
       "care": "For hosting and care: what runs now, where, and who has access.",
       "review": "For a review: the address or access, and what bothers you about it."
@@ -736,6 +743,29 @@
       }
     },
     "startWith": "Start with this",
+    "workflow": {
+      "title": "Work you repeat by hand",
+      "body": "Copying between systems, retyping orders, answering the same questions. If a tool or AI could take it over, we start by finding out whether it is worth doing.",
+      "cta": "Describe the work",
+      "steps": {
+        "describe": {
+          "title": "You describe the work",
+          "body": "One task that repeats: what comes in, what someone does with it, and how often. A few sentences are enough."
+        },
+        "fit": {
+          "title": "We say whether it fits",
+          "body": "A written reply within one working day: whether we can help, and what we would need to look at. If it does not fit, we say so."
+        },
+        "discovery": {
+          "title": "A paid discovery, if it fits",
+          "body": "We look at the work with you and the people who do it, then write down what to change and what it would take. Its scope and price come first, in a written quote."
+        },
+        "build": {
+          "title": "Then you decide on the build",
+          "body": "The build gets its own quote. You can stop after the discovery."
+        }
+      }
+    },
     "startTitle": "Describe your project",
     "startBody": "A few sentences are enough. A link to what you have now helps.",
     "faqTitle": "Questions",

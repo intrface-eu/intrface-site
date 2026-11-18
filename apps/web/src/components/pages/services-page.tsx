@@ -13,14 +13,20 @@ const SHOTS = "/proof/projects";
 const ATLAS_URL = "https://voyager.intrface.eu/en/vrsar";
 const FAQ = ["price", "process", "after", "size", "start"] as const;
 const PRICE_RANGES = ["site", "app", "hour"] as const;
+const WORKFLOW_STEPS = ["describe", "fit", "discovery", "build"] as const;
 
 /**
  * Original launch brief (the stage now follows the active portfolio):
  * /services: what a business or a public body can hire us for, each with the
- * interface we built for it, then the intake form (`#start`) and five answers,
- * the first with our price ranges.
+ * interface we built for it, then work you repeat by hand (`#workflow`), the
+ * intake form (`#start`) and five answers, the first with our price ranges.
  * The first screen states the offer with one action and the five projects
  * beside it.
+ *
+ * Two paths are meant to be shared as links, and each preselects its need in
+ * the form (`?need=`, see `lib/site/intake.ts`):
+ *   /<locale>/services?need=business-site#sites        examples, then the brief
+ *   /<locale>/services?need=workflow-discovery#workflow  the steps, then the brief
  */
 export async function ServicesPage({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: "Services" });
@@ -173,6 +179,7 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
         />
 
         <InterfaceRow
+          id="sites"
           side="start"
           heading={<h3 className="iface-name iface-name--service">{t("rows.sites.title")}</h3>}
           status={<InterfaceStatus>Velum</InterfaceStatus>}
@@ -186,6 +193,29 @@ export async function ServicesPage({ locale }: { locale: AppLocale }) {
           desktop={velumDesktop}
           phone={velumPhone}
         />
+      </section>
+
+      {/* No project to show here: this is discovery first, and nothing is promised before it. */}
+      <section aria-labelledby="svc-workflow" className="svc-flow" id="workflow">
+        <div className="section-shell svc-flow__grid">
+          <div>
+            <h2 className="type-heading" id="svc-workflow">
+              {t("workflow.title")}
+            </h2>
+            <p className="type-body-lg svc-flow__body">{t("workflow.body")}</p>
+            <p className="svc-flow__action">
+              <StartWith need="workflow-discovery">{t("workflow.cta")}</StartWith>
+            </p>
+          </div>
+          <ol className="intake__steps svc-flow__steps">
+            {WORKFLOW_STEPS.map((key) => (
+              <li key={key}>
+                <strong>{t(`workflow.steps.${key}.title`)}</strong>
+                <span>{t(`workflow.steps.${key}.body`)}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       <section aria-labelledby="svc-start" className="svc-start" id="start">

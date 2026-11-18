@@ -2,24 +2,38 @@
 
 import { ConvexHttpClient } from "convex/browser";
 import { makeFunctionReference } from "convex/server";
+import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { alertDeliveryFailure, sendContactMail } from "@/lib/site/contact-delivery";
 import { failingContactFields, type ContactFieldName } from "@/lib/site/contact-rules";
 import { INTAKE_NEEDS, isIntakeBudget, isIntakeTiming } from "@/lib/site/intake";
+import { deliverInquiry } from "@/lib/site/inquiry-delivery";
+import { isSubmissionId, newSubmissionId, sourcePathFrom } from "@/lib/site/inquiry-identity";
+import { CONTACT_RATE_LIMIT, clientKey, createRateLimiter } from "@/lib/site/inquiry-rate-limit";
+import { prismInquiryConfig, storeInquiry } from "@/lib/site/prism-inquiry";
 
 /**
  * Contact form transport.
  *
- * The form posts here; this sends the submission to Convex (`contact:submitContact`)
- * when configured, otherwise directly to Resend.
+ * Order, after the honeypot, validation and the in-memory rate limit:
  *
- * Convex takes priority when `NEXT_PUBLIC_CONVEX_URL` (or `CONVEX_URL`) is set.
- * Otherwise, Resend uses `RESEND_API_KEY`, `CONTACT_EMAIL_TO`, and
- * `CONTACT_EMAIL_FROM`; a Resend failure retries, then alerts the operator
- * through Prism (see `contact-delivery.ts`). When neither transport is
- * configured, the action returns `unconfigured` and the form falls back to
- * `mailto:`.
+ * 1. Convex (`contact:submitContact`), when `NEXT_PUBLIC_CONVEX_URL` or
+ *    `CONVEX_URL` is set. Kept as it was: a durable store with its own
+ *    scheduled email. Production sets neither (Convex was never deployed for
+ *    the site), so this path is dormant, not removed.
+ * 2. Otherwise Prism inquiry intake (`prism-inquiry.ts`), when
+ *    `PRISM_INQUIRY_ENABLED=1` and its credentials are set, then the Resend
+ *    owner email (`RESEND_API_KEY`, `CONTACT_EMAIL_TO`, `CONTACT_EMAIL_FROM`).
+ *    `inquiry-delivery.ts` holds the rules: success only when Prism stored the
+ *    inquiry or Resend accepted the email; a Prism 429 stops here; when both
+ *    fail the operator gets an urgent Prism notify alert.
+ * 3. Nothing configured: `unconfigured`, and the form falls back to mailto.
+ *
+ * The visitor sees the same "received" either way. Where the inquiry actually
+ * landed (`capture: "prism"` or `"email"`) is logged and written into the
+ * owner email, so an email-only inquiry is never mistaken for one Prism is
+ * following up.
  */
 
 // No `export type { ... }` here: Next's server-action transform treats a
@@ -28,10 +42,12 @@ import { INTAKE_NEEDS, isIntakeBudget, isIntakeTiming } from "@/lib/site/intake"
 // `lib/site/contact-rules` instead.
 
 export type ContactActionResult =
-  /** Stored. */
+  /** Stored, or delivered to the owner's inbox. */
   | { status: "sent" }
   /** Field-level problems, keyed by input name. */
   | { status: "invalid"; errors: Partial<Record<ContactFieldName, string>> }
+  /** Too many submissions just now; try again after this many seconds. */
+  | { status: "throttled"; retryAfterSeconds: number }
   /** No backend configured in this environment — the caller should use mailto. */
   | { status: "unconfigured" }
   /** The backend was reachable-in-principle but the write failed. */
@@ -44,9 +60,14 @@ const LIMITS = {
   subject: 120,
   message: 5000,
   locale: 12,
+  sourcePath: 600,
+  submissionId: 80,
 } as const;
 
 const submitContactRef = makeFunctionReference<"mutation">("contact:submitContact");
+
+/** One per server instance; see `inquiry-rate-limit.ts` for what it does and does not stop. */
+const rateLimit = createRateLimiter(CONTACT_RATE_LIMIT);
 
 function field(formData: FormData, name: string, limit: number): string {
   const value = formData.get(name);
@@ -71,6 +92,12 @@ function resendConfig(): { apiKey: string; from: string; to: string } | null {
   return apiKey && from && to ? { apiKey, from, to } : null;
 }
 
+/** The connection's address as Vercel reports it, for the rate limit only. */
+async function clientAddress(): Promise<string> {
+  const list = await headers();
+  return list.get("x-real-ip")?.trim() || list.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+}
+
 export async function submitContactForm(formData: FormData): Promise<ContactActionResult> {
   // Honeypot: a real person never sees this input, so anything in it is a bot.
   // Report success — a bot told it failed just retries.
@@ -83,6 +110,9 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   const message = field(formData, "message", LIMITS.message);
   const company = field(formData, "company", LIMITS.company);
   const locale = field(formData, "locale", LIMITS.locale);
+  const postedId = field(formData, "submissionId", LIMITS.submissionId);
+  const submissionId = isSubmissionId(postedId) ? postedId : newSubmissionId();
+  const sourcePath = sourcePathFrom(field(formData, "sourcePath", LIMITS.sourcePath));
 
   const resolvedLocale = resolveLocale(locale);
   const t = await getTranslations({ locale: resolvedLocale, namespace: "ContactForm" });
@@ -90,9 +120,8 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   // Only known keys pass, in the form's own order, so a forged value never
   // reaches the mail. The labels are in the reader's language, as on the form.
   const posted = formData.getAll("need");
-  const topic = INTAKE_NEEDS.filter((key) => posted.includes(key))
-    .map((key) => t(`needs.${key}`))
-    .join(", ");
+  const needs = INTAKE_NEEDS.filter((key) => posted.includes(key));
+  const topic = needs.map((key) => t(`needs.${key}`)).join(", ");
   const timing = field(formData, "timing", 20);
   const budget = field(formData, "budget", 20);
   const details = [
@@ -112,6 +141,12 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     return { status: "invalid", errors };
   }
 
+  const limited = rateLimit(await clientKey(await clientAddress()), submissionId);
+  if (!limited.ok) {
+    console.warn("[contact] rate limited", { submissionId, retryAfterSeconds: limited.retryAfterSeconds });
+    return { status: "throttled", retryAfterSeconds: limited.retryAfterSeconds };
+  }
+
   const subject = topic ? t("subjectWithTopic", { topic, name }) : t("subjectFallback");
   const url = deploymentUrl();
 
@@ -127,6 +162,7 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
         locale: locale || undefined,
       });
 
+      console.info("[contact] captured", { capture: "convex", submissionId });
       return { status: "sent" };
     } catch (error) {
       console.error("[contact] Convex submission failed", error);
@@ -134,41 +170,65 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     }
   }
 
+  const prism = prismInquiryConfig();
   const resend = resendConfig();
-  if (!resend) {
-    return { status: "unconfigured" };
-  }
 
-  const text = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    company ? `Company: ${company}` : null,
-    topic ? `Need: ${topic}` : null,
-    ...details,
-    `Locale: ${resolvedLocale}`,
-    "",
-    message,
-  ]
-    .filter((line) => line !== null)
-    .join("\n");
-
-  const result = await sendContactMail({
-    apiKey: resend.apiKey,
-    from: resend.from,
-    to: resend.to,
-    replyTo: email,
-    subject,
-    text,
+  const outcome = await deliverInquiry({
+    store: prism
+      ? () =>
+          storeInquiry(prism, {
+            submissionId,
+            needs,
+            timing: isIntakeTiming(timing) ? timing : undefined,
+            budget: isIntakeBudget(budget) ? budget : undefined,
+            locale: resolvedLocale,
+            name,
+            email,
+            message,
+            company: company || undefined,
+            sourcePath: sourcePath || undefined,
+          })
+      : null,
+    mail: resend
+      ? (storeLine) =>
+          sendContactMail({
+            apiKey: resend.apiKey,
+            from: resend.from,
+            to: resend.to,
+            replyTo: email,
+            subject,
+            idempotencyKey: `intrface-site-contact/${submissionId}`,
+            text: [
+              `Name: ${name}`,
+              `Email: ${email}`,
+              company ? `Company: ${company}` : null,
+              topic ? `Need: ${topic}` : null,
+              ...details,
+              `Locale: ${resolvedLocale}`,
+              sourcePath ? `Page: ${sourcePath}` : null,
+              storeLine,
+              "",
+              message,
+            ]
+              .filter((line) => line !== null)
+              .join("\n"),
+          })
+      : null,
+    alert: (error) =>
+      alertDeliveryFailure({ name, email, topic, company, locale: resolvedLocale, message: fullMessage }, error),
   });
 
-  if (!result.ok) {
-    console.error("[contact] Resend submission failed", result.error);
-    await alertDeliveryFailure(
-      { name, email, topic, company, locale: resolvedLocale, message: fullMessage },
-      result.error,
-    );
-    return { status: "failed" };
+  switch (outcome.status) {
+    case "sent":
+      console.info("[contact] captured", { submissionId, ...outcome });
+      return { status: "sent" };
+    case "throttled":
+      console.warn("[contact] Prism rate limited", { submissionId, retryAfterSeconds: outcome.retryAfterSeconds });
+      return { status: "throttled", retryAfterSeconds: outcome.retryAfterSeconds };
+    case "failed":
+      console.error("[contact] not captured", { submissionId, ...outcome });
+      return { status: "failed" };
+    case "unconfigured":
+      return { status: "unconfigured" };
   }
-
-  return { status: "sent" };
 }

@@ -234,7 +234,7 @@
       },
       "form": {
         "title": "El modulo de contato",
-        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento e el messagio che ti scrivi. Salvemo quel che ti ne mandi e ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo. Tuti i detagli xe ne la <privacy>informativa privacy</privacy>."
+        "body": "El modulo ne la nostra <link>sezion contati</link> manda el nome, l’indirizo email, la dita, l’argomento, i tempi, el budget e el messagio che ti scrivi, e la pagina de dove che ti lo mandi. Quel che ti ne mandi ne lo mandemo per email, cussì podemo risponderte — risponderte xe tuta la base legal (GDPR art. 6(1)(b): passi che ti ne ga domandà prima de un contrato). El passa per tre servizi: Vercel servi sto sito e fa andar el modulo, Resend consegna l’email, e Google Workspace tien la nostra posta. Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo. Domandine de scancelar el tuo messagio a hello@intrface.eu e lo faremo. Tuti i detagli xe ne la <privacy>informativa privacy</privacy>."
       }
     }
   },
@@ -243,7 +243,7 @@
     "title": "Cosa che femo coi tui dati.",
     "lead": "{siteName} gestissi {host} e qualche account social publico. Sta pagina dise che dati personali i ciapa, perché, chi che li trata e come domandar de scancelarli.",
     "updatedLabel": "Ultimo agiornamento:",
-    "updated": "25 otobre 2026",
+    "updated": "15 novembre 2026",
     "factsLabel": "Titolar del tratamento",
     "facts": {
       "controller": {
@@ -295,6 +295,7 @@
           "El modulo ne la nostra <contact>sezion contati</contact> ne manda quel che ti scrivi:",
           "Li dopremo solo per risponderte. Base legal: passi che ti ne ga domandà prima de un contrato (GDPR art. 6(1)(b)).",
           "Vercel fa andar el modulo, Resend ne consegna el messagio per email, e Google Workspace tien la nostra posta. Se l’email no parti, el modulo passa el messagio a un nostro sistema interno, ospità de Railway, cussì podemo risponderte istesso.",
+          "Per fermar i messagi a ondade, el modulo conta per diese minuti quanti ghe ne riva de ogni conession. El tien quel conto solo in memoria, soto un codice che no se pol tornar indrio, fato del tuo indirizo IP, e no el salva né l’un né l’altro.",
           "Tegnimo un messagio fin che dura la sua conversazion, dopo lo scancelemo. No lo dopremo per altro e no lo vendemo."
         ],
         "items": [
@@ -302,8 +303,9 @@
           "indirizo email",
           "dita (no obligatoria)",
           "argomento (no obligatorio)",
+          "quando te servi e el budget (no obligatori)",
           "messagio",
-          "la lingua de la pagina de dove che ti scrivi"
+          "la pagina de dove che ti scrivi e la sua lingua"
         ]
       },
       "social": {
@@ -472,8 +474,11 @@
     "sentBody": "El xe rivà da noi. La risposta vien de {email}, entro un giorno de lavor.",
     "writeAnother": "Scrivi un altro messagio",
     "fallbackFailed": "Desso no gavemo podù salvar el messagio.",
+    "fallbackUncertain": "No podemo confermar che el messagio xe rivà da noi. Pol darse che sì.",
     "fallbackMailClient": "Sto modulo passa el messagio a la tua app de posta.",
+    "fallbackThrottled": "De qua xe rivà massa messagi un atimo fa. Prova de novo tra {minutes} min.",
     "fallbackTail": "La tua app de posta dovessi esserse verta con tuto za compilà. Se no, mandilo a <mail>{email}</mail>.",
+    "fallbackRetryTail": "Quel che ti ga scrito xe ancora qua: mandilo de novo, o scrivi a <mail>{email}</mail> con tuto za compilà.",
     "mailNote": "O scrivine a <mail>{email}</mail>.",
     "errorName": "Dine chi che ti xe.",
     "errorEmail": "Ne servi un indirizo per risponderte.",
@@ -490,6 +495,7 @@
       "business-site": "Un sito per la mia dita",
       "place-app": "Una carta o una app per un logo",
       "web-app": "Una web app o un sistema",
+      "workflow-discovery": "Lavor che ripeto a man",
       "public-service": "Un servizio publico",
       "care": "Hosting e manutenzion",
       "review": "Una ociada a quel che go"
@@ -523,6 +529,7 @@
       "business-site": "Per un sito: che lingue, che pagine e cossa ti vol cambiar de solo.",
       "place-app": "Per una carta o una app: la zona, i loghi e chi li zonta.",
       "web-app": "Per una web app: i dati che ti ga za e chi verzi quel schermo ogni giorno.",
+      "workflow-discovery": "Per un lavor che se ripeti: cossa riva, cossa qualchedun ghe fa e quante volte.",
       "public-service": "Per un servizio publico: chi ricevi le segnalazioni e cossa vedi la gente.",
       "care": "Per hosting e manutenzion: cossa gira desso, dove e chi ga l’acesso.",
       "review": "Per una ociada: l’indirizo o l’acesso, e cossa no te piasi."
@@ -651,6 +658,29 @@
       }
     },
     "startWith": "Scominzia de qua",
+    "workflow": {
+      "title": "El lavor che ti ripeti a man",
+      "body": "Copiar dati de un sistema a l’altro, ribater ordini, risponder sempre a le stesse domande. Se un strumento o l’AI podessi farlo, prima vardemo se val la pena.",
+      "cta": "Conta el lavor",
+      "steps": {
+        "describe": {
+          "title": "Ti ne conti el lavor",
+          "body": "Un lavor che se ripeti: cossa riva, cossa qualchedun ghe fa e quante volte. Basta qualche frase."
+        },
+        "fit": {
+          "title": "Te disemo se fa per noi",
+          "body": "Una risposta scrita entro un giorno de lavor: se podemo iutarte e cossa gavessimo de vardar. Se no fa per noi, te lo disemo."
+        },
+        "discovery": {
+          "title": "Una analisi a pagamento, se fa per noi",
+          "body": "Vardemo el lavor con ti e con chi che lo fa, dopo scrivemo cossa cambiar e cossa ghe volessi. Cossa e quanto per l’analisi te lo mandemo prima, in un preventivo scrito."
+        },
+        "build": {
+          "title": "Dopo ti decidi se farlo",
+          "body": "Farlo ga el suo preventivo. Ti pol fermarte dopo l’analisi."
+        }
+      }
+    },
     "startTitle": "Conta el tuo progeto",
     "startBody": "Basta qualche frase. Iuta un link a quel che ti ga desso.",
     "faqTitle": "Domande",

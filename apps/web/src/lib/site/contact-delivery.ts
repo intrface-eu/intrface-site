@@ -3,7 +3,8 @@
  *
  * Production has no store behind the form, so a send that fails here is gone
  * unless someone hears about it. Transient failures (network, 429, 5xx) retry
- * under one Idempotency-Key, so a retry never sends twice. When every attempt
+ * under one Idempotency-Key, so a retry never sends twice; the action passes
+ * the form's submission id, so a visitor's own retry does not send twice either. When every attempt
  * fails, the whole submission goes to Prism (`/api/v1/notify`) as an alert, and
  * the visitor still gets the mailto fallback.
  *
@@ -20,6 +21,11 @@ export type ContactMail = {
   replyTo: string;
   subject: string;
   text: string;
+  /**
+   * One per submission, reused when the visitor retries it, so Resend sends
+   * that submission once (its keys hold for 24 hours). A random one otherwise.
+   */
+  idempotencyKey?: string;
 };
 
 export type ContactSubmission = {
@@ -60,7 +66,7 @@ export async function sendContactMail(
   const doFetch = options.fetch ?? fetch;
   const backoff = options.backoff ?? BACKOFF;
   const sleep = options.sleep ?? wait;
-  const idempotencyKey = crypto.randomUUID();
+  const idempotencyKey = mail.idempotencyKey ?? crypto.randomUUID();
   let error = "";
 
   for (let attempt = 0; attempt <= backoff.length; attempt++) {

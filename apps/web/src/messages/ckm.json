@@ -234,7 +234,7 @@
       },
       "form": {
         "title": "Kontakt formular",
-        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu i poruku ku napišete. To ča pošljete spravimo i pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju. Sve pojedinosti su u <privacy>pravilima privatnosti</privacy>."
+        "body": "Formular u našen <link>kontakt dilu</link> šalje ime, email adresu, firmu, temu, rok, budžet i poruku ku napišete, i stranicu s ke ju pošljete. To ča pošljete pošljemo sami sebi po emailu da van moremo odgovorit — odgovor je jedina pravna osnova (GDPR / Opća uredba o zaštiti podataka čl. 6(1)(b): koraci ke ste od nas pitali pred sklapanjen ugovora). Obrađuju ju tri usluge: Vercel drži ovu stranicu i pokreće formular, Resend dostavlja email, a Google Workspace čuva naš inbox. Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju. Pitajte na hello@intrface.eu da obrišemo vašu poruku i obrisat ćemo ju. Sve pojedinosti su u <privacy>pravilima privatnosti</privacy>."
       }
     }
   },
@@ -243,7 +243,7 @@
     "title": "Ča delamo s vašimi podacima.",
     "lead": "{siteName} vodi {host} i nekoliko javnih računi na društvenih mrežah. Ova stranica piše ke osobne podatke oni pobiraju, zač, ki ih obrađuje i kako pitat da ih obrišemo.",
     "updatedLabel": "Zadnja izmjena:",
-    "updated": "25. listopada 2026.",
+    "updated": "15. studenoga 2026.",
     "factsLabel": "Voditelj obrade",
     "facts": {
       "controller": {
@@ -295,6 +295,7 @@
           "Formular u našen <contact>kontakt dilu</contact> nan pošlje ono ča napišete:",
           "Rabimo ih samo da van moremo odgovorit. Pravna osnova: koraci ke ste od nas pitali pred sklapanjen ugovora (GDPR čl. 6(1)(b)).",
           "Vercel pokreće formular, Resend nan dostavi poruku po emailu, a Google Workspace čuva naš inbox. Ako se email ne more poslat, formular preda poruku našen internen sustavu, ki je na Railwayu, da van ipak moremo odgovorit.",
+          "Da zaustavimo poplavu poruk, formular deset minuti broji koliko ih pride s svake veze. Taj broj drži samo u memoriji, pod jednosmjernin kodon napravljenin iz vaše IP adrese, i ne spremi ni jedno ni drugo.",
           "Poruku čuvamo dokle traje razgovor kega je dil, pa ju brišemo. Ne rabimo ju ni za ča drugo i ne prodajemo ju."
         ],
         "items": [
@@ -302,8 +303,9 @@
           "email adresu",
           "firmu (ni obavezno)",
           "temu (ni obavezno)",
+          "kad van rabi i budžet (ni obavezno)",
           "poruku",
-          "jezik stranice s ke pišete"
+          "stranicu s ke pišete i njen jezik"
         ]
       },
       "social": {
@@ -472,8 +474,11 @@
     "sentBody": "Rivala je do nas. Odgovor pride s adrese {email}, za jedan radni dan.",
     "writeAnother": "Napišite još jednu poruku",
     "fallbackFailed": "Poruku sad nismo mogli spravit.",
+    "fallbackUncertain": "Nismo mogli potvrdit je li poruka rivala do nas. Moguće je da je.",
     "fallbackMailClient": "Ovi formular preda poruku vašoj aplikaciji za email.",
+    "fallbackThrottled": "Odavle je baš sad rivalo previše poruk. Probajte opet za {minutes} min.",
     "fallbackTail": "Vaša aplikacija za email bi se morala otprt sa svin već ispunjenin. Ako ni, pošljite ju na <mail>{email}</mail>.",
+    "fallbackRetryTail": "To ča ste napisali je još tu: pošljite opet ili pišite na <mail>{email}</mail>, sve je već upisano.",
     "mailNote": "Ili pišite na <mail>{email}</mail>.",
     "errorName": "Recite nan ki ste.",
     "errorEmail": "Rabi nan adresa na ku van moremo odgovorit.",
@@ -490,6 +495,7 @@
       "business-site": "Stranica za moju firmu",
       "place-app": "Karta ili aplikacija za misto",
       "web-app": "Web aplikacija ili sistem",
+      "workflow-discovery": "Delo ko ponavljan na ruke",
       "public-service": "Javna usluga",
       "care": "Hosting i održavanje",
       "review": "Pregled tega ča iman"
@@ -523,6 +529,7 @@
       "business-site": "Za stranicu: ki jeziki, ke stranice i ča ćete sami minjat.",
       "place-app": "Za kartu ili aplikaciju: ko područje, ka mista i ki ih dodaje.",
       "web-app": "Za web aplikaciju: ke podatke već imate i ki svaki dan otpre taj ekran.",
+      "workflow-discovery": "Za delo ko se ponavlja: ča pride, ča netko s tin dela i koliko put.",
       "public-service": "Za javnu uslugu: ki prima prijave i ča ljudi vide.",
       "care": "Za hosting i održavanje: ča sad dela, kade i ki ima pristup.",
       "review": "Za pregled: adresa ili pristup i ča van smeta."
@@ -651,6 +658,29 @@
       }
     },
     "startWith": "Počnite s ovin",
+    "workflow": {
+      "title": "Delo ko ponavljate na ruke",
+      "body": "Prepisivanje iz sistema u sistem, upisivanje narudžbi, odgovaranje na ista pitanja. Ako bi to mogal zet alat ili AI, prvo pogledamo je li se splati.",
+      "cta": "Opišite delo",
+      "steps": {
+        "describe": {
+          "title": "Opišete delo",
+          "body": "Jedan posal ki se ponavlja: ča pride, ča netko s tin dela i koliko put. Dosta je nekoliko rečenic."
+        },
+        "fit": {
+          "title": "Rečemo je li za nas",
+          "body": "Pisani odgovor za jedan radni dan: moremo li pomoć i ča bi morali pogledat. Ako ni za nas, rečemo van."
+        },
+        "discovery": {
+          "title": "Plaćena analiza, ako je za nas",
+          "body": "Z vami i ljudima ki to delaju pogledamo kako gre, pa zapišemo ča prominit i ča bi za to rabilo. Opseg i cijenu analize prvo dobijete u pisanoj ponudi."
+        },
+        "build": {
+          "title": "Onda odlučite o izradi",
+          "body": "Izrada ima svoju ponudu. Moreti stat posle analize."
+        }
+      }
+    },
     "startTitle": "Opišite projekt",
     "startBody": "Dosta je nekoliko rečenic. Pomore i poveznica na to ča sad imate.",
     "faqTitle": "Pitanja",
